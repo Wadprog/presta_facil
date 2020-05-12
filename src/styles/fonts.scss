@@ -1,0 +1,142 @@
+@import "@styles/variables/all";
+@import "@styles/mixins/all";
+
+// sofia pro
+
+// 300 ExtraLight
+
+@font-face {
+  font-family: "sofia-pro";
+  src: url("../assets/fonts/SofiaProExtraLight.woff2") format("woff2"),
+    url("../assets/fonts/SofiaProExtraLight.woff") format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 200;
+}
+
+// 300 SofiaProLight
+@font-face {
+  font-family: "sofia-pro";
+  src: url("../assets/fonts/SofiaProLight.woff2") format("woff2"),
+    url("../assets/fonts/SofiaProLight.woff") format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 200;
+}
+
+// 400 Regular
+
+@font-face {
+  font-family: "sofia-pro";
+  src: url("../assets/fonts/SofiaProRegular.woff2") format("woff2"),
+    url("../assets/fonts/SofiaProRegular.woff") format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+
+// 500 Medium
+
+@font-face {
+  font-family: "sofia-pro";
+  src: url("../assets/fonts/SofiaProMedium.woff2") format("woff2"),
+    url("../assets/fonts/SofiaProMedium.woff") format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 500;
+}
+
+// 600 SemiBold
+
+@font-face {
+  font-family: "sofia-pro";
+  src: url("../assets/fonts/SofiaProSemiBold.woff2") format("woff2"),
+    url("../assets/fonts/SofiaProSemiBold.woff") format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 600;
+}
+
+// 700 Bold
+
+@font-face {
+  font-family: "sofia-pro";
+  src: url("../assets/fonts/SofiaProBold.woff2") format("woff2"),
+    url("../assets/fonts/SofiaProBold.woff") format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+}
+
+// sofia-pro-soft
+
+// 300
+
+@font-face {
+  font-family: "sofia-pro-soft";
+  src: url("https://use.typekit.net/af/0040a7/0000000000000000000157ba/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/0040a7/0000000000000000000157ba/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
+      format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300;
+}
+
+// 400
+
+@font-face {
+  font-family: "sofia-pro-soft";
+  src: url("https://use.typekit.net/af/5c3c84/0000000000000000000157bc/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/5c3c84/0000000000000000000157bc/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+      format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+
+// 700
+
+@font-face {
+  font-family: "sofia-pro-soft";
+  src: url("https://use.typekit.net/af/9b5307/0000000000000000000157b7/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/9b5307/0000000000000000000157b7/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+      format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+}
+
+// Gramatika
+
+// Black
+@font-face {
+  font-family: "Gramatika-Black";
+  src: url("../assets/fonts/Gramatika-Black.woff2") format("woff2"),
+    url("../assets/fonts/Gramatika-Black.woff") format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 900;
+}
+
+//medium
+@font-face {
+  font-family: "Gramatika";
+  src: url("../assets/fonts/Gramatika-Medium.woff2") format("woff2"),
+    url("../assets/fonts/Gramatika-Medium.woff") format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 500;
+}
+
+//Bold
+@font-face {
+  font-family: "Gramatika";
+  src: url("../assets/fonts/Gramatika-Bold.woff2") format("woff2"),
+    url("../assets/fonts/Gramatika-Bold.woff") format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+}
