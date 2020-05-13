@@ -36,11 +36,11 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-eslint",
+      resolve: 'gatsby-plugin-eslint',
       options: {
         test: /\.js$|\.jsx$/,
         exclude: /(node_modules|.cache|public)/,
-        stages: ["develop"],
+        stages: ['develop'],
         options: {
           emitWarning: true,
           failOnError: false,
@@ -51,16 +51,24 @@ module.exports = {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
         alias: {
-          "@src": "src",
-          "@components": "src/components",
-          "@pages": "src/pages",
-          "@styles": "src/styles",
+          '@src': 'src',
+          '@components': 'src/components',
+          '@pages': 'src/pages',
+          '@styles': 'src/styles',
         },
-        extensions: ["js", "sass", "scss"],
+        extensions: ['js', 'sass', 'scss'],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /\.inline\.svg$/,
+        },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};

@@ -1,0 +1,44 @@
+@import "@styles/variables/all";
+@import "@styles/mixins/all";
+
+.container {
+  max-width: 1200px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 78px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: $green-gradient;
+    left: 0;
+    bottom: 0;
+  }
+}
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 78px;
+}
+
+.button {
+  width: 220px;
+  margin-left: auto;
+}
+
+.slogan {
+  font-family: $font-gramatika;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}

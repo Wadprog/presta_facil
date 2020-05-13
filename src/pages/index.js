@@ -1,13 +1,12 @@
-import React from "react"
+import React from 'react';
+import HomePage from '../scenes/HomePage';
 
-import Layout from "../components/layout"
+import Layout from '@components/Layout';
 
 const IndexPage = () => (
   <Layout>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
+    <HomePage />
   </Layout>
-)
+);
 
-export default IndexPage
+export default IndexPage;

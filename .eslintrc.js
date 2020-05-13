@@ -4,21 +4,19 @@ module.exports = {
     node: true,
     es6: true,
   },
-  parser: "babel-eslint",
+  parser: 'babel-eslint',
   rules: {
     strict: 0,
-    "no-console": 1,
+    'no-console': 1,
   },
-  plugins: ["cypress"],
   extends: [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:prettier/recommended",
-    "plugin:cypress/recommended",
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:prettier/recommended',
   ],
   settings: {
     react: {
-      version: "detect",
+      version: 'detect',
     },
   },
-}
+};
