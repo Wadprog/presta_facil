@@ -55,6 +55,8 @@ module.exports = {
           '@components': 'src/components',
           '@pages': 'src/pages',
           '@styles': 'src/styles',
+          '@hooks': 'src/hooks',
+          '@helpers': 'src/helpers',
         },
         extensions: ['js', 'sass', 'scss'],
       },

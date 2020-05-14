@@ -14,6 +14,7 @@
   letter-spacing: 0.1em;
   border: none;
   border-radius: 20px 5px;
+  padding: 0;
 
   &:hover {
     cursor: pointer;
@@ -35,7 +36,7 @@
     width: 70%;
     height: 16px;
     background: $main-gradient;
-    filter: blur(40px);
+    filter: blur(30px);
     opacity: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -113,5 +114,49 @@
 
   &:active {
     border-color: darken($green, 30%);
+  }
+}
+
+.play {
+  width: 80px;
+  height: 80px;
+  background: #fff;
+  background-size: 0;
+  border-radius: 50%;
+  box-shadow: 0px 20px 50px rgba(147, 174, 180, 0.25);
+  &::before {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: $green-gradient;
+    opacity: 0;
+    z-index: 1;
+    transition: 0.3s;
+    top: 0;
+    left: 0;
+  }
+  svg {
+    position: relative;
+    z-index: 2;
+    margin-left: 3px;
+    margin-top: 3px;
+  }
+  &:hover {
+    svg path {
+      fill: #fff;
+      transition: 0.3s;
+    }
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    transform: scale(0.8);
+    &::before {
+      background: $dark-gradient $green-gradient;
+    }
   }
 }
