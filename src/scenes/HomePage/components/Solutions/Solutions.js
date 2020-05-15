@@ -70,7 +70,8 @@ const Solutions = () => {
     <div className={style.solutions}>
       <div className={style.container}>
         <h2 className={style.title}>
-          <span>Simplify Cookie</span>&nbsp; Compliance at Global Scale
+          <span>Simplify Cookie</span>
+          <br /> Compliance at Global Scale
         </h2>
         <p className={style.descr}>
           Meet the requirements of GDPR, CCPA, LGPD and other data privacy laws

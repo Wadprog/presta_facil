@@ -1,3 +1,79 @@
+@import "@styles/variables/all";
+@import "@styles/mixins/all";
+
 .integration {
-  margin-top: 128px;
+  padding: 68px 16px 64px;
+  text-align: center;
+  background-color: #f7f9fb;
+}
+
+.title {
+  font-family: $font-gramatika;
+  font-weight: 400;
+  font-size: 42px;
+  line-height: 130%;
+  max-width: 590px;
+  margin: 0 auto 12px;
+  span {
+    font-family: $font-gramatika-black;
+    font-weight: 900;
+    color: $green;
+    letter-spacing: 0.03em;
+    text-transform: capitalize;
+  }
+  @media (max-width: $md) {
+    padding: 0 16px;
+    text-align: left;
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+}
+
+.descr {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 160%;
+  color: $second-dark;
+  opacity: 0.75;
+  max-width: 620px;
+  margin: 0 auto 50px;
+  @media (max-width: $md) {
+    padding: 0 16px;
+    text-align: left;
+    font-size: 14px;
+    margin-bottom: 45px;
+  }
+}
+
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 128px;
+  height: 128px;
+
+  &:hover {
+    cursor: pointer;
+  }
+  h4 {
+    font-family: $font-gramatika;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 150%;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 12px;
+    z-index: 1;
+  }
+  .icon {
+    z-index: 1;
+  }
+  .background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
 }
