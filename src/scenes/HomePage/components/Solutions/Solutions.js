@@ -1,7 +1,6 @@
 import React from 'react';
 import style from './Solutions.module.scss';
 import useGetImage from './useGetImage';
-import { Link } from 'gatsby';
 import Swiper from 'react-id-swiper';
 
 const Solutions = () => {
@@ -13,6 +12,7 @@ const Solutions = () => {
     france,
     nevada,
     thailand,
+    arrow,
   } = useGetImage();
 
   const solutionsList = [
@@ -77,14 +77,19 @@ const Solutions = () => {
           with one unified consent solution across different data privacy laws.
         </p>
         <Swiper {...params}>
-          {solutionsList.map(({ link, title, tag, flag }) => {
+          {solutionsList.map(({ title, tag, flag }) => {
             return (
               <div className={style.slide} key={title}>
-                <Link to={link} className={style.item}>
+                <div className={style.item}>
                   <img src={flag.publicURL} alt="flag icon" />
                   <h3>{title}</h3>
                   <span>({tag})</span>
-                </Link>
+                  <img
+                    className={style.arrow}
+                    src={arrow.publicURL}
+                    alt="arrow icon"
+                  />
+                </div>
               </div>
             );
           })}

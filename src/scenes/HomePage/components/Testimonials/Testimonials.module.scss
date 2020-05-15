@@ -6,24 +6,25 @@
 .container {
   position: relative;
   max-width: 900px;
-  margin: -120px auto 0;
+  margin: -180px auto 0;
   padding: 0 16px;
   @media (max-width: $lg) {
     margin-top: -90px;
   }
   @media (max-width: $md) {
     padding: 0;
-    margin-top: -30px;
+    margin-top: -70px;
   }
 }
 .slide {
-  padding: 20px 0 40px;
+  padding: 60px 0 60px;
   max-width: 100%;
   &[class~="swiper-slide"] {
     height: auto;
   }
   @media (max-width: $md) {
     width: auto !important;
+    padding-bottom: 80px;
   }
 }
 

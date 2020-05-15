@@ -24,6 +24,9 @@ export default () => {
       thailand: file(relativePath: { eq: "homepage/flags/thailand.svg" }) {
         publicURL
       }
+      arrow: file(relativePath: { eq: "homepage/icons/icon-btn-purple.svg" }) {
+        publicURL
+      }
     }
   `);
   return data;
