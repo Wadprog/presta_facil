@@ -9,6 +9,7 @@ const VARIANT = {
   TRANSPARENT: 'transparent',
   TRANSPARENT_GREEN: 'green',
   PLAY: 'play',
+  BURGER: 'burger',
 };
 
 const Button = ({ children, variant, disabled, onClick, type }) => {

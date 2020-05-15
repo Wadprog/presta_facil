@@ -15,17 +15,14 @@ body {
   margin: 0;
   color: $main-dark;
   font-family: $font-sofia-pro;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 }
 
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-}
-
-body {
-  -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
 

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import style from './Testimonials.module.scss';
 import Swiper from 'react-id-swiper';
-import 'swiper/swiper.scss';
+import classnames from 'classnames';
+import useGetImage from './useGetImage';
+import { useBreakpoints } from '@hooks';
+
+import style from './Testimonials.module.scss';
 import Item from './components/Item';
 import Arrow from './image/arrow.inline.svg';
-import classnames from 'classnames';
-import { useBreakpoints } from '@hooks';
-import useGetImage from './useGetImage';
 
 const Testimonials = () => {
   const { photo } = useGetImage();
@@ -42,16 +42,18 @@ const Testimonials = () => {
   ];
 
   return (
-    <div className={style.container}>
-      <Swiper {...params} key={buildKey}>
-        {testimonialsList.map((item) => {
-          return (
-            <div className={style.slide} key={item.name}>
-              <Item {...item} />
-            </div>
-          );
-        })}
-      </Swiper>
+    <div className={style.testimonials}>
+      <div className={style.container}>
+        <Swiper {...params} key={buildKey}>
+          {testimonialsList.map((item) => {
+            return (
+              <div className={style.slide} key={item.name}>
+                <Item {...item} />
+              </div>
+            );
+          })}
+        </Swiper>
+      </div>
     </div>
   );
 };

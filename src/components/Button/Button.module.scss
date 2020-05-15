@@ -2,6 +2,9 @@
 @import "@styles/mixins/all";
 
 .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   outline: none;
   width: 100%;
@@ -159,4 +162,12 @@
       background: $dark-gradient $green-gradient;
     }
   }
+}
+
+.burger {
+  width: 38px;
+  height: 38px;
+  box-shadow: 0 0 1px 1px rgba($color: #2e3542, $alpha: 0.3);
+  border-radius: 8px 4px;
+  background: transparent;
 }

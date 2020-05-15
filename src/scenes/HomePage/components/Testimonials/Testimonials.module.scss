@@ -1,6 +1,8 @@
 @import "@styles/variables/all";
 @import "@styles/mixins/all";
-
+.testimonials {
+  background-color: #f7f9fb;
+}
 .container {
   position: relative;
   max-width: 900px;
@@ -15,7 +17,7 @@
   }
 }
 .slide {
-  padding-top: 20px;
+  padding: 20px 0 40px;
   max-width: 100%;
   &[class~="swiper-slide"] {
     height: auto;
