@@ -1,0 +1,75 @@
+@import "@styles/variables/all";
+@import "@styles/mixins/all";
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 83px;
+  height: 104px;
+
+  @media (min-width: $lg) {
+    width: 128px;
+    height: 128px;
+    &:hover {
+      cursor: pointer;
+      .hoverBg {
+        position: relative;
+        opacity: 1;
+      }
+
+      .mainBg {
+        position: absolute;
+        opacity: 0;
+      }
+      .name {
+        color: #fff;
+      }
+    }
+  }
+  .name {
+    font-family: $font-gramatika;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 150%;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 12px;
+    z-index: 1;
+    @media (max-width: $lg) {
+      font-size: 9px;
+    }
+  }
+  .icon {
+    z-index: 1;
+    @media (max-width: $lg) {
+      max-width: 26px;
+    }
+  }
+  .background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  .hoverBg {
+    position: absolute;
+    opacity: 0;
+    @media (max-width: $lg) {
+      position: relative;
+      opacity: 1;
+      width: 83px;
+      path {
+        fill: #fff;
+      }
+    }
+  }
+  .mainBg {
+    @media (max-width: $lg) {
+      display: none;
+    }
+  }
+}

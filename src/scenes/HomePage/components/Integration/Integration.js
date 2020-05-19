@@ -1,19 +1,11 @@
-import React, { useState } from 'react';
-import { MorphTransition } from 'react-svg-morph';
+import React from 'react';
+import Swiper from 'react-id-swiper';
 import useGetImage from './useGetImage';
 import style from './Integration.module.scss';
-import Background from './image/bg.inline.svg';
-import BackgroundHover from './image/bg-hover.inline.svg';
+import Item from './components/Item';
 
 const Integration = () => {
   const { hubspot } = useGetImage();
-  const [hover, setHover] = useState(false);
-
-  const handleMouseOn = () => {
-    console.log('on');
-    setHover(true);
-  };
-  const handleMouseLeave = () => setHover(false);
 
   return (
     <div className={style.integration}>
@@ -25,35 +17,51 @@ const Integration = () => {
           Secure Privacy can easily be integrated with all major CMS systems and
           internet platforms.
         </p>
-        <div
-          className={style.item}
-          onMouseEnter={handleMouseOn}
-          // onMouseLeave={handleMouseLeave}
-        >
-          <div className={style.background}>
-            <MorphTransition progress={50} width={128} height={128}>
-              {{
-                from: <Background key="1" />,
-                to: <BackgroundHover key="2" />,
-              }}
-            </MorphTransition>
-
-            {/* {hover ? (
-                <BackgroundHover key="bgHover" />
-              ) : (
-                <Background key="bg" />
-              )} */}
+        <Swiper {...params}>
+          <div className={style.slide}>
+            <Item logo={hubspot} name="adobe tag manager" />
           </div>
-          <img
-            className={style.icon}
-            src={hubspot.publicURL}
-            alt="technology icon"
-          />
-          <h4>HUBSPOT</h4>
-        </div>
+          <div className={style.slide}>
+            <Item logo={hubspot} name="hubspot" />
+          </div>
+          <div className={style.slide}>
+            <Item logo={hubspot} name="hubspot" />
+          </div>
+          <div className={style.slide}>
+            <Item logo={hubspot} name="hubspot" />
+          </div>
+          <div className={style.slide}>
+            <Item logo={hubspot} name="hubspot" />
+          </div>
+          <div className={style.slide}>
+            <Item logo={hubspot} name="hubspot" />
+          </div>
+          <div className={style.slide}>
+            <Item logo={hubspot} name="hubspot" />
+          </div>
+          <div className={style.slide}>
+            <Item logo={hubspot} name="hubspot" />
+          </div>
+          <div className={style.slide}>
+            <Item logo={hubspot} name="hubspot" />
+          </div>
+        </Swiper>
       </div>
     </div>
   );
+};
+
+const params = {
+  slidesPerView: 'auto',
+  slidesPerColumn: 2,
+  spaceBetween: 20,
+  breakpoints: {
+    768: {
+      allowTouchMove: false,
+      spaceBetween: 0,
+      slidesPerColumn: 1,
+    },
+  },
 };
 
 export default Integration;

@@ -1,7 +1,7 @@
 @import "@styles/variables/all";
 @import "@styles/mixins/all";
 .solutions {
-  padding: 68px 16px 64px;
+  padding: 68px 16px 0;
   text-align: center;
   background-color: #f7f9fb;
   @media (max-width: $lg) {
