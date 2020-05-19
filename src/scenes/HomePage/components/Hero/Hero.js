@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useGetImage from './useGetImage';
-import styles from './Hero.module.scss';
 import Button, { VARIANT } from '@components/Button/Button.js';
-import PLayIcon from '../../../../assets/images/homepage/icons/play.inline.svg';
+import Modal from '@components/Modal';
+import styles from './Hero.module.scss';
+import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
 
 const Hero = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const { hero, enphase, penn, semasio } = useGetImage();
   const companies = [semasio, penn, enphase];
+
+  const handleOpenModal = () => setModalIsOpen(true);
+  const handleCloseModal = () => setModalIsOpen(false);
+
   return (
     <div className={styles.hero}>
       <div className={styles.container}>
@@ -47,7 +53,7 @@ const Hero = () => {
           />
           <div className={styles.playButtonWrapper}>
             <div className={styles.playButton}>
-              <Button variant={VARIANT.PLAY}>
+              <Button variant={VARIANT.PLAY} click={handleOpenModal}>
                 <PLayIcon />
               </Button>
             </div>
@@ -58,6 +64,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
+      <Modal open={modalIsOpen} closeModal={handleCloseModal} />
     </div>
   );
 };
