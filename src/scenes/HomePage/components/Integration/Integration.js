@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Swiper from 'react-id-swiper';
+import { useBreakpoints } from '@hooks';
 import useGetImage from './useGetImage';
 import style from './Integration.module.scss';
 import Item from './components/Item';
 
 const Integration = () => {
   const { hubspot } = useGetImage();
+  const [buildKey, setBuildKey] = useState();
+  const { width } = useBreakpoints();
+
+  useEffect(() => {
+    setBuildKey(+new Date());
+  }, [width]);
 
   return (
     <div className={style.integration}>
@@ -17,7 +24,7 @@ const Integration = () => {
           Secure Privacy can easily be integrated with all major CMS systems and
           internet platforms.
         </p>
-        <Swiper {...params}>
+        <Swiper {...params} key={buildKey}>
           <div className={style.slide}>
             <Item logo={hubspot} name="adobe tag manager" />
           </div>

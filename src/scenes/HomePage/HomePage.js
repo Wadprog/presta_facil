@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import Testimonials from './components/Testimonials';
 import Solutions from './components/Solutions';
 import Integration from './components/Integration';
+import Features from './components/Features';
 import 'swiper/swiper.scss';
 
 const HomePage = () => {
@@ -14,6 +15,7 @@ const HomePage = () => {
       <Testimonials />
       <Solutions />
       <Integration />
+      <Features />
     </Fragment>
   );
 };

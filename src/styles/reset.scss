@@ -50,6 +50,9 @@ ol {
   padding: 0;
   list-style: none;
 }
+a {
+  text-decoration: none;
+}
 
 .ReactModal__Overlay--after-open {
   z-index: 120;

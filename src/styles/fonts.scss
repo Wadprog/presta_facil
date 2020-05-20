@@ -80,6 +80,16 @@
   font-weight: 900;
 }
 
+//regular
+@font-face {
+  font-family: "Gramatika";
+  src: url("../assets/fonts/Gramatika-Regular.woff2") format("woff2"),
+    url("../assets/fonts/Gramatika-Regular.woff") format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+
 //medium
 @font-face {
   font-family: "Gramatika";

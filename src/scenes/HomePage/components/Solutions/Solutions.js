@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import style from './Solutions.module.scss';
 import useGetImage from './useGetImage';
 import Swiper from 'react-id-swiper';
 import { Link } from 'gatsby';
+import { useBreakpoints } from '@hooks';
 
 const Solutions = () => {
   const {
@@ -15,6 +16,12 @@ const Solutions = () => {
     thailand,
     arrow,
   } = useGetImage();
+  const [buildKey, setBuildKey] = useState();
+  const { width } = useBreakpoints();
+
+  useEffect(() => {
+    setBuildKey(+new Date());
+  }, [width]);
 
   const solutionsList = [
     {
@@ -78,7 +85,7 @@ const Solutions = () => {
           Meet the requirements of GDPR, CCPA, LGPD and other data privacy laws
           with one unified consent solution across different data privacy laws.
         </p>
-        <Swiper {...params}>
+        <Swiper {...params} key={buildKey}>
           {solutionsList.map(({ title, tag, flag, link }) => {
             return (
               <div className={style.slide} key={title}>
