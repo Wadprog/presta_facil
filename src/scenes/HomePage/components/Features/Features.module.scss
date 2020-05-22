@@ -26,21 +26,23 @@
   }
 }
 .container {
+  position: relative;
   max-width: 960px;
   margin: 0 auto;
+  z-index: 1;
   @media (max-width: $lg) {
     max-width: 760px;
   }
 }
 
-.title {
+.title h2 {
   font-family: $font-gramatika;
   font-weight: 400;
   font-size: 42px;
   line-height: 130%;
   max-width: 850px;
   margin: 0 auto 12px;
-  span {
+  strong {
     font-family: $font-gramatika-black;
     font-weight: 900;
     color: $green;
