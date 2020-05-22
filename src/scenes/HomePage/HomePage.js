@@ -4,7 +4,7 @@ import React, { Fragment } from 'react';
 import Hero from './components/Hero';
 import Testimonials from './components/Testimonials';
 import Solutions from './components/Solutions';
-import Integration from './components/Integration';
+import Technologies from './components/Technologies';
 import Features from './components/Features';
 import PropTypes from 'prop-types';
 import 'swiper/swiper.scss';
@@ -16,15 +16,17 @@ const HomePage = ({ data }) => {
   const fieldsTestimonial = body[1].fields;
   const solutions = body[2].primary;
   const solutionsTestimonial = body[2].fields;
+  const technologies = body[3];
+  const features = body[4];
 
-  console.log(body);
+  console.log(features);
   return (
     <Fragment>
       <Hero {...hero} repeateble={fieldsHero} />
       <Testimonials repeateble={fieldsTestimonial} />
       <Solutions {...solutions} repeateble={solutionsTestimonial} />
-      <Integration />
-      <Features />
+      <Technologies {...technologies} />
+      <Features {...features} />
     </Fragment>
   );
 };

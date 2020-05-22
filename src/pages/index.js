@@ -64,6 +64,30 @@ const query = graphql`
                   text
                 }
               }
+              ... on PRISMIC_HomepageBodyTechnologies {
+                type
+                label
+                primary {
+                  title
+                  description
+                }
+                fields {
+                  image
+                  name
+                }
+              }
+              ... on PRISMIC_HomepageBodyFeatures {
+                type
+                label
+                fields {
+                  image
+                  text
+                }
+                primary {
+                  title
+                  description
+                }
+              }
             }
           }
         }

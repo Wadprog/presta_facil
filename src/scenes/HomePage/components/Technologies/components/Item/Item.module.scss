@@ -23,9 +23,6 @@
         position: absolute;
         opacity: 0;
       }
-      .name {
-        color: #fff;
-      }
     }
   }
   .name {
@@ -37,6 +34,7 @@
     text-transform: uppercase;
     margin-top: 12px;
     z-index: 1;
+    color: #2e3542;
     @media (max-width: $lg) {
       font-size: 9px;
     }
@@ -58,13 +56,14 @@
   .hoverBg {
     position: absolute;
     opacity: 0;
+    width: 120px;
+    path {
+      fill: #fff;
+    }
     @media (max-width: $lg) {
       position: relative;
       opacity: 1;
       width: 83px;
-      path {
-        fill: #fff;
-      }
     }
   }
   .mainBg {

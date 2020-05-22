@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import style from './Solutions.module.scss';
-import useGetImage from './useGetImage';
 import { RichText } from 'prismic-reactjs';
 import { array } from 'prop-types';
-import Swiper from 'react-id-swiper';
 import { Link } from 'gatsby';
+import Swiper from 'react-id-swiper';
+import style from './Solutions.module.scss';
+import useGetImage from './useGetImage';
 import { useBreakpoints } from '@hooks';
 
 const Solutions = ({ title, description, repeateble }) => {
