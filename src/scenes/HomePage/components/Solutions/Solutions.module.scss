@@ -13,14 +13,14 @@
   margin: 0 auto;
 }
 
-.title {
+.title h2 {
   font-family: $font-gramatika;
   font-weight: 400;
   font-size: 42px;
   line-height: 130%;
   max-width: 590px;
   margin: 0 auto 12px;
-  span {
+  strong {
     font-family: $font-gramatika-black;
     font-weight: 900;
     color: $green;
@@ -136,7 +136,7 @@
     left: 50%;
     transform: translateX(-50%);
   }
-  h3 {
+  h4 {
     font-weight: 600;
     font-size: 18px;
     line-height: 150%;
@@ -144,10 +144,14 @@
       font-size: 16px;
     }
   }
-  span {
+  div {
+    display: inline;
     font-weight: 300;
     font-size: 18px;
     line-height: 150%;
+    p {
+      display: inline;
+    }
     @media (max-width: $md) {
       font-size: 16px;
     }

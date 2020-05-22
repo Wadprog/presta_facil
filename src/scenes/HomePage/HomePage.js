@@ -14,12 +14,15 @@ const HomePage = ({ data }) => {
   const hero = body[0].primary;
   const fieldsHero = body[0].fields;
   const fieldsTestimonial = body[1].fields;
-  // console.log(body);
+  const solutions = body[2].primary;
+  const solutionsTestimonial = body[2].fields;
+
+  console.log(body);
   return (
     <Fragment>
       <Hero {...hero} repeateble={fieldsHero} />
       <Testimonials repeateble={fieldsTestimonial} />
-      <Solutions />
+      <Solutions {...solutions} repeateble={solutionsTestimonial} />
       <Integration />
       <Features />
     </Fragment>

@@ -1,98 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import style from './Solutions.module.scss';
 import useGetImage from './useGetImage';
+import { RichText } from 'prismic-reactjs';
+import { array } from 'prop-types';
 import Swiper from 'react-id-swiper';
 import { Link } from 'gatsby';
 import { useBreakpoints } from '@hooks';
 
-const Solutions = () => {
-  const {
-    uk,
-    brazil,
-    california,
-    eu,
-    france,
-    nevada,
-    thailand,
-    arrow,
-  } = useGetImage();
+const Solutions = ({ title, description, repeateble }) => {
   const [buildKey, setBuildKey] = useState();
   const { width } = useBreakpoints();
+  const { arrow } = useGetImage();
 
   useEffect(() => {
     setBuildKey(+new Date());
   }, [width]);
-
-  const solutionsList = [
-    {
-      flag: eu,
-      title: 'General Data Protection Regulation',
-      tag: 'GDPR',
-      link: '/',
-    },
-    {
-      flag: france,
-      title: 'France',
-      tag: 'CNIL',
-      link: '/',
-    },
-    {
-      flag: eu,
-      title: 'Regulation on Privacy & Electronic Communications',
-      tag: 'GePrivacyDPR',
-      link: '/',
-    },
-    {
-      flag: brazil,
-      title: 'Brazilian General Data Protection Regulation',
-      tag: 'LGPD',
-      link: '/',
-    },
-    {
-      flag: california,
-      title: 'California Consumer Privacy Act',
-      tag: 'CCAPD',
-      link: '/',
-    },
-    {
-      flag: thailand,
-      title: 'Thailand',
-      tag: 'PDPA',
-      link: '/',
-    },
-    {
-      flag: uk,
-      title: 'United Kingdom',
-      tag: 'ICO',
-      link: '/',
-    },
-    {
-      flag: nevada,
-      title: 'Nevada Privacy Law',
-      tag: 'ICO',
-      link: 'SB-220',
-    },
-  ];
-
   return (
     <div className={style.solutions}>
       <div className={style.container}>
-        <h2 className={style.title}>
-          <span>Simplify Cookie</span>
-          <br /> Compliance at Global Scale
-        </h2>
-        <p className={style.descr}>
-          Meet the requirements of GDPR, CCPA, LGPD and other data privacy laws
-          with one unified consent solution across different data privacy laws.
-        </p>
+        <div className={style.title}>
+          <RichText render={title} />
+        </div>
+        <div className={style.descr}>
+          <RichText render={description} />
+        </div>
         <Swiper {...params} key={buildKey}>
-          {solutionsList.map(({ title, tag, flag, link }) => {
+          {repeateble.map(({ image, title, text }, index) => {
             return (
-              <div className={style.slide} key={title}>
-                <Link to={link} className={style.item}>
-                  <img src={flag.publicURL} alt="flag icon" />
-                  <h3>{title}</h3>
-                  <span>({tag})</span>
+              <div className={style.slide} key={`solutions${index}`}>
+                <Link to="/" className={style.item}>
+                  <img src={image.url} alt={image.alt} />
+                  <RichText render={title} />
+                  <div>
+                    (<RichText render={text} />)
+                  </div>
                   <img
                     className={style.arrow}
                     src={arrow.publicURL}
@@ -120,6 +61,12 @@ const params = {
       spaceBetween: 0,
     },
   },
+};
+
+Solutions.propTypes = {
+  title: array,
+  description: array,
+  repeateble: array,
 };
 
 export default Solutions;
