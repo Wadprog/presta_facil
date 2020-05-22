@@ -64,9 +64,11 @@
   }
 }
 .content {
+  position: relative;
   max-width: 450px;
   width: 50%;
   margin-right: 20px;
+  z-index: 4;
   @media (max-width: $md) {
     width: 100%;
     margin-right: 0;
@@ -134,7 +136,7 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
   width: 110%;
-  span {
+  p {
     white-space: nowrap;
   }
   @media (max-width: $md) {
@@ -208,14 +210,14 @@
       max-width: 100%;
       text-align: center;
     }
-    h3 {
+    h4 {
       font-weight: 600;
       font-size: 16px;
       letter-spacing: 0.03em;
       text-transform: capitalize;
       line-height: 1.6;
     }
-    span {
+    p {
       font-weight: 300;
       font-size: 12px;
       letter-spacing: 0.05em;

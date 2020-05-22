@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
-import useGetImage from './useGetImage';
+import PropTypes from 'prop-types';
+import { RichText } from 'prismic-reactjs';
+import GatsbyImage from 'gatsby-image';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import Modal from '@components/Modal';
 import styles from './Hero.module.scss';
 import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
 
-const Hero = () => {
+const Hero = ({
+  button,
+  title,
+  sub_title,
+  description,
+  mainImage,
+  modalbuttondescription,
+  modalbuttontitle,
+  trusted,
+  repeateble,
+  mainImageSharp,
+}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const { hero, enphase, penn, semasio } = useGetImage();
-  const companies = [semasio, penn, enphase];
 
   const handleOpenModal = () => setModalIsOpen(true);
   const handleCloseModal = () => setModalIsOpen(false);
@@ -17,26 +28,29 @@ const Hero = () => {
     <div className={styles.hero}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <p className={styles.upTitle}>
-            Cookie Consent &amp; Website Compliance for
-          </p>
-          <h1 className={styles.title}>GDPR, ePrivacy, IAB, LGPD &amp; CCPA</h1>
-          <p className={styles.descr}>
-            Secure Privacy simplifies cookie consent, cookie policy, and
-            controls across international data privacy laws.
-          </p>
+          <div className={styles.upTitle}>
+            <RichText render={sub_title} />
+          </div>
+          <div className={styles.title}>
+            <RichText render={title} />
+          </div>
+          <div className={styles.descr}>
+            <RichText render={description} />
+          </div>
           <div className={styles.buttonWrapper}>
-            <Button>Take 2-min quiz</Button>
+            <Button>
+              <RichText render={button} />
+            </Button>
           </div>
           <div className={styles.trustedWrapper}>
-            <span>TRUSTED BY:</span>
+            <RichText render={trusted} />
             <div className={styles.companies}>
-              {companies.map(({ publicURL }) => {
+              {repeateble.map(({ trustedlogo }) => {
                 return (
                   <img
-                    src={publicURL}
-                    alt="company logo"
-                    key={publicURL}
+                    src={trustedlogo.url}
+                    alt={trustedlogo.alt}
+                    key={trustedlogo.url}
                     draggable="false"
                   />
                 );
@@ -45,12 +59,21 @@ const Hero = () => {
           </div>
         </div>
         <div className={styles.imageWrapper}>
-          <img
-            className={styles.image}
-            src={hero.publicURL}
-            alt="hero"
-            draggable="false"
-          />
+          {mainImageSharp ? (
+            <GatsbyImage
+              className={styles.image}
+              fluid={mainImageSharp.childImageSharp.fluid}
+              alt={mainImageSharp.alt}
+            />
+          ) : (
+            <img
+              className={styles.image}
+              src={mainImage.url}
+              alt={mainImage.alt}
+              draggable="false"
+            />
+          )}
+
           <div className={styles.playButtonWrapper}>
             <div className={styles.playButton}>
               <Button variant={VARIANT.PLAY} click={handleOpenModal}>
@@ -58,8 +81,8 @@ const Hero = () => {
               </Button>
             </div>
             <div className={styles.playButtonText}>
-              <h3>How it works</h3>
-              <span>With founder Dan Storbaek</span>
+              <RichText render={modalbuttontitle} />
+              <RichText render={modalbuttondescription} />
             </div>
           </div>
         </div>
@@ -67,6 +90,19 @@ const Hero = () => {
       <Modal open={modalIsOpen} closeModal={handleCloseModal} />
     </div>
   );
+};
+
+Hero.propTypes = {
+  button: PropTypes.array,
+  title: PropTypes.array,
+  sub_title: PropTypes.array,
+  description: PropTypes.array,
+  mainImage: PropTypes.object,
+  modalbuttondescription: PropTypes.array,
+  modalbuttontitle: PropTypes.array,
+  trusted: PropTypes.array,
+  repeateble: PropTypes.array,
+  mainImageSharp: PropTypes.object,
 };
 
 export default Hero;

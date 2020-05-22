@@ -1,53 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import Swiper from 'react-id-swiper';
 import classnames from 'classnames';
-import useGetImage from './useGetImage';
 import { useBreakpoints } from '@hooks';
+import PropTypes from 'prop-types';
 
 import style from './Testimonials.module.scss';
 import Item from './components/Item';
 import Arrow from './image/arrow.inline.svg';
 
-const Testimonials = () => {
-  const { photo } = useGetImage();
+const Testimonials = ({ repeateble }) => {
   const [buildKey, setBuildKey] = useState();
   const { width } = useBreakpoints();
 
   useEffect(() => {
     setBuildKey(+new Date());
   }, [width]);
-
-  const testimonialsList = [
-    {
-      photo,
-      name: 'Julia-Carolin Zeng',
-      position: 'charlieonthemove.com',
-      review:
-        'I would definitely recommend it to everyone, especially if they aren&apos;t aware of GDPR compliance. They need to take action because not being compliant can get very expensive.',
-    },
-    {
-      photo,
-      name: 'Francis U',
-      position: 'Database Coordinator / Mid-Market(201-500 employees)',
-      review:
-        'I would definitely recommend it to everyone, especially if they aren&apos;t aware of GDPR compliance. They need to take action because not being compliant can get very expensive.',
-    },
-    {
-      photo,
-      name: 'Atif M',
-      position: 'Technical Analyst / Enterprise(10,001+ employees)',
-      review:
-        'The affordable pricing considering its <b>high-quality functionalit.</b>',
-    },
-  ];
-
   return (
     <div className={style.testimonials}>
       <div className={style.container}>
         <Swiper {...params} key={buildKey}>
-          {testimonialsList.map((item) => {
+          {repeateble.map((item, index) => {
             return (
-              <div className={style.slide} key={item.name}>
+              <div className={style.slide} key={`testimonials${index}`}>
                 <Item {...item} />
               </div>
             );
@@ -94,5 +68,9 @@ const prevButtonClass = classnames({
   prev: true,
   [style.prev]: true,
 });
+
+Testimonials.propTypes = {
+  repeateble: PropTypes.array,
+};
 
 export default Testimonials;

@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     title: `Secure-privacy`,
@@ -67,6 +69,18 @@ module.exports = {
         rule: {
           include: /\.inline\.svg$/,
         },
+      },
+    },
+    {
+      resolve: 'gatsby-source-prismic-graphql',
+      options: {
+        repositoryName: 'secure-privacy',
+        accessToken: process.env.PRISMIC_ACCESS_TOKEN,
+        omitPrismicScript: true,
+        sharpKeys: [
+          /image|photo|picture|illustration|screenshot|background|Image/,
+          'profilepic',
+        ],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
