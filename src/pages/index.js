@@ -117,6 +117,36 @@ const query = graphql`
                   categories
                 }
               }
+              ... on PRISMIC_HomepageBodyPlans {
+                type
+                label
+                fields {
+                  image
+                  cardtitle
+                  description
+                  benefits
+                  button
+                  buttonprice
+                  type
+                  imageSharp {
+                    childImageSharp {
+                      fluid(maxHeight: 48, quality: 90) {
+                        srcWebp
+                        srcSetWebp
+                        srcSet
+                        src
+                        sizes
+                        presentationWidth
+                        presentationHeight
+                        aspectRatio
+                      }
+                    }
+                  }
+                }
+                primary {
+                  title
+                }
+              }
             }
           }
         }

@@ -117,10 +117,11 @@
   :global {
     .swiper-container {
       margin-top: 50px;
-      margin-left: 48px;
-      margin-right: 48px;
+      margin-left: auto;
+      margin-right: auto;
       padding-bottom: 84px;
       overflow: unset;
+      max-width: 1152px;
       @media (max-width: $lg) {
         margin: 50px 0 0;
         padding-bottom: 48px;

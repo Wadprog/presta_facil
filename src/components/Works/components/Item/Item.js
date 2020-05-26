@@ -6,7 +6,8 @@ import Img from 'gatsby-image';
 
 const Item = ({ screenshot, screenshotSharp, name, tag }) => {
   const tagList = tag[0].text.split(/\s*,\s*/);
-  const image = screenshotSharp.childImageSharp.fluid || '';
+  const image =
+    (screenshotSharp && screenshotSharp.childImageSharp.fluid) || '';
   return (
     <div className={style.item}>
       <div className={style.imageBlock}>
