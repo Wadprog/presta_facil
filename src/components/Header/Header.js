@@ -33,10 +33,10 @@ const Header = () => {
           <div className={style.button}>
             <Button variant={buttonVariant}>
               {scrollDir === 'down' ? (
-                'take 2-min quiz'
+                'take the 2-min quiz'
               ) : (
                 <GradientText
-                  text="take 2-min quiz"
+                  text="take the 2-min quiz"
                   background="linear-gradient(86.37deg, #24B04B -46.17%, #0263BC 186.99%)"
                 />
               )}

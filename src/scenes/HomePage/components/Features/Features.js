@@ -5,7 +5,6 @@ import style from './Features.module.scss';
 import Item from './components/Item';
 
 const Features = ({ primary, fields }) => {
-  console.log(primary);
   return (
     <div className={style.features}>
       <div className={style.container}>

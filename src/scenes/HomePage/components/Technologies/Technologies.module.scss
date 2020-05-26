@@ -71,8 +71,9 @@
   line-height: 160%;
   color: $second-dark;
   opacity: 0.75;
-  max-width: 620px;
+  max-width: 520px;
   margin: 0 auto 50px;
+  text-transform: capitalize;
   @media (max-width: $md) {
     text-align: left;
     font-size: 14px;

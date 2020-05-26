@@ -88,6 +88,35 @@ const query = graphql`
                   description
                 }
               }
+              ... on PRISMIC_HomepageBodyWorks {
+                type
+                label
+                fields {
+                  screenshot
+                  screenshotSharp {
+                    childImageSharp {
+                      fluid(maxHeight: 336, quality: 90) {
+                        srcWebp
+                        srcSetWebp
+                        srcSet
+                        src
+                        sizes
+                        presentationWidth
+                        presentationHeight
+                        aspectRatio
+                      }
+                    }
+                  }
+                  name
+                  tag
+                  category
+                }
+                primary {
+                  title
+                  dropdownlable
+                  categories
+                }
+              }
             }
           }
         }

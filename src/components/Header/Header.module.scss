@@ -50,11 +50,8 @@
 }
 
 .button {
-  width: 220px;
   margin-left: auto;
   @media (max-width: $md) {
-    width: 144px;
-
     button {
       font-size: 12px;
     }

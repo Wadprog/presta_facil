@@ -93,7 +93,6 @@
   font-size: 48px;
   line-height: 1.15;
   margin-bottom: 16px;
-  text-transform: capitalize;
   @media (max-width: $lg) {
     font-size: 36px;
   }
@@ -114,7 +113,7 @@
 }
 
 .buttonWrapper {
-  max-width: 224px;
+  flex: 0 auto;
   margin-bottom: 70px;
   @media (max-width: $lg) {
     margin-bottom: 60px;

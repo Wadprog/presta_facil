@@ -6,6 +6,7 @@ import Testimonials from './components/Testimonials';
 import Solutions from './components/Solutions';
 import Technologies from './components/Technologies';
 import Features from './components/Features';
+import Works from '@components/Works';
 import PropTypes from 'prop-types';
 import 'swiper/swiper.scss';
 
@@ -18,8 +19,9 @@ const HomePage = ({ data }) => {
   const solutionsTestimonial = body[2].fields;
   const technologies = body[3];
   const features = body[4];
+  const works = body[5];
 
-  console.log(features);
+  console.log(works);
   return (
     <Fragment>
       <Hero {...hero} repeateble={fieldsHero} />
@@ -27,6 +29,7 @@ const HomePage = ({ data }) => {
       <Solutions {...solutions} repeateble={solutionsTestimonial} />
       <Technologies {...technologies} />
       <Features {...features} />
+      <Works {...works} />
     </Fragment>
   );
 };
