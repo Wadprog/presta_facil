@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-
+import PropTypes from 'prop-types';
 // import style from './HomePage.module.scss';
 import Hero from './components/Hero';
 import Testimonials from './components/Testimonials';
@@ -8,7 +8,7 @@ import Technologies from './components/Technologies';
 import Features from './components/Features';
 import Works from '@components/Works';
 import Plans from '@components/Plans';
-import PropTypes from 'prop-types';
+import Articles from './components/Articles';
 import 'swiper/swiper.scss';
 
 const HomePage = ({ data }) => {
@@ -33,6 +33,7 @@ const HomePage = ({ data }) => {
       <Features {...features} />
       <Works {...works} />
       <Plans {...plans} />
+      <Articles />
     </Fragment>
   );
 };

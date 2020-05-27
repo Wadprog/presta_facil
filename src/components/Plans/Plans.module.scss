@@ -1,29 +1,33 @@
-@import "@styles/variables/all";
-@import "@styles/mixins/all";
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
 
 .plans {
   position: relative;
-  padding: 68px 64px 64px;
+  padding: 68px 64px 96px;
   background-color: #f7f9fb;
   text-align: center;
   &::before,
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     background-size: contain;
     background-repeat: no-repeat;
     height: 512px;
   }
 
+  @media (max-width: $md) {
+    padding: 55px 16px 55px;
+  }
+
   @media (min-width: $lg) {
     &::before {
-      background-image: url("./image/bg-left.svg");
+      background-image: url('./image/bg-left.svg');
       width: 200px;
       left: 0;
       top: 70px;
     }
     &::after {
-      background-image: url("./image/bg-rigth.svg");
+      background-image: url('./image/bg-rigth.svg');
       width: 150px;
       right: 0;
       top: 70px;
