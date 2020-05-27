@@ -1,3 +1,4 @@
 import debounce from './debounce';
+import isValidEmail from './utils';
 
-export { debounce };
+export { debounce, isValidEmail };

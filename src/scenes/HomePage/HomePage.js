@@ -9,6 +9,7 @@ import Features from './components/Features';
 import Works from '@components/Works';
 import Plans from '@components/Plans';
 import Articles from './components/Articles';
+import Subscribe from '@components/Subscribe';
 import 'swiper/swiper.scss';
 
 const HomePage = ({ data }) => {
@@ -34,6 +35,7 @@ const HomePage = ({ data }) => {
       <Works {...works} />
       <Plans {...plans} />
       <Articles />
+      <Subscribe />
     </Fragment>
   );
 };

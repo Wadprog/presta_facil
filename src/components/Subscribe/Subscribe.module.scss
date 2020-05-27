@@ -1,0 +1,144 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.container {
+  padding: 64px 16px;
+  background: #f7f9fb;
+  @media (max-width: $md) {
+    padding: 32px 16px;
+  }
+}
+
+.block {
+  padding: 75px 80px 60px;
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 50px 10px;
+  background-image: url('./images/bg.jpg');
+  background-size: cover;
+  align-items: center;
+  box-sizing: border-box;
+  max-width: 1152px;
+  margin: 0 auto;
+  @media (max-width: $lg) {
+    padding: 54px 32px;
+    flex-direction: column;
+    max-width: 600px;
+  }
+}
+.title h2 {
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 130%;
+  max-width: 410px;
+  text-transform: capitalize;
+  strong {
+    font-weight: 600;
+    color: $green;
+    letter-spacing: 0.03em;
+    text-transform: capitalize;
+  }
+  @media (max-width: $lg) {
+    margin-bottom: 32px;
+  }
+  @media (max-width: $md) {
+    text-align: left;
+    font-size: 28px;
+  }
+}
+
+.form {
+  display: flex;
+  margin-left: auto;
+  @media (max-width: $lg) {
+    margin-left: 0;
+  }
+  @media (max-width: $md) {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.input {
+  font-family: $font-sofia-pro;
+  padding: 12px 22px;
+  background: #f7f9fb;
+  border: 1px solid rgba(1, 25, 73, 0.3);
+  border-radius: 12px;
+  color: $main-light;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 180%;
+  letter-spacing: 0.03em;
+  box-sizing: border-box;
+  width: 335px;
+
+  @media (max-width: $md) {
+    width: 100%;
+    margin-bottom: 28px;
+  }
+
+  &::placeholder {
+    color: rgba($color: $main-light, $alpha: 0.75);
+  }
+  &:focus {
+    border-color: $main-light;
+    outline: none;
+  }
+}
+
+.errorMessage {
+  position: absolute;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 160%;
+  color: $red;
+  letter-spacing: 0.05em;
+  top: -20px;
+  right: 0;
+  opacity: 0;
+}
+.error {
+  .input {
+    position: relative;
+    border-color: $red;
+    color: $red;
+  }
+  .errorMessage {
+    opacity: 1;
+  }
+}
+
+.success {
+  .input {
+    color: $green;
+    border-color: $green;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    color: $green;
+    width: 15px;
+    height: 11px;
+    background-image: url('./images/checkmark.svg');
+    background-size: contain;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.button {
+  margin-left: 32px;
+  @media (max-width: $md) {
+    margin-left: 0;
+    button {
+      width: 100%;
+    }
+  }
+}
