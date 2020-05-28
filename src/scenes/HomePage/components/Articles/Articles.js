@@ -1,10 +1,12 @@
 import React from 'react';
-import style from './Articles.module.scss';
+import { object } from 'prop-types';
+import { RichText } from 'prismic-reactjs';
 import ArticlePreview from '@components/ArticlePreview';
+import style from './Articles.module.scss';
 import useGetImage from './useGetImage';
 import Button, { VARIANT } from '@components/Button/Button.js';
 
-const Articles = () => {
+const Articles = ({ primary }) => {
   const { article, article2, article3 } = useGetImage();
 
   const articlesList = [
@@ -35,9 +37,7 @@ const Articles = () => {
   return (
     <section className={style.articles}>
       <div className={style.title}>
-        <h2>
-          <strong>Latest articles</strong> from our blog
-        </h2>
+        <RichText render={primary.title} />
       </div>
       <div className={style.list}>
         {articlesList.map((item) => {
@@ -45,10 +45,16 @@ const Articles = () => {
         })}
       </div>
       <div className={style.button}>
-        <Button variant={VARIANT.TRANSPARENT}>more articles</Button>
+        <Button variant={VARIANT.TRANSPARENT}>
+          {RichText.asText(primary.buttontext)}
+        </Button>
       </div>
     </section>
   );
+};
+
+Articles.propTypes = {
+  primary: object,
 };
 
 export default Articles;

@@ -1,9 +1,11 @@
 import React, { useState, Fragment } from 'react';
 import classNames from 'classnames';
 import styles from './Subscribe.module.scss';
+import { RichText } from 'prismic-reactjs';
+import { object } from 'prop-types';
 import { isValidEmail } from '@helpers';
 import Button, { VARIANT } from '@components/Button/Button.js';
-const Subscribe = () => {
+const Subscribe = ({ primary }) => {
   const [data, setData] = useState({
     email: {
       value: '',
@@ -43,11 +45,7 @@ const Subscribe = () => {
     <div className={styles.container}>
       <div className={styles.block}>
         <div className={styles.title}>
-          <h2>
-            <strong>Sign up to our newsletter </strong>
-            <br />
-            and get the latest news on data privacy
-          </h2>
+          <RichText render={primary.title} />
         </div>
         <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
           {!isSubmitted ? (
@@ -65,7 +63,9 @@ const Subscribe = () => {
                 <span className={styles.errorMessage}>Wrong Email</span>
               </div>
               <div className={styles.button}>
-                <Button variant={VARIANT.PRIMARY}>Send</Button>
+                <Button variant={VARIANT.PRIMARY} type="submit">
+                  {RichText.asText(primary.buttontext)}
+                </Button>
               </div>
             </Fragment>
           ) : (
@@ -76,6 +76,10 @@ const Subscribe = () => {
       <span className={styles.smPlanet}></span>
     </div>
   );
+};
+
+Subscribe.propTypes = {
+  primary: object,
 };
 
 export default Subscribe;

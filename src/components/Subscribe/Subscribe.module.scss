@@ -3,7 +3,6 @@
 
 .container {
   padding: 64px 16px;
-  background: #f7f9fb;
   @media (max-width: $md) {
     padding: 32px 16px;
   }
@@ -66,7 +65,7 @@
 .input {
   font-family: $font-sofia-pro;
   padding: 12px 22px;
-  background: #f7f9fb;
+  background: $bg-blue;
   border: 1px solid rgba(1, 25, 73, 0.3);
   border-radius: 12px;
   color: $main-light;

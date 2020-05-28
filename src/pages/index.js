@@ -147,6 +147,46 @@ const query = graphql`
                   title
                 }
               }
+              ... on PRISMIC_HomepageBodyArticles {
+                type
+                label
+                primary {
+                  title
+                  buttontext
+                }
+              }
+              ... on PRISMIC_HomepageBodySubscribe {
+                type
+                label
+                primary {
+                  title
+                  buttontext
+                }
+              }
+              ... on PRISMIC_HomepageBodyAgencies {
+                type
+                label
+                primary {
+                  title
+                  description
+                  buttontext
+                  image
+                  imageSharp {
+                    childImageSharp {
+                      fluid(quality: 90) {
+                        srcWebp
+                        srcSetWebp
+                        srcSet
+                        src
+                        sizes
+                        presentationWidth
+                        presentationHeight
+                        aspectRatio
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }

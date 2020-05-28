@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-// import style from './HomePage.module.scss';
+import style from './HomePage.module.scss';
 import Hero from './components/Hero';
 import Testimonials from './components/Testimonials';
 import Solutions from './components/Solutions';
@@ -10,33 +10,43 @@ import Works from '@components/Works';
 import Plans from '@components/Plans';
 import Articles from './components/Articles';
 import Subscribe from '@components/Subscribe';
+import Agencies from '@components/Agencies';
 import 'swiper/swiper.scss';
 
 const HomePage = ({ data }) => {
   const body = data.prismic.allHomepages.edges[0].node.body;
-  const hero = body[0].primary;
-  const fieldsHero = body[0].fields;
-  const fieldsTestimonial = body[1].fields;
-  const solutions = body[2].primary;
-  const solutionsTestimonial = body[2].fields;
-  const technologies = body[3];
-  const features = body[4];
-  const works = body[5];
-  const plans = body[6];
 
-  console.log(plans);
   return (
-    <Fragment>
-      <Hero {...hero} repeateble={fieldsHero} />
-      <Testimonials repeateble={fieldsTestimonial} />
-      <Solutions {...solutions} repeateble={solutionsTestimonial} />
-      <Technologies {...technologies} />
-      <Features {...features} />
-      <Works {...works} />
-      <Plans {...plans} />
-      <Articles />
-      <Subscribe />
-    </Fragment>
+    <div className={style.HomePage}>
+      {body.map((section, index) => {
+        switch (section.type) {
+          case 'hero1':
+            return <Hero {...section} key={`${section.type}${index}`} />;
+          case 'testimonials':
+            return (
+              <Testimonials {...section} key={`${section.type}${index}`} />
+            );
+          case 'solutions':
+            return <Solutions {...section} key={`${section.type}${index}`} />;
+          case 'technologies':
+            return (
+              <Technologies {...section} key={`${section.type}${index}`} />
+            );
+          case 'features':
+            return <Features {...section} key={`${section.type}${index}`} />;
+          case 'works':
+            return <Works {...section} key={`${section.type}${index}`} />;
+          case 'plans':
+            return <Plans {...section} key={`${section.type}${index}`} />;
+          case 'articles':
+            return <Articles {...section} key={`${section.type}${index}`} />;
+          case 'subscribe':
+            return <Subscribe {...section} key={`${section.type}${index}`} />;
+          case 'agencies':
+            return <Agencies {...section} key={`${section.type}${index}`} />;
+        }
+      })}
+    </div>
   );
 };
 

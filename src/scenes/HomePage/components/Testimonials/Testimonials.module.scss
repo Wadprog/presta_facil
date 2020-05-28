@@ -1,8 +1,5 @@
-@import "@styles/variables/all";
-@import "@styles/mixins/all";
-.testimonials {
-  background-color: #f7f9fb;
-}
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
 .container {
   position: relative;
   max-width: 900px;
@@ -19,7 +16,7 @@
 .slide {
   padding: 60px 0 60px;
   max-width: 100%;
-  &[class~="swiper-slide"] {
+  &[class~='swiper-slide'] {
     height: auto;
   }
   @media (max-width: $md) {
@@ -42,7 +39,7 @@
       fill: $main-dark;
     }
   }
-  &[class~="swiper-button-disabled"] {
+  &[class~='swiper-button-disabled'] {
     opacity: 0.3;
   }
   @media (max-width: $md) {

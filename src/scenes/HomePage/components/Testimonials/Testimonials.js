@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Swiper from 'react-id-swiper';
 import classnames from 'classnames';
 import { useBreakpoints } from '@hooks';
-import PropTypes from 'prop-types';
+import { array } from 'prop-types';
 
 import style from './Testimonials.module.scss';
 import Item from './components/Item';
 import Arrow from './image/arrow.inline.svg';
 
-const Testimonials = ({ repeateble }) => {
+const Testimonials = ({ fields }) => {
   const [buildKey, setBuildKey] = useState();
   const { width } = useBreakpoints();
 
@@ -19,7 +19,7 @@ const Testimonials = ({ repeateble }) => {
     <div className={style.testimonials}>
       <div className={style.container}>
         <Swiper {...params} key={buildKey}>
-          {repeateble.map((item, index) => {
+          {fields.map((item, index) => {
             return (
               <div className={style.slide} key={`testimonials${index}`}>
                 <Item {...item} />
@@ -70,7 +70,7 @@ const prevButtonClass = classnames({
 });
 
 Testimonials.propTypes = {
-  repeateble: PropTypes.array,
+  fields: array,
 };
 
 export default Testimonials;

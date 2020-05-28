@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { RichText } from 'prismic-reactjs';
-import { array } from 'prop-types';
+import { array, object } from 'prop-types';
 import { Link } from 'gatsby';
 import Swiper from 'react-id-swiper';
 import style from './Solutions.module.scss';
 import useGetImage from './useGetImage';
 import { useBreakpoints } from '@hooks';
 
-const Solutions = ({ title, description, repeateble }) => {
+const Solutions = ({ primary, fields }) => {
   const [buildKey, setBuildKey] = useState();
   const { width } = useBreakpoints();
   const { arrow } = useGetImage();
@@ -19,13 +19,13 @@ const Solutions = ({ title, description, repeateble }) => {
     <div className={style.solutions}>
       <div className={style.container}>
         <div className={style.title}>
-          <RichText render={title} />
+          <RichText render={primary.title} />
         </div>
         <div className={style.descr}>
-          <RichText render={description} />
+          <RichText render={primary.description} />
         </div>
         <Swiper {...params} key={buildKey}>
-          {repeateble.map(({ image, title, text }, index) => {
+          {fields.map(({ image, title, text }, index) => {
             return (
               <div className={style.slide} key={`solutions${index}`}>
                 <Link to="/" className={style.item}>
@@ -64,9 +64,8 @@ const params = {
 };
 
 Solutions.propTypes = {
-  title: array,
-  description: array,
-  repeateble: array,
+  primary: object,
+  fields: array,
 };
 
 export default Solutions;

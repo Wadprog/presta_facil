@@ -1,10 +1,9 @@
-@import "@styles/variables/all";
-@import "@styles/mixins/all";
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
 
 .works {
   position: relative;
   padding: 68px 16px 64px;
-  background-color: #f7f9fb;
 }
 
 .title h2 {
@@ -68,7 +67,6 @@
       border-radius: 30px;
       padding: 0 32px;
       z-index: 11;
-      background-color: #f7f9fb;
       @media (max-width: $md) {
         width: 290px;
       }
@@ -86,7 +84,7 @@
       position: absolute;
       width: 13px;
       height: 8px;
-      background-image: url("../../assets/images/homepage/icons/dropdown-arrow.svg");
+      background-image: url('../../assets/images/homepage/icons/dropdown-arrow.svg');
       background-repeat: no-repeat;
     }
     .is-open .Dropdown-placeholder {

@@ -1,5 +1,5 @@
-@import "@styles/variables/all";
-@import "@styles/mixins/all";
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
 
 .header {
   position: fixed;
@@ -23,7 +23,7 @@
   padding: 16px 0;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     width: 100%;
     height: 1px;
@@ -46,7 +46,7 @@
   transform: translateX(-50%);
   box-sizing: border-box;
   transition: opacity 0.3s;
-  background: #f7f9fb;
+  background: $bg-blue;
 }
 
 .button {

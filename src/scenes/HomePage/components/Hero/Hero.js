@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { object, array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import GatsbyImage from 'gatsby-image';
 import Button, { VARIANT } from '@components/Button/Button.js';
@@ -7,20 +7,8 @@ import Modal from '@components/Modal';
 import styles from './Hero.module.scss';
 import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
 
-const Hero = ({
-  button,
-  title,
-  sub_title,
-  description,
-  mainImage,
-  modalbuttondescription,
-  modalbuttontitle,
-  trusted,
-  repeateble,
-  mainImageSharp,
-}) => {
+const Hero = ({ primary, fields }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
   const handleOpenModal = () => setModalIsOpen(true);
   const handleCloseModal = () => setModalIsOpen(false);
 
@@ -29,23 +17,23 @@ const Hero = ({
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.upTitle}>
-            <RichText render={sub_title} />
+            <RichText render={primary.sub_title} />
           </div>
           <div className={styles.title}>
-            <RichText render={title} />
+            <RichText render={primary.title} />
           </div>
           <div className={styles.descr}>
-            <RichText render={description} />
+            <RichText render={primary.description} />
           </div>
           <div className={styles.buttonWrapper}>
             <Button>
-              <RichText render={button} />
+              <RichText render={primary.button} />
             </Button>
           </div>
           <div className={styles.trustedWrapper}>
-            <RichText render={trusted} />
+            <RichText render={primary.trusted} />
             <div className={styles.companies}>
-              {repeateble.map(({ trustedlogo }) => {
+              {fields.map(({ trustedlogo }) => {
                 return (
                   <img
                     src={trustedlogo.url}
@@ -59,17 +47,17 @@ const Hero = ({
           </div>
         </div>
         <div className={styles.imageWrapper}>
-          {mainImageSharp ? (
+          {primary.mainImageSharp ? (
             <GatsbyImage
               className={styles.image}
-              fluid={mainImageSharp.childImageSharp.fluid}
-              alt={mainImageSharp.alt}
+              fluid={primary.mainImageSharp.childImageSharp.fluid}
+              alt={primary.mainImageSharp.alt}
             />
           ) : (
             <img
               className={styles.image}
-              src={mainImage.url}
-              alt={mainImage.alt}
+              src={primary.mainImage.url}
+              alt={primary.mainImage.alt}
               draggable="false"
             />
           )}
@@ -81,8 +69,8 @@ const Hero = ({
               </Button>
             </div>
             <div className={styles.playButtonText}>
-              <RichText render={modalbuttontitle} />
-              <RichText render={modalbuttondescription} />
+              <RichText render={primary.modalbuttontitle} />
+              <RichText render={primary.modalbuttondescription} />
             </div>
           </div>
         </div>
@@ -93,16 +81,8 @@ const Hero = ({
 };
 
 Hero.propTypes = {
-  button: PropTypes.array,
-  title: PropTypes.array,
-  sub_title: PropTypes.array,
-  description: PropTypes.array,
-  mainImage: PropTypes.object,
-  modalbuttondescription: PropTypes.array,
-  modalbuttontitle: PropTypes.array,
-  trusted: PropTypes.array,
-  repeateble: PropTypes.array,
-  mainImageSharp: PropTypes.object,
+  primary: object,
+  fields: array,
 };
 
 export default Hero;
