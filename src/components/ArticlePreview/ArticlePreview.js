@@ -2,7 +2,7 @@ import React from 'react';
 import style from './ArticlePreview.module.scss';
 import { Link } from 'gatsby';
 import { object, string } from 'prop-types';
-import Arrow from './image/Arrow.inline.svg';
+import Arrow from './image/arrow.inline.svg';
 
 const ArticlePreview = ({ image, title, text, tag, date }) => {
   return (
