@@ -75,7 +75,11 @@ const Hero = ({ primary, fields }) => {
           </div>
         </div>
       </div>
-      <Modal open={modalIsOpen} closeModal={handleCloseModal} />
+      <Modal
+        open={modalIsOpen}
+        closeModal={handleCloseModal}
+        videoLink={primary.modalvideo.url}
+      />
     </div>
   );
 };

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
-import PropTypes from 'prop-types';
+import ReactPlayer from 'react-player';
+import { string, bool, func } from 'prop-types';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import style from './Modal.module.scss';
 import Icon from './image/close-icon.inline.svg';
 
 Modal.setAppElement('#___gatsby');
 
-const ModalContainer = ({ open, closeModal }) => {
+const ModalContainer = ({ open, closeModal, videoLink }) => {
   const [isOpen, setIsOpen] = useState(open);
   useEffect(() => {
     setIsOpen(open);
@@ -27,9 +28,7 @@ const ModalContainer = ({ open, closeModal }) => {
   return (
     <Modal isOpen={isOpen} style={customStyles}>
       <div className={style.container}>
-        <video className={style.video} autoPlay>
-          <source src="" type="video/mp4"></source>
-        </video>
+        <ReactPlayer url={videoLink} width="100%" height="100%" controls />
       </div>
       <div className={style.button}>
         <Button variant={VARIANT.PRIMARY}>take 2-min quiz</Button>
@@ -44,8 +43,9 @@ const ModalContainer = ({ open, closeModal }) => {
 };
 
 ModalContainer.propTypes = {
-  open: PropTypes.bool,
-  closeModal: PropTypes.func,
+  open: bool,
+  closeModal: func,
+  videoLink: string,
 };
 
 export default ModalContainer;

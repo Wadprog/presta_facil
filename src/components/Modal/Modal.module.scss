@@ -1,5 +1,5 @@
-@import "@styles/variables/all";
-@import "@styles/mixins/all";
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
 
 .container {
   position: relative;
@@ -12,6 +12,7 @@
   top: 50%;
   transform: translateY(-50%);
   margin: 0 auto;
+  overflow: hidden;
   @media (max-width: $lg) {
     max-height: 70%;
   }

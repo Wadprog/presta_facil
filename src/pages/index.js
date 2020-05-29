@@ -36,6 +36,12 @@ const query = graphql`
                   trusted
                   modalbuttontitle
                   modalbuttondescription
+                  modalvideo {
+                    ... on PRISMIC__ExternalLink {
+                      _linkType
+                      url
+                    }
+                  }
                 }
                 fields {
                   trustedlogo

@@ -8,7 +8,6 @@ import { RichText } from 'prismic-reactjs';
 import { object, array } from 'prop-types';
 
 const Agencies = ({ primary }) => {
-  console.log(primary);
   const image =
     (primary.imageSharp && primary.imageSharp.childImageSharp.fluid) || '';
   return (
