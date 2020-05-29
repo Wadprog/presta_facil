@@ -35,6 +35,22 @@
     .swiper-container {
       padding: 0 30px;
       max-width: 320px;
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        height: 100px;
+        width: 30px;
+        background-color: rgba(67, 73, 85, 1);
+        left: -2px;
+        top: 0;
+        z-index: 3;
+      }
+      &::after {
+        content: '';
+        left: unset;
+        right: -2px;
+      }
       @media (max-width: $md) {
         max-width: 290px;
       }
@@ -48,8 +64,9 @@
       border-width: 0 2px 2px 0;
       display: inline-block;
       padding: 3px;
+      cursor: pointer;
+      z-index: 11;
     }
-
     .prev {
       transform: rotate(135deg);
       left: 2px;
@@ -58,6 +75,10 @@
       left: unset;
       right: 2px;
       transform: rotate(-45deg);
+    }
+    .prev.swiper-button-disabled,
+    .next.swiper-button-disabled {
+      opacity: 0.3;
     }
   }
 }

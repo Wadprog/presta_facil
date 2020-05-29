@@ -12,6 +12,7 @@ const Footer = () => {
     { image: book, link: '/' },
     { image: book2, link: '/' },
     { image: book3, link: '/' },
+    { image: book, link: '/' },
   ];
   return (
     <footer className={style.footer}>

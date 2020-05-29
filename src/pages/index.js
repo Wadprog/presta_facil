@@ -33,6 +33,20 @@ const query = graphql`
                   description
                   button
                   mainImage
+                  mainImageSharp {
+                    childImageSharp {
+                      fluid(maxWidth: 500, quality: 90) {
+                        srcWebp
+                        srcSetWebp
+                        srcSet
+                        src
+                        sizes
+                        presentationWidth
+                        presentationHeight
+                        aspectRatio
+                      }
+                    }
+                  }
                   trusted
                   modalbuttontitle
                   modalbuttondescription

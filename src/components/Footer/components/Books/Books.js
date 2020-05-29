@@ -9,9 +9,9 @@ const Books = ({ data }) => {
     <div className={style.container}>
       <h3>Download Our Free Ebooks</h3>
       <Swiper {...params}>
-        {data.map(({ image, link }) => {
+        {data.map(({ image, link }, index) => {
           return (
-            <div className={style.slide} key={image.publicURL}>
+            <div className={style.slide} key={`${image.publicURL}${index}`}>
               <Link to={link}>
                 <img src={image.publicURL} alt="book" />
               </Link>
