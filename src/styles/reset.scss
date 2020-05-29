@@ -1,7 +1,10 @@
-@import "@styles/variables/all";
-@import "@styles/mixins/all";
-@import "@styles/normalize.scss";
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+@import '@styles/normalize.scss';
 
+* {
+  box-sizing: border-box;
+}
 html,
 body,
 #___gatsby,
