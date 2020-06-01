@@ -9,8 +9,10 @@ import Logo from './components/Logo';
 import Menu from './components/Menu';
 import { useScrollDirection } from '@hooks';
 import useGetImage from './useGetImage';
+import { object } from 'prop-types';
+import { RichText } from 'prismic-reactjs';
 
-const Header = () => {
+const Header = ({ primary }) => {
   const scrollDir = useScrollDirection();
   const { burger } = useGetImage();
   const headerStyles = classnames(style.header, {
@@ -33,17 +35,17 @@ const Header = () => {
         <div className={style.top}>
           <div className={style.slogan}>
             <GradientText
-              text="Integrate. Automate. Comply"
+              text={RichText.asText(primary.slogan)}
               background={gradientTextBg}
             />
           </div>
           <div className={style.button}>
             <Button variant={buttonVariant} isHeader={true}>
               {scrollDir === 'down' ? (
-                'take the 2-min quiz'
+                RichText.asText(primary.buttontext)
               ) : (
                 <GradientText
-                  text="take the 2-min quiz"
+                  text={RichText.asText(primary.buttontext)}
                   background="linear-gradient(86.37deg, #24B04B -46.17%, #0263BC 186.99%)"
                 />
               )}
@@ -56,7 +58,7 @@ const Header = () => {
               <img src={burger.publicURL} alt="burger menu icon" />
             </IconButton>
           </div>
-          <Logo />
+          <Logo img={primary.logo} />
           <Menu />
           <div>
             <SingInButton />
@@ -65,6 +67,10 @@ const Header = () => {
       </div>
     </header>
   );
+};
+
+Header.propTypes = {
+  primary: object,
 };
 
 export default Header;

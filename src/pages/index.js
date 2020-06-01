@@ -7,7 +7,7 @@ import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
   return (
-    <Layout>
+    <Layout data={data}>
       <HomePage data={data} />
     </Layout>
   );
@@ -205,6 +205,37 @@ const query = graphql`
                       }
                     }
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+      allLayouts {
+        edges {
+          node {
+            body {
+              ... on PRISMIC_LayoutBodyHeader {
+                type
+                label
+                primary {
+                  slogan
+                  buttontext
+                  logo
+                }
+              }
+            }
+            body1 {
+              ... on PRISMIC_LayoutBody1Footer {
+                type
+                label
+                primary {
+                  buttontitle
+                  buttontext
+                  bookstitle
+                }
+                fields {
+                  socialogo
                 }
               }
             }
