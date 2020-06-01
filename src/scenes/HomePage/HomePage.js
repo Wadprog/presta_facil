@@ -13,9 +13,9 @@ import Subscribe from '@components/Subscribe';
 import Agencies from '@components/Agencies';
 import 'swiper/swiper.scss';
 
-const HomePage = ({ data }) => {
-  const body = data.prismic.allHomepages.edges[0].node.body;
-
+const HomePage = ({ content }) => {
+  const body = content.prismic.allHomepages.edges[0].node.body;
+  console.log(content);
   return (
     <div className={style.HomePage}>
       {body.map((section, index) => {
@@ -51,7 +51,7 @@ const HomePage = ({ data }) => {
 };
 
 HomePage.propTypes = {
-  data: PropTypes.object.isRequired,
+  content: PropTypes.object.isRequired,
 };
 
 export default HomePage;

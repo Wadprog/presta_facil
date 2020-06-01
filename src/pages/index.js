@@ -6,9 +6,10 @@ import HomePage from '../scenes/HomePage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
+  // console.log(data);
   return (
-    <Layout data={data}>
-      <HomePage data={data} />
+    <Layout>
+      <HomePage content={data} />
     </Layout>
   );
 };
@@ -203,44 +204,6 @@ const query = graphql`
                         presentationHeight
                         aspectRatio
                       }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      allLayouts {
-        edges {
-          node {
-            body {
-              ... on PRISMIC_LayoutBodyHeader {
-                type
-                label
-                primary {
-                  slogan
-                  buttontext
-                  logo
-                }
-              }
-            }
-            body1 {
-              ... on PRISMIC_LayoutBody1Footer {
-                type
-                label
-                primary {
-                  buttontitle
-                  buttontext
-                  bookstitle
-                  copyright
-                }
-                fields {
-                  socialogo
-                  sociallink {
-                    ... on PRISMIC__ExternalLink {
-                      _linkType
-                      url
                     }
                   }
                 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { StaticQuery, graphql } from 'gatsby';
 
 import Header from '@components/Header';
 import Footer from '@components/Footer';
@@ -25,7 +26,60 @@ const Layout = ({ children, data }) => {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  data: PropTypes.object,
+  data: PropTypes.object.isRequired,
+};
+const query = graphql`
+  {
+    prismic {
+      allLayouts {
+        edges {
+          node {
+            body {
+              ... on PRISMIC_LayoutBodyHeader {
+                type
+                label
+                primary {
+                  slogan
+                  buttontext
+                  logo
+                }
+              }
+            }
+            body1 {
+              ... on PRISMIC_LayoutBody1Footer {
+                type
+                label
+                primary {
+                  buttontitle
+                  buttontext
+                  bookstitle
+                  copyright
+                }
+                fields {
+                  socialogo
+                  sociallink {
+                    ... on PRISMIC__ExternalLink {
+                      _linkType
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+const LayoutWithData = ({ children }) => {
+  return (
+    <StaticQuery
+      query={`${query}`}
+      render={(data) => <Layout data={data} children={children} />}
+    />
+  );
 };
 
-export default Layout;
+export default LayoutWithData;
