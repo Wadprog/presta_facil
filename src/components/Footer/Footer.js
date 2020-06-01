@@ -3,13 +3,12 @@ import Button, { VARIANT } from '@components/Button/Button.js';
 import style from './Footer.module.scss';
 import Navigation from './components/Navigation';
 import Books from './components/Books';
-import { Link } from 'gatsby';
 import useGetImage from './useGetImage';
 import { object, array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 
 const Footer = ({ primary, fields }) => {
-  const { linkedin, twitter, book, book2, book3 } = useGetImage();
+  const { book, book2, book3 } = useGetImage();
   const booksList = [
     { image: book, link: '/' },
     { image: book2, link: '/' },
