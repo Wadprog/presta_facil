@@ -1,0 +1,30 @@
+@import "@styles/variables/all";
+@import "@styles/mixins/all";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header,
+.footer {
+  flex-shrink: 0;
+}
+
+.main {
+  flex-grow: 1;
+}
+
+// .locked {
+//   overflow: hidden;
+
+//   .hidden {
+//     opacity: 0;
+//     pointer-events: none;
+//   }
+// }
+
+// .hidden {
+//   transition: opacity 0.2s;
+// }

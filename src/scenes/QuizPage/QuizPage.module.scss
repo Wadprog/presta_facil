@@ -1,0 +1,21 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.quizPage {
+  background-color: $bg-blue;
+  padding: 180px 64px 64px;
+  height: 100vh;
+  @media (max-width: $lg) {
+    padding: 180px 16px 32px;
+  }
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+}
+.frame {
+  border: none;
+  border-radius: 24px;
+  height: 100%;
+}

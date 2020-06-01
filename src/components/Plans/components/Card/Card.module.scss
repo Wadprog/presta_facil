@@ -1,0 +1,196 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  width: 464px;
+  min-height: 287px;
+  padding: 32px 64px;
+  box-sizing: border-box;
+  transition: box-shadow 0.3s;
+  & + .card {
+    margin-left: 40px;
+  }
+  @media (max-width: $lg) {
+    padding: 32px;
+    width: 100%;
+    max-width: 300px;
+  }
+  @media (max-width: $md) {
+    & + .card {
+      margin-left: 0;
+      margin-top: 80px;
+    }
+  }
+}
+
+.business {
+  background-color: #ffffff;
+  border-radius: 12px 50px;
+  color: $main-light;
+  &:hover {
+    box-shadow: 0px 20px 60px rgba(46, 66, 70, 0.2);
+  }
+  &:active {
+    background: linear-gradient(
+        0deg,
+        rgba(1, 25, 73, 0.1),
+        rgba(1, 25, 73, 0.1)
+      ),
+      #ffffff;
+  }
+  .text {
+    opacity: 0.75;
+  }
+  .button {
+    color: #ffffff;
+    background-color: $main-light;
+    .buttonText {
+      margin-left: 22px;
+    }
+  }
+  svg path {
+    fill: #ffffff;
+  }
+}
+
+.enterprise {
+  background: linear-gradient(89.23deg, #24b04b -46.17%, #0263bc 186.99%);
+  border-radius: 50px 12px;
+  color: #ffffff;
+  &:hover {
+    box-shadow: 0px 30px 100px rgba(40, 142, 152, 0.5);
+  }
+  &:active {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+      linear-gradient(89.23deg, #24b04b -46.17%, #0263bc 186.99%);
+  }
+  .button {
+    color: #24b04b;
+    background-color: #ffffff;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px 12px;
+    background-image: url('./image/bg.png');
+  }
+}
+.title {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 125%;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+  @media (max-width: $lg) {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+}
+
+.text {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 160%;
+  letter-spacing: 0.03em;
+  text-transform: capitalize;
+  margin-bottom: 25px;
+  @media (max-width: $lg) {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+}
+
+.benefit {
+  width: 100%;
+
+  ul {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  li {
+    position: relative;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 160%;
+    letter-spacing: 0.05em;
+    padding-top: 31px;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      background: url('./image/checkbox-icon.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    @media (max-width: $lg) {
+      max-width: 40%;
+    }
+  }
+}
+
+.button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 24px;
+  border-radius: 16px;
+  height: 64px;
+  bottom: -32px;
+  min-width: 304px;
+  @media (max-width: $lg) {
+    min-width: unset;
+    width: 256px;
+  }
+  p {
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 16px;
+    line-height: 1;
+    @media (max-width: $lg) {
+      font-size: 12px;
+    }
+  }
+  .priceWrapper {
+    text-align: center;
+    span {
+      text-transform: uppercase;
+      font-weight: 300;
+      font-size: 10px;
+    }
+  }
+  .price {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 125%;
+    letter-spacing: 0.03em;
+    margin-left: 0;
+    @media (max-width: $lg) {
+      font-size: 28px;
+    }
+  }
+  svg {
+    margin-left: auto;
+  }
+
+  .buttonImage {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
+}

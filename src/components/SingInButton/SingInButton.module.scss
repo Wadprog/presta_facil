@@ -1,0 +1,63 @@
+@import "@styles/variables/all";
+@import "@styles/mixins/all";
+
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  outline: none;
+  width: 100%;
+  height: 38px;
+  transition: 0.3s;
+  font-family: $font-sofia-pro;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.03em;
+  background: none;
+  border: none;
+  padding: 0;
+  @media (max-width: $lg) {
+    font-size: 0;
+  }
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    box-shadow: 0 0 1px 1px rgba($color: #2e3542, $alpha: 0.3);
+    border-radius: 8px 4px;
+    margin-left: 16px;
+    transition: 0.3s;
+    @media (max-width: $lg) {
+      margin-left: 0;
+    }
+    svg path {
+      transition: 0.3s;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: $green;
+    .wrapper {
+      box-shadow: none;
+      background: $green-gradient;
+      svg path {
+        fill: #fff;
+      }
+    }
+  }
+  &:active {
+    color: darken($green, 10%);
+    .wrapper {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        $green-gradient;
+    }
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}

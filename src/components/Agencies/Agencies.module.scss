@@ -1,0 +1,113 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.agencies {
+  padding: 64px 16px 128px;
+  @media (max-width: $lg) {
+    padding-bottom: 100px;
+  }
+}
+
+.container {
+  max-width: 1088px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  @media (max-width: $md) {
+    position: relative;
+    max-width: 500px;
+    flex-direction: column;
+    padding-bottom: 100px;
+  }
+}
+
+.image {
+  position: relative;
+  width: 52%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 17px;
+    background: $main-dark;
+    filter: blur(20px);
+    border-radius: 50%;
+    opacity: 0.8;
+  }
+  @media (max-width: $md) {
+    order: 1;
+    width: 100%;
+  }
+}
+
+.textBlock {
+  width: 50%;
+  max-width: 450px;
+  margin-left: 20px;
+  padding-top: 40px;
+  @media (max-width: $lg) {
+    padding-top: 0;
+  }
+  @media (max-width: $md) {
+    width: 100%;
+    order: 0;
+    margin-left: 0;
+  }
+}
+
+.title {
+  font-family: $font-gramatika-black;
+  font-size: 42px;
+  line-height: 130%;
+  letter-spacing: 0.03em;
+  text-transform: capitalize;
+  color: $main-dark;
+  margin-bottom: 26px;
+  @media (max-width: $lg) {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+  @media (max-width: $md) {
+    max-width: 50%;
+  }
+}
+
+.description {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 180%;
+  letter-spacing: 0.03em;
+  color: $second-dark;
+  @media (max-width: $lg) {
+    font-size: 14px;
+  }
+}
+.link {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.03em;
+  text-decoration-line: underline;
+  color: $green;
+  background: none;
+  margin-bottom: 56px;
+  @media (max-width: $lg) {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+}
+
+.button {
+  button {
+    width: 100%;
+  }
+  @media (max-width: $md) {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+  }
+}
