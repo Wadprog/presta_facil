@@ -233,9 +233,16 @@ const query = graphql`
                   buttontitle
                   buttontext
                   bookstitle
+                  copyright
                 }
                 fields {
                   socialogo
+                  sociallink {
+                    ... on PRISMIC__ExternalLink {
+                      _linkType
+                      url
+                    }
+                  }
                 }
               }
             }

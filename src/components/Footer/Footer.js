@@ -5,8 +5,10 @@ import Navigation from './components/Navigation';
 import Books from './components/Books';
 import { Link } from 'gatsby';
 import useGetImage from './useGetImage';
+import { object, array } from 'prop-types';
+import { RichText } from 'prismic-reactjs';
 
-const Footer = () => {
+const Footer = ({ primary, fields }) => {
   const { linkedin, twitter, book, book2, book3 } = useGetImage();
   const booksList = [
     { image: book, link: '/' },
@@ -19,27 +21,28 @@ const Footer = () => {
       <div className={style.container}>
         <div className={style.banners}>
           <div className={style.quizWrapper}>
-            <h3>Secure your privacy and website compliant </h3>
-            <Button variant={VARIANT.PRIMARY}>Take the 2-min quiz</Button>
+            <RichText render={primary.buttontitle} />
+            <Button variant={VARIANT.PRIMARY}>
+              {RichText.asText(primary.buttontext)}
+            </Button>
           </div>
-          <Books data={booksList} />
+          <Books data={booksList} title={RichText.asText(primary.bookstitle)} />
         </div>
         <Navigation data={menuList} />
         <div className={style.wrapper}>
           <p className={style.copyright}>
-            © Secure Privacy 2020. All Rights Reserved.
+            {RichText.asText(primary.copyright)}
           </p>
           <ul className={style.social}>
-            <li>
-              <Link>
-                <img src={linkedin.publicURL} alt="linkedin logo" />
-              </Link>
-            </li>
-            <li>
-              <Link>
-                <img src={twitter.publicURL} alt="twitter logo" />
-              </Link>
-            </li>
+            {fields.map(({ sociallink, socialogo }) => {
+              return (
+                <li key={sociallink.url}>
+                  <a href={sociallink.url}>
+                    <img src={socialogo.url} alt={socialogo.alt} />
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
@@ -189,5 +192,10 @@ const menuList = [
     ],
   },
 ];
+
+Footer.propTypes = {
+  primary: object,
+  fields: array,
+};
 
 export default Footer;
