@@ -16,7 +16,13 @@ const Header = () => {
     [style.active]: scrollDir === 'down',
   });
 
-  const gradientTextBg = scrollDir === 'down' ? GRADINT_ORANGE : GRADIENT_GREEN;
+  const GRADIENT_ORANGE =
+    'linear-gradient(262.53deg, #FB5F47 38.27%, #F9BE5A 113.07%)';
+  const GRADIENT_GREEN =
+    'linear-gradient(87.97deg, #24b04b -46.17%, #0263bc 186.99%)';
+
+  const gradientTextBg =
+    scrollDir === 'down' ? GRADIENT_ORANGE : GRADIENT_GREEN;
   const buttonVariant =
     scrollDir === 'down' ? VARIANT.PRIMARY : VARIANT.TRANSPARENT_GREEN;
 
@@ -59,10 +65,5 @@ const Header = () => {
     </header>
   );
 };
-
-const GRADINT_ORANGE =
-  'linear-gradient(262.53deg, #FB5F47 38.27%, #F9BE5A 113.07%)';
-const GRADIENT_GREEN =
-  'linear-gradient(87.97deg, #24b04b -46.17%, #0263bc 186.99%)';
 
 export default Header;

@@ -47,20 +47,11 @@ const Hero = ({ primary, fields }) => {
           </div>
         </div>
         <div className={styles.imageWrapper}>
-          {primary.mainImageSharp ? (
-            <GatsbyImage
-              className={styles.image}
-              fluid={primary.mainImageSharp.childImageSharp.fluid}
-              alt={primary.mainImageSharp.alt}
-            />
-          ) : (
-            <img
-              className={styles.image}
-              src={primary.mainImage.url}
-              alt={primary.mainImage.alt}
-              draggable="false"
-            />
-          )}
+          <GatsbyImage
+            className={styles.image}
+            fluid={primary.mainImageSharp.childImageSharp.fluid}
+            alt={primary.mainImageSharp.alt}
+          />
 
           <div className={styles.playButtonWrapper}>
             <div className={styles.playButton}>
