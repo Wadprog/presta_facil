@@ -7,7 +7,7 @@ import { Link } from 'gatsby';
 import useGetImage from './useGetImage';
 
 const Footer = () => {
-  const { linkedin, twitter, logo, book, book2, book3 } = useGetImage();
+  const { linkedin, twitter, book, book2, book3 } = useGetImage();
   const booksList = [
     { image: book, link: '/' },
     { image: book2, link: '/' },
@@ -20,15 +20,12 @@ const Footer = () => {
         <div className={style.banners}>
           <div className={style.quizWrapper}>
             <h3>Secure your privacy and website compliant </h3>
-            <Button variant={VARIANT.PRIMARY}>Take 2-min quiz</Button>
+            <Button variant={VARIANT.PRIMARY}>Take the 2-min quiz</Button>
           </div>
           <Books data={booksList} />
         </div>
         <Navigation data={menuList} />
         <div className={style.wrapper}>
-          <div className={style.logo}>
-            <img src={logo.publicURL} alt="Secure privacy logo" />
-          </div>
           <p className={style.copyright}>
             © Secure Privacy 2020. All Rights Reserved.
           </p>

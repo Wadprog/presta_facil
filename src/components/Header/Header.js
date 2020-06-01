@@ -38,7 +38,7 @@ const Header = () => {
             />
           </div>
           <div className={style.button}>
-            <Button variant={buttonVariant}>
+            <Button variant={buttonVariant} isHeader={true}>
               {scrollDir === 'down' ? (
                 'take the 2-min quiz'
               ) : (

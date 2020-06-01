@@ -19,11 +19,13 @@ const Button = ({
   type,
   link,
   fullWidth,
+  isHeader,
 }) => {
   const classes = classnames({
     [styles.button]: true,
     [styles[variant]]: styles[variant],
     [styles.fullWidth]: fullWidth,
+    [styles.header]: isHeader,
     [styles.disabled]: disabled,
   });
   return (
@@ -47,6 +49,7 @@ Button.propTypes = {
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   link: PropTypes.string,
   fullWidth: PropTypes.bool,
+  isHeader: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -56,6 +59,7 @@ Button.defaultProps = {
   click: () => {},
   link: '/',
   fullWidth: false,
+  isHeader: false,
 };
 export default Button;
 export { VARIANT };
