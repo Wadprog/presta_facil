@@ -3,7 +3,7 @@ import { object, array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import GatsbyImage from 'gatsby-image';
 import Button, { VARIANT } from '@components/Button/Button.js';
-import IconButton from '@components/PalyButton/IconButton.js';
+import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
 import Modal from '@components/Modal';
 import styles from './Hero.module.scss';
 import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
@@ -27,7 +27,7 @@ const Hero = ({ primary, fields }) => {
             <RichText render={primary.description} />
           </div>
           <div className={styles.buttonWrapper}>
-            <Button>
+            <Button variant={VARIANT.PRIMARY}>
               <RichText render={primary.button} />
             </Button>
           </div>
@@ -56,7 +56,7 @@ const Hero = ({ primary, fields }) => {
 
           <div className={styles.playButtonWrapper}>
             <div className={styles.playButton}>
-              <IconButton variant={VARIANT.PLAY} click={handleOpenModal}>
+              <IconButton variant={VARIANT_ICON.PLAY} click={handleOpenModal}>
                 <PLayIcon />
               </IconButton>
             </div>

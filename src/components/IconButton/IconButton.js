@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import styles from './IconButton.module.scss';
 
-const VARIANT = {
+const VARIANT_ICON = {
   PLAY: 'play',
   BURGER: 'burger',
   CLOSE: 'close',
@@ -24,17 +24,17 @@ const IconButton = ({ children, variant, disabled, click, type }) => {
 
 IconButton.propTypes = {
   children: PropTypes.node,
-  variant: PropTypes.oneOf(Object.values(VARIANT)),
+  variant: PropTypes.oneOf(Object.values(VARIANT_ICON)),
   disabled: PropTypes.bool,
   click: PropTypes.func,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
 };
 
 IconButton.defaultProps = {
-  variant: VARIANT.PRIMARY,
+  variant: VARIANT_ICON.PRIMARY,
   disabled: false,
   type: 'button',
   click: () => {},
 };
 export default IconButton;
-export { VARIANT };
+export { VARIANT_ICON };

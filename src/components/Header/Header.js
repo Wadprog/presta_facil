@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import style from './Header.module.scss';
 import Button, { VARIANT } from '@components/Button/Button.js';
-import IconButton from '@components/PalyButton/IconButton.js';
+import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
 import SingInButton from '@components/SingInButton';
 import GradientText from '@components/GradientText';
 import Logo from './components/Logo';
@@ -52,7 +52,7 @@ const Header = () => {
         </div>
         <div className={style.bottom}>
           <div className={style.burger}>
-            <IconButton variant={VARIANT.BURGER}>
+            <IconButton variant={VARIANT_ICON.BURGER}>
               <img src={burger.publicURL} alt="burger menu icon" />
             </IconButton>
           </div>
