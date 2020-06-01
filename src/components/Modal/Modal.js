@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import ReactPlayer from 'react-player';
 import { string, bool, func } from 'prop-types';
 import Button, { VARIANT } from '@components/Button/Button.js';
+import IconButton from '@components/PalyButton/IconButton.js';
 import style from './Modal.module.scss';
 import Icon from './image/close-icon.inline.svg';
 
@@ -34,9 +35,9 @@ const ModalContainer = ({ open, closeModal, videoLink }) => {
         <Button variant={VARIANT.PRIMARY}>take 2-min quiz</Button>
       </div>
       <div className={style.buttonClose}>
-        <Button variant={VARIANT.CLOSE} click={closeModal}>
+        <IconButton variant={VARIANT.CLOSE} click={closeModal}>
           <Icon />
-        </Button>
+        </IconButton>
       </div>
     </Modal>
   );

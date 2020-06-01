@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import style from './Header.module.scss';
 import Button, { VARIANT } from '@components/Button/Button.js';
+import IconButton from '@components/PalyButton/IconButton.js';
 import SingInButton from '@components/SingInButton';
 import GradientText from '@components/GradientText';
 import Logo from './components/Logo';
@@ -51,9 +52,9 @@ const Header = () => {
         </div>
         <div className={style.bottom}>
           <div className={style.burger}>
-            <Button variant={VARIANT.BURGER}>
+            <IconButton variant={VARIANT.BURGER}>
               <img src={burger.publicURL} alt="burger menu icon" />
-            </Button>
+            </IconButton>
           </div>
           <Logo />
           <Menu />
