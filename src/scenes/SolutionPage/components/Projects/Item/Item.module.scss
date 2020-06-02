@@ -1,0 +1,103 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.item {
+  display: flex;
+  align-items: center;
+  & + .item {
+    margin-top: 48px;
+  }
+  @media (max-width: $lg) {
+    flex-direction: column;
+  }
+}
+
+.content {
+  max-width: 52%;
+  padding: 48px 56px 40px 64px;
+  background-color: #fff;
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 5px;
+  @media (max-width: $lg) {
+    padding: 24px 16px;
+    border-top-left-radius: 26px;
+  }
+  @media (max-width: $md) {
+    max-width: 100%;
+    order: 1;
+    border-radius: 0;
+    padding-top: 40px;
+    margin-top: -10px;
+  }
+  h3 {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 22px;
+    margin-right: 16px;
+    margin-bottom: 4px;
+    @media (max-width: $lg) {
+      font-size: 20px;
+    }
+  }
+  a {
+    color: #2e3542;
+    opacity: 0.75;
+    letter-spacing: 0.05em;
+    text-decoration-line: underline;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 160%;
+    transition: 0.3s;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  p {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 180%;
+    margin-top: 10px;
+    letter-spacing: 0.03em;
+    background: linear-gradient(88.49deg, #24b04b -46.17%, #0263bc 186.99%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    strong {
+      font-weight: 600;
+    }
+    @media (max-width: $lg) {
+      font-size: 14px;
+    }
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 16px;
+  box-shadow: 0px 50px 70px rgba(24, 52, 94, 0.1);
+  @media (max-width: $md) {
+    box-shadow: none;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 40px 10px;
+    border: 1px solid rgba($green, $alpha: 0.3);
+    top: -16px;
+    right: -24px;
+    @media (max-width: $lg) {
+      top: -8px;
+      right: -8px;
+    }
+    @media (max-width: $md) {
+      display: none;
+    }
+  }
+  .image {
+    border-radius: 16px;
+  }
+}

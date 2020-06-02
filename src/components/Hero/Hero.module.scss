@@ -177,6 +177,9 @@
 .partners {
   margin: 64px auto 0;
   max-width: 1160px;
+  @media (max-width: $md) {
+    margin-top: 32px;
+  }
 
   :global {
     .swiper-wrapper {

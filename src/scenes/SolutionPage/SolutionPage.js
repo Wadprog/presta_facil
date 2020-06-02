@@ -4,6 +4,7 @@ import style from './SolutionPage.module.scss';
 import 'swiper/swiper.scss';
 
 import Hero from '@components/Hero';
+import Projects from './components/Projects/Projects';
 
 const SolutionPage = ({ current }) => {
   const body = current.body;
@@ -14,6 +15,8 @@ const SolutionPage = ({ current }) => {
         switch (section.type) {
           case 'hero':
             return <Hero {...section} key={`${section.type}${index}`} />;
+          case 'projects':
+            return <Projects {...section} key={`${section.type}${index}`} />;
         }
       })}
     </div>

@@ -58,6 +58,19 @@ exports.createPages = async ({ graphql, actions }) => {
                       }
                     }
                     screenshot
+                    screenshotSharp {
+                      childImageSharp {
+                        fluid(maxWidth: 500, quality: 90) {
+                          srcWebp
+                          srcSetWebp
+                          srcSet
+                          src
+                          sizes
+                          presentationWidth
+                          aspectRatio
+                        }
+                      }
+                    }
                     title
                   }
                   primary {
