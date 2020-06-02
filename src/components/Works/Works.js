@@ -23,6 +23,23 @@ const Works = ({ primary, fields }) => {
   const handleChangeCategory = ({ value }) => {
     setCategory(value);
   };
+
+  const params = {
+    slidesPerView: 'auto',
+    spaceBetween: 16,
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'progressbar',
+    },
+    breakpoints: {
+      768: {
+        spaceBetween: 32,
+      },
+      1024: {
+        spaceBetween: 64,
+      },
+    },
+  };
   return (
     <div className={style.works}>
       <div className={style.container}>
@@ -53,23 +70,6 @@ const Works = ({ primary, fields }) => {
       </div>
     </div>
   );
-};
-
-const params = {
-  slidesPerView: 'auto',
-  spaceBetween: 16,
-  pagination: {
-    el: '.swiper-pagination',
-    type: 'progressbar',
-  },
-  breakpoints: {
-    768: {
-      spaceBetween: 32,
-    },
-    1024: {
-      spaceBetween: 64,
-    },
-  },
 };
 
 Works.propTypes = {

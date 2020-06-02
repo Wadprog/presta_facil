@@ -65,6 +65,7 @@
   justify-content: space-between;
   @media (max-width: $md) {
     flex-wrap: wrap;
+    justify-content: center;
   }
 }
 
@@ -75,27 +76,12 @@
   color: #ffffff;
   opacity: 0.5;
   margin-right: auto;
-  margin-left: 40px;
   @media (max-width: $md) {
     order: 2;
     width: 100%;
     margin-top: 16px;
     text-align: center;
     margin-left: 0;
-  }
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  background: #f1f7fa;
-  opacity: 0.3;
-  border-radius: 8px 16px;
-  @media (max-width: $md) {
-    order: 0;
   }
 }
 
@@ -108,6 +94,6 @@
   }
   @media (max-width: $md) {
     order: 1;
-    margin-right: 0;
+    margin: 0 auto;
   }
 }

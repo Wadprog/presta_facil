@@ -67,6 +67,8 @@
       border-radius: 30px;
       padding: 0 32px;
       z-index: 11;
+      background: $bg-blue;
+
       @media (max-width: $md) {
         width: 290px;
       }

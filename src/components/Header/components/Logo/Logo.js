@@ -1,9 +1,12 @@
 import React from 'react';
+import { object } from 'prop-types';
 
-import Icon from './image/logo.inline.svg';
+const Logo = ({ img }) => {
+  return <img src={img.url} alt={img.alt} />;
+};
 
-const Logo = () => {
-  return <Icon />;
+Logo.propTypes = {
+  img: object,
 };
 
 export default Logo;

@@ -1,13 +1,13 @@
 import React from 'react';
 import Swiper from 'react-id-swiper';
-import { array } from 'prop-types';
+import { array, string } from 'prop-types';
 import { Link } from 'gatsby';
 import style from './Books.module.scss';
 
-const Books = ({ data }) => {
+const Books = ({ data, title }) => {
   return (
     <div className={style.container}>
-      <h3>Download Our Free Ebooks</h3>
+      <h3>{title}</h3>
       <Swiper {...params}>
         {data.map(({ image, link }, index) => {
           return (
@@ -34,6 +34,7 @@ const params = {
 
 Books.propTypes = {
   data: array,
+  title: string,
 };
 
 export default Books;

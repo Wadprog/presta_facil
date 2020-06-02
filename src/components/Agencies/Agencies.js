@@ -25,7 +25,7 @@ const Agencies = ({ primary }) => {
             Learn More
           </Link>
           <div className={style.button}>
-            <Button variant={VARIANT.TRANSPARENT}>
+            <Button variant={VARIANT.TRANSPARENT} fullWidth={true}>
               {RichText.asText(primary.buttontext)}
             </Button>
           </div>
