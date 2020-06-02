@@ -25,8 +25,8 @@ const Layout = ({ children, data }) => {
 };
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-  data: PropTypes.object.isRequired,
+  children: PropTypes.node,
+  data: PropTypes.object,
 };
 const query = graphql`
   {
@@ -73,13 +73,17 @@ const query = graphql`
   }
 `;
 
-const LayoutWithData = ({ children }) => {
+const LayoutWithData = (props) => {
   return (
     <StaticQuery
       query={`${query}`}
-      render={(data) => <Layout data={data} children={children} />}
+      render={(data) => <Layout data={data} {...props} />}
     />
   );
+};
+
+LayoutWithData.propTypes = {
+  children: PropTypes.node,
 };
 
 export default LayoutWithData;
