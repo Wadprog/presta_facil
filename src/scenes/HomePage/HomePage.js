@@ -15,7 +15,6 @@ import 'swiper/swiper.scss';
 
 const HomePage = ({ content }) => {
   const body = content.prismic.allHomepages.edges[0].node.body;
-  console.log(content);
   return (
     <div className={style.HomePage}>
       {body.map((section, index) => {
