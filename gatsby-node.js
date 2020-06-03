@@ -60,7 +60,7 @@ exports.createPages = async ({ graphql, actions }) => {
                     screenshot
                     screenshotSharp {
                       childImageSharp {
-                        fluid(maxWidth: 500, quality: 90) {
+                        fluid(quality: 90) {
                           srcWebp
                           srcSetWebp
                           srcSet
@@ -113,10 +113,24 @@ exports.createPages = async ({ graphql, actions }) => {
                   fields {
                     description
                     image
+                    imageSharp {
+                      childImageSharp {
+                        fluid(quality: 90) {
+                          srcWebp
+                          srcSetWebp
+                          srcSet
+                          src
+                          sizes
+                          presentationWidth
+                          aspectRatio
+                        }
+                      }
+                    }
                     title
                   }
                   primary {
                     title
+                    button
                   }
                 }
                 ... on PRISMIC_SolutionpageBodyBooking {

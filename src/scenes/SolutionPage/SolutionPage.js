@@ -6,6 +6,7 @@ import 'swiper/swiper.scss';
 import Hero from '@components/Hero';
 import Projects from './components/Projects/Projects';
 import Benefits from './components/Benefits/Benefits';
+import Features from './components/Features/Features';
 
 const SolutionPage = ({ current }) => {
   const body = current.body;
@@ -20,6 +21,8 @@ const SolutionPage = ({ current }) => {
             return <Projects {...section} key={`${section.type}${index}`} />;
           case 'benefits':
             return <Benefits {...section} key={`${section.type}${index}`} />;
+          case 'features':
+            return <Features {...section} key={`${section.type}${index}`} />;
         }
       })}
     </div>

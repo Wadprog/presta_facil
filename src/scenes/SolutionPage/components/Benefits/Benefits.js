@@ -5,7 +5,6 @@ import { object, array } from 'prop-types';
 import Button, { VARIANT } from '@components/Button/Button.js';
 
 const Benefits = ({ primary, fields }) => {
-  console.log(primary);
   return (
     <section className={styles.benefits}>
       <div className={styles.container}>

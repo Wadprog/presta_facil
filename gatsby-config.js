@@ -76,8 +76,7 @@ module.exports = {
       options: {
         repositoryName: 'secure-privacy',
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
-        omitPrismicScript: true,
-        previews: true,
+        // omitPrismicScript: true,
         sharpKeys: [
           /image|photo|picture|illustration|screenshot|background|Image/,
           'profilepic',
