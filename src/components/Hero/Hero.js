@@ -15,7 +15,6 @@ const Hero = ({ primary, fields }) => {
   const handleOpenModal = () => setModalIsOpen(true);
   const handleCloseModal = () => setModalIsOpen(false);
   const { hero } = useGetImage();
-  console.log(hero);
 
   const params = {
     slidesPerView: 2,

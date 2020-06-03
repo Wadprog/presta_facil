@@ -17,7 +17,7 @@
   border-radius: 20px 5px;
   padding: 0;
   letter-spacing: 0.1em;
-
+  padding-top: 3px;
   &:hover {
     cursor: pointer;
   }
@@ -134,4 +134,11 @@
     font-size: 12px;
     padding: 0 16px;
   }
+}
+
+.white {
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: #fff;
+  color: $main-light;
 }

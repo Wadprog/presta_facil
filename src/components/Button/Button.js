@@ -9,6 +9,7 @@ const VARIANT = {
   SECONDARY: 'secondary',
   TRANSPARENT: 'transparent',
   TRANSPARENT_GREEN: 'green',
+  WHITE: 'white',
 };
 
 const Button = ({

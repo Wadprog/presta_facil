@@ -2,11 +2,9 @@ import React from 'react';
 import styles from './Projects.module.scss';
 import { object, array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
-// import GatsbyImage from 'gatsby-image';
 import Item from './Item/Item';
 
 const Projects = ({ primary, fields }) => {
-  console.log(fields);
   return (
     <section className={styles.projects}>
       <div className={styles.container}>

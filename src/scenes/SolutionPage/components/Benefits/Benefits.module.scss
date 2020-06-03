@@ -1,0 +1,119 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.benefits {
+  padding: 64px 0;
+  @media (max-width: $lg) {
+    padding: 48px 16px;
+  }
+}
+.container {
+  padding: 80px 20px 110px;
+  margin: 0 auto;
+  background: url('./image/bg.png'),
+    linear-gradient(89.13deg, #24b04b -46.17%, #0263bc 186.99%);
+  background-size: cover;
+
+  @media (max-width: $lg) {
+    padding: 60px 20px;
+  }
+}
+
+.title {
+  margin-bottom: 40px;
+  h2 {
+    font-family: $font-gramatika;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 130%;
+    text-align: center;
+    color: #ffffff;
+    strong {
+      font-family: $font-gramatika-black;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      text-transform: capitalize;
+    }
+    @media (max-width: $md) {
+      font-size: 28px;
+    }
+  }
+}
+
+.list {
+  display: flex;
+  margin: 0 auto 72px;
+  max-width: 900px;
+  justify-content: space-between;
+  @media (max-width: $md) {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 58px;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  background-color: rgba(#ffffff, 0.9);
+  width: 240px;
+  height: 240px;
+  border-radius: 5px 50px;
+  padding: 25px;
+  box-sizing: border-box;
+  z-index: 2;
+  @media (max-width: $lg) {
+    width: 200px;
+    height: 200px;
+    padding: 16px;
+  }
+  @media (max-width: $md) {
+    width: 240px;
+    height: 240px;
+  }
+  & + .item {
+    margin-left: 16px;
+    @media (max-width: $md) {
+      margin-left: 0;
+      margin-top: 32px;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: calc(100% + 16px);
+    height: calc(100% + 16px);
+    border-radius: 5px 56px;
+    box-shadow: 0px 50px 100px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(#ffffff, 0.1);
+    z-index: 1;
+  }
+  .imageWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(89.52deg, #24b04b -46.17%, #0263bc 186.99%);
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+  p {
+    font-size: 18px;
+    line-height: 180%;
+    text-align: center;
+    text-transform: capitalize;
+    color: $main-light;
+    @media (max-width: $lg) {
+      font-size: 16px;
+    }
+  }
+}
+
+.button {
+  text-align: center;
+}
