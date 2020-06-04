@@ -7,6 +7,7 @@ import Hero from '@components/Hero';
 import Projects from './components/Projects/Projects';
 import Benefits from './components/Benefits/Benefits';
 import Features from './components/Features/Features';
+import Questions from './components/Questions/Questions';
 
 const SolutionPage = ({ current }) => {
   const body = current.body;
@@ -23,6 +24,8 @@ const SolutionPage = ({ current }) => {
             return <Benefits {...section} key={`${section.type}${index}`} />;
           case 'features':
             return <Features {...section} key={`${section.type}${index}`} />;
+          case 'questions':
+            return <Questions {...section} key={`${section.type}${index}`} />;
         }
       })}
     </div>

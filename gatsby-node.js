@@ -87,6 +87,7 @@ exports.createPages = async ({ graphql, actions }) => {
                         url
                       }
                     }
+                    linktext
                     scan
                     title
                     content

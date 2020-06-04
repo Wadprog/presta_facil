@@ -10,7 +10,6 @@ import GatsbyImage from 'gatsby-image';
 const Features = ({ primary, fields }) => {
   const [buildKey, setBuildKey] = useState();
   const { width } = useBreakpoints();
-  console.log(fields);
   useEffect(() => {
     setBuildKey(+new Date());
   }, [width]);
