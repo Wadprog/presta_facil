@@ -4,15 +4,7 @@
 .benefits {
   padding: 64px 20px;
   @media (max-width: $lg) {
-    padding: 48px 0;
-  }
-}
-.container {
-  margin: 0 auto;
-  background-size: cover;
-
-  @media (max-width: $lg) {
-    padding: 60px 20px;
+    padding: 48px 16px;
   }
 }
 
@@ -83,6 +75,9 @@
   padding: 0 100px;
   background: #ffffff;
   border-radius: 12px;
+  @media (max-width: $md) {
+    padding: 0 40px 0 20px;
+  }
   &::before {
     content: '';
     position: absolute;
@@ -92,6 +87,9 @@
     background-size: contain;
     background-repeat: no-repeat;
     left: 48px;
+    @media (max-width: $md) {
+      display: none;
+    }
   }
   &::after {
     content: '';
@@ -104,6 +102,10 @@
     right: 48px;
     top: 36px;
     transition: 0.3s;
+    @media (max-width: $md) {
+      right: 15px;
+      width: 12px;
+    }
   }
   h3 {
     font-weight: 600;
@@ -119,6 +121,9 @@
   padding: 0 48px 1px;
   background: #ffffff;
   animation: down 0.2s linear;
+  @media (max-width: $md) {
+    padding: 0 20px 1px;
+  }
 }
 
 .content {
@@ -127,6 +132,10 @@
   line-height: 200%;
   letter-spacing: 0.03em;
   color: $main-light;
+  @media (max-width: $md) {
+    font-size: 14px;
+    line-height: 1.4;
+  }
   a {
     font-weight: 600;
     color: $green;
@@ -143,6 +152,9 @@
   ol,
   img {
     margin-bottom: 30px;
+    @media (max-width: $md) {
+      margin-bottom: 16px;
+    }
   }
   ol {
     counter-reset: li;
