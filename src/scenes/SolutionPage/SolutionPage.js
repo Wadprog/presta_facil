@@ -9,12 +9,12 @@ import Benefits from './components/Benefits/Benefits';
 import Features from './components/Features/Features';
 import Questions from './components/Questions/Questions';
 import Agencies from '@components/Agencies';
+import Plans from '@components/Plans';
 
 const SolutionPage = ({ current, mainSection }) => {
   const body = current.body;
   const agenciesSection = mainSection[0].node.body2[0];
-  console.log(mainSection);
-  console.log(agenciesSection);
+  const plansSection = mainSection[0].node.body2[1];
 
   return (
     <div className={style.SolutionPage}>
@@ -30,6 +30,14 @@ const SolutionPage = ({ current, mainSection }) => {
             return <Features {...section} key={`${section.type}${index}`} />;
           case 'questions':
             return <Questions {...section} key={`${section.type}${index}`} />;
+          case 'plans':
+            return (
+              <Plans
+                {...section}
+                {...plansSection}
+                key={`${section.type}${index}`}
+              />
+            );
         }
       })}
       <Agencies {...agenciesSection} />

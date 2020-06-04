@@ -134,6 +134,13 @@ exports.createPages = async ({ graphql, actions }) => {
                     button
                   }
                 }
+                ... on PRISMIC_SolutionpageBodyPlans {
+                  type
+                  label
+                  primary {
+                    title
+                  }
+                }
                 ... on PRISMIC_SolutionpageBodyBooking {
                   type
                   label
