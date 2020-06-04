@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Projects.module.scss';
+import styles from './projects.module.scss';
 import { object, array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import Item from './Item/Item';

@@ -145,6 +145,50 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+        allLayouts {
+          edges {
+            node {
+              body2 {
+                ... on PRISMIC_LayoutBody2Agencies {
+                  type
+                  label
+                  primary {
+                    title
+                    description
+                    buttontext
+                    image
+                    imageSharp {
+                      childImageSharp {
+                        fluid(quality: 90) {
+                          srcWebp
+                          srcSetWebp
+                          srcSet
+                          src
+                          sizes
+                          presentationWidth
+                          aspectRatio
+                        }
+                      }
+                    }
+                  }
+                }
+                ... on PRISMIC_LayoutBody2Plans {
+                  type
+                  label
+                  fields {
+                    image
+                    type
+                    cardtitle
+                    description
+                    benefits
+                    button
+                    buttonprice
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   `);
@@ -153,11 +197,14 @@ exports.createPages = async ({ graphql, actions }) => {
     ({ node }) => node
   );
 
-  solutionPage.forEach((item, index) => {
+  const mainSection = response.data.prismic.allLayouts.edges;
+
+  solutionPage.forEach((item) => {
     const path = `/solution/${item._meta.uid}`;
     const context = {
       current: item,
       data: solutionPage,
+      mainSection: mainSection,
     };
 
     createPage({

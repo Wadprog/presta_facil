@@ -8,10 +8,14 @@ import Projects from './components/Projects/Projects';
 import Benefits from './components/Benefits/Benefits';
 import Features from './components/Features/Features';
 import Questions from './components/Questions/Questions';
+import Agencies from '@components/Agencies';
 
-const SolutionPage = ({ current }) => {
+const SolutionPage = ({ current, mainSection }) => {
   const body = current.body;
-  console.log(body);
+  const agenciesSection = mainSection[0].node.body2[0];
+  console.log(mainSection);
+  console.log(agenciesSection);
+
   return (
     <div className={style.SolutionPage}>
       {body.map((section, index) => {
@@ -28,12 +32,14 @@ const SolutionPage = ({ current }) => {
             return <Questions {...section} key={`${section.type}${index}`} />;
         }
       })}
+      <Agencies {...agenciesSection} />
     </div>
   );
 };
 
 SolutionPage.propTypes = {
   current: PropTypes.object.isRequired,
+  mainSection: PropTypes.array,
 };
 
 export default SolutionPage;
