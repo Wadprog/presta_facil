@@ -18,9 +18,10 @@ const Button = ({
   disabled,
   click,
   type,
-  link,
+  ref,
   fullWidth,
   isHeader,
+  element,
 }) => {
   const classes = classnames({
     [styles.button]: true,
@@ -29,16 +30,18 @@ const Button = ({
     [styles.header]: isHeader,
     [styles.disabled]: disabled,
   });
+
+  const Component = element;
   return (
-    <Link
+    <Component
       className={classes}
       type={type}
       disabled={disabled}
       onClick={click}
-      to={link}
+      to={ref}
     >
       {children}
-    </Link>
+    </Component>
   );
 };
 
@@ -48,9 +51,10 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   click: PropTypes.func,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
-  link: PropTypes.string,
+  ref: PropTypes.string,
   fullWidth: PropTypes.bool,
   isHeader: PropTypes.bool,
+  element: PropTypes.any,
 };
 
 Button.defaultProps = {
@@ -58,9 +62,10 @@ Button.defaultProps = {
   disabled: false,
   type: 'button',
   click: () => {},
-  link: '/',
+  ref: '/',
   fullWidth: false,
   isHeader: false,
+  element: Link,
 };
 export default Button;
 export { VARIANT };
