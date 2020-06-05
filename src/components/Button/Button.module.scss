@@ -2,12 +2,12 @@
 @import '@styles/mixins/all';
 
 .button {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   position: relative;
   outline: none;
-  height: 48px;
+  height: 52px;
   font-family: $font-sofia-pro;
   text-transform: uppercase;
   font-size: 16px;
@@ -16,8 +16,8 @@
   border: none;
   border-radius: 20px 5px;
   padding: 0;
-  width: fit-content;
-
+  letter-spacing: 0.1em;
+  padding-top: 3px;
   &:hover {
     cursor: pointer;
   }
@@ -129,8 +129,16 @@
 }
 
 .header {
+  height: 48px;
   @media (max-width: 767px) {
     font-size: 12px;
     padding: 0 16px;
   }
+}
+
+.white {
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: #fff;
+  color: $main-light;
 }

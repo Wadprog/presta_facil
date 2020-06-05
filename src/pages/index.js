@@ -6,7 +6,6 @@ import HomePage from '../scenes/HomePage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
-  // console.log(data);
   return (
     <Layout>
       <HomePage content={data} />
