@@ -77,6 +77,8 @@
   }
   .bottom {
     opacity: 0;
+    z-index: -1;
+    transform: translateY(-200px);
   }
 }
 
