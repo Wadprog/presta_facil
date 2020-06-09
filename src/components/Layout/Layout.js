@@ -78,9 +78,12 @@ const LayoutWithData = (props) => {
   return (
     <StaticQuery
       query={`${query}`}
-      render={withPreview((data) => (
-        <Layout data={data} {...props} />
-      ))}
+      render={withPreview(
+        (data) => (
+          <Layout data={data} {...props} />
+        ),
+        query
+      )}
     />
   );
 };

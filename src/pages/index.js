@@ -220,9 +220,12 @@ const PageWithData = () => {
   return (
     <StaticQuery
       query={`${query}`}
-      render={withPreview((data) => (
-        <Page data={data} />
-      ))}
+      render={withPreview(
+        (data) => (
+          <Page data={data} />
+        ),
+        query
+      )}
     />
   );
 };
