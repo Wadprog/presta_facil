@@ -1,5 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
+import { withPreview } from 'gatsby-source-prismic-graphql';
 import PropTypes from 'prop-types';
 
 import HomePage from '../scenes/HomePage';
@@ -217,7 +218,12 @@ const query = graphql`
 
 const PageWithData = () => {
   return (
-    <StaticQuery query={`${query}`} render={(data) => <Page data={data} />} />
+    <StaticQuery
+      query={`${query}`}
+      render={withPreview((data) => (
+        <Page data={data} />
+      ))}
+    />
   );
 };
 

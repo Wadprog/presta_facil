@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
+import { withPreview } from 'gatsby-source-prismic-graphql';
 
 import Header from '@components/Header';
 import Footer from '@components/Footer';
@@ -77,7 +78,9 @@ const LayoutWithData = (props) => {
   return (
     <StaticQuery
       query={`${query}`}
-      render={(data) => <Layout data={data} {...props} />}
+      render={withPreview((data) => (
+        <Layout data={data} {...props} />
+      ))}
     />
   );
 };
