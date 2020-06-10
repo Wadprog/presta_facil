@@ -58,19 +58,6 @@ exports.createPages = async ({ graphql, actions }) => {
                       }
                     }
                     screenshot
-                    screenshotSharp {
-                      childImageSharp {
-                        fluid(quality: 90) {
-                          srcWebp
-                          srcSetWebp
-                          srcSet
-                          src
-                          sizes
-                          presentationWidth
-                          aspectRatio
-                        }
-                      }
-                    }
                     title
                   }
                   primary {
@@ -114,19 +101,6 @@ exports.createPages = async ({ graphql, actions }) => {
                   fields {
                     description
                     image
-                    imageSharp {
-                      childImageSharp {
-                        fluid(quality: 90) {
-                          srcWebp
-                          srcSetWebp
-                          srcSet
-                          src
-                          sizes
-                          presentationWidth
-                          aspectRatio
-                        }
-                      }
-                    }
                     title
                   }
                   primary {
@@ -164,19 +138,6 @@ exports.createPages = async ({ graphql, actions }) => {
                     description
                     buttontext
                     image
-                    imageSharp {
-                      childImageSharp {
-                        fluid(quality: 90) {
-                          srcWebp
-                          srcSetWebp
-                          srcSet
-                          src
-                          sizes
-                          presentationWidth
-                          aspectRatio
-                        }
-                      }
-                    }
                   }
                 }
                 ... on PRISMIC_LayoutBody2Plans {
