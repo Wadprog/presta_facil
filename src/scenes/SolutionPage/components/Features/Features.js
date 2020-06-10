@@ -16,7 +16,7 @@ const Features = ({ primary, fields }) => {
 
   const params = {
     slidesPerView: 'auto',
-    spaceBetween: 16,
+    spaceBetween: 24,
     breakpoints: {
       768: {
         spaceBetween: 32,

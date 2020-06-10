@@ -53,14 +53,14 @@ const Header = ({ primary }) => {
           </div>
         </div>
         <div className={style.bottom}>
-          <div className={style.burger}>
-            <IconButton variant={VARIANT_ICON.BURGER}>
-              <img src={burger.publicURL} alt="burger menu icon" />
-            </IconButton>
-          </div>
-          <Logo img={primary.logo} />
-          <Menu />
-          <div>
+          <div className={style.bottomContainer}>
+            <div className={style.burger}>
+              <IconButton variant={VARIANT_ICON.BURGER}>
+                <img src={burger.publicURL} alt="burger menu icon" />
+              </IconButton>
+            </div>
+            <Logo img={primary.logo} />
+            <Menu />
             <SingInButton />
           </div>
         </div>

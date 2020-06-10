@@ -48,10 +48,7 @@
   width: 50%;
   max-width: 450px;
   margin-left: 20px;
-  padding-top: 40px;
-  @media (max-width: $lg) {
-    padding-top: 0;
-  }
+  align-self: center;
   @media (max-width: $md) {
     width: 100%;
     order: 0;

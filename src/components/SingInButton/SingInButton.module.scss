@@ -1,12 +1,11 @@
-@import "@styles/variables/all";
-@import "@styles/mixins/all";
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
 
 .button {
   position: relative;
   display: flex;
   align-items: center;
   outline: none;
-  width: 100%;
   height: 38px;
   transition: 0.3s;
   font-family: $font-sofia-pro;

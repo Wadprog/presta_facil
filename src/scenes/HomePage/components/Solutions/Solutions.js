@@ -15,6 +15,21 @@ const Solutions = ({ primary, fields }) => {
   useEffect(() => {
     setBuildKey(+new Date());
   }, [width]);
+
+  const params = {
+    slidesPerView: 'auto',
+    spaceBetween: 16,
+    breakpoints: {
+      768: {
+        spaceBetween: 32,
+      },
+      1024: {
+        allowTouchMove: false,
+        spaceBetween: 0,
+      },
+    },
+  };
+
   return (
     <div className={style.solutions}>
       <div className={style.container}>
@@ -39,6 +54,7 @@ const Solutions = ({ primary, fields }) => {
                     src={arrow.publicURL}
                     alt="arrow icon"
                   />
+                  <div className={style.shadow}></div>
                 </Link>
               </div>
             );
@@ -47,20 +63,6 @@ const Solutions = ({ primary, fields }) => {
       </div>
     </div>
   );
-};
-
-const params = {
-  slidesPerView: 'auto',
-  spaceBetween: 16,
-  breakpoints: {
-    768: {
-      spaceBetween: 32,
-    },
-    1024: {
-      allowTouchMove: false,
-      spaceBetween: 0,
-    },
-  },
 };
 
 Solutions.propTypes = {
