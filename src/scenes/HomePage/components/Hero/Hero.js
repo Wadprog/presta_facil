@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { object, array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
-import GatsbyImage from 'gatsby-image';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
 import Modal from '@components/Modal';
 import styles from './Hero.module.scss';
 import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
+import Image from '@components/Image/Image';
 
 const Hero = ({ primary, fields }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -48,12 +48,11 @@ const Hero = ({ primary, fields }) => {
           </div>
         </div>
         <div className={styles.imageWrapper}>
-          <GatsbyImage
+          <Image
+            image={primary.mainImage}
+            imageSharp={primary.mainImageSharp}
             className={styles.image}
-            fluid={primary.mainImageSharp.childImageSharp.fluid}
-            alt={primary.mainImageSharp.alt}
           />
-
           <div className={styles.playButtonWrapper}>
             <div className={styles.playButton}>
               <IconButton variant={VARIANT_ICON.PLAY} click={handleOpenModal}>

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Item.module.scss';
 import { object, array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
-import GatsbyImage from 'gatsby-image';
+import Image from '@components/Image/Image';
 
 const Item = ({ title, link, description, screenshot, screenshotSharp }) => {
   return (
@@ -15,11 +15,10 @@ const Item = ({ title, link, description, screenshot, screenshotSharp }) => {
         <RichText render={description} />
       </div>
       <div className={styles.imageWrapper}>
-        <GatsbyImage
+        <Image
           className={styles.image}
-          fluid={screenshotSharp.childImageSharp.fluid}
-          alt={screenshot.alt}
-          draggable={false}
+          imageSharp={screenshotSharp}
+          image={screenshot}
         />
       </div>
     </div>

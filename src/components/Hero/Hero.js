@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { object, array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
-import GatsbyImage from 'gatsby-image';
 import Swiper from 'react-id-swiper';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
@@ -9,6 +8,7 @@ import Modal from '@components/Modal';
 import styles from './Hero.module.scss';
 import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
 import useGetImage from './useGetImage';
+import Image from '@components/Image/Image';
 
 const Hero = ({ primary, fields }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -47,12 +47,7 @@ const Hero = ({ primary, fields }) => {
           </div>
         </div>
         <div className={styles.imageWrapper}>
-          <GatsbyImage
-            className={styles.image}
-            fluid={hero.childImageSharp.fluid}
-            alt="secure privacy service"
-            draggable={false}
-          />
+          <Image className={styles.image} imageSharp={hero} />
           <div className={styles.flagWrapper}>
             <img
               className={styles.flag}

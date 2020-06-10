@@ -2,16 +2,14 @@ import React from 'react';
 import style from './Item.module.scss';
 import { RichText } from 'prismic-reactjs';
 import { object, array } from 'prop-types';
-import Img from 'gatsby-image';
+import Image from '@components/Image/Image';
 
 const Item = ({ screenshot, screenshotSharp, name, tag }) => {
   const tagList = tag[0].text.split(/\s*,\s*/);
-  const image =
-    (screenshotSharp && screenshotSharp.childImageSharp.fluid) || '';
   return (
     <div className={style.item}>
       <div className={style.imageBlock}>
-        <Img fluid={image} alt={screenshot.alt} />
+        <Image image={screenshot} imageSharp={screenshotSharp} />
       </div>
       <div className={style.textBlock}>
         <div className={style.name}>

@@ -5,7 +5,7 @@ import { string, array, object } from 'prop-types';
 import classnames from 'classnames';
 import { Link } from 'gatsby';
 import Arrow from './image/arrow.inline.svg';
-import Img from 'gatsby-image';
+import Image from '@components/Image/Image';
 
 const Card = ({
   benefits,
@@ -13,6 +13,7 @@ const Card = ({
   buttonprice,
   cardtitle,
   description,
+  image,
   imageSharp,
   type,
 }) => {
@@ -20,8 +21,6 @@ const Card = ({
     [style['card']]: true,
     [style[type]]: style[type],
   });
-
-  const image = imageSharp && imageSharp.childImageSharp.fluid;
 
   return (
     <Link className={classes} to="/">
@@ -37,7 +36,13 @@ const Card = ({
             <p className={style.price}>{RichText.asText(buttonprice)}</p>
           </div>
         )}
-        {image && <Img fluid={image} className={style.buttonImage} />}
+        {image && (
+          <Image
+            imageSharp={imageSharp}
+            image={image}
+            className={style.buttonImage}
+          />
+        )}
 
         <p className={style.buttonText}>{RichText.asText(button)}</p>
         <Arrow />
@@ -53,6 +58,7 @@ Card.propTypes = {
   buttonprice: array,
   cardtitle: array,
   description: array,
+  image: object,
   imageSharp: object,
 };
 

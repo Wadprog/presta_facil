@@ -5,7 +5,7 @@ import { object, array } from 'prop-types';
 import Swiper from 'react-id-swiper';
 import { useBreakpoints } from '@hooks';
 import Button, { VARIANT } from '@components/Button/Button.js';
-import GatsbyImage from 'gatsby-image';
+import Image from '@components/Image/Image';
 
 const Features = ({ primary, fields }) => {
   const [buildKey, setBuildKey] = useState();
@@ -39,10 +39,10 @@ const Features = ({ primary, fields }) => {
         {fields.map(({ image, imageSharp, title, description }, index) => {
           return (
             <div className={styles.slide} key={`solutions${index}`}>
-              <GatsbyImage
+              <Image
                 className={styles.image}
-                fluid={imageSharp.childImageSharp.fluid}
-                alt={image.alt}
+                imageSharp={imageSharp}
+                image={image}
               />
               <RichText render={title} />
               <RichText render={description} />
