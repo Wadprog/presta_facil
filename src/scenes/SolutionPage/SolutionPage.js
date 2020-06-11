@@ -10,6 +10,7 @@ import Features from './components/Features/Features';
 import Questions from './components/Questions/Questions';
 import Agencies from '@components/Agencies';
 import Plans from '@components/Plans';
+import Calendly from '@components/Calendly/Calendly';
 
 const SolutionPage = ({ current, mainSection }) => {
   const body = current.body;
@@ -30,6 +31,8 @@ const SolutionPage = ({ current, mainSection }) => {
             return <Features {...section} key={`${section.type}${index}`} />;
           case 'questions':
             return <Questions {...section} key={`${section.type}${index}`} />;
+          case 'booking':
+            return <Calendly {...section} key={`${section.type}${index}`} />;
           case 'plans':
             return (
               <Plans

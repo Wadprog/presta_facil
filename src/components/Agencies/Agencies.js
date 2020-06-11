@@ -1,20 +1,17 @@
 import React from 'react';
 import style from './Agencies.module.scss';
 import Button, { VARIANT } from '@components/Button/Button.js';
-import Img from 'gatsby-image';
 import { Link } from 'gatsby';
-
+import Image from '@components/Image/Image';
 import { RichText } from 'prismic-reactjs';
 import { object, array } from 'prop-types';
 
 const Agencies = ({ primary }) => {
-  const image =
-    (primary.imageSharp && primary.imageSharp.childImageSharp.fluid) || '';
   return (
     <section className={style.agencies}>
       <div className={style.container}>
         <div className={style.image}>
-          <Img fluid={image} alt={primary.image.alt} draggable={false} />
+          <Image imageSharp={primary.imageSharp} image={primary.image} />
         </div>
         <div className={style.textBlock}>
           <h2 className={style.title}>{RichText.asText(primary.title)}</h2>

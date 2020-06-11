@@ -1,12 +1,11 @@
-@import "@styles/variables/all";
-@import "@styles/mixins/all";
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
 
 .item {
   max-width: 528px;
 }
 
 .imageBlock {
-  box-shadow: 0px 35px 50px rgba(31, 48, 74, 0.25);
   margin-bottom: 25px;
   border-radius: 12px;
   img {

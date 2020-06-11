@@ -1,5 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
+import { withPreview } from 'gatsby-source-prismic-graphql';
 import PropTypes from 'prop-types';
 
 import HomePage from '../scenes/HomePage';
@@ -33,20 +34,6 @@ const query = graphql`
                   description
                   button
                   mainImage
-                  mainImageSharp {
-                    childImageSharp {
-                      fluid(maxWidth: 500, quality: 90) {
-                        srcWebp
-                        srcSetWebp
-                        srcSet
-                        src
-                        sizes
-                        presentationWidth
-                        presentationHeight
-                        aspectRatio
-                      }
-                    }
-                  }
                   trusted
                   modalbuttontitle
                   modalbuttondescription
@@ -113,20 +100,6 @@ const query = graphql`
                 label
                 fields {
                   screenshot
-                  screenshotSharp {
-                    childImageSharp {
-                      fluid(maxHeight: 336, quality: 90) {
-                        srcWebp
-                        srcSetWebp
-                        srcSet
-                        src
-                        sizes
-                        presentationWidth
-                        presentationHeight
-                        aspectRatio
-                      }
-                    }
-                  }
                   name
                   tag
                   category
@@ -148,20 +121,6 @@ const query = graphql`
                   button
                   buttonprice
                   type
-                  imageSharp {
-                    childImageSharp {
-                      fluid(maxHeight: 48, quality: 90) {
-                        srcWebp
-                        srcSetWebp
-                        srcSet
-                        src
-                        sizes
-                        presentationWidth
-                        presentationHeight
-                        aspectRatio
-                      }
-                    }
-                  }
                 }
                 primary {
                   title
@@ -191,20 +150,6 @@ const query = graphql`
                   description
                   buttontext
                   image
-                  imageSharp {
-                    childImageSharp {
-                      fluid(quality: 90) {
-                        srcWebp
-                        srcSetWebp
-                        srcSet
-                        src
-                        sizes
-                        presentationWidth
-                        presentationHeight
-                        aspectRatio
-                      }
-                    }
-                  }
                 }
               }
             }
@@ -217,7 +162,15 @@ const query = graphql`
 
 const PageWithData = () => {
   return (
-    <StaticQuery query={`${query}`} render={(data) => <Page data={data} />} />
+    <StaticQuery
+      query={`${query}`}
+      render={withPreview(
+        (data) => (
+          <Page data={data} />
+        ),
+        query
+      )}
+    />
   );
 };
 

@@ -14,6 +14,19 @@ const Technologies = ({ primary, fields }) => {
     setBuildKey(+new Date());
   }, [width]);
 
+  const params = {
+    slidesPerView: 'auto',
+    slidesPerColumn: 2,
+    spaceBetween: 20,
+    breakpoints: {
+      768: {
+        allowTouchMove: false,
+        spaceBetween: 0,
+        slidesPerColumn: 1,
+      },
+    },
+  };
+
   return (
     <div className={style.integration}>
       <div className={style.container}>
@@ -35,19 +48,6 @@ const Technologies = ({ primary, fields }) => {
       </div>
     </div>
   );
-};
-
-const params = {
-  slidesPerView: 'auto',
-  slidesPerColumn: 2,
-  spaceBetween: 20,
-  breakpoints: {
-    768: {
-      allowTouchMove: false,
-      spaceBetween: 0,
-      slidesPerColumn: 1,
-    },
-  },
 };
 
 Technologies.propTypes = {

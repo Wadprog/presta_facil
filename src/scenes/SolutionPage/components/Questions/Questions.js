@@ -29,7 +29,11 @@ const Questions = ({ primary, fields }) => {
       <div className={styles.title}>
         <RichText render={primary.title} />
       </div>
-      <Accordion className={styles.accordion}>
+      <Accordion
+        className={styles.accordion}
+        allowZeroExpanded
+        allowMultipleExpanded
+      >
         {questionList.map(({ title, content, linktext, link }) => {
           return (
             <AccordionItem

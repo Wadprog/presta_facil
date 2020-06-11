@@ -63,7 +63,11 @@ const Subscribe = ({ primary }) => {
                 <span className={styles.errorMessage}>Wrong Email</span>
               </div>
               <div className={styles.button}>
-                <Button variant={VARIANT.PRIMARY} type="submit">
+                <Button
+                  variant={VARIANT.PRIMARY}
+                  type="submit"
+                  element="button"
+                >
                   {RichText.asText(primary.buttontext)}
                 </Button>
               </div>
