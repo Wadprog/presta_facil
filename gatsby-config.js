@@ -76,7 +76,10 @@ module.exports = {
       options: {
         repositoryName: 'secure-privacy',
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
+        defaultLang: 'en-us',
+        path: '/preview',
         previews: true,
+        extraPageFields: 'test_type',
         // omitPrismicScript: true,
         sharpKeys: [
           /image|photo|picture|illustration|screenshot|background|Image/,

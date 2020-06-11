@@ -27,133 +27,6 @@ exports.createPages = async ({ graphql, actions }) => {
               _meta {
                 uid
               }
-              body {
-                ... on PRISMIC_SolutionpageBodyHero {
-                  type
-                  label
-                  fields {
-                    partnerslogo
-                  }
-                  primary {
-                    modalvideo {
-                      ... on PRISMIC__ExternalLink {
-                        url
-                        _linkType
-                      }
-                    }
-                    buttontext
-                    description
-                    flag
-                    title
-                  }
-                }
-                ... on PRISMIC_SolutionpageBodyProjects {
-                  type
-                  label
-                  fields {
-                    description
-                    link {
-                      ... on PRISMIC__ExternalLink {
-                        url
-                      }
-                    }
-                    screenshot
-                    title
-                  }
-                  primary {
-                    title
-                  }
-                }
-                ... on PRISMIC_SolutionpageBodyQuestions {
-                  type
-                  label
-                  fields {
-                    link {
-                      ... on PRISMIC__ExternalLink {
-                        _linkType
-                        url
-                      }
-                    }
-                    linktext
-                    scan
-                    title
-                    content
-                  }
-                  primary {
-                    title
-                  }
-                }
-                ... on PRISMIC_SolutionpageBodyBenefits {
-                  type
-                  label
-                  fields {
-                    image
-                    text
-                  }
-                  primary {
-                    title
-                    button
-                  }
-                }
-                ... on PRISMIC_SolutionpageBodyFeatures {
-                  type
-                  label
-                  fields {
-                    description
-                    image
-                    title
-                  }
-                  primary {
-                    title
-                    button
-                  }
-                }
-                ... on PRISMIC_SolutionpageBodyPlans {
-                  type
-                  label
-                  primary {
-                    title
-                  }
-                }
-                ... on PRISMIC_SolutionpageBodyBooking {
-                  type
-                  label
-                  primary {
-                    title
-                  }
-                }
-              }
-            }
-          }
-        }
-        allLayouts {
-          edges {
-            node {
-              body2 {
-                ... on PRISMIC_LayoutBody2Agencies {
-                  type
-                  label
-                  primary {
-                    title
-                    description
-                    buttontext
-                    image
-                  }
-                }
-                ... on PRISMIC_LayoutBody2Plans {
-                  type
-                  label
-                  fields {
-                    image
-                    type
-                    cardtitle
-                    description
-                    benefits
-                    button
-                    buttonprice
-                  }
-                }
-              }
             }
           }
         }
@@ -165,14 +38,12 @@ exports.createPages = async ({ graphql, actions }) => {
     ({ node }) => node
   );
 
-  const mainSection = response.data.prismic.allLayouts.edges;
-
   solutionPage.forEach((item) => {
     const path = `/solution/${item._meta.uid}`;
     const context = {
+      uid: `${item._meta.uid}`,
       current: item,
       data: solutionPage,
-      mainSection: mainSection,
     };
 
     createPage({
