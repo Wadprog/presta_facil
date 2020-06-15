@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import { withPreview } from 'gatsby-source-prismic-graphql';
 import PropTypes from 'prop-types';
 
-import SolutionPage from '../../scenes/SolutionPage';
+import LawPage from '../../scenes/LawPage';
 import Layout from '@components/Layout';
 
 const Page = ({ data, uid }) => {
@@ -11,10 +11,9 @@ const Page = ({ data, uid }) => {
     return item.node._meta.uid === uid;
   });
   const body = pageContext[0].node;
-  const mainSection = data.prismic.allLayouts.edges;
   return (
     <Layout>
-      <SolutionPage current={body} mainSection={mainSection} />
+      <LawPage content={body} />
     </Layout>
   );
 };

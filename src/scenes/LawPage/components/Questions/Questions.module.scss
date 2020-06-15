@@ -1,0 +1,13 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.questions {
+  padding: 64px 20px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1088px;
+  margin: 0 auto;
+  @media (max-width: $lg) {
+    padding: 48px 16px;
+  }
+}
