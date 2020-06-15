@@ -30,6 +30,16 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+        allFeaturepages {
+          edges {
+            node {
+              _linkType
+              _meta {
+                uid
+              }
+            }
+          }
+        }
       }
     }
   `);
@@ -64,6 +74,25 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path,
       component: require.resolve(`./src/templates/Law/Law.js`),
+      context,
+    });
+  });
+
+  const featurePage = response.data.prismic.allFeaturepages.edges.map(
+    ({ node }) => node
+  );
+
+  featurePage.forEach((item) => {
+    const path = `/feature/${item._meta.uid}`;
+    const context = {
+      uid: `${item._meta.uid}`,
+      current: item,
+      data: solutionPage,
+    };
+
+    createPage({
+      path,
+      component: require.resolve(`./src/templates/Feature/Feature.js`),
       context,
     });
   });

@@ -165,12 +165,14 @@
 
 .flagWrapper {
   position: absolute;
-  width: 25%;
+  max-width: 320px;
+  max-height: 190px;
   bottom: -8px;
   right: 0;
   .flag {
     width: 100%;
     height: auto;
+    border-radius: 10px;
   }
 }
 
