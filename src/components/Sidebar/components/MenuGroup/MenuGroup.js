@@ -1,32 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styles from './MenuGroup.module.scss';
 import { array, object, bool } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import classnames from 'classnames';
 import MenuItem from '../../components/MenuItem/MenuItem';
 import Arrow from '../../image/arrow.inline.svg';
+import { useScrollActiveElement } from '@hooks';
+
+const HEADER_HEIGHT = 120;
 
 const MenuGroup = ({ primary, fields, isFirst }) => {
-  const [active, setActive] = useState(false);
-  const OFFSET = isFirst ? 1200 : 120;
+  const elem = RichText.asText(primary.title).replace(/\s/g, '') + 'title';
+  const OFFSET = isFirst ? 1200 : HEADER_HEIGHT; // 1200 this is offset for first element, it must be open
+  const active = useScrollActiveElement(elem, OFFSET, OFFSET);
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [active]);
-  const handleScroll = () => {
-    const id = RichText.asText(primary.title).replace(/\s/g, '') + 'title';
-    const elem = document.getElementById(id);
-    let offsetTop = elem.offsetTop - OFFSET;
-    let offsetBottom = offsetTop + elem.offsetHeight + OFFSET;
-    if (window.scrollY > offsetTop && window.scrollY < offsetBottom) {
-      !active && setActive(true);
-    } else {
-      active && setActive(false);
-    }
-  };
   const classes = classnames({
     [styles.item]: true,
     [styles.active]: active,
