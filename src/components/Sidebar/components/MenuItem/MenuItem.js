@@ -4,7 +4,8 @@ import styles from './MenuItem.module.scss';
 import { string } from 'prop-types';
 import classnames from 'classnames';
 
-const HEADER_OFFSET = 120;
+const TOP_OFFSET = 120;
+const BOTTOM_OFFSET = 50;
 
 const MenuItem = ({ itemName }) => {
   const [active, setActive] = useState(false);
@@ -17,8 +18,8 @@ const MenuItem = ({ itemName }) => {
   }, [active]);
   const handleScroll = () => {
     const elem = document.getElementById(`${itemName.replace(/\s/g, '')}`);
-    let offsetTop = elem.offsetTop - HEADER_OFFSET;
-    let offsetBottom = offsetTop + elem.offsetHeight;
+    let offsetTop = elem.offsetTop - TOP_OFFSET;
+    let offsetBottom = offsetTop + elem.offsetHeight + BOTTOM_OFFSET;
     if (window.scrollY > offsetTop && window.scrollY < offsetBottom) {
       !active && setActive(true);
     } else {

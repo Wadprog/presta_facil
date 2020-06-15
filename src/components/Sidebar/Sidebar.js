@@ -9,7 +9,10 @@ const Sidebar = ({ data }) => {
     <div className={styles.sidebar}>
       <div className={styles.menu}>
         {data.map((item, index) => {
-          return <MenuGroup {...item} key={`menugroup${index}`} />;
+          const isFirst = index === 0 ? true : false;
+          return (
+            <MenuGroup {...item} key={`menugroup${index}`} isFirst={isFirst} />
+          );
         })}
       </div>
       <div className={styles.buttonWrapper}>
