@@ -3,11 +3,13 @@
 
 .calendly {
   position: relative;
-  padding: 64px 20px;
+  padding: 64px 0;
+  background: #ffffff;
   &::before,
   &::after {
     content: url('./image/bg.svg');
     position: absolute;
+    z-index: 4;
     @media (max-width: 1100px) {
       display: none;
     }
@@ -49,13 +51,9 @@
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  max-width: 1000px;
   height: 650px;
   margin: 0 auto;
   background: $bg-blue;
-  border-radius: 50px 12px;
-  overflow: hidden;
-  box-shadow: 0px 30px 100px rgba(22, 53, 99, 0.15);
   z-index: 2;
   @media (max-width: $lg) {
     border-radius: 12px;
