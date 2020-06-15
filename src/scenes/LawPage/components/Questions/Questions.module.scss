@@ -3,11 +3,20 @@
 
 .questions {
   padding: 64px 20px;
-  display: flex;
-  justify-content: space-between;
-  max-width: 1088px;
-  margin: 0 auto;
   @media (max-width: $lg) {
     padding: 48px 16px;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding-left: calc(50% - 588px);
+  padding-right: calc(50% - 500px);
+}
+.list {
+  margin-left: 20px;
+  @media (max-width: $lg) {
+    margin-left: 0;
   }
 }
