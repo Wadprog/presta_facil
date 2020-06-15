@@ -17,7 +17,7 @@ const MenuItem = ({ itemName }) => {
     };
   }, [active]);
   const handleScroll = () => {
-    const elem = document.getElementById(`${itemName.replace(/\s/g, '')}`);
+    const elem = document.getElementById(itemName.replace(/\s/g, ''));
     let offsetTop = elem.offsetTop - TOP_OFFSET;
     let offsetBottom = offsetTop + elem.offsetHeight + BOTTOM_OFFSET;
     if (window.scrollY > offsetTop && window.scrollY < offsetBottom) {

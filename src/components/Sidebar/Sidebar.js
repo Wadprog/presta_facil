@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Sidebar.module.scss';
 import { array } from 'prop-types';
+import { RichText } from 'prismic-reactjs';
 import MenuGroup from './components/MenuGroup/MenuGroup';
 import Button, { VARIANT } from '@components/Button/Button.js';
 
@@ -9,10 +10,9 @@ const Sidebar = ({ data }) => {
     <div className={styles.sidebar}>
       <div className={styles.menu}>
         {data.map((item, index) => {
-          const isFirst = index === 0 ? true : false;
-          return (
-            <MenuGroup {...item} key={`menugroup${index}`} isFirst={isFirst} />
-          );
+          const isFirst = index === 0;
+          const key = RichText.asText(item.primary.title);
+          return <MenuGroup {...item} key={key} isFirst={isFirst} />;
         })}
       </div>
       <div className={styles.buttonWrapper}>

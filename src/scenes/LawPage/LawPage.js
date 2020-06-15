@@ -11,6 +11,7 @@ const LawPage = ({ content }) => {
   const data = content.body;
   const heroSection = data[0];
   const bookingSection = data.filter((item) => item.type === 'booking')[0];
+  // we take the first two sections from the solution page, because the content is duplicated
   const questionSection = data
     .filter((item) => item.type === 'questions')
     .slice(0, 2);

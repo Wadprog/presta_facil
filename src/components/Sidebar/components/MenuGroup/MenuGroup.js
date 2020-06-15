@@ -18,7 +18,7 @@ const MenuGroup = ({ primary, fields, isFirst }) => {
   }, [active]);
   const handleScroll = () => {
     const id = RichText.asText(primary.title).replace(/\s/g, '') + 'title';
-    const elem = document.getElementById(`${id}`);
+    const elem = document.getElementById(id);
     let offsetTop = elem.offsetTop - OFFSET;
     let offsetBottom = offsetTop + elem.offsetHeight + OFFSET;
     if (window.scrollY > offsetTop && window.scrollY < offsetBottom) {
@@ -32,7 +32,7 @@ const MenuGroup = ({ primary, fields, isFirst }) => {
     [styles.active]: active,
   });
   return (
-    <div className={classes} key={RichText.asText(primary.title)}>
+    <div className={classes}>
       <div className={styles.title}>
         <RichText render={primary.title} />
         <Arrow className={styles.arrow} />
