@@ -40,10 +40,11 @@ const Solutions = ({ primary, fields }) => {
           <RichText render={primary.description} />
         </div>
         <Swiper {...params} key={buildKey}>
-          {fields.map(({ image, title, text }, index) => {
+          {fields.map(({ image, title, text, pagename }, index) => {
+            const link = `/solution/${RichText.asText(pagename)}`;
             return (
               <div className={style.slide} key={`solutions${index}`}>
-                <Link to="/" className={style.item}>
+                <Link to={link} className={style.item}>
                   <img src={image.url} alt={image.alt} />
                   <RichText render={title} />
                   <div>
