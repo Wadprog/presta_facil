@@ -69,6 +69,26 @@ const query = graphql`
                   partnerslogo
                 }
               }
+              ... on PRISMIC_FeaturepageBodyWorks {
+                type
+                label
+                fields {
+                  link {
+                    ... on PRISMIC__ExternalLink {
+                      _linkType
+                      url
+                    }
+                  }
+                  name
+                  screenshot
+                  tag
+                }
+                primary {
+                  slider
+                  title
+                  description
+                }
+              }
               ... on PRISMIC_FeaturepageBodyQuestions {
                 type
                 label

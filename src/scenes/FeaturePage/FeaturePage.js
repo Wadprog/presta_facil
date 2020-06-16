@@ -5,6 +5,7 @@ import 'swiper/swiper.scss';
 
 import Hero from '@components/Hero';
 import Questions from '@components/Questions/Questions';
+import Works from './components/Works';
 
 const FeaturePage = ({ current }) => {
   const body = current.body;
@@ -15,6 +16,8 @@ const FeaturePage = ({ current }) => {
         switch (section.type) {
           case 'hero':
             return <Hero {...section} key={`${section.type}${index}`} />;
+          case 'works':
+            return <Works {...section} key={`${section.type}${index}`} />;
           case 'questions':
             return <Questions {...section} key={`${section.type}${index}`} />;
         }
