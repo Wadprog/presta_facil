@@ -52,4 +52,19 @@ exports.createPages = async ({ graphql, actions }) => {
       context,
     });
   });
+
+  solutionPage.forEach((item) => {
+    const path = `/law/${item._meta.uid}`;
+    const context = {
+      uid: `${item._meta.uid}`,
+      current: item,
+      data: solutionPage,
+    };
+
+    createPage({
+      path,
+      component: require.resolve(`./src/templates/Law/Law.js`),
+      context,
+    });
+  });
 };

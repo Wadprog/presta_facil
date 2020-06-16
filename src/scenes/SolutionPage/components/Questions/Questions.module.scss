@@ -75,6 +75,9 @@
   padding: 0 100px;
   background: #ffffff;
   border-radius: 12px;
+  &:focus {
+    outline: none;
+  }
   @media (max-width: $md) {
     min-height: 80px;
     height: auto;

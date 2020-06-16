@@ -9,15 +9,13 @@ const Calendly = ({ primary }) => {
       <div className={styles.title}>
         <RichText render={primary.title} />
       </div>
-      <div className={styles.container}>
-        <div className={styles.calendar}>
-          <iframe
-            src="https://calendly.com/secure-privacy/secure-privacy-call"
-            width="100%"
-            height="100%"
-            frameBorder="0"
-          ></iframe>
-        </div>
+      <div className={styles.calendar}>
+        <iframe
+          src="https://calendly.com/secure-privacy/secure-privacy-call?background_color=F7F9FB"
+          width="100%"
+          height="100%"
+          frameBorder="0"
+        ></iframe>
       </div>
     </section>
   );
