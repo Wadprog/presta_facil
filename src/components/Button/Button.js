@@ -18,7 +18,7 @@ const Button = ({
   disabled,
   click,
   type,
-  ref,
+  to,
   fullWidth,
   isHeader,
   element,
@@ -38,7 +38,7 @@ const Button = ({
       type={type}
       disabled={disabled}
       onClick={click}
-      to={ref}
+      to={to}
     >
       {children}
     </Component>
@@ -51,7 +51,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   click: PropTypes.func,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
-  ref: PropTypes.string,
+  to: PropTypes.string,
   fullWidth: PropTypes.bool,
   isHeader: PropTypes.bool,
   element: PropTypes.any,
@@ -62,7 +62,7 @@ Button.defaultProps = {
   disabled: false,
   type: 'button',
   click: () => {},
-  ref: '/',
+  to: '/',
   fullWidth: false,
   isHeader: false,
   element: Link,
