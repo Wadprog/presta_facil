@@ -24,9 +24,10 @@ const Works = ({ primary, fields }) => {
     },
   };
 
-  const listItem = fields.map((item, index) => {
+  const listItem = fields.map((item) => {
+    const key = item.name[0].text;
     return (
-      <div className={style.slide} key={`works${index}`}>
+      <div className={style.slide} key={key}>
         <Item {...item} />
       </div>
     );
