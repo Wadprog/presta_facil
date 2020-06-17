@@ -40,6 +40,16 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+        allTechnologypages {
+          edges {
+            node {
+              _linkType
+              _meta {
+                uid
+              }
+            }
+          }
+        }
       }
     }
   `);
@@ -87,12 +97,31 @@ exports.createPages = async ({ graphql, actions }) => {
     const context = {
       uid: `${item._meta.uid}`,
       current: item,
-      data: solutionPage,
+      data: featurePage,
     };
 
     createPage({
       path,
       component: require.resolve(`./src/templates/Feature/Feature.js`),
+      context,
+    });
+  });
+
+  const technologyPage = response.data.prismic.allTechnologypages.edges.map(
+    ({ node }) => node
+  );
+
+  technologyPage.forEach((item) => {
+    const path = `/technology/${item._meta.uid}`;
+    const context = {
+      uid: `${item._meta.uid}`,
+      current: item,
+      data: technologyPage,
+    };
+
+    createPage({
+      path,
+      component: require.resolve(`./src/templates/Technology/Technology.js`),
       context,
     });
   });
