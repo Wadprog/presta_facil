@@ -10,8 +10,9 @@ const Questions = ({ data }) => {
       <div className={styles.container}>
         <Sidebar data={data} />
         <div className={styles.list}>
-          {data.map((item, index) => {
-            return <Item {...item} key={`${item.type + index}`} />;
+          {data.map((item) => {
+            const key = item.primary.title[0].text;
+            return <Item {...item} key={key} />;
           })}
         </div>
       </div>

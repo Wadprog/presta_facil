@@ -4,7 +4,7 @@ import { array, object } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 
 const Item = ({ primary, fields }) => {
-  const sectionId = RichText.asText(primary.title).replace(/\s/g, '');
+  const sectionId = RichText.asText(primary.title).replace(/\s/g, '') + 'title';
   return (
     <div className={styles.container} id={sectionId}>
       <div className={styles.title}>
