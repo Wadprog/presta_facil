@@ -7,7 +7,7 @@ import Hero from '@components/Hero';
 import Projects from './components/Projects/Projects';
 import Benefits from './components/Benefits/Benefits';
 import Features from './components/Features/Features';
-import Questions from './components/Questions/Questions';
+import Questions from '@components/Questions/Questions';
 import Agencies from '@components/Agencies';
 import Plans from '@components/Plans';
 import Calendly from '@components/Calendly/Calendly';

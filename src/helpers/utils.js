@@ -3,4 +3,8 @@ function isValidEmail(email) {
   return regexp.test(email);
 }
 
-export default isValidEmail;
+function parseUrl(link) {
+  return link ? link.url : '/';
+}
+
+export { isValidEmail, parseUrl };

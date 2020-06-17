@@ -69,6 +69,7 @@ const query = graphql`
                   image
                   title
                   text
+                  pagename
                 }
               }
               ... on PRISMIC_HomepageBodyTechnologies {
@@ -103,6 +104,12 @@ const query = graphql`
                   name
                   tag
                   category
+                  link {
+                    ... on PRISMIC__ExternalLink {
+                      _linkType
+                      url
+                    }
+                  }
                 }
                 primary {
                   title
