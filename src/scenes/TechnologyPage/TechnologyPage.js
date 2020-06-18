@@ -7,6 +7,7 @@ import Hero from './components/Hero';
 import Benefit from './components/Benefit/Benefit';
 import WhatIs from './components/WhatIs/WhatIs';
 import Features from './components/Features/Features';
+import Banner from './components/Banner/Banner';
 
 const TechnologyPage = ({ current }) => {
   const body = current.body;
@@ -23,6 +24,8 @@ const TechnologyPage = ({ current }) => {
             return <WhatIs {...section} key={section.type} />;
           case 'how':
             return <Features {...section} key={section.type} />;
+          case 'banner':
+            return <Banner {...section} key={section.type} />;
         }
       })}
     </div>
