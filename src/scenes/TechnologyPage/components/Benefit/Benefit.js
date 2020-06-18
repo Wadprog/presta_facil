@@ -6,7 +6,6 @@ import styles from './Benefit.module.scss';
 
 const Benefit = ({ primary, fields }) => {
   const { title, description, subtitle, image } = primary;
-  console.log(primary);
   return (
     <section className={styles.benefit}>
       <div className={styles.background}>

@@ -6,20 +6,23 @@ import 'swiper/swiper.scss';
 import Hero from './components/Hero';
 import Benefit from './components/Benefit/Benefit';
 import WhatIs from './components/WhatIs/WhatIs';
+import Features from './components/Features/Features';
 
 const TechnologyPage = ({ current }) => {
   const body = current.body;
-  // console.log(body);
+  console.log(body);
   return (
     <div className={style.TechnologyPage}>
-      {body.map((section, index) => {
+      {body.map((section) => {
         switch (section.type) {
           case 'hero':
-            return <Hero {...section} key={`${section.type}${index}`} />;
+            return <Hero {...section} key={section.type} />;
           case 'benefits':
-            return <Benefit {...section} key={`${section.type}${index}`} />;
+            return <Benefit {...section} key={section.type} />;
           case 'whatis':
-            return <WhatIs {...section} key={`${section.type}${index}`} />;
+            return <WhatIs {...section} key={section.type} />;
+          case 'how':
+            return <Features {...section} key={section.type} />;
         }
       })}
     </div>
