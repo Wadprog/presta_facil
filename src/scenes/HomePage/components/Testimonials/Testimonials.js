@@ -34,7 +34,7 @@ const Testimonials = ({ fields }) => {
 
 const params = {
   slidesPerView: 'auto',
-  centeredSlides: true,
+  // centeredSlides: true,
   spaceBetween: 16,
   breakpoints: {
     768: {

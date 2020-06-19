@@ -6,6 +6,9 @@ export const linkResolver = (doc) => {
   if (doc.type === 'technologypage') {
     return `/technology/${doc.uid}`;
   }
+  if (doc.type === 'featurepage') {
+    return `/feature/${doc.uid}`;
+  }
   // Backup for all other types
   return '/';
 };

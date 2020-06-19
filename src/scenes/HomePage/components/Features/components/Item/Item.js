@@ -2,30 +2,38 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { RichText } from 'prismic-reactjs';
 import { object, string, array } from 'prop-types';
+import Image from '@components/Image/Image';
+import Button, { VARIANT } from '@components/Button/Button.js';
 import style from './Item.module.scss';
-import Arrow from '../../image/arrow.inline.svg';
 
-const Item = ({ image, text }) => {
+const Item = ({ image, imageSharp, text, title, pagename }) => {
+  const link = pagename ? 'feature/' + RichText.asText(pagename) : '/';
   return (
-    <Link to="/" className={style.link}>
-      <div className={style.item}>
-        <img className={style.image} src={image.url} alt={image.alt} />
-        <div className={style.container}>
-          <div className={style.title}>
-            <RichText render={text} />
-          </div>
-          <div className={style.arrowContainer}>
-            <Arrow className={style.arrow} />
-          </div>
-        </div>
+    <Link to={link} className={style.item}>
+      <div className={style.title}>
+        <RichText render={title} />
+      </div>
+      <div className={style.text}>
+        <RichText render={text} />
+      </div>
+      <div className={style.imageWrapper}>
+        <Image image={image} imageSharp={imageSharp} className={style.image} />
+      </div>
+      <div className={style.buttonWrapper}>
+        <Button variant={VARIANT.PRIMARY} fullWidth element="button">
+          Learn more
+        </Button>
       </div>
     </Link>
   );
 };
 Item.propTypes = {
   image: object,
+  imageSharp: array,
   link: string,
   text: array,
+  title: array,
+  pagename: array,
 };
 
 export default Item;

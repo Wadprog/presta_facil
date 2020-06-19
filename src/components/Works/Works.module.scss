@@ -120,7 +120,7 @@
 .works {
   :global {
     .swiper-container {
-      margin-top: 50px;
+      margin-top: 80px;
       margin-left: auto;
       margin-right: auto;
       padding-bottom: 84px;
@@ -155,6 +155,9 @@
       transform-origin: left top;
       background: linear-gradient(84.38deg, #24b04b -46.17%, #0263bc 186.99%);
       border-radius: 3px;
+    }
+    .swiper-slide {
+      height: auto;
     }
   }
 }
