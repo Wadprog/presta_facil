@@ -1,104 +1,123 @@
-@import "@styles/variables/all";
-@import "@styles/mixins/all";
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
 
-.link {
-  margin-bottom: 64px;
+.item {
+  display: block;
+  background: #f1f4f9;
+  border-radius: 50px 12px;
+  padding: 46px 45px 56px;
+  width: 100%;
+  color: $main-dark;
+  text-align: left;
+  height: 100%;
+  transition: 0.3s;
+  @media (max-width: $lg) {
+    border-radius: 32px 12px;
+    padding: 32px 24px 56px;
+  }
   @media (max-width: $md) {
-    margin-bottom: 32px;
-    &:last-child {
-      margin-bottom: 0;
+    padding: 24px 16px 56px;
+  }
+
+  &:hover {
+    box-shadow: inset 0 0 0 3px #fff;
+    .buttonWrapper {
+      opacity: 1;
+    }
+    .imageWrapper {
+      &::before,
+      &::after {
+        opacity: 1;
+      }
     }
   }
 }
 
-.item {
-  position: relative;
-  box-sizing: border-box;
-  width: 270px;
-  min-height: 208px;
-  padding: 16px;
-  border-radius: 8px 30px;
-  background-color: rgba($color: #e7eaf2, $alpha: 0.3);
-  z-index: 2;
-
-  &::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 8px 30px;
-    background: linear-gradient(262.55deg, #fb5f47 21.44%, #f9be5a 155.51%);
-    left: 0;
-    top: 0;
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 0.4s;
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    width: calc(100% + 20px);
-    height: calc(100% + 20px);
-    background-image: url("../../image/bg-item.svg");
-    background-repeat: no-repeat;
-    opacity: 0;
-    top: -9px;
-    left: -9px;
-    z-index: 1;
-    transition: opacity 0.4s;
-  }
-
-  &:hover {
-    box-shadow: 0px 30px 70px rgba(36, 61, 98, 0.2);
-    &::before,
-    &::after {
-      opacity: 1;
-    }
-    .title {
-      color: #fff;
-    }
-    .arrowContainer {
-      background-color: #fff;
-      .arrow path {
-        fill: #fa6748;
-      }
-    }
-  }
-
-  .image {
-    position: relative;
-    display: block;
-    border-radius: 8px;
-    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    z-index: 3;
-    max-height: 112px;
-  }
-  .title {
-    text-align: left;
-    color: #011949;
-    transition: color 0.4s;
-    font-weight: 600;
-    font-size: 12px;
+.title h3 {
+  font-family: $font-gramatika;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 130%;
+  max-width: 850px;
+  margin: 0 auto 12px;
+  text-align: left;
+  strong {
+    font-family: $font-gramatika-black;
+    font-weight: 900;
+    color: $green;
     letter-spacing: 0.03em;
-    text-transform: uppercase;
-    flex: 1;
+    text-transform: capitalize;
   }
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    z-index: 3;
+  @media (max-width: $lg) {
+    text-align: left;
+    font-size: 28px;
   }
-  .arrowContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: rgba($color: #011949, $alpha: 0.1);
+  @media (max-width: $md) {
+    font-size: 24px;
+  }
+}
+
+.text {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 180%;
+  letter-spacing: 0.03em;
+  color: $second-dark;
+  margin-bottom: 45px;
+  @media (max-width: $md) {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 24px;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: calc(100% + 30px);
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    @media (max-width: $lg) {
+      display: none;
+    }
+  }
+  &::before {
+    background-image: url('../../image/bg-item-right.svg');
+    left: -12px;
+  }
+  &::after {
+    background-image: url('../../image/bg-item-left.svg');
+    background-position: right;
+    width: 20%;
+    right: -12px;
+  }
+}
+
+.image {
+  position: relative;
+  border-radius: 16px;
+  box-shadow: 0px 51.5502px 72.1703px rgba(44, 59, 82, 0.15);
+  z-index: 3;
+}
+
+.buttonWrapper {
+  position: absolute;
+  max-width: 220px;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -24px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  @media (max-width: $lg) {
+    opacity: 1;
   }
 }

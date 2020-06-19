@@ -7,7 +7,7 @@
   align-items: center;
   width: 83px;
   height: 104px;
-  padding-top: 25px;
+  padding-top: 15px;
   transition: 0.3s;
   &::before {
     content: '';
@@ -23,6 +23,8 @@
   @media (min-width: $lg) {
     width: 128px;
     height: 128px;
+    padding-top: 25px;
+
     &:hover {
       padding-top: 15px;
       cursor: pointer;
@@ -63,6 +65,7 @@
     transition: 0.3s;
     @media (max-width: $lg) {
       max-width: 26px;
+      transform: scale(0.8);
     }
   }
   .background {

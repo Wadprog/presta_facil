@@ -3,6 +3,9 @@ export const linkResolver = (doc) => {
   if (doc.type === 'solutionpage') {
     return `/solution/${doc.uid}`;
   }
+  if (doc.type === 'featurepage') {
+    return `/feature/${doc.uid}`;
+  }
   // Backup for all other types
   return '/';
 };
