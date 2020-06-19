@@ -15,7 +15,7 @@ const Works = ({ primary, fields }) => {
   useEffect(() => {
     setSorterWorks(
       fields.filter((item) => {
-        return item.category === category;
+        return item.category[0].text === category;
       })
     );
   }, [category]);

@@ -2,7 +2,10 @@
 @import '@styles/mixins/all';
 
 .item {
+  display: flex;
+  flex-direction: column;
   max-width: 528px;
+  height: 100%;
   &:hover {
     .imageBlock::before {
       opacity: 1;
@@ -34,6 +37,7 @@
 .textBlock {
   display: flex;
   align-items: center;
+  margin-top: auto;
 }
 
 .name {

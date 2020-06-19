@@ -94,6 +94,7 @@
     left: -12px;
   }
   &::after {
+    background-image: url('../../image/bg-item-left.svg');
     background-position: right;
     width: 20%;
     right: -12px;
