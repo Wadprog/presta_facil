@@ -6,11 +6,18 @@
   margin: -180px auto 0;
   padding: 0 16px;
   @media (max-width: $lg) {
-    margin-top: -90px;
+    margin-top: -120px;
   }
   @media (max-width: $md) {
     padding: 0;
     margin-top: -70px;
+  }
+  :global {
+    .swiper-wrapper {
+      @media (max-width: $md) {
+        padding: 0 16px;
+      }
+    }
   }
 }
 .slide {
