@@ -90,6 +90,8 @@ const query = graphql`
                 fields {
                   image
                   text
+                  pagename
+                  title
                 }
                 primary {
                   title
