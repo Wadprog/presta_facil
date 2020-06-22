@@ -11,7 +11,6 @@ import Banner from './components/Banner/Banner';
 
 const TechnologyPage = ({ current }) => {
   const body = current.body;
-  console.log(body);
   return (
     <div className={style.TechnologyPage}>
       {body.map((section) => {
