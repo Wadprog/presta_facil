@@ -35,7 +35,7 @@
 .primary {
   background: $main-gradient;
   color: #fff;
-  z-index: 2;
+  z-index: 1;
   &::before {
     content: '';
     position: absolute;
@@ -64,7 +64,7 @@
 .secondary {
   background: $green-gradient;
   color: #fff;
-  z-index: 2;
+  z-index: 1;
   &::before {
     content: '';
     position: absolute;
@@ -109,7 +109,6 @@
 
 .green {
   background: transparent;
-  z-index: 2;
   border: 1px solid $green;
   color: $green;
   transition: border-color 0.3s;
