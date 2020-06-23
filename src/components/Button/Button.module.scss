@@ -36,6 +36,9 @@
   background: $main-gradient;
   color: #fff;
   z-index: 2;
+  @media (max-width: $md) {
+    width: 100%;
+  }
   &::before {
     content: '';
     position: absolute;

@@ -82,6 +82,7 @@ const query = graphql`
                 fields {
                   image
                   name
+                  pagename
                 }
               }
               ... on PRISMIC_HomepageBodyFeatures {

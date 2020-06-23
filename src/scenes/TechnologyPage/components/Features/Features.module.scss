@@ -1,0 +1,122 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.section {
+  position: relative;
+  padding: 64px 16px;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('./image/bg.png');
+    background-size: cover;
+    top: 0;
+    left: 0;
+  }
+  @media (max-width: $md) {
+    padding: 48px 16px 48px;
+  }
+}
+.container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1024px;
+  margin: 0 auto;
+  z-index: 2;
+  @media (max-width: $md) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.title {
+  margin-bottom: 16px;
+  text-align: center;
+  h2 {
+    font-family: $font-gramatika;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 130%;
+    strong {
+      font-family: $font-gramatika-black;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      text-transform: capitalize;
+      color: $green;
+    }
+    @media (max-width: $md) {
+      font-size: 28px;
+    }
+  }
+}
+
+.description {
+  position: relative;
+  margin: 0 auto 64px;
+  max-width: 704px;
+  text-align: center;
+  @media (max-width: $lg) {
+    margin-bottom: 32px;
+  }
+  p {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 160%;
+    opacity: 0.75;
+    @media (max-width: $lg) {
+      font-size: 16px;
+    }
+  }
+}
+
+.imageWrapper {
+  margin-top: -20px;
+  max-width: 450px;
+  @media (max-width: $md) {
+    margin-bottom: 32px;
+    order: 0;
+  }
+}
+.listWrapper {
+  max-width: 480px;
+  @media (max-width: $md) {
+    order: 1;
+  }
+  li {
+    position: relative;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 180%;
+    letter-spacing: 0.03em;
+    opacity: 0.75;
+    padding-left: 64px;
+    @media (max-width: $lg) {
+      font-size: 14px;
+      line-height: 1.4;
+      padding-left: 32px;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 18px;
+      height: 18px;
+      background-image: url('./image/checkmark.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      @media (max-width: $lg) {
+        top: 2px;
+      }
+    }
+
+    & + li {
+      margin-top: 32px;
+      @media (max-width: $lg) {
+        margin-top: 16px;
+      }
+    }
+  }
+}
