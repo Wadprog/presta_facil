@@ -6,9 +6,12 @@ import style from './Item.module.scss';
 import Background from '../../image/bg.inline.svg';
 import BackgroundHover from '../../image/bg-hover.inline.svg';
 
-const Item = ({ image, name }) => {
+const Item = ({ image, name, pagename }) => {
+  const link = `technology/${RichText.asText(pagename)
+    .toLowerCase()
+    .replace(' ', '-')}`;
   return (
-    <Link to="/" className={style.item}>
+    <Link to={link} className={style.item}>
       <div className={style.background}>
         <BackgroundHover className={style.hoverBg} />
         <Background className={style.mainBg} />
@@ -23,6 +26,7 @@ const Item = ({ image, name }) => {
 Item.propTypes = {
   image: object,
   name: array,
+  pagename: array,
 };
 
 export default Item;
