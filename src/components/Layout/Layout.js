@@ -43,6 +43,7 @@ const query = graphql`
                   slogan
                   buttontext
                   logo
+                  buttonlink
                 }
               }
               ... on PRISMIC_LayoutBodyMenu {

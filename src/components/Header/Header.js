@@ -26,6 +26,7 @@ const Header = ({ data }) => {
     [style.open]: isOpenMenu,
   });
   const primary = data[0].primary;
+  const link = RichText.asText(primary.buttonlink);
 
   const toogleMobileMenu = () => {
     setisOpenMenu(!isOpenMenu);
@@ -47,7 +48,7 @@ const Header = ({ data }) => {
             />
           </div>
           <div className={style.button}>
-            <Button variant={buttonVariant} isHeader={true}>
+            <Button variant={buttonVariant} isHeader={true} to={link}>
               {scrollDir === 'down' ? (
                 RichText.asText(primary.buttontext)
               ) : (
