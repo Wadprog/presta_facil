@@ -53,6 +53,7 @@ const query = graphql`
                 primary {
                   buttontitle
                   buttontext
+                  buttonlink
                   bookstitle
                   copyright
                 }

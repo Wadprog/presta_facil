@@ -6,10 +6,10 @@ import Books from './components/Books';
 import useGetImage from './useGetImage';
 import { array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
+import { parseString } from '@helpers';
 
 const Footer = ({ data }) => {
   const { book, book2, book3 } = useGetImage();
-  console.log(data);
   const primary = data[0].primary;
   const fields = data[0].fields;
   const booksList = [
@@ -18,23 +18,25 @@ const Footer = ({ data }) => {
     { image: book3, link: 'books' },
     { image: book, link: 'books' },
   ];
+  const buttonLink = parseString(primary.buttonlink);
+  const buttonText = parseString(primary.buttontext);
+  const booksTitle = parseString(primary.bookstitle);
+  const copyright = parseString(primary.copyright);
   return (
     <footer className={style.footer}>
       <div className={style.container}>
         <div className={style.banners}>
           <div className={style.quizWrapper}>
             <RichText render={primary.buttontitle} />
-            <Button variant={VARIANT.PRIMARY}>
-              {RichText.asText(primary.buttontext)}
+            <Button variant={VARIANT.PRIMARY} to={buttonLink}>
+              {buttonText}
             </Button>
           </div>
-          <Books data={booksList} title={RichText.asText(primary.bookstitle)} />
+          <Books data={booksList} title={booksTitle} />
         </div>
         <Navigation data={data} />
         <div className={style.wrapper}>
-          <p className={style.copyright}>
-            {RichText.asText(primary.copyright)}
-          </p>
+          <p className={style.copyright}>{copyright}</p>
           <ul className={style.social}>
             {fields.map(({ sociallink, socialogo }) => {
               return (
