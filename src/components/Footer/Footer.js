@@ -4,16 +4,19 @@ import style from './Footer.module.scss';
 import Navigation from './components/Navigation';
 import Books from './components/Books';
 import useGetImage from './useGetImage';
-import { object, array } from 'prop-types';
+import { array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 
-const Footer = ({ primary, fields }) => {
+const Footer = ({ data }) => {
   const { book, book2, book3 } = useGetImage();
+  console.log(data);
+  const primary = data[0].primary;
+  const fields = data[0].fields;
   const booksList = [
-    { image: book, link: '/' },
-    { image: book2, link: '/' },
-    { image: book3, link: '/' },
-    { image: book, link: '/' },
+    { image: book, link: 'books' },
+    { image: book2, link: 'books' },
+    { image: book3, link: 'books' },
+    { image: book, link: 'books' },
   ];
   return (
     <footer className={style.footer}>
@@ -27,7 +30,7 @@ const Footer = ({ primary, fields }) => {
           </div>
           <Books data={booksList} title={RichText.asText(primary.bookstitle)} />
         </div>
-        <Navigation data={menuList} />
+        <Navigation data={data} />
         <div className={style.wrapper}>
           <p className={style.copyright}>
             {RichText.asText(primary.copyright)}
@@ -49,152 +52,8 @@ const Footer = ({ primary, fields }) => {
   );
 };
 
-const menuList = [
-  {
-    title: 'Compare',
-    links: [
-      {
-        name: 'Coockiebot',
-        link: '/',
-      },
-      {
-        name: 'Cookiepro',
-        link: '/',
-      },
-      {
-        name: 'Iubenda',
-        link: '/',
-      },
-      {
-        name: 'OneTrust',
-        link: '/',
-      },
-      {
-        name: 'TrustArc',
-        link: '/',
-      },
-    ],
-  },
-  {
-    title: 'Solutions',
-    links: [
-      {
-        name: 'GDPR (EU)',
-        link: '/',
-      },
-      {
-        name: 'ePrivacy (EU)',
-        link: '/',
-      },
-      {
-        name: 'CCPA (California)',
-        link: '/',
-      },
-      {
-        name: 'PIPEDIA (Canada)',
-        link: '/',
-      },
-      {
-        name: 'SB 220 (Nevada)',
-        link: '/',
-      },
-      {
-        name: 'PDPA (Thailand)',
-        link: '/',
-      },
-      {
-        name: 'IAB',
-        link: '/',
-      },
-    ],
-  },
-  {
-    title: 'Technologies',
-    links: [
-      {
-        name: 'Wordpress',
-        link: '/',
-      },
-      {
-        name: 'Sitecore',
-        link: '/',
-      },
-      {
-        name: 'Magento',
-        link: '/',
-      },
-      {
-        name: 'Wix',
-        link: '/',
-      },
-      {
-        name: 'Shopify',
-        link: '/',
-      },
-      {
-        name: 'Drupal',
-        link: '/',
-      },
-      {
-        name: 'Squarespace',
-        link: '/',
-      },
-      {
-        name: 'Wordpress1',
-        link: '/',
-      },
-      {
-        name: 'Sitecore1',
-        link: '/',
-      },
-      {
-        name: 'Magento1',
-        link: '/',
-      },
-    ],
-  },
-  {
-    title: 'Company',
-    links: [
-      {
-        name: 'Blog',
-        link: '/',
-      },
-      {
-        name: 'Contact Us',
-        link: '/',
-      },
-      {
-        name: 'Support',
-        link: '/',
-      },
-      {
-        name: 'Sign in',
-        link: '/',
-      },
-      {
-        name: 'Request Demo',
-        link: '/',
-      },
-      {
-        name: 'Try for Free',
-        link: '/',
-      },
-      {
-        name: 'Pricing',
-        link: '/',
-      },
-      {
-        name: 'Enterprise Benefits',
-        link: '/',
-      },
-    ],
-  },
-];
-
 Footer.propTypes = {
-  primary: object,
-  fields: array,
+  data: array,
 };
 
 export default Footer;

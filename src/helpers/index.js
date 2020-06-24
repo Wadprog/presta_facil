@@ -1,4 +1,4 @@
 import debounce from './debounce';
-import { isValidEmail, parseUrl } from './utils';
+import { isValidEmail, parseUrl, parseString } from './utils';
 
-export { debounce, isValidEmail, parseUrl };
+export { debounce, isValidEmail, parseUrl, parseString };
