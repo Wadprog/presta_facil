@@ -41,7 +41,11 @@ const Footer = ({ data }) => {
             {fields.map(({ sociallink, socialogo }) => {
               return (
                 <li key={sociallink.url}>
-                  <a href={sociallink.url}>
+                  <a
+                    href={sociallink.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <img src={socialogo.url} alt={socialogo.alt} />
                   </a>
                 </li>
