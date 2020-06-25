@@ -91,3 +91,9 @@
     display: none;
   }
 }
+
+.header.open {
+  .bottom {
+    top: 0;
+  }
+}

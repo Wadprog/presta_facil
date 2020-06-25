@@ -6,6 +6,9 @@ export default () => {
       burger: file(relativePath: { eq: "homepage/icons/burger-icon.svg" }) {
         publicURL
       }
+      close: file(relativePath: { eq: "homepage/icons/close.svg" }) {
+        publicURL
+      }
     }
   `);
   return data;

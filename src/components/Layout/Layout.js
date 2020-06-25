@@ -10,12 +10,12 @@ import styles from './Layout.module.scss';
 import '@styles/index.scss';
 
 const Layout = ({ children, data }) => {
-  const header = data.prismic.allLayouts.edges[0].node.body[0];
+  const headerData = data.prismic.allLayouts.edges[0].node.body;
   const footer = data.prismic.allLayouts.edges[0].node.body1[0];
   return (
     <>
       <div className={styles.container}>
-        <Header {...header} />
+        <Header data={headerData} />
         <main className={styles.main} id="main">
           {children}
         </main>
@@ -43,6 +43,19 @@ const query = graphql`
                   slogan
                   buttontext
                   logo
+                  buttonlink
+                }
+              }
+              ... on PRISMIC_LayoutBodyMenu {
+                type
+                label
+                primary {
+                  title
+                }
+                fields {
+                  image
+                  link
+                  name
                 }
               }
             }
