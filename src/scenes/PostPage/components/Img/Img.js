@@ -5,7 +5,6 @@ import { object } from 'prop-types';
 import Image from '@components/Image/Image';
 
 const Img = ({ primary }) => {
-  console.log(primary);
   const { image, imageSharp, caption } = primary;
   return (
     <div className={style.image}>

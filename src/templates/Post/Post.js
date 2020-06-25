@@ -88,9 +88,36 @@ const query = graphql`
                   }
                 }
               }
+              ... on PRISMIC_BlogpostpageBodyAgencies {
+                type
+                label
+                primary {
+                  sectiontitle
+                  description
+                  buttontext
+                  buttonlink
+                  image
+                }
+              }
+              ... on PRISMIC_BlogpostpageBodyArticles {
+                type
+                label
+                primary {
+                  title
+                  buttontext
+                }
+              }
+              ... on PRISMIC_BlogpostpageBodySubscribe {
+                type
+                label
+                primary {
+                  title
+                  buttontext
+                }
+              }
             }
             date
-            descrition
+            description
             preview
             title
             category {

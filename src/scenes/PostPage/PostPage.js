@@ -6,16 +6,19 @@ import { dateToString, parseString } from '@helpers';
 
 import Text from './components/Text/Text';
 import Img from './components/Img/Img';
+import Subscribe from '@components/Subscribe';
+import CallToAction from '@components/CallToAction/CallToAction';
+
+// import Articles from '../HomePage/components/Articles/Articles';
 
 const PostPage = ({ current }) => {
-  const { body, category, date, title, descrition } = current;
+  const { body, category, date, title, description } = current;
   return (
     <div className={style.page}>
       <div className={style.container}>
         <div className={style.wrapper}>
           <ul className={style.categoryList}>
             {category.map((item) => {
-              console.log(item);
               const tag = parseString(item.tag);
               return (
                 <li className={style.categoryItem} key={tag}>
@@ -30,7 +33,7 @@ const PostPage = ({ current }) => {
           <RichText render={title} />
         </div>
         <div className={style.description}>
-          <RichText render={descrition} />
+          <RichText render={description} />
         </div>
         {body.map((section, index) => {
           switch (section.type) {
@@ -41,6 +44,17 @@ const PostPage = ({ current }) => {
           }
         })}
       </div>
+      {body.map((section, index) => {
+        console.log(section);
+        switch (section.type) {
+          case 'agencies':
+            return (
+              <CallToAction {...section} key={`${section.type}${index}`} />
+            );
+          case 'subscribe':
+            return <Subscribe {...section} key={`${section.type}${index}`} />;
+        }
+      })}
     </div>
   );
 };
