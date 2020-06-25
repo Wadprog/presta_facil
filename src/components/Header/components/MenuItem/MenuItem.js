@@ -5,6 +5,7 @@ import { RichText } from 'prismic-reactjs';
 import Arrow from './image/arrow.inline.svg';
 import Image from '@components/Image/Image';
 import classnames from 'classnames';
+import { Link } from 'gatsby';
 
 const MenuItem = ({ primary, fields }) => {
   const [activeImage, setActiveImage] = useState(0);
@@ -38,16 +39,16 @@ const MenuItem = ({ primary, fields }) => {
           <div className={style.list}>
             {fields.map((item, index) => {
               const text = RichText.asText(item.name);
-              const link = RichText.asText(item.link);
+              const link = '/' + RichText.asText(item.link);
               return (
-                <a
-                  href={link}
+                <Link
+                  to={link}
                   className={style.link}
                   key={text}
                   onMouseEnter={() => handleMouseEnter(index)}
                 >
                   {text}
-                </a>
+                </Link>
               );
             })}
           </div>
