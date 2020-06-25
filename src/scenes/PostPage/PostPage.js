@@ -5,10 +5,10 @@ import { RichText } from 'prismic-reactjs';
 import { dateToString, parseString } from '@helpers';
 
 import Text from './components/Text/Text';
+import Img from './components/Img/Img';
 
 const PostPage = ({ current }) => {
   const { body, category, date, title, descrition } = current;
-  console.log(category);
   return (
     <div className={style.page}>
       <div className={style.container}>
@@ -36,6 +36,8 @@ const PostPage = ({ current }) => {
           switch (section.type) {
             case 'text':
               return <Text {...section} key={`${section.type}${index}`} />;
+            case 'image':
+              return <Img {...section} key={`${section.type}${index}`} />;
           }
         })}
       </div>
