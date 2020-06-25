@@ -3,14 +3,13 @@
 
 .quizPage {
   background-color: $bg-blue;
-  padding: 180px 64px 64px;
+  padding: 180px 32px 32px;
   height: 100vh;
   @media (max-width: $lg) {
     padding: 180px 16px 32px;
   }
 }
 .container {
-  max-width: 1200px;
   margin: 0 auto;
   height: 100%;
 }

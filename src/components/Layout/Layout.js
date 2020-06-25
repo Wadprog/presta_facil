@@ -10,16 +10,17 @@ import styles from './Layout.module.scss';
 import '@styles/index.scss';
 
 const Layout = ({ children, data }) => {
-  const header = data.prismic.allLayouts.edges[0].node.body[0];
-  const footer = data.prismic.allLayouts.edges[0].node.body1[0];
+  const headerData = data.prismic.allLayouts.edges[0].node.body;
+  const footerData = data.prismic.allLayouts.edges[0].node.body1;
+
   return (
     <>
       <div className={styles.container}>
-        <Header {...header} />
+        <Header data={headerData} />
         <main className={styles.main} id="main">
           {children}
         </main>
-        <Footer {...footer} />
+        <Footer data={footerData} />
       </div>
     </>
   );
@@ -43,6 +44,19 @@ const query = graphql`
                   slogan
                   buttontext
                   logo
+                  buttonlink
+                }
+              }
+              ... on PRISMIC_LayoutBodyMenu {
+                type
+                label
+                primary {
+                  title
+                }
+                fields {
+                  image
+                  link
+                  name
                 }
               }
             }
@@ -53,6 +67,7 @@ const query = graphql`
                 primary {
                   buttontitle
                   buttontext
+                  buttonlink
                   bookstitle
                   copyright
                 }
@@ -64,6 +79,17 @@ const query = graphql`
                       url
                     }
                   }
+                }
+              }
+              ... on PRISMIC_LayoutBody1Menu {
+                type
+                label
+                fields {
+                  name
+                  pagename
+                }
+                primary {
+                  title
                 }
               }
             }
