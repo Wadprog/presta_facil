@@ -20,7 +20,7 @@ const MenuItem = ({ primary, fields }) => {
   };
   const title = RichText.asText(primary.title);
 
-  const toogleOpenSubmenu = () => {
+  const toggleOpenSubMenu = () => {
     setOpen(!open);
   };
 
@@ -31,7 +31,7 @@ const MenuItem = ({ primary, fields }) => {
   });
 
   return (
-    <li className={classItem} onClick={toogleOpenSubmenu}>
+    <li className={classItem} onClick={toggleOpenSubMenu}>
       {title}
       <Arrow />
       <div className={style.submenu}>
