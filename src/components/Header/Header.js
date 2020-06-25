@@ -18,7 +18,7 @@ const GRADIENT_GREEN =
   'linear-gradient(87.97deg, #24b04b -46.17%, #0263bc 186.99%)';
 
 const Header = ({ data }) => {
-  const [isOpenMenu, setisOpenMenu] = useState(false);
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
   const scrollDir = useScrollDirection();
   const { burger, close } = useGetImage();
   const headerStyles = classnames(style.header, {
@@ -28,8 +28,8 @@ const Header = ({ data }) => {
   const primary = data[0].primary;
   const link = RichText.asText(primary.buttonlink);
 
-  const toogleMobileMenu = () => {
-    setisOpenMenu(!isOpenMenu);
+  const toggleMobileMenu = () => {
+    setIsOpenMenu(!isOpenMenu);
     document.querySelector('html').classList.toggle('fixed');
   };
 
@@ -65,7 +65,7 @@ const Header = ({ data }) => {
             <div className={style.burger}>
               <IconButton
                 variant={VARIANT_ICON.BURGER}
-                click={toogleMobileMenu}
+                click={toggleMobileMenu}
               >
                 {isOpenMenu ? (
                   <img src={close.publicURL} alt="close menu" />
