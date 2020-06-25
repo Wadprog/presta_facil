@@ -1,6 +1,77 @@
 @import '@styles/variables/all';
 @import '@styles/mixins/all';
 
-.TechnologyPage {
+.page {
+  padding-top: 188px;
   background-color: $bg-blue;
+  color: $main-light;
+}
+
+.container {
+  margin: 100px auto 0;
+  padding: 54px 90px 108px;
+  background-color: #ffffff;
+  max-width: 896px;
+  box-shadow: 0px 30px 120px rgba(46, 66, 70, 0.2);
+  border-radius: 30px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  font-family: $font-gramatika;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.date {
+  opacity: 0.5;
+  margin-left: 22px;
+  line-height: 150%;
+}
+
+.categoryItem {
+  padding: 11px 12px 8px;
+  background: rgba($main-light, $alpha: 0.1);
+  border-radius: 100px;
+  line-height: 1;
+}
+
+.title {
+  font-family: $font-gramatika;
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 115%;
+  text-transform: capitalize;
+  text-align: center;
+  margin-bottom: 8px;
+  strong {
+    color: $green;
+  }
+}
+
+.description {
+  position: relative;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 180%;
+  opacity: 0.75;
+  max-width: 640px;
+  padding-bottom: 64px;
+  margin: 0 auto 64px;
+  text-align: center;
+  &::before {
+    content: '';
+    position: absolute;
+    width: 294px;
+    height: 1px;
+    background: $green-gradient;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }

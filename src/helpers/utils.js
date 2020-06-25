@@ -13,4 +13,14 @@ function parseString(arr) {
   return arr ? RichText.asText(arr) : '';
 }
 
-export { isValidEmail, parseUrl, parseString };
+function dateToString(date) {
+  const d = new Date(date);
+  const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+  return d.toLocaleDateString('en-US', options);
+}
+
+export { isValidEmail, parseUrl, parseString, dateToString };

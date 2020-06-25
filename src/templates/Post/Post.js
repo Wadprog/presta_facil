@@ -11,7 +11,6 @@ const Page = ({ data, uid }) => {
     return item.node._meta.uid === uid;
   });
   const body = pageContext[0].node;
-  console.log(body);
   return (
     <Layout>
       <Post current={body} />
