@@ -7,6 +7,9 @@
   color: $main-dark;
   & + .text {
     margin-top: 84px;
+    @media (max-width: $lg) {
+      margin-top: 42px;
+    }
   }
   &:last-of-type {
     margin-bottom: 0;

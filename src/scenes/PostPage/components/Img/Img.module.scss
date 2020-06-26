@@ -4,7 +4,9 @@
 .image {
   max-width: 636px;
   margin: 0 auto 84px;
-
+  @media (max-width: $lg) {
+    margin-bottom: 42px;
+  }
   img {
     margin-bottom: 12px;
   }

@@ -19,6 +19,9 @@
     top: 188px;
     left: 50%;
     transform: translateX(-50%);
+    @media (max-width: $lg) {
+      display: none;
+    }
   }
 }
 
@@ -30,6 +33,16 @@
   max-width: 896px;
   box-shadow: 0px 30px 120px rgba(46, 66, 70, 0.2);
   border-radius: 30px;
+  @media (max-width: $lg) {
+    margin-top: 0;
+    margin-bottom: 48px;
+    box-shadow: 0px 30px 60px rgba(46, 66, 70, 0.2);
+    padding: 48px 32px 56px;
+  }
+  @media (max-width: $md) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 
 .wrapper {
@@ -68,6 +81,9 @@
   strong {
     color: $green;
   }
+  @media (max-width: $md) {
+    font-size: 32px;
+  }
 }
 
 .description {
@@ -89,5 +105,10 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+  }
+  @media (max-width: $lg) {
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+    font-size: 16px;
   }
 }
