@@ -36,6 +36,11 @@
     letter-spacing: 0.03em;
     color: $second-dark;
   }
+  p + p,
+  p + li {
+    margin-top: 22px;
+  }
+
   a {
     font-weight: 600;
     color: $green;

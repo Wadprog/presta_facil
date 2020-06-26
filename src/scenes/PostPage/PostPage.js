@@ -9,7 +9,7 @@ import Img from './components/Img/Img';
 import Subscribe from '@components/Subscribe';
 import CallToAction from '@components/CallToAction/CallToAction';
 
-// import Articles from '../HomePage/components/Articles/Articles';
+import Articles from '@components/Articles/Articles';
 
 const PostPage = ({ current }) => {
   const { body, category, date, title, description } = current;
@@ -45,7 +45,6 @@ const PostPage = ({ current }) => {
         })}
       </div>
       {body.map((section, index) => {
-        console.log(section);
         switch (section.type) {
           case 'agencies':
             return (
@@ -53,6 +52,8 @@ const PostPage = ({ current }) => {
             );
           case 'subscribe':
             return <Subscribe {...section} key={`${section.type}${index}`} />;
+          case 'articles':
+            return <Articles {...section} key={`${section.type}${index}`} />;
         }
       })}
     </div>
