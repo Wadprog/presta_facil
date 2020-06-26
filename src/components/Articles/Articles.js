@@ -22,7 +22,7 @@ const Articles = ({ primary, data }) => {
       </div>
       {buttontext && (
         <div className={style.button}>
-          <Button variant={VARIANT.TRANSPARENT}>
+          <Button variant={VARIANT.TRANSPARENT} to="/blog">
             {RichText.asText(primary.buttontext)}
           </Button>
         </div>

@@ -6,6 +6,7 @@ import { dateToString, parseString } from '@helpers';
 
 import Text from './components/Text/Text';
 import Img from './components/Img/Img';
+import Video from './components/Video/Video';
 import Subscribe from '@components/Subscribe';
 import CallToAction from '@components/CallToAction/CallToAction';
 
@@ -41,6 +42,8 @@ const PostPage = ({ current }) => {
               return <Text {...section} key={`${section.type}${index}`} />;
             case 'image':
               return <Img {...section} key={`${section.type}${index}`} />;
+            case 'video':
+              return <Video {...section} key={`${section.type}${index}`} />;
           }
         })}
       </div>

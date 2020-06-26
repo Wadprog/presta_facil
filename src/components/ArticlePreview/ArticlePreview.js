@@ -3,13 +3,11 @@ import style from './ArticlePreview.module.scss';
 import { Link } from 'gatsby';
 import { object } from 'prop-types';
 import Arrow from './image/arrow.inline.svg';
-// import { RichText } from 'prismic-reactjs';
 import { dateToString, parseString } from '@helpers';
 import Image from '@components/Image/Image';
 
 const ArticlePreview = ({ node }) => {
   const { title, description, date, _meta, preview, category } = node;
-  console.log(preview);
   const link = `/blog/${_meta.uid}`;
   return (
     <Link to={link} className={style.preview}>
