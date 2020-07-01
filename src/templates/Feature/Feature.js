@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import { withPreview } from 'gatsby-source-prismic-graphql';
 import PropTypes from 'prop-types';
 
-import Feature from '../../scenes/FeaturePage/FeaturePage';
+import Feature from '@scenes/FeaturePage/FeaturePage';
 import Layout from '@components/Layout';
 
 const Page = ({ data, uid }) => {
