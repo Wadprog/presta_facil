@@ -26,7 +26,6 @@ const Books = ({ fields }) => {
       <div className={style.container}>
         <Swiper {...params}>
           {fields.map((item) => {
-            console.log(item);
             const { image, imageSharp, buttontext, downloadlink, flag } = item;
             return (
               <div className={style.slide} key={downloadlink.url}>

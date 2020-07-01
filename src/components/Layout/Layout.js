@@ -12,6 +12,7 @@ import '@styles/index.scss';
 const Layout = ({ children, data }) => {
   const headerData = data.prismic.allLayouts.edges[0].node.body;
   const footerData = data.prismic.allLayouts.edges[0].node.body1;
+  const footerBooksImages = data.prismic.allBookpages.edges[0].node.body[0];
 
   return (
     <>
@@ -20,7 +21,7 @@ const Layout = ({ children, data }) => {
         <main className={styles.main} id="main">
           {children}
         </main>
-        <Footer data={footerData} />
+        <Footer data={footerData} books={footerBooksImages} />
       </div>
     </>
   );
@@ -90,6 +91,21 @@ const query = graphql`
                 }
                 primary {
                   title
+                }
+              }
+            }
+          }
+        }
+      }
+      allBookpages {
+        edges {
+          node {
+            body {
+              ... on PRISMIC_BookpageBodyBooks {
+                type
+                label
+                fields {
+                  image
                 }
               }
             }
