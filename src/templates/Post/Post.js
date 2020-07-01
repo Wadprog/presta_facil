@@ -3,17 +3,17 @@ import { StaticQuery, graphql } from 'gatsby';
 import { withPreview } from 'gatsby-source-prismic-graphql';
 import PropTypes from 'prop-types';
 
-import Feature from '@scenes/FeaturePage/FeaturePage';
+import Post from '@scenes/PostPage/PostPage';
 import Layout from '@components/Layout';
 
 const Page = ({ data, uid }) => {
-  const pageContext = data.prismic.allFeaturepages.edges.filter((item) => {
+  const pageContext = data.prismic.allBlogpostpages.edges.filter((item) => {
     return item.node._meta.uid === uid;
   });
   const body = pageContext[0].node;
   return (
     <Layout>
-      <Feature current={body} />
+      <Post current={body} />
     </Layout>
   );
 };
@@ -46,65 +46,82 @@ export default PageWithData;
 const query = graphql`
   query($uid: String) {
     prismic {
-      allFeaturepages(uid: $uid) {
+      allBlogpostpages(uid: $uid) {
         edges {
           node {
+            _linkType
+            _meta {
+              uid
+            }
             body {
-              ... on PRISMIC_FeaturepageBodyHero {
+              ... on PRISMIC_BlogpostpageBodyText {
                 type
                 label
                 primary {
-                  modalvideo {
+                  text
+                }
+              }
+              ... on PRISMIC_BlogpostpageBodyQuote {
+                type
+                label
+                primary {
+                  quote
+                }
+              }
+              ... on PRISMIC_BlogpostpageBodyImage {
+                type
+                label
+                primary {
+                  image
+                  caption
+                }
+              }
+              ... on PRISMIC_BlogpostpageBodyVideo {
+                type
+                label
+                primary {
+                  video {
                     ... on PRISMIC__ExternalLink {
                       _linkType
                       url
                     }
                   }
+                }
+              }
+              ... on PRISMIC_BlogpostpageBodyAgencies {
+                type
+                label
+                primary {
+                  sectiontitle
+                  description
                   buttontext
-                  description
-                  flag
-                  title
-                }
-                fields {
-                  partnerslogo
+                  buttonlink
+                  image
                 }
               }
-              ... on PRISMIC_FeaturepageBodyWorks {
-                type
-                label
-                fields {
-                  link {
-                    ... on PRISMIC__ExternalLink {
-                      _linkType
-                      url
-                    }
-                  }
-                  name
-                  screenshot
-                  tag
-                }
-                primary {
-                  slider
-                  title
-                  description
-                }
-              }
-              ... on PRISMIC_FeaturepageBodyQuestions {
+              ... on PRISMIC_BlogpostpageBodyArticles {
                 type
                 label
                 primary {
                   title
+                  buttontext
                 }
-                fields {
+              }
+              ... on PRISMIC_BlogpostpageBodySubscribe {
+                type
+                label
+                primary {
                   title
-                  content
-                  linktext
-                  scan
+                  buttontext
                 }
               }
             }
-            _meta {
-              uid
+            date
+            description
+            preview
+            title
+            category {
+              tag
             }
           }
         }

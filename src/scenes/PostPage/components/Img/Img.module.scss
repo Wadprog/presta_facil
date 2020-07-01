@@ -1,0 +1,19 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.image {
+  max-width: 636px;
+  margin: 0 auto 84px;
+  @media (max-width: $lg) {
+    margin-bottom: 42px;
+  }
+  img {
+    margin-bottom: 12px;
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+  }
+}

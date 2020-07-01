@@ -134,10 +134,11 @@
 
 .button {
   margin-left: 32px;
+  min-width: 128px;
   @media (max-width: $md) {
     margin-left: 0;
     button {
-      width: 100%;
+      max-width: 100%;
     }
   }
 }

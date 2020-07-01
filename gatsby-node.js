@@ -50,6 +50,16 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+        allBlogpostpages {
+          edges {
+            node {
+              _linkType
+              _meta {
+                uid
+              }
+            }
+          }
+        }
       }
     }
   `);
@@ -122,6 +132,25 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path,
       component: require.resolve(`./src/templates/Technology/Technology.js`),
+      context,
+    });
+  });
+
+  const blogPostPage = response.data.prismic.allBlogpostpages.edges.map(
+    ({ node }) => node
+  );
+
+  blogPostPage.forEach((item) => {
+    const path = `/blog/${item._meta.uid}`;
+    const context = {
+      uid: `${item._meta.uid}`,
+      current: item,
+      data: blogPostPage,
+    };
+
+    createPage({
+      path,
+      component: require.resolve(`./src/templates/Post/Post.js`),
       context,
     });
   });

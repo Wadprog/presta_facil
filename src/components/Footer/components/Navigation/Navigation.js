@@ -16,7 +16,7 @@ const Navigation = ({ data }) => {
               <ul className={style.list}>
                 {fields.map(({ name, pagename }) => {
                   const linkName = parseString(name);
-                  const link = parseString(pagename);
+                  const link = '/' + parseString(pagename);
                   return (
                     <li className={style.link} key={linkName}>
                       <Link to={link}>{linkName}</Link>

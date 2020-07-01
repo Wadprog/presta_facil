@@ -67,6 +67,7 @@ const Subscribe = ({ primary }) => {
                   variant={VARIANT.PRIMARY}
                   type="submit"
                   element="button"
+                  fullWidth
                 >
                   {RichText.asText(primary.buttontext)}
                 </Button>
