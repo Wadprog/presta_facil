@@ -9,6 +9,9 @@ export const linkResolver = (doc) => {
   if (doc.type === 'featurepage') {
     return `/feature/${doc.uid}`;
   }
+  if (doc.type === 'blogpostpages') {
+    return `/blog/${doc.uid}`;
+  }
   // Backup for all other types
   return '/';
 };
