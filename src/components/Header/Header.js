@@ -11,6 +11,7 @@ import { useScrollDirection } from '@hooks';
 import useGetImage from './useGetImage';
 import { array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
+import { parseString } from '@helpers';
 
 const GRADIENT_ORANGE =
   'linear-gradient(262.53deg, #FB5F47 38.27%, #F9BE5A 113.07%)';
@@ -26,7 +27,7 @@ const Header = ({ data }) => {
     [style.open]: isOpenMenu,
   });
   const primary = data[0].primary;
-  const link = RichText.asText(primary.buttonlink);
+  const link = '/' + parseString(primary.buttonlink);
 
   const toggleMobileMenu = () => {
     setIsOpenMenu(!isOpenMenu);
@@ -36,7 +37,7 @@ const Header = ({ data }) => {
   const gradientTextBg =
     scrollDir === 'down' ? GRADIENT_ORANGE : GRADIENT_GREEN;
   const buttonVariant =
-    scrollDir === 'down' ? VARIANT.PRIMARY : VARIANT.TRANSPARENT_GREEN;
+    scrollDir === 'down' ? VARIANT.PRIMARY : VARIANT.TRANSPARENT;
   return (
     <header className={headerStyles}>
       <div className={style.container}>
@@ -49,14 +50,7 @@ const Header = ({ data }) => {
           </div>
           <div className={style.button}>
             <Button variant={buttonVariant} isHeader={true} to={link}>
-              {scrollDir === 'down' ? (
-                RichText.asText(primary.buttontext)
-              ) : (
-                <GradientText
-                  text={RichText.asText(primary.buttontext)}
-                  background="linear-gradient(86.37deg, #24B04B -46.17%, #0263BC 186.99%)"
-                />
-              )}
+              {RichText.asText(primary.buttontext)}
             </Button>
           </div>
         </div>

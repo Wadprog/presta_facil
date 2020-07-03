@@ -96,6 +96,7 @@
 }
 
 .slide {
+  position: relative;
   max-width: 495px;
   &:nth-child(2n) {
     margin-top: 60px;

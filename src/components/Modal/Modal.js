@@ -32,7 +32,9 @@ const ModalContainer = ({ open, closeModal, videoLink }) => {
         <ReactPlayer url={videoLink} width="100%" height="100%" controls />
       </div>
       <div className={style.button}>
-        <Button variant={VARIANT.PRIMARY}>take 2-min quiz</Button>
+        <Button variant={VARIANT.PRIMARY} to="/quiz">
+          take the 2-min quiz
+        </Button>
       </div>
       <div className={style.buttonClose}>
         <IconButton variant={VARIANT_ICON.CLOSE} click={closeModal}>
