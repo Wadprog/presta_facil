@@ -5,6 +5,8 @@ import { RichText } from 'prismic-reactjs';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import Item from './components/Item/Item';
 import { parseString, debounce } from '@helpers';
+import { useDebounce } from '@hooks';
+import SearchInput from '@components/SearchInput/SearchInput';
 
 const DEFAULT_VIDEO = 9; // video on page
 const COUNTER_STEP = 3;
@@ -13,13 +15,21 @@ const Videos = ({ primary, fields }) => {
   const [counter, setCounter] = useState(DEFAULT_VIDEO);
   const [videoList, setVideoList] = useState([]);
   const [search, setSearch] = useState();
+  const debounceSearchResult = useDebounce(search, 500);
   useEffect(() => {
     setVideoList(fields.slice(0, counter));
-  }, [counter]);
+    if (debounceSearchResult) {
+      const filteredList = fields.filter(({ title }) => {
+        return parseString(title)
+          .toLowerCase()
+          .includes(debounceSearchResult.toLowerCase());
+      });
+      setVideoList(filteredList);
+    }
+  }, [counter, debounceSearchResult]);
 
   const handleInputChange = (e) => {
-    debounce(() => setSearch(e.target.value), 200);
-    // setSearch(e.target.value);
+    setSearch(e.target.value);
   };
   const loadMoreVideo = () => {
     debounce(setCounter(counter + COUNTER_STEP), 2000);
@@ -34,8 +44,7 @@ const Videos = ({ primary, fields }) => {
             <RichText render={title} />
           </div>
           <div className={style.search}>
-            <input onChange={handleInputChange} />
-            <span>{search}</span>
+            <SearchInput onChange={handleInputChange} />
           </div>
         </div>
         <div className={style.list}>
@@ -44,15 +53,16 @@ const Videos = ({ primary, fields }) => {
           })}
         </div>
         <div className={style.buttonWrapper}>
-          {fields.length > counter && (
-            <Button
-              variant={VARIANT.TRANSPARENT}
-              click={loadMoreVideo}
-              element="button"
-            >
-              load more
-            </Button>
-          )}
+          {videoList.length > counter ||
+            (fields.length > counter && (
+              <Button
+                variant={VARIANT.TRANSPARENT}
+                click={loadMoreVideo}
+                element="button"
+              >
+                load more
+              </Button>
+            ))}
         </div>
       </div>
     </div>
