@@ -11,6 +11,7 @@ import { useScrollDirection } from '@hooks';
 import useGetImage from './useGetImage';
 import { array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
+import { parseString } from '@helpers';
 
 const GRADIENT_ORANGE =
   'linear-gradient(262.53deg, #FB5F47 38.27%, #F9BE5A 113.07%)';
@@ -26,7 +27,7 @@ const Header = ({ data }) => {
     [style.open]: isOpenMenu,
   });
   const primary = data[0].primary;
-  const link = RichText.asText(primary.buttonlink);
+  const link = '/' + parseString(primary.buttonlink);
 
   const toggleMobileMenu = () => {
     setIsOpenMenu(!isOpenMenu);
