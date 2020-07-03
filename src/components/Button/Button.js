@@ -31,6 +31,18 @@ const Button = ({
     [styles.disabled]: disabled,
   });
 
+  if (element === 'external') {
+    return (
+      <a
+        className={classes}
+        href={to}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {children}
+      </a>
+    );
+  }
   const Component = element;
   return (
     <Component

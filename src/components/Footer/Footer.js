@@ -3,21 +3,13 @@ import Button, { VARIANT } from '@components/Button/Button.js';
 import style from './Footer.module.scss';
 import Navigation from './components/Navigation';
 import Books from './components/Books';
-import useGetImage from './useGetImage';
-import { array } from 'prop-types';
+import { array, object } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import { parseString } from '@helpers';
 
-const Footer = ({ data }) => {
-  const { book, book2, book3 } = useGetImage();
+const Footer = ({ data, books }) => {
   const primary = data[0].primary;
   const fields = data[0].fields;
-  const booksList = [
-    { image: book, link: 'books' },
-    { image: book2, link: 'books' },
-    { image: book3, link: 'books' },
-    { image: book, link: 'books' },
-  ];
   const buttonLink = parseString(primary.buttonlink);
   const buttonText = parseString(primary.buttontext);
   const booksTitle = parseString(primary.bookstitle);
@@ -32,7 +24,7 @@ const Footer = ({ data }) => {
               {buttonText}
             </Button>
           </div>
-          <Books data={booksList} title={booksTitle} />
+          <Books data={books} title={booksTitle} />
         </div>
         <Navigation data={data} />
         <div className={style.wrapper}>
@@ -60,6 +52,7 @@ const Footer = ({ data }) => {
 
 Footer.propTypes = {
   data: array,
+  books: object,
 };
 
 export default Footer;
