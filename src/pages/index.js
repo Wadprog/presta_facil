@@ -33,6 +33,7 @@ const query = graphql`
                   title
                   description
                   button
+                  buttonlink
                   mainImage
                   trusted
                   modalbuttontitle
