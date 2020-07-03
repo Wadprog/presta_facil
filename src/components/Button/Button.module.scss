@@ -104,22 +104,9 @@
   &:active {
     color: $darken-green;
     border-color: $darken-green;
-  }
-}
-
-.green {
-  background: transparent;
-  border: 1px solid $green;
-  color: $green;
-  transition: border-color 0.3s;
-
-  &:hover {
-    color: darken($green, 10%);
-    border-color: darken($green, 10%);
-  }
-
-  &:active {
-    border-color: darken($green, 30%);
+    background: $green-gradient;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
 
