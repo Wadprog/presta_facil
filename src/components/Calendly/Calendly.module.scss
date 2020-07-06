@@ -4,7 +4,7 @@
 .calendly {
   position: relative;
   padding: 64px 0;
-  background: #ffffff;
+  background: #fbfcfd;
   &::before,
   &::after {
     content: url('./image/bg.svg');
@@ -45,6 +45,7 @@
     text-align: left;
     font-size: 28px;
     margin-bottom: 30px;
+    padding: 0 16px;
   }
 }
 .calendar {
@@ -57,5 +58,8 @@
   z-index: 2;
   @media (max-width: $lg) {
     border-radius: 12px;
+  }
+  @media (max-width: $md) {
+    height: 750px;
   }
 }

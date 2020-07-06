@@ -58,15 +58,17 @@ const Works = ({ primary, fields }) => {
             />
           </div>
         </div>
-        <Swiper {...params} key={category}>
-          {sorterWorks.map((item, index) => {
-            return (
-              <div className={style.slide} key={`works${index}`}>
-                <Item {...item} />
-              </div>
-            );
-          })}
-        </Swiper>
+        {sorterWorks.length > 0 && (
+          <Swiper {...params} key={category}>
+            {sorterWorks.map((item, index) => {
+              return (
+                <div className={style.slide} key={`works${index}`}>
+                  <Item {...item} />
+                </div>
+              );
+            })}
+          </Swiper>
+        )}
       </div>
     </div>
   );

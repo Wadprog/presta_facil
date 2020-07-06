@@ -24,6 +24,12 @@ const MenuItem = ({ primary, fields }) => {
     setOpen(!open);
   };
 
+  const handleClick = () => {
+    if (document.querySelector('html').classList.contains('fixed')) {
+      document.querySelector('html').classList.remove('fixed');
+    }
+  };
+
   const classItem = classnames({
     [style.item]: true,
     [style[title]]: true,
@@ -46,6 +52,7 @@ const MenuItem = ({ primary, fields }) => {
                   className={style.link}
                   key={text}
                   onMouseEnter={() => handleMouseEnter(index)}
+                  onClick={handleClick}
                 >
                   {text}
                 </Link>
