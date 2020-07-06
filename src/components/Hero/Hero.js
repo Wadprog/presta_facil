@@ -9,6 +9,7 @@ import styles from './Hero.module.scss';
 import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
 import useGetImage from './useGetImage';
 import Image from '@components/Image/Image';
+import { parseString } from '@helpers';
 
 const Hero = ({ primary, fields }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -41,7 +42,10 @@ const Hero = ({ primary, fields }) => {
             <RichText render={primary.description} />
           </div>
           <div className={styles.buttonWrapper}>
-            <Button variant={VARIANT.PRIMARY}>
+            <Button
+              variant={VARIANT.PRIMARY}
+              to={'/' + parseString(primary.buttonlink)}
+            >
               <RichText render={primary.buttontext} />
             </Button>
           </div>
