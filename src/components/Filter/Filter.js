@@ -5,7 +5,8 @@ import style from './Filter.module.scss';
 
 const Filter = ({ tagList, tagChange }) => {
   const handleChange = (value) => {
-    tagChange(value);
+    const selectedValue = value ? value.map((item) => item.value) : value;
+    tagChange(selectedValue);
   };
 
   let tagOptions = [];

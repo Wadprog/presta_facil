@@ -24,7 +24,6 @@ const Videos = ({ primary, fields }) => {
   });
   const uniqTagList = [...new Set(tagList)];
   useEffect(() => {
-    console.log(selectedTag);
     setVideoList(fields.slice(0, counter));
     if (debounceSearchResult) {
       const filteredList = fields.filter(({ title }) => {
@@ -34,7 +33,15 @@ const Videos = ({ primary, fields }) => {
       });
       setVideoList(filteredList);
     }
-  }, [counter, debounceSearchResult]);
+    if (selectedTag) {
+      const filteredList = selectedTag.map((tag) => {
+        return fields.filter(function (item) {
+          return item.tag.includes(tag);
+        });
+      });
+      setVideoList(filteredList.flat(1));
+    }
+  }, [counter, debounceSearchResult, selectedTag]);
 
   const handleInputChange = (e) => {
     setSearch(e.target.value);
