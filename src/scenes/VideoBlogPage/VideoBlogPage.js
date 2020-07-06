@@ -6,7 +6,6 @@ import CallToAction from '@components/CallToAction/CallToAction';
 
 const VideoBlogPage = ({ content }) => {
   const body = content.prismic.allVideopages.edges[0].node.body;
-  console.log(body);
   return (
     <div className={style.HomePage}>
       {body.map((section) => {

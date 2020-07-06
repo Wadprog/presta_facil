@@ -7,6 +7,7 @@ import Item from './components/Item/Item';
 import { parseString, debounce } from '@helpers';
 import { useDebounce } from '@hooks';
 import SearchInput from '@components/SearchInput/SearchInput';
+import Filter from '@components/Filter/Filter';
 
 const DEFAULT_VIDEO = 9; // video on page
 const COUNTER_STEP = 3;
@@ -15,8 +16,15 @@ const Videos = ({ primary, fields }) => {
   const [counter, setCounter] = useState(DEFAULT_VIDEO);
   const [videoList, setVideoList] = useState([]);
   const [search, setSearch] = useState();
+  const [selectedTag, setSelectedTag] = useState(null);
   const debounceSearchResult = useDebounce(search, 500);
+  let tagList = [];
+  fields.forEach((element) => {
+    tagList = [...tagList, ...element.tag.split(/\s*,\s*/)];
+  });
+  const uniqTagList = [...new Set(tagList)];
   useEffect(() => {
+    console.log(selectedTag);
     setVideoList(fields.slice(0, counter));
     if (debounceSearchResult) {
       const filteredList = fields.filter(({ title }) => {
@@ -34,6 +42,9 @@ const Videos = ({ primary, fields }) => {
   const loadMoreVideo = () => {
     debounce(setCounter(counter + COUNTER_STEP), 2000);
   };
+  const handleTagChange = (tag) => {
+    setSelectedTag(tag);
+  };
 
   const { title } = primary;
   return (
@@ -45,6 +56,9 @@ const Videos = ({ primary, fields }) => {
           </div>
           <div className={style.search}>
             <SearchInput onChange={handleInputChange} />
+          </div>
+          <div className={style.filter}>
+            <Filter tagList={uniqTagList} tagChange={handleTagChange} />
           </div>
         </div>
         <div className={style.list}>
