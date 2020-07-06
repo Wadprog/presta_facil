@@ -4,6 +4,7 @@ import Button, { VARIANT } from '@components/Button/Button.js';
 import { RichText } from 'prismic-reactjs';
 import Image from '@components/Image/Image';
 import styles from './WhatIs.module.scss';
+import { parseString } from '@helpers';
 
 const WhatIs = ({ primary }) => {
   const {
@@ -33,7 +34,11 @@ const WhatIs = ({ primary }) => {
             <RichText render={subtitle} />
           </div>
           <div className={styles.buttonWrapper}>
-            <Button variant={VARIANT.PRIMARY} to={RichText.asText(buttonlink)}>
+            <Button
+              variant={VARIANT.PRIMARY}
+              to={'/' + parseString(buttonlink)}
+              fullWidth
+            >
               <RichText render={buttontext} />
             </Button>
           </div>

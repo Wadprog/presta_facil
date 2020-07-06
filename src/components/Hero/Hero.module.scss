@@ -186,6 +186,9 @@
   :global {
     .swiper-wrapper {
       align-items: center;
+      @media (min-width: $md) {
+        justify-content: space-between;
+      }
     }
   }
 }

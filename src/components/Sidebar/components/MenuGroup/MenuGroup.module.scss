@@ -38,6 +38,10 @@
   padding: 0 22px;
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
+  transition: 0.3s;
+  &:hover {
+    cursor: pointer;
+  }
   &::-webkit-scrollbar {
     width: 0 !important;
   }
