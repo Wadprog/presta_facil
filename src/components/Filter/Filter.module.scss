@@ -1,12 +1,29 @@
 @import '@styles/variables/all';
 @import '@styles/mixins/all';
 
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dateContainer {
+  position: relative;
+  margin-right: 16px;
+}
+
 .selectContainer {
-  max-width: 500px;
+  width: 100%;
+  margin-right: 16px;
 }
 
 .select {
   position: relative;
+  width: 100%;
   :global {
     .select__control {
       border: 1px solid rgba($main-light, 0.15);
@@ -15,6 +32,8 @@
       height: 48px;
       color: $main-light;
       box-shadow: none;
+      background: rgba($main-light, 0.03);
+
       &:hover {
         border-color: $main-light;
       }

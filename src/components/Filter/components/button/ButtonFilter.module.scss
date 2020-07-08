@@ -1,0 +1,29 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px 4px;
+  width: 109px;
+  height: 48px;
+  background: rgba($main-light, 0.15);
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  font-family: $font-sofia-pro;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 180%;
+  letter-spacing: 0.03em;
+  color: rgba($main-light, 0.75);
+  cursor: pointer;
+  transition: background 0.3s;
+  svg {
+    margin-right: 12px;
+  }
+  &:hover {
+    background: rgba($main-light, 0.05);
+  }
+}

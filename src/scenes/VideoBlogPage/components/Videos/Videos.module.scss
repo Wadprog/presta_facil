@@ -12,11 +12,17 @@
 }
 
 .wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   margin-bottom: 100px;
 }
 
+.filter {
+  width: 100%;
+}
+
 .title {
-  margin-bottom: 16px;
   h2 {
     font-family: $font-gramatika;
     font-weight: 400;
