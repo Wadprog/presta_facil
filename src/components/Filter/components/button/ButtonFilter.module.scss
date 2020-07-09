@@ -8,7 +8,7 @@
   border-radius: 8px 4px;
   width: 109px;
   height: 48px;
-  background: rgba($main-light, 0.15);
+  background: rgba($main-light, 0.05);
   box-shadow: none;
   border: none;
   padding: 0;
@@ -24,6 +24,6 @@
     margin-right: 12px;
   }
   &:hover {
-    background: rgba($main-light, 0.05);
+    background: rgba($main-light, 0.1);
   }
 }
