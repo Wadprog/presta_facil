@@ -8,7 +8,7 @@
 
 .buttonWrapper {
   display: flex;
-  justify-content: flex-end;
+  margin-left: auto;
 }
 
 .dateContainer {
@@ -20,6 +20,10 @@
   width: 100%;
   margin-right: 16px;
 }
+.closeButton {
+  width: 100%;
+  max-width: 208px;
+}
 
 .select {
   position: relative;
@@ -29,7 +33,7 @@
       border: 1px solid rgba($main-light, 0.15);
       box-sizing: border-box;
       border-radius: 12px;
-      height: 48px;
+      height: 52px;
       color: $main-light;
       box-shadow: none;
       background: rgba($main-light, 0.03);

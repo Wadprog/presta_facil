@@ -4,7 +4,7 @@ import style from './Videos.module.scss';
 import { RichText } from 'prismic-reactjs';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import Item from './components/Item/Item';
-import { parseString, debounce } from '@helpers';
+import { parseString } from '@helpers';
 import { useDebounce } from '@hooks';
 import SearchInput from '@components/SearchInput/SearchInput';
 import Filter from '@components/Filter/Filter';
@@ -17,6 +17,7 @@ const Videos = ({ primary, fields }) => {
   const [videoList, setVideoList] = useState([]);
   const [search, setSearch] = useState();
   const [selectedTag, setSelectedTag] = useState(null);
+  const [dateRange, setDateRange] = useState();
   const debounceSearchResult = useDebounce(search, 500);
   let tagList = [];
   fields.forEach((element) => {
@@ -24,33 +25,35 @@ const Videos = ({ primary, fields }) => {
   });
   const uniqTagList = [...new Set(tagList)];
   useEffect(() => {
-    setVideoList(fields.slice(0, counter));
-    if (debounceSearchResult) {
-      const filteredList = fields.filter(({ title }) => {
-        return parseString(title)
-          .toLowerCase()
-          .includes(debounceSearchResult.toLowerCase());
-      });
-      setVideoList(filteredList);
-    }
-    if (selectedTag) {
-      const filteredList = selectedTag.map((tag) => {
-        return fields.filter(function (item) {
-          return item.tag.includes(tag);
-        });
-      });
-      setVideoList(filteredList.flat(1));
-    }
-  }, [counter, debounceSearchResult, selectedTag]);
+    const filteredList = fields.filter(({ title, date, tag }) => {
+      const filterBySearch = debounceSearchResult
+        ? parseString(title)
+            .toLowerCase()
+            .includes(debounceSearchResult.toLowerCase())
+        : true;
+      const filterByDate = dateRange
+        ? dateRange.startDate <= Date.parse(date) &&
+          Date.parse(date) <= dateRange.endDate
+        : true;
+
+      const filterByTag = selectedTag ? selectedTag.includes(tag) : true;
+
+      return filterBySearch && filterByDate && filterByTag;
+    });
+    setVideoList(filteredList.slice(0, counter));
+  }, [counter, debounceSearchResult, selectedTag, dateRange]);
 
   const handleInputChange = (e) => {
     setSearch(e.target.value);
   };
   const loadMoreVideo = () => {
-    debounce(setCounter(counter + COUNTER_STEP), 2000);
+    setCounter(counter + COUNTER_STEP);
   };
   const handleTagChange = (tag) => {
     setSelectedTag(tag);
+  };
+  const handleDateRangeChange = (value) => {
+    setDateRange(value);
   };
 
   const { title } = primary;
@@ -65,7 +68,11 @@ const Videos = ({ primary, fields }) => {
             <SearchInput onChange={handleInputChange} />
           </div>
           <div className={style.filter}>
-            <Filter tagList={uniqTagList} tagChange={handleTagChange} />
+            <Filter
+              tagList={uniqTagList}
+              tagChange={handleTagChange}
+              dateChange={handleDateRangeChange}
+            />
           </div>
         </div>
         <div className={style.list}>
@@ -74,16 +81,15 @@ const Videos = ({ primary, fields }) => {
           })}
         </div>
         <div className={style.buttonWrapper}>
-          {videoList.length > counter ||
-            (fields.length > counter && (
-              <Button
-                variant={VARIANT.TRANSPARENT}
-                click={loadMoreVideo}
-                element="button"
-              >
-                load more
-              </Button>
-            ))}
+          {fields.length > counter && (
+            <Button
+              variant={VARIANT.TRANSPARENT}
+              click={loadMoreVideo}
+              element="button"
+            >
+              load more
+            </Button>
+          )}
         </div>
       </div>
     </div>

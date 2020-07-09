@@ -4,7 +4,9 @@ import style from './DatePicker.module.scss';
 import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-import { format, getMilliseconds } from 'date-fns';
+import { format } from 'date-fns';
+
+import useStaticRanges from './useStaticRanges';
 
 const selectionRange = {
   startDate: new Date(),
@@ -17,6 +19,7 @@ const DatePicker = ({ onChange }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [isOpenDatePicker, setIsOpenDatePicker] = useState(false);
+  const staticRanges = useStaticRanges();
 
   const handleSelect = ({ selection }) => {
     setState([
@@ -29,8 +32,8 @@ const DatePicker = ({ onChange }) => {
     setStartDate(format(selection.startDate, 'MMM dd'));
     setEndDate(format(selection.endDate, 'MMM dd'));
     onChange({
-      startDate: getMilliseconds(selection.startDate),
-      endDate: getMilliseconds(selection.endDate),
+      startDate: Date.parse(selection.startDate),
+      endDate: Date.parse(selection.endDate),
     });
   };
   const wrapper = useRef();
@@ -56,7 +59,6 @@ const DatePicker = ({ onChange }) => {
     }
     setIsOpenDatePicker(false);
   };
-
   return (
     <div className={style.container}>
       <button className={style.date} onClick={handleDateClick} ref={button}>
@@ -78,6 +80,7 @@ const DatePicker = ({ onChange }) => {
             showMonthAndYearPickers={false}
             showDateDisplay={false}
             rangeColors={['#24B04B']}
+            staticRanges={staticRanges}
           />
         </div>
       )}
