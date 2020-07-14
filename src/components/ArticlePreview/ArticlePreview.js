@@ -7,8 +7,9 @@ import { dateToString, parseString } from '@helpers';
 import Image from '@components/Image/Image';
 
 const ArticlePreview = ({ node }) => {
-  const { title, description, date, _meta, preview, category } = node;
+  const { title, description, date, _meta, preview } = node;
   const link = `/blog/${_meta.uid}`;
+  const tags = _meta.tags;
   return (
     <Link to={link} className={style.preview}>
       <div className={style.imagePreview}>
@@ -23,11 +24,10 @@ const ArticlePreview = ({ node }) => {
         <p className={style.text}>{parseString(description)}</p>
         <div className={style.wrapper}>
           <ul className={style.categoryList}>
-            {category.map((item) => {
-              const tag = parseString(item.tag);
+            {tags.map((item, index) => {
               return (
-                <li className={style.tag} key={tag}>
-                  {tag}
+                <li className={style.tag} key={`${item}${index}`}>
+                  {item}
                 </li>
               );
             })}

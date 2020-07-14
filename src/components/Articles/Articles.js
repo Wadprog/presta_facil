@@ -62,15 +62,13 @@ const query = graphql`
           node {
             _linkType
             _meta {
+              tags
               uid
             }
             date
             description
             preview
             title
-            category {
-              tag
-            }
           }
         }
       }

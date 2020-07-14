@@ -52,6 +52,7 @@ const query = graphql`
             _linkType
             _meta {
               uid
+              tags
             }
             body {
               ... on PRISMIC_BlogpostpageBodyText {
@@ -120,9 +121,6 @@ const query = graphql`
             description
             preview
             title
-            category {
-              tag
-            }
           }
         }
       }
