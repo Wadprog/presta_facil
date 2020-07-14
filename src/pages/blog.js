@@ -42,6 +42,7 @@ const query = graphql`
             date
             description
             preview
+            backgroundpreview
             title
           }
         }

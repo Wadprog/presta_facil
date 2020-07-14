@@ -1,0 +1,61 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.hero {
+  max-width: 1192px;
+  padding: 64px 20px 40px;
+  margin: 0 auto;
+
+  :global {
+    .swiper-button-next,
+    .swiper-button-prev {
+      position: absolute;
+      border: solid $main-light;
+      border-width: 0 3px 3px 0;
+      display: inline-block;
+      padding: 5px;
+      z-index: 11;
+      top: 40%;
+      transition: border-color 0.3s;
+
+      &.swiper-button-disabled {
+        opacity: 0.3;
+      }
+
+      &:hover {
+        cursor: pointer;
+        border-color: $green;
+      }
+    }
+    .swiper-button-next {
+      right: 4px;
+      transform: rotate(-45deg);
+    }
+    .swiper-button-prev {
+      left: 4px;
+      transform: rotate(135deg);
+    }
+  }
+}
+
+.title {
+  font-family: $font-gramatika;
+  font-weight: 400;
+  font-size: 42px;
+  line-height: 130%;
+  margin: 0 auto 42px;
+  text-transform: capitalize;
+  text-align: center;
+  strong {
+    font-family: $font-gramatika-black;
+    font-weight: 900;
+    color: $green;
+    letter-spacing: 0.03em;
+  }
+  @media (max-width: $md) {
+    padding: 0 16px;
+    text-align: left;
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+}
