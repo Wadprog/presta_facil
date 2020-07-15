@@ -205,6 +205,8 @@
     -webkit-text-fill-color: transparent;
     background-image: $green-gradient;
     margin-bottom: 30px;
+    text-decoration: underline;
+
     &::before {
       content: '';
       position: absolute;
@@ -213,6 +215,11 @@
       background: $green-gradient;
       left: 0;
       bottom: 3px;
+    }
+    @media (max-width: $md) {
+      &::before {
+        display: none;
+      }
     }
   }
 }
@@ -224,9 +231,9 @@
 
 @keyframes down {
   0% {
-    transform: translateY(-20px);
+    opacity: 0;
   }
   100% {
-    transform: translateY(0);
+    opacity: 1;
   }
 }

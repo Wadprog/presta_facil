@@ -173,6 +173,14 @@
     width: 100%;
     height: auto;
     border-radius: 10px;
+    @media (max-width: $lg) {
+      max-width: 50%;
+    }
+  }
+  @media (max-width: $lg) {
+    max-width: 50%;
+    max-height: 100px;
+    text-align: right;
   }
 }
 
@@ -186,6 +194,9 @@
   :global {
     .swiper-wrapper {
       align-items: center;
+      @media (min-width: $md) {
+        justify-content: space-between;
+      }
     }
   }
 }

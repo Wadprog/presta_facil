@@ -5,9 +5,10 @@ import { object, string, array } from 'prop-types';
 import Image from '@components/Image/Image';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import style from './Item.module.scss';
+import { parseString } from '@helpers';
 
 const Item = ({ image, imageSharp, text, title, pagename }) => {
-  const link = pagename ? 'feature/' + RichText.asText(pagename) : '/';
+  const link = '/' + parseString(pagename);
   return (
     <Link to={link} className={style.item}>
       <div className={style.title}>

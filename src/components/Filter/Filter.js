@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import { array, func } from 'prop-types';
 import style from './Filter.module.scss';
@@ -9,7 +9,7 @@ import Button, { VARIANT } from '@components/Button/Button.js';
 const Filter = ({ tagList, tagChange, dateChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleChange = (value) => {
-    const selectedValue = value ? value.map((item) => item.value) : value;
+    const selectedValue = value ? value.map((item) => item.value) : null;
     tagChange(selectedValue);
   };
 
@@ -29,7 +29,7 @@ const Filter = ({ tagList, tagChange, dateChange }) => {
   return (
     <div className={style.container}>
       {isOpen ? (
-        <Fragment>
+        <>
           <div className={style.selectContainer}>
             <Select
               onChange={handleChange}
@@ -53,7 +53,7 @@ const Filter = ({ tagList, tagChange, dateChange }) => {
               Cancel Filter
             </Button>
           </div>
-        </Fragment>
+        </>
       ) : (
         <div className={style.buttonWrapper}>
           <ButtonFilter onClick={handleClick} />

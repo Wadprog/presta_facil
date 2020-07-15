@@ -6,6 +6,7 @@
   background-color: $second-dark;
   border-radius: 20px 20px 0px 0px;
   margin-top: -10px;
+  z-index: 2;
   @media (max-width: $lg) {
     padding: 16px;
   }

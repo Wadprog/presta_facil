@@ -8,7 +8,6 @@ const VARIANT = {
   PRIMARY: 'primary',
   SECONDARY: 'secondary',
   TRANSPARENT: 'transparent',
-  TRANSPARENT_GREEN: 'green',
   WHITE: 'white',
 };
 

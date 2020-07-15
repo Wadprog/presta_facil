@@ -16,8 +16,8 @@ const Sidebar = ({ data }) => {
         })}
       </div>
       <div className={styles.buttonWrapper}>
-        <Button variant={VARIANT.TRANSPARENT} fullWidth>
-          download CCPA e-book
+        <Button variant={VARIANT.TRANSPARENT} to="/books" fullWidth>
+          download e-book
         </Button>
       </div>
     </div>
