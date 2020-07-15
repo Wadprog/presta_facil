@@ -17,6 +17,9 @@
     }
     .imagePreview {
       padding-bottom: 121px;
+      @media (max-width: $md) {
+        padding-bottom: 100px;
+      }
     }
 
     .arrow {
@@ -49,9 +52,10 @@
   @media (max-width: $md) {
     & + .preview {
       margin-left: 0;
+      margin-top: 32px;
     }
     &:nth-child(n + 3) {
-      margin-top: 0;
+      margin-top: 32px;
     }
   }
 }
@@ -69,6 +73,9 @@
     transform: translateX(-50%);
     width: 100%;
     border-radius: 12px;
+  }
+  @media (max-width: $md) {
+    padding-bottom: 124px;
   }
 }
 .placeholder {
