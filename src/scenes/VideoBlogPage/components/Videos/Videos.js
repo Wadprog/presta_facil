@@ -9,11 +9,11 @@ import { useDebounce } from '@hooks';
 import SearchInput from '@components/SearchInput/SearchInput';
 import Filter from '@components/Filter/Filter';
 
-const DEFAULT_VIDEO = 9; // video on page
+const numberToRender = 9; // video on page
 const COUNTER_STEP = 3;
 
 const Videos = ({ primary, fields }) => {
-  const [counter, setCounter] = useState(DEFAULT_VIDEO);
+  const [counter, setCounter] = useState(numberToRender);
   const [videoList, setVideoList] = useState([]);
   const [search, setSearch] = useState();
   const [selectedTag, setSelectedTag] = useState(null);

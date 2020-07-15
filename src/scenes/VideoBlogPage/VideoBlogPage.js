@@ -14,6 +14,8 @@ const VideoBlogPage = ({ content }) => {
             return <Videos {...section} key={section.type} />;
           case 'cta':
             return <CallToAction {...section} key={section.type} />;
+          default:
+            return;
         }
       })}
     </div>
