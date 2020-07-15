@@ -17,8 +17,7 @@ const Item = ({ title, videourl, tag, date }) => {
 
   useEffect(() => {
     if (!previewImage) {
-      window
-        .fetch(`https://noembed.com/embed?url=${url}`)
+      fetch(`https://noembed.com/embed?url=${url}`)
         .then((response) => response.json())
         .then((data) => {
           if (data.thumbnail_url) {
