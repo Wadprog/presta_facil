@@ -45,6 +45,10 @@
     .rdrCalendarWrapper {
       width: 328px;
       padding: 0 28px;
+      @media (max-width: $md) {
+        padding: 0 16px;
+        width: 280px;
+      }
     }
     .rdrMonth {
       width: 100%;
@@ -137,6 +141,9 @@
         transform: translateY(-50%);
         background: $main-light;
         opacity: 0.15;
+      }
+      @media (max-width: $md) {
+        display: none;
       }
     }
 

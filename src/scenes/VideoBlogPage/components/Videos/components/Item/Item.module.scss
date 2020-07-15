@@ -14,6 +14,21 @@
   &:nth-child(3n + 3) {
     justify-content: flex-end;
   }
+  @media (max-width: $lg) {
+    &:nth-child(3n + 2) {
+      justify-content: center;
+      margin-top: 0;
+    }
+    &:nth-child(2n) {
+      justify-content: center;
+      margin-top: 32px;
+    }
+  }
+  @media (max-width: $md) {
+    &:nth-child(2n) {
+      margin-top: 0;
+    }
+  }
 }
 
 .container {

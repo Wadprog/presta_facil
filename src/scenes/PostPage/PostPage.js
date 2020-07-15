@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './PostPage.module.scss';
 import { RichText } from 'prismic-reactjs';
-import { dateToString, parseString } from '@helpers';
+import { dateToString } from '@helpers';
 
 import Text from './components/Text/Text';
 import Img from './components/Img/Img';
@@ -13,17 +13,16 @@ import CallToAction from '@components/CallToAction/CallToAction';
 import Articles from '@components/Articles/Articles';
 
 const PostPage = ({ current }) => {
-  const { body, category, date, title, description } = current;
+  const { body, date, title, description, _meta } = current;
   return (
     <div className={style.page}>
       <div className={style.container}>
         <div className={style.wrapper}>
           <ul className={style.categoryList}>
-            {category.map((item) => {
-              const tag = parseString(item.tag);
+            {_meta.tags.map((item) => {
               return (
-                <li className={style.categoryItem} key={tag}>
-                  {tag}
+                <li className={style.categoryItem} key={item}>
+                  {item}
                 </li>
               );
             })}

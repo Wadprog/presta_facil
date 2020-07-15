@@ -2,8 +2,14 @@
 @import '@styles/mixins/all';
 
 .container {
+  position: relative;
   display: flex;
   justify-content: space-between;
+  z-index: 11;
+  @media (max-width: $md) {
+    flex-direction: column;
+    align-items: flex-end;
+  }
 }
 
 .buttonWrapper {
@@ -14,11 +20,19 @@
 .dateContainer {
   position: relative;
   margin-right: 16px;
+  @media (max-width: $md) {
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
 }
 
 .selectContainer {
   width: 100%;
   margin-right: 16px;
+  @media (max-width: $md) {
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
 }
 .closeButton {
   width: 100%;

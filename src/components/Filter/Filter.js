@@ -14,6 +14,8 @@ const Filter = ({ tagList, tagChange, dateChange }) => {
   };
 
   const handleClick = () => {
+    tagChange(null);
+    dateChange(null);
     setIsOpen(!isOpen);
   };
 
