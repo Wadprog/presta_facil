@@ -8,11 +8,11 @@ import ArticlePreview from '@components/ArticlePreview';
 import { useDebounce } from '@hooks';
 import { parseString } from '@helpers';
 
-const DEFAULT_COUNTER = 6; // started article on the page
+const numberToRender = 6; // started article on the page
 const COUNTER_STEP = 3;
 
 const Articles = ({ articlesList }) => {
-  const [counter, setCounter] = useState(DEFAULT_COUNTER);
+  const [counter, setCounter] = useState(numberToRender);
   const [list, setList] = useState([]);
   const [search, setSearch] = useState();
   const [selectedTag, setSelectedTag] = useState(null);

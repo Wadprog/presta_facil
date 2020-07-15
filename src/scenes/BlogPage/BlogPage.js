@@ -21,6 +21,8 @@ const BlogPage = ({ content }) => {
                 <Subscribe {...section} />
               </div>
             );
+          default:
+            return;
         }
       })}
     </div>
