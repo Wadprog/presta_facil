@@ -8,12 +8,26 @@ import styles from './Hero.module.scss';
 import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
 import Image from '@components/Image/Image';
 import { parseString } from '@helpers';
+import Swiper from 'react-id-swiper';
 
 const Hero = ({ primary, fields }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleOpenModal = () => setModalIsOpen(true);
   const handleCloseModal = () => setModalIsOpen(false);
   const buttonLink = '/' + parseString(primary.buttonlink);
+
+  const params = {
+    slidesPerView: 3,
+    spaceBetween: 16,
+    breakpoints: {
+      992: {
+        spaceBetween: 34,
+      },
+    },
+    autoplay: {
+      delay: 3000,
+    },
+  };
   return (
     <div className={styles.hero}>
       <div className={styles.container}>
@@ -35,16 +49,18 @@ const Hero = ({ primary, fields }) => {
           <div className={styles.trustedWrapper}>
             <RichText render={primary.trusted} />
             <div className={styles.companies}>
-              {fields.map(({ trustedlogo }) => {
-                return (
-                  <img
-                    src={trustedlogo.url}
-                    alt={trustedlogo.alt}
-                    key={trustedlogo.url}
-                    draggable="false"
-                  />
-                );
-              })}
+              <Swiper {...params}>
+                {fields.map(({ trustedlogo }) => {
+                  return (
+                    <div className={styles.slide} key={trustedlogo.url}>
+                      <Image
+                        image={trustedlogo}
+                        className={styles.companyLogo}
+                      />
+                    </div>
+                  );
+                })}
+              </Swiper>
             </div>
           </div>
         </div>
