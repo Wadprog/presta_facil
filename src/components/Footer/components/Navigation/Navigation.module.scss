@@ -33,7 +33,7 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  max-height: 260px;
+  max-height: 270px;
   @media (max-width: $lg) {
     max-height: 100%;
   }
@@ -42,7 +42,6 @@
 .link {
   margin-right: 30px;
   margin-bottom: 12px;
-  // width: 120px;
   a {
     font-weight: 300;
     font-size: 12px;
