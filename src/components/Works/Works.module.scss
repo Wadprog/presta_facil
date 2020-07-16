@@ -137,12 +137,15 @@
     }
 
     .swiper-pagination-progressbar {
-      width: 100%;
+      width: calc(100% - 222px);
       height: 1px;
-      left: 0px;
+      right: 0px;
       top: 100%;
       position: absolute;
       background: #e4eef0;
+      @media (max-width: $lg) {
+        width: 100%;
+      }
     }
 
     .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
@@ -158,6 +161,16 @@
     }
     .swiper-slide {
       height: auto;
+    }
+
+    .prev,
+    .next {
+      top: unset;
+      bottom: -10px;
+    }
+    .next {
+      right: unset;
+      left: 87px;
     }
   }
 }

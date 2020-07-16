@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Swiper from 'react-id-swiper';
-import classnames from 'classnames';
 import { useBreakpoints } from '@hooks';
 import { array } from 'prop-types';
-
+import ArrowButton from '@components/ArrowButton/ArrowButton';
 import style from './Testimonials.module.scss';
 import Item from './components/Item';
-import Arrow from './image/arrow.inline.svg';
 
 const Testimonials = ({ fields }) => {
   const [buildKey, setBuildKey] = useState();
@@ -34,7 +32,6 @@ const Testimonials = ({ fields }) => {
 
 const params = {
   slidesPerView: 'auto',
-  // centeredSlides: true,
   spaceBetween: 16,
   breakpoints: {
     768: {
@@ -46,28 +43,13 @@ const params = {
     nextEl: '.next',
     prevEl: '.prev',
   },
-  // eslint-disable-next-line react/display-name
-  renderPrevButton: () => (
-    <span className={prevButtonClass}>
-      <Arrow />
-    </span>
-  ),
-  // eslint-disable-next-line react/display-name
-  renderNextButton: () => (
-    <span className={nextButtonClass}>
-      <Arrow />
-    </span>
-  ),
+  renderPrevButton() {
+    return <ArrowButton type="prev" />;
+  },
+  renderNextButton() {
+    return <ArrowButton type="next" />;
+  },
 };
-
-const nextButtonClass = classnames({
-  next: true,
-  [style.next]: true,
-});
-const prevButtonClass = classnames({
-  prev: true,
-  [style.prev]: true,
-});
 
 Testimonials.propTypes = {
   fields: array,
