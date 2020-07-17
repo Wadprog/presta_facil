@@ -7,9 +7,11 @@
   padding-top: 112px;
   padding-bottom: 120px;
   width: 100%;
+  @media (max-width: $lg) {
+    padding-bottom: 32px;
+  }
   @media (max-width: $md) {
     padding-top: 64px;
-    padding-bottom: 24px;
   }
 }
 
@@ -19,7 +21,7 @@
   width: 90%;
   left: 50%;
   transform: translateX(-50%);
-  @media (max-width: $md) {
+  @media (max-width: $lg) {
     width: 100%;
   }
 }
@@ -31,9 +33,11 @@
   border-radius: 20px;
   background: #ffffff;
   max-width: 676px;
+  @media (max-width: $lg) {
+    box-shadow: none;
+  }
   @media (max-width: $md) {
     padding: 16px 24px;
-    box-shadow: none;
   }
 }
 
@@ -149,9 +153,11 @@
   background: url('./image/bg.png'),
     linear-gradient(250.17deg, #4ca6cc -2.03%, #338dbe 102.35%);
   border-radius: 30px;
-  @media (max-width: $md) {
+  @media (max-width: $lg) {
     width: 100%;
-    padding-bottom: 38%;
     border-radius: 12px;
+  }
+  @media (max-width: $md) {
+    padding-bottom: 38%;
   }
 }

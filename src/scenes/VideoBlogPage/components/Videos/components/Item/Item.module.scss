@@ -25,6 +25,7 @@
     }
   }
   @media (max-width: $md) {
+    margin-bottom: 64px;
     &:nth-child(2n) {
       margin-top: 0;
     }

@@ -11,10 +11,13 @@ const Books = ({ fields }) => {
     slidesPerView: 'auto',
     spaceBetween: 16,
     centeredSlides: true,
-
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
     breakpoints: {
       768: {
-        spaceBetween: 0,
+        spaceBetween: 50,
         slidesPerView: 3,
         initialSlide: 1,
         centeredSlides: true,

@@ -23,6 +23,7 @@
   @media (max-width: $md) {
     margin-right: 0;
     margin-bottom: 16px;
+    width: 100%;
   }
 }
 
@@ -47,7 +48,7 @@
       border: 1px solid rgba($main-light, 0.15);
       box-sizing: border-box;
       border-radius: 12px;
-      height: 52px;
+      min-height: 52px;
       color: $main-light;
       box-shadow: none;
       background: rgba($main-light, 0.03);
@@ -115,6 +116,10 @@
         cursor: pointer;
         background: none;
       }
+    }
+    .select__menu {
+      position: relative;
+      z-index: 12;
     }
   }
 }
