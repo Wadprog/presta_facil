@@ -5,7 +5,7 @@ import Layout from '@components/Layout';
 
 const Page = () => {
   return (
-    <Layout>
+    <Layout hideMenu={true}>
       <QuizPage />
     </Layout>
   );

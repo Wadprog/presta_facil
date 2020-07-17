@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { bool, object, node } from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import { withPreview } from 'gatsby-source-prismic-graphql';
 
@@ -9,7 +9,7 @@ import Footer from '@components/Footer';
 import styles from './Layout.module.scss';
 import '@styles/index.scss';
 
-const Layout = ({ children, data }) => {
+const Layout = ({ children, data, hideMenu }) => {
   const headerData = data.prismic.allLayouts.edges[0].node.body;
   const footerData = data.prismic.allLayouts.edges[0].node.body1;
   const footerBooksImages = data.prismic.allBookpages.edges[0].node.body[0];
@@ -17,7 +17,7 @@ const Layout = ({ children, data }) => {
   return (
     <>
       <div className={styles.container}>
-        <Header data={headerData} />
+        <Header data={headerData} hideMenu={hideMenu} />
         <main className={styles.main} id="main">
           {children}
         </main>
@@ -28,8 +28,9 @@ const Layout = ({ children, data }) => {
 };
 
 Layout.propTypes = {
-  children: PropTypes.node,
-  data: PropTypes.object,
+  children: node,
+  data: object,
+  hideMenu: bool,
 };
 const query = graphql`
   {
@@ -131,7 +132,7 @@ const LayoutWithData = (props) => {
 };
 
 LayoutWithData.propTypes = {
-  children: PropTypes.node,
+  children: node,
 };
 
 export default LayoutWithData;
