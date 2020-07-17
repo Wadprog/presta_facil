@@ -15,6 +15,9 @@ export const linkResolver = (doc) => {
   if (doc.type === 'bookspage') {
     return `/books`;
   }
+  if (doc.type === 'copmarepage') {
+    return `/${doc.uid}`;
+  }
   // Backup for all other types
   return '/';
 };
