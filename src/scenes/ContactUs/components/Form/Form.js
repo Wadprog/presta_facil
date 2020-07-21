@@ -5,16 +5,19 @@ import Button, { VARIANT } from '@components/Button/Button.js';
 import Input from '../Input/Input';
 import TextArea from '../TextArea/TextArea';
 import Counter from '../Counter/Counter';
-import { parseString } from '@helpers';
+import { parseString, isValidEmail } from '@helpers';
 
 const initialState = {
   company: '',
   email: '',
   question: '',
-  question2: ',',
+  question2: '',
   counter: 0,
-  isSubmitted: false,
 };
+
+const CONTACT_FORM_URL = process.env.GATSBY_CONTACT_FORM_URL;
+const MIN_COUNTER_VALUE = 0;
+const MAX_COUNTER_VALUE = 100;
 
 const Form = ({
   button,
@@ -26,20 +29,50 @@ const Form = ({
   question2,
 }) => {
   const [formState, setFormState] = useState(initialState);
+  const [errors, setErrors] = useState([]);
   const handleInputChange = ({ target: { name, value } }) => {
     setFormState((state) => ({ ...state, [name]: value }));
+    errors.length > 0 &&
+      setErrors([...errors.filter((error) => error != name)]);
   };
   const handleChangeCounter = (value) => {
-    if (value >= 0 && value <= 100) {
+    if (value >= MIN_COUNTER_VALUE && value <= MAX_COUNTER_VALUE) {
       setFormState((state) => ({ ...state, ['counter']: value }));
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleOnSubmit = (e) => {
     e.preventDefault();
+    const { company, email } = formState;
+    if (!errors.includes('email') && !isValidEmail(email)) {
+      setErrors([...errors, 'email']);
+      return;
+    }
+
+    if (!errors.includes('company') && company.length === 0) {
+      setErrors([...errors, 'company']);
+      return;
+    }
+
+    errors.length === 0 &&
+      fetch(CONTACT_FORM_URL, {
+        method: 'POST',
+        headers: {},
+        body: new FormData(e.target),
+      })
+        .then(() => {
+          setFormState({
+            company: '',
+            email: '',
+            question: '',
+            question2: '',
+            counter: 0,
+          });
+        })
+        .catch(() => {});
   };
   return (
-    <form className={style.form}>
+    <form className={style.form} onSubmit={handleOnSubmit}>
       <div className={style.container}>
         <div className={style.row}>
           <Input
@@ -47,6 +80,7 @@ const Form = ({
             placeholder={parseString(company)}
             errorMessage="Required field"
             name="company"
+            valid={!errors.includes('company')}
             value={formState.company}
             handleChange={handleInputChange}
           />
@@ -55,6 +89,7 @@ const Form = ({
             placeholder={parseString(email)}
             errorMessage="Wrong email"
             name="email"
+            valid={!errors.includes('email')}
             value={formState.email}
             handleChange={handleInputChange}
           />
@@ -64,6 +99,8 @@ const Form = ({
             id="question"
             placeholder={parseString(question)}
             name="question"
+            value={formState.question}
+            handleChange={handleInputChange}
           />
         </div>
         <div className={style.row}>
@@ -78,6 +115,8 @@ const Form = ({
             id="question2"
             placeholder={parseString(question2)}
             name="question2"
+            value={formState.question2}
+            handleChange={handleInputChange}
           />
         </div>
         <div className={style.buttonRow}>
@@ -86,7 +125,7 @@ const Form = ({
               variant={VARIANT.PRIMARY}
               fullWidth
               element="button"
-              click={handleSubmit}
+              type="submit"
             >
               {parseString(button)}
             </Button>

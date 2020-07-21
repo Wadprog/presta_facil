@@ -8,7 +8,6 @@ import Form from './components/Form/Form';
 const ContactUs = ({ content }) => {
   const body = content.prismic.allContacts.edges[0].node;
   const { title } = body;
-  console.log(body);
   return (
     <div className={style.HomePage}>
       <div className={style.container}>

@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { bool, string, func, oneOfType, number } from 'prop-types';
 
 import classnames from 'classnames';
@@ -12,24 +12,25 @@ const Input = ({
   handleChange,
   errorMessage,
   valid,
-  invalid,
 }) => {
   const classes = classnames({
     [style.container]: true,
-    [style.valid]: valid,
-    [style.invalid]: invalid,
+    [style.invalid]: !valid,
+    [style.empty]: value.length === 0,
   });
   return (
     <div className={classes}>
       <input
         id={id}
-        placeholder={placeholder}
         className={style.input}
         onChange={handleChange}
         value={value}
         name={name}
       />
-      {invalid && <div className={style.error}>{errorMessage}</div>}
+      <label className={style.label} htmlFor={id}>
+        {placeholder}
+      </label>
+      {!valid && <div className={style.error}>{errorMessage}</div>}
     </div>
   );
 };
@@ -49,10 +50,9 @@ Input.propTypes = {
 Input.defaultProps = {
   id: '',
   valid: false,
-  invalid: false,
   errorMessage: '',
   placeholder: '',
   handleChange: () => {},
 };
 
-export default memo(Input);
+export default Input;

@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import style from './Counter.module.scss';
 import { string, func, oneOfType, number } from 'prop-types';
+import classnames from 'classnames';
 
 import Minus from './image/minus.inline.svg';
 import Plus from './image/plus.inline.svg';
@@ -17,13 +18,22 @@ const Counter = ({ label, value, handleChange }) => {
     handleChange(--value);
   };
 
+  const minusButtonClass = classnames({
+    [style.button]: true,
+    [style.disabled]: value === 0,
+  });
+
   return (
     <div className={style.container}>
       <label className={style.label} htmlFor="counter">
         {label}
       </label>
       <div className={style.wrapper}>
-        <button className={style.button} type="button" onClick={handleDecrease}>
+        <button
+          className={minusButtonClass}
+          type="button"
+          onClick={handleDecrease}
+        >
           <Minus />
         </button>
         <input
@@ -32,7 +42,7 @@ const Counter = ({ label, value, handleChange }) => {
           min="0"
           max="100"
           id="counter"
-          name="counter"
+          name="websites"
           value={value}
           onChange={handleOnChange}
         />
