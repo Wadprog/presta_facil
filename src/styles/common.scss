@@ -1,9 +1,2 @@
-@import "@styles/variables/all";
-@import "@styles/mixins/all";
-
-:root {
-  --coef-indent: 1; // for margin and padding
-  --coef-title: 1; // for title font-size
-  --coef-text: 1; // for regular text which size less than 20px font-size
-  --coef-size: 1; // for element width, height
-}
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
