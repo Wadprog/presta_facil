@@ -23,9 +23,9 @@
   }
 
   & + .item {
-    margin-left: 20px;
+    padding-left: 30px;
     @media (max-width: $lg) {
-      margin-left: 0;
+      padding-left: 0;
       margin-top: 32px;
     }
   }
@@ -94,9 +94,13 @@
   left: 0;
   width: 100vw;
   padding: 20px 20px 40px;
-  backdrop-filter: blur(60px);
   transition: opacity 0.3s;
   display: none;
+  background: $bg-blue;
+  @supports (backdrop-filter: blur(60px)) {
+    backdrop-filter: blur(60px);
+    background: none;
+  }
   @media (max-width: $lg) {
     position: relative;
     top: 0;
@@ -119,7 +123,7 @@
 
 .link {
   width: 160px;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 14px;
   line-height: 180%;
   letter-spacing: 0.03em;
@@ -133,7 +137,6 @@
   }
   &:hover {
     opacity: 1;
-    font-weight: 600;
   }
 
   &:nth-child(2n) {
@@ -237,7 +240,7 @@
   }
 }
 
-.Prices {
+.Pricing {
   .link {
     width: 100%;
     &:nth-child(2n) {

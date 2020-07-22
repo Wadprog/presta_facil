@@ -7,7 +7,7 @@ import Background from '../../image/bg.inline.svg';
 import BackgroundHover from '../../image/bg-hover.inline.svg';
 
 const Item = ({ image, name, pagename }) => {
-  const link = `technology/${RichText.asText(pagename)
+  const link = `/technology/${RichText.asText(pagename)
     .toLowerCase()
     .replace(' ', '-')}`;
   return (

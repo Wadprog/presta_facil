@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import { withPreview } from 'gatsby-source-prismic-graphql';
 import PropTypes from 'prop-types';
 
-import LawPage from '../../scenes/LawPage';
+import LawPage from '@scenes/LawPage';
 import Layout from '@components/Layout';
 
 const Page = ({ data, uid }) => {
@@ -68,6 +68,7 @@ const query = graphql`
                     }
                   }
                   buttontext
+                  buttonlink
                   description
                   flag
                   title

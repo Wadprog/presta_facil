@@ -1,0 +1,83 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.page {
+  position: relative;
+  padding: 180px 20px 64px;
+  margin-top: 80px;
+  @media (max-width: $md) {
+    padding-top: 140px;
+    padding-bottom: 48px;
+  }
+}
+.container {
+  max-width: 1154px;
+  margin: 0 auto;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 100px;
+  @media (max-width: $md) {
+    margin-bottom: 60px;
+  }
+}
+
+.filter {
+  width: 100%;
+  margin-top: 16px;
+  @media (max-width: $md) {
+    margin-top: 48px;
+  }
+}
+
+.title {
+  h2 {
+    font-family: $font-gramatika;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 130%;
+    text-align: center;
+    text-transform: capitalize;
+
+    strong {
+      font-family: $font-gramatika-black;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      text-transform: capitalize;
+      color: $green;
+    }
+    @media (max-width: $md) {
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  @media (max-width: $md) {
+    justify-content: center;
+  }
+}
+
+.buttonWrapper {
+  text-align: center;
+  margin-top: 64px;
+  @media (max-width: $md) {
+    margin-top: 48px;
+  }
+}
+
+.search {
+  max-width: 208px;
+  align-self: flex-end;
+  @media (max-width: $md) {
+    width: 100%;
+    max-width: 100%;
+  }
+}

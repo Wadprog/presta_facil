@@ -8,7 +8,7 @@ import Technologies from './components/Technologies';
 import Features from './components/Features';
 import Works from '@components/Works';
 import Plans from '@components/Plans';
-import Articles from './components/Articles';
+import Articles from '@components/Articles/Articles';
 import Subscribe from '@components/Subscribe';
 import Agencies from '@components/Agencies';
 import 'swiper/swiper.scss';

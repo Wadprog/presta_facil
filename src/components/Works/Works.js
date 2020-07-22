@@ -5,6 +5,7 @@ import Item from './components/Item';
 import Swiper from 'react-id-swiper';
 import { RichText } from 'prismic-reactjs';
 import { object, array } from 'prop-types';
+import ArrowButton from '@components/ArrowButton/ArrowButton';
 
 const Works = ({ primary, fields }) => {
   const categoryList = primary.categories[0].text.split(/\s*,\s*/);
@@ -30,6 +31,16 @@ const Works = ({ primary, fields }) => {
     pagination: {
       el: '.swiper-pagination',
       type: 'progressbar',
+    },
+    navigation: {
+      nextEl: '.next',
+      prevEl: '.prev',
+    },
+    renderPrevButton() {
+      return <ArrowButton type="prev" />;
+    },
+    renderNextButton() {
+      return <ArrowButton type="next" />;
     },
     breakpoints: {
       768: {
@@ -58,15 +69,17 @@ const Works = ({ primary, fields }) => {
             />
           </div>
         </div>
-        <Swiper {...params} key={category}>
-          {sorterWorks.map((item, index) => {
-            return (
-              <div className={style.slide} key={`works${index}`}>
-                <Item {...item} />
-              </div>
-            );
-          })}
-        </Swiper>
+        {sorterWorks.length > 0 && (
+          <Swiper {...params} key={category}>
+            {sorterWorks.map((item, index) => {
+              return (
+                <div className={style.slide} key={`works${index}`}>
+                  <Item {...item} />
+                </div>
+              );
+            })}
+          </Swiper>
+        )}
       </div>
     </div>
   );

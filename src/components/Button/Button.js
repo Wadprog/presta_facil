@@ -8,7 +8,6 @@ const VARIANT = {
   PRIMARY: 'primary',
   SECONDARY: 'secondary',
   TRANSPARENT: 'transparent',
-  TRANSPARENT_GREEN: 'green',
   WHITE: 'white',
 };
 
@@ -31,6 +30,18 @@ const Button = ({
     [styles.disabled]: disabled,
   });
 
+  if (element === 'external') {
+    return (
+      <a
+        className={classes}
+        href={to}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {children}
+      </a>
+    );
+  }
   const Component = element;
   return (
     <Component
