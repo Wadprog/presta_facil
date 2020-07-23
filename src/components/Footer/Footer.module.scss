@@ -76,7 +76,6 @@
   letter-spacing: 0.03em;
   color: #ffffff;
   opacity: 0.5;
-  margin-right: auto;
   @media (max-width: $md) {
     order: 2;
     width: 100%;
@@ -89,12 +88,33 @@
 .social {
   display: flex;
   align-items: center;
-  margin-right: 98px;
   li + li {
     margin-left: 18px;
   }
   @media (max-width: $md) {
     order: 1;
     margin: 0 auto;
+  }
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  p {
+    margin-left: 12px;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 135%;
+    letter-spacing: 0.03em;
+
+    @media (max-width: $sm) {
+      font-size: 12px;
+      max-width: 70px;
+    }
+  }
+  .logo {
+    @media (max-width: $sm) {
+      transform: scale(0.8);
+    }
   }
 }

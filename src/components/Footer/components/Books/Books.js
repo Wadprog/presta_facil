@@ -1,13 +1,14 @@
 import React from 'react';
 import Swiper from 'react-id-swiper';
-import { string, object } from 'prop-types';
+import { object } from 'prop-types';
+import { RichText } from 'prismic-reactjs';
 import { Link } from 'gatsby';
 import style from './Books.module.scss';
 
 const DEFAULT_SLIDES = 3;
 
-const Books = ({ data, title }) => {
-  const { fields } = data;
+const Books = ({ data }) => {
+  const { primary, fields } = data;
   const params = {
     slidesPerView: DEFAULT_SLIDES,
     spaceBetween: 20,
@@ -20,7 +21,7 @@ const Books = ({ data, title }) => {
 
   return (
     <div className={style.container}>
-      <h3>{title}</h3>
+      <RichText render={primary.title} />
       <Swiper {...params}>
         {fields.map(({ image }, index) => {
           return (
@@ -38,7 +39,6 @@ const Books = ({ data, title }) => {
 
 Books.propTypes = {
   data: object,
-  title: string,
 };
 
 export default Books;

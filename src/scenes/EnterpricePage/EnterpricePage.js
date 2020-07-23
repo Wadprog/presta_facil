@@ -11,7 +11,6 @@ const EnterpricePage = ({ content }) => {
   const body = content.prismic.allPricesenterpricepages.edges[0].node.body;
   const works = content.prismic.allHomepages.edges[0].node.body;
   const sections = [...body, ...works];
-  console.log(sections);
   let hero;
   let feature;
   let examples;
