@@ -26,6 +26,9 @@
     opacity: 0.5;
     pointer-events: none;
   }
+  @media (max-width: $sm) {
+    font-size: 14px;
+  }
 }
 
 .fullWidth {

@@ -69,6 +69,34 @@ const query = graphql`
           }
         }
       }
+      allHomepages {
+        edges {
+          node {
+            body {
+              ... on PRISMIC_HomepageBodyWorks {
+                type
+                label
+                fields {
+                  screenshot
+                  name
+                  tag
+                  category
+                  link {
+                    ... on PRISMIC__ExternalLink {
+                      url
+                    }
+                  }
+                }
+                primary {
+                  title
+                  dropdownlable
+                  categories
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 `;

@@ -1,0 +1,56 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.section {
+  padding: 64px 20px 148px;
+  max-width: 1056px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  margin: 0 auto 32px;
+
+  h2 {
+    font-family: $font-gramatika;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 130%;
+    text-transform: capitalize;
+    text-align: center;
+    strong {
+      font-family: $font-gramatika-black;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      color: $green;
+    }
+    @media (max-width: $md) {
+      font-size: 28px;
+    }
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  max-width: 540px;
+  margin-left: 30px;
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 17px;
+    background: $main-dark;
+    filter: blur(20px);
+    border-radius: 50%;
+    opacity: 0.8;
+  }
+
+  .image {
+    position: relative;
+  }
+}
