@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './HomePage.module.scss';
 import Hero from './components/Hero';
-import Testimonials from './components/Testimonials';
+import Testimonials from '@components/Testimonials';
 import Solutions from './components/Solutions';
 import Technologies from './components/Technologies';
 import Features from './components/Features';
@@ -23,7 +23,12 @@ const HomePage = ({ content }) => {
             return <Hero {...section} key={`${section.type}${index}`} />;
           case 'testimonials':
             return (
-              <Testimonials {...section} key={`${section.type}${index}`} />
+              <div
+                className={style.testimonials}
+                key={`${section.type}${index}`}
+              >
+                <Testimonials {...section} />
+              </div>
             );
           case 'solutions':
             return <Solutions {...section} key={`${section.type}${index}`} />;

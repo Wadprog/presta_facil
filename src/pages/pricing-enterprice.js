@@ -73,6 +73,16 @@ const query = graphql`
         edges {
           node {
             body {
+              ... on PRISMIC_HomepageBodyTestimonials {
+                type
+                label
+                fields {
+                  photo
+                  name
+                  company
+                  text
+                }
+              }
               ... on PRISMIC_HomepageBodyWorks {
                 type
                 label
