@@ -22,6 +22,7 @@ const BookCall = ({ primary }) => {
             variant={VARIANT.PRIMARY}
             element="button"
             click={handleOpenModal}
+            fullWidth
           >
             <RichText render={button} />
           </Button>

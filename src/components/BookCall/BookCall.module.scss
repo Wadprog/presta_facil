@@ -2,12 +2,21 @@
 @import '@styles/mixins/all';
 
 .section {
+  position: relative;
   padding: 64px 20px 148px;
   max-width: 1056px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: $md) {
+    padding-bottom: 160px;
+    flex-direction: column;
+  }
+}
+
+.block {
+  width: 100%;
 }
 
 .title {
@@ -19,14 +28,17 @@
     font-size: 42px;
     line-height: 130%;
     text-transform: capitalize;
-    text-align: center;
     strong {
       font-family: $font-gramatika-black;
       font-weight: 900;
       letter-spacing: 0.03em;
       color: $green;
     }
+    @media (max-width: $lg) {
+      font-size: 32px;
+    }
     @media (max-width: $md) {
+      text-align: center;
       font-size: 28px;
     }
   }
@@ -52,5 +64,20 @@
 
   .image {
     position: relative;
+  }
+
+  @media (max-width: $md) {
+    margin-left: 0;
+  }
+}
+
+.buttonWrapper {
+  width: 100%;
+  max-width: 192px;
+  @media (max-width: $md) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 60px;
   }
 }
