@@ -6,13 +6,14 @@ import Books from './components/Books';
 import { array, object } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import { parseString } from '@helpers';
+import Image from '@components/Image/Image';
 
-const Footer = ({ data, books }) => {
+const Footer = ({ data }) => {
   const primary = data[0].primary;
+  const books = data[1];
   const fields = data[0].fields;
   const buttonLink = parseString(primary.buttonlink);
   const buttonText = parseString(primary.buttontext);
-  const booksTitle = parseString(primary.bookstitle);
   const copyright = parseString(primary.copyright);
   return (
     <footer className={style.footer}>
@@ -24,10 +25,14 @@ const Footer = ({ data, books }) => {
               {buttonText}
             </Button>
           </div>
-          <Books data={books} title={booksTitle} />
+          <Books data={books} />
         </div>
         <Navigation data={data} />
         <div className={style.wrapper}>
+          <div className={style.logoWrapper}>
+            <Image image={primary.logo} className={style.logo} />
+            <RichText render={primary.logotext} />
+          </div>
           <p className={style.copyright}>{copyright}</p>
           <ul className={style.social}>
             {fields.map(({ sociallink, socialogo }) => {
@@ -38,7 +43,7 @@ const Footer = ({ data, books }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img src={socialogo.url} alt={socialogo.alt} />
+                    <Image image={socialogo} />
                   </a>
                 </li>
               );

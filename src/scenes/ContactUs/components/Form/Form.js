@@ -6,6 +6,7 @@ import Input from '../Input/Input';
 import TextArea from '../TextArea/TextArea';
 import Counter from '../Counter/Counter';
 import { parseString, isValidEmail } from '@helpers';
+import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
 
 const initialState = {
   company: '',
@@ -30,6 +31,9 @@ const Form = ({
 }) => {
   const [formState, setFormState] = useState(initialState);
   const [errors, setErrors] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const handleOpenModal = () => setModalIsOpen(true);
+  const handleCloseModal = () => setModalIsOpen(false);
   const handleInputChange = ({ target: { name, value } }) => {
     setFormState((state) => ({ ...state, [name]: value }));
     errors.length > 0 &&
@@ -131,12 +135,18 @@ const Form = ({
             </Button>
           </div>
           <div className={style.buttonWrapper}>
-            <Button variant={VARIANT.TRANSPARENT} fullWidth to="/">
+            <Button
+              variant={VARIANT.TRANSPARENT}
+              fullWidth
+              element="button"
+              click={handleOpenModal}
+            >
               {parseString(button2)}
             </Button>
           </div>
         </div>
       </div>
+      <ModalBookCall open={modalIsOpen} closeModal={handleCloseModal} />
     </form>
   );
 };
