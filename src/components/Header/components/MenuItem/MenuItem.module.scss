@@ -10,6 +10,7 @@
   height: 100%;
   display: flex;
   align-items: center;
+
   @media (max-width: $lg) {
     align-items: flex-start;
 
@@ -79,6 +80,38 @@
     }
   }
 }
+
+.item:hover::before {
+  content: '';
+  position: absolute;
+  width: 50vw;
+  height: 100%;
+  background-color: transparent;
+  top: 45%;
+  left: 100%;
+  transform: rotate(5deg);
+  transform-origin: top left;
+  z-index: 1;
+  @media (max-width: $lg) {
+    display: none;
+  }
+}
+.item:hover::after {
+  content: '';
+  position: absolute;
+  width: 50vw;
+  height: 100%;
+  background-color: transparent;
+  top: 45%;
+  right: 100%;
+  transform: rotate(-5deg);
+  transform-origin: top right;
+  z-index: 1;
+  @media (max-width: $lg) {
+    display: none;
+  }
+}
+
 .container {
   max-width: 610px;
   margin: 0 auto;
@@ -97,6 +130,7 @@
   transition: opacity 0.3s;
   display: none;
   background: $bg-blue;
+  z-index: 10;
   @supports (backdrop-filter: blur(60px)) {
     backdrop-filter: blur(60px);
     background: none;
