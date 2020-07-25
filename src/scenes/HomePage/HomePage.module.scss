@@ -4,3 +4,13 @@
 .HomePage {
   background-color: $bg-blue;
 }
+
+.testimonials {
+  margin: -180px auto 0;
+  @media (max-width: $lg) {
+    margin-top: -120px;
+  }
+  @media (max-width: $md) {
+    padding: 0;
+  }
+}

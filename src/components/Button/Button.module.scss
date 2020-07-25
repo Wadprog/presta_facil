@@ -26,6 +26,9 @@
     opacity: 0.5;
     pointer-events: none;
   }
+  @media (max-width: $sm) {
+    font-size: 14px;
+  }
 }
 
 .fullWidth {
@@ -65,26 +68,11 @@
   background: $green-gradient;
   color: #fff;
   z-index: 1;
-  &::before {
-    content: '';
-    position: absolute;
-    width: 70%;
-    height: 16px;
-    background: $green-gradient;
-    filter: blur(40px);
-    opacity: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -5px;
-    transition: 0.3s;
-    z-index: -1;
-  }
+  box-shadow: 0 0 0 1px rgba(#fff, 0.3);
+  transition: box-shadow 0.3s;
   &:hover {
-    &::before {
-      opacity: 1;
-    }
+    box-shadow: 0 0 0 1px rgba(#fff, 1);
   }
-
   &:active {
     background: $dark-gradient, $green-gradient;
   }

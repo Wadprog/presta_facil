@@ -12,7 +12,6 @@ import '@styles/index.scss';
 const Layout = ({ children, data, hideMenu }) => {
   const headerData = data.prismic.allLayouts.edges[0].node.body;
   const footerData = data.prismic.allLayouts.edges[0].node.body1;
-  const footerBooksImages = data.prismic.allBookpages.edges[0].node.body[0];
 
   return (
     <>
@@ -21,7 +20,7 @@ const Layout = ({ children, data, hideMenu }) => {
         <main className={styles.main} id="main">
           {children}
         </main>
-        <Footer data={footerData} books={footerBooksImages} />
+        <Footer data={footerData} />
       </div>
     </>
   );
@@ -70,8 +69,9 @@ const query = graphql`
                   buttontitle
                   buttontext
                   buttonlink
-                  bookstitle
                   copyright
+                  logo
+                  logotext
                 }
                 fields {
                   socialogo
@@ -94,19 +94,14 @@ const query = graphql`
                   title
                 }
               }
-            }
-          }
-        }
-      }
-      allBookpages {
-        edges {
-          node {
-            body {
-              ... on PRISMIC_BookpageBodyBooks {
+              ... on PRISMIC_LayoutBody1Books {
                 type
                 label
                 fields {
                   image
+                }
+                primary {
+                  title
                 }
               }
             }
