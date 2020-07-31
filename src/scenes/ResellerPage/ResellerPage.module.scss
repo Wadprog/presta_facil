@@ -1,0 +1,8 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.ResellerPage {
+  background-color: $bg-blue;
+  padding-top: 180px;
+  padding-bottom: 10px;
+}
