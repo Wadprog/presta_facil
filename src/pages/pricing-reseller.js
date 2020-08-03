@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
 
-import ResellerPage from '@scenes/ResellerPage';
 import Layout from '@components/Layout';
+import ResellerPage from '@scenes/ResellerPage';
 
 const Page = ({ data }) => {
   return (
@@ -15,5 +16,40 @@ const Page = ({ data }) => {
 Page.propTypes = {
   data: PropTypes.object.isRequired,
 };
+
+export const query = graphql`
+  {
+    prismic {
+      allPricesresellerpages {
+        edges {
+          node {
+            body {
+              ... on PRISMIC_PricesresellerpageBodyHero {
+                type
+                label
+                primary {
+                  title
+                  description
+                  buttonlink
+                  buttontext
+                  modalvideo {
+                    ... on PRISMIC__ExternalLink {
+                      _linkType
+                      target
+                      url
+                    }
+                  }
+                }
+                fields {
+                  partnerslogo
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default Page;
