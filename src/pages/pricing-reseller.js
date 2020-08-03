@@ -44,6 +44,14 @@ export const query = graphql`
                   partnerslogo
                 }
               }
+              ... on PRISMIC_PricesresellerpageBodyJoin {
+                type
+                label
+                primary {
+                  title
+                  description
+                }
+              }
             }
           }
         }
