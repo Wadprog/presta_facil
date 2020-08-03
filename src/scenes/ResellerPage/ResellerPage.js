@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import style from './ResellerPage.module.scss';
 import Hero from '@components/Hero';
+import Join from './components/Join';
+import style from './ResellerPage.module.scss';
 
 const ResellerPage = ({ content }) => {
   const body = content.prismic.allPricesresellerpages.edges[0].node.body;
@@ -10,6 +11,8 @@ const ResellerPage = ({ content }) => {
     switch (item.type) {
       case 'hero':
         return <Hero key={index} {...item} />;
+      case 'join':
+        return <Join key={index} {...item} />;
       default:
         return null;
     }
