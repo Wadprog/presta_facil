@@ -17,7 +17,7 @@ const ResellerPage = ({ content }) => {
 
   return (
     <div className={style.container}>
-      {/* <div className={style.wrapper}>{sections}</div> */}
+      <div className={style.wrapper}>{sections}</div>
     </div>
   );
 };
