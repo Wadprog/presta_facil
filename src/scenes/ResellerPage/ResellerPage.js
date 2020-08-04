@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Hero from '@components/Hero';
 import Join from './components/Join';
+import Program from './components/Program';
 import style from './ResellerPage.module.scss';
 
 const ResellerPage = ({ content }) => {
@@ -13,6 +14,8 @@ const ResellerPage = ({ content }) => {
         return <Hero key={index} {...item} />;
       case 'join':
         return <Join key={index} {...item} />;
+      case 'program':
+        return <Program key={index} {...item} />;
       default:
         return null;
     }

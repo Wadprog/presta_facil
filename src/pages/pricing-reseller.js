@@ -59,6 +59,19 @@ export const query = graphql`
                   numberofdomains
                 }
               }
+              ... on PRISMIC_PricesresellerpageBodyProgram {
+                type
+                label
+                primary {
+                  title
+                  description
+                }
+                fields {
+                  category
+                  text
+                  image
+                }
+              }
             }
           }
         }
