@@ -50,6 +50,13 @@ export const query = graphql`
                 primary {
                   title
                   description
+                  cardtitle
+                  carddescription
+                  cardsubtitle
+                  cardsubdescription
+                  buttontext
+                  buttonlink
+                  numberofdomains
                 }
               }
             }
