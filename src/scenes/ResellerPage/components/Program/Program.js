@@ -2,9 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 
+import List from './components/List';
 import style from './Program.module.scss';
 
 const Program = ({ primary, fields }) => {
+  const benefitsItems = fields.filter((item) => !item.category);
+  const comissionItems = fields.filter((item) => item.category);
+
   return (
     <div className={style.wrapper}>
       <div className={style.container}>
@@ -19,46 +23,12 @@ const Program = ({ primary, fields }) => {
         <div className={style.cards}>
           <div className={style.group}>
             <h3 className={style.subtitle}>Benefits</h3>
-            <ul className={style.list}>
-              {fields
-                .filter((item) => !item.category)
-                .map((item, index) => {
-                  return (
-                    <div key={index} className={style.item}>
-                      <div className={style.card}>
-                        <div className={style.icon}>
-                          <img src={item.image.url} alt={item.image.alt} />
-                        </div>
-                        <div className={style.text}>
-                          <RichText render={item.text} />
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-            </ul>
+            <List items={benefitsItems} />
           </div>
           <div className={style.divider}></div>
           <div className={style.group}>
             <h3 className={style.subtitle}>Comission</h3>
-            <ul className={style.list}>
-              {fields
-                .filter((item) => item.category)
-                .map((item, index) => {
-                  return (
-                    <div key={index} className={style.item}>
-                      <div className={style.card}>
-                        <div className={style.icon}>
-                          <img src={item.image.url} alt={item.image.alt} />
-                        </div>
-                        <div className={style.text}>
-                          <RichText render={item.text} />
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-            </ul>
+            <List items={comissionItems} />
           </div>
         </div>
       </div>
