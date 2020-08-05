@@ -72,6 +72,21 @@ export const query = graphql`
                   image
                 }
               }
+              ... on PRISMIC_PricesresellerpageBodyTestimonials {
+                type
+                label
+                primary {
+                  title
+                  subtitle
+                  buttontext
+                  buttonlink
+                  image
+                }
+                fields {
+                  author
+                  text
+                }
+              }
             }
           }
         }

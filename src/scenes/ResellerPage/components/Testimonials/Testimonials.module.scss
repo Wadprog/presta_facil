@@ -1,0 +1,59 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.wrapper {
+  margin-top: 92px;
+
+  @media (min-width: $md) {
+    margin-top: 128px;
+  }
+}
+
+.container {
+}
+
+.title {
+  max-width: 572px;
+  margin: 0 auto;
+
+  font-family: $font-gramatika-black;
+  font-size: 28px;
+  line-height: 1.3;
+  letter-spacing: 0.03em;
+  text-transform: capitalize;
+  color: #24b04b;
+
+  h2 {
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  @media (min-width: $md) {
+    font-size: 42px;
+    text-align: center;
+  }
+}
+
+.subtitle {
+  max-width: 572px;
+  margin: 0 auto;
+
+  font-size: 28px;
+  line-height: 1.3;
+  letter-spacing: 0.03em;
+  text-transform: capitalize;
+
+  @media (min-width: $md) {
+    font-size: 42px;
+    text-align: center;
+  }
+}
+
+.listBox {
+  margin-top: 32px;
+
+  @media (min-width: $md) {
+    margin-top: 52px;
+  }
+}

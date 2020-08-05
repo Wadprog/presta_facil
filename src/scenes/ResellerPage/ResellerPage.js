@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Hero from '@components/Hero';
 import Join from './components/Join';
 import Program from './components/Program';
+import Testimonials from './components/Testimonials';
 import style from './ResellerPage.module.scss';
 
 const ResellerPage = ({ content }) => {
@@ -16,6 +17,8 @@ const ResellerPage = ({ content }) => {
         return <Join key={index} {...item} />;
       case 'program':
         return <Program key={index} {...item} />;
+      case 'testimonials':
+        return <Testimonials key={index} {...item} />;
       default:
         return null;
     }
