@@ -4,13 +4,25 @@
 .container {
   margin: 0 auto;
   max-width: 1160px;
-  // padding: 0 16px;
 }
 
 .slider {
   @media (min-width: $md) {
     display: none;
   }
+
+  :global(.swiper-container) {
+    overflow: hidden;
+
+    padding: 0 32px 0 16px;
+  }
+
+  :global(.swiper-wrapper) {
+    overflow: visible;
+  }
+}
+
+.slide {
 }
 
 .list {

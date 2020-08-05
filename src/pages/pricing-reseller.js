@@ -79,6 +79,7 @@ export const query = graphql`
                   title
                   subtitle
                   buttontext
+                  buttontextshort
                   buttonlink
                   image
                 }

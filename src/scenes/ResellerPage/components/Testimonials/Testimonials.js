@@ -19,6 +19,7 @@ const Testimonials = ({ primary, fields }) => {
           <Reviews
             items={fields}
             buttonText={primary.buttontext}
+            buttonTextShort={primary.buttontextshort}
             buttonLink={primary.buttonlink}
             logotype={primary.image}
           />
