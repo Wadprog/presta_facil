@@ -57,6 +57,7 @@ export const query = graphql`
                   buttontext
                   buttonlink
                   numberofdomains
+                  unitcost
                 }
               }
               ... on PRISMIC_PricesresellerpageBodyProgram {

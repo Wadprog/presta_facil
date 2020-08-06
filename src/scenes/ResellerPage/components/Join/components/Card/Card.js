@@ -12,11 +12,13 @@ const Card = ({
   description,
   subtitle,
   subdescription,
-  numberOfDomains,
   buttonLink,
   buttonText,
+  numberOfDomains,
+  unitCost,
 }) => {
-  const [rangeValue, setRangeValue] = useState(0);
+  const [rangeValue, setRangeValue] = useState(1);
+  const total = unitCost * rangeValue;
   const handleRangerChange = (value) => setRangeValue(value);
 
   return (
@@ -43,7 +45,7 @@ const Card = ({
         <div className={style.subdescription}>
           <RichText render={subdescription} />
         </div>
-        <div className={style.total}>{rangeValue}</div>
+        <div className={style.total}>{total}</div>
         <div className={style.buttonBox}>
           <Button
             to={RichText.asText(buttonLink)}
@@ -63,9 +65,10 @@ Card.propTypes = {
   description: PropTypes.array.isRequired,
   subtitle: PropTypes.array.isRequired,
   subdescription: PropTypes.array.isRequired,
-  numberOfDomains: PropTypes.number.isRequired,
   buttonLink: PropTypes.array.isRequired,
   buttonText: PropTypes.array.isRequired,
+  numberOfDomains: PropTypes.number.isRequired,
+  unitCost: PropTypes.number.isRequired,
 };
 
 export default Card;

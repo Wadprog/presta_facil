@@ -26,7 +26,7 @@ const Ranger = ({ value, min, max, onChange }) => {
 };
 
 Ranger.defaultProps = {
-  min: 0,
+  min: 1,
   max: 10,
   onChange: () => {},
 };

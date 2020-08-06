@@ -8,8 +8,6 @@ import Button, { VARIANT } from '@components/Button/Button.js';
 import style from './Book.module.scss';
 
 const Book = ({ primary }) => {
-  console.log(primary);
-
   return (
     <div className={style.wrapper}>
       <div className={style.container}>

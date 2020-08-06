@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import classnames from 'classnames';
 
+import GradientText from '@components/GradientText';
 import style from './Card.module.scss';
 import stars from './images/starts.svg';
 
@@ -37,10 +38,16 @@ const Card = ({
           className={style.link}
         >
           <span className={classnames(style.title, style.full)}>
-            {RichText.asText(buttonText)}
+            <GradientText
+              text={RichText.asText(buttonText)}
+              background="linear-gradient(87.97deg, #24b04b -46.17%, #0263bc 186.99%)"
+            />
           </span>
           <span className={classnames(style.title, style.short)}>
-            {RichText.asText(buttonTextShort)}
+            <GradientText
+              text={RichText.asText(buttonTextShort)}
+              background="linear-gradient(87.97deg, #24b04b -46.17%, #0263bc 186.99%)"
+            />
           </span>
           <span className={style.logotype}>
             <img src={logotype.url} alt={logotype.alt} />
