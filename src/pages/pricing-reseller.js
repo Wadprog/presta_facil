@@ -88,6 +88,24 @@ export const query = graphql`
                   text
                 }
               }
+              ... on PRISMIC_PricesresellerpageBodyBook {
+                type
+                label
+                primary {
+                  title
+                  subtitle
+                  buttontext
+                  buttonlink
+                  image
+                  imageSharp {
+                    childImageSharp {
+                      fluid {
+                        ...GatsbyImageSharpFluid_withWebp
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }

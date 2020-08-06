@@ -5,6 +5,7 @@ import Hero from '@components/Hero';
 import Join from './components/Join';
 import Program from './components/Program';
 import Testimonials from './components/Testimonials';
+import Book from './components/Book';
 import style from './ResellerPage.module.scss';
 
 const ResellerPage = ({ content }) => {
@@ -19,6 +20,8 @@ const ResellerPage = ({ content }) => {
         return <Program key={index} {...item} />;
       case 'testimonials':
         return <Testimonials key={index} {...item} />;
+      case 'book':
+        return <Book key={index} {...item} />;
       default:
         return null;
     }
