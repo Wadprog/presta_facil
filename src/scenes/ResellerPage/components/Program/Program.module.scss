@@ -19,6 +19,8 @@
   background: $green-gradient;
   color: #ffffff;
 
+  filter: drop-shadow(0px 50px 70px rgba(44, 59, 82, 0.15));
+
   &:after {
     content: '';
 
