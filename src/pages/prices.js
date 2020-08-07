@@ -72,6 +72,18 @@ export const query = graphql`
                   logotype
                 }
               }
+              ... on PRISMIC_PricespageBodyQuestions {
+                type
+                label
+                primary {
+                  title
+                }
+                fields {
+                  title
+                  content
+                  scan
+                }
+              }
             }
           }
         }

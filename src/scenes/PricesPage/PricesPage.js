@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import Plans from './components/Plans';
 import Features from './components/Features';
 import Partners from './components/Partners';
+import Questions from './components/Questions';
 import style from './PricesPage.module.scss';
 
 const PricesPage = ({ content }) => {
@@ -19,6 +20,8 @@ const PricesPage = ({ content }) => {
         return <Features key={index} {...item} />;
       case 'partners':
         return <Partners key={index} {...item} />;
+      case 'questions':
+        return <Questions key={index} {...item} />;
       default:
         return null;
     }
