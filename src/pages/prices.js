@@ -62,6 +62,16 @@ export const query = graphql`
                   premiumstatus
                 }
               }
+              ... on PRISMIC_PricespageBodyPartners {
+                type
+                label
+                primary {
+                  title
+                }
+                fields {
+                  logotype
+                }
+              }
             }
           }
         }

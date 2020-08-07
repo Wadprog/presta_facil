@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Hero from './components/Hero';
 import Plans from './components/Plans';
 import Features from './components/Features';
+import Partners from './components/Partners';
 import style from './PricesPage.module.scss';
 
 const PricesPage = ({ content }) => {
@@ -16,6 +17,8 @@ const PricesPage = ({ content }) => {
         return <Plans key={index} {...item} />;
       case 'features':
         return <Features key={index} {...item} />;
+      case 'partners':
+        return <Partners key={index} {...item} />;
       default:
         return null;
     }
