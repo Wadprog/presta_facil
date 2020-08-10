@@ -84,6 +84,15 @@ export const query = graphql`
                   scan
                 }
               }
+              ... on PRISMIC_PricespageBodyContactus {
+                type
+                label
+                primary {
+                  subtitle
+                  buttontext
+                  buttonlink
+                }
+              }
             }
           }
         }
