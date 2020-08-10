@@ -4,5 +4,9 @@
 .wrapper {
   background-color: $bg-blue;
   padding-top: 180px;
-  padding-bottom: 10px;
+  padding-bottom: 106px;
+
+  @media (min-width: $md) {
+    padding-bottom: 134px;
+  }
 }

@@ -6,6 +6,7 @@ import Plans from './components/Plans';
 import Features from './components/Features';
 import Partners from './components/Partners';
 import Questions from './components/Questions';
+import ContactUs from './components/ContactUs';
 import style from './PricesPage.module.scss';
 
 const PricesPage = ({ content }) => {
@@ -22,6 +23,8 @@ const PricesPage = ({ content }) => {
         return <Partners key={index} {...item} />;
       case 'questions':
         return <Questions key={index} {...item} />;
+      case 'contactus':
+        return <ContactUs key={index} {...item} />;
       default:
         return null;
     }
