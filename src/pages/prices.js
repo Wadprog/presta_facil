@@ -36,8 +36,12 @@ export const query = graphql`
                 type
                 label
                 primary {
+                  basicplantitle
+                  premiumplantitle
                   basicplandescription
                   premiumplandescription
+                  monthlycondition
+                  annualcondition
                   buttonlink
                   buttontext
                 }

@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import { parseCellValue } from './utils';
 import style from './Features.module.scss';
 
-const Features = ({ primary, fields }) => {
+const Features = ({ primary, fields, isPremium }) => {
   return (
     <div className={style.wrapper}>
       <div className={style.title}>
@@ -14,7 +14,6 @@ const Features = ({ primary, fields }) => {
       </div>
       <ul className={style.list}>
         {fields.map((item, index) => {
-          const isDisabled = true;
           const basicStatus = parseCellValue(RichText.asText(item.basicstatus));
           const premiumStatus = parseCellValue(
             RichText.asText(item.premiumstatus),
@@ -28,14 +27,14 @@ const Features = ({ primary, fields }) => {
               </div>
               <div
                 className={classnames(style.cell, {
-                  [style.disabled]: isDisabled,
+                  [style.disabled]: isPremium,
                 })}
               >
                 {basicStatus}
               </div>
               <div
                 className={classnames(style.cell, {
-                  [style.disabled]: !isDisabled,
+                  [style.disabled]: !isPremium,
                 })}
               >
                 {premiumStatus}
@@ -51,6 +50,7 @@ const Features = ({ primary, fields }) => {
 Features.propTypes = {
   primary: PropTypes.object.isRequired,
   fields: PropTypes.array.isRequired,
+  isPremium: PropTypes.bool.isRequired,
 };
 
 export default Features;

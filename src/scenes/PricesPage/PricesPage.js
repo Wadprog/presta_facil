@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Hero from './components/Hero';
@@ -10,15 +10,25 @@ import ContactUs from './components/ContactUs';
 import style from './PricesPage.module.scss';
 
 const PricesPage = ({ content }) => {
+  const [isPremium, setIsPremium] = useState(false);
+  const setPremium = (value) => setIsPremium(value);
+
   const body = content.prismic.allPricespages.edges[0].node.body;
   const sections = body.map((item, index) => {
     switch (item.type) {
       case 'hero':
         return <Hero key={index} {...item} />;
       case 'plans':
-        return <Plans key={index} {...item} />;
+        return (
+          <Plans
+            key={index}
+            {...item}
+            isPremium={isPremium}
+            setIsPremium={setPremium}
+          />
+        );
       case 'features':
-        return <Features key={index} {...item} />;
+        return <Features key={index} {...item} isPremium={isPremium} />;
       case 'partners':
         return <Partners key={index} {...item} />;
       case 'questions':

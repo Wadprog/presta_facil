@@ -4,7 +4,7 @@
 .wrapper {
   margin: 48px auto 0;
   padding: 0 16px;
-  max-width: 840px;
+  max-width: 864px;
 
   @media (min-width: $md) {
     margin-top: 64px;
@@ -44,6 +44,7 @@
 
 .list {
   margin-top: 16px;
+  padding-right: 16px;
 
   @media (min-width: $md) {
     margin-top: 48px;

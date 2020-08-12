@@ -2,4 +2,36 @@
 @import '@styles/mixins/all';
 
 .wrapper {
+  margin: 80px auto 0;
+  padding: 0 16px;
+  max-width: 864px;
+
+  @media (min-width: $md) {
+    margin-top: 64px;
+  }
+}
+
+.container {
+}
+
+.body {
+  margin-top: 78px;
+
+  @media (min-width: $md) {
+    display: flex;
+    margin-top: 64px;
+  }
+}
+
+.sidebar {
+  min-width: 240px;
+}
+
+.main {
+  margin: 48px -16px 0;
+
+  @media (min-width: $md) {
+    margin: 0;
+    margin-left: 16px;
+  }
 }
