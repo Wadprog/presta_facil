@@ -1,0 +1,79 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.container {
+  display: flex;
+  box-shadow: 0px 50px 70px rgba(44, 59, 82, 0.15);
+  border-radius: 12px 30px;
+  padding: 32px;
+
+  background: #ffffff;
+}
+
+.title {
+  margin-right: auto;
+
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  color: $main-light;
+}
+
+.icon {
+  position: relative;
+
+  padding: 0 2px;
+
+  &:before {
+    content: '';
+
+    display: inline-block;
+    height: 100%;
+
+    vertical-align: middle;
+  }
+}
+
+.line {
+  display: inline-block;
+  vertical-align: middle;
+
+  border-radius: 18px;
+  width: 36px;
+  height: 12px;
+
+  background: $green-gradient;
+
+  opacity: 0.2;
+}
+
+.pointer {
+  $size: 20px;
+  $color: #cbcfde;
+
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%) translateX(-100%);
+
+  display: inline-block;
+  border-radius: 50%;
+  width: $size;
+  height: $size;
+
+  background: $green-gradient;
+
+  transition: 0.3s;
+}
+
+.symbol {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: block;
+  margin-left: 1px;
+  width: 10px;
+  height: auto;
+}

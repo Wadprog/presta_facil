@@ -11,6 +11,24 @@
   }
 }
 
+// floated bar -->
+
+.bar {
+  position: fixed;
+  top: 98px;
+  left: 0;
+  z-index: 200;
+  width: 100vw;
+
+  display: none;
+
+  @media (min-width: $md) {
+    display: block;
+  }
+}
+
+// component -->
+
 .container {
 }
 
@@ -34,4 +52,8 @@
     margin: 0;
     margin-left: 16px;
   }
+}
+
+.disabled {
+  display: none;
 }

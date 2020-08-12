@@ -1,21 +1,33 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
+import Bar from './components/Bar';
 import PeriodSwitcher from './components/PeriodSwitcher';
 import PlanSwitcher from './components/PlanSwitcher';
 import Dashboard from './components/Dashboard';
+import { useScrollDirection } from '@hooks';
 import style from './Plans.module.scss';
 
 const Plans = ({ primary, fields, isPremium, setIsPremium }) => {
+  const scrollDirection = useScrollDirection();
   const [isAnnual, setIsAnnual] = useState(false);
   const [selectedPlanIndex, setSelectedPlanIndex] = useState(0);
   const selectedPlan = fields[selectedPlanIndex];
+  // const
 
   const togglePeriod = () => setIsAnnual((state) => !state);
   const selectPlan = (index) => setSelectedPlanIndex(index);
 
   return (
     <div className={style.wrapper}>
+      <div
+        className={classnames(style.bar, {
+          [style.disabled]: scrollDirection === 'up',
+        })}
+      >
+        <Bar primary={primary} plan={selectedPlan} isAnnual={isAnnual} />
+      </div>
       <div className={style.container}>
         <div className={style.header}>
           <PeriodSwitcher isAnnual={isAnnual} togglePeriod={togglePeriod} />

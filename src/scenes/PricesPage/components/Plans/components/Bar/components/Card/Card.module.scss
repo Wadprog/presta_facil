@@ -2,71 +2,43 @@
 @import '@styles/mixins/all';
 
 .container {
-  border: 1px solid transparent;
-  border-radius: 10px 30px;
+  box-shadow: 0px 40px 100px rgba(28, 86, 76, 0.3);
+  border-radius: 12px 30px;
+  padding: 16px;
 
-  padding: 10px;
-
+  background: #ffffff;
   color: $main-light;
-}
 
-.colorized {
-  border-color: rgba($darken-green, 0.3);
-
-  .body {
-    box-shadow: 0px 40px 100px rgba(28, 86, 76, 0.3);
-
+  &.colorized {
     background: $green-gradient;
     color: #ffffff;
-  }
 
-  .cost {
-    &:before {
-      opacity: 1;
+    .button {
+      box-shadow: 0px 20px 40px #1e4f4d;
+      border-color: transparent;
     }
   }
-
-  .button {
-    box-shadow: 0px 20px 40px #1e4f4d;
-    border-color: transparent;
-  }
 }
 
-.disabled {
-  @media (max-width: $md) {
-    display: none;
-  }
-}
-
-.body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 8px 24px;
-  padding: 24px 16px 16px;
-
-  @media (min-width: $md) {
-    height: 100%;
-  }
-}
-
-.title {
+.type {
   font-weight: 600;
   font-size: 18px;
   line-height: 1.25;
   letter-spacing: 0.03em;
 
-  h4 {
+  h3 {
     font-weight: inherit;
     font-size: inherit;
     line-height: inherit;
   }
 }
 
-.subtitle {
-  margin-top: 2px;
+.main {
+  display: flex;
+  justify-content: space-between;
+}
 
-  font-family: $font-gramatika;
+.name {
   font-weight: 300;
   font-size: 14px;
   line-height: 1.25;
@@ -82,11 +54,11 @@
 .cost {
   position: relative;
 
-  margin-top: 32px;
+  margin-left: 24px;
 
   font-family: $font-gramatika;
   font-weight: 600;
-  font-size: 48px;
+  font-size: 36px;
   line-height: 1.25;
   letter-spacing: 0.03em;
 
@@ -99,43 +71,19 @@
     transform: translateY(-50%);
 
     display: block;
-    margin-top: 4px;
+    margin-top: 2px;
     margin-right: 2px;
 
     font-weight: 500;
-    font-size: 24px;
+    font-size: 18px;
     line-height: 1.25;
     letter-spacing: 0.03em;
-
-    opacity: 0.5;
   }
-}
-
-.condition {
-  margin-top: 8px;
-  margin-bottom: 32px;
-
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.25;
-  letter-spacing: 0.03em;
-}
-
-.text {
-  margin: auto 0;
-
-  font-family: $font-sofia-pro;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 12px;
-  line-height: 1.5;
-  text-align: center;
 }
 
 .footer {
   margin-top: 24px;
   width: 100%;
-  max-width: 204px;
 }
 
 .button {
