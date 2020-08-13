@@ -82,6 +82,8 @@
 .cost {
   position: relative;
 
+  display: flex;
+  align-items: center;
   margin-top: 32px;
 
   font-family: $font-gramatika;
@@ -93,13 +95,8 @@
   &:before {
     content: '$';
 
-    position: absolute;
-    top: 50%;
-    right: 100%;
-    transform: translateY(-50%);
-
     display: block;
-    margin-top: 4px;
+    margin-top: 8px;
     margin-right: 2px;
 
     font-weight: 500;
