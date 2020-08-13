@@ -100,8 +100,9 @@
   &:before {
     content: '$';
 
+    transform: translateY(6px);
+
     display: block;
-    margin-top: 8px;
     margin-right: 2px;
 
     font-weight: 500;
