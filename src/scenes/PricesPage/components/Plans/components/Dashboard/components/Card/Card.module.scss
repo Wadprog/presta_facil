@@ -27,8 +27,13 @@
   }
 
   .button {
-    box-shadow: 0px 20px 40px #1e4f4d;
     border-color: transparent;
+
+    @media (min-width: $md) {
+      &:hover {
+        box-shadow: 0px 20px 40px #1e4f4d;
+      }
+    }
   }
 }
 
@@ -150,6 +155,15 @@
   line-height: 1.8;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+
+  transition: 0.3s;
+
+  @media (min-width: $lg) {
+    &:hover {
+      color: $green;
+      border-color: $green;
+    }
+  }
 }
 
 .gradientText {
