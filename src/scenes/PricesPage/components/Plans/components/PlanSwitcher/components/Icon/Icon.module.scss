@@ -4,16 +4,9 @@
 .container {
   position: relative;
 
+  display: flex;
+  align-items: center;
   padding: 0 2px;
-
-  &:before {
-    content: '';
-
-    display: inline-block;
-    height: 100%;
-
-    vertical-align: middle;
-  }
 
   &.checked {
     .line {
@@ -37,7 +30,6 @@
 
 .line {
   display: inline-block;
-  vertical-align: middle;
 
   border-radius: 18px;
   width: 36px;

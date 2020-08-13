@@ -7,13 +7,11 @@
   padding-bottom: 106px;
 
   background-image: url('./images/pattern.png');
-  background-size: auto 100vh;
+  background-size: 100% 90vh;
   background-repeat: no-repeat;
   mix-blend-mode: luminosity;
 
   @media (min-width: $md) {
     padding-bottom: 134px;
-
-    background-size: 100% auto;
   }
 }
