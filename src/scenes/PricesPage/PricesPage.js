@@ -11,7 +11,11 @@ import style from './PricesPage.module.scss';
 
 const PricesPage = ({ content }) => {
   const [isPremium, setIsPremium] = useState(false);
+  const [isBarShowing, setIsBarShowing] = useState(false);
+
   const setPremium = (value) => setIsPremium(value);
+  const showBar = () => setIsBarShowing(true);
+  const hideBar = () => setIsBarShowing(false);
 
   const body = content.prismic.allPricespages.edges[0].node.body;
   const sections = body.map((item, index) => {
@@ -23,12 +27,23 @@ const PricesPage = ({ content }) => {
           <Plans
             key={index}
             {...item}
+            isBarShowing={isBarShowing}
+            showBar={showBar}
+            hideBar={hideBar}
             isPremium={isPremium}
             setIsPremium={setPremium}
           />
         );
       case 'features':
-        return <Features key={index} {...item} isPremium={isPremium} />;
+        return (
+          <Features
+            {...item}
+            key={index}
+            isPremium={isPremium}
+            showBar={showBar}
+            hideBar={hideBar}
+          />
+        );
       case 'partners':
         return <Partners key={index} {...item} />;
       case 'questions':

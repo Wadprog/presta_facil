@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { Waypoint } from 'react-waypoint';
+import classnames from 'classnames';
 
 import Bar from './components/Bar';
 import PeriodSwitcher from './components/PeriodSwitcher';
@@ -10,20 +10,26 @@ import Dashboard from './components/Dashboard';
 import { useScrollDirection } from '@hooks';
 import style from './Plans.module.scss';
 
-const Plans = ({ primary, fields, isPremium, setIsPremium }) => {
+const Plans = ({
+  primary,
+  fields,
+  isPremium,
+  setIsPremium,
+  isBarShowing,
+  showBar,
+  hideBar,
+}) => {
   const scrollDirection = useScrollDirection();
-  const [isBarShowing, setIsBarShowing] = useState(false);
   const [isAnnual, setIsAnnual] = useState(false);
   const [selectedPlanIndex, setSelectedPlanIndex] = useState(0);
   const selectedPlan = fields[selectedPlanIndex];
 
-  const showBar = () => setIsBarShowing(true);
-  const hideBar = () => setIsBarShowing(false);
   const togglePeriod = () => setIsAnnual((state) => !state);
   const selectPlan = (index) => setSelectedPlanIndex(index);
 
   return (
-    <Waypoint onEnter={hideBar} onLeave={showBar}>
+    <>
+      <Waypoint onEnter={hideBar} />
       <div className={style.wrapper}>
         <div
           className={classnames(style.bar, {
@@ -56,15 +62,19 @@ const Plans = ({ primary, fields, isPremium, setIsPremium }) => {
           </div>
         </div>
       </div>
-    </Waypoint>
+      <Waypoint onLeave={showBar} />
+    </>
   );
 };
 
 Plans.propTypes = {
   primary: PropTypes.object.isRequired,
   fields: PropTypes.array.isRequired,
+  isBarShowing: PropTypes.bool.isRequired,
   isPremium: PropTypes.bool.isRequired,
   setIsPremium: PropTypes.func.isRequired,
+  showBar: PropTypes.func.isRequired,
+  hideBar: PropTypes.func.isRequired,
 };
 
 export default Plans;
