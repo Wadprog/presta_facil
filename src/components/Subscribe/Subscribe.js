@@ -50,7 +50,7 @@ const Subscribe = ({ primary }) => {
         <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
           {!isSubmitted ? (
             <Fragment>
-              <div className={inputWrapperClass}>
+              <label className={inputWrapperClass}>
                 <input
                   placeholder="Type your email"
                   className={styles.input}
@@ -61,7 +61,7 @@ const Subscribe = ({ primary }) => {
                   onChange={handleChange}
                 />
                 <span className={styles.errorMessage}>Wrong Email</span>
-              </div>
+              </label>
               <div className={styles.button}>
                 <Button
                   variant={VARIANT.PRIMARY}

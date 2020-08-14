@@ -37,7 +37,7 @@ const MenuItem = ({ primary, fields }) => {
   });
 
   return (
-    <li className={classItem} onClick={toggleOpenSubMenu}>
+    <div className={classItem} onClick={toggleOpenSubMenu}>
       {title}
       <Arrow />
       <div className={style.submenu}>
@@ -64,7 +64,7 @@ const MenuItem = ({ primary, fields }) => {
           </div>
         </div>
       </div>
-    </li>
+    </div>
   );
 };
 

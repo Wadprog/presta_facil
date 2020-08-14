@@ -76,3 +76,8 @@
   height: 40px;
   background: transparent;
 }
+
+.hidden {
+  position: absolute;
+  left: -9999px;
+}

@@ -18,6 +18,7 @@ const IconButton = ({ children, variant, disabled, click, type }) => {
   return (
     <button className={classes} type={type} disabled={disabled} onClick={click}>
       {children}
+      <span className={styles.hidden}>Icon Button</span>
     </button>
   );
 };
