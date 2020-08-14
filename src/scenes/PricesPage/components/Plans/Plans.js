@@ -29,7 +29,6 @@ const Plans = ({
 
   return (
     <>
-      <Waypoint onEnter={hideBar} />
       <div className={style.wrapper}>
         <div
           className={classnames(style.bar, {
@@ -62,7 +61,7 @@ const Plans = ({
           </div>
         </div>
       </div>
-      <Waypoint onLeave={showBar} />
+      <Waypoint onEnter={hideBar} onLeave={showBar} />
     </>
   );
 };
