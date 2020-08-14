@@ -2,6 +2,8 @@
 @import '@styles/mixins/all';
 
 .footer {
+  overflow-x: hidden;
+
   padding: 64px 64px 26px 64px;
   background-color: $second-dark;
   border-radius: 20px 20px 0px 0px;
