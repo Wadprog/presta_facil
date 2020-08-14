@@ -1,0 +1,84 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.wrapper {
+  margin: 92px auto 0;
+  padding: 0 16px 96px;
+  max-width: 1160px;
+
+  @media (min-width: $md) {
+    margin-top: 132px;
+    padding-bottom: 160px;
+  }
+}
+
+.container {
+  @media (min-width: $md) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.message {
+  flex-grow: 1;
+}
+
+.title {
+  font-family: $font-gramatika-black;
+  font-size: 28px;
+  line-height: 1.3;
+  align-items: center;
+  letter-spacing: 0.03em;
+  text-transform: capitalize;
+  color: $green;
+
+  @media (min-width: $md) {
+    font-size: 42px;
+  }
+}
+
+.subtitle {
+  font-size: 28px;
+  line-height: 1.3;
+  align-items: center;
+  text-transform: capitalize;
+  letter-spacing: 0.03em;
+
+  @media (min-width: $md) {
+    font-size: 42px;
+  }
+}
+
+.button {
+  margin-top: 52px;
+
+  @media (min-width: $md) {
+    margin-top: 38px;
+    max-width: 240px;
+  }
+
+  &.mobile {
+    @media (min-width: $md) {
+      display: none;
+    }
+  }
+
+  &.desktop {
+    display: none;
+
+    @media (min-width: $md) {
+      display: block;
+    }
+  }
+}
+
+.image {
+  flex-shrink: 0;
+  flex-basis: 48%;
+  margin-top: 32px;
+
+  @media (min-width: $md) {
+    margin-top: 0;
+    margin-left: 48px;
+  }
+}

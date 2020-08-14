@@ -1,0 +1,12 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.container {
+  background-color: $bg-blue;
+  padding-top: 180px;
+  padding-bottom: 10px;
+}
+
+.wrapper {
+  margin-top: -180px;
+}

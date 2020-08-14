@@ -52,13 +52,15 @@ const Hero = ({ primary, fields }) => {
         </div>
         <div className={styles.imageWrapper}>
           <Image className={styles.image} imageSharp={hero} />
-          <div className={styles.flagWrapper}>
-            <img
-              className={styles.flag}
-              src={primary.flag.url}
-              alt={primary.flag.alt}
-            />
-          </div>
+          {primary.flag && (
+            <div className={styles.flagWrapper}>
+              <img
+                className={styles.flag}
+                src={primary.flag.url}
+                alt={primary.flag.alt}
+              />
+            </div>
+          )}
 
           <div className={styles.playButtonWrapper}>
             <div className={styles.playButton}>
