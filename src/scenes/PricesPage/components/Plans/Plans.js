@@ -28,7 +28,7 @@ const Plans = ({
   const selectPlan = (index) => setSelectedPlanIndex(index);
 
   return (
-    <>
+    <Waypoint onEnter={hideBar} onLeave={showBar}>
       <div className={style.wrapper}>
         <div
           className={classnames(style.bar, {
@@ -61,8 +61,7 @@ const Plans = ({
           </div>
         </div>
       </div>
-      <Waypoint onEnter={hideBar} onLeave={showBar} />
-    </>
+    </Waypoint>
   );
 };
 
