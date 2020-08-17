@@ -20,6 +20,7 @@ const Image = ({ image, imageSharp, className }) => {
         className={className}
         src={image.url}
         alt={image.alt}
+        loading="lazy"
         draggable="false"
       />
     );

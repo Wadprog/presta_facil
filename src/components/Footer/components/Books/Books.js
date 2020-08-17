@@ -27,7 +27,12 @@ const Books = ({ data }) => {
           return (
             <div className={style.slide} key={`${image.publicURL}${index}`}>
               <Link to="/books">
-                <img src={image.url} alt="book" draggable={false} />
+                <img
+                  src={image.url}
+                  alt="book"
+                  draggable={false}
+                  loading="lazy"
+                />
               </Link>
             </div>
           );

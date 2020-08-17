@@ -13,6 +13,7 @@ const SlideItem = ({ backgroundpreview, title, date, description, _meta }) => {
           className={style.preview}
           src={backgroundpreview.url}
           alt={backgroundpreview.alt}
+          loading="lazy"
         />
       ) : (
         <div className={style.placeholder}></div>

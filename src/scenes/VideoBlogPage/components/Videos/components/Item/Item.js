@@ -31,7 +31,7 @@ const Item = ({ title, videourl, tag, date }) => {
     <div className={style.item}>
       <div className={style.container}>
         <div className={style.preview} onClick={handleOpenModal}>
-          {previewImage && <img src={previewImage}></img>}
+          {previewImage && <img src={previewImage} loading="lazy" />}
         </div>
         <div className={style.title}>
           <RichText render={title} />

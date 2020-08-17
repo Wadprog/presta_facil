@@ -3,6 +3,7 @@ import { bool, object, node } from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import { withPreview } from 'gatsby-source-prismic-graphql';
 
+import Head from '@components/Head';
 import Header from '@components/Header';
 import Footer from '@components/Footer';
 
@@ -15,6 +16,7 @@ const Layout = ({ children, data, hideMenu }) => {
 
   return (
     <>
+      <Head />
       <div className={styles.container}>
         <Header data={headerData} hideMenu={hideMenu} />
         <main className={styles.main} id="main">

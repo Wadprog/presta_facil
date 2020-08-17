@@ -12,7 +12,12 @@ const Switcher = ({ name }) => {
       <span className={style.icon}>
         <span className={style.line}></span>
         <span className={style.pointer}>
-          <img src={checkIconSrc} alt="check symbol" className={style.symbol} />
+          <img
+            src={checkIconSrc}
+            alt="check symbol"
+            loading="lazy"
+            className={style.symbol}
+          />
         </span>
       </span>
     </div>

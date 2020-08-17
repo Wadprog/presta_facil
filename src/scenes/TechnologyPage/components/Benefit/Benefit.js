@@ -9,7 +9,7 @@ const Benefit = ({ primary, fields }) => {
   return (
     <section className={styles.benefit}>
       <div className={styles.background}>
-        <img src={image.url} alt="background" />
+        <img src={image.url} alt="background" loading="lazy" />
       </div>
       <div className={styles.container}>
         <div className={styles.title}>

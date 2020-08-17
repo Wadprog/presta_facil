@@ -83,6 +83,7 @@ const Hero = ({ primary, fields }) => {
                   src={partnerslogo.url}
                   alt={partnerslogo.alt}
                   draggable="false"
+                  loading="lazy"
                 />
               </div>
             );
