@@ -54,6 +54,7 @@ const Solutions = ({ primary, fields }) => {
                     className={style.arrow}
                     src={arrow.publicURL}
                     alt="arrow icon"
+                    loading="lazy"
                   />
                   <div className={style.shadow}></div>
                 </Link>
