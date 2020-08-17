@@ -23,7 +23,7 @@ const ErrorPage = () => {
           </div>
         </div>
         <div className={style.imageWrapper}>
-          <img src={logo.publicURL} alt="secure privacy" />
+          <img src={logo.publicURL} alt="secure privacy" loading="lazy" />
         </div>
       </div>
     </section>

@@ -45,7 +45,7 @@ const Solutions = ({ primary, fields }) => {
             return (
               <div className={style.slide} key={`solutions${index}`}>
                 <Link to={link} className={style.item}>
-                  <img src={image.url} alt={image.alt} />
+                  <img src={image.url} alt={image.alt} loading="lazy" />
                   <RichText render={title} />
                   <div>
                     (<RichText render={text} />)

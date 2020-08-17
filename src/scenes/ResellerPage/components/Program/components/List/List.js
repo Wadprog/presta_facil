@@ -12,7 +12,7 @@ const List = ({ items }) => {
           <div key={index} className={style.item}>
             <div className={style.card}>
               <div className={style.icon}>
-                <img src={item.image.url} alt={item.image.alt} />
+                <img src={item.image.url} alt={item.image.alt} loading="lazy" />
               </div>
               <div className={style.text}>
                 <RichText render={item.text} />

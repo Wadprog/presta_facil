@@ -16,7 +16,7 @@ const Benefits = ({ primary, fields }) => {
             return (
               <div className={styles.item} key={image.url}>
                 <div className={styles.imageWrapper}>
-                  <img src={image.url} alt={image.alt} />
+                  <img src={image.url} alt={image.alt} loading="lazy" />
                 </div>
                 <RichText render={text} />
               </div>

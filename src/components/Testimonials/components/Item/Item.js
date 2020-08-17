@@ -9,7 +9,12 @@ const Item = ({ photo, name, company, text }) => {
     <div className={style.container}>
       <Quote className={style.quote} />
       <div className={style.user}>
-        <img className={style.photo} src={photo.url} alt={photo.alt} />
+        <img
+          className={style.photo}
+          src={photo.url}
+          alt={photo.alt}
+          loading="lazy"
+        />
         <div className={style.name}>
           <RichText render={name} />
         </div>

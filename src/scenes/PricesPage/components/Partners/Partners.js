@@ -17,7 +17,12 @@ const Partners = ({ primary, fields }) => {
           {fields.map(({ logotype }) => {
             return (
               <div className={style.slide} key={logotype.alt}>
-                <img src={logotype.url} alt={logotype.alt} draggable="false" />
+                <img
+                  src={logotype.url}
+                  alt={logotype.alt}
+                  draggable="false"
+                  loading="lazy"
+                />
               </div>
             );
           })}

@@ -22,7 +22,7 @@ const Card = ({
           <RichText render={author} />
         </div>
         <div className={style.stars}>
-          <img src={stars} alt="stars" draggable={false} />
+          <img src={stars} alt="stars" loading="lazy" draggable={false} />
         </div>
       </div>
       <div className={style.main}>
@@ -50,7 +50,7 @@ const Card = ({
             />
           </span>
           <span className={style.logotype}>
-            <img src={logotype.url} alt={logotype.alt} />
+            <img src={logotype.url} alt={logotype.alt} loading="lazy" />
           </span>
         </a>
       </div>
