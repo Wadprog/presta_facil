@@ -16,7 +16,12 @@ const Item = ({ image, name, pagename }) => {
         <BackgroundHover className={style.hoverBg} />
         <Background className={style.mainBg} />
       </div>
-      <img className={style.icon} src={image.url} alt={image.alt} />
+      <img
+        className={style.icon}
+        src={image.url}
+        alt={image.alt}
+        loading="lazy"
+      />
       <div className={style.name}>
         <RichText render={name} />
       </div>
