@@ -27,11 +27,7 @@ const ResellerPage = ({ content }) => {
     }
   });
 
-  return (
-    <div className={style.container}>
-      <div className={style.wrapper}>{sections}</div>
-    </div>
-  );
+  return <div className={style.container}>{sections}</div>;
 };
 
 ResellerPage.propTypes = {
