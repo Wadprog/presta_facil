@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { object, array } from 'prop-types';
-// import BackgroundImage from 'gatsby-background-image';
+import BackgroundImage from 'gatsby-background-image';
 import Swiper from 'react-id-swiper';
 import { RichText } from 'prismic-reactjs';
 
 import Item from './components/Item';
 import style from './Features.module.scss';
 import { useBreakpoints } from '@hooks';
-// import useGetImages from './useGetImages';
+import useGetImages from './useGetImages';
 
 const Features = ({ primary, fields }) => {
   const [buildKey, setBuildKey] = useState();
   const { width } = useBreakpoints();
-  // const { background } = useGetImages();
+  const { background } = useGetImages();
 
   useEffect(() => {
     setBuildKey(+new Date());
@@ -31,32 +31,34 @@ const Features = ({ primary, fields }) => {
       },
     },
   };
+
   return (
-    // <BackgroundImage
-    //   fluid={background.childImageSharp.fluid}
-    //   // className={style.background}
-    // >
-    <div className={style.features}>
-      <div className={style.background}></div>
-      <div className={style.container}>
-        <div className={style.title}>
-          <RichText render={primary.title} />
+    <BackgroundImage
+      fluid={background.childImageSharp.fluid}
+      className={style.background}
+    >
+      <div className={style.features}>
+        <div className={style.container}>
+          <div className={style.title}>
+            <RichText render={primary.title} />
+          </div>
+          <div className={style.descr}>
+            <RichText render={primary.description} />
+          </div>
+          <div className={style.slider} key={buildKey}>
+            <Swiper {...params}>
+              {fields.map((item, index) => {
+                return (
+                  <div className={style.slide} key={`Features${index}`}>
+                    <Item {...item} />
+                  </div>
+                );
+              })}
+            </Swiper>
+          </div>
         </div>
-        <div className={style.descr}>
-          <RichText render={primary.description} />
-        </div>
-        <Swiper {...params} key={buildKey}>
-          {fields.map((item, index) => {
-            return (
-              <div className={style.slide} key={`Features${index}`}>
-                <Item {...item} />
-              </div>
-            );
-          })}
-        </Swiper>
       </div>
-    </div>
-    // </BackgroundImage>
+    </BackgroundImage>
   );
 };
 

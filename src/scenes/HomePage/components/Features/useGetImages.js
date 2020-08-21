@@ -5,7 +5,7 @@ const useGetImages = () => {
     query {
       background: file(relativePath: { eq: "backgrounds/pattern-01.png" }) {
         childImageSharp {
-          fluid(maxWidth: 1920) {
+          fluid(maxWidth: 900) {
             src
             srcSet
             srcSetWebp
