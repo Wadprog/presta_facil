@@ -5,9 +5,9 @@ import Swiper from 'react-id-swiper';
 import { RichText } from 'prismic-reactjs';
 
 import Item from './components/Item';
-import style from './Features.module.scss';
 import { useBreakpoints } from '@hooks';
 import useGetImages from './useGetImages';
+import style from './Features.module.scss';
 
 const Features = ({ primary, fields }) => {
   const [buildKey, setBuildKey] = useState();

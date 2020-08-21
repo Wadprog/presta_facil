@@ -8,20 +8,24 @@
   }
 }
 
-.block {
-  padding: 75px 80px 60px;
-  display: flex;
-  background-color: #ffffff;
+.background {
+  overflow: hidden;
   border-radius: 50px 10px;
-  background-image: url('./images/bg.jpg');
-  background-size: cover;
+  margin: 0 auto;
+  padding: 75px 80px 60px;
+  max-width: 1152px;
+
+  background-color: #ffffff;
+}
+
+.block {
+  display: flex;
   align-items: center;
   box-sizing: border-box;
-  max-width: 1152px;
-  margin: 0 auto;
+
   @media (max-width: $lg) {
-    padding: 54px 32px;
     flex-direction: column;
+    padding: 54px 32px;
     max-width: 600px;
   }
 }
