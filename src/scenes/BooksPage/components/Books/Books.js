@@ -11,6 +11,7 @@ const Books = ({ fields }) => {
     slidesPerView: 'auto',
     spaceBetween: 16,
     centeredSlides: true,
+    loop: true,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',

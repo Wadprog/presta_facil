@@ -1,28 +1,23 @@
 @import '@styles/variables/all';
 @import '@styles/mixins/all';
 
-.card {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  width: 464px;
-  min-height: 287px;
-  padding: 32px 64px;
-  box-sizing: border-box;
-  & + .card {
-    margin-left: 40px;
+.container {
+  &:before {
+    opacity: 0.5 !important;
   }
-  @media (max-width: $lg) {
-    padding: 32px;
-    width: 100%;
-    max-width: 300px;
+
+  &:after {
+    background-image: none !important;
   }
-  @media (max-width: $md) {
-    & + .card {
-      margin-left: 0;
-      margin-top: 80px;
+
+  & + .container {
+    margin-top: 80px;
+  }
+
+  @media (min-width: $md) {
+    & + .container {
+      margin-top: 0;
+      margin-left: 40px;
     }
   }
 }
@@ -31,11 +26,11 @@
   background-color: #ffffff;
   border-radius: 12px 50px;
   color: $main-light;
-  &:hover {
-    &::after {
-      opacity: 1;
-    }
+
+  &:before {
+    border-radius: 12px 50px;
   }
+
   &::after {
     content: '';
     position: absolute;
@@ -54,6 +49,7 @@
       ),
       #ffffff;
   }
+
   .text {
     opacity: 0.75;
   }
@@ -75,7 +71,7 @@
   color: #ffffff;
   &:hover {
     &::after {
-      opacity: 1;
+      opacity: 1 !important;
     }
     .button::after {
       opacity: 1;
@@ -92,15 +88,6 @@
     transition: 0.3s;
   }
 
-  &::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50px 12px;
-    background-image: url('./image/bg.png');
-  }
-
   &::after {
     content: '';
     position: absolute;
@@ -112,6 +99,28 @@
     transition: opacity 0.3s linear;
   }
 }
+
+.body {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 32px 64px;
+  width: 464px;
+  min-height: 287px;
+
+  color: inherit;
+
+  @media (max-width: $lg) {
+    padding: 32px;
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
 .title {
   font-weight: 600;
   font-size: 22px;

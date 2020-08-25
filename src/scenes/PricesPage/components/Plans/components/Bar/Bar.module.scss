@@ -6,6 +6,8 @@
   padding: 0 16px;
   width: 100%;
   max-width: 864px;
+
+  animation: appearance 0.3s 1 forwards;
 }
 
 .container {
@@ -19,4 +21,13 @@
 .card {
   flex: 1 1 280px;
   margin-left: 16px;
+}
+
+@keyframes appearance {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
