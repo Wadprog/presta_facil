@@ -2,10 +2,22 @@
 @import '@styles/mixins/all';
 
 .container {
-  &.business {
-    &:before,
-    &:after {
-      background-image: none !important;
+  &:before {
+    opacity: 0.5 !important;
+  }
+
+  &:after {
+    background-image: none !important;
+  }
+
+  & + .container {
+    margin-top: 80px;
+  }
+
+  @media (min-width: $md) {
+    & + .container {
+      margin-top: 0;
+      margin-left: 40px;
     }
   }
 }
@@ -15,11 +27,10 @@
   border-radius: 12px 50px;
   color: $main-light;
 
-  &:hover {
-    &::after {
-      opacity: 1;
-    }
+  &:before {
+    border-radius: 12px 50px;
   }
+
   &::after {
     content: '';
     position: absolute;
@@ -38,6 +49,7 @@
       ),
       #ffffff;
   }
+
   .text {
     opacity: 0.75;
   }
@@ -59,7 +71,7 @@
   color: #ffffff;
   &:hover {
     &::after {
-      opacity: 1;
+      opacity: 1 !important;
     }
     .button::after {
       opacity: 1;
@@ -102,21 +114,10 @@
 
   color: inherit;
 
-  & + .card {
-    margin-left: 40px;
-  }
-
   @media (max-width: $lg) {
     padding: 32px;
     width: 100%;
     max-width: 300px;
-  }
-
-  @media (max-width: $md) {
-    & + .card {
-      margin-left: 0;
-      margin-top: 80px;
-    }
   }
 }
 
