@@ -74,6 +74,12 @@ const query = graphql`
                   copyright
                   logo
                   logotext
+                  logolink {
+                    ... on PRISMIC__ExternalLink {
+                      _linkType
+                      url
+                    }
+                  }
                 }
                 fields {
                   socialogo

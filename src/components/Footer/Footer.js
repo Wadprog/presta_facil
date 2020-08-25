@@ -29,10 +29,16 @@ const Footer = ({ data }) => {
         </div>
         <Navigation data={data} />
         <div className={style.wrapper}>
-          <div className={style.logoWrapper}>
-            <Image image={primary.logo} className={style.logo} />
-            <RichText render={primary.logotext} />
-          </div>
+          <a
+            href={primary.logolink.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className={style.logoWrapper}>
+              <Image image={primary.logo} className={style.logo} />
+              <RichText render={primary.logotext} />
+            </div>
+          </a>
           <p className={style.copyright}>{copyright}</p>
           <ul className={style.social}>
             {fields.map(({ sociallink, socialogo }) => {
