@@ -83,7 +83,9 @@ const Subscribe = ({ primary }) => {
                 </div>
               </Fragment>
             ) : (
-              <p>Thanx !!</p>
+              <div className={styles.successMessage}>
+                Thank you for subscribing!
+              </div>
             )}
           </form>
         </div>

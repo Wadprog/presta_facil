@@ -146,3 +146,14 @@
     }
   }
 }
+
+.successMessage {
+  padding: 13px 48px 12px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  color: #fff;
+  background-color: $green;
+}
