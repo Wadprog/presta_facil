@@ -1,10 +1,14 @@
 import React, { useState, Fragment } from 'react';
-import classNames from 'classnames';
-import styles from './Subscribe.module.scss';
-import { RichText } from 'prismic-reactjs';
 import { object } from 'prop-types';
-import { isValidEmail } from '@helpers';
+import BackgroundImage from 'gatsby-background-image';
+import { RichText } from 'prismic-reactjs';
+import classNames from 'classnames';
+
 import Button, { VARIANT } from '@components/Button/Button.js';
+import { isValidEmail } from '@helpers';
+import useGetImages from './useGetImages';
+import styles from './Subscribe.module.scss';
+
 const Subscribe = ({ primary }) => {
   const [data, setData] = useState({
     email: {
@@ -13,6 +17,7 @@ const Subscribe = ({ primary }) => {
     },
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { background } = useGetImages();
 
   const handleChange = ({ target: { name, value } }) => {
     setData((data) => ({
@@ -43,43 +48,48 @@ const Subscribe = ({ primary }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.block}>
-        <div className={styles.title}>
-          <RichText render={primary.title} />
-        </div>
-        <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
-          {!isSubmitted ? (
-            <Fragment>
-              <label className={inputWrapperClass}>
-                <input
-                  placeholder="Type your email"
-                  className={styles.input}
-                  type="text"
-                  name="email"
-                  id="email"
-                  require="true"
-                  onChange={handleChange}
-                />
-                <span className={styles.errorMessage}>Wrong Email</span>
-              </label>
-              <div className={styles.button}>
-                <Button
-                  variant={VARIANT.PRIMARY}
-                  type="submit"
-                  element="button"
-                  fullWidth
-                >
-                  {RichText.asText(primary.buttontext)}
-                </Button>
+      <BackgroundImage
+        fluid={background.childImageSharp.fluid}
+        className={styles.background}
+      >
+        <div className={styles.block}>
+          <div className={styles.title}>
+            <RichText render={primary.title} />
+          </div>
+          <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
+            {!isSubmitted ? (
+              <Fragment>
+                <label className={inputWrapperClass}>
+                  <input
+                    placeholder="Type your email"
+                    className={styles.input}
+                    type="text"
+                    name="email"
+                    id="email"
+                    require="true"
+                    onChange={handleChange}
+                  />
+                  <span className={styles.errorMessage}>Wrong Email</span>
+                </label>
+                <div className={styles.button}>
+                  <Button
+                    variant={VARIANT.PRIMARY}
+                    type="submit"
+                    element="button"
+                    fullWidth
+                  >
+                    {RichText.asText(primary.buttontext)}
+                  </Button>
+                </div>
+              </Fragment>
+            ) : (
+              <div className={styles.successMessage}>
+                Thank you for subscribing!
               </div>
-            </Fragment>
-          ) : (
-            <div className={styles.successMessage}>
-              Thank you for subscribing!
-            </div>
-          )}
-        </form>
-      </div>
+            )}
+          </form>
+        </div>
+      </BackgroundImage>
       <span className={styles.smPlanet}></span>
     </div>
   );

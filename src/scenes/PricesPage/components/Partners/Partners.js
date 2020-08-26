@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import Swiper from 'react-id-swiper';
 
+import { useBreakpoints } from '@hooks';
 import { parameters } from './data';
 import style from './Partners.module.scss';
 
 const Partners = ({ primary, fields }) => {
+  const [key, setKey] = useState();
+  const { width } = useBreakpoints();
+
+  useEffect(() => {
+    setKey(+new Date());
+  }, [width]);
+
   return (
     <div className={style.wrapper}>
       <div className={style.title}>
         <RichText render={primary.title} />
       </div>
-      <div className={style.slider}>
+      <div className={style.slider} key={key}>
         <Swiper {...parameters}>
           {fields.map(({ logotype }) => {
             return (
