@@ -18,7 +18,6 @@ const Subscribe = ({ primary }) => {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { background } = useGetImages();
-  console.log(background);
 
   const handleChange = ({ target: { name, value } }) => {
     setData((data) => ({
