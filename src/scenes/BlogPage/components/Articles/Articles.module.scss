@@ -48,6 +48,11 @@
   flex-wrap: wrap;
   max-width: 1152px;
 
+  margin: 0 auto;
+  align-items: stretch;
+  max-width: 1152px;
+  
+
   @media (max-width: $md) {
     justify-content: center;
     margin-bottom: 64px;
