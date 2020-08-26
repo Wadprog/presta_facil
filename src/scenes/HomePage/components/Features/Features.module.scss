@@ -58,9 +58,9 @@
   font-family: $font-gramatika;
   font-weight: 400;
   font-size: 42px;
-  line-height: 130%;
+  line-height: 125%;
   max-width: 850px;
-  margin: 0 auto 12px;
+  margin: 0 auto 16px;
   strong {
     font-family: $font-gramatika-black;
     font-weight: 900;
@@ -83,7 +83,7 @@
   color: $second-dark;
   opacity: 0.75;
   max-width: 520px;
-  margin: 0 auto 40px;
+  margin: 0 auto 48px;
   text-transform: capitalize;
   @media (max-width: $md) {
     padding: 0 16px;

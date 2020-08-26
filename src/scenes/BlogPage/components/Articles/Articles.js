@@ -82,7 +82,7 @@ const Articles = ({ articlesList }) => {
         })}
       </div>
       <div className={style.buttonWrapper}>
-        {articlesList.length > counter && (
+        {articlesList.length > counter && list.length >= 6 && (
           <Button
             variant={VARIANT.TRANSPARENT}
             click={handleClickLoadMore}
