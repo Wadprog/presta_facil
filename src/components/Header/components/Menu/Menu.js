@@ -29,7 +29,6 @@ const Menu = ({ data, open }) => {
               key={index}
               activeMenu={activeMenu}
               handleActiveMenu={handleActiveMenu}
-              isIndex
             />
           );
         }
