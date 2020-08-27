@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link as GatsbyLink } from 'gatsby';
 import { RichText } from 'prismic-reactjs';
 import classnames from 'classnames';
 
@@ -39,7 +38,7 @@ const Card = ({
           <RichText render={description} />
         </div>
         <div className={style.footer}>
-          <GatsbyLink to={RichText.asText(buttonLink)} className={style.button}>
+          <a href={buttonLink.url} className={style.button}>
             {colorized ? (
               <span className={style.gradientText}>
                 {RichText.asText(buttonText)}
@@ -47,7 +46,7 @@ const Card = ({
             ) : (
               <span>{RichText.asText(buttonText)}</span>
             )}
-          </GatsbyLink>
+          </a>
         </div>
       </div>
     </div>
@@ -67,7 +66,7 @@ Card.propTypes = {
   condition: PropTypes.array.isRequired,
   description: PropTypes.array.isRequired,
   buttonText: PropTypes.array.isRequired,
-  buttonLink: PropTypes.array.isRequired,
+  buttonLink: PropTypes.object,
 };
 
 export default Card;

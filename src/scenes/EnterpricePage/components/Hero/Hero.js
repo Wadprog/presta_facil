@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { object } from 'prop-types';
+import { object, func } from 'prop-types';
 import style from './Hero.module.scss';
 import { RichText } from 'prismic-reactjs';
 import Button, { VARIANT } from '@components/Button/Button.js';
@@ -8,7 +8,7 @@ import Image from '@components/Image/Image';
 import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
 import Modal from '@components/Modal';
 
-const Hero = ({ primary }) => {
+const Hero = ({ primary, handleScroll }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleOpenModal = () => setModalIsOpen(true);
   const handleCloseModal = () => setModalIsOpen(false);
@@ -41,7 +41,13 @@ const Hero = ({ primary }) => {
               <RichText render={benefitslist} />
             </div>
             <div className={style.buttonWrapper}>
-              <Button variant={VARIANT.SECONDARY} element="external" href="">
+              <Button
+                variant={VARIANT.SECONDARY}
+                click={(e) => {
+                  e.preventDefault();
+                  handleScroll();
+                }}
+              >
                 See all features
               </Button>
             </div>
@@ -92,6 +98,7 @@ const Hero = ({ primary }) => {
 
 Hero.propTypes = {
   primary: object,
+  handleScroll: func,
 };
 
 export default Hero;

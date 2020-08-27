@@ -14,12 +14,18 @@ const Navigation = ({ data }) => {
             <div className={style.item} key={title}>
               <h4 className={style.title}>{title}</h4>
               <ul className={style.list}>
-                {fields.map(({ name, pagename }) => {
+                {fields.map(({ name, pagename, externallink }) => {
                   const linkName = parseString(name);
                   const link = '/' + parseString(pagename);
                   return (
                     <li className={style.link} key={linkName}>
-                      <Link to={link}>{linkName}</Link>
+                      {externallink ? (
+                        <a href={externallink.url} target="_self">
+                          {linkName}
+                        </a>
+                      ) : (
+                        <Link to={link}>{linkName}</Link>
+                      )}
                     </li>
                   );
                 })}

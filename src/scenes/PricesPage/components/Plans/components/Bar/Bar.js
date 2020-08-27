@@ -25,7 +25,7 @@ const Bar = ({ primary, plan, isAnnual }) => {
             name={plan.name}
             cost={basicCost}
             buttonText={primary.buttontext}
-            buttonLink={primary.buttonlink}
+            buttonLink={primary.link}
           />
         </div>
         <div className={style.card}>
@@ -34,7 +34,7 @@ const Bar = ({ primary, plan, isAnnual }) => {
             name={plan.name}
             cost={premiumCost}
             buttonText={primary.buttontext}
-            buttonLink={primary.buttonlink}
+            buttonLink={primary.link}
             colorized={true}
           />
         </div>

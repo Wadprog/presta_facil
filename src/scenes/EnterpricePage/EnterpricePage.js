@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { object } from 'prop-types';
 import style from './EnterpricePage.module.scss';
 import Hero from './components/Hero/Hero';
@@ -38,10 +38,18 @@ const EnterpricePage = ({ content }) => {
     }
   });
 
+  const scrollToRef = useRef(null);
+  const scrollTo = (ref, offset) =>
+    window.scrollTo(offset, ref.current.offsetTop - offset);
+
+  const handleScroll = () => {
+    scrollTo(scrollToRef, 150);
+  };
+
   return (
     <div className={style.HomePage}>
-      <Hero {...hero} />
-      <Feature {...feature} />
+      <Hero handleScroll={handleScroll} {...hero} />
+      <Feature scrollToRef={scrollToRef} {...feature} />
       <Testimonials {...reviews} />
       <Works {...examples} />
       <BookCall {...callBanner} />
