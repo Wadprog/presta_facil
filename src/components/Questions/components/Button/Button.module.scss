@@ -15,6 +15,7 @@
   text-transform: uppercase;
   color: $main-light;
   transition: 0.3s;
+  cursor: pointer;
   &:hover {
     background-clip: text;
     -webkit-text-fill-color: transparent;

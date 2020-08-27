@@ -25,7 +25,7 @@ const Benefits = ({ primary, fields }) => {
         </div>
         <div className={styles.button}>
           <Button variant={VARIANT.WHITE}>
-            {RichText.asText(primary.button)}
+            <span>{RichText.asText(primary.button)}</span>
           </Button>
         </div>
       </div>

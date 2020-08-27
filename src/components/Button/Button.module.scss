@@ -107,6 +107,45 @@
 }
 
 .white {
-  background-color: #fff;
   color: $main-light;
+  background-color: #fff;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 16px;
+    background: $main-dark;
+    filter: blur(60px);
+    border-radius: 20px 5px;
+    opacity: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -5px;
+    z-index: -1;
+    transition: opacity 0.3s;
+  }
+  &:hover {
+    span {
+      background-image: $main-gradient;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    span {
+      background-image: $main-gradient;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: contrast(70%);
+    }
+  }
 }

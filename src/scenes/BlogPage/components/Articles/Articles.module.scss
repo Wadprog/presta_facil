@@ -27,7 +27,7 @@
       font-size: 28px;
       font-weight: 500;
       text-align: center;
-      margin: 0 auto 16px;
+      margin: 0 auto 28px;
     }
   }
   .search {
@@ -48,6 +48,11 @@
   flex-wrap: wrap;
   max-width: 1152px;
 
+  margin: 0 auto;
+  align-items: stretch;
+  max-width: 1152px;
+  
+
   @media (max-width: $md) {
     justify-content: center;
     margin-bottom: 64px;
@@ -60,7 +65,7 @@
   margin-top: 16px;
   @media (max-width: $md) {
     height: auto;
-    margin-top: 64px;
+    margin-top: 24px;
   }
 }
 
