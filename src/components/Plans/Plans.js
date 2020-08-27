@@ -6,7 +6,7 @@ import { object, array } from 'prop-types';
 import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
 
 const Plans = ({ primary, fields }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(true);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleCloseModal = () => setModalIsOpen(false);
 
   const handleClick = (e, type) => {
