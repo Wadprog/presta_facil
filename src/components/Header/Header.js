@@ -11,7 +11,8 @@ import { useScrollDirection } from '@hooks';
 import useGetImage from './useGetImage';
 import { array, bool } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
-import { parseString } from '@helpers';
+import { parseString, parseUrl } from '@helpers';
+import { useEffect } from 'react';
 
 const GRADIENT_ORANGE =
   'linear-gradient(262.53deg, #FB5F47 38.27%, #F9BE5A 113.07%)';
@@ -31,8 +32,21 @@ const Header = ({ data, hideMenu }) => {
   const link = '/' + parseString(primary.buttonlink);
   const toggleMobileMenu = () => {
     setIsOpenMenu(!isOpenMenu);
-    document.querySelector('html').classList.toggle('fixed');
   };
+
+  const handleScroll = (isOpenMenu = false) => {
+    const htmlElementClassList = document.querySelector('html').classList;
+
+    if (htmlElementClassList && isOpenMenu) {
+      htmlElementClassList.add('fixed');
+    } else {
+      htmlElementClassList.remove('fixed');
+    }
+  };
+
+  useEffect(() => {
+    handleScroll(isOpenMenu);
+  }, [isOpenMenu]);
 
   const gradientTextBg =
     scrollDir === 'down' ? GRADIENT_ORANGE : GRADIENT_GREEN;
@@ -76,7 +90,7 @@ const Header = ({ data, hideMenu }) => {
             <Menu data={data} open={isOpenMenu} />
             <SingInButton
               onClick={() =>
-                window && window.open(primary.signinlink.url, '_self')
+                window && window.open(parseUrl(primary.signinlink), '_self')
               }
             />
           </div>
