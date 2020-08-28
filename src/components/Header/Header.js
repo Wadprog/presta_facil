@@ -32,21 +32,12 @@ const Header = ({ data, hideMenu }) => {
   const link = '/' + parseString(primary.buttonlink);
   const toggleMobileMenu = () => {
     setIsOpenMenu(!isOpenMenu);
-  };
-
-  const handleScroll = (isOpenMenu = false) => {
-    const htmlElementClassList = document.querySelector('html').classList;
-
-    if (htmlElementClassList && isOpenMenu) {
-      htmlElementClassList.add('fixed');
-    } else {
-      htmlElementClassList.remove('fixed');
-    }
+    document.querySelector('html').classList.toggle('fixed');
   };
 
   useEffect(() => {
-    handleScroll(isOpenMenu);
-  }, [isOpenMenu]);
+    return () => document.querySelector('html').classList.toggle('fixed');
+  }, []);
 
   const gradientTextBg =
     scrollDir === 'down' ? GRADIENT_ORANGE : GRADIENT_GREEN;
