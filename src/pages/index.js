@@ -131,6 +131,12 @@ const query = graphql`
                   benefits
                   button
                   buttonprice
+                  buttonlink {
+                    ... on PRISMIC__ExternalLink {
+                      _linkType
+                      url
+                    }
+                  }
                   type
                 }
                 primary {
