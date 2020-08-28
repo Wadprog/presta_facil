@@ -42,8 +42,12 @@ export const query = graphql`
                   premiumplandescription
                   monthlycondition
                   annualcondition
-                  buttonlink
                   buttontext
+                  link {
+                    ... on PRISMIC__ExternalLink {
+                      url
+                    }
+                  }
                 }
                 fields {
                   name

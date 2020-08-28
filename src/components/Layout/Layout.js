@@ -48,6 +48,12 @@ const query = graphql`
                   buttontext
                   logo
                   buttonlink
+                  signinlink {
+                    ... on PRISMIC__ExternalLink {
+                      _linkType
+                      url
+                    }
+                  }
                 }
               }
               ... on PRISMIC_LayoutBodyMenu {
@@ -97,6 +103,12 @@ const query = graphql`
                 fields {
                   name
                   pagename
+                  externallink {
+                    ... on PRISMIC__ExternalLink {
+                      _linkType
+                      url
+                    }
+                  }
                 }
                 primary {
                   title

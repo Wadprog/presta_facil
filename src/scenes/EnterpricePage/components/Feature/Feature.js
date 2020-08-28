@@ -1,14 +1,14 @@
 import React from 'react';
 import style from './Feature.module.scss';
-import { object, array } from 'prop-types';
+import { object, array, oneOfType, func, shape, any } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import { parseString } from '@helpers';
 import Image from '@components/Image/Image';
 
-const Feature = ({ primary, fields }) => {
+const Feature = ({ primary, fields, scrollToRef }) => {
   const { title } = primary;
   return (
-    <section className={style.feature}>
+    <section ref={scrollToRef} className={style.feature}>
       <div className={style.container}>
         <div className={style.title}>
           <RichText render={title} />
@@ -31,6 +31,7 @@ const Feature = ({ primary, fields }) => {
 Feature.propTypes = {
   primary: object,
   fields: array,
+  scrollToRef: oneOfType([func, shape({ current: any })]),
 };
 
 export default Feature;

@@ -37,7 +37,7 @@ const Dashboard = ({ primary, plan, isAnnual, isPremium, setIsPremium }) => {
           condition={condition}
           description={primary.basicplandescription}
           buttonText={primary.buttontext}
-          buttonLink={primary.buttonlink}
+          buttonLink={primary.link}
           disabled={isPremium}
         />
         <Card
@@ -47,7 +47,7 @@ const Dashboard = ({ primary, plan, isAnnual, isPremium, setIsPremium }) => {
           condition={condition}
           description={primary.premiumplandescription}
           buttonText={primary.buttontext}
-          buttonLink={primary.buttonlink}
+          buttonLink={primary.link}
           colorized={true}
           disabled={!isPremium}
         />

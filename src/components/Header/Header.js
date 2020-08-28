@@ -29,7 +29,6 @@ const Header = ({ data, hideMenu }) => {
   });
   const primary = data[0].primary;
   const link = '/' + parseString(primary.buttonlink);
-
   const toggleMobileMenu = () => {
     setIsOpenMenu(!isOpenMenu);
     document.querySelector('html').classList.toggle('fixed');
@@ -75,7 +74,11 @@ const Header = ({ data, hideMenu }) => {
             </div>
             <Logo img={primary.logo} />
             <Menu data={data} open={isOpenMenu} />
-            <SingInButton />
+            <SingInButton
+              onClick={() =>
+                window && window.open(primary.signinlink.url, '_self')
+              }
+            />
           </div>
         </div>
       </div>

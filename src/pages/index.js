@@ -161,6 +161,7 @@ const query = graphql`
                   description
                   buttontext
                   image
+                  page
                 }
               }
             }
