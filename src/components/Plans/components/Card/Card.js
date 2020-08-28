@@ -1,5 +1,5 @@
 import React from 'react';
-import { string, array, object } from 'prop-types';
+import { string, array, object, func } from 'prop-types';
 import { Link } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 import { RichText } from 'prismic-reactjs';
@@ -19,6 +19,7 @@ const Card = ({
   image,
   imageSharp,
   type,
+  handleClick,
 }) => {
   const { background } = useGetImages();
   const classes = classnames(style.container, {
@@ -30,7 +31,7 @@ const Card = ({
       fluid={background.childImageSharp.fluid}
       className={classes}
     >
-      <Link className={style.body} to="/">
+      <Link className={style.body} to="/" onClick={(e) => handleClick(e, type)}>
         <h3 className={style.title}>{RichText.asText(cardtitle)}</h3>
         <p className={style.text}>{RichText.asText(description)}</p>
         <div className={style.benefit}>
@@ -68,6 +69,7 @@ Card.propTypes = {
   description: array,
   image: object,
   imageSharp: object,
+  handleClick: func,
 };
 
 export default Card;
