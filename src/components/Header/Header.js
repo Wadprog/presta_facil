@@ -36,7 +36,7 @@ const Header = ({ data, hideMenu }) => {
   };
 
   useEffect(() => {
-    return () => document.querySelector('html').classList.toggle('fixed');
+    return () => document.querySelector('html').classList.remove('fixed');
   }, []);
 
   const gradientTextBg =

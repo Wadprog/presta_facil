@@ -40,7 +40,6 @@
       font-family: $font-gramatika-black;
       font-weight: 900;
       letter-spacing: 0.03em;
-      text-transform: capitalize;
       color: $green;
     }
     @media (max-width: $md) {
@@ -73,7 +72,6 @@
     font-size: 18px;
     line-height: 160%;
     letter-spacing: 0.03em;
-    text-transform: capitalize;
     opacity: 0.75;
   }
 }
@@ -162,6 +160,6 @@
 }
 
 .buttonWrapper {
-  max-width: 208px;
+  max-width: 260px;
   margin-top: 40px;
 }

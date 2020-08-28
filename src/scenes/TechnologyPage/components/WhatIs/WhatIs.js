@@ -37,7 +37,6 @@ const WhatIs = ({ primary }) => {
             <Button
               variant={VARIANT.PRIMARY}
               to={'/' + parseString(buttonlink)}
-              fullWidth
             >
               <RichText render={buttontext} />
             </Button>
