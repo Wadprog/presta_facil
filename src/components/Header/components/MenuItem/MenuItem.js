@@ -6,10 +6,13 @@ import Arrow from './image/arrow.inline.svg';
 import Image from '@components/Image/Image';
 import classnames from 'classnames';
 import { Link } from 'gatsby';
+import { globalHistory as history } from '@reach/router';
 
 const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
   const [activeImage, setActiveImage] = useState(0);
   const [image, setImage] = useState(fields[activeImage].image);
+  const [isLinkActive, setIsLinkActive] = useState(false);
+  const { location } = history;
 
   useEffect(() => {
     setImage(fields[activeImage].image);
@@ -30,6 +33,7 @@ const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
     [style.item]: true,
     [style[title]]: true,
     [style.open]: activeMenu === title,
+    [style.linkActive]: isLinkActive,
   });
 
   return (
@@ -46,10 +50,12 @@ const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
             {fields.map((item, index) => {
               const text = RichText.asText(item.name);
               const link = '/' + RichText.asText(item.link);
+              location.pathname === link && setIsLinkActive(true);
               return (
                 <Link
                   to={link}
                   className={style.link}
+                  activeClassName={style.linkActive}
                   key={text}
                   onMouseEnter={() => handleMouseEnter(index)}
                   onClick={handleClick}
@@ -73,6 +79,7 @@ MenuItem.propTypes = {
   fields: array,
   activeMenu: string,
   handleActiveMenu: func,
+  location: string,
 };
 
 export default MenuItem;
