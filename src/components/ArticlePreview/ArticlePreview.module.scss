@@ -27,33 +27,12 @@
     }
   }
 
-  & + .preview {
-    margin-left: 30px;
-  }
-
-  &:nth-child(4n) {
-    margin-left: 0;
-  }
-  &:nth-child(n + 4) {
-    margin-top: 96px;
-  }
-
   @media (max-width: 1050px) {
     max-width: 290px;
   }
 
   @media (max-width: $lg) {
     max-width: 320px;
-    &:nth-child(n + 3) {
-      margin-left: 0;
-      margin-top: 64px;
-    }
-  }
-  @media (max-width: $md) {
-    & + .preview {
-      margin-left: 0;
-      margin-top: 64px;
-    }
   }
 }
 .imagePreview {

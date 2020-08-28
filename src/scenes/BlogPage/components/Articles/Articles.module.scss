@@ -40,21 +40,32 @@
 }
 
 .list {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 96px;
   margin: 0 auto;
-  align-items: stretch;
-  flex-wrap: wrap;
   max-width: 1152px;
+  align-items: stretch;
 
-  margin: 0 auto;
-  align-items: stretch;
-  max-width: 1152px;
-  
+  @media (max-width: $lg) {
+    gap: 64px;
+    margin-bottom: 64px;
+  }
+
+  @media (max-width: 1050px) {
+    gap: 48px;
+    grid-template-columns: repeat(3, 1fr);
+  }
 
   @media (max-width: $md) {
+    grid-template-columns: repeat(2, 1fr);
     justify-content: center;
+    margin-bottom: 64px;
+  }
+
+  @media (max-width: $sm) {
+    grid-template-columns: 1fr;
+    justify-items: center;
     margin-bottom: 64px;
   }
 }
