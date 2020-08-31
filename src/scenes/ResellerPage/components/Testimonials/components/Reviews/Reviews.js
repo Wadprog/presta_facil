@@ -2,19 +2,41 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Swiper from 'react-id-swiper';
 
+import ArrowButton from '@components/ArrowButton/ArrowButton';
 import Card from './components/Card';
 import style from './Reviews.module.scss';
 
 const params = {
-  slidesPerView: 1,
-  spaceBetween: 16,
-};
-
-const params2 = {
-  slidesPerView: 3,
+  slidesPerView: 2,
   slidesPerColumn: 2,
-  spaceBetween: 30,
-  grabCursor: true,
+  pagination: {
+    el: '.swiper-pagination',
+    type: 'progressbar',
+  },
+  navigation: {
+    nextEl: '.next',
+    prevEl: '.prev',
+  },
+  breakpoints: {
+    1024: {
+      slidesPerView: 2,
+      slidesPerColumn: 2,
+    },
+    768: {
+      slidesPerView: 2,
+      slidesPerColumn: 1,
+    },
+    320: {
+      slidesPerView: 1,
+      slidesPerColumn: 1,
+    },
+  },
+  renderPrevButton() {
+    return <ArrowButton type="prev" />;
+  },
+  renderNextButton() {
+    return <ArrowButton type="next" />;
+  },
 };
 
 const Reviews = ({
@@ -24,150 +46,12 @@ const Reviews = ({
   buttonLink,
   logotype,
 }) => {
-  const items2 = [
-    {
-      author: [
-        {
-          type: 'paragraph',
-          text: 'Alexandre G',
-          spans: [],
-        },
-      ],
-      text: [
-        {
-          type: 'paragraph',
-          text:
-            'The fact that we can track all user opt-in and opt-out data and review it later to ensure compliance with LGPD cookie consent compliance requirements.',
-          spans: [],
-        },
-      ],
-    },
-    {
-      author: [
-        {
-          type: 'paragraph',
-          text: 'Francis U',
-          spans: [],
-        },
-      ],
-      text: [
-        {
-          type: 'paragraph',
-          text:
-            'The automated web scanning has been really resourceful for us in identifying the cookies on our website and managing them in line with GDPR...',
-          spans: [],
-        },
-      ],
-    },
-    {
-      author: [
-        {
-          type: 'paragraph',
-          text: 'Jagrati S',
-          spans: [],
-        },
-      ],
-      text: [
-        {
-          type: 'paragraph',
-          text:
-            'The simplicity and clarity around Secure Privacy’s sync consent across multiple website domains capability gave us the structure we needed to meet...',
-          spans: [],
-        },
-      ],
-    },
-    {
-      author: [
-        {
-          type: 'paragraph',
-          text: 'Maša K',
-          spans: [],
-        },
-      ],
-      text: [
-        {
-          type: 'paragraph',
-          text:
-            'The ‘Prior Consent’ tool that blocks the installation of unnecessary cookies on users’ computers until they give consent. This is very important to us in our efforts...',
-          spans: [],
-        },
-      ],
-    },
-    {
-      author: [
-        {
-          type: 'paragraph',
-          text: 'Maša K',
-          spans: [],
-        },
-      ],
-      text: [
-        {
-          type: 'paragraph',
-          text:
-            'The ‘Prior Consent’ tool that blocks the installation of unnecessary cookies on users’ computers until they give consent. This is very important to us in our efforts...',
-          spans: [],
-        },
-      ],
-    },
-    {
-      author: [
-        {
-          type: 'paragraph',
-          text: 'Maša K',
-          spans: [],
-        },
-      ],
-      text: [
-        {
-          type: 'paragraph',
-          text:
-            'The ‘Prior Consent’ tool that blocks the installation of unnecessary cookies on users’ computers until they give consent. This is very important to us in our efforts...',
-          spans: [],
-        },
-      ],
-    },
-    {
-      author: [
-        {
-          type: 'paragraph',
-          text: 'Maša K',
-          spans: [],
-        },
-      ],
-      text: [
-        {
-          type: 'paragraph',
-          text:
-            'The ‘Prior Consent’ tool that blocks the installation of unnecessary cookies on users’ computers until they give consent. This is very important to us in our efforts...',
-          spans: [],
-        },
-      ],
-    },
-    {
-      author: [
-        {
-          type: 'paragraph',
-          text: 'Maša K',
-          spans: [],
-        },
-      ],
-      text: [
-        {
-          type: 'paragraph',
-          text:
-            'The ‘Prior Consent’ tool that blocks the installation of unnecessary cookies on users’ computers until they give consent. This is very important to us in our efforts...',
-          spans: [],
-        },
-      ],
-    },
-  ];
   return (
     <div className={style.container}>
-      <Swiper {...params2}>
-        {items2.map((item, index) => {
+      <Swiper {...params}>
+        {items.map((item, index) => {
           return (
-            <div className={style.item} key={index}>
+            <div key={index} className={style.slide}>
               <Card
                 {...item}
                 buttonText={buttonText}
