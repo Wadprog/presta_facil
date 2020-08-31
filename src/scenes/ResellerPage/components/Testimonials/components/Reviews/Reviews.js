@@ -2,12 +2,41 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Swiper from 'react-id-swiper';
 
+import ArrowButton from '@components/ArrowButton/ArrowButton';
 import Card from './components/Card';
 import style from './Reviews.module.scss';
 
 const params = {
-  slidesPerView: 1,
-  spaceBetween: 16,
+  slidesPerView: 2,
+  slidesPerColumn: 2,
+  pagination: {
+    el: '.swiper-pagination',
+    type: 'progressbar',
+  },
+  navigation: {
+    nextEl: '.next',
+    prevEl: '.prev',
+  },
+  breakpoints: {
+    1024: {
+      slidesPerView: 2,
+      slidesPerColumn: 2,
+    },
+    768: {
+      slidesPerView: 2,
+      slidesPerColumn: 1,
+    },
+    320: {
+      slidesPerView: 1,
+      slidesPerColumn: 1,
+    },
+  },
+  renderPrevButton() {
+    return <ArrowButton type="prev" />;
+  },
+  renderNextButton() {
+    return <ArrowButton type="next" />;
+  },
 };
 
 const Reviews = ({
@@ -19,27 +48,10 @@ const Reviews = ({
 }) => {
   return (
     <div className={style.container}>
-      <div className={style.slider}>
-        <Swiper {...params}>
-          {items.map((item, index) => {
-            return (
-              <div key={index} className={style.slide}>
-                <Card
-                  {...item}
-                  buttonText={buttonText}
-                  buttonTextShort={buttonTextShort}
-                  buttonLink={buttonLink}
-                  logotype={logotype}
-                />
-              </div>
-            );
-          })}
-        </Swiper>
-      </div>
-      <ul className={style.list}>
+      <Swiper {...params}>
         {items.map((item, index) => {
           return (
-            <li key={index} className={style.item}>
+            <div key={index} className={style.slide}>
               <Card
                 {...item}
                 buttonText={buttonText}
@@ -47,10 +59,10 @@ const Reviews = ({
                 buttonLink={buttonLink}
                 logotype={logotype}
               />
-            </li>
+            </div>
           );
         })}
-      </ul>
+      </Swiper>
     </div>
   );
 };
