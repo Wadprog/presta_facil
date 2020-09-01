@@ -13,21 +13,21 @@ const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
   const [image, setImage] = useState(fields[activeImage].image);
   const [isLinkActive, setIsLinkActive] = useState(false);
   const { location } = history;
-
-  useEffect(() => {
-    setImage(fields[activeImage].image);
-  }, [activeImage]);
+  const title = RichText.asText(primary.title);
 
   const handleMouseEnter = (id) => {
     setActiveImage(id);
   };
-  const title = RichText.asText(primary.title);
 
   const handleClick = () => {
     if (document.querySelector('html').classList.contains('fixed')) {
       document.querySelector('html').classList.remove('fixed');
     }
   };
+
+  useEffect(() => {
+    setImage(fields[activeImage].image);
+  }, [activeImage]);
 
   const classItem = classnames({
     [style.item]: true,

@@ -114,7 +114,7 @@
 }
 
 .container {
-  max-width: 610px;
+  max-width: 650px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -123,11 +123,19 @@
     margin: 0;
   }
 }
+
 .submenu {
   position: fixed;
-  left: 0;
-  width: 100vw;
+
+  @media (min-width: $lg) {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+  }
+
   padding: 20px 20px 40px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
   transition: opacity 0.3s;
   display: none;
   background: $bg-blue;
@@ -191,7 +199,6 @@
     }
   }
 }
-
 
 .imageWrapper {
   max-width: 400px;
@@ -287,14 +294,42 @@
 }
 
 .Pricing {
+  @media (min-width: $lg) {
+    .submenu {
+      position: absolute;
+      left: 112px;
+      width: 208px;
+      padding: 24px 24px 9px 24px;
+      border-radius: 20px;
+    }
+
+    .container {
+      width: 176px;
+    }
+  }
+
   .link {
-    width: 100%;
+    width: 80%;
     &:nth-child(2n) {
       margin-left: 0;
     }
   }
 }
 .Resources {
+  @media (min-width: $lg) {
+    .submenu {
+      position: absolute;
+      left: 78px;
+      width: 140px;
+      padding: 24px 24px 9px 24px;
+      border-radius: 20px;
+    }
+
+    .container {
+      width: 100px;
+    }
+  }
+
   .link {
     width: 100%;
     &:nth-child(2n) {
