@@ -1,28 +1,31 @@
 import React from 'react';
 import { array } from 'prop-types';
+import { parseString, parseUrl } from '@helpers';
+import Image from '@components/Image/Image';
+
+import Arrow from './image/arrow.inline.svg';
 import style from './Books.module.scss';
 
 const Books = ({ fields }) => {
   return (
     <div className={style.page}>
       <div className={style.container}>
-        {fields.map(({ downloadlink }) => (
-          <div className={style.book} key={downloadlink.url}>
-            <div className={style.wrapper}>
-              <div className={style.header}>
-                <div className={style.title}>What is LGPD</div>
-                <div className={style.subtitle}>
-                  and how to make your website compliant
-                </div>
+        {fields.map(({ image, imageSharp, downloadlink, buttontext }) => (
+          <a
+            href={parseUrl(downloadlink)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={style.book}
+            key={downloadlink.url}
+          >
+            <Image image={image} imageSharp={imageSharp} />
+            <div className={style.buttonWrapper}>
+              <div className={style.button}>
+                {parseString(buttontext)}
+                <Arrow />
               </div>
-              <div className={style.footer}>
-                <div className={style.desc}>
-                  Learn about the LGPD and how to become compliant
-                </div>
-              </div>
-              <div className={style.download}>Download</div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>

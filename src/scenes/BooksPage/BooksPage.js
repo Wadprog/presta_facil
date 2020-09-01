@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import style from './BooksPage.module.scss';
-import 'swiper/swiper.scss';
 import Books from './components/Books/Books';
 import CallToAction from '@components/CallToAction/CallToAction';
 
