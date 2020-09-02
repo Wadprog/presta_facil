@@ -1,58 +1,32 @@
 import React from 'react';
 import { array } from 'prop-types';
-import Button, { VARIANT } from '@components/Button/Button.js';
-import style from './Books.module.scss';
-import Swiper from 'react-id-swiper';
+import { parseString, parseUrl } from '@helpers';
 import Image from '@components/Image/Image';
-import { parseString } from '@helpers';
+
+import Arrow from './image/arrow.inline.svg';
+import style from './Books.module.scss';
 
 const Books = ({ fields }) => {
-  const params = {
-    slidesPerView: 'auto',
-    spaceBetween: 16,
-    centeredSlides: true,
-    loop: true,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      768: {
-        spaceBetween: 50,
-        slidesPerView: 3,
-        initialSlide: 1,
-        centeredSlides: true,
-      },
-    },
-  };
   return (
     <div className={style.page}>
       <div className={style.container}>
-        <Swiper {...params}>
-          {fields.map((item) => {
-            const { image, imageSharp, buttontext, downloadlink, flag } = item;
-            return (
-              <div className={style.slide} key={downloadlink.url}>
-                <div className={style.item}>
-                  <Image image={flag} className={style.flag} />
-                  <div className={style.imageWrapper}>
-                    <Image image={image} imageSharp={imageSharp} />
-                  </div>
-                  <div className={style.buttonWrapper}>
-                    <Button
-                      variant={VARIANT.PRIMARY}
-                      fullWidth
-                      to={downloadlink.url}
-                      element="external"
-                    >
-                      {parseString(buttontext)}
-                    </Button>
-                  </div>
-                </div>
+        {fields.map(({ image, imageSharp, downloadlink, buttontext }) => (
+          <a
+            href={parseUrl(downloadlink)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={style.book}
+            key={downloadlink.url}
+          >
+            <Image image={image} imageSharp={imageSharp} />
+            <div className={style.buttonWrapper}>
+              <div className={style.button}>
+                {parseString(buttontext)}
+                <Arrow />
               </div>
-            );
-          })}
-        </Swiper>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   );
