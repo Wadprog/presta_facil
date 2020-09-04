@@ -50,8 +50,8 @@ const Subscribe = ({ primary }) => {
         setIsError(false);
       })
       .catch(() => {
-        setIsError(true);
         setIsSubmitted(false);
+        setIsError(true);
       });
   };
 
