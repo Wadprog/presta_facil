@@ -17,6 +17,7 @@ const Subscribe = ({ primary }) => {
     },
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isError, setIsError] = useState(false);
   const { background } = useGetImages();
 
   const handleChange = ({ target: { name, value } }) => {
@@ -32,18 +33,33 @@ const Subscribe = ({ primary }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const form = new FormData(e.target);
     const isValid = isValidEmail(data.email.value);
 
     if (!isValid) {
       return;
     }
 
-    isValid && setIsSubmitted(true);
+    fetch('https://secureprivacy.activehosted.com/proc.php', {
+      method: 'POST',
+      body: form,
+      mode: 'no-cors',
+    })
+      .then(() => {
+        setIsSubmitted(true);
+        setIsError(false);
+      })
+      .catch(() => {
+        setIsError(true);
+        setIsSubmitted(false);
+      });
   };
 
   const inputWrapperClass = classNames(styles.inputWrapper, {
-    [styles.error]: !data.email.isValid && data.email.value.length > 0,
-    [styles.success]: data.email.isValid && data.email.value.length > 0,
+    [styles.error]:
+      isError && !data.email.isValid && data.email.value.length > 0,
+    [styles.success]:
+      !isError && data.email.isValid && data.email.value.length > 0,
   });
 
   return (
