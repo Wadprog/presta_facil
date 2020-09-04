@@ -76,6 +76,13 @@ const Subscribe = ({ primary }) => {
             {!isSubmitted ? (
               <Fragment>
                 <label className={inputWrapperClass}>
+                  <input type="hidden" name="u" value="11" />
+                  <input type="hidden" name="f" value="11" />
+                  <input type="hidden" name="s" />
+                  <input type="hidden" name="c" value="0" />
+                  <input type="hidden" name="m" value="0" />
+                  <input type="hidden" name="act" value="sub" />
+                  <input type="hidden" name="v" value="2" />
                   <input
                     placeholder="Type your email"
                     className={styles.input}
