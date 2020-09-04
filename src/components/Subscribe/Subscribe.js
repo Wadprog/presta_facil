@@ -40,7 +40,7 @@ const Subscribe = ({ primary }) => {
       return;
     }
 
-    fetch('https://secureprivacy.activehosted.com/proc.php', {
+    fetch('https://secureprivacy.activehosted.com/f/embed.php?id=11', {
       method: 'POST',
       body: form,
       mode: 'no-cors',
