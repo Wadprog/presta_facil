@@ -17,6 +17,7 @@ const Subscribe = ({ primary }) => {
     },
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isError, setIsError] = useState(false);
   const { background } = useGetImages();
 
   const handleChange = ({ target: { name, value } }) => {
@@ -32,18 +33,33 @@ const Subscribe = ({ primary }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const form = new FormData(e.target);
     const isValid = isValidEmail(data.email.value);
 
     if (!isValid) {
       return;
     }
 
-    isValid && setIsSubmitted(true);
+    fetch('https://secureprivacy.activehosted.com/proc.php', {
+      method: 'POST',
+      body: form,
+      mode: 'no-cors',
+    })
+      .then(() => {
+        setIsSubmitted(true);
+        setIsError(false);
+      })
+      .catch(() => {
+        setIsSubmitted(false);
+        setIsError(true);
+      });
   };
 
   const inputWrapperClass = classNames(styles.inputWrapper, {
-    [styles.error]: !data.email.isValid && data.email.value.length > 0,
-    [styles.success]: data.email.isValid && data.email.value.length > 0,
+    [styles.error]:
+      isError && !data.email.isValid && data.email.value.length > 0,
+    [styles.success]:
+      !isError && data.email.isValid && data.email.value.length > 0,
   });
 
   return (
@@ -60,6 +76,13 @@ const Subscribe = ({ primary }) => {
             {!isSubmitted ? (
               <Fragment>
                 <label className={inputWrapperClass}>
+                  <input type="hidden" name="u" value="11" />
+                  <input type="hidden" name="f" value="11" />
+                  <input type="hidden" name="s" />
+                  <input type="hidden" name="c" value="0" />
+                  <input type="hidden" name="m" value="0" />
+                  <input type="hidden" name="act" value="sub" />
+                  <input type="hidden" name="v" value="2" />
                   <input
                     placeholder="Type your email"
                     className={styles.input}
