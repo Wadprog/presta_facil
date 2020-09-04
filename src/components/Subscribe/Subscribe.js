@@ -40,7 +40,7 @@ const Subscribe = ({ primary }) => {
       return;
     }
 
-    fetch('https://youareawesome.activehosted.com/proc.php', {
+    fetch('https://secureprivacy.activehosted.com/proc.php', {
       method: 'POST',
       body: form,
       mode: 'no-cors',
