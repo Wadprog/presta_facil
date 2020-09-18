@@ -16,6 +16,8 @@ const Dashboard = ({ primary, plan, isAnnual, isPremium, setIsPremium }) => {
     ? primary.annualcondition
     : primary.monthlycondition;
 
+  console.log(plan);
+
   const selectBasicPlan = () => setIsPremium(false);
   const selectPremiumPlan = () => setIsPremium(true);
 
