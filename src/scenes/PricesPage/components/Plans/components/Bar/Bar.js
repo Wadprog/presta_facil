@@ -7,7 +7,7 @@ import Card from './components/Card';
 import style from './Bar.module.scss';
 
 const PLANS = {
-  wordwide: 'Worldwide',
+  WORLDWIDE: 'Worldwide',
 };
 
 const Bar = ({
@@ -19,7 +19,7 @@ const Bar = ({
   currency,
 }) => {
   const visiblePlans = plans.filter(
-    ({ name }) => RichText.asText(name) !== PLANS.wordwide
+    ({ name }) => RichText.asText(name) !== PLANS.WORLDWIDE
   );
 
   return (

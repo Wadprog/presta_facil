@@ -12,30 +12,30 @@ import { useScrollDirection } from '@hooks';
 import style from './Plans.module.scss';
 
 const PLANS = {
-  wordwide: 'Worldwide',
-  gdpr: 'GDPR/ePrivacy',
+  WORLDWIDE: 'Worldwide',
+  GDPR: 'GDPR/ePrivacy',
 };
 
 const CURRENCY = {
-  usd: 'usd',
-  eur: 'eur',
+  USD: 'usd',
+  EUR: 'eur',
 };
 
 const OPERATION = {
-  add: 'add',
-  remove: 'remove',
-  setDefault: 'setDefault',
-  setAll: 'setAll',
+  ADD: 'add',
+  REMOVE: 'remove',
+  SET_DEFAULT: 'setDefault',
+  SET_ALL: 'setAll',
 };
 
 const BASIC_COST = {
-  basicplanannualcost: 'basicplanannualcost',
-  basicplanmonthlycost: 'basicplanmonthlycost',
+  BASIC_PLAN_ANNUAL_COST: 'basicplanannualcost',
+  BASIC_PLAN_MONTHLY_COST: 'basicplanmonthlycost',
 };
 
 const PREMIUM_COST = {
-  premiumplanannualcost: 'premiumplanannualcost',
-  premiumplanmonthlycost: 'premiumplanmonthlycost',
+  PREMIUM_PLAN_ANNUAL_COST: 'premiumplanannualcost',
+  PREMIUM_PLAN_MONTHLY_COST: 'premiumplanmonthlycost',
 };
 
 const Plans = ({
@@ -52,7 +52,7 @@ const Plans = ({
   const defaultSelectedPlan = [fields[0]];
   const [selectedPlans, setSelectedPlans] = useState(defaultSelectedPlan);
   const [lastChange, setLastChange] = useState({});
-  const [currency, setCurrency] = useState(CURRENCY.eur);
+  const [currency, setCurrency] = useState(CURRENCY.EUR);
   const togglePeriod = () => setIsAnnual((state) => !state);
 
   const isPlanIncluded = (selectedPlans, fieldName) => {
@@ -68,7 +68,7 @@ const Plans = ({
       setSelectedPlans([...selectedPlans, fields[index]]);
       setLastChange({
         name: RichText.asText(fields[index].name),
-        operation: OPERATION.add,
+        operation: OPERATION.ADD,
       });
     }
 
@@ -76,7 +76,7 @@ const Plans = ({
       setSelectedPlans(selectedPlans.filter((_, index) => index !== planIndex));
       setLastChange({
         name: RichText.asText(fields[index].name),
-        operation: OPERATION.remove,
+        operation: OPERATION.REMOVE,
       });
     }
   };
@@ -85,7 +85,7 @@ const Plans = ({
     let totalCost = 0;
 
     for (let i = 0; i < selectedPlans.length; i++) {
-      if (RichText.asText(selectedPlans[i].name) === PLANS.wordwide) {
+      if (RichText.asText(selectedPlans[i].name) === PLANS.WORLDWIDE) {
         return selectedPlans[i][field];
       }
 
@@ -96,8 +96,8 @@ const Plans = ({
   };
 
   const selectedPlansNames = (plans) => {
-    if (plans.some(({ name }) => RichText.asText(name) === PLANS.wordwide)) {
-      return PLANS.wordwide;
+    if (plans.some(({ name }) => RichText.asText(name) === PLANS.WORLDWIDE)) {
+      return PLANS.WORLDWIDE;
     }
 
     let plansListNames = [];
@@ -110,64 +110,65 @@ const Plans = ({
   };
 
   const basicCost = isAnnual
-    ? plansTotalCost(selectedPlans, BASIC_COST.basicplanannualcost)
-    : plansTotalCost(selectedPlans, BASIC_COST.basicplanmonthlycost);
+    ? plansTotalCost(selectedPlans, BASIC_COST.BASIC_PLAN_ANNUAL_COST)
+    : plansTotalCost(selectedPlans, BASIC_COST.BASIC_PLAN_MONTHLY_COST);
   const premiumCost = isAnnual
-    ? plansTotalCost(selectedPlans, PREMIUM_COST.premiumplanannualcost)
-    : plansTotalCost(selectedPlans, PREMIUM_COST.premiumplanmonthlycost);
+    ? plansTotalCost(selectedPlans, PREMIUM_COST.PREMIUM_PLAN_ANNUAL_COST)
+    : plansTotalCost(selectedPlans, PREMIUM_COST.PREMIUM_PLAN_MONTHLY_COST);
 
   const validation = () => {
     if (
       selectedPlans.length === 1 &&
-      isPlanIncluded(selectedPlans, PLANS.gdpr)
+      isPlanIncluded(selectedPlans, PLANS.GDPR) &&
+      currency !== CURRENCY.EUR
     ) {
-      setCurrency(CURRENCY.eur);
-    } else {
-      setCurrency(CURRENCY.usd);
+      setCurrency(CURRENCY.EUR);
+    } else if (selectedPlans.length > 1 && currency !== CURRENCY.USD) {
+      setCurrency(CURRENCY.USD);
     }
 
     if (selectedPlans.length === 0) {
       setSelectedPlans(defaultSelectedPlan);
       setLastChange({
         name: null,
-        operation: OPERATION.setDefault,
+        operation: OPERATION.SET_DEFAULT,
       });
     } else if (
-      lastChange.name === PLANS.wordwide &&
-      lastChange.operation === OPERATION.add &&
-      lastChange.operation !== OPERATION.setAll
+      lastChange.name === PLANS.WORLDWIDE &&
+      lastChange.operation === OPERATION.ADD &&
+      lastChange.operation !== OPERATION.SET_ALL
     ) {
       setSelectedPlans(fields);
       setLastChange({
-        name: PLANS.wordwide,
-        operation: OPERATION.setAll,
+        name: PLANS.WORLDWIDE,
+        operation: OPERATION.SET_ALL,
       });
     } else if (
-      lastChange.name === PLANS.wordwide &&
-      lastChange.operation === OPERATION.remove &&
-      lastChange.operation !== OPERATION.setDefault
+      lastChange.name === PLANS.WORLDWIDE &&
+      lastChange.operation === OPERATION.REMOVE &&
+      lastChange.operation !== OPERATION.SET_DEFAULT
     ) {
       setSelectedPlans(defaultSelectedPlan);
       setLastChange({
-        name: PLANS.wordwide,
-        operation: OPERATION.setDefault,
+        name: PLANS.WORLDWIDE,
+        operation: OPERATION.SET_DEFAULT,
       });
     } else if (
       selectedPlans.length === 3 &&
-      !isPlanIncluded(selectedPlans, PLANS.wordwide)
+      !isPlanIncluded(selectedPlans, PLANS.WORLDWIDE)
     ) {
       setSelectedPlans(fields);
       setLastChange({
         name: null,
-        operation: OPERATION.setAll,
+        operation: OPERATION.SET_ALL,
       });
     } else if (
-      isPlanIncluded(selectedPlans, PLANS.wordwide) &&
+      isPlanIncluded(selectedPlans, PLANS.WORLDWIDE) &&
       selectedPlans.length !== 4
     ) {
       setSelectedPlans(
         selectedPlans.filter(
-          ({ name }) => RichText.asText(name) !== PLANS.wordwide
+          ({ name }) => RichText.asText(name) !== PLANS.WORLDWIDE
         )
       );
     }
