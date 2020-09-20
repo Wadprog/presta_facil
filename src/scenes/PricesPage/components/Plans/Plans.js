@@ -13,6 +13,12 @@ import style from './Plans.module.scss';
 
 const PLANS = {
   wordwide: 'Worldwide',
+  gdpr: 'GDPR/ePrivacy',
+};
+
+const CURRENCY = {
+  usd: 'usd',
+  eur: 'eur',
 };
 
 const OPERATION = {
@@ -46,6 +52,7 @@ const Plans = ({
   const defaultSelectedPlan = [fields[0]];
   const [selectedPlans, setSelectedPlans] = useState(defaultSelectedPlan);
   const [lastChange, setLastChange] = useState({});
+  const [currency, setCurrency] = useState(CURRENCY.eur);
   const togglePeriod = () => setIsAnnual((state) => !state);
 
   const isPlanIncluded = (selectedPlans, fieldName) => {
@@ -110,6 +117,15 @@ const Plans = ({
     : plansTotalCost(selectedPlans, PREMIUM_COST.premiumplanmonthlycost);
 
   const validation = () => {
+    if (
+      selectedPlans.length === 1 &&
+      isPlanIncluded(selectedPlans, PLANS.gdpr)
+    ) {
+      setCurrency(CURRENCY.eur);
+    } else {
+      setCurrency(CURRENCY.usd);
+    }
+
     if (selectedPlans.length === 0) {
       setSelectedPlans(defaultSelectedPlan);
       setLastChange({
@@ -174,6 +190,7 @@ const Plans = ({
             basicCost={basicCost}
             premiumCost={premiumCost}
             isAnnual={isAnnual}
+            currency={currency}
           />
         </div>
         <div className={style.container}>
@@ -198,6 +215,7 @@ const Plans = ({
                 isAnnual={isAnnual}
                 isPremium={isPremium}
                 setIsPremium={setIsPremium}
+                currency={currency}
               />
             </div>
           </div>

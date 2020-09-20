@@ -15,6 +15,7 @@ const Card = ({
   description,
   buttonText,
   buttonLink,
+  currency,
 }) => {
   return (
     <div
@@ -28,7 +29,7 @@ const Card = ({
           <RichText render={title} />
         </div>
         <div className={style.subtitle}>{name}</div>
-        <div className={style.cost}>{cost}</div>
+        <div className={classnames([style.cost, style[currency]])}>{cost}</div>
         <div className={style.condition}>
           <RichText render={condition} />
         </div>
@@ -65,6 +66,7 @@ Card.propTypes = {
   description: PropTypes.array.isRequired,
   buttonText: PropTypes.array.isRequired,
   buttonLink: PropTypes.object,
+  currency: PropTypes.string.isRequired,
 };
 
 export default Card;

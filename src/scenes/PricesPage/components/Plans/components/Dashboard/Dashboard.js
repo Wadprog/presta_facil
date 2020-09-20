@@ -13,6 +13,7 @@ const Dashboard = ({
   basicCost,
   premiumCost,
   selectedPlansNames,
+  currency,
 }) => {
   const condition = isAnnual
     ? primary.annualcondition
@@ -41,6 +42,7 @@ const Dashboard = ({
           buttonText={primary.buttontext}
           buttonLink={primary.link}
           disabled={isPremium}
+          currency={currency}
         />
         <Card
           title={primary.premiumplantitle}
@@ -52,6 +54,7 @@ const Dashboard = ({
           buttonLink={primary.link}
           colorized={true}
           disabled={!isPremium}
+          currency={currency}
         />
       </div>
     </div>
@@ -66,6 +69,7 @@ Dashboard.propTypes = {
   basicCost: PropTypes.number.isRequired,
   premiumCost: PropTypes.number.isRequired,
   selectedPlansNames: PropTypes.string.isRequired,
+  currency: PropTypes.string.isRequired,
 };
 
 export default Dashboard;

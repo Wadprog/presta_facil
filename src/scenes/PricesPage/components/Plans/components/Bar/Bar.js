@@ -16,6 +16,7 @@ const Bar = ({
   basicCost,
   premiumCost,
   selectedPlansNames,
+  currency,
 }) => {
   const visiblePlans = plans.filter(
     ({ name }) => RichText.asText(name) !== PLANS.wordwide
@@ -38,6 +39,7 @@ const Bar = ({
             cost={basicCost}
             buttonText={primary.buttontext}
             buttonLink={primary.link}
+            currency={currency}
           />
         </div>
         <div className={style.card}>
@@ -48,6 +50,7 @@ const Bar = ({
             buttonText={primary.buttontext}
             buttonLink={primary.link}
             colorized={true}
+            currency={currency}
           />
         </div>
       </div>
@@ -61,6 +64,7 @@ Bar.propTypes = {
   basicCost: PropTypes.number.isRequired,
   premiumCost: PropTypes.number.isRequired,
   selectedPlansNames: PropTypes.string.isRequired,
+  currency: PropTypes.string.isRequired,
 };
 
 export default Bar;
