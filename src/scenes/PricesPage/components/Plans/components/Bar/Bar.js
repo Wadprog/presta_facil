@@ -1,28 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { RichText } from 'prismic-reactjs';
 
 import Switcher from './components/Switcher';
 import Card from './components/Card';
 import style from './Bar.module.scss';
 
-const Bar = ({ primary, plan, isAnnual }) => {
-  const basicCost = isAnnual
-    ? plan.basicplanannualcost
-    : plan.basicplanmonthlycost;
-  const premiumCost = isAnnual
-    ? plan.premiumplanannualcost
-    : plan.premiumplanmonthlycost;
+const PLANS = {
+  wordwide: 'Worldwide',
+};
+
+const Bar = ({
+  primary,
+  plans,
+  basicCost,
+  premiumCost,
+  selectedPlansNames,
+}) => {
+  const visiblePlans = plans.filter(
+    ({ name }) => RichText.asText(name) !== PLANS.wordwide
+  );
 
   return (
     <div className={style.wrapper}>
       <div className={style.container}>
-        <div className={style.switcher}>
-          <Switcher name={plan.name} />
+        <div>
+          <div className={style.switcher}>
+            {visiblePlans.map((plan) => (
+              <Switcher key={plan.name} name={plan.name} />
+            ))}
+          </div>
         </div>
         <div className={style.card}>
           <Card
             title={primary.basicplantitle}
-            name={plan.name}
+            name={selectedPlansNames}
             cost={basicCost}
             buttonText={primary.buttontext}
             buttonLink={primary.link}
@@ -31,7 +43,7 @@ const Bar = ({ primary, plan, isAnnual }) => {
         <div className={style.card}>
           <Card
             title={primary.premiumplantitle}
-            name={plan.name}
+            name={selectedPlansNames}
             cost={premiumCost}
             buttonText={primary.buttontext}
             buttonLink={primary.link}
@@ -45,8 +57,10 @@ const Bar = ({ primary, plan, isAnnual }) => {
 
 Bar.propTypes = {
   primary: PropTypes.object.isRequired,
-  plan: PropTypes.object.isRequired,
-  isAnnual: PropTypes.bool.isRequired,
+  plans: PropTypes.array.isRequired,
+  basicCost: PropTypes.number.isRequired,
+  premiumCost: PropTypes.number.isRequired,
+  selectedPlansNames: PropTypes.string.isRequired,
 };
 
 export default Bar;

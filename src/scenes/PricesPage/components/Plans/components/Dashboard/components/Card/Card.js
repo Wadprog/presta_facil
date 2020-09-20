@@ -27,9 +27,7 @@ const Card = ({
         <div className={style.title}>
           <RichText render={title} />
         </div>
-        <div className={style.subtitle}>
-          <RichText render={name} />
-        </div>
+        <div className={style.subtitle}>{name}</div>
         <div className={style.cost}>{cost}</div>
         <div className={style.condition}>
           <RichText render={condition} />
@@ -61,7 +59,7 @@ Card.propTypes = {
   colorized: PropTypes.bool.isRequired,
   disabled: PropTypes.bool.isRequired,
   title: PropTypes.array.isRequired,
-  name: PropTypes.array.isRequired,
+  name: PropTypes.string.isRequired,
   cost: PropTypes.number.isRequired,
   condition: PropTypes.array.isRequired,
   description: PropTypes.array.isRequired,

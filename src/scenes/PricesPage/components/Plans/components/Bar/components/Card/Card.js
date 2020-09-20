@@ -15,9 +15,7 @@ const Card = ({ title, name, cost, buttonText, buttonLink, colorized }) => {
           <div className={style.type}>
             <RichText render={title} />
           </div>
-          <div className={style.name}>
-            <RichText render={name} />
-          </div>
+          <div className={style.name}>{name}</div>
         </div>
         <div className={style.cost}>{cost}</div>
       </div>
@@ -42,7 +40,7 @@ Card.defaultProps = {
 
 Card.propTypes = {
   title: PropTypes.array.isRequired,
-  name: PropTypes.array.isRequired,
+  name: PropTypes.string.isRequired,
   cost: PropTypes.number.isRequired,
   buttonText: PropTypes.array.isRequired,
   buttonLink: PropTypes.object,
