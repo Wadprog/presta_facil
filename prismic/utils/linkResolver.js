@@ -1,22 +1,27 @@
 export const linkResolver = (doc) => {
+  const properties = doc._meta || doc;
+  const defaultLanguage = 'en-gb';
   // URL for a solution type
-  if (doc.type === 'solutionpage') {
-    return `/solution/${doc.uid}`;
+  if (properties.type === 'homepage') {
+    return properties.lang === defaultLanguage ? '/' : `/${properties.lang}`;
   }
-  if (doc.type === 'technologypage') {
-    return `/technology/${doc.uid}`;
+  if (properties.type === 'solutionpage') {
+    return `/solution/${properties.uid}`;
   }
-  if (doc.type === 'featurepage') {
-    return `/feature/${doc.uid}`;
+  if (properties.type === 'technologypage') {
+    return `/technology/${properties.uid}`;
   }
-  if (doc.type === 'blogpostpage') {
-    return `/blog/${doc.uid}`;
+  if (properties.type === 'featurepage') {
+    return `/feature/${properties.uid}`;
   }
-  if (doc.type === 'bookspage') {
+  if (properties.type === 'blogpostpage') {
+    return `/blog/${properties.uid}`;
+  }
+  if (properties.type === 'bookspage') {
     return `/books`;
   }
-  if (doc.type === 'copmarepage') {
-    return `/${doc.uid}`;
+  if (properties.type === 'copmarepage') {
+    return `/${properties.uid}`;
   }
   // Backup for all other types
   return '/';

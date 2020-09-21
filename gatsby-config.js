@@ -88,11 +88,14 @@ module.exports = {
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
         defaultLang: 'en-gb',
         langs: ['en-gb', 'pt-br'],
+        shortenUrlLangs: false,
         pages: [
           {
             type: 'Homepage',
-            match: '/:lang',
-            component: require.resolve('./src/pages/index.js'),
+            match: '/:lang?',
+            path: '/:lang?',
+            component: require.resolve('./src/pages/Homepage.js'),
+            langs: ['en-gb', 'pt-br'],
           },
         ],
         path: '/preview',

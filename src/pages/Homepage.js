@@ -18,10 +18,10 @@ Page.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-const query = graphql`
-  {
+export const query = graphql`
+  query homepageQuery($lang: String) {
     prismic {
-      allHomepages {
+      allHomepages(lang: $lang) {
         edges {
           node {
             _meta {
@@ -188,18 +188,18 @@ const query = graphql`
   }
 `;
 
-const PageWithData = () => {
-  return (
-    <StaticQuery
-      query={`${query}`}
-      render={withPreview(
-        (data) => (
-          <Page data={data} />
-        ),
-        query
-      )}
-    />
-  );
-};
+// const PageWithData = () => {
+//   return (
+//     <StaticQuery
+//       query={`${query}`}
+//       render={withPreview(
+//         (data) => (
+//           <Page data={data} />
+//         ),
+//         query
+//       )}
+//     />
+//   );
+// };
 
-export default PageWithData;
+export default Page;
