@@ -68,8 +68,6 @@
   letter-spacing: 0.03em;
 
   &:before {
-    content: '$';
-
     position: absolute;
     top: 50%;
     right: 100%;
@@ -83,6 +81,18 @@
     font-size: 18px;
     line-height: 1.25;
     letter-spacing: 0.03em;
+  }
+
+  &.usd {
+    &:before {
+      content: '$';
+    }
+  }
+
+  &.eur {
+    &:before {
+      content: '€';
+    }
   }
 }
 

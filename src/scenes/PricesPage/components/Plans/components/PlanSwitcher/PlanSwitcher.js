@@ -5,17 +5,17 @@ import { RichText } from 'prismic-reactjs';
 import Icon from './components/Icon';
 import style from './PlanSwitcher.module.scss';
 
-const PlanSwitcher = ({ plans, currentIndex, onSelect }) => {
+const PlanSwitcher = ({ plans, selectedPlans, onSelect }) => {
   return (
     <div className={style.container}>
       {plans.map(({ name, location }, index) => {
-        const isChecked = currentIndex === index;
+        const isChecked = selectedPlans.some((plan) => plan.name === name);
         const onChange = () => onSelect(index);
 
         return (
           <label key={index} className={style.label}>
             <input
-              type="radio"
+              type="checkbox"
               name="plan"
               checked={isChecked}
               onChange={onChange}
@@ -34,7 +34,7 @@ const PlanSwitcher = ({ plans, currentIndex, onSelect }) => {
 
 PlanSwitcher.propTypes = {
   plans: PropTypes.array.isRequired,
-  currentIndex: PropTypes.number.isRequired,
+  selectedPlans: PropTypes.array.isRequired,
   onSelect: PropTypes.func.isRequired,
 };
 

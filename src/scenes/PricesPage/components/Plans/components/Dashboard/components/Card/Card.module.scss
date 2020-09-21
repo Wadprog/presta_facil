@@ -71,6 +71,7 @@
 .subtitle {
   margin-top: 2px;
 
+  text-align: center;
   font-family: $font-gramatika;
   font-weight: 300;
   font-size: 14px;
@@ -98,8 +99,6 @@
   letter-spacing: 0.03em;
 
   &:before {
-    content: '$';
-
     transform: translateY(6px);
 
     display: block;
@@ -109,8 +108,18 @@
     font-size: 24px;
     line-height: 1.25;
     letter-spacing: 0.03em;
-
     opacity: 0.5;
+  }
+  &.usd {
+    &:before {
+      content: '$';
+    }
+  }
+
+  &.eur {
+    &:before {
+      content: '€';
+    }
   }
 }
 

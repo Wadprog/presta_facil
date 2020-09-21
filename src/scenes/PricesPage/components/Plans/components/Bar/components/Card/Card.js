@@ -5,7 +5,15 @@ import classnames from 'classnames';
 
 import style from './Card.module.scss';
 
-const Card = ({ title, name, cost, buttonText, buttonLink, colorized }) => {
+const Card = ({
+  title,
+  name,
+  cost,
+  buttonText,
+  buttonLink,
+  colorized,
+  currency,
+}) => {
   return (
     <div
       className={classnames(style.container, { [style.colorized]: colorized })}
@@ -15,11 +23,9 @@ const Card = ({ title, name, cost, buttonText, buttonLink, colorized }) => {
           <div className={style.type}>
             <RichText render={title} />
           </div>
-          <div className={style.name}>
-            <RichText render={name} />
-          </div>
+          <div className={style.name}>{name}</div>
         </div>
-        <div className={style.cost}>{cost}</div>
+        <div className={classnames([style.cost, style[currency]])}>{cost}</div>
       </div>
       <div className={style.footer}>
         <a href={buttonLink.url} className={style.button}>
@@ -42,11 +48,12 @@ Card.defaultProps = {
 
 Card.propTypes = {
   title: PropTypes.array.isRequired,
-  name: PropTypes.array.isRequired,
+  name: PropTypes.string.isRequired,
   cost: PropTypes.number.isRequired,
   buttonText: PropTypes.array.isRequired,
   buttonLink: PropTypes.object,
   colorized: PropTypes.bool.isRequired,
+  currency: PropTypes.string.isRequired,
 };
 
 export default Card;

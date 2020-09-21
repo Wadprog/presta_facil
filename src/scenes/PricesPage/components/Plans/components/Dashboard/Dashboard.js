@@ -5,13 +5,16 @@ import Button from './components/Button';
 import Card from './components/Card';
 import style from './Dashboard.module.scss';
 
-const Dashboard = ({ primary, plan, isAnnual, isPremium, setIsPremium }) => {
-  const basicCost = isAnnual
-    ? plan.basicplanannualcost
-    : plan.basicplanmonthlycost;
-  const premiumCost = isAnnual
-    ? plan.premiumplanannualcost
-    : plan.premiumplanmonthlycost;
+const Dashboard = ({
+  primary,
+  isAnnual,
+  isPremium,
+  setIsPremium,
+  basicCost,
+  premiumCost,
+  selectedPlansNames,
+  currency,
+}) => {
   const condition = isAnnual
     ? primary.annualcondition
     : primary.monthlycondition;
@@ -32,17 +35,18 @@ const Dashboard = ({ primary, plan, isAnnual, isPremium, setIsPremium }) => {
       <div className={style.cards}>
         <Card
           title={primary.basicplantitle}
-          name={plan.name}
+          name={selectedPlansNames}
           cost={basicCost}
           condition={condition}
           description={primary.basicplandescription}
           buttonText={primary.buttontext}
           buttonLink={primary.link}
           disabled={isPremium}
+          currency={currency}
         />
         <Card
           title={primary.premiumplantitle}
-          name={plan.name}
+          name={selectedPlansNames}
           cost={premiumCost}
           condition={condition}
           description={primary.premiumplandescription}
@@ -50,6 +54,7 @@ const Dashboard = ({ primary, plan, isAnnual, isPremium, setIsPremium }) => {
           buttonLink={primary.link}
           colorized={true}
           disabled={!isPremium}
+          currency={currency}
         />
       </div>
     </div>
@@ -58,10 +63,13 @@ const Dashboard = ({ primary, plan, isAnnual, isPremium, setIsPremium }) => {
 
 Dashboard.propTypes = {
   primary: PropTypes.object.isRequired,
-  plan: PropTypes.object.isRequired,
   isAnnual: PropTypes.bool.isRequired,
   isPremium: PropTypes.bool.isRequired,
   setIsPremium: PropTypes.func.isRequired,
+  basicCost: PropTypes.number.isRequired,
+  premiumCost: PropTypes.number.isRequired,
+  selectedPlansNames: PropTypes.string.isRequired,
+  currency: PropTypes.string.isRequired,
 };
 
 export default Dashboard;
