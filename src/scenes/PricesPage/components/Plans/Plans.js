@@ -14,6 +14,8 @@ import style from './Plans.module.scss';
 const PLANS = {
   WORLDWIDE: 'Worldwide',
   GDPR: 'GDPR/ePrivacy',
+  CCPA: 'CCPA',
+  LGPD: 'LGPD',
 };
 
 const CURRENCY = {
@@ -37,6 +39,13 @@ const PREMIUM_COST = {
   PREMIUM_PLAN_ANNUAL_COST: 'premiumplanannualcost',
   PREMIUM_PLAN_MONTHLY_COST: 'premiumplanmonthlycost',
 };
+
+const DISCOUNTS = [
+  {
+    plans: [PLANS.GDPR, PLANS.CCPA],
+    discount: 0.1,
+  },
+];
 
 const Plans = ({
   primary,
@@ -88,8 +97,18 @@ const Plans = ({
       if (RichText.asText(selectedPlans[i].name) === PLANS.WORLDWIDE) {
         return selectedPlans[i][field];
       }
-
       totalCost += selectedPlans[i][field];
+    }
+
+    if (DISCOUNTS && DISCOUNTS.length > 0) {
+      DISCOUNTS.forEach(({ plans, discount }) => {
+        if (
+          plans.every((plan) => isPlanIncluded(selectedPlans, plan)) &&
+          plans.length === selectedPlans.length
+        ) {
+          totalCost -= Math.round(totalCost * discount);
+        }
+      });
     }
 
     return totalCost;
