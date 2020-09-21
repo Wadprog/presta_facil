@@ -24,6 +24,16 @@ const query = graphql`
       allHomepages {
         edges {
           node {
+            _meta {
+              uid
+              type
+              lang
+              alternateLanguages {
+                lang
+                type
+                uid
+              }
+            }
             body {
               ... on PRISMIC_HomepageBodyHero1 {
                 type

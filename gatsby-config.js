@@ -86,10 +86,18 @@ module.exports = {
       options: {
         repositoryName: 'secure-privacy',
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
-        defaultLang: 'en-us',
+        defaultLang: 'en-gb',
+        langs: ['en-gb', 'pt-br'],
+        pages: [
+          {
+            type: 'Homepage',
+            match: '/:lang',
+            component: require.resolve('./src/pages/index.js'),
+          },
+        ],
         path: '/preview',
         previews: true,
-        extraPageFields: 'test_type',
+        // extraPageFields: 'test_type',
         // omitPrismicScript: true,
         sharpKeys: [
           /image|photo|picture|illustration|screenshot|background|Image/,
