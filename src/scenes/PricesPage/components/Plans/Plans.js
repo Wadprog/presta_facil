@@ -43,7 +43,12 @@ const PREMIUM_COST = {
 const DISCOUNTS = [
   {
     plans: [PLANS.GDPR, PLANS.CCPA],
-    discount: 0.1,
+    prices: {
+      [BASIC_COST.BASIC_PLAN_MONTHLY_COST]: 20,
+      [BASIC_COST.BASIC_PLAN_ANNUAL_COST]: 200,
+      [PREMIUM_COST.PREMIUM_PLAN_MONTHLY_COST]: 30,
+      [PREMIUM_COST.PREMIUM_PLAN_ANNUAL_COST]: 300,
+    },
   },
 ];
 
@@ -101,12 +106,12 @@ const Plans = ({
     }
 
     if (DISCOUNTS && DISCOUNTS.length > 0) {
-      DISCOUNTS.forEach(({ plans, discount }) => {
+      DISCOUNTS.forEach(({ plans, prices }) => {
         if (
           plans.every((plan) => isPlanIncluded(selectedPlans, plan)) &&
           plans.length === selectedPlans.length
         ) {
-          totalCost -= Math.round(totalCost * discount);
+          totalCost = prices[field];
         }
       });
     }
