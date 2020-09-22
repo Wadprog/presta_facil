@@ -6,8 +6,14 @@ import HomePage from '@scenes/HomePage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
+  const homepageContent = data.prismic.allHomepages.edges[0];
+  if (!homepageContent) return null;
+  const homepage = homepageContent.node;
+
+  // console.log(homepage._meta);
+
   return (
-    <Layout>
+    <Layout activeDocMeta={homepage._meta}>
       <HomePage content={data} />
     </Layout>
   );

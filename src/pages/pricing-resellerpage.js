@@ -18,9 +18,9 @@ Page.propTypes = {
 };
 
 export const query = graphql`
-  {
+  query($lang: String) {
     prismic {
-      allPricesresellerpages {
+      allPricesresellerpages(lang: $lang) {
         edges {
           node {
             body {

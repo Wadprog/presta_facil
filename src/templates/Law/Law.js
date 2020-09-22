@@ -6,10 +6,8 @@ import PropTypes from 'prop-types';
 import LawPage from '@scenes/LawPage';
 import Layout from '@components/Layout';
 
-const Page = ({ data, uid }) => {
-  const pageContext = data.prismic.allSolutionpages.edges.filter((item) => {
-    return item.node._meta.uid === uid;
-  });
+const Page = ({ data }) => {
+  const pageContext = data.prismic.allSolutionpages.edges;
   const body = pageContext[0].node;
   return (
     <Layout>
@@ -20,10 +18,8 @@ const Page = ({ data, uid }) => {
 
 Page.propTypes = {
   data: PropTypes.object,
-  uid: PropTypes.string,
 };
 
-// export default Page;
 const PageWithData = ({ pageContext }) => {
   return (
     <StaticQuery
@@ -41,12 +37,10 @@ PageWithData.propTypes = {
   pageContext: PropTypes.object,
 };
 
-export default PageWithData;
-
-const query = graphql`
-  query($uid: String) {
+export const query = graphql`
+  query($uid: String, $lang: String) {
     prismic {
-      allSolutionpages(uid: $uid) {
+      allSolutionpages(uid: $uid, lang: $lang) {
         edges {
           node {
             _linkType
@@ -187,3 +181,5 @@ const query = graphql`
     }
   }
 `;
+
+export default Page;

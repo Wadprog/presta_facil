@@ -10,10 +10,11 @@ import Footer from '@components/Footer';
 import styles from './Layout.module.scss';
 import '@styles/index.scss';
 
-const Layout = ({ children, data, hideMenu }) => {
+const Layout = ({ children, data, hideMenu, activeDocMeta }) => {
   const headerData = data.prismic.allLayouts.edges[0].node.body;
   const footerData = data.prismic.allLayouts.edges[0].node.body1;
 
+  console.log(activeDocMeta);
   return (
     <>
       <Head />
@@ -32,11 +33,12 @@ Layout.propTypes = {
   children: node,
   data: object,
   hideMenu: bool,
+  activeDocMeta: object,
 };
 const query = graphql`
-  {
+  query($lang: String) {
     prismic {
-      allLayouts {
+      allLayouts(lang: $lang) {
         edges {
           node {
             body {
