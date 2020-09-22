@@ -1,15 +1,12 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import { withPreview } from 'gatsby-source-prismic-graphql';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
 import Technology from '@scenes/TechnologyPage';
 import Layout from '@components/Layout';
 
-const Page = ({ data, uid }) => {
-  const pageContext = data.prismic.allTechnologypages.edges.filter((item) => {
-    return item.node._meta.uid === uid;
-  });
+const Page = ({ data }) => {
+  const pageContext = data.prismic.allTechnologypages.edges;
   const body = pageContext[0].node;
   return (
     <Layout>
@@ -20,33 +17,12 @@ const Page = ({ data, uid }) => {
 
 Page.propTypes = {
   data: PropTypes.object,
-  uid: PropTypes.string,
 };
 
-// export default Page;
-const PageWithData = ({ pageContext }) => {
-  return (
-    <StaticQuery
-      query={`${query}`}
-      render={withPreview(
-        (data) => (
-          <Page data={data} uid={pageContext.uid} />
-        ),
-        query
-      )}
-    />
-  );
-};
-PageWithData.propTypes = {
-  pageContext: PropTypes.object,
-};
-
-export default PageWithData;
-
-const query = graphql`
-  query($uid: String) {
+export const query = graphql`
+  query($uid: String, $lang: String) {
     prismic {
-      allTechnologypages(uid: $uid) {
+      allTechnologypages(uid: $uid, lang: $lang) {
         edges {
           node {
             _linkType
@@ -117,3 +93,5 @@ const query = graphql`
     }
   }
 `;
+
+export default Page;

@@ -1,4 +1,9 @@
 require('dotenv').config();
+const {
+  prismicRepositoryName,
+  defaultLanguage,
+  langs,
+} = require('./prismic-config');
 
 module.exports = {
   siteMetadata: {
@@ -84,18 +89,48 @@ module.exports = {
     {
       resolve: 'gatsby-source-prismic-graphql',
       options: {
-        repositoryName: 'secure-privacy',
+        repositoryName: prismicRepositoryName,
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
-        defaultLang: 'en-gb',
-        langs: ['en-gb', 'pt-br'],
-        shortenUrlLangs: false,
+        defaultLang: defaultLanguage,
+        langs: langs,
+        shortenUrlLangs: true,
         pages: [
           {
             type: 'Homepage',
             match: '/:lang?',
             path: '/:lang?',
-            component: require.resolve('./src/pages/Homepage.js'),
-            langs: ['en-gb', 'pt-br'],
+            component: require.resolve('./src/pages/homepage.js'),
+            langs: langs,
+          },
+          {
+            type: 'Bookpage',
+            match: '/:lang?/books',
+            path: '/:lang?/books',
+            component: require.resolve('./src/pages/bookspage.js'),
+            langs: langs,
+          },
+          {
+            type: 'Solutionpage',
+            match: '/:lang?/solution/:uid',
+            path: '/:lang?/solution/:uid',
+            component: require.resolve('./src/templates/Solution/Solution.js'),
+            langs: langs,
+          },
+          {
+            type: 'Featurepage',
+            match: '/:lang?/feature/:uid',
+            path: '/:lang?/feature/:uid',
+            component: require.resolve('./src/templates/Feature/Feature.js'),
+            langs: langs,
+          },
+          {
+            type: 'Technologypage',
+            match: '/:lang?/technology/:uid',
+            path: '/:lang?/technology/:uid',
+            component: require.resolve(
+              './src/templates/Technology/Technology.js'
+            ),
+            langs: langs,
           },
         ],
         path: '/preview',

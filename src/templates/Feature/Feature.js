@@ -6,10 +6,8 @@ import PropTypes from 'prop-types';
 import Feature from '@scenes/FeaturePage/FeaturePage';
 import Layout from '@components/Layout';
 
-const Page = ({ data, uid }) => {
-  const pageContext = data.prismic.allFeaturepages.edges.filter((item) => {
-    return item.node._meta.uid === uid;
-  });
+const Page = ({ data }) => {
+  const pageContext = data.prismic.allFeaturepages.edges;
   const body = pageContext[0].node;
   return (
     <Layout>
@@ -20,7 +18,6 @@ const Page = ({ data, uid }) => {
 
 Page.propTypes = {
   data: PropTypes.object,
-  uid: PropTypes.string,
 };
 
 // export default Page;
@@ -41,12 +38,10 @@ PageWithData.propTypes = {
   pageContext: PropTypes.object,
 };
 
-export default PageWithData;
-
-const query = graphql`
-  query($uid: String) {
+export const query = graphql`
+  query($uid: String, $lang: String) {
     prismic {
-      allFeaturepages(uid: $uid) {
+      allFeaturepages(uid: $uid, lang: $lang) {
         edges {
           node {
             body {
@@ -112,3 +107,5 @@ const query = graphql`
     }
   }
 `;
+
+export default Page;

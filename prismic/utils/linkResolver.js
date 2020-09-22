@@ -1,6 +1,7 @@
+import { defaultLanguage } from '../../prismic-config';
+
 export const linkResolver = (doc) => {
   const properties = doc._meta || doc;
-  const defaultLanguage = 'en-gb';
   // URL for a solution type
   if (properties.type === 'homepage') {
     return properties.lang === defaultLanguage ? '/' : `/${properties.lang}`;
@@ -18,8 +19,11 @@ export const linkResolver = (doc) => {
     return `/blog/${properties.uid}`;
   }
   if (properties.type === 'bookspage') {
-    return `/books`;
+    return properties.lang === defaultLanguage
+      ? '/books'
+      : `/${properties.lang}/books`;
   }
+
   if (properties.type === 'copmarepage') {
     return `/${properties.uid}`;
   }

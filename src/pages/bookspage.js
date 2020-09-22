@@ -1,6 +1,5 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import { withPreview } from 'gatsby-source-prismic-graphql';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
 import BooksPage from '@scenes/BooksPage';
@@ -18,10 +17,10 @@ Page.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-const query = graphql`
-  {
+export const query = graphql`
+  query($lang: String) {
     prismic {
-      allBookpages {
+      allBookpages(lang: $lang) {
         edges {
           node {
             body {
@@ -60,18 +59,4 @@ const query = graphql`
   }
 `;
 
-const PageWithData = () => {
-  return (
-    <StaticQuery
-      query={`${query}`}
-      render={withPreview(
-        (data) => (
-          <Page data={data} />
-        ),
-        query
-      )}
-    />
-  );
-};
-
-export default PageWithData;
+export default Page;
