@@ -1,19 +1,18 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import { withPreview } from 'gatsby-source-prismic-graphql';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
 import Post from '@scenes/PostPage/PostPage';
 import Layout from '@components/Layout';
 
-const Page = ({ data, uid }) => {
-  const pageContext = data.prismic.allCopmarepages.edges.filter((item) => {
-    return item.node._meta.uid === uid;
-  });
-  const body = pageContext[0].node;
+const Page = ({ data }) => {
+  const copmarepageContent = data.prismic.allCopmarepages.edges[0];
+  if (!copmarepageContent) return null;
+  const copmarepage = copmarepageContent.node;
+
   return (
-    <Layout>
-      <Post current={body} />
+    <Layout activeDocMeta={copmarepage._meta}>
+      <Post current={copmarepage} />
     </Layout>
   );
 };
@@ -23,36 +22,23 @@ Page.propTypes = {
   uid: PropTypes.string,
 };
 
-// export default Page;
-const PageWithData = ({ pageContext }) => {
-  return (
-    <StaticQuery
-      query={`${query}`}
-      render={withPreview(
-        (data) => (
-          <Page data={data} uid={pageContext.uid} />
-        ),
-        query
-      )}
-    />
-  );
-};
-PageWithData.propTypes = {
-  pageContext: PropTypes.object,
-};
-
-export default PageWithData;
-
-const query = graphql`
-  query($uid: String) {
+export const query = graphql`
+  query($uid: String, $lang: String) {
     prismic {
-      allCopmarepages(uid: $uid) {
+      allCopmarepages(uid: $uid, lang: $lang) {
         edges {
           node {
             _linkType
             _meta {
               uid
+              type
+              lang
               tags
+              alternateLanguages {
+                lang
+                type
+                uid
+              }
             }
             body {
               ... on PRISMIC_CopmarepageBodyText {
@@ -111,3 +97,5 @@ const query = graphql`
     }
   }
 `;
+
+export default Page;

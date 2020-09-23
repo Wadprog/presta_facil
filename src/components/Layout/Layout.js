@@ -6,6 +6,7 @@ import { withPreview } from 'gatsby-source-prismic-graphql';
 import Head from '@components/Head';
 import Header from '@components/Header';
 import Footer from '@components/Footer';
+import LanguageSwitcher from '@components/LanguageSwitcher';
 
 import styles from './Layout.module.scss';
 import '@styles/index.scss';
@@ -13,13 +14,16 @@ import '@styles/index.scss';
 const Layout = ({ children, data, hideMenu, activeDocMeta }) => {
   const headerData = data.prismic.allLayouts.edges[0].node.body;
   const footerData = data.prismic.allLayouts.edges[0].node.body1;
-
-  console.log(activeDocMeta);
   return (
     <>
       <Head />
       <div className={styles.container}>
-        <Header data={headerData} hideMenu={hideMenu} />
+        <LanguageSwitcher activeDocMeta={activeDocMeta} />
+        <Header
+          data={headerData}
+          hideMenu={hideMenu}
+          activeDocMeta={activeDocMeta}
+        />
         <main className={styles.main} id="main">
           {children}
         </main>

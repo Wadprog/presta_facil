@@ -6,10 +6,10 @@ import Post from '@scenes/PostPage/PostPage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
-  const pageContext = data.prismic.allBlogpostpages.edges;
-  const body = pageContext[0].node;
+  const pageContext = data.prismic.allBlogpostpages.edges[0];
+  const body = pageContext.node;
   return (
-    <Layout>
+    <Layout activeDocMeta={body._meta}>
       <Post current={body} />
     </Layout>
   );
@@ -28,7 +28,14 @@ export const query = graphql`
             _linkType
             _meta {
               uid
+              type
+              lang
               tags
+              alternateLanguages {
+                lang
+                type
+                uid
+              }
             }
             body {
               ... on PRISMIC_BlogpostpageBodyText {

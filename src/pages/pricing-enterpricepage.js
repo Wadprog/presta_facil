@@ -6,8 +6,12 @@ import EnterpricePage from '@scenes/EnterpricePage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
+  const enterpricepageContent = data.prismic.allPricesenterpricepages.edges[0];
+  if (!enterpricepageContent) return null;
+  const enterpricepage = enterpricepageContent.node;
+
   return (
-    <Layout>
+    <Layout activeDocMeta={enterpricepage._meta}>
       <EnterpricePage content={data} />
     </Layout>
   );
@@ -23,6 +27,16 @@ export const query = graphql`
       allPricesenterpricepages(lang: $lang) {
         edges {
           node {
+            _meta {
+              uid
+              type
+              lang
+              alternateLanguages {
+                lang
+                type
+                uid
+              }
+            }
             body {
               ... on PRISMIC_PricesenterpricepageBodyFeature {
                 type

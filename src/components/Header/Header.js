@@ -9,7 +9,7 @@ import Logo from './components/Logo';
 import Menu from './components/Menu';
 import { useScrollDirection } from '@hooks';
 import useGetImage from './useGetImage';
-import { array, bool } from 'prop-types';
+import { array, bool, object } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import { parseString, parseUrl } from '@helpers';
 import { useEffect } from 'react';
@@ -19,7 +19,7 @@ const GRADIENT_ORANGE =
 const GRADIENT_GREEN =
   'linear-gradient(87.97deg, #24b04b -46.17%, #0263bc 186.99%)';
 
-const Header = ({ data, hideMenu }) => {
+const Header = ({ data, hideMenu, activeDocMeta }) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const scrollDir = useScrollDirection();
   const { burger, close } = useGetImage();
@@ -98,6 +98,7 @@ Header.defaultProps = {
 Header.propTypes = {
   data: array,
   hideMenu: bool,
+  activeDocMeta: object,
 };
 
 export default Header;

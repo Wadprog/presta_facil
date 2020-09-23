@@ -93,7 +93,7 @@ module.exports = {
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
         defaultLang: defaultLanguage,
         langs: langs,
-        shortenUrlLangs: true,
+        shortenUrlLangs: false,
         pages: [
           {
             type: 'Homepage',
@@ -111,6 +111,12 @@ module.exports = {
             type: 'Solutionpage',
             match: '/:lang?/solution/:uid',
             component: require.resolve('./src/templates/Solution/Solution.js'),
+            langs: langs,
+          },
+          {
+            type: 'Solutionpage',
+            match: '/:lang?/law/:uid',
+            component: require.resolve('./src/templates/Law/Law.js'),
             langs: langs,
           },
           {
@@ -167,6 +173,18 @@ module.exports = {
             type: 'Blogpostpage',
             match: '/:lang?/blog',
             component: require.resolve('./src/pages/blogpage.js'),
+            langs: langs,
+          },
+          {
+            type: 'Blogpostpage',
+            match: '/:lang?/blog/:uid?',
+            component: require.resolve('./src/templates/Post/Post.js'),
+            langs: langs,
+          },
+          {
+            type: 'Copmarepage',
+            match: '/:lang?/:uid',
+            component: require.resolve('./src/templates/Compare/Compare.js'),
             langs: langs,
           },
         ],

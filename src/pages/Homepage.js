@@ -10,8 +10,6 @@ const Page = ({ data }) => {
   if (!homepageContent) return null;
   const homepage = homepageContent.node;
 
-  // console.log(homepage._meta);
-
   return (
     <Layout activeDocMeta={homepage._meta}>
       <HomePage content={data} />

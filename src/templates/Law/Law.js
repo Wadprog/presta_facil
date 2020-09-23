@@ -1,16 +1,17 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import { withPreview } from 'gatsby-source-prismic-graphql';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
 import LawPage from '@scenes/LawPage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
-  const pageContext = data.prismic.allSolutionpages.edges;
-  const body = pageContext[0].node;
+  const pageContext = data.prismic.allSolutionpages.edges[0];
+  if (!pageContext) return null;
+  const body = pageContext.node;
+
   return (
-    <Layout>
+    <Layout activeDocMeta={body._meta}>
       <LawPage content={body} />
     </Layout>
   );
@@ -18,23 +19,6 @@ const Page = ({ data }) => {
 
 Page.propTypes = {
   data: PropTypes.object,
-};
-
-const PageWithData = ({ pageContext }) => {
-  return (
-    <StaticQuery
-      query={`${query}`}
-      render={withPreview(
-        (data) => (
-          <Page data={data} uid={pageContext.uid} />
-        ),
-        query
-      )}
-    />
-  );
-};
-PageWithData.propTypes = {
-  pageContext: PropTypes.object,
 };
 
 export const query = graphql`
@@ -46,6 +30,13 @@ export const query = graphql`
             _linkType
             _meta {
               uid
+              type
+              lang
+              alternateLanguages {
+                lang
+                type
+                uid
+              }
             }
             body {
               ... on PRISMIC_SolutionpageBodyHero {

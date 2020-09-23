@@ -6,8 +6,12 @@ import VideoBlogPage from '@scenes/VideoBlogPage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
+  const videoblogContent = data.prismic.allVideopages.edges[0];
+  if (!videoblogContent) return null;
+  const videoblog = videoblogContent.node;
+
   return (
-    <Layout>
+    <Layout activeDocMeta={videoblog._meta}>
       <VideoBlogPage content={data} />
     </Layout>
   );
@@ -23,6 +27,16 @@ export const query = graphql`
       allVideopages(lang: $lang) {
         edges {
           node {
+            _meta {
+              uid
+              type
+              lang
+              alternateLanguages {
+                lang
+                type
+                uid
+              }
+            }
             body {
               ... on PRISMIC_VideopageBodyVideolist {
                 type

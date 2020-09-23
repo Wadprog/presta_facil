@@ -6,10 +6,11 @@ import Technology from '@scenes/TechnologyPage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
-  const pageContext = data.prismic.allTechnologypages.edges;
-  const body = pageContext[0].node;
+  const pageContext = data.prismic.allTechnologypages.edges[0];
+  if (!pageContext) return null;
+  const body = pageContext.node;
   return (
-    <Layout>
+    <Layout activeDocMeta={body._meta}>
       <Technology current={body} />
     </Layout>
   );
@@ -28,6 +29,13 @@ export const query = graphql`
             _linkType
             _meta {
               uid
+              type
+              lang
+              alternateLanguages {
+                lang
+                type
+                uid
+              }
             }
             body {
               ... on PRISMIC_TechnologypageBodyHero {

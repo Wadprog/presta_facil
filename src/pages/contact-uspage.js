@@ -6,8 +6,12 @@ import ContactUs from '@scenes/ContactUs';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
+  const contactpageContent = data.prismic.allContacts.edges[0];
+  if (!contactpageContent) return null;
+  const contactpage = contactpageContent.node;
+
   return (
-    <Layout>
+    <Layout activeDocMeta={contactpage._meta}>
       <ContactUs content={data} />
     </Layout>
   );
@@ -23,6 +27,16 @@ export const query = graphql`
       allContacts(lang: $lang) {
         edges {
           node {
+            _meta {
+              uid
+              type
+              lang
+              alternateLanguages {
+                lang
+                type
+                uid
+              }
+            }
             title
             company
             email

@@ -6,11 +6,13 @@ import SolutionPage from '../../scenes/SolutionPage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
-  const pageContext = data.prismic.allSolutionpages.edges;
-  const body = pageContext[0].node;
+  const pageContext = data.prismic.allSolutionpages.edges[0];
+  if (!pageContext) return null;
+  const body = pageContext.node;
   const mainSection = data.prismic.allLayouts.edges;
+
   return (
-    <Layout>
+    <Layout activeDocMeta={body._meta}>
       <SolutionPage current={body} mainSection={mainSection} />
     </Layout>
   );
@@ -29,6 +31,13 @@ export const query = graphql`
             _linkType
             _meta {
               uid
+              type
+              lang
+              alternateLanguages {
+                lang
+                type
+                uid
+              }
             }
             body {
               ... on PRISMIC_SolutionpageBodyHero {

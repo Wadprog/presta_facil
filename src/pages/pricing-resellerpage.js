@@ -6,8 +6,12 @@ import Layout from '@components/Layout';
 import ResellerPage from '@scenes/ResellerPage';
 
 const Page = ({ data }) => {
+  const resellerpageContent = data.prismic.allPricesresellerpages.edges[0];
+  if (!resellerpageContent) return null;
+  const resellerpage = resellerpageContent.node;
+
   return (
-    <Layout>
+    <Layout activeDocMeta={resellerpage._meta}>
       <ResellerPage content={data} />
     </Layout>
   );
@@ -23,6 +27,16 @@ export const query = graphql`
       allPricesresellerpages(lang: $lang) {
         edges {
           node {
+            _meta {
+              uid
+              type
+              lang
+              alternateLanguages {
+                lang
+                type
+                uid
+              }
+            }
             body {
               ... on PRISMIC_PricesresellerpageBodyHero {
                 type
