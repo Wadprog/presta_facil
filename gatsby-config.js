@@ -67,6 +67,7 @@ module.exports = {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
         alias: {
+          '@': '',
           '@src': 'src',
           '@components': 'src/components',
           '@pages': 'src/pages',
@@ -93,7 +94,7 @@ module.exports = {
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
         defaultLang: defaultLanguage,
         langs: langs,
-        shortenUrlLangs: false,
+        shortenUrlLangs: true,
         pages: [
           {
             type: 'Homepage',

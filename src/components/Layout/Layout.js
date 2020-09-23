@@ -12,18 +12,20 @@ import styles from './Layout.module.scss';
 import '@styles/index.scss';
 
 const Layout = ({ children, data, hideMenu, activeDocMeta }) => {
-  const headerData = data.prismic.allLayouts.edges[0].node.body;
-  const footerData = data.prismic.allLayouts.edges[0].node.body1;
+  const currentLang = activeDocMeta.lang;
+  const edge = data.prismic.allLayouts.edges.filter(
+    (edge) => edge.node._meta.lang === currentLang
+  );
+
+  const headerData = edge[0].node.body;
+  const footerData = edge[0].node.body1;
+
   return (
     <>
       <Head />
       <div className={styles.container}>
         <LanguageSwitcher activeDocMeta={activeDocMeta} />
-        <Header
-          data={headerData}
-          hideMenu={hideMenu}
-          activeDocMeta={activeDocMeta}
-        />
+        <Header data={headerData} hideMenu={hideMenu} />
         <main className={styles.main} id="main">
           {children}
         </main>
@@ -45,6 +47,16 @@ const query = graphql`
       allLayouts(lang: $lang) {
         edges {
           node {
+            _meta {
+              uid
+              type
+              lang
+              alternateLanguages {
+                lang
+                type
+                uid
+              }
+            }
             body {
               ... on PRISMIC_LayoutBodyHeader {
                 type

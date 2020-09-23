@@ -19,7 +19,7 @@ const GRADIENT_ORANGE =
 const GRADIENT_GREEN =
   'linear-gradient(87.97deg, #24b04b -46.17%, #0263bc 186.99%)';
 
-const Header = ({ data, hideMenu, activeDocMeta }) => {
+const Header = ({ data, hideMenu }) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const scrollDir = useScrollDirection();
   const { burger, close } = useGetImage();
@@ -29,12 +29,12 @@ const Header = ({ data, hideMenu, activeDocMeta }) => {
     [style.hideMenu]: hideMenu,
   });
   const primary = data[0].primary;
+
   const link = '/' + parseString(primary.buttonlink);
   const toggleMobileMenu = () => {
     setIsOpenMenu(!isOpenMenu);
     document.querySelector('html').classList.toggle('fixed');
   };
-
   useEffect(() => {
     return () => document.querySelector('html').classList.remove('fixed');
   }, []);

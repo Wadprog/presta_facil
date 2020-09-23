@@ -3,6 +3,7 @@ import { object } from 'prop-types';
 import style from './LanguageSwitcher.module.scss';
 import { navigate } from 'gatsby';
 import { linkResolver } from 'gatsby-source-prismic-graphql';
+import { defaultLanguage } from '@/prismic-config';
 
 const LanguageSwitcher = ({ activeDocMeta }) => {
   const currentLang = activeDocMeta.lang;
@@ -11,11 +12,20 @@ const LanguageSwitcher = ({ activeDocMeta }) => {
   );
 
   const alternateLangOptions = activeDocMeta.alternateLanguages.map(
-    (altLang, index) => (
-      <option value={linkResolver(altLang)} key={`alt-lang-${index}`}>
-        {altLang.lang.slice(0, 2).toUpperCase()}
-      </option>
-    )
+    (altLang, index) => {
+      const lang = {
+        ...altLang,
+        lang:
+          altLang.lang.slice(0, 2) === defaultLanguage.slice(0, 2)
+            ? ''
+            : altLang.lang.slice(0, 2),
+      };
+      return (
+        <option value={linkResolver(lang)} key={`alt-lang-${index}`}>
+          {altLang.lang.slice(0, 2).toUpperCase()}
+        </option>
+      );
+    }
   );
 
   const handleLangChange = (event) => {

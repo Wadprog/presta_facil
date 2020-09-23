@@ -1,8 +1,8 @@
-import { defaultLanguage } from '../../prismic-config';
+import { defaultLanguage } from '@/prismic-config';
 
-if (typeof window !== 'undefined') {
-  console.log(window);
-}
+// if (typeof window !== 'undefined') {
+//   console.log(window);
+// }
 
 export const linkResolver = (doc) => {
   const properties = doc._meta || doc;
@@ -17,7 +17,7 @@ export const linkResolver = (doc) => {
       : `/${properties.lang}/contact-us`;
   }
 
-  if (properties.type === 'solutionpage' && URL.icludes('law')) {
+  if (properties.type === 'solutionpage') {
     return properties.lang === defaultLanguage
       ? `/solution/${properties.uid}`
       : `/${properties.lang}/solution/${properties.uid}`;
