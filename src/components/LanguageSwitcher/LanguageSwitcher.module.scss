@@ -1,19 +1,87 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
 .container {
+  position: relative;
   display: flex;
-  width: 100px;
-  justify-content: flex-end;
-  margin-left: auto;
+  flex-direction: column;
+  min-width: 143px;
   margin-bottom: 17px;
+
+  @media (max-width: $sm) {
+    width: 100%;
+    margin-bottom: 0;
+  }
 }
 
-.selectedItem {
-  background-color: rgba(255, 255, 255, 0.1);
+.dropdown {
+  position: relative;
+  padding: 6px 7px;
   border-radius: 4px;
-  border: none;
+  background-color: $grey-dark;
   color: white;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 19px;
+  margin-bottom: 80px;
+  cursor: pointer;
+
+  @media (max-width: $sm) {
+    margin-bottom: 24px;
+  }
 }
 
-.button {
-  display: block;
-  max-width: 160px;
+.dropdownItem {
+  padding: 6px 7px;
+  color: white;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 23px;
+  cursor: pointer;
+
+  &:hover {
+    font-weight: 600;
+  }
+}
+
+.active {
+  font-weight: 600;
+}
+
+.dropdownList {
+  position: absolute;
+  min-width: 143px;
+  bottom: 9px;
+  border-radius: 4px;
+  color: white;
+  opacity: 0;
+  pointer-events: none;
+  background-color: $grey-dark;
+  @media (max-width: $sm) {
+    width: 100%;
+    bottom: 57px;
+  }
+}
+
+.opened {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.arrow {
+  position: absolute;
+  right: 12px;
+  transition: transform 300ms;
+  @media (max-width: $sm) {
+    transform: rotate(180deg);
+  }
+}
+
+.rotateArrow {
+  transform: rotate(180deg);
+  transform-origin: center;
+
+  @media (max-width: $sm) {
+    transform: rotate(0deg);
+  }
 }

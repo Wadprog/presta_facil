@@ -28,8 +28,10 @@ const Footer = ({ data, activeDocMeta }) => {
           </div>
           <Books data={books} />
         </div>
-        <Navigation data={data} />
-        <LanguageSwitcher activeDocMeta={activeDocMeta} />
+        <Navigation data={data} activeDocMeta={activeDocMeta} />
+        <div className={style.switcherWrapper}>
+          <LanguageSwitcher activeDocMeta={activeDocMeta} />
+        </div>
         <div className={style.wrapper}>
           <a
             href={primary.logolink.url}
