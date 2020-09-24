@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import style from './MenuItem.module.scss';
 import { object, array, string, func } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
@@ -7,6 +7,7 @@ import Image from '@components/Image/Image';
 import classnames from 'classnames';
 import { Link } from 'gatsby';
 import { globalHistory as history } from '@reach/router';
+import LangContext from '@contexts';
 
 const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
   const [activeImage, setActiveImage] = useState(0);
@@ -14,6 +15,7 @@ const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
   const [isLinkActive, setIsLinkActive] = useState(false);
   const { location } = history;
   const title = RichText.asText(primary.title);
+  const currentLang = useContext(LangContext);
 
   const handleMouseEnter = (id) => {
     setActiveImage(id);
@@ -49,7 +51,7 @@ const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
           <div className={style.list}>
             {fields.map((item, index) => {
               const text = RichText.asText(item.name);
-              const link = '/' + RichText.asText(item.link);
+              const link = currentLang + '/' + RichText.asText(item.link);
               location.pathname === link && setIsLinkActive(true);
               return (
                 <Link

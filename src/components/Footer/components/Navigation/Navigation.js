@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'gatsby';
 import style from './Navigation.module.scss';
 import { parseString } from '@helpers';
 import { array } from 'prop-types';
+import LangContext from '@contexts';
 
 const Navigation = ({ data }) => {
+  const currentLang = useContext(LangContext);
   return (
     <nav className={style.nav}>
       {data.map(({ type, primary, fields }) => {
@@ -16,7 +18,7 @@ const Navigation = ({ data }) => {
               <ul className={style.list}>
                 {fields.map(({ name, pagename, externallink }) => {
                   const linkName = parseString(name);
-                  const link = '/' + parseString(pagename);
+                  const link = currentLang + '/' + parseString(pagename);
                   return (
                     <li className={style.link} key={linkName}>
                       {externallink ? (

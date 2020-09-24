@@ -7,8 +7,9 @@ import { array, object } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import { parseString } from '@helpers';
 import Image from '@components/Image/Image';
+import LanguageSwitcher from '@components/LanguageSwitcher';
 
-const Footer = ({ data }) => {
+const Footer = ({ data, activeDocMeta }) => {
   const primary = data[0].primary;
   const books = data[1];
   const fields = data[0].fields;
@@ -28,6 +29,7 @@ const Footer = ({ data }) => {
           <Books data={books} />
         </div>
         <Navigation data={data} />
+        <LanguageSwitcher activeDocMeta={activeDocMeta} />
         <div className={style.wrapper}>
           <a
             href={primary.logolink.url}
@@ -63,6 +65,7 @@ const Footer = ({ data }) => {
 
 Footer.propTypes = {
   data: array,
+  activeDocMeta: object,
   books: object,
 };
 

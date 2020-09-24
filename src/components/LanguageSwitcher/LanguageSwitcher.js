@@ -8,7 +8,9 @@ import { defaultLanguage } from '@/prismic-config';
 const LanguageSwitcher = ({ activeDocMeta }) => {
   const currentLang = activeDocMeta.lang;
   const currentLangOption = (
-    <option value={currentLang}>{currentLang.slice(0, 2).toUpperCase()}</option>
+    <button className={style.button}>
+      {currentLang.slice(0, 2).toUpperCase()}
+    </button>
   );
 
   const alternateLangOptions = activeDocMeta.alternateLanguages.map(
@@ -21,24 +23,31 @@ const LanguageSwitcher = ({ activeDocMeta }) => {
             : altLang.lang.slice(0, 2),
       };
       return (
-        <option value={linkResolver(lang)} key={`alt-lang-${index}`}>
+        <button
+          onClick={() => handleLangChange(linkResolver(lang))}
+          key={`alt-lang-${index}`}
+        >
           {altLang.lang.slice(0, 2).toUpperCase()}
-        </option>
+        </button>
       );
     }
   );
 
-  const handleLangChange = (event) => {
-    navigate(event.target.value);
+  const handleLangChange = (link) => {
+    navigate(link);
   };
 
   return (
-    <li className={style.container}>
-      <select value={currentLang} onChange={handleLangChange}>
+    <div className={style.container}>
+      <button className={style.selectedItem}>
+        {currentLang.slice(0, 2).toUpperCase()}
+      </button>
+
+      <div className={style.dropDown}>
         {currentLangOption}
         {alternateLangOptions}
-      </select>
-    </li>
+      </div>
+    </div>
   );
 };
 

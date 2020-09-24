@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'gatsby';
 import { RichText } from 'prismic-reactjs';
 import { object, string, array } from 'prop-types';
@@ -6,9 +6,11 @@ import Image from '@components/Image/Image';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import style from './Item.module.scss';
 import { parseString } from '@helpers';
+import LangContext from '@contexts';
 
 const Item = ({ image, imageSharp, text, title, pagename }) => {
-  const link = '/' + parseString(pagename);
+  const currentLang = useContext(LangContext);
+  const link = currentLang + '/' + parseString(pagename);
   return (
     <Link to={link} className={style.item}>
       <div className={style.title}>

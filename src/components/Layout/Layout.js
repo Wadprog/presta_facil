@@ -2,11 +2,12 @@ import React from 'react';
 import { bool, object, node } from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import { withPreview } from 'gatsby-source-prismic-graphql';
+import LangContext from '@contexts';
+import { defaultLanguage } from '@/prismic-config';
 
 import Head from '@components/Head';
 import Header from '@components/Header';
 import Footer from '@components/Footer';
-import LanguageSwitcher from '@components/LanguageSwitcher';
 
 import styles from './Layout.module.scss';
 import '@styles/index.scss';
@@ -21,17 +22,18 @@ const Layout = ({ children, data, hideMenu, activeDocMeta }) => {
   const footerData = edge[0].node.body1;
 
   return (
-    <>
+    <LangContext.Provider
+      value={currentLang === defaultLanguage ? '' : currentLang.slice(0, 2)}
+    >
       <Head />
       <div className={styles.container}>
-        <LanguageSwitcher activeDocMeta={activeDocMeta} />
         <Header data={headerData} hideMenu={hideMenu} />
         <main className={styles.main} id="main">
           {children}
         </main>
-        <Footer data={footerData} />
+        <Footer activeDocMeta={activeDocMeta} data={footerData} />
       </div>
-    </>
+    </LangContext.Provider>
   );
 };
 

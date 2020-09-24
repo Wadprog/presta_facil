@@ -69,6 +69,7 @@ module.exports = {
         alias: {
           '@': '',
           '@src': 'src',
+          '@contexts': 'src/contexts',
           '@components': 'src/components',
           '@pages': 'src/pages',
           '@styles': 'src/styles',
