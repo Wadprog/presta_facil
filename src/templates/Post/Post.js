@@ -7,6 +7,7 @@ import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
   const pageContext = data.prismic.allBlogpostpages.edges[0];
+  if (!pageContext) return null;
   const body = pageContext.node;
   return (
     <Layout activeDocMeta={body._meta}>
