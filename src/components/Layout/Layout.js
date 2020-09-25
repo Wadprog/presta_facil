@@ -2,6 +2,8 @@ import React from 'react';
 import { bool, object, node } from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import { withPreview } from 'gatsby-source-prismic-graphql';
+import LangContext from '@contexts';
+import { defaultLanguage } from '@/prismic-config';
 
 import Head from '@components/Head';
 import Header from '@components/Header';
@@ -10,21 +12,28 @@ import Footer from '@components/Footer';
 import styles from './Layout.module.scss';
 import '@styles/index.scss';
 
-const Layout = ({ children, data, hideMenu }) => {
-  const headerData = data.prismic.allLayouts.edges[0].node.body;
-  const footerData = data.prismic.allLayouts.edges[0].node.body1;
+const Layout = ({ children, data, hideMenu, activeDocMeta }) => {
+  const currentLang = activeDocMeta.lang;
+  const edge = data.prismic.allLayouts.edges.filter(
+    (edge) => edge.node._meta.lang === currentLang
+  );
+
+  const headerData = edge[0].node.body;
+  const footerData = edge[0].node.body1;
 
   return (
-    <>
+    <LangContext.Provider
+      value={currentLang === defaultLanguage ? '' : currentLang.slice(0, 2)}
+    >
       <Head />
       <div className={styles.container}>
         <Header data={headerData} hideMenu={hideMenu} />
         <main className={styles.main} id="main">
           {children}
         </main>
-        <Footer data={footerData} />
+        <Footer activeDocMeta={activeDocMeta} data={footerData} />
       </div>
-    </>
+    </LangContext.Provider>
   );
 };
 
@@ -32,13 +41,24 @@ Layout.propTypes = {
   children: node,
   data: object,
   hideMenu: bool,
+  activeDocMeta: object,
 };
 const query = graphql`
-  {
+  query($lang: String) {
     prismic {
-      allLayouts {
+      allLayouts(lang: $lang) {
         edges {
           node {
+            _meta {
+              uid
+              type
+              lang
+              alternateLanguages {
+                lang
+                type
+                uid
+              }
+            }
             body {
               ... on PRISMIC_LayoutBodyHeader {
                 type

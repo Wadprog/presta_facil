@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'gatsby';
 import { RichText } from 'prismic-reactjs';
 import { object, array } from 'prop-types';
 import style from './Item.module.scss';
 import Background from '../../image/bg.inline.svg';
 import BackgroundHover from '../../image/bg-hover.inline.svg';
+import LangContext from '@contexts';
 
 const Item = ({ image, name, pagename }) => {
-  const link = `/technology/${RichText.asText(pagename)
+  const currentLang = useContext(LangContext);
+  const link = `${currentLang}/technology/${RichText.asText(pagename)
     .toLowerCase()
     .replace(' ', '-')}`;
   return (

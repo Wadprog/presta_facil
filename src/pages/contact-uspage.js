@@ -1,14 +1,17 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import { withPreview } from 'gatsby-source-prismic-graphql';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
 import ContactUs from '@scenes/ContactUs';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
+  const contactpageContent = data.prismic.allContacts.edges[0];
+  if (!contactpageContent) return null;
+  const contactpage = contactpageContent.node;
+
   return (
-    <Layout>
+    <Layout activeDocMeta={contactpage._meta}>
       <ContactUs content={data} />
     </Layout>
   );
@@ -18,12 +21,22 @@ Page.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-const query = graphql`
-  {
+export const query = graphql`
+  query($lang: String) {
     prismic {
-      allContacts {
+      allContacts(lang: $lang) {
         edges {
           node {
+            _meta {
+              uid
+              type
+              lang
+              alternateLanguages {
+                lang
+                type
+                uid
+              }
+            }
             title
             company
             email
@@ -40,18 +53,4 @@ const query = graphql`
   }
 `;
 
-const PageWithData = () => {
-  return (
-    <StaticQuery
-      query={`${query}`}
-      render={withPreview(
-        (data) => (
-          <Page data={data} />
-        ),
-        query
-      )}
-    />
-  );
-};
-
-export default PageWithData;
+export default Page;

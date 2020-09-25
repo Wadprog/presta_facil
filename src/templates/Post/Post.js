@@ -1,18 +1,15 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import { withPreview } from 'gatsby-source-prismic-graphql';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
 import Post from '@scenes/PostPage/PostPage';
 import Layout from '@components/Layout';
 
-const Page = ({ data, uid }) => {
-  const pageContext = data.prismic.allBlogpostpages.edges.filter((item) => {
-    return item.node._meta.uid === uid;
-  });
-  const body = pageContext[0].node;
+const Page = ({ data }) => {
+  const pageContext = data.prismic.allBlogpostpages.edges[0];
+  const body = pageContext.node;
   return (
-    <Layout>
+    <Layout activeDocMeta={body._meta}>
       <Post current={body} />
     </Layout>
   );
@@ -20,39 +17,25 @@ const Page = ({ data, uid }) => {
 
 Page.propTypes = {
   data: PropTypes.object,
-  uid: PropTypes.string,
 };
 
-// export default Page;
-const PageWithData = ({ pageContext }) => {
-  return (
-    <StaticQuery
-      query={`${query}`}
-      render={withPreview(
-        (data) => (
-          <Page data={data} uid={pageContext.uid} />
-        ),
-        query
-      )}
-    />
-  );
-};
-PageWithData.propTypes = {
-  pageContext: PropTypes.object,
-};
-
-export default PageWithData;
-
-const query = graphql`
-  query($uid: String) {
+export const query = graphql`
+  query($uid: String, $lang: String) {
     prismic {
-      allBlogpostpages(uid: $uid) {
+      allBlogpostpages(uid: $uid, lang: $lang) {
         edges {
           node {
             _linkType
             _meta {
               uid
+              type
+              lang
               tags
+              alternateLanguages {
+                lang
+                type
+                uid
+              }
             }
             body {
               ... on PRISMIC_BlogpostpageBodyText {
@@ -127,3 +110,5 @@ const query = graphql`
     }
   }
 `;
+
+export default Page;

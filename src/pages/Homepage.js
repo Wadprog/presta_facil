@@ -1,14 +1,17 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import { withPreview } from 'gatsby-source-prismic-graphql';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
 import HomePage from '@scenes/HomePage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
+  const homepageContent = data.prismic.allHomepages.edges[0];
+  if (!homepageContent) return null;
+  const homepage = homepageContent.node;
+
   return (
-    <Layout>
+    <Layout activeDocMeta={homepage._meta}>
       <HomePage content={data} />
     </Layout>
   );
@@ -18,12 +21,22 @@ Page.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-const query = graphql`
-  {
+export const query = graphql`
+  query($lang: String) {
     prismic {
-      allHomepages {
+      allHomepages(lang: $lang) {
         edges {
           node {
+            _meta {
+              uid
+              type
+              lang
+              alternateLanguages {
+                lang
+                type
+                uid
+              }
+            }
             body {
               ... on PRISMIC_HomepageBodyHero1 {
                 type
@@ -178,18 +191,4 @@ const query = graphql`
   }
 `;
 
-const PageWithData = () => {
-  return (
-    <StaticQuery
-      query={`${query}`}
-      render={withPreview(
-        (data) => (
-          <Page data={data} />
-        ),
-        query
-      )}
-    />
-  );
-};
-
-export default PageWithData;
+export default Page;

@@ -9,7 +9,7 @@ import Logo from './components/Logo';
 import Menu from './components/Menu';
 import { useScrollDirection } from '@hooks';
 import useGetImage from './useGetImage';
-import { array, bool } from 'prop-types';
+import { array, bool, object } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import { parseString, parseUrl } from '@helpers';
 import { useEffect } from 'react';
@@ -29,12 +29,12 @@ const Header = ({ data, hideMenu }) => {
     [style.hideMenu]: hideMenu,
   });
   const primary = data[0].primary;
+
   const link = '/' + parseString(primary.buttonlink);
   const toggleMobileMenu = () => {
     setIsOpenMenu(!isOpenMenu);
     document.querySelector('html').classList.toggle('fixed');
   };
-
   useEffect(() => {
     return () => document.querySelector('html').classList.remove('fixed');
   }, []);
@@ -98,6 +98,7 @@ Header.defaultProps = {
 Header.propTypes = {
   data: array,
   hideMenu: bool,
+  activeDocMeta: object,
 };
 
 export default Header;

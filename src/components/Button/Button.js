@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import styles from './Button.module.scss';
 import { Link } from 'gatsby';
+import LangContext from '@contexts';
 
 const VARIANT = {
   PRIMARY: 'primary',
@@ -43,13 +44,14 @@ const Button = ({
     );
   }
   const Component = element;
+  const currentLang = useContext(LangContext);
   return (
     <Component
       className={classes}
       type={type}
       disabled={disabled}
       onClick={click}
-      to={to}
+      to={currentLang + '/' + to}
     >
       {children}
     </Component>

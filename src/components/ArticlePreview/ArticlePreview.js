@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import style from './ArticlePreview.module.scss';
 import { Link } from 'gatsby';
 import { object } from 'prop-types';
 import Arrow from './image/arrow.inline.svg';
 import { dateToString, parseString } from '@helpers';
 import Image from '@components/Image/Image';
+import LangContext from '@contexts';
 
 const ArticlePreview = ({ node }) => {
   const { title, description, date, _meta, preview } = node;
-  const link = `/blog/${_meta.uid}`;
+  const currentLang = useContext(LangContext);
+  const link = `${currentLang}/blog/${_meta.uid}`;
   const tags = _meta.tags;
   return (
     <Link to={link} className={style.preview}>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { RichText } from 'prismic-reactjs';
 import { array, object } from 'prop-types';
 import { Link } from 'gatsby';
@@ -6,11 +6,13 @@ import Swiper from 'react-id-swiper';
 import style from './Solutions.module.scss';
 import useGetImage from './useGetImage';
 import { useBreakpoints } from '@hooks';
+import LangContext from '@contexts';
 
 const Solutions = ({ primary, fields }) => {
   const [buildKey, setBuildKey] = useState();
   const { width } = useBreakpoints();
   const { arrow } = useGetImage();
+  const currentLang = useContext(LangContext);
 
   useEffect(() => {
     setBuildKey(+new Date());
@@ -44,7 +46,7 @@ const Solutions = ({ primary, fields }) => {
             const link = `/solution/${RichText.asText(pagename)}`;
             return (
               <div className={style.slide} key={`solutions${index}`}>
-                <Link to={link} className={style.item}>
+                <Link to={currentLang + link} className={style.item}>
                   <img src={image.url} alt={image.alt} loading="lazy" />
                   <RichText render={title} />
                   <div>

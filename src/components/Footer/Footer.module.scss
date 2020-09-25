@@ -27,6 +27,23 @@
   }
 }
 
+.switcherWrapper {
+  display: flex;
+  justify-content: flex-end;
+
+  @media (max-width: $md) {
+    justify-content: flex-start;
+  }
+
+  @media (max-width: $lg) {
+    margin-right: 50px;
+  }
+
+  @media (max-width: $xl) {
+    margin-right: 0;
+  }
+}
+
 .quizWrapper {
   display: flex;
   align-items: center;

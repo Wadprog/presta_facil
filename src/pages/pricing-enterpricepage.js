@@ -1,14 +1,17 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import { withPreview } from 'gatsby-source-prismic-graphql';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
 import EnterpricePage from '@scenes/EnterpricePage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
+  const enterpricepageContent = data.prismic.allPricesenterpricepages.edges[0];
+  if (!enterpricepageContent) return null;
+  const enterpricepage = enterpricepageContent.node;
+
   return (
-    <Layout>
+    <Layout activeDocMeta={enterpricepage._meta}>
       <EnterpricePage content={data} />
     </Layout>
   );
@@ -18,12 +21,22 @@ Page.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-const query = graphql`
-  {
+export const query = graphql`
+  query($lang: String) {
     prismic {
-      allPricesenterpricepages {
+      allPricesenterpricepages(lang: $lang) {
         edges {
           node {
+            _meta {
+              uid
+              type
+              lang
+              alternateLanguages {
+                lang
+                type
+                uid
+              }
+            }
             body {
               ... on PRISMIC_PricesenterpricepageBodyFeature {
                 type
@@ -111,18 +124,4 @@ const query = graphql`
   }
 `;
 
-const PageWithData = () => {
-  return (
-    <StaticQuery
-      query={`${query}`}
-      render={withPreview(
-        (data) => (
-          <Page data={data} />
-        ),
-        query
-      )}
-    />
-  );
-};
-
-export default PageWithData;
+export default Page;

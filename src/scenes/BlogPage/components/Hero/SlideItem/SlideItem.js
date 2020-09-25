@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { array, object, string } from 'prop-types';
 import style from './SlideItem.module.scss';
 import { RichText } from 'prismic-reactjs';
 import { dateToString } from '@helpers';
 import { Link } from 'gatsby';
+import LangContext from '@contexts';
 
 const SlideItem = ({ backgroundpreview, title, date, description, _meta }) => {
+  const currentLang = useContext(LangContext);
   return (
     <div className={style.item}>
       {backgroundpreview ? (
@@ -39,7 +41,7 @@ const SlideItem = ({ backgroundpreview, title, date, description, _meta }) => {
         <div className={style.description}>
           <RichText render={description} />
         </div>
-        <Link className={style.link} to={'/blog/' + _meta.uid}>
+        <Link className={style.link} to={currentLang + '/blog/' + _meta.uid}>
           Learn More
         </Link>
       </div>
