@@ -71,6 +71,7 @@
       z-index: 11;
       background: $bg-blue;
       transition: border-color 0.3s;
+      cursor: pointer;
       @media (max-width: $md) {
         width: 290px;
       }

@@ -13,7 +13,10 @@ import styles from './Layout.module.scss';
 import '@styles/index.scss';
 
 const Layout = ({ children, data, hideMenu, activeDocMeta }) => {
-  const currentLang = activeDocMeta.lang;
+  const layoutContext = data.prismic.allLayouts.edges[0];
+  if (!layoutContext) return null;
+
+  const currentLang = activeDocMeta ? activeDocMeta.lang : defaultLanguage;
   const edge = data.prismic.allLayouts.edges.filter(
     (edge) => edge.node._meta.lang === currentLang
   );
