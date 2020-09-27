@@ -5,12 +5,12 @@ import { object, string, array } from 'prop-types';
 import Image from '@components/Image/Image';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import style from './Item.module.scss';
-import { parseString } from '@helpers';
+import { parseString, langPath } from '@helpers';
 import LangContext from '@contexts';
 
 const Item = ({ image, imageSharp, text, title, pagename }) => {
   const currentLang = useContext(LangContext);
-  const link = currentLang + '/' + parseString(pagename);
+  const link = langPath(currentLang) + '/' + parseString(pagename);
   return (
     <Link to={link} className={style.item}>
       <div className={style.title}>

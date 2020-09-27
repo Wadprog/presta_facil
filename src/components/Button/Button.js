@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './Button.module.scss';
 import { Link } from 'gatsby';
 import LangContext from '@contexts';
+import { langPath } from '@helpers';
 
 const VARIANT = {
   PRIMARY: 'primary',
@@ -30,6 +31,7 @@ const Button = ({
     [styles.header]: isHeader,
     [styles.disabled]: disabled,
   });
+  const currentLang = useContext(LangContext);
 
   if (element === 'external') {
     return (
@@ -44,14 +46,14 @@ const Button = ({
     );
   }
   const Component = element;
-  const currentLang = useContext(LangContext);
+
   return (
     <Component
       className={classes}
       type={type}
       disabled={disabled}
       onClick={click}
-      to={currentLang + '/' + to}
+      to={langPath(currentLang) + to}
     >
       {children}
     </Component>

@@ -13,7 +13,7 @@ const Footer = ({ data, activeDocMeta }) => {
   const primary = data[0].primary;
   const books = data[1];
   const fields = data[0].fields;
-  const buttonLink = parseString(primary.buttonlink);
+  const buttonLink = '/' + parseString(primary.buttonlink);
   const buttonText = parseString(primary.buttontext);
   const copyright = parseString(primary.copyright);
   return (

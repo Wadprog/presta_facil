@@ -23,4 +23,8 @@ function dateToString(date) {
   return d.toLocaleDateString('en-US', options);
 }
 
-export { isValidEmail, parseUrl, parseString, dateToString };
+function langPath(currentLang) {
+  return currentLang ? `/${currentLang}` : '';
+}
+
+export { isValidEmail, parseUrl, parseString, dateToString, langPath };

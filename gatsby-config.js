@@ -96,102 +96,104 @@ module.exports = {
         defaultLang: defaultLanguage,
         langs: langs,
         shortenUrlLangs: true,
+        path: '/preview',
+        previews: true,
         pages: [
           {
             type: 'Homepage',
             match: '/:lang?',
-            component: require.resolve('./src/pages/homepage.js'),
+            component: require.resolve('./src/templates/HomePage.js'),
             langs: langs,
           },
           {
             type: 'Bookpage',
             match: '/:lang?/books',
-            component: require.resolve('./src/pages/bookspage.js'),
+            component: require.resolve('./src/templates/BooksPage.js'),
             langs: langs,
           },
           {
             type: 'Solutionpage',
             match: '/:lang?/solution/:uid',
-            component: require.resolve('./src/templates/Solution/Solution.js'),
+            component: require.resolve('./src/templates/Solution.js'),
             langs: langs,
           },
           {
             type: 'Solutionpage',
             match: '/:lang?/law/:uid',
-            component: require.resolve('./src/templates/Law/Law.js'),
+            component: require.resolve('./src/templates/Law.js'),
             langs: langs,
           },
           {
             type: 'Featurepage',
             match: '/:lang?/feature/:uid',
-            component: require.resolve('./src/templates/Feature/Feature.js'),
+            component: require.resolve('./src/templates/Feature.js'),
             langs: langs,
           },
           {
             type: 'Technologypage',
             match: '/:lang?/technology/:uid',
-            component: require.resolve(
-              './src/templates/Technology/Technology.js'
-            ),
+            component: require.resolve('./src/templates/Technology.js'),
             langs: langs,
           },
           {
             type: 'Pricespage',
             match: '/:lang?/prices',
-            component: require.resolve('./src/pages/pricespage.js'),
+            component: require.resolve('./src/templates/PricesPage.js'),
             langs: langs,
           },
           {
             type: 'Pricesenterpricepage',
             match: '/:lang?/pricing-enterprice',
-            component: require.resolve('./src/pages/pricing-enterpricepage.js'),
+            component: require.resolve(
+              './src/templates/PricingEnterpricePage.js'
+            ),
             langs: langs,
           },
           {
             type: 'Pricesresellerpage',
             match: '/:lang?/pricing-reseller',
-            component: require.resolve('./src/pages/pricing-enterpricepage.js'),
+            component: require.resolve(
+              './src/templates/PricingResellerPage.js'
+            ),
             langs: langs,
           },
           {
             type: 'Contact',
             match: '/:lang?/contact-us',
-            component: require.resolve('./src/pages/contact-uspage.js'),
+            component: require.resolve('./src/templates/ContactPage.js'),
             langs: langs,
           },
           {
             type: 'Videopage',
             match: '/:lang?/video-blog',
-            component: require.resolve('./src/pages/video-blogpage.js'),
+            component: require.resolve('./src/templates/VideoblogPage.js'),
             langs: langs,
           },
           {
             type: 'Solutionpage',
             match: '/:lang?/law/:uid',
-            component: require.resolve('./src/templates/Law/Law.js'),
+            component: require.resolve('./src/templates/Law.js'),
             langs: langs,
           },
           {
             type: 'Blogpostpage',
             match: '/:lang?/blog',
-            component: require.resolve('./src/pages/blogpage.js'),
+            component: require.resolve('./src/templates/BlogPage.js'),
             langs: langs,
           },
           {
             type: 'Blogpostpage',
             match: '/:lang?/blog/:uid?',
-            component: require.resolve('./src/templates/Post/Post.js'),
+            component: require.resolve('./src/templates/Post.js'),
             langs: langs,
           },
           {
             type: 'Copmarepage',
             match: '/:lang?/:uid',
-            component: require.resolve('./src/templates/Compare/Compare.js'),
+            component: require.resolve('./src/templates/Compare.js'),
             langs: langs,
           },
         ],
-        path: '/preview',
-        previews: true,
         // extraPageFields: 'test_type',
         // omitPrismicScript: true,
         sharpKeys: [

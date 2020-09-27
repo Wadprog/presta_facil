@@ -20,6 +20,8 @@
     padding: 11px 38px 8px 22px;
     transition: border-color 0.3s;
     font-family: $font-sofia-pro;
+    cursor: pointer;
+    
     &:hover {
       border-color: $main-light;
     }

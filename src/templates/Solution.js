@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
-import SolutionPage from '../../scenes/SolutionPage';
+import SolutionPage from '../scenes/SolutionPage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {

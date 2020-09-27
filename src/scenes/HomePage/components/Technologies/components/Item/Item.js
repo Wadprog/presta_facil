@@ -6,10 +6,11 @@ import style from './Item.module.scss';
 import Background from '../../image/bg.inline.svg';
 import BackgroundHover from '../../image/bg-hover.inline.svg';
 import LangContext from '@contexts';
+import { langPath } from '@helpers';
 
 const Item = ({ image, name, pagename }) => {
   const currentLang = useContext(LangContext);
-  const link = `${currentLang}/technology/${RichText.asText(pagename)
+  const link = `${langPath(currentLang)}/technology/${RichText.asText(pagename)
     .toLowerCase()
     .replace(' ', '-')}`;
   return (

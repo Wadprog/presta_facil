@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { object, array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import Button, { VARIANT } from '@components/Button/Button.js';
@@ -9,14 +9,12 @@ import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
 import Image from '@components/Image/Image';
 import { parseString } from '@helpers';
 import Swiper from 'react-id-swiper';
-import LangContext from '@contexts';
 
 const Hero = ({ primary, fields }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleOpenModal = () => setModalIsOpen(true);
   const handleCloseModal = () => setModalIsOpen(false);
-  const currentLang = useContext(LangContext);
-  const buttonLink = currentLang + '/' + parseString(primary.buttonlink);
+  const buttonLink = '/' + parseString(primary.buttonlink);
 
   const params = {
     slidesPerView: 3,

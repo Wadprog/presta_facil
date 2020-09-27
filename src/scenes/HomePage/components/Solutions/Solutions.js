@@ -7,6 +7,7 @@ import style from './Solutions.module.scss';
 import useGetImage from './useGetImage';
 import { useBreakpoints } from '@hooks';
 import LangContext from '@contexts';
+import { langPath } from '@helpers';
 
 const Solutions = ({ primary, fields }) => {
   const [buildKey, setBuildKey] = useState();
@@ -43,10 +44,12 @@ const Solutions = ({ primary, fields }) => {
         </div>
         <Swiper {...params} key={buildKey}>
           {fields.map(({ image, title, text, pagename }, index) => {
-            const link = `/solution/${RichText.asText(pagename)}`;
+            const link = `${langPath(currentLang)}/solution/${RichText.asText(
+              pagename
+            )}`;
             return (
               <div className={style.slide} key={`solutions${index}`}>
-                <Link to={currentLang + link} className={style.item}>
+                <Link to={link} className={style.item}>
                   <img src={image.url} alt={image.alt} loading="lazy" />
                   <RichText render={title} />
                   <div>

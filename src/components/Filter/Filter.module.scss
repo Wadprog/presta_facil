@@ -52,6 +52,7 @@
       color: $main-light;
       box-shadow: none;
       background: rgba($main-light, 0.03);
+      cursor: pointer;
 
       &:hover {
         border-color: $main-light;

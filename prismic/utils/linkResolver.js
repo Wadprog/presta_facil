@@ -1,14 +1,16 @@
 import { defaultLanguage } from '@/prismic-config';
 
-// if (typeof window !== 'undefined') {
-//   console.log(window);
-// }
+let path = [];
+
+if (typeof window !== 'undefined') {
+  path = window.location.pathname.split('/');
+}
 
 export const linkResolver = (doc) => {
   const properties = doc._meta || doc;
 
   if (properties.type === 'homepage') {
-    return properties.lang === defaultLanguage ? '/' : `/${properties.lang}`;
+    return properties.lang === defaultLanguage ? '/' : `/${properties.lang}/`;
   }
 
   if (properties.type === 'contact') {
@@ -17,10 +19,16 @@ export const linkResolver = (doc) => {
       : `/${properties.lang}/contact-us`;
   }
 
-  if (properties.type === 'solutionpage') {
+  if (properties.type === 'solutionpage' && path.includes('solution')) {
     return properties.lang === defaultLanguage
       ? `/solution/${properties.uid}`
       : `/${properties.lang}/solution/${properties.uid}`;
+  }
+
+  if (properties.type === 'solutionpage' && path.includes('law')) {
+    return properties.lang === defaultLanguage
+      ? `/law/${properties.uid}`
+      : `/${properties.lang}/law/${properties.uid}`;
   }
 
   if (properties.type === 'featurepage') {
@@ -89,5 +97,5 @@ export const linkResolver = (doc) => {
       : `/${properties.lang}/blog/${properties.uid}`;
   }
   // Backup for all other types
-  return properties.lang === defaultLanguage ? '/' : `/${properties.lang}/`;
+  return '/';
 };

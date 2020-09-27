@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Swiper from 'react-id-swiper';
 import { object } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import { Link } from 'gatsby';
 import style from './Books.module.scss';
+import { langPath } from '@helpers';
+import LangContext from '@contexts';
 
 const DEFAULT_SLIDES = 3;
 
@@ -18,6 +20,7 @@ const Books = ({ data }) => {
       prevEl: '.prev',
     },
   };
+  const currentLang = useContext(LangContext);
 
   return (
     <div className={style.container}>
@@ -26,7 +29,7 @@ const Books = ({ data }) => {
         {fields.map(({ image }, index) => {
           return (
             <div className={style.slide} key={`${image.publicURL}${index}`}>
-              <Link to="/books">
+              <Link to={langPath(currentLang) + '/books'}>
                 <img
                   src={image.url}
                   alt="book"

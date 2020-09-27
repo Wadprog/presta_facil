@@ -19,7 +19,9 @@ const LANGUAGE = {
 };
 
 const LanguageSwitcher = ({ activeDocMeta }) => {
-  const currentLang = activeDocMeta.lang.slice(0, 2);
+  const currentLang = activeDocMeta
+    ? activeDocMeta.lang.slice(0, 2)
+    : defaultLanguage.slice(0, 2);
   const [isOpen, setIsOpen] = useState(false);
 
   const convertToFullName = (shortName, LANGUAGE) => {
@@ -31,25 +33,6 @@ const LanguageSwitcher = ({ activeDocMeta }) => {
 
     return shortName;
   };
-
-  const alternateLangOptions = activeDocMeta.alternateLanguages.map(
-    (altLang, index) => {
-      const altLangShort = altLang.lang.slice(0, 2);
-      const lang = {
-        ...altLang,
-        lang: altLang.lang === defaultLanguage ? '' : altLangShort,
-      };
-      return (
-        <li
-          className={style.dropdownItem}
-          onClick={() => handleLangChange(linkResolver(lang))}
-          key={`alt-lang-${index}`}
-        >
-          {convertToFullName(altLangShort, LANGUAGE)}
-        </li>
-      );
-    }
-  );
 
   const handleLangChange = (link) => {
     navigate(link);
@@ -72,7 +55,23 @@ const LanguageSwitcher = ({ activeDocMeta }) => {
         <li className={classnames([style.dropdownItem, style.active])}>
           {convertToFullName(currentLang, LANGUAGE)}
         </li>
-        {alternateLangOptions}
+        {activeDocMeta &&
+          activeDocMeta.alternateLanguages.map((altLang, index) => {
+            const altLangShort = altLang.lang.slice(0, 2);
+            const lang = {
+              ...altLang,
+              lang: altLang.lang === defaultLanguage ? '' : altLangShort,
+            };
+            return (
+              <li
+                className={style.dropdownItem}
+                onClick={() => handleLangChange(linkResolver(lang))}
+                key={`alt-lang-${index}`}
+              >
+                {convertToFullName(altLangShort, LANGUAGE)}
+              </li>
+            );
+          })}
       </ul>
     </div>
   );

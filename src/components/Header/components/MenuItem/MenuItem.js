@@ -8,6 +8,7 @@ import classnames from 'classnames';
 import { Link } from 'gatsby';
 import { globalHistory as history } from '@reach/router';
 import LangContext from '@contexts';
+import { langPath } from '@helpers';
 
 const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
   const [activeImage, setActiveImage] = useState(0);
@@ -51,7 +52,8 @@ const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
           <div className={style.list}>
             {fields.map((item, index) => {
               const text = RichText.asText(item.name);
-              const link = currentLang + '/' + RichText.asText(item.link);
+              const link =
+                langPath(currentLang) + '/' + RichText.asText(item.link);
               location.pathname === link && setIsLinkActive(true);
               return (
                 <Link
