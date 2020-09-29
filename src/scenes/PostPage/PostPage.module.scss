@@ -63,11 +63,17 @@
   line-height: 150%;
 }
 
+.categoryList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .categoryItem {
   padding: 11px 12px 8px;
   background: rgba($main-light, $alpha: 0.1);
   border-radius: 100px;
-  line-height: 1;
+  line-height: 14px;
+  margin: 2px;
 }
 
 .title {
