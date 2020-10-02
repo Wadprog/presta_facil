@@ -28,6 +28,24 @@ Page.propTypes = {
 export const query = graphql`
   query($lang: String) {
     prismic {
+      allBlogpages(lang: $lang) {
+        edges {
+          node {
+            title
+            _meta {
+              uid
+              type
+              lang
+              tags
+              alternateLanguages {
+                lang
+                type
+                uid
+              }
+            }
+          }
+        }
+      }
       allBlogpostpages(lang: $lang) {
         edges {
           node {

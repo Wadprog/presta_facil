@@ -1,10 +1,11 @@
 import React from 'react';
+import { RichText } from 'prismic-reactjs';
 import Swiper from 'react-id-swiper';
-import { array } from 'prop-types';
+import { array, object } from 'prop-types';
 import SlideItem from './SlideItem/SlideItem';
 import style from './Hero.module.scss';
 
-const Hero = ({ articles }) => {
+const Hero = ({ title, articles }) => {
   const params = {
     slidesPerView: 'auto',
     spaceBetween: 56,
@@ -22,9 +23,9 @@ const Hero = ({ articles }) => {
 
   return (
     <section className={style.hero}>
-      <h1 className={style.title}>
-        Welcome to <strong>our Blog</strong>
-      </h1>
+      <div className={style.title}>
+        <RichText render={title} />
+      </div>
       <div className={style.slider}>
         <Swiper {...params}>
           {firstFourArticles.map(({ node }) => {
@@ -42,6 +43,7 @@ const Hero = ({ articles }) => {
 
 Hero.propTypes = {
   articles: array,
+  title: object,
 };
 
 export default Hero;
