@@ -1,10 +1,11 @@
 import React from 'react';
 import Swiper from 'react-id-swiper';
-import { array } from 'prop-types';
+import { array, object } from 'prop-types';
+import { parseString } from '@helpers';
 import SlideItem from './SlideItem/SlideItem';
 import style from './Hero.module.scss';
 
-const Hero = ({ articles }) => {
+const Hero = ({ title, articles }) => {
   const params = {
     slidesPerView: 'auto',
     spaceBetween: 56,
@@ -20,10 +21,13 @@ const Hero = ({ articles }) => {
 
   const firstFourArticles = articles.slice(0, 4);
 
+  const titleText = parseString(title.titletext);
+  const titleAccent = parseString(title.titleaccent);
+
   return (
     <section className={style.hero}>
       <h1 className={style.title}>
-        Welcome to <strong>our Blog</strong>
+        {titleText} <strong>{titleAccent}</strong>
       </h1>
       <div className={style.slider}>
         <Swiper {...params}>
@@ -42,6 +46,7 @@ const Hero = ({ articles }) => {
 
 Hero.propTypes = {
   articles: array,
+  title: object,
 };
 
 export default Hero;
