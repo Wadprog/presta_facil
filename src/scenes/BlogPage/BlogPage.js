@@ -7,7 +7,7 @@ import Articles from './components/Articles/Articles';
 
 const BlogPage = ({ content }) => {
   const body = content.prismic.allBlogpostpages.edges[0].node.body;
-  const title = content.prismic.allBlogpages.edges[0].node;
+  const title = content.prismic.allBlogpages.edges[0].node.title;
   const articlesList = content.prismic.allBlogpostpages.edges;
 
   return (

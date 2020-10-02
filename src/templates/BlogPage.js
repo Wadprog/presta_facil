@@ -31,8 +31,7 @@ export const query = graphql`
       allBlogpages(lang: $lang) {
         edges {
           node {
-            titletext
-            titleaccent
+            title
             _meta {
               uid
               type
