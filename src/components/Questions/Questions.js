@@ -23,7 +23,6 @@ const Questions = ({ primary, fields }) => {
   const loadMoreQuestion = () => {
     setCounter(counter + COUNTER_STEP);
   };
-
   return (
     <section className={styles.benefits}>
       <div className={styles.title}>
@@ -33,36 +32,40 @@ const Questions = ({ primary, fields }) => {
         className={styles.accordion}
         allowZeroExpanded
         allowMultipleExpanded
-      >
-        {questionList.map(({ title, content, linktext, link }) => {
-          return (
-            <AccordionItem
-              key={RichText.asText(title)}
-              className={styles.accordionItem}
-            >
-              <AccordionItemHeading className={styles.accordionItemHeading}>
-                <AccordionItemButton className={styles.accordionItemButton}>
-                  <RichText render={title} />
-                </AccordionItemButton>
-              </AccordionItemHeading>
-              <AccordionItemPanel className={styles.accordionItemPanel}>
-                <div className={styles.content}>
-                  <RichText render={content} />
-                  {link && (
-                    <a
-                      className={styles.link}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {RichText.asText(linktext)}
-                    </a>
-                  )}
-                </div>
-              </AccordionItemPanel>
-            </AccordionItem>
-          );
-        })}
+      >    
+      {!questionList || !questionList.lenght
+          ? <></>
+          : (
+            questionList.map(({ title, content, linktext, link }) => {
+              return (
+                <AccordionItem
+                  key={RichText.asText(title)}
+                  className={styles.accordionItem}
+                >
+                  <AccordionItemHeading className={styles.accordionItemHeading}>
+                    <AccordionItemButton className={styles.accordionItemButton}>
+                      <RichText render={title} />
+                    </AccordionItemButton>
+                  </AccordionItemHeading>
+                  <AccordionItemPanel className={styles.accordionItemPanel}>
+                    <div className={styles.content}>
+                      <RichText render={content} />
+                      {link && (
+                        <a
+                          className={styles.link}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {RichText.asText(linktext)}
+                        </a>
+                      )}
+                    </div>
+                  </AccordionItemPanel>
+                </AccordionItem>
+              );
+            })
+          )}
       </Accordion>
       {fields.length > counter ? (
         <div className={styles.buttonWrapper}>

@@ -51,4 +51,8 @@ ModalContainer.propTypes = {
   videoLink: string,
 };
 
+ModalContainer.defaultProps = {
+  videoLink: '',
+};
+
 export default ModalContainer;

@@ -16,7 +16,7 @@ const Hero = ({ primary, fields }) => {
   const handleOpenModal = () => setModalIsOpen(true);
   const handleCloseModal = () => setModalIsOpen(false);
   const { hero } = useGetImage();
-
+  const videoLink = primary.modalvideo ? primary.modalvideo.url : '';
   const params = {
     slidesPerView: 2,
     spaceBetween: 16,
@@ -93,7 +93,7 @@ const Hero = ({ primary, fields }) => {
       <Modal
         open={modalIsOpen}
         closeModal={handleCloseModal}
-        videoLink={primary.modalvideo.url}
+        videoLink={videoLink}
       />
     </div>
   );
