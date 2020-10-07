@@ -5,7 +5,6 @@ import Item from './components/Item/Item';
 import Sidebar from '@components/Sidebar/Sidebar';
 
 const Questions = ({ data }) => {
-  console.log('questions');
   return (
     <section className={styles.questions}>
       <div className={styles.container}>
