@@ -11,27 +11,30 @@ const Item = ({ primary, fields }) => {
         <RichText render={primary.title} />
       </div>
       <ul className={styles.list}>
-        {fields.map(({ title, content, linktext, link }) => {
-          const id = RichText.asText(title).replace(/\s/g, '');
-          return (
-            <li key={id} id={id} className={styles.listItem}>
-              <RichText render={title} />
-              <div className={styles.content}>
-                <RichText render={content} />
-                {link && (
-                  <a
-                    className={styles.link}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {RichText.asText(linktext)}
-                  </a>
-                )}
-              </div>
-            </li>
-          );
-        })}
+        {!fields || !fields.lenght
+        ? <></>
+        : (fields.map(({ title, content, linktext, link }) => {
+            const id = RichText.asText(title).replace(/\s/g, '');
+            return (
+              <li key={id} id={id} className={styles.listItem}>
+                <RichText render={title} />
+                <div className={styles.content}>
+                  <RichText render={content} />
+                  {link && (
+                    <a
+                      className={styles.link}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {RichText.asText(linktext)}
+                    </a>
+                  )}
+                </div>
+              </li>
+            );
+          })
+        )}
       </ul>
     </div>
   );
