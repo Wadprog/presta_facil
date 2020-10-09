@@ -117,12 +117,12 @@ module.exports = {
             component: require.resolve('./src/templates/Solution.js'),
             langs: langs,
           },
-          {
-            type: 'Solutionpage',
-            match: '/:lang?/law/:uid',
-            component: require.resolve('./src/templates/Law.js'),
-            langs: langs,
-          },
+          // {
+          //   type: 'Solutionpage',
+          //   match: '/:lang?/law/:uid',
+          //   component: require.resolve('./src/templates/Law.js'),
+          //   langs: langs,
+          // },
           {
             type: 'Featurepage',
             match: '/:lang?/feature/:uid',
@@ -167,12 +167,6 @@ module.exports = {
             type: 'Videopage',
             match: '/:lang?/video-blog',
             component: require.resolve('./src/templates/VideoblogPage.js'),
-            langs: langs,
-          },
-          {
-            type: 'Solutionpage',
-            match: '/:lang?/law/:uid',
-            component: require.resolve('./src/templates/Law.js'),
             langs: langs,
           },
           {
