@@ -175,6 +175,7 @@ module.exports = {
           //   component: require.resolve('./src/templates/BlogPage.js'),
           //   langs: langs,
           // },
+          
           {
             type: 'Blogpostpage',
             match: '/:lang?/blog/:uid?',
