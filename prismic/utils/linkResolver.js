@@ -32,22 +32,16 @@ export const linkResolver = (doc) => {
   //     ? `/law/${properties.uid}`
   //     : `/${properties.lang}/law/${properties.uid}`;
   // }
-  // if (properties.type === 'blogpostpage' && !properties.uid) {
-  //   return properties.lang === defaultLanguage
-  //     ? '/blog'
-  //     : `/${properties.lang}/blog`;
-  // }
-
-  // if (properties.type === 'blogpostpage' && properties.uid) {
-  //   return properties.lang === defaultLanguage
-  //     ? `/blog/${properties.uid}`
-  //     : `/${properties.lang}/blog/${properties.uid}`;
-  // }
-
-  if (properties.type === 'blogpostpage') {
+  if (properties.type === 'blogpostpage' && !properties.uid) {
     return properties.lang === defaultLanguage
-    ? `/blog/${properties.uid}`
-    : `/${properties.lang}/blog/${properties.uid}`;
+      ? '/blog'
+      : `/${properties.lang}/blog`;
+  }
+
+  if (properties.type === 'blogpostpage' && properties.uid) {
+    return properties.lang === defaultLanguage
+      ? `/blog/${properties.uid}`
+      : `/${properties.lang}/blog/${properties.uid}`;
   }
 
   if (properties.type === 'solutionpage') {
