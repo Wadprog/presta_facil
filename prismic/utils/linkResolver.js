@@ -32,10 +32,22 @@ export const linkResolver = (doc) => {
   //     ? `/law/${properties.uid}`
   //     : `/${properties.lang}/law/${properties.uid}`;
   // }
-  if (properties.type === 'featurepage') {
+  // if (properties.type === 'blogpostpage' && !properties.uid) {
+  //   return properties.lang === defaultLanguage
+  //     ? '/blog'
+  //     : `/${properties.lang}/blog`;
+  // }
+
+  // if (properties.type === 'blogpostpage' && properties.uid) {
+  //   return properties.lang === defaultLanguage
+  //     ? `/blog/${properties.uid}`
+  //     : `/${properties.lang}/blog/${properties.uid}`;
+  // }
+
+  if (properties.type === 'blogpostpage') {
     return properties.lang === defaultLanguage
-      ? `/feature/${properties.uid}`
-      : `/${properties.lang}/feature/${properties.uid}`;
+    ? `/blog/${properties.uid}`
+    : `/${properties.lang}/blog/${properties.uid}`;
   }
 
   if (properties.type === 'solutionpage') {
@@ -43,6 +55,13 @@ export const linkResolver = (doc) => {
       ? `/solution/${properties.uid}`
       : `/${properties.lang}/solution/${properties.uid}`;
   }
+
+  if (properties.type === 'featurepage') {
+    return properties.lang === defaultLanguage
+      ? `/feature/${properties.uid}`
+      : `/${properties.lang}/feature/${properties.uid}`;
+  }
+
 
   if (properties.type === 'technologypage') {
     return properties.lang === defaultLanguage
@@ -92,17 +111,6 @@ export const linkResolver = (doc) => {
       : `/${properties.lang}/${properties.uid}`;
   }
 
-  if (properties.type === 'blogpostpage' && !properties.uid) {
-    return properties.lang === defaultLanguage
-      ? '/blog'
-      : `/${properties.lang}/blog`;
-  }
-
-  if (properties.type === 'blogpostpage' && properties.uid) {
-    return properties.lang === defaultLanguage
-      ? `/blog/${properties.uid}`
-      : `/${properties.lang}/blog/${properties.uid}`;
-  }
   // Backup for all other types
   return '/';
 };

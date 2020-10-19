@@ -169,12 +169,13 @@ module.exports = {
             component: require.resolve('./src/templates/VideoblogPage.js'),
             langs: langs,
           },
-          {
-            type: 'Blogpostpage',
-            match: '/:lang?/blog',
-            component: require.resolve('./src/templates/BlogPage.js'),
-            langs: langs,
-          },
+          // {
+          //   type: 'Blogpostpage',
+          //   match: '/:lang?/blog',
+          //   component: require.resolve('./src/templates/BlogPage.js'),
+          //   langs: langs,
+          // },
+          
           {
             type: 'Blogpostpage',
             match: '/:lang?/blog/:uid?',
