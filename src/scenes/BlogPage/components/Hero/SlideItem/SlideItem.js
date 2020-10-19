@@ -8,6 +8,7 @@ import LangContext from '@contexts';
 
 const SlideItem = ({ backgroundpreview, title, date, description, _meta }) => {
   const currentLang = useContext(LangContext);
+  console.log('prew', currentLang)
   return (
     <div className={style.item}>
       {backgroundpreview ? (
