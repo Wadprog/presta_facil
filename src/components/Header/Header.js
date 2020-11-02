@@ -31,6 +31,7 @@ const Header = ({ data, hideMenu }) => {
   const primary = data[0].primary;
 
   const link = '/' + parseString(primary.buttonlink);
+  
   const toggleMobileMenu = () => {
     setIsOpenMenu(!isOpenMenu);
     document.querySelector('html').classList.toggle('fixed');

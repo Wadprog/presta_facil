@@ -9,6 +9,7 @@ const Page = ({ data }) => {
   const pageContext = data.prismic.allFeaturepages.edges[0];
   if (!pageContext) return null;
   const body = pageContext.node;
+
   return (
     <Layout activeDocMeta={body._meta}>
       <Feature current={body} />
