@@ -59,7 +59,7 @@ const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
               const text = RichText.asText(item.name);
               let link =
                 langPath(currentLang) + '/' + RichText.asText(item.link).toLowerCase();
-                if(link === '/feature/') {
+                if (link === '/feature/') {
                   link = link + text.split(' ').join('').toLowerCase();
                 }
               location.pathname === link && setIsLinkActive(true);
