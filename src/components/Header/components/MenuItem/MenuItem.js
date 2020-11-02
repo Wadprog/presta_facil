@@ -9,6 +9,7 @@ import { Link } from 'gatsby';
 import { globalHistory as history } from '@reach/router';
 import LangContext from '@contexts';
 import { langPath } from '@helpers';
+import { linkResolver } from '../../../../../prismic/utils/linkResolver';
 
 const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
   const [activeImage, setActiveImage] = useState(0);
@@ -39,6 +40,10 @@ const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
     [style.linkActive]: isLinkActive,
   });
 
+  const fixFeaturesLinks = (text) => {
+
+  }
+
   return (
     <div
       className={classItem}
@@ -52,8 +57,11 @@ const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
           <div className={style.list}>
             {fields.map((item, index) => {
               const text = RichText.asText(item.name);
-              const link =
-                langPath(currentLang) + '/' + RichText.asText(item.link);
+              let link =
+                langPath(currentLang) + '/' + RichText.asText(item.link).toLowerCase();
+                if(link === '/feature/') {
+                  link = link + text.split(' ').join('').toLowerCase();
+                }
               location.pathname === link && setIsLinkActive(true);
               return (
                 <Link

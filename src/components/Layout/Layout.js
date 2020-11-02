@@ -46,6 +46,7 @@ Layout.propTypes = {
   hideMenu: bool,
   activeDocMeta: object,
 };
+
 const query = graphql`
   query($lang: String) {
     prismic {

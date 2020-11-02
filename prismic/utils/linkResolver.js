@@ -19,8 +19,6 @@ export const linkResolver = (doc) => {
       : `/${properties.lang}/contact-us`;
   }
 
-
-
   // if (properties.type === 'solutionpage' && path.includes('solution')) {
   //   return properties.lang === defaultLanguage
   //     ? `/solution/${properties.uid}`
@@ -40,7 +38,7 @@ export const linkResolver = (doc) => {
 
   if (properties.type === 'solutionpage') {
     return properties.lang === defaultLanguage
-      ? `/solution/${properties.uid}`
+      ? `/solution/${properties.uid}1`
       : `/${properties.lang}/solution/${properties.uid}`;
   }
 
