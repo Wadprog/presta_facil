@@ -16,6 +16,8 @@ const Layout = ({ children, data, hideMenu, activeDocMeta }) => {
   const layoutContext = data.prismic.allLayouts.edges[0];
   if (!layoutContext) return null;
 
+  console.log(data, 787)
+
   const currentLang = activeDocMeta ? activeDocMeta.lang : defaultLanguage;
   const edge = data.prismic.allLayouts.edges.filter(
     (edge) => edge.node._meta.lang === currentLang
