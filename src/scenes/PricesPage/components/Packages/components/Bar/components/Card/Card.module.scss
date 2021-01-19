@@ -1,0 +1,137 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.container {
+  box-shadow: 0px 40px 100px rgba(28, 86, 76, 0.3);
+  border-radius: 12px 30px;
+  padding: 16px;
+
+  background: #ffffff;
+  color: $main-light;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &.colorized {
+    background: $green-gradient;
+    color: #ffffff;
+
+    .button {
+      border-color: transparent;
+
+      @media (min-width: $md) {
+        &:hover {
+          box-shadow: 0px 20px 40px #1e4f4d;
+        }
+      }
+    }
+  }
+}
+
+.type {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+
+  h3 {
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+}
+
+.name {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+
+  h4 {
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+}
+
+.cost {
+  position: relative;
+
+  margin: 16px 0 16px 24px;
+
+  font-family: $font-gramatika;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+
+  &:before {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+
+    display: block;
+    margin-top: 2px;
+    margin-right: 2px;
+
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.25;
+    letter-spacing: 0.03em;
+  }
+
+  &.usd {
+    &:before {
+      content: '$';
+    }
+  }
+
+  &.eur {
+    &:before {
+      content: '€';
+    }
+  }
+}
+
+.footer {
+  width: 100%;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba($main-light, 0.3);
+  border-radius: 5px 20px;
+  height: 48px;
+
+  background: #ffffff;
+  color: $main-light;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.8;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  transition: 0.3s;
+
+  @media (min-width: $lg) {
+    &:hover {
+      color: $green;
+      border-color: $green;
+    }
+  }
+}
+
+.gradientText {
+  background: $green-gradient;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

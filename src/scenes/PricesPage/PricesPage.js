@@ -1,47 +1,79 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import Hero from './components/Hero';
 import Plans from './components/Plans';
-import Features from './components/Features';
+import PackagesFeatures from './components/PackagesFeatures';
+import Packages from './components/Packages';
 import Partners from './components/Partners';
 import Questions from './components/Questions';
 import ContactUs from './components/ContactUs';
 import style from './PricesPage.module.scss';
+import { useBreakpoints } from '@hooks';
+
+const MOBILE_VIEW = 1220;
+const CARDS_LIST_WIDTH = 920;
+const CARDS_NUMBER = 4;
 
 const PricesPage = ({ content }) => {
-  const [isPremium, setIsPremium] = useState(false);
   const [isBarShowing, setIsBarShowing] = useState(false);
+  const [currency, setCurrency] = useState('USD');
+  const [activepoint, setActivePoint] = useState(0);
+  const { width } = useBreakpoints();
+  const myPackagesRef = useRef(null);
+  const myFeturesRef = useRef(null);
 
-  const setPremium = (value) => setIsPremium(value);
   const showBar = () => setIsBarShowing(true);
   const hideBar = () => setIsBarShowing(false);
+
+  const setActive = (value) => {
+    const hiddenWidth = CARDS_LIST_WIDTH - width;
+    const hiddenWidthPerCard = hiddenWidth / CARDS_NUMBER;
+    const active =
+      Math.ceil(value / hiddenWidthPerCard) > CARDS_NUMBER - 1
+        ? CARDS_NUMBER - 1
+        : Math.ceil(value / hiddenWidthPerCard);
+    setActivePoint(active);
+    myPackagesRef.current.scrollLeft = value;
+  };
+
+  const setActiveOnClick = (index) => {
+    setActivePoint(index);
+    const hiddenWidth = CARDS_LIST_WIDTH - width;
+    const hiddenWidthPerCard = hiddenWidth / CARDS_NUMBER;
+    const leftScroll =
+      index === CARDS_NUMBER - 1 ? hiddenWidth : index * hiddenWidthPerCard;
+    myPackagesRef.current.scrollLeft = leftScroll;
+  };
 
   const body = content.prismic.allPricespages.edges[0].node.body;
   const sections = body.map((item, index) => {
     switch (item.type) {
       case 'hero':
         return <Hero key={index} {...item} />;
-      case 'plans':
+      case 'packages':
         return (
-          <Plans
+          <Packages
             key={index}
             {...item}
             isBarShowing={isBarShowing}
             showBar={showBar}
             hideBar={hideBar}
-            isPremium={isPremium}
-            setIsPremium={setPremium}
+            activepoint={activepoint}
+            currency={currency}
+            scrollableRef={myPackagesRef}
+            setActive={setActive}
+            setActiveOnClick={setActiveOnClick}
           />
         );
-      case 'features':
+      case 'packagesfeatures':
         return (
-          <Features
+          <PackagesFeatures
             {...item}
             key={index}
-            isPremium={isPremium}
             showBar={showBar}
             hideBar={hideBar}
+            scrollableRef={myFeturesRef}
           />
         );
       case 'partners':

@@ -1,0 +1,11 @@
+{
+  "expireTime": 9007200860032656000,
+  "key": "63f44ec50f9a13f1fa40b6d61f802e84{\"background\":\"rgba(0,0,0,1)\",\"duotone\":false,\"grayscale\":false,\"rotate\":0,\"trim\":false,\"toFormat\":\"webp\",\"toFormatBase64\":\"\",\"cropFocus\":17,\"fit\":\"cover\",\"width\":20,\"height\":4}",
+  "val": {
+    "src": "data:image/webp;base64,UklGRogAAABXRUJQVlA4WAoAAAAQAAAAEwAAAwAAQUxQSBwAAAABDzABERFCVWQbdPw++DPyqKWBEdH/GPSieMknVlA4IEYAAACQAwCdASoUAAQAPtFapkyoJSOiMAgBABoJaQABJI2HOsFQph4AAP58CcEU6+GIqi9c4KmiI2D/nmIl5dNHVK6FmPKgAAAA",
+    "width": 20,
+    "height": 4,
+    "aspectRatio": 5,
+    "originalName": "pattern-02.png"
+  }
+}

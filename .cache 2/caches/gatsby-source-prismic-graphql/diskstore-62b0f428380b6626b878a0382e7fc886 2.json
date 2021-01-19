@@ -1,0 +1,21 @@
+{
+  "expireTime": 9007200865371389000,
+  "key": "create-remote-file-node-https://images.prismic.io/secure-privacy/26682087-ac7c-4a0e-8df2-5cb2db8b4003_laptop.png?auto=compress,format",
+  "val": {
+    "connection": "close",
+    "content-length": "80960",
+    "last-modified": "Thu, 14 Jan 2021 13:11:07 GMT",
+    "cache-control": "public, max-age=315360000",
+    "server": "imgix",
+    "x-imgix-id": "908d58dd932cf189933f41f3dfa16b00fc43580d",
+    "date": "Thu, 14 Jan 2021 13:19:58 GMT",
+    "age": "531",
+    "accept-ranges": "bytes",
+    "content-type": "image/png",
+    "access-control-allow-origin": "*",
+    "x-content-type-options": "nosniff",
+    "x-served-by": "cache-sjc10050-SJC, cache-hhn4082-HHN",
+    "x-cache": "MISS, HIT",
+    "vary": "Accept, User-Agent"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "expireTime": 9007200860032656000,
+  "key": "5059527eb8f3a70b6ca37416d74f21b5{\"background\":\"rgba(0,0,0,1)\",\"duotone\":false,\"grayscale\":false,\"rotate\":0,\"trim\":false,\"toFormat\":\"webp\",\"toFormatBase64\":\"\",\"cropFocus\":17,\"fit\":\"cover\",\"width\":20,\"height\":15}",
+  "val": {
+    "src": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAACQAwCdASoUAA8APtFWo0uoJKMhsAgBABoJZwC7AB6Qo5o+I3sAAP7uoNQg48Kt3F5BKP/WldU2LXgcEP/6CDvtLmAAAA==",
+    "width": 20,
+    "height": 15,
+    "aspectRatio": 1.3333333333333333,
+    "originalName": "hero.jpg"
+  }
+}

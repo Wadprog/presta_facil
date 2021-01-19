@@ -54,7 +54,9 @@ const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
             {fields.map((item, index) => {
               const text = RichText.asText(item.name);
               let link =
-                langPath(currentLang) + '/' + RichText.asText(item.link).toLowerCase();
+                langPath(currentLang) +
+                '/' +
+                RichText.asText(item.link).toLowerCase();
               location.pathname === link && setIsLinkActive(true);
               return (
                 <Link

@@ -63,6 +63,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "lint": "eslint --fix --ext .js,.jsx .",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",

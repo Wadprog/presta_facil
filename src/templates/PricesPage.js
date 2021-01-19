@@ -72,16 +72,51 @@ export const query = graphql`
                   premiumplanannualcost
                 }
               }
-              ... on PRISMIC_PricespageBodyFeatures {
+              ... on PRISMIC_PricespageBodyPackages {
+                type
+                label
+                primary {
+                  basicplantitle
+                  plusplantitle
+                  businessplantitle
+                  enterpriseplantitle
+                  basicplandescription
+                  plusplandescription
+                  businessplandescription
+                  enterpriseplandescription
+                  monthlycondition
+                  annualcondition
+                  buttontext
+                  annualcoefficient
+                  seconditemdiscount
+                  thirditemdiscount
+                  crossexchangerate
+                  buttonbaselink {
+                    ... on PRISMIC__ExternalLink {
+                      url
+                    }
+                  }
+                }
+                fields {
+                  name
+                  location
+                  basicplanmonthlycost
+                  plusplanmonthlycost
+                  businessplanmonthlycost
+                }
+              }
+              ... on PRISMIC_PricespageBodyPackagesfeatures {
                 type
                 label
                 primary {
                   title
                 }
                 fields {
-                  name
+                  featuretitle
                   basicstatus
-                  premiumstatus
+                  plusstatus
+                  businessstatus
+                  enterprisestatus
                 }
               }
               ... on PRISMIC_PricespageBodyPartners {

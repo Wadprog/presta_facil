@@ -1,0 +1,11 @@
+{
+  "expireTime": 9007200860032656000,
+  "key": "63f44ec50f9a13f1fa40b6d61f802e84{\"background\":\"rgba(0,0,0,1)\",\"duotone\":false,\"grayscale\":false,\"rotate\":0,\"trim\":false,\"toFormat\":\"png\",\"toFormatBase64\":\"\",\"cropFocus\":17,\"fit\":\"cover\",\"width\":20,\"height\":4}",
+  "val": {
+    "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAAsSAAALEgHS3X78AAABAklEQVQY0z2PscqCcBTFzwXfoFncHNSIEDEik1xFAvENWgTBPRKspSRcBB3EyUVCUaceoff6+v+h78Jd7r3nnN9FVVVg1TQN4jim4/FIWZZR27boug6PxwOr1QphGMIwDJRlib7v/zXP5xNRFNF3Tp7nEZhY0zSs12ucz2ckScIXrIuiwDRN8H0fgiDAdV1uziBerxfquoZpmpAkCYfDgZvidruRKIo8UVVVfAkxDAOCIMB+v8c4jsjzHLqu85tvEGRZxufzweVyIcdxyLZtRk+n0wm43++0XC7xK0VR2OuY5xmLxYJ9wGgoTVNst1tYlsWp3u83rtcrbTYb1tjtdjz0D1IBV/zvTRX1AAAAAElFTkSuQmCC",
+    "width": 20,
+    "height": 4,
+    "aspectRatio": 5,
+    "originalName": "pattern-02.png"
+  }
+}
