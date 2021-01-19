@@ -8,7 +8,7 @@ import style from './PlanSwitcher.module.scss';
 const PlanSwitcher = ({ plans, selectedPlans, onSelect }) => {
   return (
     <div className={style.container}>
-      {plans.map(({ name, location }, index) => {
+      {plans.map(({ title, location }, index) => {
         const isChecked = selectedPlans.includes(index);
         const onChange = () => onSelect(index);
 
@@ -21,8 +21,8 @@ const PlanSwitcher = ({ plans, selectedPlans, onSelect }) => {
               onChange={onChange}
             />
             <div className={style.title}>
-              <strong>{RichText.asText(name)}</strong>{' '}
-              <span>{RichText.asText(location)}</span>
+              <strong>{title}</strong>{' '}
+              <span>{location}</span>
             </div>
             <Icon checked={isChecked} />
           </label>

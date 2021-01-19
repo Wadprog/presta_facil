@@ -6,14 +6,13 @@ import classnames from 'classnames';
 
 import { parseCellValue } from './utils';
 import { useBreakpoints } from '@hooks';
-import style from './PackagesFeatures.module.scss';
+import style from './PlansFeatures.module.scss';
 
 const MOBILE_VIEW = 1220;
 
-const PackagesFeatures = ({
+const PlansFeatures = ({
   primary,
   fields,
-  isPremium,
   showBar,
   hideBar,
   scrollableRef,
@@ -24,7 +23,6 @@ const PackagesFeatures = ({
   useEffect(() => {
     const mobile = width < MOBILE_VIEW;
     setIsMobile(mobile);
-    console.log(mobile);
   }, [width]);
 
   return (
@@ -105,10 +103,9 @@ const PackagesFeatures = ({
   );
 };
 
-PackagesFeatures.propTypes = {
+PlansFeatures.propTypes = {
   primary: PropTypes.object.isRequired,
   fields: PropTypes.array.isRequired,
-  isPremium: PropTypes.bool.isRequired,
   showBar: PropTypes.func.isRequired,
   hideBar: PropTypes.func.isRequired,
   scrollableRef: PropTypes.oneOfType([
@@ -117,4 +114,4 @@ PackagesFeatures.propTypes = {
   ]).isRequired,
 };
 
-export default PackagesFeatures;
+export default PlansFeatures;

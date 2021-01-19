@@ -3,21 +3,20 @@ import PropTypes from 'prop-types';
 
 import Hero from './components/Hero';
 import Plans from './components/Plans';
-import PackagesFeatures from './components/PackagesFeatures';
-import Packages from './components/Packages';
+import PlansFeatures from './components/PlansFeatures';
+import TariffPlans from './components/TariffPlans';
 import Partners from './components/Partners';
 import Questions from './components/Questions';
 import ContactUs from './components/ContactUs';
 import style from './PricesPage.module.scss';
 import { useBreakpoints } from '@hooks';
 
-const MOBILE_VIEW = 1220;
 const CARDS_LIST_WIDTH = 920;
 const CARDS_NUMBER = 4;
 
 const PricesPage = ({ content }) => {
   const [isBarShowing, setIsBarShowing] = useState(false);
-  const [currency, setCurrency] = useState('USD');
+  const [currency, setCurrency] = useState('EUR');
   const [activepoint, setActivePoint] = useState(0);
   const { width } = useBreakpoints();
   const myPackagesRef = useRef(null);
@@ -51,9 +50,9 @@ const PricesPage = ({ content }) => {
     switch (item.type) {
       case 'hero':
         return <Hero key={index} {...item} />;
-      case 'packages':
+      case 'tariffplans':
         return (
-          <Packages
+          <TariffPlans
             key={index}
             {...item}
             isBarShowing={isBarShowing}
@@ -68,7 +67,7 @@ const PricesPage = ({ content }) => {
         );
       case 'packagesfeatures':
         return (
-          <PackagesFeatures
+          <PlansFeatures
             {...item}
             key={index}
             showBar={showBar}

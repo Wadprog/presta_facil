@@ -6,29 +6,55 @@ import classnames from 'classnames';
 import style from './Card.module.scss';
 
 const Card = ({
+  isEnterprise,
   colorized,
-  disabled,
   title,
   name,
-  cost,
+  selectedlawsnumber,
+  oneprivacypriceusd,
+  twoprivacypriceusd,
+  threeprivacypriceusd,
+  oneprivacypriceeur,
+  twoprivacypriceeur,
+  threeprivacypriceeur,
   condition,
   description,
   buttonText,
   buttonLink,
+  disabled,
   currency,
-  isEnterprise,
-  annualcoefficient,
   isAnnual,
-  crossexchangerate,
+  annualcoefficient,
 }) => {
   const getCost = () => {
-    const convertedToCurrentCurrency =
-      currency === 'USD' ? cost : Math.floor(cost / crossexchangerate);
-    const calculatedCost = isAnnual
-      ? convertedToCurrentCurrency * annualcoefficient
-      : convertedToCurrentCurrency;
+    let cost = 0;
+    if (currency === 'USD') {
+      switch (selectedlawsnumber) {
+        case 1:
+          cost = oneprivacypriceusd;
+          break;
+        case 2:
+          cost = twoprivacypriceusd;
+          break;
+        case 3:
+          cost = threeprivacypriceusd;
+          break;
+      }
+    } else {
+      switch (selectedlawsnumber) {
+        case 1:
+          cost = oneprivacypriceeur;
+          break;
+        case 2:
+          cost = twoprivacypriceeur;
+          break;
+        case 3:
+          cost = threeprivacypriceeur;
+          break;
+      }
+    }
 
-    return Math.floor(calculatedCost);
+    return isAnnual ? cost * annualcoefficient : cost;
   };
 
   return (
@@ -82,18 +108,23 @@ Card.defaultProps = {
 Card.propTypes = {
   isEnterprise: PropTypes.bool,
   colorized: PropTypes.bool,
-  disabled: PropTypes.bool.isRequired,
-  title: PropTypes.array.isRequired,
+  title: PropTypes.arrayOf.isRequired,
   name: PropTypes.string.isRequired,
-  cost: PropTypes.number.isRequired,
-  condition: PropTypes.array.isRequired,
-  description: PropTypes.array.isRequired,
-  buttonText: PropTypes.array.isRequired,
-  buttonLink: PropTypes.object,
+  selectedlawsnumber: PropTypes.number,
+  oneprivacypriceusd: PropTypes.number,
+  twoprivacypriceusd: PropTypes.number,
+  threeprivacypriceusd: PropTypes.number,
+  oneprivacypriceeur: PropTypes.number,
+  twoprivacypriceeur: PropTypes.number,
+  threeprivacypriceeur: PropTypes.number,
+  condition: PropTypes.arrayOf.isRequired,
+  description: PropTypes.arrayOf.isRequired,
+  buttonText: PropTypes.arrayOf.isRequired,
+  buttonLink: PropTypes.object.isRequired,
+  disabled: PropTypes.bool.isRequired,
   currency: PropTypes.string.isRequired,
-  annualcoefficient: PropTypes.number.isRequired,
   isAnnual: PropTypes.bool.isRequired,
-  crossexchangerate: PropTypes.number.isRequired,
+  annualcoefficient: PropTypes.number.isRequired,
 };
 
 export default Card;

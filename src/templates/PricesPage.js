@@ -46,51 +46,20 @@ export const query = graphql`
                   subtitle
                 }
               }
-              ... on PRISMIC_PricespageBodyPlans {
+              ... on PRISMIC_PricespageBodyTariffplans {
                 type
                 label
                 primary {
-                  basicplantitle
-                  premiumplantitle
-                  basicplandescription
-                  premiumplandescription
-                  monthlycondition
-                  annualcondition
-                  buttontext
-                  link {
-                    ... on PRISMIC__ExternalLink {
-                      url
-                    }
-                  }
-                }
-                fields {
-                  name
-                  location
-                  basicplanmonthlycost
-                  basicplanannualcost
-                  premiumplanmonthlycost
-                  premiumplanannualcost
-                }
-              }
-              ... on PRISMIC_PricespageBodyPackages {
-                type
-                label
-                primary {
-                  basicplantitle
-                  plusplantitle
-                  businessplantitle
-                  enterpriseplantitle
-                  basicplandescription
-                  plusplandescription
-                  businessplandescription
-                  enterpriseplandescription
                   monthlycondition
                   annualcondition
                   buttontext
                   annualcoefficient
-                  seconditemdiscount
-                  thirditemdiscount
-                  crossexchangerate
+                  firstlawtitle
+                  firstlawlocation
+                  secondlawtitle
+                  secondlawlocation
+                  thirdlawtitle
+                  thirdlawlocation
                   buttonbaselink {
                     ... on PRISMIC__ExternalLink {
                       url
@@ -98,11 +67,14 @@ export const query = graphql`
                   }
                 }
                 fields {
-                  name
-                  location
-                  basicplanmonthlycost
-                  plusplanmonthlycost
-                  businessplanmonthlycost
+                  plantitle
+                  plandescription
+                  oneprivacypriceusd
+                  twoprivacypriceusd
+                  threeprivacypriceusd
+                  oneprivacypriceeur
+                  twoprivacypriceeur
+                  threeprivacypriceeur
                 }
               }
               ... on PRISMIC_PricespageBodyPackagesfeatures {
