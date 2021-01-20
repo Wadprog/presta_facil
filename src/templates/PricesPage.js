@@ -77,44 +77,6 @@ export const query = graphql`
                   threeprivacypriceeur
                 }
               }
-              ... on PRISMIC_PricespageBodyPlans {
-                type
-                label
-                primary {
-                  basicplantitle
-                  premiumplantitle
-                  basicplandescription
-                  premiumplandescription
-                  monthlycondition
-                  annualcondition
-                  buttontext
-                  link {
-                    ... on PRISMIC__ExternalLink {
-                      url
-                    }
-                  }
-                }
-                fields {
-                  name
-                  location
-                  basicplanmonthlycost
-                  basicplanannualcost
-                  premiumplanmonthlycost
-                  premiumplanannualcost
-                }
-              }
-              ... on PRISMIC_PricespageBodyFeatures {
-                type
-                label
-                primary {
-                  title
-                }
-                fields {
-                  name
-                  basicstatus
-                  premiumstatus
-                }
-              }
               ... on PRISMIC_PricespageBodyPackagesfeatures {
                 type
                 label
