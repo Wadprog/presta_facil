@@ -91,7 +91,8 @@ const TariffPlans = ({
       >
         <div
           className={classnames(style.bar, {
-            [style.disabled]: !isBarShowing || scrollDirection === 'up',
+            [style.disabled]:
+              !isBarShowing || scrollDirection === 'up' || isMobile,
           })}
         >
           <Bar
@@ -158,7 +159,7 @@ TariffPlans.propTypes = {
   activepoint: PropTypes.number.isRequired,
   scrollableRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+    PropTypes.shape({ current: PropTypes.any }),
   ]).isRequired,
   setActiveOnClick: PropTypes.func.isRequired,
   setActive: PropTypes.func.isRequired,
