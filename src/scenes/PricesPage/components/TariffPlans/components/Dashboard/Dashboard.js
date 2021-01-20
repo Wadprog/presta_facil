@@ -48,6 +48,7 @@ const Dashboard = ({
             annualcoefficient={primary.annualcoefficient}
             colorized={index === 2}
             isEnterprise={index === 3}
+            isMobile={isMobile}
           />
         ))}
       </div>

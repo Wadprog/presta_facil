@@ -28,6 +28,7 @@ const Card = ({
   isAnnual,
   annualcoefficient,
   selectedPlans,
+  isMobile,
 }) => {
   const getCost = () => {
     let cost = 0;
@@ -87,6 +88,8 @@ const Card = ({
     <div
       className={classnames(style.container, {
         [style.colorized]: colorized,
+        [style.colorizedmobile]: isMobile && colorized,
+        [style.colorizeddesktop]: !isMobile && colorized,
         [style.disabled]: disabled,
       })}
     >
@@ -152,6 +155,7 @@ Card.propTypes = {
   isAnnual: PropTypes.bool.isRequired,
   annualcoefficient: PropTypes.number.isRequired,
   selectedPlans: PropTypes.arrayOf.isRequired,
+  isMobile: PropTypes.bool.isRequired,
 };
 
 export default Card;

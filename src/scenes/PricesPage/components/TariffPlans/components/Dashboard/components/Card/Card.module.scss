@@ -31,13 +31,20 @@
 .colorized {
   border-color: rgba($darken-green, 0.3);
   background: $green-gradient;
-  box-shadow: 0px 40px 100px rgba(28, 86, 76, 0.3);
   color: white;
 
   .button {
     box-shadow: 0px 20px 40px #1E4F4D;
     border: none;
   }
+}
+
+.colorizeddesktop {
+  box-shadow: 0px 40px 100px rgba(28, 86, 76, 0.3);
+}
+
+.colorizedmobile {
+  box-shadow: 0px 40px 30px rgba(28, 86, 76, 0.3);
 }
 
 .disabled {
@@ -167,7 +174,6 @@
   font-weight: bold;
   font-size: 16px;
   line-height: 1.8;
-  letter-spacing: 0.1em;
   text-transform: uppercase;
 
   transition: 0.3s;
