@@ -1,47 +1,74 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import Hero from './components/Hero';
-import Plans from './components/Plans';
-import Features from './components/Features';
+import PlansFeatures from './components/PlansFeatures';
+import TariffPlans from './components/TariffPlans';
 import Partners from './components/Partners';
 import Questions from './components/Questions';
 import ContactUs from './components/ContactUs';
 import style from './PricesPage.module.scss';
+import { useBreakpoints } from '@hooks';
+
+const CARDS_LIST_WIDTH = 920;
+const CARDS_NUMBER = 4;
 
 const PricesPage = ({ content }) => {
-  const [isPremium, setIsPremium] = useState(false);
   const [isBarShowing, setIsBarShowing] = useState(false);
+  const [activepoint, setActivePoint] = useState(0);
+  const { width } = useBreakpoints();
+  const myPackagesRef = useRef(null);
 
-  const setPremium = (value) => setIsPremium(value);
   const showBar = () => setIsBarShowing(true);
   const hideBar = () => setIsBarShowing(false);
+
+  const setActive = (value) => {
+    const hiddenWidth = CARDS_LIST_WIDTH - width;
+    const hiddenWidthPerCard = hiddenWidth / CARDS_NUMBER;
+    const active =
+      Math.ceil(value / hiddenWidthPerCard) > CARDS_NUMBER - 1
+        ? CARDS_NUMBER - 1
+        : Math.ceil(value / hiddenWidthPerCard);
+    setActivePoint(active);
+    myPackagesRef.current.scrollLeft = value;
+  };
+
+  const setActiveOnClick = (index) => {
+    setActivePoint(index);
+    const hiddenWidth = CARDS_LIST_WIDTH - width;
+    const hiddenWidthPerCard = hiddenWidth / CARDS_NUMBER;
+    const leftScroll =
+      index === CARDS_NUMBER - 1 ? hiddenWidth : index * hiddenWidthPerCard;
+    myPackagesRef.current.scrollLeft = leftScroll;
+  };
 
   const body = content.prismic.allPricespages.edges[0].node.body;
   const sections = body.map((item, index) => {
     switch (item.type) {
       case 'hero':
         return <Hero key={index} {...item} />;
-      case 'plans':
+      case 'tariffplans':
         return (
-          <Plans
+          <TariffPlans
             key={index}
             {...item}
             isBarShowing={isBarShowing}
             showBar={showBar}
             hideBar={hideBar}
-            isPremium={isPremium}
-            setIsPremium={setPremium}
+            activepoint={activepoint}
+            scrollableRef={myPackagesRef}
+            setActive={setActive}
+            setActiveOnClick={setActiveOnClick}
           />
         );
-      case 'features':
+      case 'packagesfeatures':
         return (
-          <Features
+          <PlansFeatures
             {...item}
             key={index}
-            isPremium={isPremium}
             showBar={showBar}
             hideBar={hideBar}
+            activepoint={activepoint}
           />
         );
       case 'partners':

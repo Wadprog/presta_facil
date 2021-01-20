@@ -11,9 +11,10 @@ const Item = ({ primary, fields }) => {
         <RichText render={primary.title} />
       </div>
       <ul className={styles.list}>
-        {!fields || !fields.lenght
-        ? <></>
-        : (fields.map(({ title, content, linktext, link }) => {
+        {!fields || !fields.lenght ? (
+          <></>
+        ) : (
+          fields.map(({ title, content, linktext, link }) => {
             const id = RichText.asText(title).replace(/\s/g, '');
             return (
               <li key={id} id={id} className={styles.listItem}>

@@ -33,9 +33,10 @@ const MenuGroup = ({ primary, fields, isFirst }) => {
         <Arrow className={styles.arrow} />
       </div>
       <div className={styles.list}>
-        {(!fields || !fields.lenght)
-          ? <></>
-          : (fields.map((item) => {
+        {!fields || !fields.lenght ? (
+          <></>
+        ) : (
+          fields.map((item) => {
             const title = RichText.asText(item.title);
             return <MenuItem itemName={title} key={title} />;
           })

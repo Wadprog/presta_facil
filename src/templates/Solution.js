@@ -11,7 +11,6 @@ const Page = ({ data }) => {
   const body = pageContext.node;
   const mainSection = data.prismic.allLayouts.edges;
 
-
   return (
     <Layout activeDocMeta={body._meta}>
       <SolutionPage current={body} mainSection={mainSection} />

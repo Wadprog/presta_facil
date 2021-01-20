@@ -9,7 +9,6 @@ import { Link } from 'gatsby';
 import { globalHistory as history } from '@reach/router';
 import LangContext from '@contexts';
 import { langPath } from '@helpers';
-import { linkResolver } from '../../../../../prismic/utils/linkResolver';
 
 const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
   const [activeImage, setActiveImage] = useState(0);
@@ -54,7 +53,9 @@ const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
             {fields.map((item, index) => {
               const text = RichText.asText(item.name);
               let link =
-                langPath(currentLang) + '/' + RichText.asText(item.link).toLowerCase();
+                langPath(currentLang) +
+                '/' +
+                RichText.asText(item.link).toLowerCase();
               location.pathname === link && setIsLinkActive(true);
               return (
                 <Link

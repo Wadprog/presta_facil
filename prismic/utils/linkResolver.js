@@ -1,5 +1,5 @@
 import { defaultLanguage } from '@/prismic-config';
-
+// eslint-disable-next-line
 let path = [];
 
 if (typeof window !== 'undefined') {

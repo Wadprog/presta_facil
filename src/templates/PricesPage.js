@@ -46,6 +46,37 @@ export const query = graphql`
                   subtitle
                 }
               }
+              ... on PRISMIC_PricespageBodyTariffplans {
+                type
+                label
+                primary {
+                  monthlycondition
+                  annualcondition
+                  buttontext
+                  annualcoefficient
+                  firstlawtitle
+                  firstlawlocation
+                  secondlawtitle
+                  secondlawlocation
+                  thirdlawtitle
+                  thirdlawlocation
+                  buttonbaselink {
+                    ... on PRISMIC__ExternalLink {
+                      url
+                    }
+                  }
+                }
+                fields {
+                  plantitle
+                  plandescription
+                  oneprivacypriceusd
+                  twoprivacypriceusd
+                  threeprivacypriceusd
+                  oneprivacypriceeur
+                  twoprivacypriceeur
+                  threeprivacypriceeur
+                }
+              }
               ... on PRISMIC_PricespageBodyPlans {
                 type
                 label
@@ -82,6 +113,20 @@ export const query = graphql`
                   name
                   basicstatus
                   premiumstatus
+                }
+              }
+              ... on PRISMIC_PricespageBodyPackagesfeatures {
+                type
+                label
+                primary {
+                  title
+                }
+                fields {
+                  featuretitle
+                  basicstatus
+                  plusstatus
+                  businessstatus
+                  enterprisestatus
                 }
               }
               ... on PRISMIC_PricespageBodyPartners {
