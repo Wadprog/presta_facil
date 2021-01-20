@@ -4,6 +4,7 @@
 .container {
   width: 920px;
   margin: 0 auto;
+  z-index: 4;
 }
 
 .cards {
@@ -19,4 +20,5 @@
   display: flex;
   border-radius: 20px;
   padding: 24px;
+  padding-bottom: 75px;
 }
