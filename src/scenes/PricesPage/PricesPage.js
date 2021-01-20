@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import Hero from './components/Hero';
-import Plans from './components/Plans';
 import PlansFeatures from './components/PlansFeatures';
 import TariffPlans from './components/TariffPlans';
 import Partners from './components/Partners';
@@ -16,11 +15,9 @@ const CARDS_NUMBER = 4;
 
 const PricesPage = ({ content }) => {
   const [isBarShowing, setIsBarShowing] = useState(false);
-  const [currency, setCurrency] = useState('EUR');
   const [activepoint, setActivePoint] = useState(0);
   const { width } = useBreakpoints();
   const myPackagesRef = useRef(null);
-  const myFeturesRef = useRef(null);
 
   const showBar = () => setIsBarShowing(true);
   const hideBar = () => setIsBarShowing(false);
@@ -59,7 +56,6 @@ const PricesPage = ({ content }) => {
             showBar={showBar}
             hideBar={hideBar}
             activepoint={activepoint}
-            currency={currency}
             scrollableRef={myPackagesRef}
             setActive={setActive}
             setActiveOnClick={setActiveOnClick}
@@ -72,7 +68,7 @@ const PricesPage = ({ content }) => {
             key={index}
             showBar={showBar}
             hideBar={hideBar}
-            scrollableRef={myFeturesRef}
+            activepoint={activepoint}
           />
         );
       case 'partners':

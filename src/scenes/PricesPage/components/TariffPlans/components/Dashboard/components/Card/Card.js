@@ -5,6 +5,8 @@ import classnames from 'classnames';
 
 import style from './Card.module.scss';
 
+const CHAT_LINK = 'https://secureprivacy.ai/enterprise-inquiry/';
+
 const Card = ({
   isEnterprise,
   colorized,
@@ -25,6 +27,7 @@ const Card = ({
   currency,
   isAnnual,
   annualcoefficient,
+  selectedPlans,
 }) => {
   const getCost = () => {
     let cost = 0;
@@ -57,6 +60,29 @@ const Card = ({
     return isAnnual ? cost * annualcoefficient : cost;
   };
 
+  const getPeriod = () => {
+    return isAnnual ? 'annual' : 'monthly';
+  };
+
+  const getPlanName = () => {
+    const planFullName = title[0].text;
+    const planName = planFullName.split(' ')[0].toLowerCase();
+
+    return planName;
+  };
+
+  const getLink = () => {
+    if (isEnterprise) {
+      return CHAT_LINK;
+    }
+
+    const link = `${buttonLink.url}/${selectedPlans.join(
+      ' '
+    )}/${getPlanName()}/${currency}/${getPeriod()}`;
+
+    return link;
+  };
+
   return (
     <div
       className={classnames(style.container, {
@@ -84,7 +110,7 @@ const Card = ({
         <RichText render={description} />
       </div>
       <div className={style.footer}>
-        <a href={buttonLink.url} className={style.button}>
+        <a href={getLink()} className={style.button}>
           {colorized ? (
             <span className={style.gradientText}>
               {RichText.asText(buttonText)}
@@ -125,6 +151,7 @@ Card.propTypes = {
   currency: PropTypes.string.isRequired,
   isAnnual: PropTypes.bool.isRequired,
   annualcoefficient: PropTypes.number.isRequired,
+  selectedPlans: PropTypes.arrayOf.isRequired,
 };
 
 export default Card;

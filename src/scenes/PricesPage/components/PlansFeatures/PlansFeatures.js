@@ -8,15 +8,9 @@ import { parseCellValue } from './utils';
 import { useBreakpoints } from '@hooks';
 import style from './PlansFeatures.module.scss';
 
-const MOBILE_VIEW = 1220;
+const MOBILE_VIEW = 780;
 
-const PlansFeatures = ({
-  primary,
-  fields,
-  showBar,
-  hideBar,
-  scrollableRef,
-}) => {
+const PlansFeatures = ({ primary, fields, showBar, hideBar, activepoint }) => {
   const [isMobile, setIsMobile] = useState(false);
   const { width } = useBreakpoints();
 
@@ -24,6 +18,46 @@ const PlansFeatures = ({
     const mobile = width < MOBILE_VIEW;
     setIsMobile(mobile);
   }, [width]);
+
+  const detectActiveFeaturesList = (
+    basicStatus,
+    plusStatus,
+    businessStatus,
+    enterpriseStatus
+  ) => {
+    switch (activepoint) {
+      case 0:
+        return (
+          <div className={classnames(style.cell, style.cellmobile)}>
+            {basicStatus}
+          </div>
+        );
+      case 1:
+        return (
+          <div className={classnames(style.cell, style.cellmobile)}>
+            {plusStatus}
+          </div>
+        );
+      case 2:
+        return (
+          <div className={classnames(style.cell, style.cellmobile)}>
+            {businessStatus}
+          </div>
+        );
+      case 3:
+        return (
+          <div className={classnames(style.cell, style.cellmobile)}>
+            {enterpriseStatus}
+          </div>
+        );
+      default:
+        return (
+          <div className={classnames(style.cell, style.cellmobile)}>
+            {basicStatus}
+          </div>
+        );
+    }
+  };
 
   return (
     <>
@@ -56,49 +90,46 @@ const PlansFeatures = ({
                   <RichText render={item.featuretitle} />
                 </div>
                 <div
-                  className={classnames(style.statuses, {
-                    [style.statusesdesktop]: !isMobile,
-                    [style.statusesmobile]: isMobile,
-                  })}
+                  className={classnames(style.statuses, style.statusesdesktop)}
                 >
-                  <div
-                    className={classnames(style.cell, {
-                      [style.cellmobile]: isMobile,
-                      [style.celldesktop]: !isMobile,
-                    })}
-                  >
-                    {basicStatus}
-                  </div>
-                  <div
-                    className={classnames(style.cell, {
-                      [style.cellmobile]: isMobile,
-                      [style.celldesktop]: !isMobile,
-                    })}
-                  >
-                    {plusStatus}
-                  </div>
-                  <div
-                    className={classnames(style.cell, {
-                      [style.cellmobile]: isMobile,
-                      [style.celldesktop]: !isMobile,
-                    })}
-                  >
-                    {businessStatus}
-                  </div>
-                  <div
-                    className={classnames(style.cell, {
-                      [style.cellmobile]: isMobile,
-                      [style.celldesktop]: !isMobile,
-                    })}
-                  >
-                    {enterpriseStatus}
-                  </div>
+                  {!isMobile ? (
+                    <>
+                      <div
+                        className={classnames(style.cell, style.celldesktop)}
+                      >
+                        {basicStatus}
+                      </div>
+                      <div
+                        className={classnames(style.cell, style.celldesktop)}
+                      >
+                        {plusStatus}
+                      </div>
+                      <div
+                        className={classnames(style.cell, style.celldesktop)}
+                      >
+                        {businessStatus}
+                      </div>
+                      <div
+                        className={classnames(style.cell, style.celldesktop)}
+                      >
+                        {enterpriseStatus}
+                      </div>
+                    </>
+                  ) : (
+                    detectActiveFeaturesList(
+                      basicStatus,
+                      plusStatus,
+                      businessStatus,
+                      enterpriseStatus
+                    )
+                  )}
                 </div>
               </li>
             );
           })}
         </ul>
       </div>
+      <Waypoint onEnter={showBar} onLeave={hideBar} />
     </>
   );
 };
@@ -108,10 +139,7 @@ PlansFeatures.propTypes = {
   fields: PropTypes.array.isRequired,
   showBar: PropTypes.func.isRequired,
   hideBar: PropTypes.func.isRequired,
-  scrollableRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
-  ]).isRequired,
+  activepoint: PropTypes.number.isRequired,
 };
 
 export default PlansFeatures;

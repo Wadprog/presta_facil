@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { Waypoint } from 'react-waypoint';
 import classnames from 'classnames';
 
+import { useScrollDirection } from '@hooks';
 import Dashboard from './components/Dashboard';
+import Bar from './components/Bar';
 import StatusBar from './components/StatusBar';
 import PeriodSwitcher from './components/PeriodSwitcher';
 import PlanSwitcher from './components/PlanSwitcher';
@@ -20,31 +22,38 @@ const TariffPlans = ({
   isBarShowing,
   showBar,
   hideBar,
-  currency,
   activepoint,
   scrollableRef,
   setActiveOnClick,
   setActive,
 }) => {
   const laws = [
-    { title: primary.firstlawtitle[0].text, location: primary.firstlawlocation[0].text },
-    { title: primary.secondlawtitle[0].text, location: primary.secondlawlocation[0].text },
-    { title: primary.thirdlawtitle[0].text, location: primary.thirdlawlocation[0].text }
-  ]
-  
+    {
+      title: primary.firstlawtitle[0].text,
+      location: primary.firstlawlocation[0].text,
+    },
+    {
+      title: primary.secondlawtitle[0].text,
+      location: primary.secondlawlocation[0].text,
+    },
+    {
+      title: primary.thirdlawtitle[0].text,
+      location: primary.thirdlawlocation[0].text,
+    },
+  ];
+
   const [isAnnual, setIsAnnual] = useState(false);
   const [selectedPlansIndexes, setSelectedPlansIndexes] = useState([0]);
   const [selectedPlans, setSelectedPlans] = useState([
     primary.firstlawtitle[0].text,
   ]);
-  const [basicCost, setBasicCost] = useState(fields[0].basicplanmonthlycost);
-  const [plusCost, setPlusCost] = useState(fields[0].plusplanmonthlycost);
-  const [businessCost, setBusinessCost] = useState(
-    fields[0].businessplanmonthlycost
-  );
+  const scrollDirection = useScrollDirection();
+  const [currency, setCurrency] = useState('EUR');
   const [isStatusBarVisible, setIsStatusBarVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { width } = useBreakpoints();
+
+  const selectCurrency = (value) => setCurrency(value);
 
   useEffect(() => {
     const mobile = width < MOBILE_VIEW;
@@ -80,6 +89,19 @@ const TariffPlans = ({
           [style.wrappermobile]: isMobile,
         })}
       >
+        <div
+          className={classnames(style.bar, {
+            [style.disabled]: !isBarShowing || scrollDirection === 'up',
+          })}
+        >
+          <Bar
+            fields={fields}
+            plans={selectedPlans}
+            primary={primary}
+            isAnnual={isAnnual}
+            currency={currency}
+          />
+        </div>
         <div className={style.container}>
           <div className={style.header}>
             <PeriodSwitcher isAnnual={isAnnual} togglePeriod={togglePeriod} />
@@ -95,6 +117,8 @@ const TariffPlans = ({
                 plans={laws}
                 selectedPlans={selectedPlansIndexes}
                 onSelect={selectPlan}
+                selectCurrency={selectCurrency}
+                currency={currency}
               />
             </div>
             <div
@@ -131,7 +155,6 @@ TariffPlans.propTypes = {
   isBarShowing: PropTypes.bool.isRequired,
   showBar: PropTypes.func.isRequired,
   hideBar: PropTypes.func.isRequired,
-  currency: PropTypes.string.isRequired,
   activepoint: PropTypes.number.isRequired,
   scrollableRef: PropTypes.oneOfType([
     PropTypes.func,

@@ -9,7 +9,6 @@ import { Link } from 'gatsby';
 import { globalHistory as history } from '@reach/router';
 import LangContext from '@contexts';
 import { langPath } from '@helpers';
-import { linkResolver } from '../../../../../prismic/utils/linkResolver';
 
 const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
   const [activeImage, setActiveImage] = useState(0);

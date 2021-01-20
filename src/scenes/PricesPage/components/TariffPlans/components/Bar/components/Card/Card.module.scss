@@ -87,17 +87,25 @@
     letter-spacing: 0.03em;
   }
 
-  &.usd {
+  &.USD {
     &:before {
       content: '$';
     }
   }
 
-  &.eur {
+  &.EUR {
     &:before {
       content: '€';
     }
   }
+}
+
+.enterprise {
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin: 25px 0 22px;
 }
 
 .footer {

@@ -30,6 +30,7 @@ const Dashboard = ({
             key={index}
             title={item.plantitle}
             name={selectedPlans.join(', ')}
+            selectedPlans={selectedPlans}
             selectedlawsnumber={selectedPlans.length}
             oneprivacypriceusd={item.oneprivacypriceusd}
             twoprivacypriceusd={item.twoprivacypriceusd}

@@ -128,11 +128,9 @@
 }
 
 .cellmobile {
-  width: 96px;
-  min-width: 96px;
+  width: 100%;
 }
 
 .celldesktop {
-  width: 206px;
-  min-width: 206px;
+  width: calc((100% - 48px) / 4);
 }

@@ -3,15 +3,22 @@
 
 .wrapper {
   margin: 0 auto;
-  padding: 0 16px;
   width: 100%;
-  max-width: 864px;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
 
   animation: appearance 0.3s 1 forwards;
 }
 
 .container {
   display: flex;
+}
+
+.block {
+  display: flex;
+  width: 920px;
+  padding-left: 10px;
 }
 
 .switcher {
@@ -26,8 +33,12 @@
 }
 
 .card {
-  flex: 1 1 280px;
-  margin-left: 16px;
+  width: 206px;
+  margin-right: 16px;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 @keyframes appearance {
