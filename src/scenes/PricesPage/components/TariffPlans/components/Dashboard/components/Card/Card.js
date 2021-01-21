@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import classnames from 'classnames';
@@ -9,7 +9,6 @@ const CHAT_LINK = 'https://secureprivacy.ai/enterprise-inquiry/';
 
 const Card = ({
   isEnterprise,
-  colorized,
   title,
   name,
   selectedlawsnumber,
@@ -30,6 +29,7 @@ const Card = ({
   selectedPlans,
   isMobile,
 }) => {
+  const [colorized, setColorized] = useState(false);
   const getCost = () => {
     let cost = 0;
     if (currency === 'USD') {
@@ -92,6 +92,8 @@ const Card = ({
 
   return (
     <div
+      onMouseEnter={() => setColorized(true)}
+      onMouseLeave={() => setColorized(false)}
       className={classnames(style.container, {
         [style.colorized]: colorized,
         [style.colorizedmobile]: isMobile && colorized,
@@ -136,13 +138,11 @@ const Card = ({
 };
 
 Card.defaultProps = {
-  colorized: false,
   isEnterprise: false,
 };
 
 Card.propTypes = {
   isEnterprise: PropTypes.bool,
-  colorized: PropTypes.bool,
   title: PropTypes.arrayOf.isRequired,
   name: PropTypes.string.isRequired,
   selectedlawsnumber: PropTypes.number,

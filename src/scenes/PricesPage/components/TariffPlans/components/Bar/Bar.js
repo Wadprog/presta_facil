@@ -26,7 +26,6 @@ const Bar = ({ plans, fields, primary, isAnnual, currency }) => {
               buttonText={primary.buttontext}
               buttonLink={primary.buttonbaselink}
               currency={currency}
-              colorized={index === 2}
               selectedlawsnumber={plans.length}
               oneprivacypriceusd={field.oneprivacypriceusd}
               twoprivacypriceusd={field.twoprivacypriceusd}
