@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import classnames from 'classnames';
@@ -12,7 +12,6 @@ const Card = ({
   selectedPlans,
   buttonText,
   buttonLink,
-  colorized,
   currency,
   selectedlawsnumber,
   oneprivacypriceusd,
@@ -25,6 +24,7 @@ const Card = ({
   annualcoefficient,
   isEnterprise,
 }) => {
+  const [colorized, setColorized] = useState(false);
   const getCost = () => {
     let cost = 0;
     if (currency === 'USD') {
@@ -88,6 +88,8 @@ const Card = ({
   return (
     <div
       className={classnames(style.container, { [style.colorized]: colorized })}
+      onMouseEnter={() => setColorized(true)}
+      onMouseLeave={() => setColorized(false)}
     >
       <div className={style.main}>
         <div className={style.title}>
@@ -124,7 +126,6 @@ const Card = ({
 };
 
 Card.defaultProps = {
-  colorized: false,
   isEnterprise: false,
 };
 
@@ -134,7 +135,6 @@ Card.propTypes = {
   selectedPlans: PropTypes.arrayOf.isRequired,
   buttonText: PropTypes.array.isRequired,
   buttonLink: PropTypes.object,
-  colorized: PropTypes.bool.isRequired,
   currency: PropTypes.string.isRequired,
   selectedlawsnumber: PropTypes.number,
   oneprivacypriceusd: PropTypes.number,
