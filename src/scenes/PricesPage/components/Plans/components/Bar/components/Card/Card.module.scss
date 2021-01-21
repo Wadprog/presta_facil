@@ -8,10 +8,6 @@
 
   background: #ffffff;
   color: $main-light;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
   &.colorized {
     background: $green-gradient;
@@ -49,7 +45,6 @@
 
 .name {
   font-weight: 300;
-  height: 34px;
   font-size: 14px;
   line-height: 1.25;
   letter-spacing: 0.03em;
@@ -64,7 +59,7 @@
 .cost {
   position: relative;
 
-  margin: 16px 0 16px 24px;
+  margin-left: 24px;
 
   font-family: $font-gramatika;
   font-weight: 600;
@@ -88,28 +83,21 @@
     letter-spacing: 0.03em;
   }
 
-  &.USD {
+  &.usd {
     &:before {
       content: '$';
     }
   }
 
-  &.EUR {
+  &.eur {
     &:before {
       content: '€';
     }
   }
 }
 
-.enterprise {
-  font-size: 24px;
-  line-height: 30px;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  margin: 20px 0 27px;
-}
-
 .footer {
+  margin-top: 24px;
   width: 100%;
 }
 

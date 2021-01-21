@@ -11,7 +11,7 @@ import style from './PricesPage.module.scss';
 import { useBreakpoints } from '@hooks';
 
 const CARDS_LIST_WIDTH = 920;
-const CARDS_NUMBER = 4;
+const PLANS_CARDS_NUMBER = 4;
 
 const PricesPage = ({ content }) => {
   const [isBarShowing, setIsBarShowing] = useState(false);
@@ -24,10 +24,10 @@ const PricesPage = ({ content }) => {
 
   const setActive = (value) => {
     const hiddenWidth = CARDS_LIST_WIDTH - width;
-    const hiddenWidthPerCard = hiddenWidth / CARDS_NUMBER;
+    const hiddenWidthPerCard = hiddenWidth / PLANS_CARDS_NUMBER;
     const active =
-      Math.ceil(value / hiddenWidthPerCard) > CARDS_NUMBER - 1
-        ? CARDS_NUMBER - 1
+      Math.ceil(value / hiddenWidthPerCard) > PLANS_CARDS_NUMBER - 1
+        ? PLANS_CARDS_NUMBER - 1
         : Math.ceil(value / hiddenWidthPerCard);
     setActivePoint(active);
     myPackagesRef.current.scrollLeft = value;
@@ -36,9 +36,11 @@ const PricesPage = ({ content }) => {
   const setActiveOnClick = (index) => {
     setActivePoint(index);
     const hiddenWidth = CARDS_LIST_WIDTH - width;
-    const hiddenWidthPerCard = hiddenWidth / CARDS_NUMBER;
+    const hiddenWidthPerCard = hiddenWidth / PLANS_CARDS_NUMBER;
     const leftScroll =
-      index === CARDS_NUMBER - 1 ? hiddenWidth : index * hiddenWidthPerCard;
+      index === PLANS_CARDS_NUMBER - 1
+        ? hiddenWidth
+        : index * hiddenWidthPerCard;
     myPackagesRef.current.scrollLeft = leftScroll;
   };
 

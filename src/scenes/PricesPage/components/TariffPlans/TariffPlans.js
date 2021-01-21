@@ -14,7 +14,6 @@ import style from './TariffPlans.module.scss';
 
 const MOBILE_VIEW = 1220;
 const CARDS_LIST_WIDTH = 920;
-const CARDS_NUMBER = 4;
 
 const TariffPlans = ({
   primary,
@@ -139,7 +138,7 @@ const TariffPlans = ({
             {isStatusBarVisible && (
               <StatusBar
                 setActive={setActiveOnClick}
-                total={CARDS_NUMBER}
+                total={fields.length}
                 active={activepoint}
               />
             )}
