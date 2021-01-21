@@ -72,14 +72,20 @@ const Card = ({
     return planName;
   };
 
+  const getPlans = () => {
+    const plansNames = selectedPlans.join(' ').toLowerCase();
+
+    return plansNames;
+  };
+
   const getLink = () => {
     if (isEnterprise) {
       return CHAT_LINK;
     }
 
-    const link = `${buttonLink.url}/${selectedPlans.join(
-      ' '
-    )}/${getPlanName()}/${currency}/${getPeriod()}`;
+    const link = `${
+      buttonLink.url
+    }/${getPlans()}/${getPlanName()}/${currency}/${getPeriod()}`;
 
     return link;
   };
@@ -96,7 +102,7 @@ const Card = ({
       <div className={style.title}>
         <RichText render={title} />
       </div>
-      <div className={style.subtitle}>{name}</div>
+      <div className={style.subtitle}>{isEnterprise ? '' : name}</div>
       {isEnterprise ? (
         <div className={style.enterprise}>Contact us</div>
       ) : (

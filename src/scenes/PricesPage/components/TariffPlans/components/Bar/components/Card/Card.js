@@ -56,6 +56,12 @@ const Card = ({
     return isAnnual ? cost * annualcoefficient : cost;
   };
 
+  const getPlans = () => {
+    const plansNames = selectedPlans.join(' ').toLowerCase();
+
+    return plansNames;
+  };
+
   const getPeriod = () => {
     return isAnnual ? 'annual' : 'monthly';
   };
@@ -72,9 +78,9 @@ const Card = ({
       return CHAT_LINK;
     }
 
-    const link = `${buttonLink.url}/${selectedPlans.join(
-      ' '
-    )}/${getPlanName()}/${currency}/${getPeriod()}`;
+    const link = `${
+      buttonLink.url
+    }/${getPlans()}/${getPlanName()}/${currency}/${getPeriod()}`;
 
     return link;
   };
@@ -88,7 +94,9 @@ const Card = ({
           <div className={style.type}>
             <RichText render={title} />
           </div>
-          <div className={style.name}>{selectedPlans.join(', ')}</div>
+          <div className={style.name}>
+            {isEnterprise ? '' : selectedPlans.join(', ')}
+          </div>
         </div>
       </div>
       {isEnterprise ? (
@@ -105,7 +113,9 @@ const Card = ({
               {RichText.asText(buttonText)}
             </span>
           ) : (
-            <span>{RichText.asText(buttonText)}</span>
+            <span>
+              {isEnterprise ? 'CHAT WITH US' : RichText.asText(buttonText)}
+            </span>
           )}
         </a>
       </div>
