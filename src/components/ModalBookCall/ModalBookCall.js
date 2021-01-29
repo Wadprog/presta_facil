@@ -29,7 +29,7 @@ const ModalBookCall = ({ open, closeModal }) => {
     <Modal isOpen={isOpen} style={customStyles}>
       <div className={style.container}>
         <iframe
-          src="https://calendly.com/secure-privacy/secure-privacy-call"
+          src="https://calendly.com/secure-privacy/45min"
           width="100%"
           height="100%"
           frameBorder="0"

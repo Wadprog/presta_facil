@@ -11,6 +11,7 @@ const VARIANT = {
   SECONDARY: 'secondary',
   TRANSPARENT: 'transparent',
   WHITE: 'white',
+  GRADIENT: 'gradient',
 };
 
 const Button = ({
@@ -23,6 +24,7 @@ const Button = ({
   fullWidth,
   isHeader,
   element,
+  isDirect,
 }) => {
   const classes = classnames({
     [styles.button]: true,
@@ -48,15 +50,29 @@ const Button = ({
   const Component = element;
 
   return (
-    <Component
-      className={classes}
-      type={type}
-      disabled={disabled}
-      onClick={click}
-      to={langPath(currentLang) + to}
-    >
-      {children}
-    </Component>
+    <>
+      {isDirect ? (
+        <a
+          className={classes}
+          type={type}
+          disabled={disabled}
+          onClick={click}
+          href={to}
+        >
+          {children}
+        </a>
+      ) : (
+        <Component
+          className={classes}
+          type={type}
+          disabled={disabled}
+          onClick={click}
+          to={langPath(currentLang) + to}
+        >
+          {children}
+        </Component>
+      )}
+    </>
   );
 };
 
@@ -70,6 +86,7 @@ Button.propTypes = {
   fullWidth: PropTypes.bool,
   isHeader: PropTypes.bool,
   element: PropTypes.any,
+  isDirect: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -81,6 +98,7 @@ Button.defaultProps = {
   fullWidth: false,
   isHeader: false,
   element: Link,
+  isDirect: false,
 };
 export default Button;
 export { VARIANT };

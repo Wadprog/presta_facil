@@ -9,11 +9,19 @@ const VARIANT_ICON = {
   CLOSE: 'close',
 };
 
-const IconButton = ({ children, variant, disabled, click, type }) => {
+const IconButton = ({
+  children,
+  variant,
+  disabled,
+  click,
+  type,
+  isGradient,
+}) => {
   const classes = classnames({
     [styles['button']]: true,
     [styles[variant]]: styles[variant],
     [styles.disabled]: disabled,
+    [styles.gradient]: isGradient,
   });
   return (
     <button className={classes} type={type} disabled={disabled} onClick={click}>
@@ -29,6 +37,7 @@ IconButton.propTypes = {
   disabled: PropTypes.bool,
   click: PropTypes.func,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  isGradient: PropTypes.bool,
 };
 
 IconButton.defaultProps = {
@@ -36,6 +45,7 @@ IconButton.defaultProps = {
   disabled: false,
   type: 'button',
   click: () => {},
+  isGradient: false,
 };
 export default IconButton;
 export { VARIANT_ICON };

@@ -26,6 +26,15 @@
   background-size: 0;
   border-radius: 50%;
   box-shadow: 0px 20px 50px rgba(147, 174, 180, 0.25);
+
+  &.gradient {
+    background: linear-gradient(89.52deg, #24B04B -46.17%, #0263BC 186.99%);
+    box-shadow: 0px 20px 50px rgba(147, 174, 180, 0.25);
+    svg path {
+      fill: #fff;
+      transition: 0.3s;
+    }
+  }
   &::before {
     content: '';
     position: absolute;
