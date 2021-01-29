@@ -7,14 +7,22 @@ import Modal from '@components/Modal';
 import styles from './Hero.module.scss';
 import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
 import Image from '@components/Image/Image';
-import { parseString } from '@helpers';
 import Swiper from 'react-id-swiper';
+import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
 
 const Hero = ({ primary, fields }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleOpenModal = () => setModalIsOpen(true);
   const handleCloseModal = () => setModalIsOpen(false);
-  const buttonLink = '/' + parseString(primary.buttonlink);
+  const buttonLink = primary.buttonlink[0].text;
+
+  const [modalBookIsOpen, setModalBookIsOpen] = useState(false);
+  const handleCloseModalBook = () => setModalBookIsOpen(false);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setModalBookIsOpen(!modalIsOpen);
+  };
 
   const params = {
     slidesPerView: 3,
@@ -42,8 +50,15 @@ const Hero = ({ primary, fields }) => {
             <RichText render={primary.description} />
           </div>
           <div className={styles.buttonWrapper}>
-            <Button variant={VARIANT.PRIMARY} to={buttonLink}>
+            <Button variant={VARIANT.PRIMARY} to={`${buttonLink}`} isDirect>
               <RichText render={primary.button} />
+            </Button>
+            <Button
+              variant={VARIANT.TRANSPARENT}
+              to={primary.buttonsecondarylink}
+              click={handleClick}
+            >
+              <RichText render={primary.buttonsecondary} />
             </Button>
           </div>
           <div className={styles.trustedWrapper}>
@@ -72,13 +87,16 @@ const Hero = ({ primary, fields }) => {
           />
           <div className={styles.playButtonWrapper}>
             <div className={styles.playButton}>
-              <IconButton variant={VARIANT_ICON.PLAY} click={handleOpenModal}>
+              <IconButton
+                isGradient={true}
+                variant={VARIANT_ICON.PLAY}
+                click={handleOpenModal}
+              >
                 <PLayIcon />
               </IconButton>
             </div>
             <div className={styles.playButtonText}>
               <RichText render={primary.modalbuttontitle} />
-              <RichText render={primary.modalbuttondescription} />
             </div>
           </div>
         </div>
@@ -88,6 +106,7 @@ const Hero = ({ primary, fields }) => {
         closeModal={handleCloseModal}
         videoLink={primary.modalvideo.url}
       />
+      <ModalBookCall open={modalBookIsOpen} closeModal={handleCloseModalBook} />
     </div>
   );
 };

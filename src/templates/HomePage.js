@@ -47,6 +47,8 @@ export const query = graphql`
                   description
                   button
                   buttonlink
+                  buttonsecondary
+                  buttonsecondarylink
                   mainImage
                   trusted
                   modalbuttontitle
