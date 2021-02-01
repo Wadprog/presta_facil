@@ -36,6 +36,7 @@ const Hero = ({ primary, fields }) => {
       delay: 3000,
     },
   };
+
   return (
     <div className={styles.hero}>
       <div className={styles.container}>

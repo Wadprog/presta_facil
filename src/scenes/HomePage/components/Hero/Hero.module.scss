@@ -73,6 +73,7 @@
   @media (max-width: $md) {
     flex-direction: column;
     max-width: 500px;
+    align-items: center;
   }
 }
 .content {
@@ -159,7 +160,7 @@
   @media (max-width: $md) {
     width: 100%;
     flex-direction: column;
-    margin-bottom: 70px;
+    margin-bottom: 40px;
   }
 }
 .companies {
@@ -191,6 +192,9 @@
   width: 48%;
   .image {
     width: 88%;
+    @media (max-width: $md) {
+      height: 0px;
+    }
   }
   z-index: 2;
   @media (max-width: $md) {
@@ -214,31 +218,10 @@
   }
   @media (max-width: $md) {
     flex-direction: column;
-    top: unset;
-    bottom: -40px;
-    left: calc(43% - 50px);
-    transform: translateX(50%);
-  }
-  @media (max-width: $sm) {
-    flex-direction: column;
-    top: unset;
-    bottom: -40px;
-    left: calc(43% - 50px);
-    transform: translateX(50%);
-  }
-  @media (max-width: $xsm) {
-    flex-direction: column;
-    top: unset;
-    bottom: -40px;
-    left: calc(41% - 50px);
-    transform: translateX(50%);
-  }
-  @media (max-width: $xxsm) {
-    flex-direction: column;
-    top: unset;
-    bottom: -80px;
-    left: calc(37% - 50px);
-    transform: translateX(50%);
+    top: 30%;
+    left: 0;
+    width: 100%;
+    align-items: center;
   }
   .playButton {
     margin-bottom: 16px;
