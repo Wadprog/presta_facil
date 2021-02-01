@@ -76,6 +76,19 @@
     align-items: center;
   }
 }
+
+.mobileImagesWrapper {
+  display: none;
+  @media (max-width: $md) {
+    display: flex;
+    max-width: 320px;
+    margin: 0 auto;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 30px;
+  }
+}
 .content {
   position: relative;
   max-width: 450px;
@@ -85,6 +98,7 @@
   @media (max-width: $md) {
     width: 100%;
     margin-right: 0;
+    text-align: center;
   }
 }
 .upTitle {
