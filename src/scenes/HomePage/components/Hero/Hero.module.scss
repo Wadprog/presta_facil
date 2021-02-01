@@ -80,7 +80,7 @@
 .mobileImagesWrapper {
   display: none;
   .mobileImage {
-    width: 30%;
+    // width: 30%;
   }
   @media (max-width: $md) {
     display: flex;
