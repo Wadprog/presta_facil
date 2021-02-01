@@ -81,6 +81,7 @@
   display: none;
   .mobileImage {
     width: 25%;
+    height: 65px;
   }
   @media (max-width: $md) {
     display: flex;
