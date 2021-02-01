@@ -9,6 +9,9 @@ import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
 import Image from '@components/Image/Image';
 import Swiper from 'react-id-swiper';
 import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
+import cookieBanner from './image/cookie-banner.svg';
+import cookiePolicy from './image/cookie-policy.svg';
+import preferenceCenter from './image/preference-center.svg';
 
 const Hero = ({ primary, fields }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -41,6 +44,23 @@ const Hero = ({ primary, fields }) => {
     <div className={styles.hero}>
       <div className={styles.container}>
         <div className={styles.content}>
+          <div className={styles.mobileImagesWrapper}>
+            <img
+              src={cookiePolicy}
+              className={styles.mobileImage}
+              alt="cookie policy"
+            />
+            <img
+              src={preferenceCenter}
+              className={styles.mobileImage}
+              alt="preferencev center"
+            />
+            <img
+              src={cookieBanner}
+              className={styles.mobileImage}
+              alt="cookie baner"
+            />
+          </div>
           <div className={styles.upTitle}>
             <RichText render={primary.sub_title} />
           </div>
