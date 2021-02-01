@@ -53,7 +53,7 @@ const Hero = ({ primary, fields }) => {
             <img
               src={preferenceCenter}
               className={styles.mobileImage}
-              alt="preferencev center"
+              alt="preference center"
             />
             <img
               src={cookieBanner}
