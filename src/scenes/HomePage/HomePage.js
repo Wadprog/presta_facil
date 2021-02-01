@@ -20,6 +20,7 @@ const HomePage = ({ content }) => {
       {body.map((section, index) => {
         switch (section.type) {
           case 'hero1':
+            console.log(6766)
             return <Hero {...section} key={`${section.type}${index}`} />;
           case 'testimonials':
             return (
