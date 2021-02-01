@@ -9,9 +9,9 @@ import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
 import Image from '@components/Image/Image';
 import Swiper from 'react-id-swiper';
 import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
-import cookieBanner from './image/cookie-banner.svg';
-import cookiePolicy from './image/cookie-policy.svg';
-import preferenceCenter from './image/preference-center.svg';
+import cookieBanner from './image/cookie-banner.png';
+import cookiePolicy from './image/cookie-policy.png';
+import preferenceCenter from './image/preference-center.png';
 
 const Hero = ({ primary, fields }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
