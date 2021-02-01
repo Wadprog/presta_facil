@@ -80,7 +80,13 @@
 .mobileImagesWrapper {
   display: none;
   .mobileImage {
-    // width: 30%;
+    &:first-child,
+    &:last-child {
+      width: 30%;
+    }
+    &:nth-child(2) {
+      width: 32%;
+    }
   }
   @media (max-width: $md) {
     display: flex;
