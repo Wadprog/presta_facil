@@ -22,10 +22,10 @@ const Hero = ({ primary, fields }) => {
   const [modalBookIsOpen, setModalBookIsOpen] = useState(false);
   const handleCloseModalBook = () => setModalBookIsOpen(false);
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    setModalBookIsOpen(!modalIsOpen);
-  };
+  // const handleClick = (e) => {
+  //   e.preventDefault();
+  //   setModalBookIsOpen(!modalIsOpen);
+  // };
 
   const params = {
     slidesPerView: 3,
@@ -73,13 +73,6 @@ const Hero = ({ primary, fields }) => {
           <div className={styles.buttonWrapper}>
             <Button variant={VARIANT.PRIMARY} to={`${buttonLink}`} isDirect>
               <RichText render={primary.button} />
-            </Button>
-            <Button
-              variant={VARIANT.TRANSPARENT}
-              to={primary.buttonsecondarylink}
-              click={handleClick}
-            >
-              <RichText render={primary.buttonsecondary} />
             </Button>
           </div>
           <div className={styles.trustedWrapper}>

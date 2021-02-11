@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { bool, func } from 'prop-types';
-import Button, { VARIANT } from '@components/Button/Button.js';
 import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
 import style from './ModalBookCall.module.scss';
 import Icon from './image/close-icon.inline.svg';
@@ -34,11 +33,6 @@ const ModalBookCall = ({ open, closeModal }) => {
           height="100%"
           frameBorder="0"
         ></iframe>
-      </div>
-      <div className={style.button}>
-        <Button variant={VARIANT.PRIMARY} to="/quiz">
-          take the 2-min quiz
-        </Button>
       </div>
       <div className={style.buttonClose}>
         <IconButton variant={VARIANT_ICON.CLOSE} click={closeModal}>

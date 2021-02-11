@@ -60,6 +60,12 @@ export const linkResolver = (doc) => {
       : `/${properties.lang}/prices`;
   }
 
+  if (properties.type === 'pricespagetest') {
+    return properties.lang === defaultLanguage
+      ? '/pricestest'
+      : `/${properties.lang}/pricestest`;
+  }
+
   if (properties.type === 'pricesenterpricepage') {
     return properties.lang === defaultLanguage
       ? '/pricing-enterprice'

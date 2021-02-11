@@ -1,0 +1,72 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.wrapper {
+  margin: 80px auto 0;
+  padding: 0 16px;
+  max-width: 1232px;
+}
+
+.wrappermobile {
+  padding: 0;
+}
+
+// floated bar -->
+
+.bar {
+  position: fixed;
+  top: 98px;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+}
+
+// component -->
+
+.body {
+  margin-top: 78px;
+
+  @media (min-width: $md) {
+    display: flex;
+    margin-top: 64px;
+  }
+}
+
+.bodymobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+
+  .sidebar {
+    margin: 36px auto 48px auto;
+  }
+
+  .main {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+}
+
+.sidebar {
+  width: 240px;
+}
+
+.main {
+  margin: 48px -16px 0;
+
+  @media (min-width: $md) {
+    margin: 0;
+    margin-left: 16px;
+  }
+}
+
+.disabled {
+  display: none;
+}

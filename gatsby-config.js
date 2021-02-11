@@ -142,6 +142,12 @@ module.exports = {
             langs: langs,
           },
           {
+            type: 'Pricespagetest',
+            match: '/:lang?/pricestest',
+            component: require.resolve('./src/templates/PricesPageTest.js'),
+            langs: langs,
+          },
+          {
             type: 'Pricesenterpricepage',
             match: '/:lang?/pricing-enterprice',
             component: require.resolve(
