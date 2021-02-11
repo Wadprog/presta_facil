@@ -1,0 +1,59 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.wrapper {
+  margin: 80px auto 0;
+  padding: 0 16px;
+  max-width: 864px;
+
+  @media (min-width: $md) {
+    margin-top: 64px;
+  }
+}
+
+// floated bar -->
+
+.bar {
+  position: fixed;
+  top: 98px;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+
+  display: none;
+
+  @media (min-width: $md) {
+    display: block;
+  }
+}
+
+// component -->
+
+.container {
+}
+
+.body {
+  margin-top: 78px;
+
+  @media (min-width: $md) {
+    display: flex;
+    margin-top: 64px;
+  }
+}
+
+.sidebar {
+  min-width: 240px;
+}
+
+.main {
+  margin: 48px -16px 0;
+
+  @media (min-width: $md) {
+    margin: 0;
+    margin-left: 16px;
+  }
+}
+
+.disabled {
+  display: none;
+}

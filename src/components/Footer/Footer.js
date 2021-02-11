@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import style from './Footer.module.scss';
 import Navigation from './components/Navigation';
@@ -8,60 +8,78 @@ import { RichText } from 'prismic-reactjs';
 import { parseString } from '@helpers';
 import Image from '@components/Image/Image';
 import LanguageSwitcher from '@components/LanguageSwitcher';
+import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
+
+const TEXT = 'Schedule a Demo';
 
 const Footer = ({ data, activeDocMeta }) => {
   const primary = data[0].primary;
   const books = data[1];
   const fields = data[0].fields;
-  const buttonLink = '/' + parseString(primary.buttonlink);
-  const buttonText = parseString(primary.buttontext);
   const copyright = parseString(primary.copyright);
+  const buttonVariant = VARIANT.PRIMARY;
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const handleCloseModal = () => setModalIsOpen(false);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setModalIsOpen(!modalIsOpen);
+  };
+
   return (
-    <footer className={style.footer}>
-      <div className={style.container}>
-        <div className={style.banners}>
-          <div className={style.quizWrapper}>
-            <RichText render={primary.buttontitle} />
-            <Button variant={VARIANT.PRIMARY} to={buttonLink}>
-              {buttonText}
-            </Button>
-          </div>
-          <Books data={books} />
-        </div>
-        <Navigation data={data} activeDocMeta={activeDocMeta} />
-        <div className={style.switcherWrapper}>
-          <LanguageSwitcher activeDocMeta={activeDocMeta} />
-        </div>
-        <div className={style.wrapper}>
-          <a
-            href={primary.logolink.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div className={style.logoWrapper}>
-              <Image image={primary.logo} className={style.logo} />
-              <RichText render={primary.logotext} />
+    <>
+      <ModalBookCall open={modalIsOpen} closeModal={handleCloseModal} />
+      <footer className={style.footer}>
+        <div className={style.container}>
+          <div className={style.banners}>
+            <div className={style.quizWrapper}>
+              <RichText render={primary.buttontitle} />
+              <Button
+                variant={buttonVariant}
+                isHeader={true}
+                click={handleClick}
+              >
+                {TEXT}
+              </Button>
             </div>
-          </a>
-          <p className={style.copyright}>{copyright}</p>
-          <ul className={style.social}>
-            {fields.map(({ sociallink, socialogo }) => {
-              return (
-                <li key={sociallink.url}>
-                  <a
-                    href={sociallink.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Image image={socialogo} />
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
+            <Books data={books} />
+          </div>
+          <Navigation data={data} activeDocMeta={activeDocMeta} />
+          <div className={style.switcherWrapper}>
+            <LanguageSwitcher activeDocMeta={activeDocMeta} />
+          </div>
+          <div className={style.wrapper}>
+            <a
+              href={primary.logolink.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className={style.logoWrapper}>
+                <Image image={primary.logo} className={style.logo} />
+                <RichText render={primary.logotext} />
+              </div>
+            </a>
+            <p className={style.copyright}>{copyright}</p>
+            <ul className={style.social}>
+              {fields.map(({ sociallink, socialogo }) => {
+                return (
+                  <li key={sociallink.url}>
+                    <a
+                      href={sociallink.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image image={socialogo} />
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 };
 

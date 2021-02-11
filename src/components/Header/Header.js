@@ -51,6 +51,7 @@ const Header = ({ data, hideMenu }) => {
     scrollDir === 'down' ? GRADIENT_ORANGE : GRADIENT_GREEN;
   const buttonVariant =
     scrollDir === 'down' ? VARIANT.PRIMARY : VARIANT.GRADIENT;
+
   return (
     <>
       <header className={headerStyles}>
