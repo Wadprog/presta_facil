@@ -6,7 +6,7 @@ import Image from '@components/Image/Image';
 import { parseUrl } from '@helpers';
 
 const Item = ({ link, screenshot, screenshotSharp, name, tag }) => {
-  const tagList = tag[0].text.split(/\s*,\s*/);
+  const tagList = tag ? tag[0].text.split(/\s*,\s*/) : null;
   const url = parseUrl(link);
   return (
     <a
@@ -23,7 +23,7 @@ const Item = ({ link, screenshot, screenshotSharp, name, tag }) => {
           <RichText render={name} />
         </div>
         <div className={style.tagList}>
-          {tagList.map((tag, index) => {
+          {tagList && tagList.map((tag, index) => {
             return (
               <div className={style.tag} key={`tag${index}${tag}`}>
                 {tag}

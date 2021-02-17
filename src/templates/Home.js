@@ -2,8 +2,8 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
-import HomePage from '@scenes/HomePage';
-// import Layout from '@components/Layout';
+import Home from '@scenes/Home';
+import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
   const homepageContent = data.prismic.allHomepages.edges[0];
@@ -11,10 +11,9 @@ const Page = ({ data }) => {
   const homepage = homepageContent.node;
 
   return (
-          <HomePage content={data} />
-    // <Layout activeDocMeta={homepage._meta}>
-
-    // </Layout>
+    <Layout activeDocMeta={homepage._meta}>
+      <Home content={data} />
+    </Layout>
   );
 };
 

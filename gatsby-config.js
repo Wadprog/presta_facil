@@ -102,7 +102,7 @@ module.exports = {
           {
             type: 'Homepage',
             match: '/:lang?',
-            component: require.resolve('./src/templates/HomePage.js'),
+            component: require.resolve('./src/templates/Home.js'),
             langs: langs,
           },
           {
