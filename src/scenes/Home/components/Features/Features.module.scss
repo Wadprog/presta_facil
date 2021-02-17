@@ -1,0 +1,118 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.features {
+  position: relative;
+  padding: 68px 16px 64px;
+  text-align: center;
+
+  @media (max-width: $md) {
+    padding: 0;
+  }
+
+  :global {
+    .swiper-container {
+      @media (min-width: $lg) {
+        overflow: visible;
+      }
+    }
+    .swiper-wrapper {
+      padding: 0 16px 60px;
+      @media (min-width: $lg) {
+        padding: 0 0;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: stretch;
+      }
+    }
+    .swiper-slide {
+      @media (max-width: $lg) {
+        height: auto;
+      }
+    }
+  }
+}
+
+.background {
+  &:before,
+  &:after {
+    opacity: 0.1 !important;
+
+    @media (max-width: $lg) {
+      display: none;
+    }
+  }
+}
+
+.container {
+  position: relative;
+  max-width: 1064px;
+  margin: 0 auto;
+  z-index: 1;
+  @media (max-width: $lg) {
+    max-width: 760px;
+  }
+}
+
+.title h2 {
+  font-family: $font-gramatika;
+  font-weight: 400;
+  font-size: 42px;
+  line-height: 125%;
+  max-width: 850px;
+  margin: 0 auto 16px;
+  strong {
+    font-family: $font-gramatika-black;
+    font-weight: 900;
+    color: $green;
+    letter-spacing: 0.03em;
+    text-transform: capitalize;
+  }
+  @media (max-width: $md) {
+    padding: 0 16px;
+    text-align: left;
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+}
+
+.descr {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 160%;
+  color: $second-dark;
+  opacity: 0.75;
+  max-width: 520px;
+  margin: 0 auto 48px;
+  text-transform: capitalize;
+  @media (max-width: $md) {
+    padding: 0 16px;
+    text-align: left;
+    font-size: 14px;
+    margin-bottom: 45px;
+  }
+}
+
+.slide {
+  position: relative;
+  max-width: 495px;
+  &:nth-child(2n) {
+    margin-top: 60px;
+    margin-left: 30px;
+  }
+  @media (max-width: 1024px) {
+    max-width: 460px;
+  }
+  @media (max-width: $lg) {
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 0;
+    &:nth-child(2n) {
+      margin-top: 0;
+      margin-left: 0;
+    }
+  }
+  @media (max-width: $md) {
+    max-width: 280px;
+  }
+}

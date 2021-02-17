@@ -12,7 +12,9 @@ import Footer from '@components/Footer';
 import styles from './Layout.module.scss';
 import '@styles/index.scss';
 
-const Layout = ({ children, data, hideMenu, activeDocMeta }) => {
+const Layout = ({ children,
+   data, hideMenu, activeDocMeta 
+  }) => {
   const layoutContext = data.prismic.allLayouts.edges[0];
   if (!layoutContext) return null;
 
@@ -28,9 +30,9 @@ const Layout = ({ children, data, hideMenu, activeDocMeta }) => {
     <LangContext.Provider
       value={currentLang === defaultLanguage ? '' : currentLang.slice(0, 2)}
     >
+    <div className={styles.container}>
       <Head />
-      <div className={styles.container}>
-        <Header data={headerData} hideMenu={hideMenu} />
+      <Header data={headerData} hideMenu={hideMenu} />
         <main className={styles.main} id="main">
           {children}
         </main>

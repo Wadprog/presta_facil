@@ -1,0 +1,212 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+.solutions {
+  position: relative;
+  padding: 68px 16px 0;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    background: url('./image/bg.png');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.5;
+  }
+  @media (max-width: $lg) {
+    padding: 36px 0 0;
+  }
+}
+.container {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+.title h2 {
+  font-family: $font-gramatika;
+  font-weight: 400;
+  font-size: 42px;
+  line-height: 125%;
+  margin: 0 auto 16px;
+  strong {
+    font-family: $font-gramatika-black;
+    font-weight: 900;
+    color: $green;
+    letter-spacing: 0.03em;
+    text-transform: capitalize;
+  }
+  @media (max-width: $md) {
+    padding: 0 16px;
+    text-align: left;
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+}
+
+.descr {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 160%;
+  color: $second-dark;
+  opacity: 0.75;
+  max-width: 620px;
+  margin: 0 auto 48px;
+  @media (max-width: $md) {
+    padding: 0 16px;
+    text-align: left;
+    font-size: 14px;
+    margin-bottom: 45px;
+  }
+}
+
+.solutions [class~='swiper-container'] {
+  padding: 50px 16px 64px;
+
+  @media (min-width: 1024px) {
+    overflow: unset;
+  }
+}
+.solutions [class~='swiper-wrapper'] {
+  @media (min-width: 1024px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 128px;
+  }
+  @media (min-width: 1150px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.slide {
+  width: auto !important;
+}
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 8px 30px;
+  padding: 80px 28px 20px;
+  text-align: center;
+  color: $second-dark;
+  width: 256px;
+  text-decoration: none;
+  min-height: 208px;
+  @media (min-width: 1024px) {
+    margin: 0 auto;
+  }
+  @media (max-width: $md) {
+    width: 232px;
+  }
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 56px;
+    height: 50px;
+    border-radius: 20px 5px;
+    transition: 0.3s linear;
+    z-index: -1;
+  }
+  &::before {
+    top: 5px;
+    left: 5px;
+    background: $green-gradient;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+  }
+  &::after {
+    bottom: 5px;
+    right: 5px;
+    background: linear-gradient(226.96deg, #f58a7a 0%, #ffd182 100%);
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+  }
+  .shadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 8px 30px;
+    box-shadow: 0px 50px 120px rgba(32, 42, 68, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s linear;
+  }
+
+  &:hover {
+    .shadow {
+      opacity: 1;
+    }
+    &::before {
+      top: -20px;
+      left: -20px;
+    }
+    &::after {
+      bottom: -20px;
+      right: -20px;
+    }
+    .arrow {
+      opacity: 1;
+    }
+  }
+  img {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  h4 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 150%;
+    @media (max-width: $md) {
+      font-size: 16px;
+    }
+  }
+  div {
+    display: inline;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 150%;
+    p {
+      display: inline;
+    }
+    @media (max-width: $md) {
+      font-size: 16px;
+    }
+  }
+  .arrow {
+    position: absolute;
+    top: unset;
+    bottom: -20px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+}
+
+.slide[class~='swiper-slide-active'] {
+  @media (max-width: $lg) {
+    .item {
+      box-shadow: 0px 20px 50px rgba(32, 42, 68, 0.2);
+      &::before {
+        top: -12px;
+        left: -12px;
+      }
+      &::after {
+        bottom: -12px;
+        right: -12px;
+      }
+      .arrow {
+        opacity: 1;
+      }
+    }
+  }
+}
