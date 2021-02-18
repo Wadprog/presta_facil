@@ -38,7 +38,7 @@ export const linkResolver = (doc) => {
 
   if (properties.type === 'solutionpage') {
     return properties.lang === defaultLanguage
-      ? `/solution/${properties.uid}1`
+      ? `/solution/${properties.uid}`
       : `/${properties.lang}/solution/${properties.uid}`;
   }
 
