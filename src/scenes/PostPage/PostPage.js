@@ -14,6 +14,7 @@ import Articles from '@components/Articles/Articles';
 
 const PostPage = ({ current }) => {
   const { body, date, title, description, _meta } = current;
+
   return (
     <div className={style.page}>
       <div className={style.container}>
