@@ -177,14 +177,14 @@ module.exports = {
           },
           {
             type: 'Blogpostpage',
-            match: '/:lang?/blog',
-            component: require.resolve('./src/templates/BlogPage.js'),
+            match: '/:lang?/blog/:uid?',
+            component: require.resolve('./src/templates/Post.js'),
             langs: langs,
           },
           {
             type: 'Blogpostpage',
-            match: '/:lang?/blog/:uid?',
-            component: require.resolve('./src/templates/Post.js'),
+            match: '/:lang?/blog',
+            component: require.resolve('./src/templates/BlogPage.js'),
             langs: langs,
           },
           {
