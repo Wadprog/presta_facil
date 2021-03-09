@@ -35,11 +35,13 @@ const Button = ({
   });
   const currentLang = useContext(LangContext);
 
-  if (element === 'external') {
+  if (isDirect) {
+    const protocol = 'https://';
+    const externalUrl = to.startsWith('http') ? to : `${protocol}${to}`;
     return (
       <a
         className={classes}
-        href={to}
+        href={externalUrl}
         target="_blank"
         rel="noopener noreferrer"
       >
