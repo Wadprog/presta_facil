@@ -71,7 +71,7 @@ const Hero = ({ primary, fields }) => {
             <RichText render={primary.description} />
           </div>
           <div className={styles.buttonWrapper}>
-            <Button variant={VARIANT.PRIMARY} to={`${buttonLink}`} isDirect>
+            <Button variant={VARIANT.PRIMARY} to={`${buttonLink}`}>
               <RichText render={primary.button} />
             </Button>
           </div>

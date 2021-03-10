@@ -28,7 +28,7 @@ const CallToAction = ({ primary }) => {
           </div>
           <p className={style.description}>{parseString(description)}</p>
           <div className={style.button}>
-            <Button variant={VARIANT.PRIMARY} to={link} isDirect>
+            <Button variant={VARIANT.PRIMARY} to={link}>
               {parseString(buttontext)}
             </Button>
           </div>

@@ -24,7 +24,6 @@ const Button = ({
   fullWidth,
   isHeader,
   element,
-  isDirect,
 }) => {
   const classes = classnames({
     [styles.button]: true,
@@ -35,7 +34,17 @@ const Button = ({
   });
   const currentLang = useContext(LangContext);
 
-  if (isDirect) {
+  const isExternalUrl = (buttonUrl) => {
+    if (buttonUrl.startsWith('/')) {
+      return false;
+    }
+    const destinationUrl = new URL(buttonUrl);
+    return destinationUrl.host === 'sp-website.onrender.com' ? false : true;
+  };
+
+  const Component = element;
+
+  if (isExternalUrl(to)) {
     const protocol = 'https://';
     const externalUrl = to.startsWith('http') ? to : `${protocol}${to}`;
     return (
@@ -49,32 +58,16 @@ const Button = ({
       </a>
     );
   }
-  const Component = element;
-
   return (
-    <>
-      {isDirect ? (
-        <a
-          className={classes}
-          type={type}
-          disabled={disabled}
-          onClick={click}
-          href={to}
-        >
-          {children}
-        </a>
-      ) : (
-        <Component
-          className={classes}
-          type={type}
-          disabled={disabled}
-          onClick={click}
-          to={langPath(currentLang) + to}
-        >
-          {children}
-        </Component>
-      )}
-    </>
+    <Component
+      className={classes}
+      type={type}
+      disabled={disabled}
+      onClick={click}
+      to={langPath(currentLang) + to}
+    >
+      {children}
+    </Component>
   );
 };
 
@@ -88,7 +81,6 @@ Button.propTypes = {
   fullWidth: PropTypes.bool,
   isHeader: PropTypes.bool,
   element: PropTypes.any,
-  isDirect: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -100,7 +92,6 @@ Button.defaultProps = {
   fullWidth: false,
   isHeader: false,
   element: Link,
-  isDirect: false,
 };
 export default Button;
 export { VARIANT };

@@ -3,6 +3,7 @@ import styles from './Benefits.module.scss';
 import { RichText } from 'prismic-reactjs';
 import { object, array } from 'prop-types';
 import Button, { VARIANT } from '@components/Button/Button.js';
+import { parseString } from '@helpers';
 
 const Benefits = ({ primary, fields }) => {
   return (
@@ -24,7 +25,7 @@ const Benefits = ({ primary, fields }) => {
           })}
         </div>
         <div className={styles.button}>
-          <Button variant={VARIANT.WHITE}>
+          <Button variant={VARIANT.WHITE} to={parseString(primary.buttonlink)}>
             <span>{RichText.asText(primary.button)}</span>
           </Button>
         </div>
