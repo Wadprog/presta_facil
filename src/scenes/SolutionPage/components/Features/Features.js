@@ -6,6 +6,7 @@ import Swiper from 'react-id-swiper';
 import { useBreakpoints } from '@hooks';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import Image from '@components/Image/Image';
+import { parseString } from '@helpers';
 
 const Features = ({ primary, fields }) => {
   const [buildKey, setBuildKey] = useState();
@@ -51,7 +52,10 @@ const Features = ({ primary, fields }) => {
         })}
       </Swiper>
       <div className={styles.button}>
-        <Button variant={VARIANT.TRANSPARENT}>
+        <Button
+          variant={VARIANT.TRANSPARENT}
+          to={parseString(primary.buttonlink)}
+        >
           {RichText.asText(primary.button)}
         </Button>
       </div>
