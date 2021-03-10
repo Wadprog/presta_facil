@@ -46,7 +46,6 @@ const Hero = ({ primary, fields }) => {
             <Button
               variant={VARIANT.PRIMARY}
               to={parseString(primary.buttonlink)}
-              isDirect
             >
               <RichText render={primary.buttontext} />
             </Button>
