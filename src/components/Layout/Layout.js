@@ -12,9 +12,7 @@ import Footer from '@components/Footer';
 import styles from './Layout.module.scss';
 import '@styles/index.scss';
 
-const Layout = ({ children,
-   data, hideMenu, activeDocMeta 
-  }) => {
+const Layout = ({ children, data, hideMenu, activeDocMeta }) => {
   const layoutContext = data.prismic.allLayouts.edges[0];
   if (!layoutContext) return null;
 
@@ -92,6 +90,12 @@ const query = graphql`
                   image
                   link
                   name
+                  externallink {
+                    ... on PRISMIC__ExternalLink {
+                      _linkType
+                      url
+                    }
+                  }
                 }
               }
             }
