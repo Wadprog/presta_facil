@@ -1,12 +1,13 @@
 import React from 'react';
 import { object, array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
+import { parseString } from '@helpers';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import Image from '@components/Image/Image';
 import styles from './Hero.module.scss';
 
 const Hero = ({ primary }) => {
-  const buttonLink = primary.buttonlink[0].text;
+  const buttonLink = parseString(primary.buttonlink);
   return (
     <div className={styles.hero}>
       <div className={styles.container}>
