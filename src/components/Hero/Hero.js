@@ -7,15 +7,15 @@ import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
 import Modal from '@components/Modal';
 import styles from './Hero.module.scss';
 import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
-// import useGetImage from './useGetImage';
-// import Image from '@components/Image/Image';
+import useGetImage from './useGetImage';
+import Image from '@components/Image/Image';
 import { parseString } from '@helpers';
 
 const Hero = ({ primary, fields }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleOpenModal = () => setModalIsOpen(true);
   const handleCloseModal = () => setModalIsOpen(false);
-  // const { hero } = useGetImage();
+  const { hero } = useGetImage();
 
   const videoLink = primary.modalvideo ? primary.modalvideo.url : '';
   const params = {
@@ -52,7 +52,7 @@ const Hero = ({ primary, fields }) => {
           </div>
         </div>
         <div className={styles.imageWrapper}>
-          {/* <Image className={styles.image} imageSharp={hero} /> */}
+          <Image className={styles.image} imageSharp={hero} />
           {primary.flag && (
             <div className={styles.flagWrapper}>
               <img
