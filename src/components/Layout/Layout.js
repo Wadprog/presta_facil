@@ -28,9 +28,9 @@ const Layout = ({ children, data, hideMenu, activeDocMeta }) => {
     <LangContext.Provider
       value={currentLang === defaultLanguage ? '' : currentLang.slice(0, 2)}
     >
-    <div className={styles.container}>
-      <Head />
-      <Header data={headerData} hideMenu={hideMenu} />
+      <div className={styles.container}>
+        <Head />
+        <Header data={headerData} hideMenu={hideMenu} />
         <main className={styles.main} id="main">
           {children}
         </main>
