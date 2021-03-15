@@ -6,6 +6,7 @@ import Image from '@components/Image/Image';
 import styles from './Hero.module.scss';
 
 const Hero = ({ primary }) => {
+  const buttonLink = primary.buttonlink[0].text;
   return (
     <div className={styles.hero}>
       <div className={styles.container}>
@@ -17,7 +18,7 @@ const Hero = ({ primary }) => {
             <RichText render={primary.description} />
           </div>
           <div className={styles.buttonWrapper}>
-            <Button variant={VARIANT.PRIMARY}>
+            <Button variant={VARIANT.PRIMARY} to={buttonLink}>
               <RichText render={primary.buttontext} />
             </Button>
           </div>

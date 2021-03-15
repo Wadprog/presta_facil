@@ -34,10 +34,7 @@ const WhatIs = ({ primary }) => {
             <RichText render={subtitle} />
           </div>
           <div className={styles.buttonWrapper}>
-            <Button
-              variant={VARIANT.PRIMARY}
-              to={'/' + parseString(buttonlink)}
-            >
+            <Button variant={VARIANT.PRIMARY} to={parseString(buttonlink)}>
               <RichText render={buttontext} />
             </Button>
           </div>

@@ -3,11 +3,13 @@ import { object } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import { Link } from 'gatsby';
+import { parseString } from '@helpers';
 
 import styles from './Banner.module.scss';
 
 const Banner = ({ primary }) => {
-  const { title, text, buttontext } = primary;
+  const { title, text, buttontext, buttonlink } = primary;
+  const buttonUrl = parseString(buttonlink);
   return (
     <section className={styles.section}>
       <div className={styles.container}>
@@ -16,7 +18,7 @@ const Banner = ({ primary }) => {
             <RichText render={title} />
           </div>
           <div className={styles.buttonWrapper}>
-            <Button variant={VARIANT.PRIMARY} fullWidth>
+            <Button variant={VARIANT.PRIMARY} to={buttonUrl} fullWidth>
               <RichText render={buttontext} />
             </Button>
             <Link to="/" className={styles.link}>
