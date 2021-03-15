@@ -52,7 +52,24 @@ const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
           <div className={style.list}>
             {fields.map((item, index) => {
               const text = RichText.asText(item.name);
-              let link =
+              let link;
+              if (item.externallink) {
+                link = item.externallink.url;
+                location.pathname === link && setIsLinkActive(true);
+                return (
+                  <a
+                    href={link}
+                    className={style.link}
+                    activeClassName={style.linkActive}
+                    key={text}
+                    onMouseEnter={() => handleMouseEnter(index)}
+                    onClick={handleClick}
+                  >
+                    {text}
+                  </a>
+                );
+              }
+              link =
                 langPath(currentLang) +
                 '/' +
                 RichText.asText(item.link).toLowerCase();
