@@ -91,6 +91,7 @@ export const query = graphql`
                   buttontext
                   text
                   title
+                  buttonlink
                 }
                 type
               }
