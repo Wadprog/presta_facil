@@ -56,6 +56,19 @@ const Button = ({
       </a>
     );
   }
+  if (!to.startsWith('/')) {
+    return (
+      <Component
+        className={classes}
+        type={type}
+        disabled={disabled}
+        onClick={click}
+        to={`${langPath(currentLang)}/${to}`}
+      >
+        {children}
+      </Component>
+    );
+  }
   return (
     <Component
       className={classes}
