@@ -153,6 +153,7 @@ export const query = graphql`
                   description
                   buttontext
                   image
+                  page
                 }
               }
               ... on PRISMIC_LayoutBody2Plans {

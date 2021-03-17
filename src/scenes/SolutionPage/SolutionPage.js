@@ -14,7 +14,7 @@ import Calendly from '@components/Calendly/Calendly';
 
 const SolutionPage = ({ current, mainSection }) => {
   const body = current.body;
-  const agenciesSection = mainSection[0].node.body2[0];
+  const agenciesSection = mainSection[1].node.body2[0];
   const plansSection = mainSection[0].node.body2[1];
 
   return (

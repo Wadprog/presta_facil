@@ -11,7 +11,7 @@ import { langPath } from '@helpers';
 
 const Agencies = ({ primary }) => {
   const currentLang = useContext(LangContext);
-  const buttonLink = '/' + parseString(primary.page);
+  const buttonLink = parseString(primary.page);
 
   return (
     <section className={style.agencies}>
