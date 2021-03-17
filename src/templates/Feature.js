@@ -53,6 +53,8 @@ export const query = graphql`
                   description
                   flag
                   title
+                  modalctabuttontext
+                  modalctabuttonlink
                 }
                 fields {
                   partnerslogo

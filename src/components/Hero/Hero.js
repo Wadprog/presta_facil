@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { object, array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import Swiper from 'react-id-swiper';
+import { parseString } from '@helpers';
+
 import Button, { VARIANT } from '@components/Button/Button.js';
 import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
 import Modal from '@components/Modal';
@@ -9,13 +11,14 @@ import styles from './Hero.module.scss';
 import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
 import useGetImage from './useGetImage';
 import Image from '@components/Image/Image';
-import { parseString } from '@helpers';
 
 const Hero = ({ primary, fields }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleOpenModal = () => setModalIsOpen(true);
   const handleCloseModal = () => setModalIsOpen(false);
   const { hero } = useGetImage();
+  const modalCtaButtonText = parseString(primary.modalctabuttontext);
+  const modalCtaButtonLink = parseString(primary.modalctabuttonlink);
 
   const videoLink = primary.modalvideo ? primary.modalvideo.url : '';
   const params = {
@@ -95,6 +98,8 @@ const Hero = ({ primary, fields }) => {
         open={modalIsOpen}
         closeModal={handleCloseModal}
         videoLink={videoLink}
+        modalCtaButtonText={modalCtaButtonText}
+        modalCtaButtonLink={modalCtaButtonLink}
       />
     </div>
   );

@@ -9,7 +9,13 @@ import Icon from './image/close-icon.inline.svg';
 
 Modal.setAppElement('#___gatsby');
 
-const ModalContainer = ({ open, closeModal, videoLink }) => {
+const ModalContainer = ({
+  open,
+  closeModal,
+  videoLink,
+  modalCtaButtonLink,
+  modalCtaButtonText,
+}) => {
   const [isOpen, setIsOpen] = useState(open);
   useEffect(() => {
     setIsOpen(open);
@@ -32,8 +38,8 @@ const ModalContainer = ({ open, closeModal, videoLink }) => {
         <ReactPlayer url={videoLink} width="100%" height="100%" controls />
       </div>
       <div className={style.button}>
-        <Button variant={VARIANT.PRIMARY} to="/quiz">
-          take the 2-min quiz
+        <Button variant={VARIANT.PRIMARY} to={modalCtaButtonLink}>
+          {modalCtaButtonText}
         </Button>
       </div>
       <div className={style.buttonClose}>
@@ -49,10 +55,14 @@ ModalContainer.propTypes = {
   open: bool,
   closeModal: func,
   videoLink: string,
+  modalCtaButtonLink: string,
+  modalCtaButtonText: string,
 };
 
 ModalContainer.defaultProps = {
   videoLink: '',
+  modalCtaButtonLink: '',
+  modalCtaButtonText: '',
 };
 
 export default ModalContainer;

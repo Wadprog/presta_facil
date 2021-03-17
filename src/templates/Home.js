@@ -53,6 +53,8 @@ export const query = graphql`
                   trusted
                   modalbuttontitle
                   modalbuttondescription
+                  modalctabuttontext
+                  modalctabuttonlink
                   modalvideo {
                     ... on PRISMIC__ExternalLink {
                       _linkType
