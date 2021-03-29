@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './Button.module.scss';
 import { Link } from 'gatsby';
 import LangContext from '@contexts';
-import { langPath } from '@helpers';
+import { langPath, isExternalUrl } from '@helpers';
 
 const VARIANT = {
   PRIMARY: 'primary',
@@ -33,14 +33,6 @@ const Button = ({
     [styles.disabled]: disabled,
   });
   const currentLang = useContext(LangContext);
-
-  const isExternalUrl = (buttonUrl) => {
-    if (!buttonUrl.startsWith('http')) {
-      return false;
-    }
-    const destinationUrl = new URL(buttonUrl);
-    return destinationUrl.host === 'sp-website.onrender.com' ? false : true;
-  };
 
   const Component = element;
 

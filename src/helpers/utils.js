@@ -27,4 +27,19 @@ function langPath(currentLang) {
   return currentLang ? `/${currentLang}` : '';
 }
 
-export { isValidEmail, parseUrl, parseString, dateToString, langPath };
+const isExternalUrl = (buttonUrl) => {
+  if (!buttonUrl.startsWith('http')) {
+    return false;
+  }
+  const destinationUrl = new URL(buttonUrl);
+  return destinationUrl.host === 'sp-website.onrender.com' ? false : true;
+};
+
+export {
+  isValidEmail,
+  parseUrl,
+  parseString,
+  dateToString,
+  langPath,
+  isExternalUrl,
+};
