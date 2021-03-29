@@ -7,13 +7,18 @@ import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
   const [body, setBody] = useState();
-  useEffect(() => {
-    setBody(pageContext.node);
-  }, []);
+  const [pageMetaData, setPageMetaData] = useState();
+
   const pageContext = data.prismic.allTechnologypages.edges[0];
   if (!pageContext) return null;
+
+  useEffect(() => {
+    setBody(pageContext.node);
+    setPageMetaData(pageContext.node._meta);
+  }, []);
+
   return (
-    <Layout activeDocMeta={body._meta}>
+    <Layout activeDocMeta={pageMetaData}>
       <Technology current={body} />
     </Layout>
   );
