@@ -11,7 +11,7 @@ const Banner = ({ primary }) => {
   const { title, text, buttontext, buttonlink, link, linktext } = primary;
   const buttonUrl = parseString(buttonlink);
   const promoLink = parseString(link);
-  const promoLinkText = linktext[0].text;
+  const promoLinkText = parseString(linktext);
   if (isExternalUrl(promoLink)) {
     return (
       <section className={styles.section}>
