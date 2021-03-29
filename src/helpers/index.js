@@ -5,6 +5,7 @@ import {
   parseString,
   dateToString,
   langPath,
+  isExternalUrl,
 } from './utils';
 
 export {
@@ -14,4 +15,5 @@ export {
   parseString,
   dateToString,
   langPath,
+  isExternalUrl,
 };

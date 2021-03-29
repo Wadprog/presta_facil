@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
@@ -6,9 +6,12 @@ import Technology from '@scenes/TechnologyPage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
+  const [body, setBody] = useState();
+  useEffect(() => {
+    setBody(pageContext.node);
+  }, []);
   const pageContext = data.prismic.allTechnologypages.edges[0];
   if (!pageContext) return null;
-  const body = pageContext.node;
   return (
     <Layout activeDocMeta={body._meta}>
       <Technology current={body} />
@@ -92,6 +95,8 @@ export const query = graphql`
                   text
                   title
                   buttonlink
+                  link
+                  linktext
                 }
                 type
               }
