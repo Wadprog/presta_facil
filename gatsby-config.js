@@ -25,6 +25,13 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-zendesk-chat',
+      options: {
+        zendeskKey: '7c1de950-9031-4521-8e28-c9defa10512b',
+        enableDuringDevelop: true,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `fonts`,
