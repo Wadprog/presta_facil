@@ -36,14 +36,19 @@ const Head = ({ children, meta }) => {
       <meta content={url} property="og:url" />
       <meta property="og:locale" content="en_US" />
 
-      {/* <!-- Start of secureprivacy Zendesk Widget script --> */}
-      <script
-        id="ze-snippet"
-        src="https://static.zdassets.com/ekr/snippet.js?key=7c1de950-9031-4521-8e28-c9defa10512b"
-      >
-        {' '}
+      {/* <!-- Start of secureprivacy Zendesk Widget optimization script --> */}
+      <script type="text/javascript">
+        {
+          (window.zESettings = {
+            webWidget: {
+              chat: {
+                connectOnPageLoad: false,
+              },
+            },
+          })
+        }
       </script>
-      {/* <!-- End of secureprivacy Zendesk Widget script --> */}
+      {/* <!-- End of secureprivacy Zendesk Widget optimization script --> */}
 
       <title>{meta.title}</title>
 
