@@ -36,20 +36,6 @@ const Head = ({ children, meta }) => {
       <meta content={url} property="og:url" />
       <meta property="og:locale" content="en_US" />
 
-      {/* <!-- Start of secureprivacy Zendesk Widget optimization script --> */}
-      <script type="text/javascript">
-        {
-          (window.zESettings = {
-            webWidget: {
-              chat: {
-                connectOnPageLoad: false,
-              },
-            },
-          })
-        }
-      </script>
-      {/* <!-- End of secureprivacy Zendesk Widget optimization script --> */}
-
       <title>{meta.title}</title>
 
       {/* Specified tags */}
