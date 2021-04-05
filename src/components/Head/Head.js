@@ -1,9 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 
 const Head = ({ children, meta }) => {
   const url = `https://secureprivacy.ai/`;
+
+  const [zenDeskWidgetScript, setZenDeskWidgetScript] = useState(null);
+  const loadDelayTime = 5000;
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const timer = setTimeout(() => {
+        setZenDeskWidgetScript(
+          <script
+            id="ze-snippet"
+            src="https://static.zdassets.com/ekr/snippet.js?key=7c1de950-9031-4521-8e28-c9defa10512b"
+            async
+          >
+            {' '}
+          </script>
+        );
+      }, loadDelayTime);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   return (
     <Helmet>
@@ -35,6 +56,8 @@ const Head = ({ children, meta }) => {
       <meta content={`${url}images/meta/tile.png`} property="og:image" />
       <meta content={url} property="og:url" />
       <meta property="og:locale" content="en_US" />
+
+      {zenDeskWidgetScript}
 
       <title>{meta.title}</title>
 
