@@ -3,19 +3,9 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
 import HomePage from '@scenes/HomePage';
-// import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
-  const homepageContent = data.prismic.allHomepages.edges[0];
-  if (!homepageContent) return null;
-  const homepage = homepageContent.node;
-
-  return (
-          <HomePage content={data} />
-    // <Layout activeDocMeta={homepage._meta}>
-
-    // </Layout>
-  );
+  return <HomePage content={data} />;
 };
 
 Page.propTypes = {
