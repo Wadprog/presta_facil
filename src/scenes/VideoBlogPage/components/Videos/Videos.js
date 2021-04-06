@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { array, object } from 'prop-types';
-import style from './Videos.module.scss';
 import { RichText } from 'prismic-reactjs';
+
+import style from './Videos.module.scss';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import Item from './components/Item/Item';
 import { parseString } from '@helpers';
@@ -13,6 +14,9 @@ const numberToRender = 9; // video on page
 const COUNTER_STEP = 3;
 
 const Videos = ({ primary, fields }) => {
+  const validFields = fields.filter(
+    (field) => field.tag && field.date && field.title && field.videourl
+  );
   const [counter, setCounter] = useState(numberToRender);
   const [videoList, setVideoList] = useState([]);
   const [search, setSearch] = useState();
@@ -20,12 +24,12 @@ const Videos = ({ primary, fields }) => {
   const [dateRange, setDateRange] = useState();
   const debounceSearchResult = useDebounce(search, 500);
   let tagList = [];
-  fields.forEach((element) => {
+  validFields.forEach((element) => {
     tagList = [...tagList, ...element.tag.split(/\s*,\s*/)];
   });
   const uniqTagList = [...new Set(tagList)];
   useEffect(() => {
-    const filteredList = fields.filter(({ title, date, tag }) => {
+    const filteredList = validFields.filter(({ title, date, tag }) => {
       const filterBySearch = debounceSearchResult
         ? parseString(title)
             .toLowerCase()
@@ -81,7 +85,7 @@ const Videos = ({ primary, fields }) => {
           })}
         </div>
         <div className={style.buttonWrapper}>
-          {fields.length > counter && (
+          {validFields.length > counter && (
             <Button
               variant={VARIANT.TRANSPARENT}
               click={loadMoreVideo}

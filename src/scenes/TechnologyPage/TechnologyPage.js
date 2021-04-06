@@ -13,18 +13,18 @@ const TechnologyPage = ({ current }) => {
   const body = current.body;
   return (
     <div className={style.TechnologyPage}>
-      {body.map((section) => {
+      {body.map((section, index) => {
         switch (section.type) {
           case 'hero':
-            return <Hero {...section} key={section.type} />;
+            return <Hero {...section} key={`${section.type}${index}`} />;
           case 'benefits':
-            return <Benefit {...section} key={section.type} />;
+            return <Benefit {...section} key={`${section.type}${index}`} />;
           case 'whatis':
-            return <WhatIs {...section} key={section.type} />;
+            return <WhatIs {...section} key={`${section.type}${index}`} />;
           case 'how':
-            return <Features {...section} key={section.type} />;
+            return <Features {...section} key={`${section.type}${index}`} />;
           case 'banner':
-            return <Banner {...section} key={section.type} />;
+            return <Banner {...section} key={`${section.type}${index}`} />;
         }
       })}
     </div>
