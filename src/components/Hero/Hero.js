@@ -19,6 +19,7 @@ const Hero = ({ primary, fields }) => {
   const { hero } = useGetImage();
   const modalCtaButtonText = parseString(primary.modalctabuttontext);
   const modalCtaButtonLink = parseString(primary.modalctabuttonlink);
+  const videoButtonText = parseString(primary.videobuttontext);
 
   const videoLink = primary.modalvideo ? primary.modalvideo.url : '';
   const params = {
@@ -73,7 +74,7 @@ const Hero = ({ primary, fields }) => {
               </IconButton>
             </div>
             <div className={styles.playButtonText}>
-              <p>How it works</p>
+              <p>{videoButtonText}</p>
             </div>
           </div>
         </div>
