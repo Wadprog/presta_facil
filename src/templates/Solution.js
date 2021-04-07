@@ -169,6 +169,14 @@ export const query = graphql`
                   benefits
                   button
                   buttonprice
+                  buttonlink {
+                    _linkType
+                    ... on PRISMIC__ExternalLink {
+                      target
+                      _linkType
+                      url
+                    }
+                  }
                 }
               }
             }

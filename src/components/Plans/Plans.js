@@ -3,11 +3,15 @@ import style from './Plans.module.scss';
 import Card from './components/Card';
 import { RichText } from 'prismic-reactjs';
 import { object, array } from 'prop-types';
+
 import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
+import { parseUrl } from '../../helpers/utils';
 
 const Plans = ({ primary, fields }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleCloseModal = () => setModalIsOpen(false);
+  const firstCardData = fields[0];
+  const buttonUrl = parseUrl(firstCardData.buttonlink);
 
   const handleClick = (e, type) => {
     if (type === 'enterprise') {
@@ -29,6 +33,7 @@ const Plans = ({ primary, fields }) => {
               type={card.type.toLowerCase()}
               key={`plans-card${index}`}
               handleClick={handleClick}
+              buttonUrl={buttonUrl}
             />
           );
         })}

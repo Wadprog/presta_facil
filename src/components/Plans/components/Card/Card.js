@@ -3,7 +3,6 @@ import { string, array, object, func } from 'prop-types';
 import BackgroundImage from 'gatsby-background-image';
 import { RichText } from 'prismic-reactjs';
 import classnames from 'classnames';
-import { parseUrl } from '@helpers';
 
 import Image from '@components/Image/Image';
 import useGetImages from './useGetImages';
@@ -19,15 +18,23 @@ const Card = ({
   image,
   imageSharp,
   type,
-  buttonlink,
   handleClick,
+  buttonUrl,
 }) => {
   const { background } = useGetImages();
   const classes = classnames(style.container, {
     [style[type]]: style[type],
   });
 
-  const link = parseUrl(buttonlink);
+  const currentPageUrl =
+    typeof window !== 'undefined' ? window.location.href : '';
+
+  const mapping = {
+    enterprise: currentPageUrl,
+    business: buttonUrl,
+  };
+
+  const destinationUrl = mapping[type];
 
   return (
     <BackgroundImage
@@ -36,7 +43,7 @@ const Card = ({
     >
       <a
         className={style.body}
-        href={link}
+        href={destinationUrl}
         onClick={(e) => handleClick(e, type)}
       >
         <h3 className={style.title}>{RichText.asText(cardtitle)}</h3>
@@ -58,7 +65,6 @@ const Card = ({
               className={style.buttonImage}
             />
           )}
-
           <p className={style.buttonText}>{RichText.asText(button)}</p>
           <Arrow />
         </div>
@@ -76,7 +82,7 @@ Card.propTypes = {
   description: array,
   image: object,
   imageSharp: object,
-  buttonlink: object,
+  buttonUrl: string,
   handleClick: func,
 };
 
