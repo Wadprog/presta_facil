@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { object, func } from 'prop-types';
-import style from './Hero.module.scss';
 import { RichText } from 'prismic-reactjs';
+
+import style from './Hero.module.scss';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
 import Image from '@components/Image/Image';
 import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
 import Modal from '@components/Modal';
+import { parseString } from '../../../../helpers/utils';
 
 const Hero = ({ primary, handleScroll }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -22,6 +24,8 @@ const Hero = ({ primary, handleScroll }) => {
     image,
     imageSharp,
     video,
+    modalbuttonlink,
+    modalbuttontext,
   } = primary;
   return (
     <section className={style.hero}>
@@ -91,6 +95,8 @@ const Hero = ({ primary, handleScroll }) => {
         open={modalIsOpen}
         closeModal={handleCloseModal}
         videoLink={video.url}
+        modalCtaButtonLink={parseString(modalbuttonlink)}
+        modalCtaButtonText={parseString(modalbuttontext)}
       />
     </section>
   );

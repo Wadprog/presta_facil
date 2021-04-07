@@ -60,6 +60,8 @@ export const query = graphql`
                   subtitle
                   title
                   image
+                  modalbuttontext
+                  modalbuttonlink
                   video {
                     ... on PRISMIC__ExternalLink {
                       target
