@@ -46,6 +46,7 @@ export const query = graphql`
                   description
                   buttonlink
                   buttontext
+                  videobuttontext
                   modalvideo {
                     ... on PRISMIC__ExternalLink {
                       _linkType
