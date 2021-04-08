@@ -20,21 +20,14 @@ const Card = ({
   type,
   handleClick,
   buttonUrl,
+  pickDestinationUrl,
 }) => {
   const { background } = useGetImages();
   const classes = classnames(style.container, {
     [style[type]]: style[type],
   });
 
-  const currentPageUrl =
-    typeof window !== 'undefined' ? window.location.href : '';
-
-  const mapping = {
-    enterprise: currentPageUrl,
-    business: buttonUrl,
-  };
-
-  const destinationUrl = mapping[type];
+  const destinationUrl = pickDestinationUrl(buttonUrl, type);
 
   return (
     <BackgroundImage
@@ -84,6 +77,7 @@ Card.propTypes = {
   imageSharp: object,
   buttonUrl: string,
   handleClick: func,
+  pickDestinationUrl: func,
 };
 
 export default Card;
