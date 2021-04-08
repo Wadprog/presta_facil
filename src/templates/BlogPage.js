@@ -15,7 +15,6 @@ const Page = ({ data }) => {
     return item;
   });
 
-
   return (
     <Layout activeDocMeta={blogpages._meta}>
       <BlogPage content={data} />
@@ -48,7 +47,7 @@ export const query = graphql`
           }
         }
       }
-      allBlogpostpages(lang: $lang) {
+      allBlogpostpages(lang: $lang, sortBy: date_DESC, first: 1000001) {
         edges {
           node {
             _linkType
