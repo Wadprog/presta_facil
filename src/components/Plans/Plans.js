@@ -20,6 +20,19 @@ const Plans = ({ primary, fields }) => {
     }
   };
 
+  const pickDestinationUrl = (url, type) => {
+    const currentPageUrl =
+      typeof window !== 'undefined' ? window.location.href : '';
+
+    const mapping = {
+      enterprise: currentPageUrl,
+      business: url,
+    };
+
+    const destinationUrl = mapping[type];
+    return destinationUrl;
+  };
+
   return (
     <div className={style.plans}>
       <div className={style.title}>
@@ -34,6 +47,7 @@ const Plans = ({ primary, fields }) => {
               key={`plans-card${index}`}
               handleClick={handleClick}
               buttonUrl={buttonUrl}
+              pickDestinationUrl={pickDestinationUrl}
             />
           );
         })}
