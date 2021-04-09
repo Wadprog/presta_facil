@@ -18,6 +18,9 @@ const Footer = ({ data, activeDocMeta }) => {
   const fields = data[0].fields;
   const copyright = parseString(primary.copyright);
   const buttonVariant = VARIANT.PRIMARY;
+  const badgesData = data.find((item) => item.type === 'badges');
+  if (!badgesData) return null;
+  const { fields: badges } = badgesData;
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleCloseModal = () => setModalIsOpen(false);
@@ -26,6 +29,20 @@ const Footer = ({ data, activeDocMeta }) => {
     e.preventDefault();
     setModalIsOpen(!modalIsOpen);
   };
+
+  const renderBadges = badges.map(({ badge }) => {
+    return (
+      <a
+        href={primary.logolink.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        key={`${badge.url} prooflink`}
+        className={style.badges}
+      >
+        <Image image={badge} key={badge.url} />
+      </a>
+    );
+  });
 
   return (
     <>
@@ -50,16 +67,7 @@ const Footer = ({ data, activeDocMeta }) => {
             <LanguageSwitcher activeDocMeta={activeDocMeta} />
           </div>
           <div className={style.wrapper}>
-            <a
-              href={primary.logolink.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className={style.logoWrapper}>
-                <Image image={primary.logo} className={style.logo} />
-                <RichText render={primary.logotext} />
-              </div>
-            </a>
+            <div className={style.badgesWrapper}>{renderBadges}</div>
             <p className={style.copyright}>{copyright}</p>
             <ul className={style.social}>
               {fields.map(({ sociallink, socialogo }) => {
