@@ -2,8 +2,28 @@
 @import '@styles/mixins/all';
 
 .hero {
+  position: relative;
+  z-index: 10;
   padding: 64px 20px 40px;
   margin-bottom: 126px;
+  background-size: cover;
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -10;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        rgba(247, 249, 251, 0) 86.54%,
+        #f6f8fa 100%
+      ),
+      url('./image/bg.png');
+    background-size: cover;
+    top: 0;
+    left: 0;
+    opacity: 0.85;
+  }
   @media (max-width: $md) {
     padding-top: 48px;
     margin-bottom: 48px;
@@ -90,6 +110,7 @@
   }
 
   .list {
+    position: relative;
     li {
       position: relative;
       padding-left: 38px;
@@ -114,6 +135,20 @@
         transform: translateY(-50%);
       }
     }
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      width: 41px;
+      height: 41px;
+      background:#fff;
+      border-radius: 6.36654px 12.7331px;
+      left: 316px;
+      top: 314px;
+      @media (max-width: $xl) {
+        display: none;
+      }
+    }
   }
 
   .buttonWrapper {
@@ -133,6 +168,36 @@
   width: 100%;
   max-width: 768px;
   justify-content: space-between;
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -5;
+    width: 83px;
+    height: 83px;
+    background: linear-gradient(89.52deg, #24B04B -46.17%, #0263BC 186.99%);
+    opacity: 0.5;
+    border-radius: 30px 12px;
+    transform: rotate(270deg);
+    right: -31px;
+    top: 315px;
+    @media (max-width: $xl) {
+      display: none;
+    }
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    width: 41px;
+    height: 41px;
+    background: #fff;
+    border-radius: 6.36654px 12.7331px;
+    right: 40px;
+    top: -50px;
+    @media (max-width: $xl) {
+      display: none;
+    }
+  }
   @media (max-width: $lg) {
     padding: 26px;
   }
@@ -179,6 +244,41 @@
     max-width: 304px;
     @media (max-width: $md) {
       margin-bottom: 24px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -5;
+      width: 67px;
+      height: 67px;
+      background: linear-gradient(180deg, #FEA496 0%, #FCD798 100%);
+      opacity: 0.9;
+      border-radius: 21.1753px 10.5876px;
+      transform: rotate(-180deg);
+      bottom: 0;
+      left: -440px;
+      top: 312px;
+      @media (max-width: $xl) {
+        display: none;
+      }
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: -5;
+      width: 80px;
+      height: 74px;
+      background: linear-gradient(135deg, #FEA496 0.29%, #FCD798 99.67%);
+      opacity: 0.9;
+      border-radius: 30px 5px;
+      transform: rotate(-180deg);
+      bottom: 0;
+      right: -72px;
+      top: -39px;
+      @media (max-width: $xl) {
+        display: none;
+      }
     }
   }
 
