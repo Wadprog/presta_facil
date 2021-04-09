@@ -116,24 +116,26 @@
   }
 }
 
-.logoWrapper {
+.badgesWrapper {
   display: flex;
-  align-items: center;
-  p {
-    margin-left: 12px;
-    color: #ffffff;
-    font-size: 14px;
-    line-height: 135%;
-    letter-spacing: 0.03em;
-
-    @media (max-width: $sm) {
-      font-size: 12px;
-      max-width: 70px;
-    }
+  flex-wrap: wrap;
+  @media (max-width: $md) {
+    justify-content: space-between;
   }
-  .logo {
-    @media (max-width: $sm) {
-      transform: scale(0.8);
-    }
+  @media (max-width: $sm) {
+    justify-content: center;
+    padding-left: 40px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba($color: #fff, $alpha: 0.1);
   }
 }
+
+.badges {
+  margin-right: 15px;
+  @media (max-width: $sm) {
+    margin-bottom: 36px;
+    margin-right: 40px;
+    transform: scale(1.2);
+  }
+}
+

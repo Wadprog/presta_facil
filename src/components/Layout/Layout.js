@@ -154,6 +154,13 @@ const query = graphql`
                   title
                 }
               }
+              ... on PRISMIC_LayoutBody1Badges {
+                type
+                label
+                fields {
+                  badge
+                }
+              }
             }
           }
         }
