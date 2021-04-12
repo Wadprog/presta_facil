@@ -157,3 +157,15 @@
   color: #fff;
   background-color: $green;
 }
+
+.networkErrorMessage {
+  position: absolute;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 160%;
+  color: $red;
+  letter-spacing: 0.05em;
+  top: -20px;
+  right: 0;
+  opacity: 1;
+}

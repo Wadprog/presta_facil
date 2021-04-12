@@ -17,6 +17,7 @@ const Subscribe = ({ primary }) => {
     },
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
   const [isError, setIsError] = useState(false);
   const { background } = useGetImages();
 
@@ -37,6 +38,7 @@ const Subscribe = ({ primary }) => {
     const isValid = isValidEmail(data.email.value);
 
     if (!isValid) {
+      setIsError(true);
       return;
     }
 
@@ -48,10 +50,11 @@ const Subscribe = ({ primary }) => {
       .then(() => {
         setIsSubmitted(true);
         setIsError(false);
+        setSubmitError(null);
       })
-      .catch(() => {
+      .catch((err) => {
         setIsSubmitted(false);
-        setIsError(true);
+        setSubmitError(err.message);
       });
   };
 
@@ -93,7 +96,13 @@ const Subscribe = ({ primary }) => {
                     onChange={handleChange}
                   />
                   <span className={styles.errorMessage}>Wrong Email</span>
+                  {submitError && isValidEmail(data.email.value) && (
+                    <span className={styles.networkErrorMessage}>
+                      {`${submitError}. Please, try again later`}
+                    </span>
+                  )}
                 </label>
+
                 <div className={styles.button}>
                   <Button
                     variant={VARIANT.PRIMARY}
