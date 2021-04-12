@@ -45,6 +45,7 @@ export const query = graphql`
             question2
             button
             button2
+            successinformer
             _linkType
           }
         }

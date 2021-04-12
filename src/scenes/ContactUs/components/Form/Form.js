@@ -28,16 +28,20 @@ const Form = ({
   counter,
   question,
   question2,
+  successinformer,
 }) => {
+  const successInformerText = parseString(successinformer);
   const [formState, setFormState] = useState(initialState);
-  const [errors, setErrors] = useState([]);
+  const [formErrors, setFormErrors] = useState([]);
+  const [isSubmitted, setSubmited] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleOpenModal = () => setModalIsOpen(true);
   const handleCloseModal = () => setModalIsOpen(false);
   const handleInputChange = ({ target: { name, value } }) => {
     setFormState((state) => ({ ...state, [name]: value }));
-    errors.length > 0 &&
-      setErrors([...errors.filter((error) => error != name)]);
+    formErrors.length > 0 &&
+      setFormErrors([...formErrors.filter((error) => error != name)]);
   };
   const handleChangeCounter = (value) => {
     if (value >= MIN_COUNTER_VALUE && value <= MAX_COUNTER_VALUE) {
@@ -45,26 +49,39 @@ const Form = ({
     }
   };
 
+  const handleCloseInformer = (informerType) => {
+    const mapping = {
+      successInformer: setSubmited(false),
+      errorInformer: setSubmitError(null),
+    };
+
+    return mapping[informerType];
+  };
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const { company, email } = formState;
-    if (!errors.includes('email') && !isValidEmail(email)) {
-      setErrors([...errors, 'email']);
+    if (!formErrors.includes('email') && !isValidEmail(email)) {
+      setFormErrors([...formErrors, 'email']);
       return;
     }
 
-    if (!errors.includes('company') && company.length === 0) {
-      setErrors([...errors, 'company']);
+    if (!formErrors.includes('company') && company.length === 0) {
+      setFormErrors([...formErrors, 'company']);
       return;
     }
 
-    errors.length === 0 &&
+    formErrors.length === 0 &&
       fetch(CONTACT_FORM_URL, {
         method: 'POST',
         headers: {},
         body: new FormData(e.target),
       })
         .then(() => {
+          if (submitError) {
+            setSubmitError(null);
+          }
+          setSubmited(true);
           setFormState({
             company: '',
             email: '',
@@ -73,8 +90,14 @@ const Form = ({
             counter: 0,
           });
         })
-        .catch(() => {});
+        .catch((err) => {
+          if (isSubmitted) {
+            setSubmited(null);
+          }
+          setSubmitError(err);
+        });
   };
+
   return (
     <form className={style.form} onSubmit={handleOnSubmit}>
       <div className={style.container}>
@@ -84,7 +107,7 @@ const Form = ({
             placeholder={parseString(company)}
             errorMessage="Required field"
             name="company"
-            valid={!errors.includes('company')}
+            valid={!formErrors.includes('company')}
             value={formState.company}
             handleChange={handleInputChange}
           />
@@ -93,7 +116,7 @@ const Form = ({
             placeholder={parseString(email)}
             errorMessage="Wrong email"
             name="email"
-            valid={!errors.includes('email')}
+            valid={!formErrors.includes('email')}
             value={formState.email}
             handleChange={handleInputChange}
           />
@@ -147,6 +170,22 @@ const Form = ({
         </div>
       </div>
       <ModalBookCall open={modalIsOpen} closeModal={handleCloseModal} />
+      {isSubmitted && (
+        <button
+          className={style.successInformer}
+          onClick={() => handleCloseInformer('successInformer')}
+        >
+          {successInformerText}
+        </button>
+      )}
+      {submitError && (
+        <button
+          className={style.errorInformer}
+          onClick={() => handleCloseInformer('errorInformer')}
+        >
+          {submitError.message}
+        </button>
+      )}
     </form>
   );
 };
@@ -159,6 +198,7 @@ Form.propTypes = {
   company: array,
   email: array,
   counter: array,
+  successinformer: array,
 };
 
 export default Form;
