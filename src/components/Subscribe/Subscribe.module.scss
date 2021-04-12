@@ -16,6 +16,9 @@
   max-width: 1152px;
 
   background-color: #ffffff;
+  @media (max-width: $md) {
+    padding: 75px 5px 60px;
+  }
 }
 
 .block {
