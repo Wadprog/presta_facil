@@ -85,8 +85,8 @@
 
 .buttonWrapper {
   display: flex;
-  justify-content: center;
   @media (max-width: $md) {
+    justify-content: center;
     max-width: 100%;
     margin-bottom: 48px;
     :nth-child(1) {
