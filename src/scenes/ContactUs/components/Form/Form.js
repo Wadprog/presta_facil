@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { array } from 'prop-types';
+import PropTypes from 'prop-types';
 import style from './Form.module.scss';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import Input from '../Input/Input';
@@ -15,6 +15,8 @@ const initialState = {
   question2: '',
   counter: 0,
 };
+
+const errors = { email: 'email', company: 'company' };
 
 const CONTACT_FORM_URL = process.env.GATSBY_CONTACT_FORM_URL;
 const MIN_COUNTER_VALUE = 0;
@@ -61,13 +63,16 @@ const Form = ({
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const { company, email } = formState;
-    if (!formErrors.includes('email') && !isValidEmail(email)) {
-      setFormErrors([...formErrors, 'email']);
+    if (!formErrors.includes(errors.email) && !isValidEmail(email)) {
+      setFormErrors([...formErrors, errors.email]);
       return;
     }
 
-    if (!formErrors.includes('company') && company.length === 0) {
-      setFormErrors([...formErrors, 'company']);
+    if (
+      (!formErrors.includes(errors.company) && company.length === 0) ||
+      (!formErrors.includes(errors.company) && company.trim() === '')
+    ) {
+      setFormErrors([...formErrors, errors.company]);
       return;
     }
 
@@ -183,7 +188,7 @@ const Form = ({
           className={style.errorInformer}
           onClick={() => handleCloseInformer('errorInformer')}
         >
-          {submitError.message}
+          {`${submitError.message}. Please, try later`}
         </button>
       )}
     </form>
@@ -191,14 +196,14 @@ const Form = ({
 };
 
 Form.propTypes = {
-  button: array,
-  button2: array,
-  question: array,
-  question2: array,
-  company: array,
-  email: array,
-  counter: array,
-  successinformer: array,
+  button: PropTypes.array,
+  button2: PropTypes.array,
+  question: PropTypes.array,
+  question2: PropTypes.array,
+  company: PropTypes.array,
+  email: PropTypes.array,
+  counter: PropTypes.array,
+  successinformer: PropTypes.array,
 };
 
 export default Form;
