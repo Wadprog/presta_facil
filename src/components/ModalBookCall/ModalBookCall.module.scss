@@ -31,6 +31,10 @@
   position: absolute;
   top: 40px;
   right: 40px;
+  @media (max-width: $xl) {
+    background: #808080;
+    border-radius: 50%;
+  }
   @media (max-width: $lg) {
     top: 20px;
     right: 10px;
