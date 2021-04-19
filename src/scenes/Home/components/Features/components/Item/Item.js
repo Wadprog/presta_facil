@@ -1,14 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'gatsby';
 import { RichText } from 'prismic-reactjs';
 import { object, string, array } from 'prop-types';
-import Image from '@components/Image/Image';
+import lozad from 'lozad';
+
 import Button, { VARIANT } from '@components/Button/Button.js';
 import style from './Item.module.scss';
 import { parseString, langPath } from '@helpers';
 import LangContext from '@contexts';
 
-const Item = ({ image, imageSharp, text, title, pagename }) => {
+const Item = ({ image, text, title, pagename }) => {
+  useEffect(() => {
+    const observer = lozad();
+    observer.observe();
+  }, []);
+
   const currentLang = useContext(LangContext);
   const link = langPath(currentLang) + '/' + parseString(pagename);
   return (
@@ -20,7 +26,7 @@ const Item = ({ image, imageSharp, text, title, pagename }) => {
         <RichText render={text} />
       </div>
       <div className={style.imageWrapper}>
-        <Image image={image} imageSharp={imageSharp} className={style.image} />
+        <img data-src={image.url} className={`${style.image} lozad`} />
       </div>
       <div className={style.buttonWrapper}>
         <Button variant={VARIANT.PRIMARY} fullWidth element="button">
