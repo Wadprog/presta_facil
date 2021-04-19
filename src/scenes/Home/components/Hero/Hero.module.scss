@@ -34,6 +34,13 @@
     left: 0;
     opacity: 0.65;
   }
+
+  @media (max-width: $md) {
+    &::after {
+      display: none;
+    }
+  }
+  
   @media (max-width: $lg) {
     padding: 140px 16px 200px;
     &::before {

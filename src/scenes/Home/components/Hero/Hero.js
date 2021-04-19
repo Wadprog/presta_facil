@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { object, array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import Swiper from 'react-id-swiper';
-import { parseString } from '@helpers';
+import lozad from 'lozad';
 
+import { parseString } from '@helpers';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
 import Modal from '@components/Modal';
 import styles from './Hero.module.scss';
 import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
-import Image from '@components/Image/Image';
 import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
 import cookieBanner from './image/cookie-banner.png';
 import cookiePolicy from './image/cookie-policy.png';
@@ -26,10 +26,10 @@ const Hero = ({ primary, fields }) => {
   const [modalBookIsOpen, setModalBookIsOpen] = useState(false);
   const handleCloseModalBook = () => setModalBookIsOpen(false);
 
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   setModalBookIsOpen(!modalIsOpen);
-  // };
+  useEffect(() => {
+    const observer = lozad();
+    observer.observe();
+  }, []);
 
   const params = {
     slidesPerView: 3,
@@ -50,18 +50,18 @@ const Hero = ({ primary, fields }) => {
         <div className={styles.content}>
           <div className={styles.mobileImagesWrapper}>
             <img
-              src={cookiePolicy}
-              className={styles.mobileImage}
+              data-src={cookiePolicy}
+              className={`${styles.mobileImage} lozad`}
               alt="cookie policy"
             />
             <img
-              src={preferenceCenter}
-              className={styles.mobileImage}
+              data-src={preferenceCenter}
+              className={`${styles.mobileImage} lozad`}
               alt="preference center"
             />
             <img
-              src={cookieBanner}
-              className={styles.mobileImage}
+              data-src={cookieBanner}
+              className={`${styles.mobileImage} lozad`}
               alt="cookie baner"
             />
           </div>
@@ -86,9 +86,9 @@ const Hero = ({ primary, fields }) => {
                 {fields.map(({ trustedlogo }) => {
                   return (
                     <div className={styles.slide} key={trustedlogo.url}>
-                      <Image
-                        image={trustedlogo}
-                        className={styles.companyLogo}
+                      <img
+                        data-src={trustedlogo.url}
+                        className={`${styles.companyLogo} lozad`}
                       />
                     </div>
                   );
@@ -98,10 +98,9 @@ const Hero = ({ primary, fields }) => {
           </div>
         </div>
         <div className={styles.imageWrapper}>
-          <Image
-            image={primary.mainImage}
-            imageSharp={primary.mainImageSharp}
-            className={styles.image}
+          <img
+            data-src={primary.mainImage.url}
+            className={`${styles.image} lozad`}
           />
           <div className={styles.playButtonWrapper}>
             <div className={styles.playButton}>

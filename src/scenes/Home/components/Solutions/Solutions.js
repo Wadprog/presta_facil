@@ -3,6 +3,8 @@ import { RichText } from 'prismic-reactjs';
 import { array, object } from 'prop-types';
 import { Link } from 'gatsby';
 import Swiper from 'react-id-swiper';
+import lozad from 'lozad';
+
 import style from './Solutions.module.scss';
 import useGetImage from './useGetImage';
 import { useBreakpoints } from '@hooks';
@@ -18,6 +20,11 @@ const Solutions = ({ primary, fields }) => {
   useEffect(() => {
     setBuildKey(+new Date());
   }, [width]);
+
+  useEffect(() => {
+    const observer = lozad();
+    observer.observe();
+  }, []);
 
   const params = {
     slidesPerView: 'auto',
@@ -50,14 +57,19 @@ const Solutions = ({ primary, fields }) => {
             return (
               <div className={style.slide} key={`solutions${index}`}>
                 <Link to={link} className={style.item}>
-                  <img src={image.url} alt={image.alt} loading="lazy" />
+                  <img
+                    data-src={image.url}
+                    alt={image.alt}
+                    className="lozad"
+                    loading="lazy"
+                  />
                   <RichText render={title} />
                   <div>
                     (<RichText render={text} />)
                   </div>
                   <img
-                    className={style.arrow}
-                    src={arrow.publicURL}
+                    className={`${style.arrow} lozad`}
+                    data-src={arrow.publicURL}
                     alt="arrow icon"
                     loading="lazy"
                   />
