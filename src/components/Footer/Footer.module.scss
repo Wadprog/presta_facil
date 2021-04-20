@@ -141,5 +141,8 @@
 
 .badges:nth-last-child(1) {
   margin-right: 0;
+  @media (max-width: $sm) {
+    margin-right: 40px;
+  }
 }
 
