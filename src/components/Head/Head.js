@@ -30,7 +30,7 @@ const Head = ({ children, meta }) => {
     <Helmet>
       {/* Encoding and styles */}
       <html lang="en" />
-      <script type="text/javascript" src="https://app.secureprivacy.ai/script/606acb2d5761b5f013b48067.js"></script>
+      <script type="text/javascript" src="https://app.secureprivacy.ai/script/606acb2d5761b5f013b48067.js"/>
       <meta charSet="utf-8" />
       <meta httpEquiv="x-ua-compatible" content="ie=edge"></meta>
       <meta
@@ -60,7 +60,11 @@ const Head = ({ children, meta }) => {
 
       {zenDeskWidgetScript}
 
+      {/* <!-- Google Tag Manager --> */}
+      <script type="text/javascript" src="./gtm.js" />
+
       <title>{meta.title}</title>
+
 
       {/* Specified tags */}
       {children}
