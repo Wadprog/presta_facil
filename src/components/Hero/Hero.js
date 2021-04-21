@@ -1,25 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { object, array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import Swiper from 'react-id-swiper';
 import { parseString } from '@helpers';
+import lozad from 'lozad';
 
 import Button, { VARIANT } from '@components/Button/Button.js';
 import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
 import Modal from '@components/Modal';
 import styles from './Hero.module.scss';
 import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
-import useGetImage from './useGetImage';
-import Image from '@components/Image/Image';
 
 const Hero = ({ primary, fields }) => {
+  useEffect(() => {
+    const observer = lozad();
+    observer.observe();
+  }, []);
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleOpenModal = () => setModalIsOpen(true);
   const handleCloseModal = () => setModalIsOpen(false);
-  const { hero } = useGetImage();
+
   const modalCtaButtonText = parseString(primary.modalctabuttontext);
   const modalCtaButtonLink = parseString(primary.modalctabuttonlink);
   const videoButtonText = parseString(primary.videobuttontext);
+  const { previewimage: previewImage } = primary;
+  if (!previewImage) return null;
+  const { url: previewImageUrl } = previewImage;
+  if (!previewImageUrl) return null;
 
   const videoLink = primary.modalvideo ? primary.modalvideo.url : '';
   const params = {
@@ -56,17 +64,7 @@ const Hero = ({ primary, fields }) => {
           </div>
         </div>
         <div className={styles.imageWrapper}>
-          <Image className={styles.image} imageSharp={hero} />
-          {primary.flag && (
-            <div className={styles.flagWrapper}>
-              <img
-                className={styles.flag}
-                src={primary.flag.url}
-                alt={primary.flag.alt}
-              />
-            </div>
-          )}
-
+          <img className={`${styles.image} lozad`} data-src={previewImageUrl} />
           <div className={styles.playButtonWrapper}>
             <div className={styles.playButton}>
               <IconButton variant={VARIANT_ICON.PLAY} click={handleOpenModal}>

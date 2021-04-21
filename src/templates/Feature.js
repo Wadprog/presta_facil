@@ -56,6 +56,7 @@ export const query = graphql`
                   modalctabuttontext
                   modalctabuttonlink
                   videobuttontext
+                  previewimage
                 }
                 fields {
                   partnerslogo

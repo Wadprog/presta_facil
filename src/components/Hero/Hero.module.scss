@@ -98,43 +98,14 @@
 
 .imageWrapper {
   position: relative;
-  width: 55%;
+  width: 65%;
   padding-bottom: 26px;
   .image {
-    width: 88%;
+    width: 100%;
     margin: 0 auto;
     border-radius: 12px;
   }
   z-index: 2;
-
-  &::before {
-    content: '';
-    position: absolute;
-    width: 14%;
-    padding-bottom: 13%;
-    background: linear-gradient(89.46deg, #24b04b -46.17%, #0263bc 186.99%);
-    opacity: 0.75;
-    border-radius: 35% 7%;
-    transform: rotate(-180deg);
-    bottom: 0;
-    left: 0;
-    @media (max-width: $sm) {
-      display: none;
-    }
-  }
-  &::after {
-    content: '';
-    position: absolute;
-    width: 12%;
-    padding-bottom: 11%;
-    background: linear-gradient(180deg, #fea496 0%, #fcd798 100%);
-    border-radius: 35% 7%;
-    top: 24px;
-    right: 0;
-    @media (max-width: $sm) {
-      display: none;
-    }
-  }
 
   @media (max-width: $md) {
     width: 100%;
@@ -150,8 +121,8 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  top: 50%;
-  left: 50%;
+  top: 38%;
+  left: 45%;
   transform: translate(-50%, -50%);
 
   .playButton {
@@ -165,6 +136,13 @@
     letter-spacing: 0.03em;
     text-transform: capitalize;
     color: #ffffff;
+  }
+
+  @media (max-width: $md) {
+    top: 35%;
+    .playButtonText {
+      display: none;
+    }
   }
 }
 
