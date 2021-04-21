@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
-import TagManager from 'react-gtm-module'
 
 const Head = ({ children, meta }) => {
   const url = `https://secureprivacy.ai/`;
   const [zenDeskWidgetScript, setZenDeskWidgetScript] = useState(null);
   const loadDelayTime = 5000;
-  const tagManagerArgs = {
-    gtmId: 'GTM-WNNNKBK'
-  }
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const timer = setTimeout(() => {
@@ -63,11 +59,7 @@ const Head = ({ children, meta }) => {
       {zenDeskWidgetScript}
 
       <title>{meta.title}</title>
-
-      {
-        TagManager.initialize(tagManagerArgs)
-      }
-
+      
       {/* Specified tags */}
       {children}
     </Helmet>

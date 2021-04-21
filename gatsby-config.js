@@ -32,6 +32,14 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-WNNNKBK",
+        includeInDevelopment: true,
+        defaultDataLayer: { platform: "gatsby" },
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,
