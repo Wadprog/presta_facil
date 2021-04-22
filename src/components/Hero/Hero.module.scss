@@ -121,8 +121,8 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  top: 38%;
-  left: 45%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
 
   .playButton {
@@ -136,13 +136,6 @@
     letter-spacing: 0.03em;
     text-transform: capitalize;
     color: #ffffff;
-  }
-
-  @media (max-width: $md) {
-    top: 35%;
-    .playButtonText {
-      display: none;
-    }
   }
 }
 
