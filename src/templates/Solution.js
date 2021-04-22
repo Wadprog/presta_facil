@@ -61,6 +61,7 @@ export const query = graphql`
                   modalctabuttonlink
                   modalctabuttontext
                   videobuttontext
+                  previewimage
                 }
               }
               ... on PRISMIC_SolutionpageBodyProjects {
