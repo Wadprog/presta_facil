@@ -22,6 +22,14 @@ const SolutionPage = ({ current, mainSection }) => {
   const urlObj = new URL(currentUrl);
   const { pathname: currentPathname } = urlObj;
   const hospitalityPagePathname = '/solution/hospitality/';
+  const hospitalityPagePathnameSubstring = hospitalityPagePathname.substr(
+    0,
+    hospitalityPagePathname.length - 1
+  );
+  const hospitalityPagePaths = [
+    hospitalityPagePathname,
+    hospitalityPagePathnameSubstring,
+  ];
 
   return (
     <div className={style.SolutionPage}>
@@ -49,7 +57,7 @@ const SolutionPage = ({ current, mainSection }) => {
             );
         }
       })}
-      {currentPathname !== hospitalityPagePathname && (
+      {!hospitalityPagePaths.includes(currentPathname) && (
         <Agencies {...agenciesSection} />
       )}
     </div>
