@@ -17,6 +17,12 @@ const SolutionPage = ({ current, mainSection }) => {
   const agenciesSection = mainSection[1].node.body2[0];
   const plansSection = mainSection[1].node.body2[1];
 
+  const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+  if (!currentUrl) return null;
+  const urlObj = new URL(currentUrl);
+  const { pathname: currentPathname } = urlObj;
+  const hospitalityPagePathname = '/solution/hospitality/';
+
   return (
     <div className={style.SolutionPage}>
       {body.map((section, index) => {
@@ -43,7 +49,9 @@ const SolutionPage = ({ current, mainSection }) => {
             );
         }
       })}
-      <Agencies {...agenciesSection} />
+      {currentPathname !== hospitalityPagePathname && (
+        <Agencies {...agenciesSection} />
+      )}
     </div>
   );
 };
