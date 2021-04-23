@@ -62,8 +62,9 @@
 .title {
   font-family: $font-gramatika;
   font-weight: bold;
-  font-size: 48px;
-  line-height: 1.15;
+  font-size: 32px;
+  line-height: 1.35;
+  letter-spacing: 0.96px;
   margin-bottom: 16px;
   @media (max-width: $lg) {
     font-size: 36px;
