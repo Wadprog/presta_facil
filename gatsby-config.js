@@ -201,6 +201,12 @@ module.exports = {
             component: require.resolve('./src/templates/Compare.js'),
             langs: langs,
           },
+          {
+            type: 'Singlebookpage',
+            match: '/:lang?/:uid',
+            component: require.resolve('./src/templates/BookPage.js'),
+            langs: langs,
+          },
         ],
         // extraPageFields: 'test_type',
         // omitPrismicScript: true,
