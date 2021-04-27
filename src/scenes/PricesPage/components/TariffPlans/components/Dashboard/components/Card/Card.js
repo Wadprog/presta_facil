@@ -5,7 +5,7 @@ import classnames from 'classnames';
 
 import style from './Card.module.scss';
 
-const CHAT_LINK = 'https://secureprivacy.ai/enterprise-inquiry/';
+const CHAT_LINK = '/contact-us';
 
 const Card = ({
   isEnterprise,
@@ -124,7 +124,7 @@ const Card = ({
         <a href={getLink()} className={style.button}>
           {colorized ? (
             <span className={style.gradientText}>
-              {RichText.asText(buttonText)}
+              {isEnterprise ? 'CHAT WITH US' : RichText.asText(buttonText)}
             </span>
           ) : (
             <span>
