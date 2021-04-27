@@ -56,8 +56,8 @@ export const linkResolver = (doc) => {
 
   if (properties.type === 'pricespage') {
     return properties.lang === defaultLanguage
-      ? '/prices'
-      : `/${properties.lang}/prices`;
+      ? '/pricing'
+      : `/${properties.lang}/pricing`;
   }
 
   if (properties.type === 'pricespagetest') {
@@ -68,8 +68,8 @@ export const linkResolver = (doc) => {
 
   if (properties.type === 'pricesenterpricepage') {
     return properties.lang === defaultLanguage
-      ? '/pricing-enterprice'
-      : `/${properties.lang}/pricing-enterprice`;
+      ? '/pricing-enterprise'
+      : `/${properties.lang}/pricing-enterprise`;
   }
 
   if (properties.type === 'pricesresellerpage') {
