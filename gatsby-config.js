@@ -32,11 +32,11 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-google-tagmanager",
+      resolve: 'gatsby-plugin-google-tagmanager',
       options: {
-        id: "GTM-WNNNKBK",
+        id: 'GTM-WNNNKBK',
         includeInDevelopment: true,
-        defaultDataLayer: { platform: "gatsby" },
+        defaultDataLayer: { platform: 'gatsby' },
       },
     },
     {
@@ -145,7 +145,7 @@ module.exports = {
           },
           {
             type: 'Pricespage',
-            match: '/:lang?/prices',
+            match: '/:lang?/pricing',
             component: require.resolve('./src/templates/PricesPage.js'),
             langs: langs,
           },
@@ -157,7 +157,7 @@ module.exports = {
           },
           {
             type: 'Pricesenterpricepage',
-            match: '/:lang?/pricing-enterprice',
+            match: '/:lang?/pricing-enterprise',
             component: require.resolve(
               './src/templates/PricingEnterpricePage.js'
             ),
