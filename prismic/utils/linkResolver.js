@@ -107,6 +107,12 @@ export const linkResolver = (doc) => {
       ? `/blog/${properties.uid}`
       : `/${properties.lang}/blog/${properties.uid}`;
   }
+
+  if (properties.type === 'singlebookpage' && properties.uid) {
+    return properties.lang === defaultLanguage
+      ? `${properties.uid}`
+      : `/${properties.lang}${properties.uid}`;
+  }
   // Backup for all other types
   return '/';
 };
