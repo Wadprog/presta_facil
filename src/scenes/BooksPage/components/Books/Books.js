@@ -1,6 +1,6 @@
 import React from 'react';
 import { array } from 'prop-types';
-import { parseString, parseUrl } from '@helpers';
+import { parseString } from '@helpers';
 import Image from '@components/Image/Image';
 
 import Arrow from './image/arrow.inline.svg';
@@ -10,13 +10,11 @@ const Books = ({ fields }) => {
   return (
     <div className={style.page}>
       <div className={style.container}>
-        {fields.map(({ image, imageSharp, downloadlink, buttontext }) => (
+        {fields.map(({ image, imageSharp, buttontext, bookpageurl }) => (
           <a
-            href={parseUrl(downloadlink)}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={parseString(bookpageurl)}
             className={style.book}
-            key={downloadlink.url}
+            key={parseString(bookpageurl)}
           >
             <Image image={image} imageSharp={imageSharp} />
             <div className={style.buttonWrapper}>
