@@ -44,13 +44,7 @@ export const query = graphql`
                   buttontext
                   image
                   flag
-                  downloadlink {
-                    _linkType
-                    ... on PRISMIC__FileLink {
-                      _linkType
-                      url
-                    }
-                  }
+                  bookpageurl
                 }
               }
               ... on PRISMIC_BookpageBodyCta {
