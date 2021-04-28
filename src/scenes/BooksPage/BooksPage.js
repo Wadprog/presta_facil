@@ -5,7 +5,8 @@ import Books from './components/Books/Books';
 import CallToAction from '@components/CallToAction/CallToAction';
 
 const BooksPage = ({ content }) => {
-  const body = content.prismic.allBookpages.edges[0].node.body;
+  const { body } = content;
+
   return (
     <div className={style.HomePage}>
       {body.map((section) => {

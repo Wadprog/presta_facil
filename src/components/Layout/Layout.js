@@ -1,5 +1,5 @@
 import React from 'react';
-import { bool, object, node } from 'prop-types';
+import { bool, object, node, array } from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import { withPreview } from 'gatsby-source-prismic-graphql';
 import LangContext from '@contexts';
@@ -12,7 +12,15 @@ import Footer from '@components/Footer';
 import styles from './Layout.module.scss';
 import '@styles/index.scss';
 
-const Layout = ({ children, data, hideMenu, activeDocMeta }) => {
+const Layout = ({
+  children,
+  data,
+  hideMenu,
+  activeDocMeta,
+  canonical,
+  metatitle,
+  metadescription,
+}) => {
   const layoutContext = data.prismic.allLayouts.edges[0];
   if (!layoutContext) return null;
 
@@ -29,7 +37,11 @@ const Layout = ({ children, data, hideMenu, activeDocMeta }) => {
       value={currentLang === defaultLanguage ? '' : currentLang.slice(0, 2)}
     >
       <div className={styles.container}>
-        <Head />
+        <Head
+          canonical={canonical}
+          metatitle={metatitle}
+          metadescription={metadescription}
+        />
         <Header data={headerData} hideMenu={hideMenu} />
         <main className={styles.main} id="main">
           {children}
@@ -45,6 +57,9 @@ Layout.propTypes = {
   data: object,
   hideMenu: bool,
   activeDocMeta: object,
+  canonical: array,
+  metatitle: array,
+  metadescription: array,
 };
 
 const query = graphql`

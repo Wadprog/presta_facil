@@ -2,11 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 
-const Head = ({ children, meta }) => {
-  const url = `https://secureprivacy.ai/`;
+import { parseString } from '@helpers';
+
+const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
   const [zenDeskWidgetScript, setZenDeskWidgetScript] = useState(null);
   const [secureprivacyScript, setSecureprivacyScript] = useState(null);
+  const [canonicalUrl, setCanonicalUrl] = useState(null);
+  const [pageTitle, setPageTitle] = useState(null);
+  const [pageDescription, setPageDescription] = useState(null);
+
   const loadDelayTime = 5000;
+  const url = 'https://secureprivacy.ai/';
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const timer = setTimeout(() => {
@@ -43,6 +50,37 @@ const Head = ({ children, meta }) => {
     }
   }, []);
 
+  useEffect(() => {
+    const currentPageCanonical = parseString(canonical);
+    if (currentPageCanonical) {
+      setCanonicalUrl(<link rel="canonical" href={currentPageCanonical} />);
+    }
+  }, []);
+
+  useEffect(() => {
+    const currentPageTitle = parseString(metatitle);
+    if (currentPageTitle) {
+      setPageTitle(<title>{currentPageTitle}</title>);
+    }
+    if (!currentPageTitle) {
+      setPageTitle(<title>{meta.title}</title>);
+    }
+  }, []);
+
+  useEffect(() => {
+    const currentPageDescription = parseString(metadescription);
+    if (currentPageDescription) {
+      setPageDescription(
+        <meta content={currentPageDescription} name="description" />
+      );
+    }
+    if (!currentPageDescription) {
+      setPageDescription(
+        <meta content={meta.description} name="description" />
+      );
+    }
+  }, []);
+
   return (
     <Helmet>
       {/* Encoding and styles */}
@@ -55,8 +93,10 @@ const Head = ({ children, meta }) => {
       />
 
       {/* General meta */}
-      <meta content={meta.description} name="description" />
-      <meta content={meta.title} name="author" />
+
+      {canonicalUrl}
+      {pageTitle}
+      {pageDescription}
 
       {/* <!-- Twitter meta --> */}
       <meta content="summary" name="twitter:card" />
@@ -77,8 +117,6 @@ const Head = ({ children, meta }) => {
       {zenDeskWidgetScript}
       {secureprivacyScript}
 
-      <title>{meta.title}</title>
-
       {/* Specified tags */}
       {children}
     </Helmet>
@@ -98,6 +136,9 @@ Head.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
   }).isRequired,
+  canonical: PropTypes.array,
+  metatitle: PropTypes.array,
+  metadescription: PropTypes.array,
 };
 
 export default Head;
