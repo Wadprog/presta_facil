@@ -9,10 +9,16 @@ const Page = ({ data }) => {
   const pageContext = data.prismic.allSolutionpages.edges[0];
   if (!pageContext) return null;
   const body = pageContext.node;
+  const { metatitle, metadescription, canonical } = body;
   const mainSection = data.prismic.allLayouts.edges;
 
   return (
-    <Layout activeDocMeta={body._meta}>
+    <Layout
+      activeDocMeta={body._meta}
+      metatitle={metatitle}
+      metadescription={metadescription}
+      canonical={canonical}
+    >
       <SolutionPage current={body} mainSection={mainSection} />
     </Layout>
   );
@@ -29,6 +35,9 @@ export const query = graphql`
         edges {
           node {
             _linkType
+            metatitle
+            metadescription
+            canonical
             _meta {
               uid
               type
