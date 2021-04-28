@@ -8,10 +8,17 @@ import Layout from '@components/Layout';
 const Page = ({ data }) => {
   const bookpageContent = data.prismic.allBookpages.edges[0];
   if (!bookpageContent) return null;
-  const bookpage = bookpageContent.node;
+  const { node: bookpageData } = bookpageContent;
+  const { metatitle, metadescription, canonical } = bookpageData;
+
   return (
-    <Layout activeDocMeta={bookpage._meta}>
-      <BooksPage content={data} />
+    <Layout
+      activeDocMeta={bookpageData._meta}
+      metatitle={metatitle}
+      metadescription={metadescription}
+      canonical={canonical}
+    >
+      <BooksPage content={bookpageData} />
     </Layout>
   );
 };
@@ -26,6 +33,9 @@ export const query = graphql`
       allBookpages(lang: $lang) {
         edges {
           node {
+            metatitle
+            metadescription
+            canonical
             _meta {
               uid
               type
