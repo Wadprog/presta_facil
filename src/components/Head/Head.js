@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 const Head = ({ children, meta }) => {
   const url = `https://secureprivacy.ai/`;
   const [zenDeskWidgetScript, setZenDeskWidgetScript] = useState(null);
+  const [secureprivacyScript, setSecureprivacyScript] = useState(null);
   const loadDelayTime = 5000;
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -24,11 +25,28 @@ const Head = ({ children, meta }) => {
     }
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const timer = setTimeout(() => {
+        setSecureprivacyScript(
+          <script
+            type="text/javascript"
+            src="https://app.secureprivacy.ai/script/606acb2d5761b5f013b48067.js"
+            async
+          >
+            {' '}
+          </script>
+        );
+      }, loadDelayTime);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   return (
     <Helmet>
       {/* Encoding and styles */}
       <html lang="en" />
-      <script type="text/javascript" src="https://app.secureprivacy.ai/script/606acb2d5761b5f013b48067.js" />
       <meta charSet="utf-8" />
       <meta httpEquiv="x-ua-compatible" content="ie=edge"></meta>
       <meta
@@ -57,9 +75,10 @@ const Head = ({ children, meta }) => {
       <meta property="og:locale" content="en_US" />
 
       {zenDeskWidgetScript}
+      {secureprivacyScript}
 
       <title>{meta.title}</title>
-      
+
       {/* Specified tags */}
       {children}
     </Helmet>
