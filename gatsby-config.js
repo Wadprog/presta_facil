@@ -32,10 +32,11 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-google-tagmanager',
+      resolve: 'gatsby-plugin-google-tagmanager-timeout',
       options: {
         id: 'GTM-WNNNKBK',
         includeInDevelopment: true,
+        timeout: 2000,
         defaultDataLayer: { platform: 'gatsby' },
       },
     },
