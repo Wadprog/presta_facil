@@ -9,8 +9,15 @@ const Page = ({ data }) => {
   const pageContext = data.prismic.allBlogpostpages.edges[0];
   if (!pageContext) return null;
   const body = pageContext.node;
+  const { title, description, canonical } = body;
+
   return (
-    <Layout activeDocMeta={body._meta}>
+    <Layout
+      activeDocMeta={body._meta}
+      metatitle={title}
+      metadescription={description}
+      canonical={canonical}
+    >
       <Post current={body} />
     </Layout>
   );
@@ -105,6 +112,7 @@ export const query = graphql`
             description
             preview
             title
+            canonical
           }
         }
       }
