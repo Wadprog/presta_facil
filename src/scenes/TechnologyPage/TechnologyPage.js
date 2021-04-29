@@ -9,8 +9,7 @@ import WhatIs from './components/WhatIs/WhatIs';
 import Features from './components/Features/Features';
 import Banner from './components/Banner/Banner';
 
-const TechnologyPage = ({ current }) => {
-  const body = current.body;
+const TechnologyPage = ({ current: body }) => {
   return (
     <div className={style.TechnologyPage}>
       {body.map((section, index) => {
@@ -32,7 +31,7 @@ const TechnologyPage = ({ current }) => {
 };
 
 TechnologyPage.propTypes = {
-  current: PropTypes.object.isRequired,
+  current: PropTypes.array.isRequired,
 };
 
 export default TechnologyPage;
