@@ -9,10 +9,17 @@ const Page = ({ data }) => {
   const pageContext = data.prismic.allFeaturepages.edges[0];
   if (!pageContext) return null;
   const body = pageContext.node;
+  const { metatitle, metadescription, canonical } = body;
+  const { body: pageContent } = body;
 
   return (
-    <Layout activeDocMeta={body._meta}>
-      <Feature current={body} />
+    <Layout
+      activeDocMeta={body._meta}
+      metatitle={metatitle}
+      metadescription={metadescription}
+      canonical={canonical}
+    >
+      <Feature current={pageContent} />
     </Layout>
   );
 };
@@ -27,6 +34,9 @@ export const query = graphql`
       allFeaturepages(uid: $uid, lang: $lang) {
         edges {
           node {
+            metatitle
+            metadescription
+            canonical
             _meta {
               uid
               type
