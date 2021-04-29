@@ -9,10 +9,17 @@ const Page = ({ data }) => {
   const pageContext = data.prismic.allTechnologypages.edges[0];
   if (!pageContext) return null;
   const body = pageContext.node;
+  const { metatitle, metadescription, canonical } = body;
+  const { body: pageContent } = body;
 
   return (
-    <Layout activeDocMeta={body._meta}>
-      <Technology current={body} />
+    <Layout
+      activeDocMeta={body._meta}
+      metatitle={metatitle}
+      metadescription={metadescription}
+      canonical={canonical}
+    >
+      <Technology current={pageContent} />
     </Layout>
   );
 };
@@ -28,6 +35,9 @@ export const query = graphql`
         edges {
           node {
             _linkType
+            metatitle
+            metadescription
+            canonical
             _meta {
               uid
               type
