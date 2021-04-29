@@ -7,9 +7,7 @@ import Hero from '@components/Hero';
 import Questions from '@components/Questions/Questions';
 import Works from './components/Works';
 
-const FeaturePage = ({ current }) => {
-  const body = current.body;
-
+const FeaturePage = ({ current: body }) => {
   return (
     <div className={style.SolutionPage}>
       {body.map((section, index) => {
@@ -27,7 +25,7 @@ const FeaturePage = ({ current }) => {
 };
 
 FeaturePage.propTypes = {
-  current: PropTypes.object.isRequired,
+  current: PropTypes.array.isRequired,
   mainSection: PropTypes.array,
 };
 
