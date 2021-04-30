@@ -9,9 +9,15 @@ const Page = ({ data }) => {
   const resellerpageContent = data.prismic.allPricesresellerpages.edges[0];
   if (!resellerpageContent) return null;
   const resellerpage = resellerpageContent.node;
+  const { metatitle, metadescription, canonical } = resellerpage;
 
   return (
-    <Layout activeDocMeta={resellerpage._meta}>
+    <Layout
+      activeDocMeta={resellerpage._meta}
+      metatitle={metatitle}
+      metadescription={metadescription}
+      canonical={canonical}
+    >
       <ResellerPage content={data} />
     </Layout>
   );
@@ -27,6 +33,9 @@ export const query = graphql`
       allPricesresellerpages(lang: $lang) {
         edges {
           node {
+            metatitle
+            metadescription
+            canonical
             _meta {
               uid
               type
