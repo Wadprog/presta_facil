@@ -9,9 +9,15 @@ const Page = ({ data }) => {
   const videoblogContent = data.prismic.allVideopages.edges[0];
   if (!videoblogContent) return null;
   const videoblog = videoblogContent.node;
+  const { metatitle, metadescription, canonical } = videoblog;
 
   return (
-    <Layout activeDocMeta={videoblog._meta}>
+    <Layout
+      activeDocMeta={videoblog._meta}
+      metatitle={metatitle}
+      metadescription={metadescription}
+      canonical={canonical}
+    >
       <VideoBlogPage content={data} />
     </Layout>
   );
@@ -27,6 +33,9 @@ export const query = graphql`
       allVideopages(lang: $lang) {
         edges {
           node {
+            metatitle
+            metadescription
+            canonical
             _meta {
               uid
               type
