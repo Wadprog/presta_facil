@@ -9,9 +9,15 @@ const Page = ({ data }) => {
   const contactpageContent = data.prismic.allContacts.edges[0];
   if (!contactpageContent) return null;
   const contactpage = contactpageContent.node;
+  const { metatitle, metadescription, canonical } = contactpage;
 
   return (
-    <Layout activeDocMeta={contactpage._meta}>
+    <Layout
+      activeDocMeta={contactpage._meta}
+      metatitle={metatitle}
+      metadescription={metadescription}
+      canonical={canonical}
+    >
       <ContactUs content={data} />
     </Layout>
   );
@@ -27,6 +33,9 @@ export const query = graphql`
       allContacts(lang: $lang) {
         edges {
           node {
+            metatitle
+            metadescription
+            canonical
             _meta {
               uid
               type
