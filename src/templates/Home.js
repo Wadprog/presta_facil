@@ -9,9 +9,15 @@ const Page = ({ data }) => {
   const homepageContent = data.prismic.allHomepages.edges[0];
   if (!homepageContent) return null;
   const homepage = homepageContent.node;
+  const { metatitle, metadescription, canonical } = homepage;
 
   return (
-    <Layout activeDocMeta={homepage._meta}>
+    <Layout
+      activeDocMeta={homepage._meta}
+      metatitle={metatitle}
+      metadescription={metadescription}
+      canonical={canonical}
+    >
       <Home content={data} />
     </Layout>
   );
@@ -27,6 +33,9 @@ export const query = graphql`
       allHomepages(lang: $lang) {
         edges {
           node {
+            metatitle
+            metadescription
+            canonical
             _meta {
               uid
               type
