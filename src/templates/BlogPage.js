@@ -9,6 +9,9 @@ const Page = ({ data }) => {
   const blogpagesContent = data.prismic.allBlogpostpages.edges[0];
   if (!blogpagesContent) return null;
   const blogpages = blogpagesContent.node;
+  const { node: blogPage } = data.prismic.allBlogpages.edges[0];
+  if (!blogPage) return null;
+  const { metatitle, metadescription, canonical } = blogPage;
 
   blogpages._meta.alternateLanguages.map((item) => {
     delete item.uid;
@@ -16,7 +19,12 @@ const Page = ({ data }) => {
   });
 
   return (
-    <Layout activeDocMeta={blogpages._meta}>
+    <Layout
+      activeDocMeta={blogpages._meta}
+      metatitle={metatitle}
+      metadescription={metadescription}
+      canonical={canonical}
+    >
       <BlogPage content={data} />
     </Layout>
   );
@@ -33,6 +41,9 @@ export const query = graphql`
         edges {
           node {
             title
+            metatitle
+            metadescription
+            canonical
             _meta {
               uid
               type
