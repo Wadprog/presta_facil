@@ -9,9 +9,15 @@ const Page = ({ data }) => {
   const enterpricepageContent = data.prismic.allPricesenterpricepages.edges[0];
   if (!enterpricepageContent) return null;
   const enterpricepage = enterpricepageContent.node;
+  const { metatitle, metadescription, canonical } = enterpricepage;
 
   return (
-    <Layout activeDocMeta={enterpricepage._meta}>
+    <Layout
+      activeDocMeta={enterpricepage._meta}
+      metatitle={metatitle}
+      metadescription={metadescription}
+      canonical={canonical}
+    >
       <EnterpricePage content={data} />
     </Layout>
   );
@@ -27,6 +33,9 @@ export const query = graphql`
       allPricesenterpricepages(lang: $lang) {
         edges {
           node {
+            metatitle
+            metadescription
+            canonical
             _meta {
               uid
               type
