@@ -5,14 +5,19 @@ import PropTypes from 'prop-types';
 import { parseString } from '@helpers';
 
 const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
+  const loadDelayTime = 5000;
+  const url = 'https://secureprivacy.ai/';
+
   const [zenDeskWidgetScript, setZenDeskWidgetScript] = useState(null);
   const [secureprivacyScript, setSecureprivacyScript] = useState(null);
   const [canonicalUrl, setCanonicalUrl] = useState(null);
   const [pageTitle, setPageTitle] = useState(null);
   const [pageDescription, setPageDescription] = useState(null);
-
-  const loadDelayTime = 5000;
-  const url = 'https://secureprivacy.ai/';
+  const [opengraphUrl, setOpengrapUrl] = useState(url);
+  const [opengraphTitle, setOpengraphTitle] = useState(meta.title);
+  const [opengraphDescription, setOpengraphDescription] = useState(
+    meta.description
+  );
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -54,6 +59,7 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
     const currentPageCanonical = parseString(canonical);
     if (currentPageCanonical) {
       setCanonicalUrl(<link rel="canonical" href={currentPageCanonical} />);
+      setOpengrapUrl(currentPageCanonical);
     }
   }, []);
 
@@ -61,6 +67,7 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
     const currentPageTitle = parseString(metatitle);
     if (currentPageTitle) {
       setPageTitle(<title>{currentPageTitle}</title>);
+      setOpengraphTitle(currentPageTitle);
     }
     if (!currentPageTitle) {
       setPageTitle(<title>{meta.title}</title>);
@@ -73,6 +80,7 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
       setPageDescription(
         <meta content={currentPageDescription} name="description" />
       );
+      setOpengraphDescription(currentPageDescription);
     }
     if (!currentPageDescription) {
       setPageDescription(
@@ -100,18 +108,18 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
 
       {/* <!-- Twitter meta --> */}
       <meta content="summary" name="twitter:card" />
-      <meta content={meta.title} name="twitter:title" />
-      <meta content={meta.description} name="twitter:description" />
+      <meta content={opengraphTitle} name="twitter:title" />
+      <meta content={opengraphDescription} name="twitter:description" />
       <meta content={`${url}images/meta/tile.png`} name="twitter:image" />
-      <meta content={url} name="twitter:url" />
+      <meta content={opengraphUrl} name="twitter:url" />
 
       {/* <!-- Facebook meta --> */}
       <meta content={url} property="og:site_name" />
-      <meta content={meta.title} property="og:title" />
-      <meta content={meta.description} property="og:description" />
+      <meta content={opengraphTitle} property="og:title" />
+      <meta content={opengraphDescription} property="og:description" />
       <meta content="website" property="og:type" />
       <meta content={`${url}images/meta/tile.png`} property="og:image" />
-      <meta content={url} property="og:url" />
+      <meta content={opengraphUrl} property="og:url" />
       <meta property="og:locale" content="en_US" />
 
       {zenDeskWidgetScript}
