@@ -9,9 +9,15 @@ const Page = ({ data }) => {
   const bookpageData = data.prismic.allSinglebookpages.edges[0];
   if (!bookpageData) return null;
   const bookpageContent = bookpageData.node;
+  const { metatitle, metadescription, canonical } = bookpageContent;
 
   return (
-    <Layout activeDocMeta={bookpageContent._meta}>
+    <Layout
+      activeDocMeta={bookpageContent._meta}
+      metatitle={metatitle}
+      metadescription={metadescription}
+      canonical={canonical}
+    >
       <BookPage content={bookpageContent} />
     </Layout>
   );
@@ -33,6 +39,9 @@ export const query = graphql`
             buttontext
             consenttext
             bookurl
+            metatitle
+            metadescription
+            canonical
             _meta {
               uid
               type
