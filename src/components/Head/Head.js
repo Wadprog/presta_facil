@@ -9,7 +9,6 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
   const url = 'https://secureprivacy.ai/';
 
   const [zenDeskWidgetScript, setZenDeskWidgetScript] = useState(null);
-  const [secureprivacyScript, setSecureprivacyScript] = useState(null);
   const [canonicalUrl, setCanonicalUrl] = useState(null);
   const [pageTitle, setPageTitle] = useState(null);
   const [pageDescription, setPageDescription] = useState(null);
@@ -26,24 +25,6 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
           <script
             id="ze-snippet"
             src="https://static.zdassets.com/ekr/snippet.js?key=7c1de950-9031-4521-8e28-c9defa10512b"
-            async
-          >
-            {' '}
-          </script>
-        );
-      }, loadDelayTime);
-
-      return () => clearTimeout(timer);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const timer = setTimeout(() => {
-        setSecureprivacyScript(
-          <script
-            type="text/javascript"
-            src="https://app.secureprivacy.ai/script/606acb2d5761b5f013b48067.js"
             async
           >
             {' '}
@@ -93,6 +74,10 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
     <Helmet>
       {/* Encoding and styles */}
       <html lang="en" />
+      <script
+        type="text/javascript"
+        src="https://app.secureprivacy.ai/script/606acb2d5761b5f013b48067.js"
+      ></script>
       <meta charSet="utf-8" />
       <meta httpEquiv="x-ua-compatible" content="ie=edge"></meta>
       <meta
@@ -123,7 +108,6 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
       <meta property="og:locale" content="en_US" />
 
       {zenDeskWidgetScript}
-      {secureprivacyScript}
 
       {/* Specified tags */}
       {children}
