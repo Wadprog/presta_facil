@@ -7,11 +7,13 @@ const {
 
 module.exports = {
   siteMetadata: {
+    siteUrl: `https://secureprivacy.ai/`,
     title: `Secure-privacy`,
     description: `Secure privacy website`,
     author: `Secure privacy`,
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-preact`,
