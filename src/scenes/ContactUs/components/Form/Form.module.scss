@@ -28,8 +28,11 @@
 }
 
 .buttonWrapper {
-  width: 100%;
+  width: 50%;
   background: $bg-blue;
+  @media (max-width: $md) {
+    width: 100%;
+  }
 
   & + .buttonWrapper {
     margin-left: 30px;
