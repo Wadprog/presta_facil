@@ -53,7 +53,6 @@ export const query = graphql`
             counter
             question2
             button
-            button2
             successinformer
             _linkType
           }

@@ -6,7 +6,6 @@ import Input from '../Input/Input';
 import TextArea from '../TextArea/TextArea';
 import Counter from '../Counter/Counter';
 import { parseString, isValidEmail } from '@helpers';
-import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
 
 const initialState = {
   company: '',
@@ -24,7 +23,6 @@ const MAX_COUNTER_VALUE = 100;
 
 const Form = ({
   button,
-  button2,
   company,
   email,
   counter,
@@ -37,9 +35,6 @@ const Form = ({
   const [formErrors, setFormErrors] = useState([]);
   const [isSubmitted, setSubmited] = useState(false);
   const [submitError, setSubmitError] = useState(null);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const handleOpenModal = () => setModalIsOpen(true);
-  const handleCloseModal = () => setModalIsOpen(false);
   const handleInputChange = ({ target: { name, value } }) => {
     setFormState((state) => ({ ...state, [name]: value }));
     formErrors.length > 0 &&
@@ -162,19 +157,8 @@ const Form = ({
               {parseString(button)}
             </Button>
           </div>
-          <div className={style.buttonWrapper}>
-            <Button
-              variant={VARIANT.TRANSPARENT}
-              fullWidth
-              element="button"
-              click={handleOpenModal}
-            >
-              {parseString(button2)}
-            </Button>
-          </div>
         </div>
       </div>
-      <ModalBookCall open={modalIsOpen} closeModal={handleCloseModal} />
       {isSubmitted && (
         <button
           className={style.successInformer}
