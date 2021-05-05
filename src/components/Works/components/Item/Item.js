@@ -23,13 +23,14 @@ const Item = ({ link, screenshot, screenshotSharp, name, tag }) => {
           <RichText render={name} />
         </div>
         <div className={style.tagList}>
-          {tagList && tagList.map((tag, index) => {
-            return (
-              <div className={style.tag} key={`tag${index}${tag}`}>
-                {tag}
-              </div>
-            );
-          })}
+          {tagList &&
+            tagList.map((tag, index) => {
+              return (
+                <div className={style.tag} key={`tag${index}${tag}`}>
+                  {tag}
+                </div>
+              );
+            })}
         </div>
       </div>
     </a>
