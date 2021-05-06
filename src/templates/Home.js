@@ -64,6 +64,25 @@ export const query = graphql`
                   modalbuttondescription
                   modalctabuttontext
                   modalctabuttonlink
+                  mainImageSharp {
+                    id
+                    childImageSharp {
+                      fluid {
+                        aspectRatio
+                        base64
+                        originalImg
+                        originalName
+                        presentationHeight
+                        presentationWidth
+                        sizes
+                        src
+                        srcSet
+                        srcSetWebp
+                        srcWebp
+                        tracedSVG
+                      }
+                    }
+                  }
                   modalvideo {
                     ... on PRISMIC__ExternalLink {
                       _linkType

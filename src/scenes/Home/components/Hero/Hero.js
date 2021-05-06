@@ -8,6 +8,7 @@ import { parseString } from '@helpers';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
 import Modal from '@components/Modal';
+import Image from '@components/Image/Image';
 import styles from './Hero.module.scss';
 import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
 import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
@@ -98,9 +99,10 @@ const Hero = ({ primary, fields }) => {
           </div>
         </div>
         <div className={styles.imageWrapper}>
-          <img
-            data-src={primary.mainImage.url}
-            className={`${styles.image} lozad`}
+          <Image
+            image={primary.mainImage}
+            imageSharp={primary.mainImageSharp}
+            className={styles.image}
           />
           <div className={styles.playButtonWrapper}>
             <div className={styles.playButton}>
