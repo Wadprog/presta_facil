@@ -58,6 +58,26 @@ export const query = graphql`
                   description
                   image
                   title
+                  imageSharp {
+                    id
+                    childImageSharp {
+                      id
+                      fluid {
+                        base64
+                        tracedSVG
+                        srcWebp
+                        srcSetWebp
+                        originalImg
+                        originalName
+                        src
+                        srcSet
+                        sizes
+                        presentationWidth
+                        presentationHeight
+                        aspectRatio
+                      }
+                    }
+                  }
                 }
               }
               ... on PRISMIC_TechnologypageBodyBenefits {
