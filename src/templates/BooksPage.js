@@ -53,7 +53,6 @@ export const query = graphql`
                 fields {
                   buttontext
                   image
-                  flag
                   bookpageurl
                 }
               }
