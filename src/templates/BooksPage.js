@@ -54,6 +54,24 @@ export const query = graphql`
                   buttontext
                   image
                   bookpageurl
+                  imageSharp {
+                    childImageSharp {
+                      fluid {
+                        aspectRatio
+                        base64
+                        originalImg
+                        originalName
+                        presentationHeight
+                        presentationWidth
+                        sizes
+                        src
+                        srcSet
+                        srcSetWebp
+                        srcWebp
+                        tracedSVG
+                      }
+                    }
+                  }
                 }
               }
               ... on PRISMIC_BookpageBodyCta {
@@ -65,6 +83,24 @@ export const query = graphql`
                   description
                   image
                   sectiontitle
+                  imageSharp {
+                    childImageSharp {
+                      fluid {
+                        aspectRatio
+                        base64
+                        originalImg
+                        originalName
+                        presentationHeight
+                        presentationWidth
+                        sizes
+                        src
+                        srcSet
+                        srcSetWebp
+                        srcWebp
+                        tracedSVG
+                      }
+                    }
+                  }
                 }
               }
             }
