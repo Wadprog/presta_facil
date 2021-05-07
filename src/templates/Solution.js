@@ -71,6 +71,24 @@ export const query = graphql`
                   modalctabuttontext
                   videobuttontext
                   previewimage
+                  previewimageSharp {
+                    childImageSharp {
+                      fluid {
+                        aspectRatio
+                        base64
+                        originalImg
+                        originalName
+                        presentationHeight
+                        presentationWidth
+                        sizes
+                        src
+                        srcSet
+                        srcSetWebp
+                        srcWebp
+                        tracedSVG
+                      }
+                    }
+                  }
                 }
               }
               ... on PRISMIC_SolutionpageBodyProjects {

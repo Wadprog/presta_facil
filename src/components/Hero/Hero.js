@@ -10,6 +10,7 @@ import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
 import Modal from '@components/Modal';
 import styles from './Hero.module.scss';
 import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
+import Image from '@components/Image/Image';
 
 const Hero = ({ primary, fields }) => {
   useEffect(() => {
@@ -26,6 +27,8 @@ const Hero = ({ primary, fields }) => {
   const videoButtonText = parseString(primary.videobuttontext);
   const { previewimage: previewImage } = primary;
   if (!previewImage) return null;
+  const { previewimageSharp: priviewImageSharp } = primary;
+  if (!priviewImageSharp) return null;
   const { url: previewImageUrl } = previewImage;
   if (!previewImageUrl) return null;
 
@@ -64,7 +67,11 @@ const Hero = ({ primary, fields }) => {
           </div>
         </div>
         <div className={styles.imageWrapper}>
-          <img className={`${styles.image} lozad`} data-src={previewImageUrl} />
+          <Image
+            className={styles.image}
+            image={previewImage}
+            imageSharp={priviewImageSharp}
+          />
           <div className={styles.playButtonWrapper}>
             <div className={styles.playButton}>
               <IconButton variant={VARIANT_ICON.PLAY} click={handleOpenModal}>
@@ -87,6 +94,7 @@ const Hero = ({ primary, fields }) => {
                   alt={partnerslogo.alt}
                   draggable="false"
                   loading="lazy"
+                  className="lozad"
                 />
               </div>
             );
