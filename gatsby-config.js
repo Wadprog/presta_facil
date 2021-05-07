@@ -210,6 +210,12 @@ module.exports = {
             component: require.resolve('./src/templates/BookPage.js'),
             langs: langs,
           },
+          {
+            type: 'Privacypolicy',
+            match: '/:lang?/:uid',
+            component: require.resolve('./src/templates/PrivacyPolicyPage.js'),
+            langs: langs,
+          },
         ],
         // extraPageFields: 'test_type',
         // omitPrismicScript: true,
