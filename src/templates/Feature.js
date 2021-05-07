@@ -67,6 +67,24 @@ export const query = graphql`
                   modalctabuttonlink
                   videobuttontext
                   previewimage
+                  previewimageSharp {
+                    childImageSharp {
+                      fluid {
+                        aspectRatio
+                        base64
+                        originalImg
+                        originalName
+                        presentationHeight
+                        presentationWidth
+                        sizes
+                        src
+                        srcSet
+                        srcSetWebp
+                        srcWebp
+                        tracedSVG
+                      }
+                    }
+                  }
                 }
                 fields {
                   partnerslogo
