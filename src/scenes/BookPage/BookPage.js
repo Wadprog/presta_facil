@@ -6,6 +6,7 @@ import classnames from 'classnames';
 import { parseString, isValidEmail } from '@helpers';
 import style from './BookPage.module.scss';
 import Button, { VARIANT } from '@components/Button/Button.js';
+import Image from '@components/Image/Image';
 
 const BookPage = ({ content }) => {
   useEffect(() => {
@@ -33,6 +34,7 @@ const BookPage = ({ content }) => {
     buttontext: buttonText,
     bookimage: bookImage,
     bookurl: bookPageUrl,
+    bookimageSharp: bookImageSharp,
   } = content;
   const { dimensions } = bookImage;
 
@@ -114,10 +116,15 @@ const BookPage = ({ content }) => {
   return (
     <section className={style.bookPage}>
       <div className={style.container}>
-        <img
+        {/* <img
           data-src={bookImage.url}
           alt={bookImage.alt}
           className={`${style.bookImage} lozad`}
+        /> */}
+        <Image
+          className={style.bookImage}
+          image={bookImage.url}
+          imageSharp={bookImageSharp}
         />
         <div className={style.formGroup}>
           <h1 className={style.bookPageTitle}>{parseString(bookPageTitle)}</h1>

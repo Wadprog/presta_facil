@@ -42,6 +42,24 @@ export const query = graphql`
             metatitle
             metadescription
             canonical
+            bookimageSharp {
+              childImageSharp {
+                fluid {
+                  tracedSVG
+                  srcWebp
+                  srcSetWebp
+                  srcSet
+                  src
+                  sizes
+                  presentationWidth
+                  presentationHeight
+                  originalName
+                  originalImg
+                  base64
+                  aspectRatio
+                }
+              }
+            }
             _meta {
               uid
               type
