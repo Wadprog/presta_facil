@@ -45,6 +45,7 @@ export const query = graphql`
             canonical
             description
             title
+            date
             _meta {
               type
               uid
