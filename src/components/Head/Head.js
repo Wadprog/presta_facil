@@ -87,8 +87,6 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
       <meta content={opengraphUrl} property="og:url" />
       <meta property="og:locale" content="en_US" />
 
-      {zenDeskWidgetScript}
-
       {/* Specified tags */}
       {children}
     </Helmet>
