@@ -5,10 +5,8 @@ import PropTypes from 'prop-types';
 import { parseString } from '@helpers';
 
 const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
-  const loadDelayTime = 5000;
   const url = 'https://secureprivacy.ai/';
 
-  const [zenDeskWidgetScript, setZenDeskWidgetScript] = useState(null);
   const [canonicalUrl, setCanonicalUrl] = useState(null);
   const [pageTitle, setPageTitle] = useState(null);
   const [pageDescription, setPageDescription] = useState(null);
@@ -17,24 +15,6 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
   const [opengraphDescription, setOpengraphDescription] = useState(
     meta.description
   );
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const timer = setTimeout(() => {
-        setZenDeskWidgetScript(
-          <script
-            id="ze-snippet"
-            src="https://static.zdassets.com/ekr/snippet.js?key=7c1de950-9031-4521-8e28-c9defa10512b"
-            async
-          >
-            {' '}
-          </script>
-        );
-      }, loadDelayTime);
-
-      return () => clearTimeout(timer);
-    }
-  }, []);
 
   useEffect(() => {
     const currentPageCanonical = parseString(canonical);
