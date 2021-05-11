@@ -216,6 +216,12 @@ module.exports = {
             component: require.resolve('./src/templates/PrivacyPolicyPage.js'),
             langs: langs,
           },
+          {
+            type: 'Legal_pages',
+            match: '/:lang?/:uid',
+            component: require.resolve('./src/templates/LegalPage.js'),
+            langs: langs,
+          },
         ],
         // extraPageFields: 'test_type',
         // omitPrismicScript: true,

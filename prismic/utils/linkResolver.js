@@ -119,6 +119,12 @@ export const linkResolver = (doc) => {
       ? `/${properties.uid}`
       : `/${properties.lang}/${properties.uid}`;
   }
+
+  if (properties.type === 'legal_pages' && properties.uid) {
+    return properties.lang === defaultLanguage
+      ? `${properties.uid}`
+      : `/${properties.lang}${properties.uid}`;
+  }
   // Backup for all other types
   return '/';
 };
