@@ -116,11 +116,6 @@ const BookPage = ({ content }) => {
   return (
     <section className={style.bookPage}>
       <div className={style.container}>
-        {/* <img
-          data-src={bookImage.url}
-          alt={bookImage.alt}
-          className={`${style.bookImage} lozad`}
-        /> */}
         <Image
           className={style.bookImage}
           image={bookImage.url}
