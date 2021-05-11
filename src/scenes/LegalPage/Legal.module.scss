@@ -44,3 +44,37 @@
     padding-right: 16px;
   }
 }
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  font-family: $font-gramatika;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.date {
+  opacity: 0.5;
+  margin-left: 22px;
+  line-height: 150%;
+}
+
+.title {
+  font-family: $font-gramatika;
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 115%;
+  text-align: center;
+  margin-bottom: 8px;
+  strong {
+    color: $green;
+  }
+  @media (max-width: $md) {
+    font-size: 32px;
+  }
+}
+
