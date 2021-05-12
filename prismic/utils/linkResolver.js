@@ -125,6 +125,13 @@ export const linkResolver = (doc) => {
       ? `${properties.uid}`
       : `/${properties.lang}${properties.uid}`;
   }
+
+  if (properties.type === 'thankyoupage') {
+    return properties.lang === defaultLanguage
+      ? `/${properties.uid}`
+      : `/${properties.lang}/${properties.uid}`;
+  }
+
   // Backup for all other types
   return '/';
 };
