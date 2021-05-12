@@ -222,6 +222,12 @@ module.exports = {
             component: require.resolve('./src/templates/LegalPage.js'),
             langs: langs,
           },
+          {
+            type: 'Thankyoupage',
+            match: '/:lang?/:uid',
+            component: require.resolve('./src/templates/ThankyouPage.js'),
+            langs: langs,
+          },
         ],
         // extraPageFields: 'test_type',
         // omitPrismicScript: true,
