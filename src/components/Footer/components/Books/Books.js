@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Swiper from 'react-id-swiper';
 import { object } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import { Link } from 'gatsby';
+import lozad from 'lozad';
+
 import style from './Books.module.scss';
 import { langPath } from '@helpers';
 import LangContext from '@contexts';
@@ -22,6 +24,11 @@ const Books = ({ data }) => {
   };
   const currentLang = useContext(LangContext);
 
+  useEffect(() => {
+    const observer = lozad();
+    observer.observe();
+  }, []);
+
   return (
     <div className={style.container}>
       <RichText render={primary.title} />
@@ -35,6 +42,7 @@ const Books = ({ data }) => {
                   alt="book"
                   draggable={false}
                   loading="lazy"
+                  className="lozad"
                 />
               </Link>
             </div>
