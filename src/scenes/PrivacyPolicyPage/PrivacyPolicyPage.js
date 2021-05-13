@@ -7,6 +7,7 @@ const PrivacyPolicyPage = () => {
   return (
     <section className={style.PrivacyPolicyPage}>
       <div className={style.container}>
+        <h1 className={style.header}>Privacy Policy</h1>
         <div sp-privacy-policy-text="direct-text" sp-lang-code="en"></div>
       </div>
     </section>
