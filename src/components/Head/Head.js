@@ -21,6 +21,8 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
     if (currentPageCanonical) {
       setCanonicalUrl(<link rel="canonical" href={currentPageCanonical} />);
       setOpengrapUrl(currentPageCanonical);
+    } else {
+      setCanonicalUrl(<link rel="canonical" href={url} />);
     }
   }, []);
 
