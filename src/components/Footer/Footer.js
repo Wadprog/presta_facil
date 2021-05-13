@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import lozad from 'lozad';
+
 import Button, { VARIANT } from '@components/Button/Button.js';
 import style from './Footer.module.scss';
 import Navigation from './components/Navigation';
@@ -6,7 +8,6 @@ import Books from './components/Books';
 import { array, object } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import { parseString } from '@helpers';
-import Image from '@components/Image/Image';
 import LanguageSwitcher from '@components/LanguageSwitcher';
 import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
 
@@ -30,6 +31,11 @@ const Footer = ({ data, activeDocMeta }) => {
     setModalIsOpen(!modalIsOpen);
   };
 
+  useEffect(() => {
+    const observer = lozad();
+    observer.observe();
+  }, []);
+
   const renderBadges = badges.map(({ badge }) => {
     return (
       <a
@@ -39,7 +45,7 @@ const Footer = ({ data, activeDocMeta }) => {
         key={`${badge.url} prooflink`}
         className={style.badges}
       >
-        <Image image={badge} key={badge.url} />
+        <img data-src={badge.url} key={badge.url} className="lozad" />
       </a>
     );
   });
@@ -78,7 +84,7 @@ const Footer = ({ data, activeDocMeta }) => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Image image={socialogo} />
+                      <img data-src={socialogo.url} className="lozad" />
                     </a>
                   </li>
                 );
