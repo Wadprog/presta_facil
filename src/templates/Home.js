@@ -136,6 +136,24 @@ export const query = graphql`
                 label
                 fields {
                   image
+                  imageSharp {
+                    childImageSharp {
+                      fluid {
+                        tracedSVG
+                        srcWebp
+                        srcSetWebp
+                        srcSet
+                        src
+                        sizes
+                        presentationWidth
+                        presentationHeight
+                        originalName
+                        originalImg
+                        base64
+                        aspectRatio
+                      }
+                    }
+                  }
                   text
                   pagename
                   title
