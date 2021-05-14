@@ -36,6 +36,7 @@ export const query = graphql`
             metatitle
             metadescription
             canonical
+            pagetitle
             _meta {
               uid
               type
