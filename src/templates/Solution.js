@@ -102,6 +102,24 @@ export const query = graphql`
                     }
                   }
                   screenshot
+                  screenshotSharp {
+                    childImageSharp {
+                      fluid {
+                        aspectRatio
+                        base64
+                        originalImg
+                        originalName
+                        presentationHeight
+                        presentationWidth
+                        sizes
+                        src
+                        srcSet
+                        srcSetWebp
+                        srcWebp
+                        tracedSVG
+                      }
+                    }
+                  }
                   title
                 }
                 primary {
@@ -146,6 +164,24 @@ export const query = graphql`
                 fields {
                   description
                   image
+                  imageSharp {
+                    childImageSharp {
+                      fluid {
+                        aspectRatio
+                        base64
+                        originalImg
+                        originalName
+                        presentationHeight
+                        presentationWidth
+                        sizes
+                        src
+                        srcSet
+                        srcSetWebp
+                        srcWebp
+                        tracedSVG
+                      }
+                    }
+                  }
                   title
                 }
                 primary {
