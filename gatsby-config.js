@@ -38,7 +38,7 @@ module.exports = {
       options: {
         id: 'GTM-WNNNKBK',
         includeInDevelopment: true,
-        timeout: 2000,
+        timeout: 5000,
         defaultDataLayer: { platform: 'gatsby' },
       },
     },
