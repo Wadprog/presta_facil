@@ -220,6 +220,24 @@ export const query = graphql`
                   description
                   buttontext
                   image
+                  imageSharp {
+                    childImageSharp {
+                      fluid {
+                        aspectRatio
+                        base64
+                        originalImg
+                        originalName
+                        presentationHeight
+                        presentationWidth
+                        sizes
+                        src
+                        srcSet
+                        srcSetWebp
+                        srcWebp
+                        tracedSVG
+                      }
+                    }
+                  }
                   page
                 }
               }
@@ -228,6 +246,24 @@ export const query = graphql`
                 label
                 fields {
                   image
+                  imageSharp {
+                    childImageSharp {
+                      fluid {
+                        aspectRatio
+                        base64
+                        originalImg
+                        originalName
+                        presentationHeight
+                        presentationWidth
+                        sizes
+                        src
+                        srcSet
+                        srcSetWebp
+                        srcWebp
+                        tracedSVG
+                      }
+                    }
+                  }
                   type
                   cardtitle
                   description

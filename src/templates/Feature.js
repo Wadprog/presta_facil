@@ -102,6 +102,24 @@ export const query = graphql`
                   }
                   name
                   screenshot
+                  screenshotSharp {
+                    childImageSharp {
+                      fluid {
+                        aspectRatio
+                        base64
+                        originalImg
+                        originalName
+                        presentationHeight
+                        presentationWidth
+                        sizes
+                        src
+                        srcSet
+                        srcSetWebp
+                        srcWebp
+                        tracedSVG
+                      }
+                    }
+                  }
                   tag
                 }
                 primary {
