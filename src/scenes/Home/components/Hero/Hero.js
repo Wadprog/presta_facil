@@ -12,9 +12,18 @@ import Image from '@components/Image/Image';
 import styles from './Hero.module.scss';
 import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
 import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
-import cookieBanner from './image/cookie-banner.png';
-import cookiePolicy from './image/cookie-policy.png';
-import preferenceCenter from './image/preference-center.png';
+
+const renderMobileImages = (images) => {
+  const renderedImages = images.map((imgElement, index) => (
+    <Image
+      image={imgElement[0]}
+      imageSharp={imgElement[1]}
+      className={styles.mobileImage}
+      key={index}
+    />
+  ));
+  return renderedImages;
+};
 
 const Hero = ({ primary, fields }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -23,6 +32,20 @@ const Hero = ({ primary, fields }) => {
   const buttonLink = primary.buttonlink[0].text;
   const modalCtaButtonLink = parseString(primary.modalctabuttonlink);
   const modalCtaButtonText = parseString(primary.modalctabuttontext);
+  const {
+    cookieimage,
+    cookieimageSharp,
+    policyimage,
+    policyimageSharp,
+    preferenceimage,
+    preferenceimageSharp,
+  } = primary;
+
+  const mobileImages = [
+    [policyimage, policyimageSharp],
+    [preferenceimage, preferenceimageSharp],
+    [cookieimage, cookieimageSharp],
+  ];
 
   const [modalBookIsOpen, setModalBookIsOpen] = useState(false);
   const handleCloseModalBook = () => setModalBookIsOpen(false);
@@ -50,21 +73,7 @@ const Hero = ({ primary, fields }) => {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.mobileImagesWrapper}>
-            <img
-              data-src={cookiePolicy}
-              className={`${styles.mobileImage} lozad`}
-              alt="cookie policy"
-            />
-            <img
-              data-src={preferenceCenter}
-              className={`${styles.mobileImage} lozad`}
-              alt="preference center"
-            />
-            <img
-              data-src={cookieBanner}
-              className={`${styles.mobileImage} lozad`}
-              alt="cookie baner"
-            />
+            {renderMobileImages(mobileImages)}
           </div>
           <div className={styles.upTitle}>
             <RichText render={primary.sub_title} />
