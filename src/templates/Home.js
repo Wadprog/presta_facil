@@ -136,24 +136,6 @@ export const query = graphql`
                 label
                 fields {
                   image
-                  imageSharp {
-                    childImageSharp {
-                      fluid {
-                        tracedSVG
-                        srcWebp
-                        srcSetWebp
-                        srcSet
-                        src
-                        sizes
-                        presentationWidth
-                        presentationHeight
-                        originalName
-                        originalImg
-                        base64
-                        aspectRatio
-                      }
-                    }
-                  }
                   text
                   pagename
                   title
@@ -168,24 +150,6 @@ export const query = graphql`
                 label
                 fields {
                   screenshot
-                  screenshotSharp {
-                    childImageSharp {
-                      fluid {
-                        tracedSVG
-                        srcWebp
-                        srcSetWebp
-                        srcSet
-                        src
-                        sizes
-                        presentationWidth
-                        presentationHeight
-                        originalName
-                        originalImg
-                        base64
-                        aspectRatio
-                      }
-                    }
-                  }
                   name
                   tag
                   category
@@ -212,24 +176,6 @@ export const query = graphql`
                   benefits
                   button
                   buttonprice
-                  imageSharp {
-                    childImageSharp {
-                      fluid {
-                        tracedSVG
-                        srcWebp
-                        srcSetWebp
-                        srcSet
-                        src
-                        sizes
-                        presentationWidth
-                        presentationHeight
-                        originalName
-                        originalImg
-                        base64
-                        aspectRatio
-                      }
-                    }
-                  }
                   buttonlink {
                     ... on PRISMIC__ExternalLink {
                       _linkType
@@ -267,24 +213,6 @@ export const query = graphql`
                   buttontext
                   image
                   page
-                  imageSharp {
-                    childImageSharp {
-                      fluid {
-                        aspectRatio
-                        base64
-                        originalImg
-                        originalName
-                        presentationHeight
-                        presentationWidth
-                        sizes
-                        src
-                        srcSet
-                        srcSetWebp
-                        srcWebp
-                        tracedSVG
-                      }
-                    }
-                  }
                 }
               }
             }
