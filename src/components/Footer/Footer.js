@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import lozad from 'lozad';
+import React, { useState } from 'react';
 
 import Button, { VARIANT } from '@components/Button/Button.js';
 import style from './Footer.module.scss';
@@ -10,6 +9,7 @@ import { RichText } from 'prismic-reactjs';
 import { parseString } from '@helpers';
 import LanguageSwitcher from '@components/LanguageSwitcher';
 import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
+import Image from '@components/Image/Image';
 
 const TEXT = 'Schedule a Demo';
 
@@ -31,11 +31,6 @@ const Footer = ({ data, activeDocMeta }) => {
     setModalIsOpen(!modalIsOpen);
   };
 
-  useEffect(() => {
-    const observer = lozad();
-    observer.observe();
-  }, []);
-
   const renderBadges = badges.map(({ badge }) => {
     return (
       <a
@@ -45,7 +40,7 @@ const Footer = ({ data, activeDocMeta }) => {
         key={`${badge.url} prooflink`}
         className={style.badges}
       >
-        <img data-src={badge.url} key={badge.url} className="lozad" />
+        <Image image={badge} key={badge.url} />
       </a>
     );
   });
@@ -84,7 +79,7 @@ const Footer = ({ data, activeDocMeta }) => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <img data-src={socialogo.url} className="lozad" />
+                      <Image image={socialogo} />
                     </a>
                   </li>
                 );

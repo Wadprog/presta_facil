@@ -10,6 +10,7 @@ import useGetImage from './useGetImage';
 import { useBreakpoints } from '@hooks';
 import LangContext from '@contexts';
 import { langPath } from '@helpers';
+import Image from '@components/Image/Image';
 
 const Solutions = ({ primary, fields }) => {
   const [buildKey, setBuildKey] = useState();
@@ -50,19 +51,14 @@ const Solutions = ({ primary, fields }) => {
           <RichText render={primary.description} />
         </div>
         <Swiper {...params} key={buildKey}>
-          {fields.map(({ image, title, text, pagename }, index) => {
+          {fields.map(({ image, imageSharp, title, text, pagename }, index) => {
             const link = `${langPath(currentLang)}/solution/${RichText.asText(
               pagename
             )}`;
             return (
               <div className={style.slide} key={`solutions${index}`}>
                 <Link to={link} className={style.item}>
-                  <img
-                    data-src={image.url}
-                    alt={image.alt}
-                    className="lozad"
-                    loading="lazy"
-                  />
+                  <Image image={image} imageSharp={imageSharp} />
                   <RichText render={title} />
                   <div>
                     (<RichText render={text} />)
@@ -71,7 +67,6 @@ const Solutions = ({ primary, fields }) => {
                     className={`${style.arrow} lozad`}
                     data-src={arrow.publicURL}
                     alt="arrow icon"
-                    loading="lazy"
                   />
                   <div className={style.shadow}></div>
                 </Link>

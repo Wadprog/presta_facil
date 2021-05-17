@@ -1,27 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { RichText } from 'prismic-reactjs';
 import { object, array } from 'prop-types';
-import lozad from 'lozad';
 
 import style from './Item.module.scss';
 import Quote from './image/quote.inline.svg';
+import Image from '@components/Image/Image';
 
-const Item = ({ photo, name, company, text }) => {
-  useEffect(() => {
-    const observer = lozad();
-    observer.observe();
-  }, []);
-
+const Item = ({ photo, photoSharp, name, company, text }) => {
   return (
     <div className={style.container}>
       <Quote className={style.quote} />
       <div className={style.user}>
-        <img
-          className={`${style.photo} lozad`}
-          data-src={photo.url}
-          alt={photo.alt}
-          loading="lazy"
-        />
+        <Image image={photo} imageSharp={photoSharp} className={style.photo} />
         <div className={style.name}>
           <RichText render={name} />
         </div>
@@ -35,8 +25,10 @@ const Item = ({ photo, name, company, text }) => {
     </div>
   );
 };
+
 Item.propTypes = {
   photo: object,
+  photoSharp: object,
   name: array,
   company: array,
   text: array,

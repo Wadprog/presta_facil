@@ -3,7 +3,6 @@ import { object, array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import Swiper from 'react-id-swiper';
 import { parseString } from '@helpers';
-import lozad from 'lozad';
 
 import Button, { VARIANT } from '@components/Button/Button.js';
 import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
@@ -13,11 +12,6 @@ import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
 import Image from '@components/Image/Image';
 
 const Hero = ({ primary, fields }) => {
-  useEffect(() => {
-    const observer = lozad();
-    observer.observe();
-  }, []);
-
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleOpenModal = () => setModalIsOpen(true);
   const handleCloseModal = () => setModalIsOpen(false);
@@ -89,13 +83,7 @@ const Hero = ({ primary, fields }) => {
           {fields.map(({ partnerslogo }) => {
             return (
               <div className={styles.slide} key={partnerslogo.alt}>
-                <img
-                  src={partnerslogo.url}
-                  alt={partnerslogo.alt}
-                  draggable="false"
-                  loading="lazy"
-                  className="lozad"
-                />
+                <Image image={partnerslogo} />
               </div>
             );
           })}
