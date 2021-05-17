@@ -83,6 +83,63 @@ export const query = graphql`
                       }
                     }
                   }
+                  cookieimage
+                  cookieimageSharp {
+                    childImageSharp {
+                      fluid {
+                        aspectRatio
+                        base64
+                        originalImg
+                        originalName
+                        presentationHeight
+                        presentationWidth
+                        sizes
+                        src
+                        srcSet
+                        srcSetWebp
+                        srcWebp
+                        tracedSVG
+                      }
+                    }
+                  }
+                  policyimage
+                  policyimageSharp {
+                    childImageSharp {
+                      fluid {
+                        aspectRatio
+                        base64
+                        originalImg
+                        originalName
+                        presentationHeight
+                        presentationWidth
+                        sizes
+                        src
+                        srcSet
+                        srcSetWebp
+                        srcWebp
+                        tracedSVG
+                      }
+                    }
+                  }
+                  preferenceimage
+                  preferenceimageSharp {
+                    childImageSharp {
+                      fluid {
+                        aspectRatio
+                        base64
+                        originalImg
+                        originalName
+                        presentationHeight
+                        presentationWidth
+                        sizes
+                        src
+                        srcSet
+                        srcSetWebp
+                        srcWebp
+                        tracedSVG
+                      }
+                    }
+                  }
                   modalvideo {
                     ... on PRISMIC__ExternalLink {
                       _linkType
