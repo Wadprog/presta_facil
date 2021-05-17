@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import Swiper from 'react-id-swiper';
 import { object } from 'prop-types';
 import { RichText } from 'prismic-reactjs';

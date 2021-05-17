@@ -207,6 +207,24 @@ export const query = graphql`
                 label
                 fields {
                   screenshot
+                  screenshotSharp {
+                    childImageSharp {
+                      fluid {
+                        aspectRatio
+                        base64
+                        originalImg
+                        originalName
+                        presentationHeight
+                        presentationWidth
+                        sizes
+                        src
+                        srcSet
+                        srcSetWebp
+                        srcWebp
+                        tracedSVG
+                      }
+                    }
+                  }
                   name
                   tag
                   category
