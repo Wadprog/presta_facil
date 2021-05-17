@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { object, string } from 'prop-types';
 import GatsbyImage from 'gatsby-image';
+import lozad from 'lozad';
 
 const Image = ({ image, imageSharp, className }) => {
+  useEffect(() => {
+    const observer = lozad();
+    observer.observe();
+  }, []);
+
   if (imageSharp) {
     return (
       <GatsbyImage
@@ -14,13 +20,23 @@ const Image = ({ image, imageSharp, className }) => {
     );
   }
 
-  if (image) {
+  if (image && className) {
     return (
       <img
-        className={className}
-        src={image.url}
+        className={`${className} lozad`}
+        data-src={image.url}
         alt={image.alt}
-        loading="lazy"
+        draggable="false"
+      />
+    );
+  }
+
+  if (image && !className) {
+    return (
+      <img
+        className="lozad"
+        data-src={image.url}
+        alt={image.alt}
         draggable="false"
       />
     );

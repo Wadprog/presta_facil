@@ -3,11 +3,11 @@ import Swiper from 'react-id-swiper';
 import { object } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import { Link } from 'gatsby';
-import lozad from 'lozad';
 
 import style from './Books.module.scss';
 import { langPath } from '@helpers';
 import LangContext from '@contexts';
+import Image from '@components/Image/Image';
 
 const DEFAULT_SLIDES = 3;
 
@@ -24,11 +24,6 @@ const Books = ({ data }) => {
   };
   const currentLang = useContext(LangContext);
 
-  useEffect(() => {
-    const observer = lozad();
-    observer.observe();
-  }, []);
-
   return (
     <div className={style.container}>
       <RichText render={primary.title} />
@@ -37,13 +32,7 @@ const Books = ({ data }) => {
           return (
             <div className={style.slide} key={`${image.publicURL}${index}`}>
               <Link to={langPath(currentLang) + '/books'}>
-                <img
-                  src={image.url}
-                  alt="book"
-                  draggable={false}
-                  loading="lazy"
-                  className="lozad"
-                />
+                <Image image={image} key={image.url} />
               </Link>
             </div>
           );

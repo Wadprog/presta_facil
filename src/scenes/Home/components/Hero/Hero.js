@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { object, array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import Swiper from 'react-id-swiper';
-import lozad from 'lozad';
 
 import { parseString } from '@helpers';
 import Button, { VARIANT } from '@components/Button/Button.js';
@@ -50,11 +49,6 @@ const Hero = ({ primary, fields }) => {
   const [modalBookIsOpen, setModalBookIsOpen] = useState(false);
   const handleCloseModalBook = () => setModalBookIsOpen(false);
 
-  useEffect(() => {
-    const observer = lozad();
-    observer.observe();
-  }, []);
-
   const params = {
     slidesPerView: 3,
     spaceBetween: 16,
@@ -96,9 +90,9 @@ const Hero = ({ primary, fields }) => {
                 {fields.map(({ trustedlogo }) => {
                   return (
                     <div className={styles.slide} key={trustedlogo.url}>
-                      <img
-                        data-src={trustedlogo.url}
-                        className={`${styles.companyLogo} lozad`}
+                      <Image
+                        image={trustedlogo}
+                        className={styles.companyLogo}
                       />
                     </div>
                   );

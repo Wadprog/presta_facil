@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import lozad from 'lozad';
 import classnames from 'classnames';
 
 import { parseString, isValidEmail } from '@helpers';
@@ -9,11 +8,6 @@ import Button, { VARIANT } from '@components/Button/Button.js';
 import Image from '@components/Image/Image';
 
 const BookPage = ({ content }) => {
-  useEffect(() => {
-    const observer = lozad();
-    observer.observe();
-  }, []);
-
   const initialFormData = {
     firstName: '',
     lastName: '',
