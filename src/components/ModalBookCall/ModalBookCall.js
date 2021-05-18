@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { bool, func } from 'prop-types';
+import lozad from 'lozad';
+
 import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
 import style from './ModalBookCall.module.scss';
 import Icon from './image/close-icon.inline.svg';
@@ -12,6 +14,11 @@ const ModalBookCall = ({ open, closeModal }) => {
   useEffect(() => {
     setIsOpen(open);
   }, [open]);
+
+  useEffect(() => {
+    const observer = lozad();
+    observer.observe();
+  }, []);
 
   const customStyles = {
     content: {
@@ -32,6 +39,7 @@ const ModalBookCall = ({ open, closeModal }) => {
           width="100%"
           height="100%"
           frameBorder="0"
+          className="lozad"
         ></iframe>
       </div>
       <div className={style.buttonClose}>
