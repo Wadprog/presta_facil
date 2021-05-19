@@ -254,7 +254,7 @@ module.exports = {
           },
         ],
         // extraPageFields: 'test_type',
-        // omitPrismicScript: true,
+        omitPrismicScript: true,
         sharpKeys: [
           /image|photo|picture|illustration|screenshot|background|Image/,
           'profilepic',
