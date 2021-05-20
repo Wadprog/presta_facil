@@ -35,6 +35,7 @@ module.exports = {
           '/preview/videopage',
           '/preview/legal_pages',
           '/preview/thankyoupage',
+          '/preview/subprocessors',
         ],
       },
     },
