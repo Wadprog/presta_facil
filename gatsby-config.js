@@ -252,6 +252,12 @@ module.exports = {
             component: require.resolve('./src/templates/ThankyouPage.js'),
             langs: langs,
           },
+          {
+            type: 'Subprocessors',
+            match: '/:lang?/:uid',
+            component: require.resolve('./src/templates/Subprocessors.js'),
+            langs: langs,
+          },
         ],
         // extraPageFields: 'test_type',
         omitPrismicScript: true,

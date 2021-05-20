@@ -1,0 +1,39 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.subprocessorsPage {
+  position: relative;
+  z-index: 10;
+  padding: 170px 20px 160px;
+  margin-top: 85px;
+  background-size: cover;
+  background-color: $bg-blue;
+
+  @media (max-width: $lg) {
+    padding: 140px 16px 50px;
+  }
+  @media (max-width: $md) {
+    margin-top: 94px;
+    padding: 140px 16px 50px;
+    overflow-x: hidden;
+  }
+}
+
+.container {
+  display: flex;
+  max-width: 896px;
+  width: 100%;
+  margin: 0 auto;
+  @media (max-width: $md) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.title {
+  font-size: 48px;
+  line-height: 115%;
+  font-family: $font-gramatika-black;
+  color: $main-dark;
+  text-align: center;
+}
