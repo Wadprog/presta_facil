@@ -26,6 +26,21 @@ const renderTableRows = (rows, rowsType) => {
   return tableRows;
 };
 
+const renderMobileTable = (rows) => {
+  const tableData = rows.map((row) => {
+    const tableColsNames = Object.keys(row);
+    return tableColsNames.map((colName, index) => (
+      <tr key={`${index}, ${colName}`}>
+        <td key={`${index}, ${parseString(row[colName])}`}>
+          {parseString(row[colName])}
+        </td>
+      </tr>
+    ));
+  });
+
+  return tableData;
+};
+
 const SubprocessorsPage = ({ content }) => {
   const { pagetitle: pageTitle, body } = content;
   const { fields: tableColsHeaders, type: headersType } = body[0];
@@ -39,6 +54,9 @@ const SubprocessorsPage = ({ content }) => {
           <table className={style.subprocessorsTable}>
             <thead>{renderTableRows(tableColsHeaders, headersType)}</thead>
             <tbody>{renderTableRows(tableRows, rowsType)}</tbody>
+          </table>
+          <table className={style.mobileTable}>
+            {renderMobileTable(tableRows)}
           </table>
         </div>
       </div>

@@ -32,3 +32,54 @@
   color: $main-dark;
   margin-bottom: 50px;
 }
+
+.tableWrapper {
+  max-width: 100%;
+}
+
+.subprocessorsTable {
+  width: 100%;
+  border-collapse: collapse;
+
+  @media (max-width: $sm) {
+    display: none;
+  }
+}
+
+td,
+th {
+  padding: 0.75rem;
+  text-align: left;
+}
+
+th {
+  border-bottom: 2px solid #dee2e6;
+}
+
+tr:nth-of-type(even) {
+  background-color: $grey;
+
+  @media (max-width: $sm) {
+    background-color: inherit;
+  }
+}
+
+tr:nth-child(1),
+tr:nth-child(4n+5) {
+  background-color: inherit;
+
+  @media (max-width: $sm) {
+    background-color: $grey;
+  }
+}
+
+.mobileTable {
+  display: none;
+  width: 100%;
+  border-collapse: collapse;
+  border-bottom: 2px solid #dee2e6;
+
+  @media (max-width: $sm) {
+    display: block;
+  }
+}
