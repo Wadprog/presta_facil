@@ -59,6 +59,16 @@ export const query = graphql`
                   col4
                 }
               }
+              ... on PRISMIC_SubprocessorsBodyTable_rows_headers {
+                type
+                label
+                fields {
+                  col1
+                  col2
+                  col3
+                  col4
+                }
+              }
             }
           }
         }
