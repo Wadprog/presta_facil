@@ -14,10 +14,10 @@ const renderTableRows = (rows, rowsType) => {
   const CurrentTag = mapping[rowsType];
 
   const tableRows = rows.map((header, index) => {
-    const tableColsNames = Object.keys(header);
-    const cols = tableColsNames.map((colName, index) => (
-      <CurrentTag key={`${index}, ${parseString(header[colName])}`}>
-        {parseString(header[colName])}
+    const tableValues = Object.values(header);
+    const cols = tableValues.map((value, index) => (
+      <CurrentTag key={`${index}, ${parseString(value)}`}>
+        {parseString(value)}
       </CurrentTag>
     ));
 
