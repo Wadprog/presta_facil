@@ -8,6 +8,18 @@
   margin-top: 85px;
   background-size: cover;
   background-color: $bg-blue;
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -10;
+    width: 100%;
+    height: 100%;
+    background-image: url('./image/bg.png');
+    background-size: cover;
+    top: 0;
+    left: 0;
+    opacity: 0.25;
+  }
 
   @media (max-width: $lg) {
     padding: 140px 16px 50px;
