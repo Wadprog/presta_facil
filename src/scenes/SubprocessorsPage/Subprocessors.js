@@ -29,12 +29,10 @@ const renderTableRows = (rows, rowsType) => {
 
 const renderMobileTable = (rows) => {
   const tableData = rows.map((row) => {
-    const tableColsNames = Object.keys(row);
-    return tableColsNames.map((colName, index) => (
-      <tr key={`${index}, ${colName}`}>
-        <td key={`${index}, ${parseString(row[colName])}`}>
-          {parseString(row[colName])}
-        </td>
+    const tableValues = Object.values(row);
+    return tableValues.map((value, index) => (
+      <tr key={`${index}, ${value}`}>
+        <td key={`${index}, ${parseString(value)}`}>{parseString(value)}</td>
       </tr>
     ));
   });
@@ -61,6 +59,16 @@ const filterTableData = (data, searchInfo) => {
   });
 
   return filteredTableData;
+};
+
+const renderNoData = (data) => {
+  return (
+    data.length === 0 && (
+      <tr>
+        <td>No matching data</td>
+      </tr>
+    )
+  );
 };
 
 const SubprocessorsPage = ({ content }) => {
@@ -90,10 +98,16 @@ const SubprocessorsPage = ({ content }) => {
           </div>
           <table className={style.subprocessorsTable}>
             <thead>{renderTableRows(tableColsHeaders, headersType)}</thead>
-            <tbody>{renderTableRows(tableData, rowsType)}</tbody>
+            <tbody>
+              {renderTableRows(tableData, rowsType)}
+              {renderNoData(tableData)}
+            </tbody>
           </table>
           <table className={style.mobileTable}>
-            {renderMobileTable(tableData)}
+            <tbody>
+              {renderMobileTable(tableData)}
+              {renderNoData(tableData)}
+            </tbody>
           </table>
         </div>
       </div>
