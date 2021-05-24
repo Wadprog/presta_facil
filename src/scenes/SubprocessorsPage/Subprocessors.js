@@ -51,7 +51,7 @@ const filterTableData = (data, searchInfo) => {
 
     for (const value of parsedValues) {
       const content = value.toLowerCase();
-      if (content.includes(searchInfo)) {
+      if (content.includes(searchInfo.trim())) {
         return true;
       }
     }
