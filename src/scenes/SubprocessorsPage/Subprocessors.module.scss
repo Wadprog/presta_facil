@@ -83,3 +83,13 @@ tr:nth-child(4n+5) {
     display: block;
   }
 }
+
+.searchInputWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+
+  @media (max-width: $sm) {
+    justify-content: flex-start;
+  }
+}
