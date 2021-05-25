@@ -259,6 +259,12 @@ module.exports = {
             component: require.resolve('./src/templates/Subprocessors.js'),
             langs: langs,
           },
+          {
+            type: 'Tos',
+            match: '/:lang?/:uid',
+            component: require.resolve('./src/templates/TermsService.js'),
+            langs: langs,
+          },
         ],
         // extraPageFields: 'test_type',
         omitPrismicScript: true,
