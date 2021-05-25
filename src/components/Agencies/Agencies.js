@@ -24,7 +24,10 @@ const Agencies = ({ primary }) => {
           <p className={style.description}>
             {RichText.asText(primary.description)}
           </p>
-          <Link to={langPath(currentLang) + buttonLink} className={style.link}>
+          <Link
+            to={`${langPath(currentLang)}/${buttonLink}`}
+            className={style.link}
+          >
             Learn More
           </Link>
           <div className={style.button}>
