@@ -132,6 +132,12 @@ export const linkResolver = (doc) => {
       : `/${properties.lang}/${properties.uid}`;
   }
 
+  if (properties.type === 'subprocessors') {
+    return properties.lang === defaultLanguage
+      ? `/${properties.uid}`
+      : `/${properties.lang}/${properties.uid}`;
+  }
+
   // Backup for all other types
   return '/';
 };
