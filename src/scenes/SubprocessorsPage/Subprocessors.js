@@ -16,12 +16,19 @@ const renderTableRows = (rows, rowsType) => {
   const tableRows = rows.map((header, index) => {
     const tableValues = Object.values(header);
     const cols = tableValues.map((value, index) => (
-      <CurrentTag key={`${index}, ${parseString(value)}`}>
+      <CurrentTag
+        className={style.tableCell}
+        key={`${index}, ${parseString(value)}`}
+      >
         {parseString(value)}
       </CurrentTag>
     ));
 
-    return <tr key={index}>{cols}</tr>;
+    return (
+      <tr className={style.tableRow} key={index}>
+        {cols}
+      </tr>
+    );
   });
 
   return tableRows;
@@ -31,8 +38,10 @@ const renderMobileTable = (rows) => {
   const tableData = rows.map((row) => {
     const tableValues = Object.values(row);
     return tableValues.map((value, index) => (
-      <tr key={`${index}, ${value}`}>
-        <td key={`${index}, ${parseString(value)}`}>{parseString(value)}</td>
+      <tr className={style.tableRow} key={`${index}, ${value}`}>
+        <td className={style.tableCell} key={`${index}, ${parseString(value)}`}>
+          {parseString(value)}
+        </td>
       </tr>
     ));
   });
