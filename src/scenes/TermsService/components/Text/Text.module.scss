@@ -1,0 +1,88 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.text {
+  max-width: 636px;
+  margin: 0 auto 42px;
+  color: $main-dark;
+  & + .text {
+    margin-top: 84px;
+    @media (max-width: $lg) {
+      margin-top: 42px;
+    }
+  }
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  h2,
+  h3,
+  h4 {
+    font-weight: 600;
+    line-height: 125%;
+    margin-bottom: 22px;
+    margin-top: 42px;
+  }
+  h2 {
+    font-size: 32px;
+  }
+  h3 {
+    font-size: 28px;
+  }
+  h4 {
+    font-size: 24px;
+  }
+  p,
+  li {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 200%;
+    letter-spacing: 0.03em;
+    color: $second-dark;
+  }
+  p + p,
+  p + li {
+    margin-top: 22px;
+  }
+
+  a {
+    font-weight: 600;
+    color: $green;
+    transition: 0.3s;
+    &:hover {
+      color: #138a81;
+    }
+  }
+  ol {
+    counter-reset: li;
+    li {
+      position: relative;
+      counter-increment: li;
+      padding-left: 20px;
+      &::before {
+        content: counter(li) '.';
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+  ul {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 40px;
+    li {
+      position: relative;
+      padding-left: 20px;
+      &::before {
+        content: '';
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: $green;
+        left: 0;
+        top: 12px;
+      }
+    }
+  }
+}

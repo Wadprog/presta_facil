@@ -58,8 +58,7 @@
   }
 }
 
-td,
-th {
+.tableCell {
   padding: 0.75rem;
   text-align: left;
 }
@@ -68,7 +67,7 @@ th {
   border-bottom: 2px solid #dee2e6;
 }
 
-tr:nth-of-type(even) {
+.tableRow:nth-of-type(even) {
   background-color: $grey;
 
   @media (max-width: $sm) {
@@ -76,8 +75,8 @@ tr:nth-of-type(even) {
   }
 }
 
-tr:nth-child(1),
-tr:nth-child(4n+5) {
+.tableRow:nth-child(1),
+.tableRow:nth-child(4n+5) {
   background-color: inherit;
 
   @media (max-width: $sm) {
@@ -89,7 +88,6 @@ tr:nth-child(4n+5) {
   display: none;
   width: 100%;
   border-collapse: collapse;
-  border-bottom: 2px solid #dee2e6;
 
   @media (max-width: $sm) {
     display: block;
