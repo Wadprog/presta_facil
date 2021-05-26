@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { array, object, string } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
+import lozad from 'lozad';
+
 import Modal from '@components/Modal';
 import { dateToString } from '@helpers';
 
@@ -27,11 +29,17 @@ const Item = ({ title, videourl, tag, date }) => {
         });
     }
   }, [previewImage, modalIsOpen]);
+
+  useEffect(() => {
+    const observer = lozad();
+    observer.observe();
+  }, [previewImage]);
+
   return (
     <div className={style.item}>
       <div className={style.container}>
         <div className={style.preview} onClick={handleOpenModal}>
-          {previewImage && <img src={previewImage} loading="lazy" />}
+          {previewImage && <img data-src={previewImage} className="lozad" />}
         </div>
         <div className={style.title}>
           <RichText render={title} />
