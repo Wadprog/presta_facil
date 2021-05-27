@@ -47,7 +47,7 @@ const TariffPlans = ({
     primary.firstlawtitle[0].text,
   ]);
   const scrollDirection = useScrollDirection();
-  const [currency, setCurrency] = useState('EUR');
+  const [currency, setCurrency] = useState('USD');
   const [isStatusBarVisible, setIsStatusBarVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { width } = useBreakpoints();
