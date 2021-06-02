@@ -21,6 +21,13 @@ const CONTACT_FORM_URL = process.env.GATSBY_CONTACT_FORM_URL;
 const MIN_COUNTER_VALUE = 0;
 const MAX_COUNTER_VALUE = 100;
 
+const getUserEmailProvider = (mail) => {
+  const splitted = mail.split('@');
+  const provider = splitted[1];
+
+  return provider;
+};
+
 const Form = ({
   button,
   company,
@@ -29,17 +36,23 @@ const Form = ({
   question,
   question2,
   successinformer,
+  body,
 }) => {
   const successInformerText = parseString(successinformer);
   const [formState, setFormState] = useState(initialState);
   const [formErrors, setFormErrors] = useState([]);
   const [isSubmitted, setSubmited] = useState(false);
   const [submitError, setSubmitError] = useState(null);
+  const providersData = body.find((element) => element.type === 'providers');
+  const { fields: rawProviders } = providersData;
+  const providers = rawProviders.map(({ provider }) => parseString(provider));
+
   const handleInputChange = ({ target: { name, value } }) => {
     setFormState((state) => ({ ...state, [name]: value }));
     formErrors.length > 0 &&
       setFormErrors([...formErrors.filter((error) => error != name)]);
   };
+
   const handleChangeCounter = (value) => {
     if (value >= MIN_COUNTER_VALUE && value <= MAX_COUNTER_VALUE) {
       setFormState((state) => ({ ...state, ['counter']: value }));
@@ -55,23 +68,32 @@ const Form = ({
     return mapping[informerType];
   };
 
+  const validateForm = (companyName, userEmail) => {
+    const userEmailProvider = getUserEmailProvider(userEmail);
+
+    const isValidCompany = companyName.trim() !== '';
+    const isValidUserEmail =
+      isValidEmail(userEmail) && !providers.includes(userEmailProvider);
+
+    if (!isValidCompany) {
+      setFormErrors([...formErrors, errors.company]);
+    }
+
+    if (!isValidUserEmail) {
+      setFormErrors([...formErrors, errors.email]);
+    }
+
+    const validForm = isValidCompany && isValidUserEmail;
+
+    return validForm;
+  };
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const { company, email } = formState;
-    if (!formErrors.includes(errors.email) && !isValidEmail(email)) {
-      setFormErrors([...formErrors, errors.email]);
-      return;
-    }
+    const isValidForm = validateForm(company, email);
 
-    if (
-      (!formErrors.includes(errors.company) && company.length === 0) ||
-      (!formErrors.includes(errors.company) && company.trim() === '')
-    ) {
-      setFormErrors([...formErrors, errors.company]);
-      return;
-    }
-
-    formErrors.length === 0 &&
+    isValidForm &&
       fetch(CONTACT_FORM_URL, {
         method: 'POST',
         headers: {},
@@ -82,13 +104,7 @@ const Form = ({
             setSubmitError(null);
           }
           setSubmited(true);
-          setFormState({
-            company: '',
-            email: '',
-            question: '',
-            question2: '',
-            counter: 0,
-          });
+          setFormState(initialState);
         })
         .catch((err) => {
           if (isSubmitted) {
@@ -114,7 +130,7 @@ const Form = ({
           <Input
             id="email"
             placeholder={parseString(email)}
-            errorMessage="Wrong email"
+            errorMessage="Wrong or non-business email"
             name="email"
             valid={!formErrors.includes('email')}
             value={formState.email}
@@ -188,6 +204,7 @@ Form.propTypes = {
   email: PropTypes.array,
   counter: PropTypes.array,
   successinformer: PropTypes.array,
+  body: PropTypes.array,
 };
 
 export default Form;

@@ -55,6 +55,15 @@ export const query = graphql`
             button
             successinformer
             _linkType
+            body {
+              ... on PRISMIC_ContactBodyProviders {
+                type
+                label
+                fields {
+                  provider
+                }
+              }
+            }
           }
         }
       }
