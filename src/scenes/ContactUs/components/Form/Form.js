@@ -68,10 +68,10 @@ const Form = ({
     return mapping[informerType];
   };
 
-  const isValidForm = (companyName, userEmail) => {
+  const validateForm = (companyName, userEmail) => {
     const userEmailProvider = getUserEmailProvider(userEmail);
 
-    const isValidCompany = companyName && companyName.trim() !== '';
+    const isValidCompany = companyName.trim() !== '';
     const isValidUserEmail =
       isValidEmail(userEmail) && !providers.includes(userEmailProvider);
 
@@ -91,8 +91,9 @@ const Form = ({
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const { company, email } = formState;
+    const isValidForm = validateForm(company, email);
 
-    isValidForm(company, email) &&
+    isValidForm &&
       fetch(CONTACT_FORM_URL, {
         method: 'POST',
         headers: {},
