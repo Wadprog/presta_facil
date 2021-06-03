@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 import Home from '@scenes/Home';
 import Layout from '@components/Layout';
-import LangContext from '@contexts';
 
 const Page = ({ data }) => {
   const homepageContent = data.prismic.allHomepages.edges[0];
@@ -20,9 +19,7 @@ const Page = ({ data }) => {
       metadescription={metadescription}
       canonical={canonical}
     >
-      <LangContext.Provider value={currentLanguage}>
-        <Home content={data} currentLanguage={currentLanguage} />
-      </LangContext.Provider>
+      <Home content={data} currentLanguage={currentLanguage} />
     </Layout>
   );
 };

@@ -12,8 +12,9 @@ import Articles from '@components/Articles/Articles';
 import Subscribe from '@components/Subscribe';
 import Agencies from '@components/Agencies';
 import 'swiper/swiper.scss';
+import LangContext from '@contexts';
 
-const Home = ({ content }) => {
+const Home = ({ content, currentLanguage }) => {
   const body = content.prismic.allHomepages.edges[0].node.body;
   return (
     <div className={style.HomePage}>
@@ -43,7 +44,11 @@ const Home = ({ content }) => {
           case 'plans':
             return <Plans {...section} key={`${section.type}${index}`} />;
           case 'articles':
-            return <Articles {...section} key={`${section.type}${index}`} />;
+            return (
+              <LangContext.Provider value={currentLanguage}>
+                <Articles {...section} key={`${section.type}${index}`} />
+              </LangContext.Provider>
+            );
           case 'subscribe':
             return <Subscribe {...section} key={`${section.type}${index}`} />;
           case 'agencies':
@@ -56,6 +61,7 @@ const Home = ({ content }) => {
 
 Home.propTypes = {
   content: PropTypes.object.isRequired,
+  currentLanguage: PropTypes.string.isRequired,
 };
 
 export default Home;
