@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { object } from 'prop-types';
+import React from 'react';
+import { object, string } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import { StaticQuery, graphql } from 'gatsby';
 import { withPreview } from 'gatsby-source-prismic-graphql';
@@ -7,10 +7,8 @@ import { withPreview } from 'gatsby-source-prismic-graphql';
 import ArticlePreview from '@components/ArticlePreview';
 import style from './Articles.module.scss';
 import Button, { VARIANT } from '@components/Button/Button.js';
-import LangContext from '@contexts';
 
-const Articles = ({ primary, data }) => {
-  const currentLanguage = useContext(LangContext);
+const Articles = ({ primary, data, currentLanguage }) => {
   const { buttontext } = primary;
   const articlesList = data.prismic.allBlogpostpages.edges;
   const currentLangArticles = articlesList.filter(
@@ -42,15 +40,20 @@ const Articles = ({ primary, data }) => {
 Articles.propTypes = {
   primary: object,
   data: object,
+  currentLanguage: string,
 };
 
-const SectionWithData = ({ primary }) => {
+const SectionWithData = ({ primary, currentLanguage }) => {
   return (
     <StaticQuery
       query={`${query}`}
       render={withPreview(
         (data) => (
-          <Articles data={data} primary={primary} />
+          <Articles
+            data={data}
+            primary={primary}
+            currentLanguage={currentLanguage}
+          />
         ),
         query
       )}
@@ -60,6 +63,7 @@ const SectionWithData = ({ primary }) => {
 
 SectionWithData.propTypes = {
   primary: object,
+  currentLanguage: string,
 };
 
 const query = graphql`
