@@ -1,22 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { object } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import { StaticQuery, graphql } from 'gatsby';
 import { withPreview } from 'gatsby-source-prismic-graphql';
+
 import ArticlePreview from '@components/ArticlePreview';
 import style from './Articles.module.scss';
 import Button, { VARIANT } from '@components/Button/Button.js';
+import LangContext from '@contexts';
 
 const Articles = ({ primary, data }) => {
+  const currentLanguage = useContext(LangContext);
   const { buttontext } = primary;
-  const articlesList = data.prismic.allBlogpostpages.edges.slice(0, 3);
+  const articlesList = data.prismic.allBlogpostpages.edges;
+  const currentLangArticles = articlesList.filter(
+    (article) => article.node._meta.lang === currentLanguage
+  );
+  const lastArticles = currentLangArticles.slice(0, 3);
+
   return (
     <section className={style.articles}>
       <div className={style.title}>
         <RichText render={primary.title} />
       </div>
       <div className={style.list}>
-        {articlesList.map((item) => {
+        {lastArticles.map((item) => {
           return <ArticlePreview {...item} key={item.node._meta.uid} />;
         })}
       </div>
@@ -55,15 +63,22 @@ SectionWithData.propTypes = {
 };
 
 const query = graphql`
-  query($uid: String) {
+  query {
     prismic {
-      allBlogpostpages(uid: $uid) {
+      allBlogpostpages(sortBy: date_DESC, first: 99) {
         edges {
           node {
             _linkType
             _meta {
               tags
               uid
+              type
+              lang
+              alternateLanguages {
+                lang
+                type
+                uid
+              }
             }
             date
             description
