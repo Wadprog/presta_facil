@@ -78,12 +78,6 @@ export const linkResolver = (doc) => {
       : `/${properties.lang}/pricing-reseller`;
   }
 
-  if (properties.type === 'pricesresellerpage') {
-    return properties.lang === defaultLanguage
-      ? '/pricing-reseller'
-      : `/${properties.lang}/pricing-reseller`;
-  }
-
   if (properties.type === 'videopage') {
     return properties.lang === defaultLanguage
       ? '/video-blog'
