@@ -17,7 +17,7 @@ const LegalPage = ({ current }) => {
         <div className={style.wrapper}>
           <div className={style.date}>{dateToString(date)}</div>
         </div>
-        <div className={style.title}>{parseString(title)}</div>
+        <h1 className={style.title}>{parseString(title)}</h1>
         <Text {...text} />
       </div>
     </div>

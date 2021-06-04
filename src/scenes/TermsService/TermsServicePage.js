@@ -27,7 +27,7 @@ const TermsServicePage = ({ current }) => {
         <div className={style.wrapper}>
           <div className={style.date}>{dateToString(date)}</div>
         </div>
-        <div className={style.title}>{parseString(pagetitle)}</div>
+        <h1 className={style.title}>{parseString(pagetitle)}</h1>
         {renderPageContent(body)}
       </div>
     </div>
