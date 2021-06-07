@@ -19,17 +19,6 @@ export const linkResolver = (doc) => {
       : `/${properties.lang}/contact-us`;
   }
 
-  // if (properties.type === 'solutionpage' && path.includes('solution')) {
-  //   return properties.lang === defaultLanguage
-  //     ? `/solution/${properties.uid}`
-  //     : `/${properties.lang}/solution/${properties.uid}`;
-  // }
-
-  // if (properties.type === 'solutionpage' && path.includes('law')) {
-  //   return properties.lang === defaultLanguage
-  //     ? `/law/${properties.uid}`
-  //     : `/${properties.lang}/law/${properties.uid}`;
-  // }
   if (properties.type === 'featurepage') {
     return properties.lang === defaultLanguage
       ? `/feature/${properties.uid}`
