@@ -39,7 +39,7 @@ module.exports = {
           '/preview/tos',
           '/pt/pricing-reseller',
           '/pt/pricing',
-          '/pt/pricing-enterprice',
+          '/pt/pricing-enterprise',
         ],
       },
     },
