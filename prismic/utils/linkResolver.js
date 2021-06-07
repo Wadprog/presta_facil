@@ -19,17 +19,6 @@ export const linkResolver = (doc) => {
       : `/${properties.lang}/contact-us`;
   }
 
-  // if (properties.type === 'solutionpage' && path.includes('solution')) {
-  //   return properties.lang === defaultLanguage
-  //     ? `/solution/${properties.uid}`
-  //     : `/${properties.lang}/solution/${properties.uid}`;
-  // }
-
-  // if (properties.type === 'solutionpage' && path.includes('law')) {
-  //   return properties.lang === defaultLanguage
-  //     ? `/law/${properties.uid}`
-  //     : `/${properties.lang}/law/${properties.uid}`;
-  // }
   if (properties.type === 'featurepage') {
     return properties.lang === defaultLanguage
       ? `/feature/${properties.uid}`
@@ -54,6 +43,12 @@ export const linkResolver = (doc) => {
       : `/${properties.lang}/books`;
   }
 
+  if (properties.type === 'pricesresellerpage') {
+    return properties.lang === defaultLanguage
+      ? '/pricing-reseller'
+      : `/${properties.lang}/pricing-reseller`;
+  }
+
   if (properties.type === 'pricespage') {
     return properties.lang === defaultLanguage
       ? '/pricing'
@@ -70,12 +65,6 @@ export const linkResolver = (doc) => {
     return properties.lang === defaultLanguage
       ? '/pricing-enterprise'
       : `/${properties.lang}/pricing-enterprise`;
-  }
-
-  if (properties.type === 'pricesresellerpage') {
-    return properties.lang === defaultLanguage
-      ? '/pricing-reseller'
-      : `/${properties.lang}/pricing-reseller`;
   }
 
   if (properties.type === 'videopage') {
