@@ -15,13 +15,13 @@ git clone git@github.com:secureprivacy/sp-website.git
 Go to project directory and install dependencies.
 
 `
-npm install
+make install
 `
 
 Then start project.
 
 `
-npm run start
+make start
 `
 
 Visit [http://localhost:8000/](http://localhost:8000/).
@@ -29,20 +29,20 @@ Visit [http://localhost:8000/](http://localhost:8000/).
 
 Now your can change code and evaluate changes in browser.
 
-Run `npm run clean` to clean cashe when you add new content in Prismic and want to see it locally.
+Run `make clean` to clean cashe when you add new content in Prismic and want to see it locally.
 
 ## How to commit changes
 
 When you are ready, check build to insure that your changes do not break anything.
 
 `
-npm run build
+make build
 `
 
 Then you can see production version of site locally by running:
 
 `
-npm run serve
+make serve
 `
 
 If build is live, commit changes to GitHub repository. When you open pull request, Render will deploy test version of site. You will see it's URL in commit comment.
