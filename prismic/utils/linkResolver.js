@@ -43,12 +43,6 @@ export const linkResolver = (doc) => {
       : `/${properties.lang}/books`;
   }
 
-  if (properties.type === 'pricesresellerpage') {
-    return properties.lang === defaultLanguage
-      ? '/pricing-reseller'
-      : `/${properties.lang}/pricing-reseller`;
-  }
-
   if (properties.type === 'pricespage') {
     return properties.lang === defaultLanguage
       ? '/pricing'
@@ -65,6 +59,12 @@ export const linkResolver = (doc) => {
     return properties.lang === defaultLanguage
       ? '/pricing-enterprise'
       : `/${properties.lang}/pricing-enterprise`;
+  }
+
+  if (properties.type === 'pricesresellerpage') {
+    return properties.lang === defaultLanguage
+      ? '/pricing-reseller'
+      : `/${properties.lang}/pricing-reseller`;
   }
 
   if (properties.type === 'videopage') {
