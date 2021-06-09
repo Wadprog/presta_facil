@@ -12,24 +12,11 @@ import Agencies from '@components/Agencies';
 import Plans from '@components/Plans';
 import Calendly from '@components/Calendly/Calendly';
 
-const SolutionPage = ({ current, mainSection }) => {
+const SolutionPage = ({ current, mainSection, pageUid }) => {
   const body = current.body;
   const agenciesSection = mainSection[1].node.body2[0];
   const plansSection = mainSection[1].node.body2[1];
-
-  const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
-  if (!currentUrl) return null;
-  const urlObj = new URL(currentUrl);
-  const { pathname: currentPathname } = urlObj;
-  const hospitalityPagePathname = '/solution/hospitality/';
-  const hospitalityPagePathnameSubstring = hospitalityPagePathname.substr(
-    0,
-    hospitalityPagePathname.length - 1
-  );
-  const hospitalityPagePaths = [
-    hospitalityPagePathname,
-    hospitalityPagePathnameSubstring,
-  ];
+  const hospitalityPageUid = 'hospitality';
 
   return (
     <div className={style.SolutionPage}>
@@ -57,9 +44,7 @@ const SolutionPage = ({ current, mainSection }) => {
             );
         }
       })}
-      {!hospitalityPagePaths.includes(currentPathname) && (
-        <Agencies {...agenciesSection} />
-      )}
+      {pageUid !== hospitalityPageUid && <Agencies {...agenciesSection} />}
     </div>
   );
 };
@@ -67,6 +52,7 @@ const SolutionPage = ({ current, mainSection }) => {
 SolutionPage.propTypes = {
   current: PropTypes.object.isRequired,
   mainSection: PropTypes.array,
+  pageUid: PropTypes.string,
 };
 
 export default SolutionPage;

@@ -9,17 +9,22 @@ const Page = ({ data }) => {
   const pageContext = data.prismic.allSolutionpages.edges[0];
   if (!pageContext) return null;
   const body = pageContext.node;
-  const { metatitle, metadescription, canonical } = body;
+  const { metatitle, metadescription, canonical, _meta: metaData } = body;
+  const { uid: pageUid } = metaData;
   const mainSection = data.prismic.allLayouts.edges;
 
   return (
     <Layout
-      activeDocMeta={body._meta}
+      activeDocMeta={metaData}
       metatitle={metatitle}
       metadescription={metadescription}
       canonical={canonical}
     >
-      <SolutionPage current={body} mainSection={mainSection} />
+      <SolutionPage
+        current={body}
+        mainSection={mainSection}
+        pageUid={pageUid}
+      />
     </Layout>
   );
 };
