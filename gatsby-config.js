@@ -44,6 +44,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-webpack-bundle-analyser-v2`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-preact`,
     {
@@ -157,12 +158,6 @@ module.exports = {
             component: require.resolve('./src/templates/Solution.js'),
             langs: langs,
           },
-          // {
-          //   type: 'Solutionpage',
-          //   match: '/:lang?/law/:uid',
-          //   component: require.resolve('./src/templates/Law.js'),
-          //   langs: langs,
-          // },
           {
             type: 'Featurepage',
             match: '/:lang?/feature/:uid',
@@ -179,12 +174,6 @@ module.exports = {
             type: 'Pricespage',
             match: '/:lang?/pricing',
             component: require.resolve('./src/templates/PricesPage.js'),
-            langs: langs,
-          },
-          {
-            type: 'Pricespagetest',
-            match: '/:lang?/pricestest',
-            component: require.resolve('./src/templates/PricesPageTest.js'),
             langs: langs,
           },
           {
@@ -225,12 +214,6 @@ module.exports = {
             type: 'Blogpostpage',
             match: '/:lang?/blog',
             component: require.resolve('./src/templates/BlogPage.js'),
-            langs: langs,
-          },
-          {
-            type: 'Copmarepage',
-            match: '/:lang?/:uid',
-            component: require.resolve('./src/templates/Compare.js'),
             langs: langs,
           },
           {
