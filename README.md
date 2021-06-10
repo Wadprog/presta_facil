@@ -45,6 +45,8 @@ Then you can see production version of site locally by running:
 make serve
 `
 
+Visit [http://localhost:9000/](http://localhost:8000/).
+
 If build is live, commit changes to GitHub repository. When you open pull request, Render will deploy test version of site. You will see it's URL in commit comment.
 
 Visit test site and check your changes. If everything is ok, ask your buddy to review changes. After review is done and code is fixed, you can merge pull request.
