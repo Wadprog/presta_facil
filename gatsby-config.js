@@ -217,12 +217,6 @@ module.exports = {
             langs: langs,
           },
           {
-            type: 'Copmarepage',
-            match: '/:lang?/:uid',
-            component: require.resolve('./src/templates/Compare.js'),
-            langs: langs,
-          },
-          {
             type: 'Singlebookpage',
             match: '/:lang?/:uid',
             component: require.resolve('./src/templates/BookPage.js'),
