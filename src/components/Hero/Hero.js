@@ -3,6 +3,7 @@ import { object, array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import Swiper from 'react-id-swiper';
 import { parseString } from '@helpers';
+import BackgroundImage from 'gatsby-background-image';
 
 import Button, { VARIANT } from '@components/Button/Button.js';
 import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
@@ -10,6 +11,7 @@ import Modal from '@components/Modal';
 import styles from './Hero.module.scss';
 import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
 import Image from '@components/Image/Image';
+import useGetImage from './useGetImage';
 
 const Hero = ({ primary, fields }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -20,11 +22,8 @@ const Hero = ({ primary, fields }) => {
   const modalCtaButtonLink = parseString(primary.modalctabuttonlink);
   const videoButtonText = parseString(primary.videobuttontext);
   const { previewimage: previewImage } = primary;
-  if (!previewImage) return null;
   const { previewimageSharp: priviewImageSharp } = primary;
-  if (!priviewImageSharp) return null;
-  const { url: previewImageUrl } = previewImage;
-  if (!previewImageUrl) return null;
+  const { background } = useGetImage();
 
   const videoLink = primary.modalvideo ? primary.modalvideo.url : '';
   const params = {
@@ -42,61 +41,66 @@ const Hero = ({ primary, fields }) => {
   };
 
   return (
-    <div className={styles.hero}>
-      <div className={styles.container}>
-        <div className={styles.content}>
-          <div className={styles.title}>
-            <RichText render={primary.title} />
-          </div>
-          <div className={styles.descr}>
-            <RichText render={primary.description} />
-          </div>
-          <div className={styles.buttonWrapper}>
-            <Button
-              variant={VARIANT.PRIMARY}
-              to={parseString(primary.buttonlink)}
-            >
-              <RichText render={primary.buttontext} />
-            </Button>
-          </div>
-        </div>
-        <div className={styles.imageWrapper}>
-          <Image
-            className={styles.image}
-            image={previewImage}
-            imageSharp={priviewImageSharp}
-          />
-          <div className={styles.playButtonWrapper}>
-            <div className={styles.playButton}>
-              <IconButton variant={VARIANT_ICON.PLAY} click={handleOpenModal}>
-                <PLayIcon />
-              </IconButton>
+    <BackgroundImage
+      fluid={background.childImageSharp.fluid}
+      className={styles.background}
+    >
+      <div className={styles.hero}>
+        <div className={styles.container}>
+          <div className={styles.content}>
+            <div className={styles.title}>
+              <RichText render={primary.title} />
             </div>
-            <div className={styles.playButtonText}>
-              <p>{videoButtonText}</p>
+            <div className={styles.descr}>
+              <RichText render={primary.description} />
+            </div>
+            <div className={styles.buttonWrapper}>
+              <Button
+                variant={VARIANT.PRIMARY}
+                to={parseString(primary.buttonlink)}
+              >
+                <RichText render={primary.buttontext} />
+              </Button>
             </div>
           </div>
-        </div>
-      </div>
-      <div className={styles.partners}>
-        <Swiper {...params}>
-          {fields.map(({ partnerslogo }) => {
-            return (
-              <div className={styles.slide} key={partnerslogo.alt}>
-                <Image image={partnerslogo} />
+          <div className={styles.imageWrapper}>
+            <Image
+              className={styles.image}
+              image={previewImage}
+              imageSharp={priviewImageSharp}
+            />
+            <div className={styles.playButtonWrapper}>
+              <div className={styles.playButton}>
+                <IconButton variant={VARIANT_ICON.PLAY} click={handleOpenModal}>
+                  <PLayIcon />
+                </IconButton>
               </div>
-            );
-          })}
-        </Swiper>
+              <div className={styles.playButtonText}>
+                <p>{videoButtonText}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.partners}>
+          <Swiper {...params}>
+            {fields.map(({ partnerslogo }) => {
+              return (
+                <div className={styles.slide} key={partnerslogo.alt}>
+                  <Image image={partnerslogo} />
+                </div>
+              );
+            })}
+          </Swiper>
+        </div>
+        <Modal
+          open={modalIsOpen}
+          closeModal={handleCloseModal}
+          videoLink={videoLink}
+          modalCtaButtonText={modalCtaButtonText}
+          modalCtaButtonLink={modalCtaButtonLink}
+        />
       </div>
-      <Modal
-        open={modalIsOpen}
-        closeModal={handleCloseModal}
-        videoLink={videoLink}
-        modalCtaButtonText={modalCtaButtonText}
-        modalCtaButtonLink={modalCtaButtonLink}
-      />
-    </div>
+    </BackgroundImage>
   );
 };
 

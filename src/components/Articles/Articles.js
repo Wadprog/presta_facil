@@ -3,10 +3,12 @@ import { object, string } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import { StaticQuery, graphql } from 'gatsby';
 import { withPreview } from 'gatsby-source-prismic-graphql';
+import BackgroundImage from 'gatsby-background-image';
 
 import ArticlePreview from '@components/ArticlePreview';
 import style from './Articles.module.scss';
 import Button, { VARIANT } from '@components/Button/Button.js';
+import useGetImages from './useGetImages';
 
 const Articles = ({ primary, data, currentLanguage }) => {
   const { buttontext } = primary;
@@ -15,25 +17,31 @@ const Articles = ({ primary, data, currentLanguage }) => {
     (article) => article.node._meta.lang === currentLanguage
   );
   const lastArticles = currentLangArticles.slice(0, 3);
+  const { background } = useGetImages();
 
   return (
-    <section className={style.articles}>
-      <div className={style.title}>
-        <RichText render={primary.title} />
-      </div>
-      <div className={style.list}>
-        {lastArticles.map((item) => {
-          return <ArticlePreview {...item} key={item.node._meta.uid} />;
-        })}
-      </div>
-      {buttontext && (
-        <div className={style.button}>
-          <Button variant={VARIANT.TRANSPARENT} to="/blog">
-            {RichText.asText(primary.buttontext)}
-          </Button>
+    <BackgroundImage
+      fluid={background.childImageSharp.fluid}
+      className={style.background}
+    >
+      <section className={style.articles}>
+        <div className={style.title}>
+          <RichText render={primary.title} />
         </div>
-      )}
-    </section>
+        <div className={style.list}>
+          {lastArticles.map((item) => {
+            return <ArticlePreview {...item} key={item.node._meta.uid} />;
+          })}
+        </div>
+        {buttontext && (
+          <div className={style.button}>
+            <Button variant={VARIANT.TRANSPARENT} to="/blog">
+              {RichText.asText(primary.buttontext)}
+            </Button>
+          </div>
+        )}
+      </section>
+    </BackgroundImage>
   );
 };
 

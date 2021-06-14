@@ -1,9 +1,9 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
-const useGetImage = () => {
+const useGetEarthImage = () => {
   const data = useStaticQuery(graphql`
     query {
-      background: file(relativePath: { eq: "backgrounds/bg-hero.png" }) {
+      background: file(relativePath: { eq: "backgrounds/bg-earth-map.png" }) {
         childImageSharp {
           fluid(maxWidth: 1200, quality: 70) {
             src
@@ -23,4 +23,4 @@ const useGetImage = () => {
   return data;
 };
 
-export default useGetImage;
+export default useGetEarthImage;

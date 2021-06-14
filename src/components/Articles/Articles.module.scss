@@ -1,11 +1,16 @@
 @import '@styles/variables/all';
 @import '@styles/mixins/all';
 
+.background {
+  &:before,
+  &:after {
+    opacity: 1 !important;
+  }
+}
+
 .articles {
   position: relative;
   padding: 68px 16px 64px;
-  background-image: url('./image/bg.png');
-  background-size: cover;
   @media (max-width: $lg) {
     &::after {
       display: none;

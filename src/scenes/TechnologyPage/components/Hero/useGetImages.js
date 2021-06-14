@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
-const useGetImage = () => {
+const useGetImages = () => {
   const data = useStaticQuery(graphql`
     query {
       background: file(relativePath: { eq: "backgrounds/bg-hero.png" }) {
@@ -23,4 +23,4 @@ const useGetImage = () => {
   return data;
 };
 
-export default useGetImage;
+export default useGetImages;
