@@ -14,6 +14,10 @@
     linear-gradient(89.13deg, #24b04b -46.17%, #0263bc 186.99%);
   background-size: cover;
 
+  @media (max-width: $md) {
+    background: linear-gradient(89.13deg, #24b04b -46.17%, #0263bc 186.99%);
+  }
+
   @media (max-width: $lg) {
     padding: 60px 20px;
   }
