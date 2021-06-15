@@ -112,7 +112,7 @@ const BookPage = ({ content }) => {
       <div className={style.container}>
         <Image
           className={style.bookImage}
-          image={bookImage.url}
+          image={bookImage}
           imageSharp={bookImageSharp}
         />
         <div className={style.formGroup}>

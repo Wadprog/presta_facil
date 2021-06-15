@@ -11,6 +11,19 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion';
 
+const propsWithUniqueKey = (props, key) => {
+  return Object.assign(props || {}, { key });
+};
+
+const htmlSerializer = (type, element, key) => {
+  if (type !== 'image') {
+    return;
+  }
+
+  const props = { src: element.url, alt: element.alt || '', loading: 'lazy' };
+  return React.createElement('img', propsWithUniqueKey(props, key));
+};
+
 const COUNTER_STEP = 6;
 
 const Questions = ({ primary, fields }) => {
@@ -41,7 +54,7 @@ const Questions = ({ primary, fields }) => {
               </AccordionItemHeading>
               <AccordionItemPanel className={styles.accordionItemPanel}>
                 <div className={styles.content}>
-                  <RichText render={content} />
+                  <RichText render={content} htmlSerializer={htmlSerializer} />
                   {link && linktext && (
                     <a
                       className={styles.link}

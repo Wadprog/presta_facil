@@ -16,6 +16,9 @@
   }
   @media (max-width: $md) {
     padding: 48px 16px 48px;
+    &::after {
+      display: none;
+    }
   }
 }
 .container {

@@ -39,6 +39,12 @@
     opacity: 0.75;
   }
 
+  @media (max-width: $md) {
+    &::after {
+      display: none;
+    }
+  }
+
   @media (min-width: $lg) {
     display: flex;
     border-radius: 50px 12px;

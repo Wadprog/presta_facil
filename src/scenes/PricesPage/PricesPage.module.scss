@@ -13,6 +13,9 @@
   @media (min-width: $md) {
     padding-bottom: 134px;
   }
+  @media (max-width: $md) {
+    background-image: none;
+  }
 }
 
 :global {
