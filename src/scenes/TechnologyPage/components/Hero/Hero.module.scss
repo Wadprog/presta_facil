@@ -1,18 +1,33 @@
 @import '@styles/variables/all';
 @import '@styles/mixins/all';
 
-.background {
-  background-attachment: fixed; 
-  &:before,
-  &:after {
-    opacity: 0.4 !important;
-  }
-}
-
 .hero {
   position: relative;
   padding: 170px 20px 64px;
   margin-top: 80px;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        rgba(247, 249, 251, 0) 86.54%,
+        #f6f8fa 100%
+      ),
+      url('./image/bg-hero.png');
+    background-size: cover;
+    top: 0;
+    left: 0;
+    opacity: 0.65;
+  }
+
+  @media (max-width: $md) {
+    &::after {
+      display: none;
+    }
+  }
+  
   @media (max-width: $lg) {
     padding: 140px 16px 48px;
     &::before {
