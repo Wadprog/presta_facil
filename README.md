@@ -8,21 +8,21 @@ To see production site, visit [https://secureprivacy.ai/](https://secureprivacy.
 
 To start project locally, clone this repository. 
 
-`
+```
 git clone git@github.com:secureprivacy/sp-website.git
-`
+```
 
 Go to project directory and install dependencies.
 
-`
+```
 make install
-`
+```
 
 Then start project.
 
-`
+```
 make start
-`
+```
 
 Visit [http://localhost:8000/](http://localhost:8000/).
 
@@ -35,15 +35,15 @@ Run `make clean` to clean cashe when you add new content in Prismic and want to 
 
 When you are ready, check build to insure that your changes do not break anything.
 
-`
+```
 make build
-`
+```
 
 Then you can see production version of site locally by running:
 
-`
+```
 make serve
-`
+```
 
 Visit [http://localhost:9000/](http://localhost:8000/).
 
