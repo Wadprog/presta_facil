@@ -1,21 +1,21 @@
 import React, { useState, useEffect, useContext } from 'react';
-import style from './MenuItem.module.scss';
 import { object, array, string, func } from 'prop-types';
-import { RichText } from 'prismic-reactjs';
-import Arrow from './image/arrow.inline.svg';
-import Image from '@components/Image/Image';
 import classnames from 'classnames';
 import { Link } from 'gatsby';
 import { globalHistory as history } from '@reach/router';
+
+import Arrow from './image/arrow.inline.svg';
+import Image from '@components/Image/Image';
 import LangContext from '@contexts';
 import { langPath } from '@helpers';
+import style from './MenuItem.module.scss';
 
-const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
+const MenuItem = ({ primary, items, activeMenu, handleActiveMenu }) => {
   const [activeImage, setActiveImage] = useState(0);
-  const [image, setImage] = useState(fields[activeImage].image);
+  const [image, setImage] = useState(items[activeImage].image);
   const [isLinkActive, setIsLinkActive] = useState(false);
   const { location } = history;
-  const title = RichText.asText(primary.title);
+  const title = primary.title.text;
   const currentLang = useContext(LangContext);
 
   const handleMouseEnter = (id) => {
@@ -29,7 +29,7 @@ const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
   };
 
   useEffect(() => {
-    setImage(fields[activeImage].image);
+    setImage(items[activeImage].image);
   }, [activeImage]);
 
   const classItem = classnames({
@@ -50,10 +50,10 @@ const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
       <div className={style.submenu}>
         <div className={style.container}>
           <div className={style.list}>
-            {fields.map((item, index) => {
-              const text = RichText.asText(item.name);
+            {items.map((item, index) => {
+              const text = item.name.text;
               let link;
-              if (item.externallink) {
+              if (item.externallink.url) {
                 link = item.externallink.url;
                 location.pathname === link && setIsLinkActive(true);
                 return (
@@ -69,10 +69,7 @@ const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
                   </a>
                 );
               }
-              link =
-                langPath(currentLang) +
-                '/' +
-                RichText.asText(item.link).toLowerCase();
+              link = langPath(currentLang) + '/' + item.link.text.toLowerCase();
               location.pathname === link && setIsLinkActive(true);
               return (
                 <Link
@@ -99,7 +96,7 @@ const MenuItem = ({ primary, fields, activeMenu, handleActiveMenu }) => {
 
 MenuItem.propTypes = {
   primary: object,
-  fields: array,
+  items: array,
   activeMenu: string,
   handleActiveMenu: func,
   location: string,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
 import style from './Header.module.scss';
 import Button, { VARIANT } from '@components/Button/Button.js';
@@ -10,21 +10,19 @@ import Menu from './components/Menu';
 import { useScrollDirection } from '@hooks';
 import useGetImage from './useGetImage';
 import { array, bool, object } from 'prop-types';
-import { RichText } from 'prismic-reactjs';
 import { parseUrl } from '@helpers';
-import { useEffect } from 'react';
 import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
 
 const GRADIENT_ORANGE =
   'linear-gradient(262.53deg, #FB5F47 38.27%, #F9BE5A 113.07%)';
 const GRADIENT_GREEN =
   'linear-gradient(87.97deg, #24b04b -46.17%, #0263bc 186.99%)';
-const BUTTON_TEXT = 'Schedule a demo';
 
 const Header = ({ data, hideMenu }) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleCloseModal = () => setModalIsOpen(false);
+  const menuItemsData = data.filter((item) => item.slice_type === 'menu');
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -59,7 +57,7 @@ const Header = ({ data, hideMenu }) => {
           <div className={style.top}>
             <div className={style.slogan}>
               <GradientText
-                text={RichText.asText(primary.slogan)}
+                text={primary.slogan.text}
                 background={gradientTextBg}
               />
             </div>
@@ -69,8 +67,7 @@ const Header = ({ data, hideMenu }) => {
                 isHeader={true}
                 click={handleClick}
               >
-                {BUTTON_TEXT}
-                {/* {RichText.asText(primary.buttontext)} */}
+                {primary.buttontext.text}
               </Button>
             </div>
           </div>
@@ -97,7 +94,7 @@ const Header = ({ data, hideMenu }) => {
                 </IconButton>
               </div>
               <Logo img={primary.logo} />
-              <Menu data={data} open={isOpenMenu} />
+              <Menu data={menuItemsData} open={isOpenMenu} />
               <SingInButton
                 onClick={() =>
                   window && window.open(parseUrl(primary.signinlink), '_self')

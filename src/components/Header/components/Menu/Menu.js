@@ -22,16 +22,14 @@ const Menu = ({ data, open }) => {
   return (
     <menu className={menuclass}>
       {data.map((item, index) => {
-        if (item.type === 'menu') {
-          return (
-            <MenuItem
-              {...item}
-              key={index}
-              activeMenu={activeMenu}
-              handleActiveMenu={handleActiveMenu}
-            />
-          );
-        }
+        return (
+          <MenuItem
+            {...item}
+            key={index}
+            activeMenu={activeMenu}
+            handleActiveMenu={handleActiveMenu}
+          />
+        );
       })}
     </menu>
   );

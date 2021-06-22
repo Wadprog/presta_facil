@@ -13,3 +13,31 @@ exports.onPreBootstrap = () => {
     fs.mkdirSync(dir);
   }
 };
+
+const path = require('path');
+
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
+
+  const thankyouPages = await graphql(`
+    {
+      allPrismicThankyoupage {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  thankyouPages.data.allPrismicThankyoupage.nodes.forEach((page) => {
+    createPage({
+      path: page.url,
+      component: path.resolve(__dirname, 'src/templates/ThankyouPage.js'),
+      context: { ...page },
+    });
+  });
+};

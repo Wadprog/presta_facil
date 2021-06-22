@@ -1,0 +1,70 @@
+{
+  "Main" : {
+    "title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "heading1",
+        "label" : "Title",
+        "placeholder" : "Add page title"
+      }
+    },
+    "pagemessage" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
+        "allowTargetBlank" : true,
+        "label" : "Page message",
+        "placeholder" : "Add thank you message"
+      }
+    },
+    "buttontext" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Button text",
+        "placeholder" : "Add button text"
+      }
+    },
+    "buttonlink" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Button link",
+        "placeholder" : "Add button link"
+      }
+    }
+  },
+  "SEO" : {
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "UID",
+        "placeholder" : "Add page UID, for example: thank-you"
+      }
+    },
+    "metatitle" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Meta title",
+        "placeholder" : "Add meta title, up to 60 symbols is recommended"
+      }
+    },
+    "metadescription" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Meta description",
+        "placeholder" : "Add meta description, up to 160 symbols is recommended"
+      }
+    },
+    "canonical" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Canonical URL",
+        "placeholder" : "Add canonical URL, for example: https://secureprivacy.ai/thank-you"
+      }
+    }
+  }
+}

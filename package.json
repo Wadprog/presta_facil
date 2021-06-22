@@ -23,7 +23,7 @@
     "gatsby-plugin-sharp": "^2.6.38",
     "gatsby-plugin-sitemap": "^2.4.0",
     "gatsby-source-filesystem": "^2.3.1",
-    "gatsby-source-prismic-graphql": "^3.6.1",
+    "gatsby-source-prismic": "^3.3.6",
     "gatsby-transformer-sharp": "^2.5.2",
     "intersection-observer": "^0.11.0",
     "lozad": "^1.16.0",

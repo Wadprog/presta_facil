@@ -12,7 +12,7 @@ import Image from '@components/Image/Image';
 const DEFAULT_SLIDES = 3;
 
 const Books = ({ data }) => {
-  const { primary, fields } = data;
+  const { primary, items } = data;
   const params = {
     slidesPerView: DEFAULT_SLIDES,
     spaceBetween: 20,
@@ -26,11 +26,11 @@ const Books = ({ data }) => {
 
   return (
     <div className={style.container}>
-      <RichText render={primary.title} />
+      <RichText render={primary.title.raw} />
       <Swiper {...params}>
-        {fields.map(({ image }, index) => {
+        {items.map(({ image }, index) => {
           return (
-            <div className={style.slide} key={`${image.publicURL}${index}`}>
+            <div className={style.slide} key={`${image.url}${index}`}>
               <Link to={langPath(currentLang) + '/books'}>
                 <Image image={image} key={image.url} />
               </Link>

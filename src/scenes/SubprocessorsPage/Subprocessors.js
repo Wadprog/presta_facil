@@ -82,8 +82,8 @@ const renderNoData = (data) => {
 
 const SubprocessorsPage = ({ content }) => {
   const { pagetitle: pageTitle, body } = content;
-  const { fields: tableColsHeaders, type: headersType } = body[0];
-  const { fields: tableRows, type: rowsType } = body[1];
+  const { items: tableColsHeaders, slice_type: headersType } = body[0];
+  const { items: tableRows, slice_type: rowsType } = body[1];
   const [tableData, setTableData] = useState(tableRows);
   const [search, setSearch] = useState(null);
 

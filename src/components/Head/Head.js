@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 
-import { parseString } from '@helpers';
-
 const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
   const url = 'https://secureprivacy.ai/';
 
@@ -17,7 +15,7 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
   );
 
   useEffect(() => {
-    const currentPageCanonical = parseString(canonical);
+    const currentPageCanonical = canonical.text;
     if (currentPageCanonical) {
       setCanonicalUrl(<link rel="canonical" href={currentPageCanonical} />);
       setOpengrapUrl(currentPageCanonical);
@@ -27,7 +25,7 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
   }, []);
 
   useEffect(() => {
-    const currentPageTitle = parseString(metatitle);
+    const currentPageTitle = metatitle.text;
     if (currentPageTitle) {
       setPageTitle(<title>{currentPageTitle}</title>);
       setOpengraphTitle(currentPageTitle);
@@ -38,7 +36,7 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
   }, []);
 
   useEffect(() => {
-    const currentPageDescription = parseString(metadescription);
+    const currentPageDescription = metadescription.text;
     if (currentPageDescription) {
       setPageDescription(
         <meta content={currentPageDescription} name="description" />
@@ -108,9 +106,9 @@ Head.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
   }).isRequired,
-  canonical: PropTypes.array,
-  metatitle: PropTypes.array,
-  metadescription: PropTypes.array,
+  canonical: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  metatitle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  metadescription: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 export default Head;

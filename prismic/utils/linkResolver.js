@@ -1,4 +1,4 @@
-import { defaultLanguage } from '@/prismic-config';
+const { defaultLanguage } = require('./../../prismic-config');
 // eslint-disable-next-line
 let path = [];
 
@@ -6,7 +6,7 @@ if (typeof window !== 'undefined') {
   path = window.location.pathname.split('/');
 }
 
-export const linkResolver = (doc) => {
+const linkResolver = (doc) => {
   const properties = doc._meta || doc;
 
   if (properties.type === 'homepage') {
@@ -130,3 +130,5 @@ export const linkResolver = (doc) => {
   // Backup for all other types
   return '/';
 };
+
+module.exports = linkResolver;

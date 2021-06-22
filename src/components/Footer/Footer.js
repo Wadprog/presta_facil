@@ -1,27 +1,25 @@
 import React, { useState } from 'react';
+import { array, object } from 'prop-types';
+import { RichText } from 'prismic-reactjs';
 
 import Button, { VARIANT } from '@components/Button/Button.js';
 import style from './Footer.module.scss';
 import Navigation from './components/Navigation';
 import Books from './components/Books';
-import { array, object } from 'prop-types';
-import { RichText } from 'prismic-reactjs';
-import { parseString } from '@helpers';
 import LanguageSwitcher from '@components/LanguageSwitcher';
 import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
 import Image from '@components/Image/Image';
 
-const TEXT = 'Schedule a Demo';
-
 const Footer = ({ data, activeDocMeta }) => {
   const primary = data[0].primary;
   const books = data[1];
-  const fields = data[0].fields;
-  const copyright = parseString(primary.copyright);
+  const socialIcons = data[0].items;
+  const copyright = primary.copyright.text;
   const buttonVariant = VARIANT.PRIMARY;
-  const badgesData = data.find((item) => item.type === 'badges');
-  if (!badgesData) return null;
-  const { fields: badges } = badgesData;
+  const badgesData = data.find((item) => item.slice_type === 'badges');
+  const menuItemsData = data.filter((item) => item.slice_type === 'menu');
+
+  const { items: badges } = badgesData;
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleCloseModal = () => setModalIsOpen(false);
@@ -52,18 +50,18 @@ const Footer = ({ data, activeDocMeta }) => {
         <div className={style.container}>
           <div className={style.banners}>
             <div className={style.quizWrapper}>
-              <RichText render={primary.buttontitle} />
+              <RichText render={primary.buttontitle.raw} />
               <Button
                 variant={buttonVariant}
                 isHeader={true}
                 click={handleClick}
               >
-                {TEXT}
+                {primary.buttontext.text}
               </Button>
             </div>
             <Books data={books} />
           </div>
-          <Navigation data={data} activeDocMeta={activeDocMeta} />
+          <Navigation data={menuItemsData} activeDocMeta={activeDocMeta} />
           <div className={style.switcherWrapper}>
             <LanguageSwitcher activeDocMeta={activeDocMeta} />
           </div>
@@ -71,7 +69,7 @@ const Footer = ({ data, activeDocMeta }) => {
             <div className={style.badgesWrapper}>{renderBadges}</div>
             <p className={style.copyright}>{copyright}</p>
             <ul className={style.social}>
-              {fields.map(({ sociallink, socialogo }) => {
+              {socialIcons.map(({ sociallink, socialogo }) => {
                 return (
                   <li key={sociallink.url}>
                     <a

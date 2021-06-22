@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { object } from 'prop-types';
 import style from './LanguageSwitcher.module.scss';
 import { navigate } from 'gatsby';
-import { linkResolver } from 'gatsby-source-prismic-graphql';
+import linkResolver from '../../../prismic/utils/linkResolver';
 import { defaultLanguage } from '@/prismic-config';
 import Arrow from './image/arrow.inline.svg';
 import classnames from 'classnames';
@@ -22,7 +22,9 @@ const LanguageSwitcher = ({ activeDocMeta }) => {
   const currentLang = activeDocMeta
     ? activeDocMeta.lang.slice(0, 2)
     : defaultLanguage.slice(0, 2);
+
   const [isOpen, setIsOpen] = useState(false);
+  const alternateLanguages = activeDocMeta.alternate_languages;
 
   const convertToFullName = (shortName, LANGUAGE) => {
     for (const lang of Object.values(LANGUAGE)) {
@@ -55,8 +57,8 @@ const LanguageSwitcher = ({ activeDocMeta }) => {
         <li className={classnames([style.dropdownItem, style.active])}>
           {convertToFullName(currentLang, LANGUAGE)}
         </li>
-        {activeDocMeta &&
-          activeDocMeta.alternateLanguages.map((altLang, index) => {
+        {alternateLanguages.length > 0 &&
+          alternateLanguages.map((altLang, index) => {
             const altLangShort = altLang.lang.slice(0, 2);
             const lang = {
               ...altLang,

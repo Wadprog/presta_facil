@@ -1,0 +1,414 @@
+{
+  "Main" : {
+    "body2" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : { },
+        "choices" : {
+          "agencies" : {
+            "type" : "Slice",
+            "fieldset" : "agencies",
+            "description" : "agencies",
+            "icon" : "pages",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading2",
+                  "label" : "title"
+                }
+              },
+              "description" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "description"
+                }
+              },
+              "link" : {
+                "type" : "Link",
+                "config" : {
+                  "allowTargetBlank" : true,
+                  "label" : "link"
+                }
+              },
+              "buttontext" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "buttonText"
+                }
+              },
+              "page" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item",
+                  "label" : "page"
+                }
+              },
+              "image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "image"
+                }
+              }
+            },
+            "repeat" : { }
+          },
+          "plans" : {
+            "type" : "Slice",
+            "fieldset" : "plans",
+            "description" : "plans",
+            "icon" : "airplanemode_active",
+            "display" : "list",
+            "non-repeat" : { },
+            "repeat" : {
+              "image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "imageButton"
+                }
+              },
+              "type" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "business", "enterprise" ],
+                  "label" : "type"
+                }
+              },
+              "cardtitle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading3",
+                  "label" : "cardTitle"
+                }
+              },
+              "description" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "description"
+                }
+              },
+              "benefits" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "list-item",
+                  "label" : "benefits"
+                }
+              },
+              "button" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "button"
+                }
+              },
+              "buttonprice" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "buttonPrice"
+                }
+              },
+              "buttonlink" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "Button URL",
+                  "placeholder" : "Add button url"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "Header" : {
+    "body" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : {
+          "header" : [ ],
+          "menu" : [ ]
+        },
+        "choices" : {
+          "header" : {
+            "type" : "Slice",
+            "fieldset" : "header",
+            "description" : "header",
+            "icon" : "headset",
+            "display" : "list",
+            "non-repeat" : {
+              "slogan" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "slogan"
+                }
+              },
+              "buttontext" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "buttontext"
+                }
+              },
+              "buttonlink" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "buttonlink"
+                }
+              },
+              "signinlink" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "signinlink"
+                }
+              },
+              "logo" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "logo"
+                }
+              }
+            },
+            "repeat" : { }
+          },
+          "menu" : {
+            "type" : "Slice",
+            "fieldset" : "menu",
+            "description" : "menu",
+            "icon" : "account_box",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading2",
+                  "label" : "title"
+                }
+              }
+            },
+            "repeat" : {
+              "image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "image"
+                }
+              },
+              "name" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "name"
+                }
+              },
+              "link" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "link"
+                }
+              },
+              "externallink" : {
+                "type" : "Link",
+                "config" : {
+                  "allowTargetBlank" : true,
+                  "label" : "externallink"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "Footer" : {
+    "body1" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : {
+          "footer" : [ ],
+          "menu" : [ ],
+          "books" : [ ],
+          "badges" : [ ]
+        },
+        "choices" : {
+          "footer" : {
+            "type" : "Slice",
+            "fieldset" : "footer",
+            "description" : "footer",
+            "icon" : "filter_center_focus",
+            "display" : "list",
+            "non-repeat" : {
+              "buttontitle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "heading3",
+                  "label" : "buttonTitle"
+                }
+              },
+              "buttontext" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "buttonText",
+                  "placeholder" : "Take the 2-min quiz"
+                }
+              },
+              "buttonlink" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "buttonLink"
+                }
+              },
+              "copyright" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "copyright",
+                  "placeholder" : "© Secure Privacy 2020. All Rights Reserved."
+                }
+              },
+              "logo" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "logo"
+                }
+              },
+              "logotext" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, strong",
+                  "label" : "logotext"
+                }
+              },
+              "logolink" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "logolink"
+                }
+              }
+            },
+            "repeat" : {
+              "socialogo" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "sociaLogo"
+                }
+              },
+              "sociallink" : {
+                "type" : "Link",
+                "config" : {
+                  "allowTargetBlank" : true,
+                  "label" : "socialLink"
+                }
+              }
+            }
+          },
+          "menu" : {
+            "type" : "Slice",
+            "fieldset" : "menu",
+            "description" : "menu",
+            "icon" : "add_box",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading4",
+                  "label" : "title"
+                }
+              }
+            },
+            "repeat" : {
+              "name" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "name"
+                }
+              },
+              "pagename" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "pagename"
+                }
+              },
+              "externallink" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "externallink"
+                }
+              }
+            }
+          },
+          "books" : {
+            "type" : "Slice",
+            "fieldset" : "books",
+            "description" : "books section",
+            "icon" : "book",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "heading3",
+                  "label" : "title"
+                }
+              }
+            },
+            "repeat" : {
+              "image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "image"
+                }
+              }
+            }
+          },
+          "badges" : {
+            "type" : "Slice",
+            "fieldset" : "badges",
+            "description" : "badges",
+            "icon" : "assignment_ind",
+            "display" : "list",
+            "non-repeat" : { },
+            "repeat" : {
+              "badge" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "badge"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

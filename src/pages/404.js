@@ -4,9 +4,9 @@ import ErrorPage from '../scenes/ErrorPage/ErrorPage';
 
 const NotFoundPage = () => {
   return (
-    <Layout>
+    // <Layout>
       <ErrorPage />
-    </Layout>
+    // </Layout>
   );
 };
 
