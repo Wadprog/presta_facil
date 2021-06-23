@@ -18,9 +18,9 @@ const renderTableRows = (rows, rowsType) => {
     const cols = tableValues.map((value, index) => (
       <CurrentTag
         className={style.tableCell}
-        key={`${index}, ${parseString(value)}`}
+        key={`${index}, ${parseString(value.raw)}`}
       >
-        {parseString(value)}
+        {parseString(value.raw)}
       </CurrentTag>
     ));
 
@@ -39,8 +39,11 @@ const renderMobileTable = (rows) => {
     const tableValues = Object.values(row);
     return tableValues.map((value, index) => (
       <tr className={style.tableRow} key={`${index}, ${value}`}>
-        <td className={style.tableCell} key={`${index}, ${parseString(value)}`}>
-          {parseString(value)}
+        <td
+          className={style.tableCell}
+          key={`${index}, ${parseString(value.raw)}`}
+        >
+          {parseString(value.raw)}
         </td>
       </tr>
     ));
@@ -56,7 +59,7 @@ const filterTableData = (data, searchInfo) => {
 
   const filteredTableData = data.filter((row) => {
     const rowValues = Object.values(row);
-    const parsedValues = rowValues.map((value) => parseString(value));
+    const parsedValues = rowValues.map((value) => parseString(value.raw));
 
     for (const value of parsedValues) {
       const content = value.toLowerCase();
@@ -100,7 +103,7 @@ const SubprocessorsPage = ({ content }) => {
   return (
     <div className={style.subprocessorsPage}>
       <div className={style.container}>
-        <h1 className={style.title}>{parseString(pageTitle)}</h1>
+        <h1 className={style.title}>{pageTitle.text}</h1>
         <div className={style.tableWrapper}>
           <div className={style.searchInputWrapper}>
             <SearchInput onChange={handleInputChange} />

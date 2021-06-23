@@ -40,4 +40,26 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { ...page },
     });
   });
+
+  const subprocessors = await graphql(`
+    {
+      allPrismicSubprocessors {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  subprocessors.data.allPrismicSubprocessors.nodes.forEach((page) => {
+    createPage({
+      path: page.url,
+      component: path.resolve(__dirname, 'src/templates/Subprocessors.js'),
+      context: { ...page },
+    });
+  });
 };

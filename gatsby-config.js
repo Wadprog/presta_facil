@@ -139,6 +139,7 @@ module.exports = {
         schemas: {
           layout: require('./schemas/layout.json'),
           thankyoupage: require('./schemas/thankyoupage.json'),
+          subprocessors: require('./schemas/subprocessors.json'),
         },
         lang: '*',
         prismicToolbar: true,
