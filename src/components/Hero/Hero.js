@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { object, array } from 'prop-types';
-import { RichText } from 'prismic-reactjs';
 import Swiper from 'react-id-swiper';
-import { parseString } from '@helpers';
 
 import Button, { VARIANT } from '@components/Button/Button.js';
 import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
@@ -11,18 +9,24 @@ import styles from './Hero.module.scss';
 import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
 import Image from '@components/Image/Image';
 
-const Hero = ({ primary, fields }) => {
+const Hero = ({ primary, items }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleOpenModal = () => setModalIsOpen(true);
   const handleCloseModal = () => setModalIsOpen(false);
 
-  const modalCtaButtonText = parseString(primary.modalctabuttontext);
-  const modalCtaButtonLink = parseString(primary.modalctabuttonlink);
-  const videoButtonText = parseString(primary.videobuttontext);
-  const { previewimage: previewImage } = primary;
-  const { previewimageSharp: priviewImageSharp } = primary;
+  const {
+    previewimage: previewImage,
+    modalctabuttontext: modalCtaButtonText,
+    modalctabuttonlink: modalCtaButtonLink,
+    videobuttontext: videoButtonText,
+    modalvideo: modalVideo,
+    title,
+    description,
+    buttonlink,
+    buttontext,
+  } = primary;
 
-  const videoLink = primary.modalvideo ? primary.modalvideo.url : '';
+  const videoLink = modalVideo ? modalVideo.url : '';
   const params = {
     slidesPerView: 2,
     spaceBetween: 16,
@@ -41,18 +45,11 @@ const Hero = ({ primary, fields }) => {
     <div className={styles.hero}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.title}>
-            <RichText render={primary.title} />
-          </div>
-          <div className={styles.descr}>
-            <RichText render={primary.description} />
-          </div>
+          <div className={styles.title}>{title.text}</div>
+          <div className={styles.descr}>{description.text}</div>
           <div className={styles.buttonWrapper}>
-            <Button
-              variant={VARIANT.PRIMARY}
-              to={parseString(primary.buttonlink)}
-            >
-              <RichText render={primary.buttontext} />
+            <Button variant={VARIANT.PRIMARY} to={buttonlink.text}>
+              {buttontext.text}
             </Button>
           </div>
         </div>
@@ -60,7 +57,7 @@ const Hero = ({ primary, fields }) => {
           <Image
             className={styles.image}
             image={previewImage}
-            imageSharp={priviewImageSharp}
+            fluid={previewImage.fluid}
           />
           <div className={styles.playButtonWrapper}>
             <div className={styles.playButton}>
@@ -69,14 +66,14 @@ const Hero = ({ primary, fields }) => {
               </IconButton>
             </div>
             <div className={styles.playButtonText}>
-              <p>{videoButtonText}</p>
+              <p>{videoButtonText.text}</p>
             </div>
           </div>
         </div>
       </div>
       <div className={styles.partners}>
         <Swiper {...params}>
-          {fields.map(({ partnerslogo }) => {
+          {items.map(({ partnerslogo }) => {
             return (
               <div className={styles.slide} key={partnerslogo.alt}>
                 <Image image={partnerslogo} />
@@ -89,8 +86,8 @@ const Hero = ({ primary, fields }) => {
         open={modalIsOpen}
         closeModal={handleCloseModal}
         videoLink={videoLink}
-        modalCtaButtonText={modalCtaButtonText}
-        modalCtaButtonLink={modalCtaButtonLink}
+        modalCtaButtonText={modalCtaButtonText.text}
+        modalCtaButtonLink={modalCtaButtonLink.text}
       />
     </div>
   );
@@ -98,7 +95,7 @@ const Hero = ({ primary, fields }) => {
 
 Hero.propTypes = {
   primary: object,
-  fields: array,
+  items: array,
 };
 
 export default Hero;

@@ -140,6 +140,7 @@ module.exports = {
           layout: require('./schemas/layout.json'),
           thankyoupage: require('./schemas/thankyoupage.json'),
           subprocessors: require('./schemas/subprocessors.json'),
+          featurepage: require('./schemas/featurepage.json'),
         },
         lang: '*',
         prismicToolbar: true,

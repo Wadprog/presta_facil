@@ -11,7 +11,7 @@ const FeaturePage = ({ current: body }) => {
   return (
     <div className={style.SolutionPage}>
       {body.map((section, index) => {
-        switch (section.type) {
+        switch (section.slice_type) {
           case 'hero':
             return <Hero {...section} key={`${section.type}${index}`} />;
           case 'works':

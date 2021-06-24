@@ -5,8 +5,8 @@ import Swiper from 'react-id-swiper';
 import { RichText } from 'prismic-reactjs';
 import { object, array } from 'prop-types';
 
-const Works = ({ primary, fields }) => {
-  const isSlider = primary.slider;
+const Works = ({ primary, items }) => {
+  const { title, description, slider: isSlider } = primary;
   const params = {
     slidesPerView: 'auto',
     spaceBetween: 16,
@@ -24,8 +24,8 @@ const Works = ({ primary, fields }) => {
     },
   };
 
-  const listItem = fields.map((item) => {
-    const key = item.name[0].text;
+  const listItem = items.map((item) => {
+    const key = item.name.text;
     return (
       <div className={style.slide} key={key}>
         <Item {...item} />
@@ -38,10 +38,10 @@ const Works = ({ primary, fields }) => {
       <div className={style.container}>
         <div className={style.wrapper}>
           <div className={style.title}>
-            <RichText render={primary.title} />
+            <RichText render={title.raw} />
           </div>
           <div className={style.description}>
-            <RichText render={primary.description} />
+            <RichText render={description.raw} />
           </div>
         </div>
         {isSlider ? (
@@ -56,7 +56,7 @@ const Works = ({ primary, fields }) => {
 
 Works.propTypes = {
   primary: object,
-  fields: array,
+  items: array,
 };
 
 export default Works;

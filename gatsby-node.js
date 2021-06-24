@@ -62,4 +62,26 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { ...page },
     });
   });
+
+  const featurepage = await graphql(`
+    {
+      allPrismicFeaturepage {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  featurepage.data.allPrismicFeaturepage.nodes.forEach((page) => {
+    createPage({
+      path: page.url,
+      component: path.resolve(__dirname, 'src/templates/Feature.js'),
+      context: { ...page },
+    });
+  });
 };
