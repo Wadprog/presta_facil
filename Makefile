@@ -10,5 +10,5 @@ install:
 clean:
 	npm run clean
 
-serve:
+serve: build
 	npm run serve
