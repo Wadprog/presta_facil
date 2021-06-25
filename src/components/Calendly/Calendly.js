@@ -6,6 +6,8 @@ import lozad from 'lozad';
 import styles from './Calendly.module.scss';
 
 const Calendly = ({ primary }) => {
+  const { title } = primary;
+
   useEffect(() => {
     const observer = lozad();
     observer.observe();
@@ -14,7 +16,7 @@ const Calendly = ({ primary }) => {
   return (
     <section className={styles.calendly}>
       <div className={styles.title}>
-        <RichText render={primary.title} />
+        <RichText render={title.raw} />
       </div>
       <div className={styles.calendar}>
         <iframe

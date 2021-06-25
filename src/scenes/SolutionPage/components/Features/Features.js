@@ -6,14 +6,15 @@ import Swiper from 'react-id-swiper';
 import { useBreakpoints } from '@hooks';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import Image from '@components/Image/Image';
-import { parseString } from '@helpers';
 
-const Features = ({ primary, fields }) => {
+const Features = ({ primary, items }) => {
   const [buildKey, setBuildKey] = useState();
   const { width } = useBreakpoints();
   useEffect(() => {
     setBuildKey(+new Date());
   }, [width]);
+
+  const { title, button, buttonlink } = primary;
 
   const params = {
     slidesPerView: 'auto',
@@ -34,10 +35,10 @@ const Features = ({ primary, fields }) => {
   return (
     <section className={styles.features}>
       <div className={styles.title}>
-        <RichText render={primary.title} />
+        <RichText render={title.raw} />
       </div>
       <Swiper {...params} key={buildKey}>
-        {fields.map(({ image, imageSharp, title, description }, index) => {
+        {items.map(({ image, imageSharp, title, description }, index) => {
           return (
             <div className={styles.slide} key={`solutions${index}`}>
               <Image
@@ -45,18 +46,15 @@ const Features = ({ primary, fields }) => {
                 imageSharp={imageSharp}
                 image={image}
               />
-              <RichText render={title} />
-              <RichText render={description} />
+              <RichText render={title.raw} />
+              <RichText render={description.raw} />
             </div>
           );
         })}
       </Swiper>
       <div className={styles.button}>
-        <Button
-          variant={VARIANT.TRANSPARENT}
-          to={parseString(primary.buttonlink)}
-        >
-          {RichText.asText(primary.button)}
+        <Button variant={VARIANT.TRANSPARENT} to={buttonlink.text}>
+          {button.text}
         </Button>
       </div>
     </section>
@@ -65,7 +63,7 @@ const Features = ({ primary, fields }) => {
 
 Features.propTypes = {
   primary: object,
-  fields: array,
+  items: array,
 };
 
 export default Features;

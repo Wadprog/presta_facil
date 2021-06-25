@@ -1,242 +1,312 @@
-// import React from 'react';
-// import { graphql } from 'gatsby';
-// import PropTypes from 'prop-types';
+import React from 'react';
+import { graphql } from 'gatsby';
+import PropTypes from 'prop-types';
 
-// import SolutionPage from '../scenes/SolutionPage';
-// import Layout from '@components/Layout';
+import SolutionPage from '../scenes/SolutionPage';
+import Layout from '@components/Layout';
 
-// const Page = ({ data }) => {
-//   const pageContext = data.prismic.allSolutionpages.edges[0];
-//   if (!pageContext) return null;
-//   const body = pageContext.node;
-//   const { metatitle, metadescription, canonical, _meta: metaData } = body;
-//   const { uid: pageUid } = metaData;
-//   const mainSection = data.prismic.allLayouts.edges;
+const Page = ({ data }) => {
+  const pageContext = data.allPrismicSolutionpage.edges[0];
+  if (!pageContext) return null;
+  const body = pageContext.node;
+  const { data: pageData, uid, id, lang, type, alternate_languages } = body;
+  const { metatitle, metadescription, canonical } = pageData;
+  const activeDocMeta = { id, uid, lang, type, alternate_languages };
+  const mainSection = data.allPrismicLayout.edges;
 
-//   return (
-//     <Layout
-//       activeDocMeta={metaData}
-//       metatitle={metatitle}
-//       metadescription={metadescription}
-//       canonical={canonical}
-//     >
-//       <SolutionPage
-//         current={body}
-//         mainSection={mainSection}
-//         pageUid={pageUid}
-//       />
-//     </Layout>
-//   );
-// };
+  return (
+    <Layout
+      activeDocMeta={activeDocMeta}
+      metatitle={metatitle}
+      metadescription={metadescription}
+      canonical={canonical}
+    >
+      <SolutionPage current={body} mainSection={mainSection} pageUid={uid} />
+    </Layout>
+  );
+};
 
-// Page.propTypes = {
-//   data: PropTypes.object,
-// };
+Page.propTypes = {
+  data: PropTypes.object,
+};
 
-// export const query = graphql`
-//   query($uid: String, $lang: String) {
-//     prismic {
-//       allSolutionpages(uid: $uid, lang: $lang) {
-//         edges {
-//           node {
-//             _linkType
-//             metatitle
-//             metadescription
-//             canonical
-//             _meta {
-//               uid
-//               type
-//               lang
-//               alternateLanguages {
-//                 lang
-//                 type
-//                 uid
-//               }
-//             }
-//             body {
-//               ... on PRISMIC_SolutionpageBodyHero {
-//                 type
-//                 label
-//                 fields {
-//                   partnerslogo
-//                 }
-//                 primary {
-//                   modalvideo {
-//                     ... on PRISMIC__ExternalLink {
-//                       url
-//                       _linkType
-//                     }
-//                   }
-//                   buttontext
-//                   buttonlink
-//                   description
-//                   flag
-//                   title
-//                   modalctabuttonlink
-//                   modalctabuttontext
-//                   videobuttontext
-//                   previewimage
-//                   previewimageSharp {
-//                     childImageSharp {
-//                       fluid {
-//                         aspectRatio
-//                         base64
-//                         originalImg
-//                         originalName
-//                         presentationHeight
-//                         presentationWidth
-//                         sizes
-//                         src
-//                         srcSet
-//                         srcSetWebp
-//                         srcWebp
-//                         tracedSVG
-//                       }
-//                     }
-//                   }
-//                 }
-//               }
-//               ... on PRISMIC_SolutionpageBodyProjects {
-//                 type
-//                 label
-//                 fields {
-//                   description
-//                   link {
-//                     ... on PRISMIC__ExternalLink {
-//                       url
-//                     }
-//                   }
-//                   screenshot
-//                   screenshotSharp {
-//                     childImageSharp {
-//                       fluid {
-//                         aspectRatio
-//                         base64
-//                         originalImg
-//                         originalName
-//                         presentationHeight
-//                         presentationWidth
-//                         sizes
-//                         src
-//                         srcSet
-//                         srcSetWebp
-//                         srcWebp
-//                         tracedSVG
-//                       }
-//                     }
-//                   }
-//                   title
-//                 }
-//                 primary {
-//                   title
-//                 }
-//               }
-//               ... on PRISMIC_SolutionpageBodyQuestions {
-//                 type
-//                 label
-//                 fields {
-//                   link {
-//                     ... on PRISMIC__ExternalLink {
-//                       _linkType
-//                       url
-//                     }
-//                   }
-//                   linktext
-//                   scan
-//                   title
-//                   content
-//                 }
-//                 primary {
-//                   title
-//                 }
-//               }
-//               ... on PRISMIC_SolutionpageBodyBenefits {
-//                 type
-//                 label
-//                 fields {
-//                   image
-//                   text
-//                 }
-//                 primary {
-//                   title
-//                   button
-//                   buttonlink
-//                 }
-//               }
-//               ... on PRISMIC_SolutionpageBodyFeatures {
-//                 type
-//                 label
-//                 fields {
-//                   description
-//                   image
-//                   title
-//                 }
-//                 primary {
-//                   title
-//                   button
-//                   buttonlink
-//                 }
-//               }
-//               ... on PRISMIC_SolutionpageBodyPlans {
-//                 type
-//                 label
-//                 primary {
-//                   title
-//                 }
-//               }
-//               ... on PRISMIC_SolutionpageBodyBooking {
-//                 type
-//                 label
-//                 primary {
-//                   title
-//                 }
-//               }
-//             }
-//           }
-//         }
-//       }
-//       allLayouts {
-//         edges {
-//           node {
-//             body2 {
-//               ... on PRISMIC_LayoutBody2Agencies {
-//                 type
-//                 label
-//                 primary {
-//                   title
-//                   description
-//                   buttontext
-//                   image
-//                   page
-//                 }
-//               }
-//               ... on PRISMIC_LayoutBody2Plans {
-//                 type
-//                 label
-//                 fields {
-//                   image
-//                   type
-//                   cardtitle
-//                   description
-//                   benefits
-//                   button
-//                   buttonprice
-//                   buttonlink {
-//                     _linkType
-//                     ... on PRISMIC__ExternalLink {
-//                       target
-//                       _linkType
-//                       url
-//                     }
-//                   }
-//                 }
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
+export const query = graphql`
+  query($uid: String, $lang: String) {
+    allPrismicSolutionpage(filter: { uid: { eq: $uid }, lang: { eq: $lang } }) {
+      edges {
+        node {
+          alternate_languages {
+            id
+            lang
+            uid
+            type
+          }
+          data {
+            canonical {
+              raw
+            }
+            metadescription {
+              raw
+            }
+            metatitle {
+              raw
+            }
+            body {
+              ... on PrismicSolutionpageBodyHero {
+                id
+                slice_type
+                primary {
+                  buttonlink {
+                    text
+                  }
+                  buttontext {
+                    text
+                  }
+                  description {
+                    text
+                  }
+                  modalctabuttonlink {
+                    text
+                  }
+                  modalctabuttontext {
+                    text
+                  }
+                  modalvideo {
+                    link_type
+                    url
+                  }
+                  previewimage {
+                    url
+                    fluid(srcSetBreakpoints: 10) {
+                      aspectRatio
+                      base64
+                      sizes
+                      src
+                      srcSet
+                      srcSetWebp
+                      srcWebp
+                    }
+                    thumbnails
+                  }
+                  title {
+                    text
+                  }
+                  videobuttontext {
+                    text
+                  }
+                }
+                items {
+                  partnerslogo {
+                    alt
+                    url
+                  }
+                }
+              }
+              ... on PrismicSolutionpageBodyProjects {
+                id
+                slice_type
+                primary {
+                  title {
+                    raw
+                  }
+                }
+                items {
+                  description {
+                    raw
+                  }
+                  title {
+                    raw
+                  }
+                  link {
+                    url
+                    link_type
+                  }
+                  screenshot {
+                    alt
+                    url
+                    fluid(srcSetBreakpoints: 10) {
+                      aspectRatio
+                      base64
+                      sizes
+                      src
+                      srcSet
+                      srcSetWebp
+                      srcWebp
+                    }
+                    thumbnails
+                  }
+                }
+              }
+              ... on PrismicSolutionpageBodyQuestions {
+                id
+                slice_type
+                primary {
+                  title {
+                    raw
+                  }
+                }
+                items {
+                  content {
+                    raw
+                  }
+                  link {
+                    link_type
+                    url
+                  }
+                  scan
+                  linktext {
+                    text
+                  }
+                  title {
+                    raw
+                  }
+                }
+              }
+              ... on PrismicSolutionpageBodyBenefits {
+                id
+                slice_type
+                primary {
+                  button {
+                    text
+                  }
+                  buttonlink {
+                    text
+                  }
+                  title {
+                    raw
+                  }
+                }
+                items {
+                  image {
+                    alt
+                    url
+                  }
+                  text {
+                    raw
+                  }
+                }
+              }
+              ... on PrismicSolutionpageBodyFeatures {
+                id
+                slice_type
+                primary {
+                  button {
+                    text
+                  }
+                  buttonlink {
+                    text
+                  }
+                  title {
+                    raw
+                  }
+                }
+                items {
+                  description {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                  }
+                  title {
+                    raw
+                  }
+                }
+              }
+              ... on PrismicSolutionpageBodyBooking {
+                id
+                slice_type
+                primary {
+                  title {
+                    raw
+                  }
+                }
+              }
+              ... on PrismicSolutionpageBodyPlans {
+                id
+                slice_type
+                primary {
+                  title {
+                    raw
+                  }
+                }
+              }
+            }
+          }
+          uid
+          type
+          id
+          lang
+        }
+      }
+    }
+    allPrismicLayout {
+      edges {
+        node {
+          data {
+            body2 {
+              ... on PrismicLayoutBody2Agencies {
+                id
+                slice_type
+                primary {
+                  buttontext {
+                    text
+                  }
+                  description {
+                    text
+                  }
+                  image {
+                    alt
+                    url
+                  }
+                  link {
+                    link_type
+                    url
+                  }
+                  page {
+                    text
+                  }
+                  title {
+                    text
+                  }
+                }
+              }
+              ... on PrismicLayoutBody2Plans {
+                id
+                slice_type
+                items {
+                  benefits {
+                    raw
+                  }
+                  button {
+                    raw
+                  }
+                  buttonlink {
+                    link_type
+                    url
+                  }
+                  buttonprice {
+                    raw
+                  }
+                  cardtitle {
+                    raw
+                  }
+                  description {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                  }
+                  type
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
-// export default Page;
+export default Page;

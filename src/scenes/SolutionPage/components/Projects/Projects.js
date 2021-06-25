@@ -1,18 +1,19 @@
 import React from 'react';
+import { RichText } from 'prismic-reactjs';
 import styles from './projects.module.scss';
 import { object, array } from 'prop-types';
-import { RichText } from 'prismic-reactjs';
 import Item from './Item/Item';
 
-const Projects = ({ primary, fields }) => {
+const Projects = ({ primary, items }) => {
+  const { title } = primary;
   return (
     <section className={styles.projects}>
       <div className={styles.container}>
         <div className={styles.title}>
-          <RichText render={primary.title} />
+          <RichText render={title.raw} />
         </div>
         <div className={styles.list}>
-          {fields.map((item) => {
+          {items.map((item) => {
             return <Item {...item} key={item.link.url} />;
           })}
         </div>
@@ -23,7 +24,7 @@ const Projects = ({ primary, fields }) => {
 
 Projects.propTypes = {
   primary: object,
-  fields: array,
+  items: array,
 };
 
 export default Projects;

@@ -6,7 +6,7 @@
 
 // You can delete this file if you're not using it
 var fs = require('fs');
-var dir = './.cache/caches/gatsby-source-prismic-graphql';
+var dir = './.cache/caches/gatsby-source-prismic';
 
 exports.onPreBootstrap = () => {
   if (!fs.existsSync(dir)) {
@@ -103,6 +103,28 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: page.url,
       component: path.resolve(__dirname, 'src/templates/Technology.js'),
+      context: { ...page },
+    });
+  });
+
+  const solutionpage = await graphql(`
+    {
+      allPrismicSolutionpage {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  solutionpage.data.allPrismicSolutionpage.nodes.forEach((page) => {
+    createPage({
+      path: page.url,
+      component: path.resolve(__dirname, 'src/templates/Solution.js'),
       context: { ...page },
     });
   });

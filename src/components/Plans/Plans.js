@@ -7,11 +7,12 @@ import { object, array } from 'prop-types';
 import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
 import { parseUrl } from '../../helpers/utils';
 
-const Plans = ({ primary, fields }) => {
+const Plans = ({ primary, items }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleCloseModal = () => setModalIsOpen(false);
-  const firstCardData = fields[0];
+  const firstCardData = items[0];
   const buttonUrl = parseUrl(firstCardData.buttonlink);
+  const { title } = primary;
 
   const handleClick = (e, type) => {
     if (type === 'enterprise') {
@@ -20,26 +21,13 @@ const Plans = ({ primary, fields }) => {
     }
   };
 
-  const pickDestinationUrl = (url, type) => {
-    const currentPageUrl =
-      typeof window !== 'undefined' ? window.location.href : '';
-
-    const mapping = {
-      enterprise: currentPageUrl,
-      business: url,
-    };
-
-    const destinationUrl = mapping[type];
-    return destinationUrl;
-  };
-
   return (
     <div className={style.plans}>
       <div className={style.title}>
-        <RichText render={primary.title} />
+        <RichText render={title.raw} />
       </div>
       <div className={style.container}>
-        {fields.map((card, index) => {
+        {items.map((card, index) => {
           return (
             <Card
               {...card}
@@ -47,7 +35,6 @@ const Plans = ({ primary, fields }) => {
               key={`plans-card${index}`}
               handleClick={handleClick}
               buttonUrl={buttonUrl}
-              pickDestinationUrl={pickDestinationUrl}
             />
           );
         })}
@@ -59,7 +46,7 @@ const Plans = ({ primary, fields }) => {
 
 Plans.propTypes = {
   primary: object,
-  fields: array,
+  items: array,
 };
 
 export default Plans;
