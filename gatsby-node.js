@@ -106,26 +106,4 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { ...page },
     });
   });
-
-  const solutionpage = await graphql(`
-    {
-      allPrismicSolutionpage {
-        nodes {
-          id
-          uid
-          lang
-          type
-          url
-        }
-      }
-    }
-  `);
-
-  solutionpage.data.allPrismicSolutionpage.nodes.forEach((page) => {
-    createPage({
-      path: page.url,
-      component: path.resolve(__dirname, 'src/templates/Solution.js'),
-      context: { ...page },
-    });
-  });
 };
