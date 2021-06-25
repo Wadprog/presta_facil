@@ -41,11 +41,11 @@ const Banner = ({ primary }) => {
       <div className={styles.container}>
         <div className={styles.wrapper}>
           <div className={styles.title}>
-            <RichText render={title} />
+            <RichText render={title.raw} />
           </div>
           <div className={styles.buttonWrapper}>
             <Button variant={VARIANT.PRIMARY} to={buttonUrl} fullWidth>
-              <RichText render={buttontext} />
+              <RichText render={buttontext.raw} />
             </Button>
             <Link to={promoLink} className={styles.link}>
               {promoLinkText}
@@ -53,7 +53,7 @@ const Banner = ({ primary }) => {
           </div>
         </div>
         <div className={styles.text}>
-          <RichText render={text} />
+          <RichText render={text.raw} />
         </div>
       </div>
     </section>
