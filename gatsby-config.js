@@ -142,6 +142,7 @@ module.exports = {
           subprocessors: require('./schemas/subprocessors.json'),
           featurepage: require('./schemas/featurepage.json'),
           technologypage: require('./schemas/technologypage.json'),
+          singlebookpage: require('./schemas/singlebookpage.json'),
         },
         lang: '*',
         prismicToolbar: true,

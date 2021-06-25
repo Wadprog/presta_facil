@@ -1,80 +1,103 @@
-// import React from 'react';
-// import { graphql } from 'gatsby';
-// import PropTypes from 'prop-types';
+import React from 'react';
+import { graphql } from 'gatsby';
+import PropTypes from 'prop-types';
 
-// import BookPage from '@scenes/BookPage';
-// import Layout from '@components/Layout';
+import BookPage from '@scenes/BookPage';
+import Layout from '@components/Layout';
 
-// const Page = ({ data }) => {
-//   const bookpageData = data.prismic.allSinglebookpages.edges[0];
-//   if (!bookpageData) return null;
-//   const bookpageContent = bookpageData.node;
-//   const { metatitle, metadescription, canonical } = bookpageContent;
+const Page = ({ data }) => {
+  const bookpageData = data.allPrismicSinglebookpage.edges[0].node;
+  if (!bookpageData) return null;
+  const {
+    data: bookpageContent,
+    alternate_languages,
+    id,
+    uid,
+    lang,
+    type,
+  } = bookpageData;
+  const activeDocMeta = { id, uid, lang, type, alternate_languages };
+  const { metatitle, metadescription, canonical } = bookpageContent;
 
-//   return (
-//     <Layout
-//       activeDocMeta={bookpageContent._meta}
-//       metatitle={metatitle}
-//       metadescription={metadescription}
-//       canonical={canonical}
-//     >
-//       <BookPage content={bookpageContent} />
-//     </Layout>
-//   );
-// };
+  return (
+    <Layout
+      activeDocMeta={activeDocMeta}
+      metatitle={metatitle}
+      metadescription={metadescription}
+      canonical={canonical}
+    >
+      <BookPage content={bookpageContent} />
+    </Layout>
+  );
+};
 
-// Page.propTypes = {
-//   data: PropTypes.object.isRequired,
-// };
+Page.propTypes = {
+  data: PropTypes.object.isRequired,
+};
 
-// export const query = graphql`
-//   query($uid: String, $lang: String) {
-//     prismic {
-//       allSinglebookpages(uid: $uid, lang: $lang) {
-//         edges {
-//           node {
-//             bookimage
-//             bookdescription
-//             booktitle
-//             buttontext
-//             consenttext
-//             bookurl
-//             metatitle
-//             metadescription
-//             canonical
-//             bookimageSharp {
-//               childImageSharp {
-//                 fluid {
-//                   tracedSVG
-//                   srcWebp
-//                   srcSetWebp
-//                   srcSet
-//                   src
-//                   sizes
-//                   presentationWidth
-//                   presentationHeight
-//                   originalName
-//                   originalImg
-//                   base64
-//                   aspectRatio
-//                 }
-//               }
-//             }
-//             _meta {
-//               uid
-//               type
-//               lang
-//               alternateLanguages {
-//                 type
-//                 lang
-//                 uid
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
+export const query = graphql`
+  query($uid: String, $lang: String) {
+    allPrismicSinglebookpage(
+      filter: { uid: { eq: $uid }, lang: { eq: $lang } }
+    ) {
+      edges {
+        node {
+          alternate_languages {
+            lang
+            id
+            type
+            uid
+          }
+          uid
+          type
+          lang
+          data {
+            bookdescription {
+              text
+            }
+            bookimage {
+              alt
+              url
+              fluid(srcSetBreakpoints: 10) {
+                aspectRatio
+                base64
+                sizes
+                src
+                srcSet
+                srcSetWebp
+                srcWebp
+              }
+              dimensions {
+                width
+                height
+              }
+            }
+            booktitle {
+              text
+            }
+            bookurl {
+              text
+            }
+            buttontext {
+              text
+            }
+            canonical {
+              text
+            }
+            consenttext {
+              text
+            }
+            metadescription {
+              text
+            }
+            metatitle {
+              text
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
-// export default Page;
+export default Page;

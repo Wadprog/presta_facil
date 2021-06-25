@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import { parseString, isValidEmail } from '@helpers';
+import { isValidEmail } from '@helpers';
 import style from './BookPage.module.scss';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import Image from '@components/Image/Image';
@@ -28,7 +28,6 @@ const BookPage = ({ content }) => {
     buttontext: buttonText,
     bookimage: bookImage,
     bookurl: bookPageUrl,
-    bookimageSharp: bookImageSharp,
   } = content;
   const { dimensions } = bookImage;
 
@@ -99,7 +98,7 @@ const BookPage = ({ content }) => {
       })
         .then(() => {
           setFormData(initialFormData);
-          window.location.href = parseString(bookPageUrl);
+          window.location.href = bookPageUrl.text;
         })
         .catch((err) => {
           setSubmitError(err);
@@ -113,12 +112,12 @@ const BookPage = ({ content }) => {
         <Image
           className={style.bookImage}
           image={bookImage}
-          imageSharp={bookImageSharp}
+          fluid={bookImage.fluid}
         />
         <div className={style.formGroup}>
-          <h1 className={style.bookPageTitle}>{parseString(bookPageTitle)}</h1>
+          <h1 className={style.bookPageTitle}>{bookPageTitle.text}</h1>
           <p className={style.bookPageDescription}>
-            {parseString(bookPageDescription)}
+            {bookPageDescription.text}
           </p>
           <form className={style.form} onSubmit={handleSubmit}>
             <div className={style.formUserNames}>
@@ -179,7 +178,7 @@ const BookPage = ({ content }) => {
                 onChange={handleConsentChange}
               />
               <label htmlFor="consent" className={style.checkboxLabel}>
-                {parseString(consentText)}
+                {consentText.text}
               </label>
             </div>
             <div className={style.buttonWrapper}>
@@ -190,7 +189,7 @@ const BookPage = ({ content }) => {
                 type="submit"
                 fullWidth
               >
-                {parseString(buttonText)}
+                {buttonText.text}
               </Button>
             </div>
             {formErrors.length > 0 && (

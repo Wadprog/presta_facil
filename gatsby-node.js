@@ -106,4 +106,26 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { ...page },
     });
   });
+
+  const singlebookpage = await graphql(`
+    {
+      allPrismicSinglebookpage {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  singlebookpage.data.allPrismicSinglebookpage.nodes.forEach((page) => {
+    createPage({
+      path: page.url,
+      component: path.resolve(__dirname, 'src/templates/BookPage.js'),
+      context: { ...page },
+    });
+  });
 };
