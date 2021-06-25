@@ -145,7 +145,7 @@ module.exports = {
           singlebookpage: require('./schemas/singlebookpage.json'),
         },
         lang: '*',
-        prismicToolbar: true,
+        prismicToolbar: false,
       },
     },
   ],
