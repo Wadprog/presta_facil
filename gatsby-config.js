@@ -141,6 +141,7 @@ module.exports = {
           thankyoupage: require('./schemas/thankyoupage.json'),
           subprocessors: require('./schemas/subprocessors.json'),
           featurepage: require('./schemas/featurepage.json'),
+          technologypage: require('./schemas/technologypage.json'),
         },
         lang: '*',
         prismicToolbar: true,

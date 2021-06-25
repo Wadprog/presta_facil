@@ -13,7 +13,7 @@ const TechnologyPage = ({ current: body }) => {
   return (
     <div className={style.TechnologyPage}>
       {body.map((section, index) => {
-        switch (section.type) {
+        switch (section.slice_type) {
           case 'hero':
             return <Hero {...section} key={`${section.type}${index}`} />;
           case 'benefits':

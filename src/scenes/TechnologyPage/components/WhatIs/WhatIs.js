@@ -12,7 +12,6 @@ const WhatIs = ({ primary }) => {
     description,
     subtitle,
     image,
-    imageSharp,
     buttontext,
     buttonlink,
   } = primary;
@@ -20,22 +19,22 @@ const WhatIs = ({ primary }) => {
     <section className={styles.section}>
       <div className={styles.container}>
         <div className={styles.imageWrapper}>
-          <Image imageSharp={imageSharp} image={image} />
+          <Image image={image} />
           <div className={styles.background}></div>
         </div>
         <div className={styles.content}>
           <div className={styles.title}>
-            <RichText render={title} />
+            <RichText render={title.raw} />
           </div>
           <div className={styles.description}>
-            <RichText render={description} />
+            <RichText render={description.raw} />
           </div>
           <div className={styles.subtitle}>
-            <RichText render={subtitle} />
+            <RichText render={subtitle.raw} />
           </div>
           <div className={styles.buttonWrapper}>
-            <Button variant={VARIANT.PRIMARY} to={parseString(buttonlink)}>
-              <RichText render={buttontext} />
+            <Button variant={VARIANT.PRIMARY} to={buttonlink.text}>
+              <RichText render={buttontext.raw} />
             </Button>
           </div>
         </div>

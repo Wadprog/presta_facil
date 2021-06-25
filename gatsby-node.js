@@ -84,4 +84,26 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { ...page },
     });
   });
+
+  const technologypage = await graphql(`
+    {
+      allPrismicTechnologypage {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  technologypage.data.allPrismicTechnologypage.nodes.forEach((page) => {
+    createPage({
+      path: page.url,
+      component: path.resolve(__dirname, 'src/templates/Technology.js'),
+      context: { ...page },
+    });
+  });
 };

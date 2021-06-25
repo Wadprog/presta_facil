@@ -5,21 +5,21 @@ import Image from '@components/Image/Image';
 import styles from './Features.module.scss';
 
 const Features = ({ primary }) => {
-  const { title, description, image, imageSharp, list } = primary;
+  const { title, description, image, list } = primary;
   return (
     <section className={styles.section}>
       <div className={styles.title}>
-        <RichText render={title} />
+        <RichText render={title.raw} />
       </div>
       <div className={styles.description}>
-        <RichText render={description} />
+        <RichText render={description.raw} />
       </div>
       <div className={styles.container}>
         <div className={styles.listWrapper}>
-          <RichText render={list} />
+          <RichText render={list.raw} />
         </div>
         <div className={styles.imageWrapper}>
-          <Image imageSharp={imageSharp} image={image} />
+          <Image image={image} />
         </div>
       </div>
     </section>
