@@ -4,7 +4,6 @@ import Button, { VARIANT } from '@components/Button/Button.js';
 import { RichText } from 'prismic-reactjs';
 import Image from '@components/Image/Image';
 import styles from './WhatIs.module.scss';
-import { parseString } from '@helpers';
 
 const WhatIs = ({ primary }) => {
   const {

@@ -15,15 +15,25 @@ const TechnologyPage = ({ current: body }) => {
       {body.map((section, index) => {
         switch (section.slice_type) {
           case 'hero':
-            return <Hero {...section} key={`${section.type}${index}`} />;
+            return <Hero {...section} key={`${section.slice_type}${index}`} />;
           case 'benefits':
-            return <Benefit {...section} key={`${section.type}${index}`} />;
+            return (
+              <Benefit {...section} key={`${section.slice_type}${index}`} />
+            );
           case 'whatis':
-            return <WhatIs {...section} key={`${section.type}${index}`} />;
+            return (
+              <WhatIs {...section} key={`${section.slice_type}${index}`} />
+            );
           case 'how':
-            return <Features {...section} key={`${section.type}${index}`} />;
+            return (
+              <Features {...section} key={`${section.slice_type}${index}`} />
+            );
           case 'banner':
-            return <Banner {...section} key={`${section.type}${index}`} />;
+            return (
+              <Banner {...section} key={`${section.slice_type}${index}`} />
+            );
+          default:
+            throw new Error(`Unknown section type: ${section.slice_type}`);
         }
       })}
     </div>
