@@ -143,6 +143,7 @@ module.exports = {
           featurepage: require('./schemas/featurepage.json'),
           technologypage: require('./schemas/technologypage.json'),
           singlebookpage: require('./schemas/singlebookpage.json'),
+          blogpostpage: require('./schemas/blogpostpage.json'),
         },
         lang: '*',
         prismicToolbar: false,
