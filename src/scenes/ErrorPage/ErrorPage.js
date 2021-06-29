@@ -11,10 +11,10 @@ const ErrorPage = () => {
         <div className={style.textWrapper}>
           <h1 className={style.title}>404</h1>
           <h2 className={style.subtitle}>
-            oops, The Page are you visiting don’t exist 😯
+            oops, The Page you are visiting does not exist 😯
           </h2>
           <p className={style.text}>
-            If you think this is an error, please let us know!
+            If you think it is an error, please let us know!
           </p>
           <div className={style.buttonWrapper}>
             <Button variant={VARIANT.WHITE} to="/" fullWidth>
