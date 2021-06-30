@@ -144,6 +144,7 @@ module.exports = {
           technologypage: require('./schemas/technologypage.json'),
           singlebookpage: require('./schemas/singlebookpage.json'),
           blogpostpage: require('./schemas/blogpostpage.json'),
+          blogpage: require('./schemas/blogpage.json'),
         },
         lang: '*',
         prismicToolbar: false,

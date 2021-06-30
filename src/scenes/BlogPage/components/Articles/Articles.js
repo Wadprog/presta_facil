@@ -21,15 +21,16 @@ const Articles = ({ articlesList }) => {
 
   let tagList = [];
   articlesList.forEach(({ node }) => {
-    tagList = [...tagList, ...node._meta.tags];
+    tagList = [...tagList, ...node.tags];
   });
   const uniqTagList = [...new Set(tagList)];
 
   useEffect(() => {
     const filteredList = articlesList.filter(({ node }) => {
-      const { title, date, _meta } = node;
+      const { data: postData, tags } = node;
+      const { title, date } = postData;
       const filterBySearch = debounceSearchResult
-        ? parseString(title)
+        ? parseString(title.raw)
             .toLowerCase()
             .includes(debounceSearchResult.toLowerCase())
         : true;
@@ -38,7 +39,7 @@ const Articles = ({ articlesList }) => {
           Date.parse(date) <= dateRange.endDate
         : true;
       const filterByTag = selectedTag
-        ? selectedTag.includes(_meta.tags.join(''))
+        ? selectedTag.includes(tags.join(''))
         : true;
 
       return filterBySearch && filterByDate && filterByTag;
@@ -78,7 +79,7 @@ const Articles = ({ articlesList }) => {
       </div>
       <div className={style.list}>
         {list.map((item) => {
-          return <ArticlePreview {...item} key={item.node._meta.uid} />;
+          return <ArticlePreview {...item} key={item.node.uid} />;
         })}
       </div>
       <div className={style.buttonWrapper}>

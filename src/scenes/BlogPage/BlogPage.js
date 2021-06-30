@@ -6,26 +6,16 @@ import Hero from './components/Hero/Hero';
 import Articles from './components/Articles/Articles';
 
 const BlogPage = ({ content }) => {
-  const body = content.prismic.allBlogpostpages.edges[0].node.body;
-  const title = content.prismic.allBlogpages.edges[0].node.title;
-  const articlesList = content.prismic.allBlogpostpages.edges;
+  const { title } = content.allPrismicBlogpage.edges[0].node.data;
+  const articlesList = content.allPrismicBlogpostpage.edges;
+  const { allPrismicBlogpostpageBodySubscribe: subscribeSection } = content;
+  const subscribeSectionContent = subscribeSection.edges[0].node.primary;
 
   return (
     <div className={style.HomePage}>
       <Hero title={title} articles={articlesList} />
       <Articles articlesList={articlesList} />
-      {body.map((section) => {
-        switch (section.type) {
-          case 'subscribe':
-            return (
-              <div className={style.subscribeWrapper} key={section.type}>
-                <Subscribe {...section} />
-              </div>
-            );
-          default:
-            return;
-        }
-      })}
+      <Subscribe primary={subscribeSectionContent} />
     </div>
   );
 };

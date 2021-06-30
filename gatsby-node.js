@@ -150,4 +150,26 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { ...page },
     });
   });
+
+  const blogpage = await graphql(`
+    {
+      allPrismicBlogpage {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  blogpage.data.allPrismicBlogpage.nodes.forEach((page) => {
+    createPage({
+      path: page.url,
+      component: path.resolve(__dirname, 'src/templates/BlogPage.js'),
+      context: { ...page },
+    });
+  });
 };
