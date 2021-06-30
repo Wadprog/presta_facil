@@ -15,7 +15,7 @@ const CallToAction = ({ primary }) => {
     <section className={style.section}>
       <div className={style.container}>
         <div className={style.image}>
-          <Image image={image} />
+          <Image image={image} fluid={image.fluid} />
         </div>
         <div className={style.textBlock}>
           <div className={style.title}>

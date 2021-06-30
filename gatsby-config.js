@@ -147,6 +147,7 @@ module.exports = {
           blogpage: require('./schemas/blogpage.json'),
           contact: require('./schemas/contact.json'),
           videopage: require('./schemas/videopage.json'),
+          bookpage: require('./schemas/bookpage.json'),
         },
         lang: '*',
         prismicToolbar: false,

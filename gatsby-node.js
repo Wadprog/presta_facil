@@ -216,4 +216,26 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { ...page },
     });
   });
+
+  const bookpage = await graphql(`
+    {
+      allPrismicBookpage {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  bookpage.data.allPrismicBookpage.nodes.forEach((page) => {
+    createPage({
+      path: page.url,
+      component: path.resolve(__dirname, 'src/templates/BooksPage.js'),
+      context: { ...page },
+    });
+  });
 };

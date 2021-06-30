@@ -1,29 +1,28 @@
 import React from 'react';
-import { array } from 'prop-types';
+import { array, object } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 
-import { parseString } from '@helpers';
 import Image from '@components/Image/Image';
 import Arrow from './image/arrow.inline.svg';
 import style from './Books.module.scss';
 
-const Books = ({ fields, pagetitle }) => {
+const Books = ({ items, pagetitle }) => {
   return (
     <div className={style.page}>
       <div className={style.headlineContainer}>
-        <RichText render={pagetitle} />
+        <RichText render={pagetitle.raw} />
       </div>
       <div className={style.container}>
-        {fields.map(({ image, imageSharp, buttontext, bookpageurl }) => (
+        {items.map(({ image, buttontext, bookpageurl }) => (
           <a
-            href={parseString(bookpageurl)}
+            href={bookpageurl.text}
             className={style.book}
-            key={parseString(bookpageurl)}
+            key={bookpageurl.text}
           >
-            <Image image={image} imageSharp={imageSharp} />
+            <Image image={image} fluid={image.fluid} />
             <div className={style.buttonWrapper}>
               <div className={style.button}>
-                {parseString(buttontext)}
+                {buttontext.text}
                 <Arrow />
               </div>
             </div>
@@ -35,8 +34,8 @@ const Books = ({ fields, pagetitle }) => {
 };
 
 Books.propTypes = {
-  fields: array,
-  pagetitle: array,
+  items: array,
+  pagetitle: object,
 };
 
 export default Books;
