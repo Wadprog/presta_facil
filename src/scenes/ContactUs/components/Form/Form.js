@@ -5,7 +5,7 @@ import Button, { VARIANT } from '@components/Button/Button.js';
 import Input from '../Input/Input';
 import TextArea from '../TextArea/TextArea';
 import Counter from '../Counter/Counter';
-import { parseString, isValidEmail } from '@helpers';
+import { isValidEmail } from '@helpers';
 
 const initialState = {
   company: '',
@@ -28,24 +28,27 @@ const getUserEmailProvider = (mail) => {
   return provider;
 };
 
-const Form = ({
-  button,
-  company,
-  email,
-  counter,
-  question,
-  question2,
-  successinformer,
-  body,
-}) => {
-  const successInformerText = parseString(successinformer);
+const Form = ({ content }) => {
+  const {
+    body,
+    successinformer,
+    button,
+    company,
+    counter,
+    email,
+    question,
+    question2,
+  } = content;
+  const { text: successInformerText } = successinformer;
   const [formState, setFormState] = useState(initialState);
   const [formErrors, setFormErrors] = useState([]);
   const [isSubmitted, setSubmited] = useState(false);
   const [submitError, setSubmitError] = useState(null);
-  const providersData = body.find((element) => element.type === 'providers');
-  const { fields: rawProviders } = providersData;
-  const providers = rawProviders.map(({ provider }) => parseString(provider));
+  const providersData = body.find(
+    (element) => element.slice_type === 'providers'
+  );
+  const { items: rawProviders } = providersData;
+  const providers = rawProviders.map(({ provider }) => provider.text);
 
   const handleInputChange = ({ target: { name, value } }) => {
     setFormState((state) => ({ ...state, [name]: value }));
@@ -120,7 +123,7 @@ const Form = ({
         <div className={style.row}>
           <Input
             id="company"
-            placeholder={parseString(company)}
+            placeholder={company.text}
             errorMessage="Required field"
             name="company"
             valid={!formErrors.includes('company')}
@@ -129,7 +132,7 @@ const Form = ({
           />
           <Input
             id="email"
-            placeholder={parseString(email)}
+            placeholder={email.text}
             errorMessage="Wrong or non-business email"
             name="email"
             valid={!formErrors.includes('email')}
@@ -140,7 +143,7 @@ const Form = ({
         <div className={style.row}>
           <TextArea
             id="question"
-            placeholder={parseString(question)}
+            placeholder={question.text}
             name="question"
             value={formState.question}
             handleChange={handleInputChange}
@@ -148,7 +151,7 @@ const Form = ({
         </div>
         <div className={style.row}>
           <Counter
-            label={parseString(counter)}
+            label={counter.text}
             value={formState.counter}
             handleChange={handleChangeCounter}
           />
@@ -156,7 +159,7 @@ const Form = ({
         <div className={style.row}>
           <TextArea
             id="question2"
-            placeholder={parseString(question2)}
+            placeholder={question2.text}
             name="question2"
             value={formState.question2}
             handleChange={handleInputChange}
@@ -170,7 +173,7 @@ const Form = ({
               element="button"
               type="submit"
             >
-              {parseString(button)}
+              {button.text}
             </Button>
           </div>
         </div>
@@ -180,7 +183,7 @@ const Form = ({
           className={style.successInformer}
           onClick={() => handleCloseInformer('successInformer')}
         >
-          {successInformerText}
+          {successInformerText.text}
         </button>
       )}
       {submitError && (
@@ -196,15 +199,7 @@ const Form = ({
 };
 
 Form.propTypes = {
-  button: PropTypes.array,
-  button2: PropTypes.array,
-  question: PropTypes.array,
-  question2: PropTypes.array,
-  company: PropTypes.array,
-  email: PropTypes.array,
-  counter: PropTypes.array,
-  successinformer: PropTypes.array,
-  body: PropTypes.array,
+  content: PropTypes.object,
 };
 
 export default Form;

@@ -145,6 +145,7 @@ module.exports = {
           singlebookpage: require('./schemas/singlebookpage.json'),
           blogpostpage: require('./schemas/blogpostpage.json'),
           blogpage: require('./schemas/blogpage.json'),
+          contact: require('./schemas/contact.json'),
         },
         lang: '*',
         prismicToolbar: false,

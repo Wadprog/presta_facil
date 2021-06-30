@@ -7,19 +7,18 @@ import { parseString } from '@helpers';
 import Form from './components/Form/Form';
 
 const ContactUs = ({ content }) => {
-  const data = content.prismic.allContacts.edges[0].node;
-  const { title } = data;
+  const { title } = content;
 
   return (
     <div className={style.HomePage}>
       <div className={style.container}>
         <h1 className={style.title}>
           <GradientText
-            text={parseString(title)}
+            text={parseString(title.raw)}
             background="linear-gradient(87.97deg, #24b04b -46.17%, #0263bc 186.99%)"
           />
         </h1>
-        <Form {...data} />
+        <Form content={content} />
       </div>
     </div>
   );
