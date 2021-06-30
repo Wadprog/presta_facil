@@ -5,17 +5,16 @@ import Videos from './components/Videos/Videos';
 import CallToAction from '@components/CallToAction/CallToAction';
 
 const VideoBlogPage = ({ content }) => {
-  const body = content.prismic.allVideopages.edges[0].node.body;
   return (
     <div className={style.HomePage}>
-      {body.map((section) => {
-        switch (section.type) {
+      {content.map((section) => {
+        switch (section.slice_type) {
           case 'videolist':
-            return <Videos {...section} key={section.type} />;
+            return <Videos {...section} key={section.slice_type} />;
           case 'cta':
-            return <CallToAction {...section} key={section.type} />;
+            return <CallToAction {...section} key={section.slice_type} />;
           default:
-            return;
+            throw new Error(`Unknown section type: ${section.slice_type}`);
         }
       })}
     </div>
@@ -23,7 +22,7 @@ const VideoBlogPage = ({ content }) => {
 };
 
 VideoBlogPage.propTypes = {
-  content: PropTypes.object.isRequired,
+  content: PropTypes.array.isRequired,
 };
 
 export default VideoBlogPage;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { array, object, string } from 'prop-types';
+import { object, string } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import lozad from 'lozad';
 
@@ -42,7 +42,7 @@ const Item = ({ title, videourl, tag, date }) => {
           {previewImage && <img data-src={previewImage} className="lozad" />}
         </div>
         <div className={style.title}>
-          <RichText render={title} />
+          <RichText render={title.raw} />
         </div>
         <div className={style.wrapper}>
           <div className={style.tagList}>
@@ -69,9 +69,8 @@ const Item = ({ title, videourl, tag, date }) => {
 };
 
 Item.propTypes = {
-  title: array,
+  title: object,
   videourl: object,
-  primary: object,
   tag: string,
   date: string,
 };
