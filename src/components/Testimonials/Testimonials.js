@@ -6,7 +6,7 @@ import ArrowButton from '@components/ArrowButton/ArrowButton';
 import style from './Testimonials.module.scss';
 import Item from './components/Item';
 
-const Testimonials = ({ fields }) => {
+const Testimonials = ({ items }) => {
   const [buildKey, setBuildKey] = useState();
   const { width } = useBreakpoints();
 
@@ -17,7 +17,7 @@ const Testimonials = ({ fields }) => {
     <div className={style.testimonials}>
       <div className={style.container}>
         <Swiper {...params} key={buildKey}>
-          {fields.map((item, index) => {
+          {items.map((item, index) => {
             return (
               <div className={style.slide} key={`testimonials${index}`}>
                 <Item {...item} />
@@ -52,7 +52,7 @@ const params = {
 };
 
 Testimonials.propTypes = {
-  fields: array,
+  items: array,
 };
 
 export default Testimonials;

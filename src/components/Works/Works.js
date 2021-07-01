@@ -7,16 +7,17 @@ import { RichText } from 'prismic-reactjs';
 import { object, array } from 'prop-types';
 import ArrowButton from '@components/ArrowButton/ArrowButton';
 
-const Works = ({ primary, fields }) => {
-  const categoryList = primary.categories[0].text.split(/\s*,\s*/);
+const Works = ({ primary, items }) => {
+  const { categories, title, dropdownlable } = primary;
+  const categoryList = categories.text.split(/\s*,\s*/);
   const defaultCategory = categoryList[0];
   const [category, setCategory] = useState(defaultCategory);
-  const [sorterWorks, setSorterWorks] = useState(fields);
+  const [sorterWorks, setSorterWorks] = useState(items);
 
   useEffect(() => {
     setSorterWorks(
-      fields.filter((item) => {
-        return item.category[0].text === category;
+      items.filter((item) => {
+        return item.category.text === category;
       })
     );
   }, [category]);
@@ -56,11 +57,11 @@ const Works = ({ primary, fields }) => {
       <div className={style.container}>
         <div className={style.wrapper}>
           <div className={style.title}>
-            <RichText render={primary.title} />
+            <RichText render={title.raw} />
           </div>
           <div className={style.dropdown}>
             <div className={style.label}>
-              <RichText render={primary.dropdownlable} />
+              <RichText render={dropdownlable.raw} />
             </div>
             <Dropdown
               options={categoryList}
@@ -87,7 +88,7 @@ const Works = ({ primary, fields }) => {
 
 Works.propTypes = {
   primary: object,
-  fields: array,
+  items: array,
 };
 
 export default Works;

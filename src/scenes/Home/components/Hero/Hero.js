@@ -3,7 +3,6 @@ import { object, array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import Swiper from 'react-id-swiper';
 
-import { parseString } from '@helpers';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
 import Modal from '@components/Modal';
@@ -15,8 +14,8 @@ import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
 const renderMobileImages = (images) => {
   const renderedImages = images.map((imgElement, index) => (
     <Image
-      image={imgElement[0]}
-      imageSharp={imgElement[1]}
+      image={imgElement}
+      fluid={imgElement.fluid}
       className={styles.mobileImage}
       key={index}
     />
@@ -24,28 +23,30 @@ const renderMobileImages = (images) => {
   return renderedImages;
 };
 
-const Hero = ({ primary, fields }) => {
+const Hero = ({ primary, items }) => {
+  const {
+    buttonlink,
+    modalctabuttonlink,
+    modalctabuttontext,
+    cookieimage,
+    policyimage,
+    preferenceimage,
+    sub_title: subTitle,
+    title,
+    description,
+    button,
+    trusted,
+    heroimage: mainImage,
+    modalbuttontitle,
+  } = primary;
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleOpenModal = () => setModalIsOpen(true);
   const handleCloseModal = () => setModalIsOpen(false);
-  const buttonLink = primary.buttonlink[0].text;
-  const modalCtaButtonLink = parseString(primary.modalctabuttonlink);
-  const modalCtaButtonText = parseString(primary.modalctabuttontext);
+  const buttonLink = buttonlink.text;
+  const modalCtaButtonLink = modalctabuttonlink.text;
+  const modalCtaButtonText = modalctabuttontext.text;
 
-  const {
-    cookieimage,
-    cookieimageSharp,
-    policyimage,
-    policyimageSharp,
-    preferenceimage,
-    preferenceimageSharp,
-  } = primary;
-
-  const mobileImages = [
-    [policyimage, policyimageSharp],
-    [preferenceimage, preferenceimageSharp],
-    [cookieimage, cookieimageSharp],
-  ];
+  const mobileImages = [policyimage, preferenceimage, cookieimage];
 
   const [modalBookIsOpen, setModalBookIsOpen] = useState(false);
   const handleCloseModalBook = () => setModalBookIsOpen(false);
@@ -71,24 +72,24 @@ const Hero = ({ primary, fields }) => {
             {renderMobileImages(mobileImages)}
           </div>
           <div className={styles.upTitle}>
-            <RichText render={primary.sub_title} />
+            <RichText render={subTitle.raw} />
           </div>
           <div className={styles.title}>
-            <RichText render={primary.title} />
+            <RichText render={title.raw} />
           </div>
           <div className={styles.descr}>
-            <RichText render={primary.description} />
+            <RichText render={description.raw} />
           </div>
           <div className={styles.buttonWrapper}>
             <Button variant={VARIANT.PRIMARY} to={`${buttonLink}`}>
-              <RichText render={primary.button} />
+              <RichText render={button.raw} />
             </Button>
           </div>
           <div className={styles.trustedWrapper}>
-            <RichText render={primary.trusted} />
+            <RichText render={trusted.raw} />
             <div className={styles.companies}>
               <Swiper {...params}>
-                {fields.map(({ trustedlogo }) => {
+                {items.map(({ trustedlogo }) => {
                   return (
                     <div className={styles.slide} key={trustedlogo.url}>
                       <Image
@@ -104,8 +105,8 @@ const Hero = ({ primary, fields }) => {
         </div>
         <div className={styles.imageWrapper}>
           <Image
-            image={primary.mainImage}
-            imageSharp={primary.mainImageSharp}
+            image={mainImage}
+            fluid={mainImage.fluid}
             className={styles.image}
           />
           <div className={styles.playButtonWrapper}>
@@ -119,7 +120,7 @@ const Hero = ({ primary, fields }) => {
               </IconButton>
             </div>
             <div className={styles.playButtonText}>
-              <RichText render={primary.modalbuttontitle} />
+              <RichText render={modalbuttontitle.raw} />
             </div>
           </div>
         </div>
@@ -138,7 +139,7 @@ const Hero = ({ primary, fields }) => {
 
 Hero.propTypes = {
   primary: object,
-  fields: array,
+  items: array,
 };
 
 export default Hero;

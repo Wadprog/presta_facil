@@ -238,4 +238,25 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { ...page },
     });
   });
+
+  const homepage = await graphql(`
+    {
+      allPrismicHomepage {
+        nodes {
+          id
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  homepage.data.allPrismicHomepage.nodes.forEach((page) => {
+    createPage({
+      path: page.url,
+      component: path.resolve(__dirname, 'src/templates/Home.js'),
+      context: { ...page },
+    });
+  });
 };

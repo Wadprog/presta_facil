@@ -6,21 +6,21 @@ import style from './Item.module.scss';
 import Quote from './image/quote.inline.svg';
 import Image from '@components/Image/Image';
 
-const Item = ({ photo, photoSharp, name, company, text }) => {
+const Item = ({ photo, name, company, text }) => {
   return (
     <div className={style.container}>
       <Quote className={style.quote} />
       <div className={style.user}>
-        <Image image={photo} imageSharp={photoSharp} className={style.photo} />
+        <Image image={photo} fluid={photo.fluid} className={style.photo} />
         <div className={style.name}>
-          <RichText render={name} />
+          <RichText render={name.raw} />
         </div>
         <div className={style.position}>
-          <RichText render={company} />
+          <RichText render={company.raw} />
         </div>
       </div>
       <div className={style.review}>
-        <RichText render={text} />
+        <RichText render={text.raw} />
       </div>
     </div>
   );
@@ -28,10 +28,9 @@ const Item = ({ photo, photoSharp, name, company, text }) => {
 
 Item.propTypes = {
   photo: object,
-  photoSharp: object,
-  name: array,
-  company: array,
-  text: array,
+  name: object,
+  company: object,
+  text: object,
 };
 
 export default Item;

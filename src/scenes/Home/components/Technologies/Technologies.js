@@ -9,10 +9,11 @@ import { useBreakpoints } from '@hooks';
 import useGetImages from './useGetImages';
 import style from './Technologies.module.scss';
 
-const Technologies = ({ primary, fields }) => {
+const Technologies = ({ primary, items }) => {
   const [buildKey, setBuildKey] = useState();
   const { width } = useBreakpoints();
   const { background } = useGetImages();
+  const { title, description } = primary;
 
   useEffect(() => {
     setBuildKey(+new Date());
@@ -39,13 +40,13 @@ const Technologies = ({ primary, fields }) => {
       <div className={style.integration}>
         <div className={style.container}>
           <div className={style.title}>
-            <RichText render={primary.title} />
+            <RichText render={title.raw} />
           </div>
           <div className={style.descr}>
-            <RichText render={primary.description} />
+            <RichText render={description.raw} />
           </div>
           <Swiper {...params} key={buildKey}>
-            {fields.map((item, index) => {
+            {items.map((item, index) => {
               return (
                 <div className={style.slide} key={`Technologies${index}`}>
                   <Item {...item} />
@@ -61,7 +62,7 @@ const Technologies = ({ primary, fields }) => {
 
 Technologies.propTypes = {
   primary: object,
-  fields: array,
+  items: array,
 };
 
 export default Technologies;

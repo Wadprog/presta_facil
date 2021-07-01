@@ -148,6 +148,7 @@ module.exports = {
           contact: require('./schemas/contact.json'),
           videopage: require('./schemas/videopage.json'),
           bookpage: require('./schemas/bookpage.json'),
+          homepage: require('./schemas/homepage.json'),
         },
         lang: '*',
         prismicToolbar: false,

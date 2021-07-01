@@ -12,7 +12,9 @@ import Image from '@components/Image/Image';
 
 const Item = ({ image, name, pagename }) => {
   const currentLang = useContext(LangContext);
-  const link = `${langPath(currentLang)}/technology/${RichText.asText(pagename)
+  const link = `${langPath(currentLang)}/technology/${RichText.asText(
+    pagename.raw
+  )
     .toLowerCase()
     .replace(' ', '-')}`;
   return (
@@ -23,15 +25,15 @@ const Item = ({ image, name, pagename }) => {
       </div>
       <Image image={image} className={style.icon} />
       <div className={style.name}>
-        <RichText render={name} />
+        <RichText render={name.raw} />
       </div>
     </Link>
   );
 };
 Item.propTypes = {
   image: object,
-  name: array,
-  pagename: array,
+  name: object,
+  pagename: object,
 };
 
 export default Item;
