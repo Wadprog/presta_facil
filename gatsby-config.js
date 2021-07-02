@@ -150,6 +150,7 @@ module.exports = {
           bookpage: require('./schemas/bookpage.json'),
           homepage: require('./schemas/homepage.json'),
           pricespage: require('./schemas/pricespage.json'),
+          pricesenterpricepage: require('./schemas/pricesenterpricepage.json'),
         },
         lang: '*',
         prismicToolbar: false,

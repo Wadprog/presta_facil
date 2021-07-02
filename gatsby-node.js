@@ -281,4 +281,31 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { ...page },
     });
   });
+
+  const pricesenterpricepage = await graphql(`
+    {
+      allPrismicPricesenterpricepage {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  pricesenterpricepage.data.allPrismicPricesenterpricepage.nodes.forEach(
+    (page) => {
+      createPage({
+        path: page.url,
+        component: path.resolve(
+          __dirname,
+          'src/templates/PricingEnterpricePage.js'
+        ),
+        context: { ...page },
+      });
+    }
+  );
 };

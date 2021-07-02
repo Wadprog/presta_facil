@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import style from './Works.module.scss';
-import Dropdown from 'react-dropdown';
-import Item from './components/Item';
 import Swiper from 'react-id-swiper';
 import { RichText } from 'prismic-reactjs';
 import { object, array } from 'prop-types';
+
+import Dropdown from 'react-dropdown';
+import Item from './components/Item';
 import ArrowButton from '@components/ArrowButton/ArrowButton';
+import style from './Works.module.scss';
 
 const Works = ({ primary, items }) => {
   const { categories, title, dropdownlable } = primary;

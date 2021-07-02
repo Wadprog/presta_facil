@@ -1,23 +1,22 @@
 import React, { useRef } from 'react';
-import { object } from 'prop-types';
-import style from './EnterpricePage.module.scss';
+import { object, array } from 'prop-types';
+
 import Hero from './components/Hero/Hero';
 import Feature from './components/Feature/Feature';
 import Works from '@components/Works';
 import Testimonials from '@components/Testimonials';
 import BookCall from '@components/BookCall/BookCall';
+import style from './EnterpricePage.module.scss';
 
-const EnterpricePage = ({ content }) => {
-  const body = content.prismic.allPricesenterpricepages.edges[0].node.body;
-  const works = content.prismic.allHomepages.edges[0].node.body;
-  const sections = [...body, ...works];
+const EnterpricePage = ({ content, worksSection, testimonialsSection }) => {
+  const sections = [...content, worksSection, testimonialsSection];
   let hero;
   let feature;
   let examples;
   let callBanner;
   let reviews;
   sections.map((section) => {
-    switch (section.type) {
+    switch (section.slice_type) {
       case 'hero':
         hero = section;
         break;
@@ -34,7 +33,7 @@ const EnterpricePage = ({ content }) => {
         reviews = section;
         break;
       default:
-        return;
+        throw new Error(`Unknown section type: ${section.slice_type}`);
     }
   });
 
@@ -58,7 +57,9 @@ const EnterpricePage = ({ content }) => {
 };
 
 EnterpricePage.propTypes = {
-  content: object.isRequired,
+  content: array.isRequired,
+  worksSection: object.isRequired,
+  testimonialsSection: object.isRequired,
 };
 
 export default EnterpricePage;
