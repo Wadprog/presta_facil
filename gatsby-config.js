@@ -154,6 +154,11 @@ module.exports = {
         },
         lang: '*',
         prismicToolbar: false,
+        imageImgixParams: {
+          auto: 'compress,format',
+          fit: 'max',
+          q: 50,
+        },
       },
     },
   ],
