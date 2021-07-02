@@ -149,6 +149,7 @@ module.exports = {
           videopage: require('./schemas/videopage.json'),
           bookpage: require('./schemas/bookpage.json'),
           homepage: require('./schemas/homepage.json'),
+          pricespage: require('./schemas/pricespage.json'),
         },
         lang: '*',
         prismicToolbar: false,

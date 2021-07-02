@@ -44,9 +44,8 @@ const PricesPage = ({ content }) => {
     myPackagesRef.current.scrollLeft = leftScroll;
   };
 
-  const body = content.prismic.allPricespages.edges[0].node.body;
-  const sections = body.map((item, index) => {
-    switch (item.type) {
+  const sections = content.map((item, index) => {
+    switch (item.slice_type) {
       case 'hero':
         return <Hero key={index} {...item} />;
       case 'tariffplans':
@@ -79,8 +78,8 @@ const PricesPage = ({ content }) => {
         return <Questions key={index} {...item} />;
       case 'contactus':
         return <ContactUs key={index} {...item} />;
-      default:
-        return null;
+      // default:
+      //   throw new Error(`Unknown section type: ${item.slice_type}`);
     }
   });
 
@@ -92,7 +91,7 @@ const PricesPage = ({ content }) => {
 };
 
 PricesPage.propTypes = {
-  content: PropTypes.object.isRequired,
+  content: PropTypes.array.isRequired,
 };
 
 export default PricesPage;

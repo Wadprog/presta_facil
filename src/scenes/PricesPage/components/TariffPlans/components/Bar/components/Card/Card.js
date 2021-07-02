@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import classnames from 'classnames';
 
+import { parseString } from '@helpers';
 import style from './Card.module.scss';
 
 const CHAT_LINK = '/contact-us';
@@ -67,7 +68,7 @@ const Card = ({
   };
 
   const getPlanName = () => {
-    const planFullName = title[0].text;
+    const planFullName = parseString(title.raw);
     const planName = planFullName.split(' ')[0].toLowerCase();
 
     return planName;
@@ -84,7 +85,6 @@ const Card = ({
 
     return link;
   };
-
   return (
     <div
       className={classnames(style.container, { [style.colorized]: colorized })}
@@ -94,7 +94,7 @@ const Card = ({
       <div className={style.main}>
         <div className={style.title}>
           <div className={style.type}>
-            <RichText render={title} />
+            <RichText render={title.raw} />
           </div>
           <div className={style.name}>
             {isEnterprise ? '' : selectedPlans.join(', ')}
@@ -112,11 +112,11 @@ const Card = ({
         <a href={getLink()} className={style.button}>
           {colorized ? (
             <span className={style.gradientText}>
-              {isEnterprise ? 'CHAT WITH US' : RichText.asText(buttonText)}
+              {isEnterprise ? 'CHAT WITH US' : RichText.asText(buttonText.raw)}
             </span>
           ) : (
             <span>
-              {isEnterprise ? 'CHAT WITH US' : RichText.asText(buttonText)}
+              {isEnterprise ? 'CHAT WITH US' : RichText.asText(buttonText.raw)}
             </span>
           )}
         </a>
@@ -131,9 +131,9 @@ Card.defaultProps = {
 
 Card.propTypes = {
   isEnterprise: PropTypes.bool,
-  title: PropTypes.array.isRequired,
+  title: PropTypes.object.isRequired,
   selectedPlans: PropTypes.arrayOf.isRequired,
-  buttonText: PropTypes.array.isRequired,
+  buttonText: PropTypes.object.isRequired,
   buttonLink: PropTypes.object,
   currency: PropTypes.string.isRequired,
   selectedlawsnumber: PropTypes.number,

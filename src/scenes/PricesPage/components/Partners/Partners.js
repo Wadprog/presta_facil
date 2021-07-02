@@ -7,9 +7,10 @@ import { useBreakpoints } from '@hooks';
 import { parameters } from './data';
 import style from './Partners.module.scss';
 
-const Partners = ({ primary, fields }) => {
+const Partners = ({ primary, items }) => {
   const [key, setKey] = useState();
   const { width } = useBreakpoints();
+  const { title } = primary;
 
   useEffect(() => {
     setKey(+new Date());
@@ -18,11 +19,11 @@ const Partners = ({ primary, fields }) => {
   return (
     <div className={style.wrapper}>
       <div className={style.title}>
-        <RichText render={primary.title} />
+        <RichText render={title.raw} />
       </div>
       <div className={style.slider} key={key}>
         <Swiper {...parameters}>
-          {fields.map(({ logotype }) => {
+          {items.map(({ logotype }) => {
             return (
               <div className={style.slide} key={logotype.alt}>
                 <img
@@ -42,7 +43,7 @@ const Partners = ({ primary, fields }) => {
 
 Partners.propTypes = {
   primary: PropTypes.object.isRequired,
-  fields: PropTypes.array.isRequired,
+  items: PropTypes.array.isRequired,
 };
 
 export default Partners;

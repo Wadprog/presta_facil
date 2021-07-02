@@ -10,7 +10,7 @@ import style from './PlansFeatures.module.scss';
 
 const MOBILE_VIEW = 780;
 
-const PlansFeatures = ({ primary, fields, showBar, hideBar, activepoint }) => {
+const PlansFeatures = ({ primary, items, showBar, hideBar, activepoint }) => {
   const [isMobile, setIsMobile] = useState(false);
   const { width } = useBreakpoints();
 
@@ -63,20 +63,22 @@ const PlansFeatures = ({ primary, fields, showBar, hideBar, activepoint }) => {
     <>
       <div className={style.wrapper}>
         <div className={style.title}>
-          <RichText render={primary.title} />
+          <RichText render={primary.title.raw} />
         </div>
         <ul className={style.list}>
-          {fields.map((item, index) => {
+          {items.map((item, index) => {
             const basicStatus = parseCellValue(
-              RichText.asText(item.basicstatus)
+              RichText.asText(item.basicstatus.raw)
             );
-            const plusStatus = parseCellValue(RichText.asText(item.plusstatus));
+            const plusStatus = parseCellValue(
+              RichText.asText(item.plusstatus.raw)
+            );
             const businessStatus = parseCellValue(
-              RichText.asText(item.businessstatus),
+              RichText.asText(item.businessstatus.raw),
               { withGradient: true }
             );
             const enterpriseStatus = parseCellValue(
-              RichText.asText(item.enterprisestatus)
+              RichText.asText(item.enterprisestatus.raw)
             );
 
             return (
@@ -87,7 +89,7 @@ const PlansFeatures = ({ primary, fields, showBar, hideBar, activepoint }) => {
                     [style.namemobile]: isMobile,
                   })}
                 >
-                  <RichText render={item.featuretitle} />
+                  <RichText render={item.featuretitle.raw} />
                 </div>
                 <div
                   className={classnames(style.statuses, style.statusesdesktop)}
@@ -136,7 +138,7 @@ const PlansFeatures = ({ primary, fields, showBar, hideBar, activepoint }) => {
 
 PlansFeatures.propTypes = {
   primary: PropTypes.object.isRequired,
-  fields: PropTypes.array.isRequired,
+  items: PropTypes.array.isRequired,
   showBar: PropTypes.func.isRequired,
   hideBar: PropTypes.func.isRequired,
   activepoint: PropTypes.number.isRequired,

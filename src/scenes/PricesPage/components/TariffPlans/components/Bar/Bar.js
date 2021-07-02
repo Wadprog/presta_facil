@@ -19,7 +19,7 @@ const Bar = ({ plans, fields, primary, isAnnual, currency }) => {
       </div>
       <div className={style.block}>
         {fields.map((field, index) => (
-          <div className={style.card} key={field.plantitle[0].text}>
+          <div className={style.card} key={index}>
             <Card
               title={field.plantitle}
               selectedPlans={plans}
