@@ -15,7 +15,7 @@ const List = ({ items }) => {
                 <img src={item.image.url} alt={item.image.alt} loading="lazy" />
               </div>
               <div className={style.text}>
-                <RichText render={item.text} />
+                <RichText render={item.text.raw} />
               </div>
             </div>
           </div>
@@ -29,7 +29,7 @@ List.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.object.isRequired,
-      text: PropTypes.array.isRequired,
+      text: PropTypes.object.isRequired,
     }).isRequired
   ).isRequired,
 };

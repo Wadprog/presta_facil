@@ -5,19 +5,20 @@ import { RichText } from 'prismic-reactjs';
 import List from './components/List';
 import style from './Program.module.scss';
 
-const Program = ({ primary, fields }) => {
-  const benefitsItems = fields.filter((item) => !item.category);
-  const comissionItems = fields.filter((item) => item.category);
+const Program = ({ primary, items }) => {
+  const benefitsItems = items.filter((item) => !item.category);
+  const comissionItems = items.filter((item) => item.category);
+  const { title, description } = primary;
 
   return (
     <div className={style.wrapper}>
       <div className={style.container}>
         <div className={style.message}>
           <div className={style.title}>
-            <RichText render={primary.title} />
+            <RichText render={title.raw} />
           </div>
           <div className={style.description}>
-            <RichText render={primary.description} />
+            <RichText render={description.raw} />
           </div>
         </div>
         <div className={style.cards}>
@@ -38,7 +39,7 @@ const Program = ({ primary, fields }) => {
 
 Program.propTypes = {
   primary: PropTypes.object.isRequired,
-  fields: PropTypes.array.isRequired,
+  items: PropTypes.array.isRequired,
 };
 
 export default Program;

@@ -25,10 +25,10 @@ const Card = ({
     <div className={style.container}>
       <div className={style.operationArea}>
         <div className={style.title}>
-          <RichText render={title} />
+          <RichText render={title.raw} />
         </div>
         <div className={style.description}>
-          <RichText render={description} />
+          <RichText render={description.raw} />
         </div>
         <div className={style.rangerBox}>
           <Ranger
@@ -40,19 +40,19 @@ const Card = ({
       </div>
       <div className={style.totalArea}>
         <div className={style.subtitle}>
-          <RichText render={subtitle} />
+          <RichText render={subtitle.raw} />
         </div>
         <div className={style.subdescription}>
-          <RichText render={subdescription} />
+          <RichText render={subdescription.raw} />
         </div>
         <div className={style.total}>{total}</div>
         <div className={style.buttonBox}>
           <Button
-            to={RichText.asText(buttonLink)}
+            to={RichText.asText(buttonLink.raw)}
             variant={VARIANT.PRIMARY}
             fullWidth={true}
           >
-            {RichText.asText(buttonText)}
+            {RichText.asText(buttonText.raw)}
           </Button>
         </div>
       </div>
@@ -61,12 +61,12 @@ const Card = ({
 };
 
 Card.propTypes = {
-  title: PropTypes.array.isRequired,
-  description: PropTypes.array.isRequired,
-  subtitle: PropTypes.array.isRequired,
-  subdescription: PropTypes.array.isRequired,
-  buttonLink: PropTypes.array.isRequired,
-  buttonText: PropTypes.array.isRequired,
+  title: PropTypes.object.isRequired,
+  description: PropTypes.object.isRequired,
+  subtitle: PropTypes.object.isRequired,
+  subdescription: PropTypes.object.isRequired,
+  buttonLink: PropTypes.object.isRequired,
+  buttonText: PropTypes.object.isRequired,
   numberOfDomains: PropTypes.number.isRequired,
   unitCost: PropTypes.number.isRequired,
 };

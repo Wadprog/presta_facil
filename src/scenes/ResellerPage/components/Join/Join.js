@@ -6,25 +6,37 @@ import Card from './components/Card';
 import style from './Join.module.scss';
 
 const Join = ({ primary }) => {
+  const {
+    title,
+    buttonlink,
+    buttontext,
+    numberofdomains,
+    cardsubdescription,
+    description,
+    unitcost,
+    cardtitle,
+    carddescription,
+    cardsubtitle,
+  } = primary;
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
         <div className={style.title}>
-          <RichText render={primary.title} />
+          <RichText render={title.raw} />
         </div>
         <div className={style.description}>
-          <RichText render={primary.description} />
+          <RichText render={description.raw} />
         </div>
         <div className={style.cardBox}>
           <Card
-            title={primary.cardtitle}
-            description={primary.carddescription}
-            subtitle={primary.cardsubtitle}
-            subdescription={primary.cardsubdescription}
-            buttonLink={primary.buttonlink}
-            buttonText={primary.buttontext}
-            numberOfDomains={+primary.numberofdomains}
-            unitCost={+primary.unitcost}
+            title={cardtitle}
+            description={carddescription}
+            subtitle={cardsubtitle}
+            subdescription={cardsubdescription}
+            buttonLink={buttonlink}
+            buttonText={buttontext}
+            numberOfDomains={+numberofdomains}
+            unitCost={+unitcost}
           />
         </div>
       </div>
