@@ -15,39 +15,39 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
   );
 
   useEffect(() => {
-    const currentPageCanonical = canonical.text;
-    if (currentPageCanonical) {
-      setCanonicalUrl(<link rel="canonical" href={currentPageCanonical} />);
-      setOpengrapUrl(currentPageCanonical);
-    } else {
+    if (!canonical) {
       setCanonicalUrl(<link rel="canonical" href={url} />);
+      return;
     }
+
+    const currentPageCanonical = canonical.text;
+    setCanonicalUrl(<link rel="canonical" href={currentPageCanonical} />);
+    setOpengrapUrl(currentPageCanonical);
   }, []);
 
   useEffect(() => {
-    const currentPageTitle = metatitle.text;
-    if (currentPageTitle) {
-      setPageTitle(<title>{currentPageTitle}</title>);
-      setOpengraphTitle(currentPageTitle);
-    }
-    if (!currentPageTitle) {
+    if (!metatitle) {
       setPageTitle(<title>{meta.title}</title>);
+      return;
     }
+
+    const currentPageTitle = metatitle.text;
+    setPageTitle(<title>{currentPageTitle}</title>);
+    setOpengraphTitle(currentPageTitle);
   }, []);
 
   useEffect(() => {
-    const currentPageDescription = metadescription.text;
-    if (currentPageDescription) {
-      setPageDescription(
-        <meta content={currentPageDescription} name="description" />
-      );
-      setOpengraphDescription(currentPageDescription);
-    }
-    if (!currentPageDescription) {
+    if (!metadescription) {
       setPageDescription(
         <meta content={meta.description} name="description" />
       );
+      return;
     }
+    const currentPageDescription = metadescription.text;
+    setPageDescription(
+      <meta content={currentPageDescription} name="description" />
+    );
+    setOpengraphDescription(currentPageDescription);
   }, []);
 
   return (

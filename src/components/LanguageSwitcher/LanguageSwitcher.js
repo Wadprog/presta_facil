@@ -19,7 +19,6 @@ const LANGUAGE = {
 };
 
 const LanguageSwitcher = ({ activeDocMeta }) => {
-console.log("🚀 ~ file: LanguageSwitcher.js ~ line 22 ~ LanguageSwitcher ~ activeDocMeta", activeDocMeta)
   const currentLang = activeDocMeta
     ? activeDocMeta.lang.slice(0, 2)
     : defaultLanguage.slice(0, 2);
