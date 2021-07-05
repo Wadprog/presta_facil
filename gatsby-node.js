@@ -333,4 +333,26 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { ...page },
     });
   });
+
+  const legal = await graphql(`
+    {
+      allPrismicLegalPages {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  legal.data.allPrismicLegalPages.nodes.forEach((page) => {
+    createPage({
+      path: page.url,
+      component: path.resolve(__dirname, 'src/templates/LegalPage.js'),
+      context: { ...page },
+    });
+  });
 };

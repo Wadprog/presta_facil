@@ -4,7 +4,8 @@ import { RichText } from 'prismic-reactjs';
 import { object } from 'prop-types';
 
 const Text = ({ primary }) => {
-  return <div className={style.text}>{<RichText render={primary.text} />}</div>;
+  const { text } = primary;
+  return <div className={style.text}>{<RichText render={text.raw} />}</div>;
 };
 
 Text.propTypes = {

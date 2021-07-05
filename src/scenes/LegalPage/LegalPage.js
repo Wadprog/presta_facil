@@ -3,13 +3,10 @@ import PropTypes from 'prop-types';
 
 import style from './Legal.module.scss';
 import Text from './components/Text/Text';
-import { dateToString, parseString } from '@helpers';
+import { dateToString } from '@helpers';
 
-const LegalPage = ({ current }) => {
-  const { body, title, date } = current;
-
-  const text = body.find((data) => data.type === 'text');
-  if (!text) return null;
+const LegalPage = ({ content, title, date }) => {
+  const text = content.find((data) => data.slice_type === 'text');
 
   return (
     <div className={style.page}>
@@ -17,7 +14,7 @@ const LegalPage = ({ current }) => {
         <div className={style.wrapper}>
           <div className={style.date}>{dateToString(date)}</div>
         </div>
-        <h1 className={style.title}>{parseString(title)}</h1>
+        <h1 className={style.title}>{title.text}</h1>
         <Text {...text} />
       </div>
     </div>
@@ -25,7 +22,9 @@ const LegalPage = ({ current }) => {
 };
 
 LegalPage.propTypes = {
-  current: PropTypes.object.isRequired,
+  content: PropTypes.array.isRequired,
+  title: PropTypes.object.isRequired,
+  date: PropTypes.string.isRequired,
 };
 
 export default LegalPage;
