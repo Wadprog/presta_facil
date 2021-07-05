@@ -153,6 +153,7 @@ module.exports = {
           pricesenterpricepage: require('./schemas/pricesenterpricepage.json'),
           pricesresellerpage: require('./schemas/pricesresellerpage.json'),
           legal_pages: require('./schemas/legal_pages.json'),
+          tos: require('./schemas/tos.json'),
         },
         lang: '*',
         prismicToolbar: false,
