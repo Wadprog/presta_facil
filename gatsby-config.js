@@ -154,6 +154,7 @@ module.exports = {
           pricesresellerpage: require('./schemas/pricesresellerpage.json'),
           legal_pages: require('./schemas/legal_pages.json'),
           tos: require('./schemas/tos.json'),
+          quiz: require('./schemas/quiz.json'),
         },
         lang: '*',
         prismicToolbar: false,

@@ -6,21 +6,35 @@ import QuizPage from '@scenes/QuizPage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
-//   const quizPageData = data.prismic.allQuizs.edges[0];
-//   if (!quizPageData) return null;
-//   const quizPageContent = quizPageData.node;
-//   const { metatitle, metadescription, canonical, pagetitle } = quizPageContent;
+  const quizPageData = data.allPrismicQuiz.edges[0];
+  if (!quizPageData) return null;
+  const quizPageContent = quizPageData.node;
+  const {
+    uid,
+    id,
+    type,
+    alternate_languages,
+    lang,
+    data: pageData,
+  } = quizPageContent;
+  const activeDocMeta = { id, uid, lang, type, alternate_languages };
+  const {
+    metatitle,
+    metadescription,
+    canonical,
+    pagetitle: pageTitle,
+  } = pageData;
 
   return (
-    // <Layout
-    //   hideMenu={true}
-    //   activeDocMeta={quizPageContent._meta}
-    //   metatitle={metatitle}
-    //   metadescription={metadescription}
-    //   canonical={canonical}
-    // >
-      <QuizPage />
-    // </Layout>
+    <Layout
+      hideMenu={true}
+      activeDocMeta={activeDocMeta}
+      metatitle={metatitle}
+      metadescription={metadescription}
+      canonical={canonical}
+    >
+      <QuizPage pageTitle={pageTitle} />
+    </Layout>
   );
 };
 
@@ -28,31 +42,39 @@ Page.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-// export const query = graphql`
-//   query($uid: String, $lang: String) {
-//     prismic {
-//       allQuizs(uid: $uid, lang: $lang) {
-//         edges {
-//           node {
-//             pagetitle
-//             metatitle
-//             metadescription
-//             canonical
-//             _meta {
-//               uid
-//               type
-//               lang
-//               alternateLanguages {
-//                 uid
-//                 type
-//                 lang
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
+export const query = graphql`
+  query($uid: String, $lang: String) {
+    allPrismicQuiz(filter: { uid: { eq: $uid }, lang: { eq: $lang } }) {
+      edges {
+        node {
+          type
+          uid
+          lang
+          id
+          alternate_languages {
+            uid
+            type
+            lang
+            id
+          }
+          data {
+            pagetitle {
+              raw
+            }
+            metatitle {
+              text
+            }
+            metadescription {
+              text
+            }
+            canonical {
+              text
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default Page;

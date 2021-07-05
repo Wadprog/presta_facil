@@ -5,7 +5,7 @@ import lozad from 'lozad';
 
 import style from './QuizPage.module.scss';
 
-const QuizPage = ({ pagetitle }) => {
+const QuizPage = ({ pageTitle }) => {
   useEffect(() => {
     const observer = lozad();
     observer.observe();
@@ -15,7 +15,7 @@ const QuizPage = ({ pagetitle }) => {
     <div className={style.quizPage}>
       <div className={style.container}>
         <div className={style.headlineContainer}>
-          <RichText render={pagetitle} />
+          <RichText render={pageTitle.raw} />
         </div>
         <iframe
           className={`${style.frame} lozad`}
@@ -29,7 +29,7 @@ const QuizPage = ({ pagetitle }) => {
 };
 
 QuizPage.propTypes = {
-  pagetitle: PropTypes.array.isRequired,
+  pageTitle: PropTypes.object.isRequired,
 };
 
 export default QuizPage;
