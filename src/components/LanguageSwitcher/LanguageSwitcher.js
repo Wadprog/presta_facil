@@ -19,12 +19,15 @@ const LANGUAGE = {
 };
 
 const LanguageSwitcher = ({ activeDocMeta }) => {
+console.log("🚀 ~ file: LanguageSwitcher.js ~ line 22 ~ LanguageSwitcher ~ activeDocMeta", activeDocMeta)
   const currentLang = activeDocMeta
     ? activeDocMeta.lang.slice(0, 2)
     : defaultLanguage.slice(0, 2);
 
   const [isOpen, setIsOpen] = useState(false);
-  const alternateLanguages = activeDocMeta.alternate_languages;
+  const alternateLanguages = activeDocMeta
+    ? activeDocMeta.alternate_languages
+    : null;
 
   const convertToFullName = (shortName, LANGUAGE) => {
     for (const lang of Object.values(LANGUAGE)) {
@@ -57,7 +60,8 @@ const LanguageSwitcher = ({ activeDocMeta }) => {
         <li className={classnames([style.dropdownItem, style.active])}>
           {convertToFullName(currentLang, LANGUAGE)}
         </li>
-        {alternateLanguages.length > 0 &&
+        {alternateLanguages &&
+          alternateLanguages.length > 0 &&
           alternateLanguages.map((altLang, index) => {
             const altLangShort = altLang.lang.slice(0, 2);
             const lang = {
