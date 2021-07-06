@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'gatsby';
 import { RichText } from 'prismic-reactjs';
-import { object, array } from 'prop-types';
+import { object } from 'prop-types';
 
 import style from './Item.module.scss';
 import Background from '../../image/bg.inline.svg';

@@ -10,7 +10,7 @@ import useGetImages from './useGetImages';
 import styles from './Subscribe.module.scss';
 
 const Subscribe = ({ primary }) => {
-const { title, buttontext: buttonText } = primary;
+  const { title, buttontext: buttonText } = primary;
   const [data, setData] = useState({
     email: {
       value: '',

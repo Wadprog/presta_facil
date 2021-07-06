@@ -1,6 +1,6 @@
 import React from 'react';
 import { RichText } from 'prismic-reactjs';
-import { object, array } from 'prop-types';
+import { object } from 'prop-types';
 
 import style from './Item.module.scss';
 import Quote from './image/quote.inline.svg';

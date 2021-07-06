@@ -1,9 +1,5 @@
 require('dotenv').config();
-const {
-  prismicRepositoryName,
-  defaultLanguage,
-  langs,
-} = require('./prismic-config');
+const { prismicRepositoryName } = require('./prismic-config');
 
 const linkResolver = require('./prismic/utils/linkResolver');
 
@@ -155,6 +151,7 @@ module.exports = {
           legal_pages: require('./schemas/legal_pages.json'),
           tos: require('./schemas/tos.json'),
           quiz: require('./schemas/quiz.json'),
+          privacypolicy: require('./schemas/privacypolicy.json'),
         },
         lang: '*',
         prismicToolbar: false,
