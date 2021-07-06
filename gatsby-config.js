@@ -152,6 +152,7 @@ module.exports = {
           tos: require('./schemas/tos.json'),
           quiz: require('./schemas/quiz.json'),
           privacypolicy: require('./schemas/privacypolicy.json'),
+          solutionpage: require('./schemas/solutionpage.json'),
         },
         lang: '*',
         prismicToolbar: false,
