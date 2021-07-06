@@ -10,121 +10,123 @@ const linkResolver = (doc) => {
   const properties = doc._meta || doc;
 
   if (properties.type === 'homepage') {
-    return properties.lang === defaultLanguage ? '/' : `/${properties.lang}/`;
+    return properties.lang === defaultLanguage
+      ? '/'
+      : `/${properties.lang.slice(0, 2)}/`;
   }
 
   if (properties.type === 'contact') {
     return properties.lang === defaultLanguage
       ? '/contact-us'
-      : `/${properties.lang}/contact-us`;
+      : `/${properties.lang.slice(0, 2)}/contact-us`;
   }
 
   if (properties.type === 'featurepage') {
     return properties.lang === defaultLanguage
       ? `/feature/${properties.uid}`
-      : `/${properties.lang}/feature/${properties.uid}`;
+      : `/${properties.lang.slice(0, 2)}/feature/${properties.uid}`;
   }
 
   if (properties.type === 'solutionpage') {
     return properties.lang === defaultLanguage
       ? `/solution/${properties.uid}`
-      : `/${properties.lang}/solution/${properties.uid}`;
+      : `/${properties.lang.slice(0, 2)}/solution/${properties.uid}`;
   }
 
   if (properties.type === 'technologypage') {
     return properties.lang === defaultLanguage
       ? `/technology/${properties.uid}`
-      : `/${properties.lang}/technology/${properties.uid}`;
+      : `/${properties.lang.slice(0, 2)}/technology/${properties.uid}`;
   }
 
   if (properties.type === 'bookpage') {
     return properties.lang === defaultLanguage
       ? '/books'
-      : `/${properties.lang}/books`;
+      : `/${properties.lang.slice(0, 2)}/books`;
   }
 
   if (properties.type === 'pricespage') {
     return properties.lang === defaultLanguage
       ? '/pricing'
-      : `/${properties.lang}/pricing`;
+      : `/${properties.lang.slice(0, 2)}/pricing`;
   }
 
   if (properties.type === 'pricespagetest') {
     return properties.lang === defaultLanguage
       ? '/pricestest'
-      : `/${properties.lang}/pricestest`;
+      : `/${properties.lang.slice(0, 2)}/pricestest`;
   }
 
   if (properties.type === 'pricesenterpricepage') {
     return properties.lang === defaultLanguage
       ? '/pricing-enterprise'
-      : `/${properties.lang}/pricing-enterprise`;
+      : `/${properties.lang.slice(0, 2)}/pricing-enterprise`;
   }
 
   if (properties.type === 'pricesresellerpage') {
     return properties.lang === defaultLanguage
       ? '/pricing-reseller'
-      : `/${properties.lang}/pricing-reseller`;
+      : `/${properties.lang.slice(0, 2)}/pricing-reseller`;
   }
 
   if (properties.type === 'videopage') {
     return properties.lang === defaultLanguage
       ? '/video-blog'
-      : `/${properties.lang}/video-blog`;
+      : `/${properties.lang.slice(0, 2)}/video-blog`;
   }
 
   if (properties.type === 'copmarepage') {
     return properties.lang === defaultLanguage
       ? `/${properties.uid}`
-      : `/${properties.lang}/${properties.uid}`;
+      : `/${properties.lang.slice(0, 2)}/${properties.uid}`;
   }
 
   if (properties.type === 'blogpage') {
     return properties.lang === defaultLanguage
       ? '/blog'
-      : `/${properties.lang}/blog`;
+      : `/${properties.lang.slice(0, 2)}/blog`;
   }
 
   if (properties.type === 'blogpostpage' && properties.uid) {
     return properties.lang === defaultLanguage
       ? `/blog/${properties.uid}`
-      : `/${properties.lang}/blog/${properties.uid}`;
+      : `/${properties.lang.slice(0, 2)}/blog/${properties.uid}`;
   }
 
   if (properties.type === 'singlebookpage' && properties.uid) {
     return properties.lang === defaultLanguage
       ? `${properties.uid}`
-      : `/${properties.lang}${properties.uid}`;
+      : `/${properties.lang.slice(0, 2)}${properties.uid}`;
   }
 
   if (properties.type === 'privacypolicy') {
     return properties.lang === defaultLanguage
       ? `/${properties.uid}`
-      : `/${properties.lang}/${properties.uid}`;
+      : `/${properties.lang.slice(0, 2)}/${properties.uid}`;
   }
 
   if (properties.type === 'legal_pages' && properties.uid) {
     return properties.lang === defaultLanguage
       ? `${properties.uid}`
-      : `/${properties.lang}${properties.uid}`;
+      : `/${properties.lang.slice(0, 2)}${properties.uid}`;
   }
 
   if (properties.type === 'thankyoupage') {
     return properties.lang === defaultLanguage
       ? `/${properties.uid}`
-      : `/${properties.lang}/${properties.uid}`;
+      : `/${properties.lang.slice(0, 2)}/${properties.uid}`;
   }
 
   if (properties.type === 'subprocessors') {
     return properties.lang === defaultLanguage
       ? `/${properties.uid}`
-      : `/${properties.lang}/${properties.uid}`;
+      : `/${properties.lang.slice(0, 2)}/${properties.uid}`;
   }
 
   if (properties.type === 'tos') {
     return properties.lang === defaultLanguage
       ? `/${properties.uid}`
-      : `/${properties.lang}/${properties.uid}`;
+      : `/${properties.lang.slice(0, 2)}/${properties.uid}`;
   }
 
   // Backup for all other types
