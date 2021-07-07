@@ -54,10 +54,10 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
     <Helmet>
       {/* Encoding and styles */}
       <html lang="en" />
-      <script
+      {/* <script
         type="text/javascript"
         src="https://app.secureprivacy.ai/script/606acb2d5761b5f013b48067.js"
-      ></script>
+      ></script> */}
       <meta charSet="utf-8" />
       <meta httpEquiv="x-ua-compatible" content="ie=edge"></meta>
       <meta
