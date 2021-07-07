@@ -10,6 +10,7 @@ import useGetImages from './useGetImages';
 import styles from './Subscribe.module.scss';
 
 const Subscribe = ({ primary }) => {
+  const { title, buttontext: buttonText } = primary;
   const [data, setData] = useState({
     email: {
       value: '',
@@ -73,7 +74,7 @@ const Subscribe = ({ primary }) => {
       >
         <div className={styles.block}>
           <div className={styles.title}>
-            <RichText render={primary.title} />
+            <RichText render={title.raw} />
           </div>
           <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
             {!isSubmitted ? (
@@ -110,7 +111,7 @@ const Subscribe = ({ primary }) => {
                     element="button"
                     fullWidth
                   >
-                    {RichText.asText(primary.buttontext)}
+                    {RichText.asText(buttonText.raw)}
                   </Button>
                 </div>
               </Fragment>

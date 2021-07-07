@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import style from './PostPage.module.scss';
-import { RichText } from 'prismic-reactjs';
 import { dateToString } from '@helpers';
 
 import Text from './components/Text/Text';
@@ -12,15 +11,15 @@ import CallToAction from '@components/CallToAction/CallToAction';
 
 import Articles from '@components/Articles/Articles';
 
-const PostPage = ({ current }) => {
-  const { body, date, title, description, _meta } = current;
+const PostPage = ({ current, tags }) => {
+  const { body, date, title, description } = current;
 
   return (
     <div className={style.page}>
       <div className={style.container}>
         <div className={style.wrapper}>
           <ul className={style.categoryList}>
-            {_meta.tags.map((item) => {
+            {tags.map((item) => {
               return (
                 <li className={style.categoryItem} key={item}>
                   {item}
@@ -31,19 +30,23 @@ const PostPage = ({ current }) => {
           <div className={style.date}>{dateToString(date)}</div>
         </div>
         <div className={style.title}>
-          <RichText render={title} />
+          <h1>{title.text}</h1>
         </div>
         <div className={style.description}>
-          <RichText render={description} />
+          <p>{description.text}</p>
         </div>
         {body.map((section, index) => {
-          switch (section.type) {
+          switch (section.slice_type) {
             case 'text':
-              return <Text {...section} key={`${section.type}${index}`} />;
+              return (
+                <Text {...section} key={`${section.slice_type}${index}`} />
+              );
             case 'image':
-              return <Img {...section} key={`${section.type}${index}`} />;
+              return <Img {...section} key={`${section.slice_type}${index}`} />;
             case 'video':
-              return <Video {...section} key={`${section.type}${index}`} />;
+              return (
+                <Video {...section} key={`${section.slice_type}${index}`} />
+              );
           }
         })}
       </div>
@@ -51,12 +54,19 @@ const PostPage = ({ current }) => {
         switch (section.type) {
           case 'agencies':
             return (
-              <CallToAction {...section} key={`${section.type}${index}`} />
+              <CallToAction
+                {...section}
+                key={`${section.slice_type}${index}`}
+              />
             );
           case 'subscribe':
-            return <Subscribe {...section} key={`${section.type}${index}`} />;
+            return (
+              <Subscribe {...section} key={`${section.slice_type}${index}`} />
+            );
           case 'articles':
-            return <Articles {...section} key={`${section.type}${index}`} />;
+            return (
+              <Articles {...section} key={`${section.slice_type}${index}`} />
+            );
         }
       })}
     </div>
@@ -65,6 +75,7 @@ const PostPage = ({ current }) => {
 
 PostPage.propTypes = {
   current: PropTypes.object.isRequired,
+  tags: PropTypes.array,
 };
 
 export default PostPage;

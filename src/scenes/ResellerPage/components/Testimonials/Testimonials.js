@@ -5,23 +5,31 @@ import { RichText } from 'prismic-reactjs';
 import Reviews from './components/Reviews';
 import style from './Testimonials.module.scss';
 
-const Testimonials = ({ primary, fields }) => {
+const Testimonials = ({ primary, items }) => {
+  const {
+    title,
+    subtitle,
+    buttontext,
+    buttontextshort,
+    buttonlink,
+    image,
+  } = primary;
   return (
     <div className={style.wrapper}>
       <div className={style.container}>
         <div className={style.title}>
-          <RichText render={primary.title} />
+          <RichText render={title.raw} />
         </div>
         <div className={style.subtitle}>
-          <RichText render={primary.subtitle} />
+          <RichText render={subtitle.raw} />
         </div>
         <div className={style.listBox}>
           <Reviews
-            items={fields}
-            buttonText={primary.buttontext}
-            buttonTextShort={primary.buttontextshort}
-            buttonLink={primary.buttonlink}
-            logotype={primary.image}
+            items={items}
+            buttonText={buttontext}
+            buttonTextShort={buttontextshort}
+            buttonLink={buttonlink}
+            logotype={image}
           />
         </div>
       </div>
@@ -31,7 +39,7 @@ const Testimonials = ({ primary, fields }) => {
 
 Testimonials.propTypes = {
   primary: PropTypes.object.isRequired,
-  fields: PropTypes.array.isRequired,
+  items: PropTypes.array.isRequired,
 };
 
 export default Testimonials;

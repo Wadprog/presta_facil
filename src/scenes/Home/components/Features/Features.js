@@ -9,10 +9,11 @@ import { useBreakpoints } from '@hooks';
 import useGetImages from './useGetImages';
 import style from './Features.module.scss';
 
-const Features = ({ primary, fields }) => {
+const Features = ({ primary, items }) => {
   const [buildKey, setBuildKey] = useState();
   const { width } = useBreakpoints();
   const { background } = useGetImages();
+  const { title, description } = primary;
 
   useEffect(() => {
     setBuildKey(+new Date());
@@ -40,14 +41,14 @@ const Features = ({ primary, fields }) => {
       <div className={style.features}>
         <div className={style.container}>
           <div className={style.title}>
-            <RichText render={primary.title} />
+            <RichText render={title.raw} />
           </div>
           <div className={style.descr}>
-            <RichText render={primary.description} />
+            <RichText render={description.raw} />
           </div>
           <div className={style.slider} key={buildKey}>
             <Swiper {...params}>
-              {fields.map((item, index) => {
+              {items.map((item, index) => {
                 return (
                   <div className={style.slide} key={`Features${index}`}>
                     <Item {...item} />
@@ -64,7 +65,7 @@ const Features = ({ primary, fields }) => {
 
 Features.propTypes = {
   primary: object,
-  fields: array,
+  items: array,
 };
 
 export default Features;

@@ -13,27 +13,37 @@ import Plans from '@components/Plans';
 import Calendly from '@components/Calendly/Calendly';
 
 const SolutionPage = ({ current, mainSection, pageUid }) => {
-  const body = current.body;
-  const agenciesSection = mainSection[1].node.body2[0];
-  const plansSection = mainSection[1].node.body2[1];
+  const body = current.data.body;
+  const agenciesSection = mainSection[1].node.data.body2[0];
+  const plansSection = mainSection[1].node.data.body2[1];
   const hospitalityPageUid = 'hospitality';
 
   return (
     <div className={style.SolutionPage}>
       {body.map((section, index) => {
-        switch (section.type) {
+        switch (section.slice_type) {
           case 'hero':
-            return <Hero {...section} key={`${section.type}${index}`} />;
+            return <Hero {...section} key={`${section.slice_type}${index}`} />;
           case 'projects':
-            return <Projects {...section} key={`${section.type}${index}`} />;
+            return (
+              <Projects {...section} key={`${section.slice_type}${index}`} />
+            );
           case 'benefits':
-            return <Benefits {...section} key={`${section.type}${index}`} />;
+            return (
+              <Benefits {...section} key={`${section.slice_type}${index}`} />
+            );
           case 'features':
-            return <Features {...section} key={`${section.type}${index}`} />;
+            return (
+              <Features {...section} key={`${section.slice_type}${index}`} />
+            );
           case 'questions':
-            return <Questions {...section} key={`${section.type}${index}`} />;
+            return (
+              <Questions {...section} key={`${section.slice_type}${index}`} />
+            );
           case 'booking':
-            return <Calendly {...section} key={`${section.type}${index}`} />;
+            return (
+              <Calendly {...section} key={`${section.slice_type}${index}`} />
+            );
           case 'plans':
             return (
               <Plans

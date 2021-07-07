@@ -6,20 +6,34 @@ import Layout from '@components/Layout';
 import PrivacyPolicyPage from '../scenes/PrivacyPolicyPage/index';
 
 const Page = ({ data }) => {
-  const privacyPolicyPageData = data.prismic.allPrivacypolicys.edges[0];
+  const privacyPolicyPageData = data.allPrismicPrivacypolicy.edges[0];
   if (!privacyPolicyPageData) return null;
 
   const privacyPolicyPageContent = privacyPolicyPageData.node;
-  const { metatitle, metadescription, canonical } = privacyPolicyPageContent;
+  const {
+    uid,
+    id,
+    type,
+    alternate_languages,
+    lang,
+    data: pageData,
+  } = privacyPolicyPageContent;
+  const activeDocMeta = { id, uid, lang, type, alternate_languages };
+  const {
+    metatitle,
+    metadescription,
+    canonical,
+    pagetitle: pageTitle,
+  } = pageData;
 
   return (
     <Layout
-      activeDocMeta={privacyPolicyPageContent._meta}
+      activeDocMeta={activeDocMeta}
       metatitle={metatitle}
       metadescription={metadescription}
       canonical={canonical}
     >
-      <PrivacyPolicyPage />
+      <PrivacyPolicyPage pageTitle={pageTitle} />
     </Layout>
   );
 };
@@ -29,24 +43,35 @@ Page.propTypes = {
 };
 
 export const query = graphql`
-  query($lang: String) {
-    prismic {
-      allPrivacypolicys(lang: $lang) {
-        edges {
-          node {
-            _meta {
-              uid
-              type
-              lang
-              alternateLanguages {
-                type
-                lang
-                uid
-              }
+  query($uid: String, $lang: String) {
+    allPrismicPrivacypolicy(
+      filter: { uid: { eq: $uid }, lang: { eq: $lang } }
+    ) {
+      edges {
+        node {
+          lang
+          uid
+          id
+          type
+          alternate_languages {
+            id
+            lang
+            type
+            uid
+          }
+          data {
+            canonical {
+              text
             }
-            metatitle
-            metadescription
-            canonical
+            metadescription {
+              text
+            }
+            metatitle {
+              text
+            }
+            pagetitle {
+              text
+            }
           }
         }
       }

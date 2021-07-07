@@ -19,7 +19,7 @@ const Card = ({
     <div className={style.container}>
       <div className={style.header}>
         <div className={style.author}>
-          <RichText render={author} />
+          <RichText render={author.raw} />
         </div>
         <div className={style.stars}>
           <img src={stars} alt="stars" loading="lazy" draggable={false} />
@@ -27,25 +27,25 @@ const Card = ({
       </div>
       <div className={style.main}>
         <div className={style.text}>
-          <RichText render={text} />
+          <RichText render={text.raw} />
         </div>
       </div>
       <div className={style.footer}>
         <a
-          href={RichText.asText(buttonLink)}
+          href={RichText.asText(buttonLink.raw)}
           target="_blank"
           rel="noopener noreferrer"
           className={style.link}
         >
           <span className={classnames(style.title, style.full)}>
             <GradientText
-              text={RichText.asText(buttonText)}
+              text={RichText.asText(buttonText.raw)}
               background="linear-gradient(87.97deg, #24b04b -46.17%, #0263bc 186.99%)"
             />
           </span>
           <span className={classnames(style.title, style.short)}>
             <GradientText
-              text={RichText.asText(buttonTextShort)}
+              text={RichText.asText(buttonTextShort.raw)}
               background="linear-gradient(87.97deg, #24b04b -46.17%, #0263bc 186.99%)"
             />
           </span>
@@ -59,11 +59,11 @@ const Card = ({
 };
 
 Card.propTypes = {
-  author: PropTypes.array.isRequired,
-  text: PropTypes.array.isRequired,
-  buttonText: PropTypes.array.isRequired,
-  buttonTextShort: PropTypes.array.isRequired,
-  buttonLink: PropTypes.array.isRequired,
+  author: PropTypes.object.isRequired,
+  text: PropTypes.object.isRequired,
+  buttonText: PropTypes.object.isRequired,
+  buttonTextShort: PropTypes.object.isRequired,
+  buttonLink: PropTypes.object.isRequired,
   logotype: PropTypes.object.isRequired,
 };
 

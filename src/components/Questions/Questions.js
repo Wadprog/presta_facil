@@ -26,11 +26,12 @@ const htmlSerializer = (type, element, key) => {
 
 const COUNTER_STEP = 6;
 
-const Questions = ({ primary, fields }) => {
+const Questions = ({ primary, items }) => {
+  const { title } = primary;
   const [counter, setCounter] = useState(COUNTER_STEP);
-  const [questionList, setQuestionList] = useState(fields.slice(0, counter));
+  const [questionList, setQuestionList] = useState(items.slice(0, counter));
   useEffect(() => {
-    setQuestionList(fields.slice(0, counter));
+    setQuestionList(items.slice(0, counter));
   }, [counter]);
 
   const loadMoreQuestion = () => {
@@ -40,21 +41,21 @@ const Questions = ({ primary, fields }) => {
   let questionsToRender;
   if (questionList !== null) {
     questionsToRender = questionList.map(
-      ({ title, content, linktext, link }) => {
+      ({ title, content, linktext, link }, index) => {
         if (title) {
           return (
-            <AccordionItem
-              key={RichText.asText(title)}
-              className={styles.accordionItem}
-            >
+            <AccordionItem key={index} className={styles.accordionItem}>
               <AccordionItemHeading className={styles.accordionItemHeading}>
                 <AccordionItemButton className={styles.accordionItemButton}>
-                  <RichText render={title} />
+                  <RichText render={title.raw} />
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel className={styles.accordionItemPanel}>
                 <div className={styles.content}>
-                  <RichText render={content} htmlSerializer={htmlSerializer} />
+                  <RichText
+                    render={content.raw}
+                    htmlSerializer={htmlSerializer}
+                  />
                   {link && linktext && (
                     <a
                       className={styles.link}
@@ -62,7 +63,7 @@ const Questions = ({ primary, fields }) => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {RichText.asText(linktext)}
+                      {linktext.text}
                     </a>
                   )}
                 </div>
@@ -77,7 +78,7 @@ const Questions = ({ primary, fields }) => {
   return (
     <section className={styles.benefits}>
       <div className={styles.title}>
-        <RichText render={primary.title} />
+        <RichText render={title.raw} />
       </div>
       <Accordion
         className={styles.accordion}
@@ -85,7 +86,7 @@ const Questions = ({ primary, fields }) => {
         allowMultipleExpanded
       >
         <div>{questionsToRender}</div>
-        {fields.length > counter ? (
+        {items.length > counter ? (
           <div className={styles.buttonWrapper}>
             <Button onClick={loadMoreQuestion} />
           </div>
@@ -97,6 +98,6 @@ const Questions = ({ primary, fields }) => {
 
 Questions.propTypes = {
   primary: object,
-  fields: array,
+  items: array,
 };
 export default Questions;

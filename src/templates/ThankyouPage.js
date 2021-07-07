@@ -6,14 +6,17 @@ import Layout from '@components/Layout';
 import ThankyouPage from '@scenes/ThankyouPage';
 
 const Page = ({ data }) => {
-  const thankyouPageData = data.prismic.allThankyoupages.edges[0];
+  const thankyouPageData = data.allPrismicThankyoupage.edges[0].node;
   if (!thankyouPageData) return null;
-  const thankyouPageContent = thankyouPageData.node;
+  const { id, uid, lang, type, alternate_languages } = thankyouPageData;
+  const activeDocMeta = { id, uid, lang, type, alternate_languages };
+  const { data: thankyouPageContent } = thankyouPageData;
+
   const { metatitle, metadescription, canonical } = thankyouPageContent;
 
   return (
     <Layout
-      activeDocMeta={thankyouPageContent._meta}
+      activeDocMeta={activeDocMeta}
       metatitle={metatitle}
       metadescription={metadescription}
       canonical={canonical}
@@ -28,29 +31,42 @@ Page.propTypes = {
 };
 
 export const query = graphql`
-  query($uid: String, $lang: String) {
-    prismic {
-      allThankyoupages(uid: $uid, lang: $lang) {
-        edges {
-          node {
-            title
-            pagemessage
-            metatitle
-            metadescription
-            canonical
-            buttontext
-            buttonlink
-            _meta {
-              alternateLanguages {
-                id
-                lang
-                type
-                uid
-              }
-              uid
-              lang
-              type
+  query {
+    allPrismicThankyoupage {
+      edges {
+        node {
+          uid
+          type
+          lang
+          id
+          data {
+            title {
+              text
             }
+            pagemessage {
+              text
+            }
+            metatitle {
+              text
+            }
+            metadescription {
+              text
+            }
+            canonical {
+              text
+            }
+            buttontext {
+              text
+            }
+            buttonlink {
+              text
+            }
+          }
+          alternate_languages {
+            id
+            lang
+            type
+            uid
           }
         }
       }

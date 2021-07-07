@@ -9,9 +9,8 @@ import Book from './components/Book';
 import style from './ResellerPage.module.scss';
 
 const ResellerPage = ({ content }) => {
-  const body = content.prismic.allPricesresellerpages.edges[0].node.body;
-  const sections = body.map((item, index) => {
-    switch (item.type) {
+  const sections = content.map((item, index) => {
+    switch (item.slice_type) {
       case 'hero':
         return <Hero key={index} {...item} />;
       case 'join':
@@ -23,7 +22,7 @@ const ResellerPage = ({ content }) => {
       case 'book':
         return <Book key={index} {...item} />;
       default:
-        return null;
+        throw new Error(`Unknown section type: ${item.slice_type}`);
     }
   });
 
@@ -31,7 +30,7 @@ const ResellerPage = ({ content }) => {
 };
 
 ResellerPage.propTypes = {
-  content: PropTypes.object.isRequired,
+  content: PropTypes.array.isRequired,
 };
 
 export default ResellerPage;

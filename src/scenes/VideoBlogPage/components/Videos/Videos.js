@@ -10,11 +10,11 @@ import { useDebounce } from '@hooks';
 import SearchInput from '@components/SearchInput/SearchInput';
 import Filter from '@components/Filter/Filter';
 
-const numberToRender = 9; // video on page
+const numberToRender = 9;
 const COUNTER_STEP = 3;
 
-const Videos = ({ primary, fields }) => {
-  const validFields = fields.filter(
+const Videos = ({ primary, items }) => {
+  const validFields = items.filter(
     (field) => field.tag && field.date && field.title && field.videourl
   );
   const [counter, setCounter] = useState(numberToRender);
@@ -31,7 +31,7 @@ const Videos = ({ primary, fields }) => {
   useEffect(() => {
     const filteredList = validFields.filter(({ title, date, tag }) => {
       const filterBySearch = debounceSearchResult
-        ? parseString(title)
+        ? parseString(title.raw)
             .toLowerCase()
             .includes(debounceSearchResult.toLowerCase())
         : true;
@@ -61,12 +61,13 @@ const Videos = ({ primary, fields }) => {
   };
 
   const { title } = primary;
+
   return (
     <div className={style.page}>
       <div className={style.container}>
         <div className={style.wrapper}>
           <div className={style.title}>
-            <RichText render={title} />
+            <RichText render={title.raw} />
           </div>
           <div className={style.search}>
             <SearchInput onChange={handleInputChange} />
@@ -81,7 +82,7 @@ const Videos = ({ primary, fields }) => {
         </div>
         <div className={style.list}>
           {videoList.map((item) => {
-            return <Item {...item} key={parseString(item.title)} />;
+            return <Item {...item} key={parseString(item.title.raw)} />;
           })}
         </div>
         <div className={style.buttonWrapper}>
@@ -101,7 +102,7 @@ const Videos = ({ primary, fields }) => {
 };
 
 Videos.propTypes = {
-  fields: array,
+  items: array,
   primary: object,
 };
 

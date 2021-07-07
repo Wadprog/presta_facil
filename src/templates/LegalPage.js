@@ -6,19 +6,28 @@ import LegalPage from '../scenes/LegalPage/index';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
-  const pageContext = data.prismic.allLegal_pagess.edges[0];
+  const pageContext = data.allPrismicLegalPages.edges[0];
   if (!pageContext) return null;
-  const body = pageContext.node;
-  const { title, description, canonical } = body;
+  const legalPage = pageContext.node;
+  const {
+    uid,
+    id,
+    type,
+    alternate_languages,
+    lang,
+    data: pageData,
+  } = legalPage;
+  const activeDocMeta = { id, uid, lang, type, alternate_languages };
+  const { title, description, canonical, body: pageContent, date } = pageData;
 
   return (
     <Layout
-      activeDocMeta={body._meta}
+      activeDocMeta={activeDocMeta}
       metatitle={title}
       metadescription={description}
       canonical={canonical}
     >
-      <LegalPage current={body} />
+      <LegalPage content={pageContent} title={title} date={date} />
     </Layout>
   );
 };
@@ -29,33 +38,41 @@ Page.propTypes = {
 
 export const query = graphql`
   query($uid: String, $lang: String) {
-    prismic {
-      allLegal_pagess(uid: $uid, lang: $lang) {
-        edges {
-          node {
+    allPrismicLegalPages(filter: { uid: { eq: $uid }, lang: { eq: $lang } }) {
+      edges {
+        node {
+          uid
+          type
+          lang
+          id
+          alternate_languages {
+            id
+            lang
+            uid
+            type
+          }
+          data {
+            title {
+              text
+            }
+            description {
+              text
+            }
+            canonical {
+              text
+            }
             body {
-              ... on PRISMIC_Legal_pagesBodyText {
-                type
-                label
+              ... on PrismicLegalPagesBodyText {
+                id
+                slice_type
                 primary {
-                  text
+                  text {
+                    raw
+                  }
                 }
               }
             }
-            canonical
-            description
-            title
             date
-            _meta {
-              type
-              uid
-              lang
-              alternateLanguages {
-                lang
-                type
-                uid
-              }
-            }
           }
         }
       }

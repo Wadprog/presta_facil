@@ -6,19 +6,27 @@ import Layout from '@components/Layout';
 import SubprocessorsPage from '@scenes/SubprocessorsPage';
 
 const Page = ({ data }) => {
-  const subprocessorsPageData = data.prismic.allSubprocessorss.edges[0];
-  if (!subprocessorsPageData) return null;
-  const subprocessorsPageContent = subprocessorsPageData.node;
-  const { metatitle, metadescription, canonical } = subprocessorsPageContent;
+  const subprocessorsPageContent = data.allPrismicSubprocessors.edges[0].node;
+  if (!subprocessorsPageContent) return null;
+  const {
+    id,
+    uid,
+    lang,
+    type,
+    alternate_languages,
+    data: subprocessorsPageData,
+  } = subprocessorsPageContent;
+  const activeDocMeta = { id, uid, lang, type, alternate_languages };
+  const { metatitle, metadescription, canonical } = subprocessorsPageData;
 
   return (
     <Layout
-      activeDocMeta={subprocessorsPageContent._meta}
+      activeDocMeta={activeDocMeta}
       metatitle={metatitle}
       metadescription={metadescription}
       canonical={canonical}
     >
-      <SubprocessorsPage content={subprocessorsPageContent} />
+      <SubprocessorsPage content={subprocessorsPageData} />
     </Layout>
   );
 };
@@ -28,48 +36,71 @@ Page.propTypes = {
 };
 
 export const query = graphql`
-  query($uid: String, $lang: String) {
-    prismic {
-      allSubprocessorss(uid: $uid, lang: $lang) {
-        edges {
-          node {
-            _meta {
-              alternateLanguages {
-                id
-                lang
-                type
-                uid
-              }
-              uid
-              type
-              lang
+  query {
+    allPrismicSubprocessors {
+      edges {
+        node {
+          uid
+          type
+          lang
+          id
+          data {
+            canonical {
+              text
             }
-            canonical
-            metadescription
-            metatitle
-            pagetitle
+            metadescription {
+              text
+            }
+            metatitle {
+              text
+            }
+            pagetitle {
+              text
+            }
             body {
-              ... on PRISMIC_SubprocessorsBodyTable {
-                type
-                label
-                fields {
-                  col1
-                  col2
-                  col3
-                  col4
+              ... on PrismicSubprocessorsBodyTable {
+                id
+                slice_type
+                items {
+                  col1 {
+                    raw
+                  }
+                  col2 {
+                    raw
+                  }
+                  col3 {
+                    raw
+                  }
+                  col4 {
+                    raw
+                  }
                 }
               }
-              ... on PRISMIC_SubprocessorsBodyTable_rows_headers {
-                type
-                label
-                fields {
-                  col1
-                  col2
-                  col3
-                  col4
+              ... on PrismicSubprocessorsBodyTableRowsHeaders {
+                id
+                slice_type
+                items {
+                  col1 {
+                    raw
+                  }
+                  col2 {
+                    raw
+                  }
+                  col3 {
+                    raw
+                  }
+                  col4 {
+                    raw
+                  }
                 }
               }
             }
+          }
+          alternate_languages {
+            id
+            lang
+            type
+            uid
           }
         }
       }

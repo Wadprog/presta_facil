@@ -6,19 +6,42 @@ import EnterpricePage from '@scenes/EnterpricePage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
-  const enterpricepageContent = data.prismic.allPricesenterpricepages.edges[0];
+  const testimonialsData = data.allPrismicHomepageBodyTestimonials.edges[0];
+  if (!testimonialsData) return null;
+  const testimonialsSection = testimonialsData.node;
+
+  const worksData = data.allPrismicHomepageBodyWorks.edges[1];
+  if (!worksData) return null;
+  const worksSection = worksData.node;
+
+  const enterpricepageContent = data.allPrismicPricesenterpricepage.edges[0];
   if (!enterpricepageContent) return null;
   const enterpricepage = enterpricepageContent.node;
-  const { metatitle, metadescription, canonical } = enterpricepage;
+
+  const {
+    uid,
+    id,
+    type,
+    alternate_languages,
+    lang,
+    data: pageData,
+  } = enterpricepage;
+  const activeDocMeta = { id, uid, lang, type, alternate_languages };
+  const { metatitle, metadescription, canonical } = pageData;
+  const { body: pageContent } = pageData;
 
   return (
     <Layout
-      activeDocMeta={enterpricepage._meta}
+      activeDocMeta={activeDocMeta}
       metatitle={metatitle}
       metadescription={metadescription}
       canonical={canonical}
     >
-      <EnterpricePage content={data} />
+      <EnterpricePage
+        content={pageContent}
+        worksSection={worksSection}
+        testimonialsSection={testimonialsSection}
+      />
     </Layout>
   );
 };
@@ -28,105 +51,164 @@ Page.propTypes = {
 };
 
 export const query = graphql`
-  query($lang: String) {
-    prismic {
-      allPricesenterpricepages(lang: $lang) {
-        edges {
-          node {
-            metatitle
-            metadescription
-            canonical
-            _meta {
-              uid
-              type
-              lang
-              alternateLanguages {
-                lang
-                type
-                uid
-              }
+  query($uid: String, $lang: String) {
+    allPrismicPricesenterpricepage(
+      filter: { uid: { eq: $uid }, lang: { eq: $lang } }
+    ) {
+      edges {
+        node {
+          uid
+          type
+          lang
+          id
+          alternate_languages {
+            id
+            lang
+            uid
+            type
+          }
+          data {
+            canonical {
+              text
+            }
+            metadescription {
+              text
+            }
+            metatitle {
+              text
             }
             body {
-              ... on PRISMIC_PricesenterpricepageBodyFeature {
-                type
-                label
-                fields {
-                  image
-                  name
-                }
+              ... on PrismicPricesenterpricepageBodyFeature {
+                id
+                slice_type
                 primary {
-                  title
+                  title {
+                    raw
+                  }
                 }
-              }
-              ... on PRISMIC_PricesenterpricepageBodyHero {
-                type
-                label
-                primary {
-                  benefitslist
-                  benefitstitle
-                  ctatext
-                  ctatitle
-                  subtitle
-                  title
-                  image
-                  modalbuttontext
-                  modalbuttonlink
-                  video {
-                    ... on PRISMIC__ExternalLink {
-                      target
-                      _linkType
-                      url
-                    }
+                items {
+                  image {
+                    alt
+                    url
+                  }
+                  name {
+                    raw
                   }
                 }
               }
-              ... on PRISMIC_PricesenterpricepageBodyCallbanner {
-                type
-                label
+              ... on PrismicPricesenterpricepageBodyHero {
+                id
+                slice_type
                 primary {
-                  button
-                  image
-                  title
+                  benefitslist {
+                    raw
+                  }
+                  benefitstitle {
+                    raw
+                  }
+                  ctatext {
+                    raw
+                  }
+                  ctatitle {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                  }
+                  modalbuttonlink {
+                    raw
+                  }
+                  modalbuttontext {
+                    raw
+                  }
+                  subtitle {
+                    raw
+                  }
+                  title {
+                    raw
+                  }
+                  video {
+                    link_type
+                    url
+                  }
+                }
+              }
+              ... on PrismicPricesenterpricepageBodyCallbanner {
+                id
+                slice_type
+                primary {
+                  button {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                  }
+                  title {
+                    raw
+                  }
                 }
               }
             }
           }
         }
       }
-      allHomepages {
-        edges {
-          node {
-            body {
-              ... on PRISMIC_HomepageBodyTestimonials {
-                type
-                label
-                fields {
-                  photo
-                  name
-                  company
-                  text
-                }
-              }
-              ... on PRISMIC_HomepageBodyWorks {
-                type
-                label
-                fields {
-                  screenshot
-                  name
-                  tag
-                  category
-                  link {
-                    ... on PRISMIC__ExternalLink {
-                      url
-                    }
-                  }
-                }
-                primary {
-                  title
-                  dropdownlable
-                  categories
-                }
-              }
+    }
+    allPrismicHomepageBodyTestimonials {
+      edges {
+        node {
+          slice_type
+          items {
+            company {
+              raw
+            }
+            name {
+              raw
+            }
+            photo {
+              alt
+              url
+            }
+            text {
+              raw
+            }
+          }
+        }
+      }
+    }
+    allPrismicHomepageBodyWorks {
+      edges {
+        node {
+          slice_type
+          primary {
+            categories {
+              text
+            }
+            dropdownlable {
+              raw
+            }
+            title {
+              raw
+            }
+          }
+          items {
+            category {
+              text
+            }
+            link {
+              link_type
+              url
+            }
+            name {
+              raw
+            }
+            screenshot {
+              alt
+              url
+            }
+            tag {
+              raw
             }
           }
         }

@@ -24,13 +24,13 @@ const Hero = ({ title, articles }) => {
   return (
     <section className={style.hero}>
       <div className={style.title}>
-        <RichText render={title} />
+        <RichText render={title.raw} />
       </div>
       <div className={style.slider}>
         <Swiper {...params}>
-          {firstFourArticles.map(({ node }) => {
+          {firstFourArticles.map(({ node }, index) => {
             return (
-              <div className={style.slide} key={node._meta.uid}>
+              <div className={style.slide} key={index}>
                 <SlideItem {...node} />
               </div>
             );

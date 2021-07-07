@@ -6,25 +6,22 @@ import SolutionPage from '../scenes/SolutionPage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
-  const pageContext = data.prismic.allSolutionpages.edges[0];
+  const pageContext = data.allPrismicSolutionpage.edges[0];
   if (!pageContext) return null;
   const body = pageContext.node;
-  const { metatitle, metadescription, canonical, _meta: metaData } = body;
-  const { uid: pageUid } = metaData;
-  const mainSection = data.prismic.allLayouts.edges;
+  const { data: pageData, uid, id, lang, type, alternate_languages } = body;
+  const { metatitle, metadescription, canonical } = pageData;
+  const activeDocMeta = { id, uid, lang, type, alternate_languages };
+  const mainSection = data.allPrismicLayout.edges;
 
   return (
     <Layout
-      activeDocMeta={metaData}
+      activeDocMeta={activeDocMeta}
       metatitle={metatitle}
       metadescription={metadescription}
       canonical={canonical}
     >
-      <SolutionPage
-        current={body}
-        mainSection={mainSection}
-        pageUid={pageUid}
-      />
+      <SolutionPage current={body} mainSection={mainSection} pageUid={uid} />
     </Layout>
   );
 };
@@ -35,200 +32,273 @@ Page.propTypes = {
 
 export const query = graphql`
   query($uid: String, $lang: String) {
-    prismic {
-      allSolutionpages(uid: $uid, lang: $lang) {
-        edges {
-          node {
-            _linkType
-            metatitle
-            metadescription
-            canonical
-            _meta {
-              uid
-              type
-              lang
-              alternateLanguages {
-                lang
-                type
-                uid
-              }
+    allPrismicSolutionpage(filter: { uid: { eq: $uid }, lang: { eq: $lang } }) {
+      edges {
+        node {
+          alternate_languages {
+            id
+            lang
+            uid
+            type
+          }
+          data {
+            canonical {
+              text
+            }
+            metadescription {
+              text
+            }
+            metatitle {
+              text
             }
             body {
-              ... on PRISMIC_SolutionpageBodyHero {
-                type
-                label
-                fields {
-                  partnerslogo
-                }
+              ... on PrismicSolutionpageBodyHero {
+                id
+                slice_type
                 primary {
+                  buttonlink {
+                    text
+                  }
+                  buttontext {
+                    text
+                  }
+                  description {
+                    text
+                  }
+                  modalctabuttonlink {
+                    text
+                  }
+                  modalctabuttontext {
+                    text
+                  }
                   modalvideo {
-                    ... on PRISMIC__ExternalLink {
-                      url
-                      _linkType
-                    }
+                    link_type
+                    url
                   }
-                  buttontext
-                  buttonlink
-                  description
-                  flag
-                  title
-                  modalctabuttonlink
-                  modalctabuttontext
-                  videobuttontext
-                  previewimage
-                  previewimageSharp {
-                    childImageSharp {
-                      fluid {
-                        aspectRatio
-                        base64
-                        originalImg
-                        originalName
-                        presentationHeight
-                        presentationWidth
-                        sizes
-                        src
-                        srcSet
-                        srcSetWebp
-                        srcWebp
-                        tracedSVG
-                      }
+                  previewimage {
+                    url
+                    fluid(srcSetBreakpoints: 10) {
+                      aspectRatio
+                      base64
+                      sizes
+                      src
+                      srcSet
+                      srcSetWebp
+                      srcWebp
                     }
+                    thumbnails
+                  }
+                  title {
+                    text
+                  }
+                  videobuttontext {
+                    text
+                  }
+                }
+                items {
+                  partnerslogo {
+                    alt
+                    url
                   }
                 }
               }
-              ... on PRISMIC_SolutionpageBodyProjects {
-                type
-                label
-                fields {
-                  description
-                  link {
-                    ... on PRISMIC__ExternalLink {
-                      url
-                    }
-                  }
-                  screenshot
-                  screenshotSharp {
-                    childImageSharp {
-                      fluid {
-                        aspectRatio
-                        base64
-                        originalImg
-                        originalName
-                        presentationHeight
-                        presentationWidth
-                        sizes
-                        src
-                        srcSet
-                        srcSetWebp
-                        srcWebp
-                        tracedSVG
-                      }
-                    }
-                  }
-                  title
-                }
+              ... on PrismicSolutionpageBodyProjects {
+                id
+                slice_type
                 primary {
-                  title
+                  title {
+                    raw
+                  }
+                }
+                items {
+                  description {
+                    raw
+                  }
+                  title {
+                    raw
+                  }
+                  link {
+                    url
+                    link_type
+                  }
+                  screenshot {
+                    alt
+                    url
+                    fluid(srcSetBreakpoints: 10) {
+                      aspectRatio
+                      base64
+                      sizes
+                      src
+                      srcSet
+                      srcSetWebp
+                      srcWebp
+                    }
+                    thumbnails
+                  }
                 }
               }
-              ... on PRISMIC_SolutionpageBodyQuestions {
-                type
-                label
-                fields {
-                  link {
-                    ... on PRISMIC__ExternalLink {
-                      _linkType
-                      url
-                    }
+              ... on PrismicSolutionpageBodyQuestions {
+                id
+                slice_type
+                primary {
+                  title {
+                    raw
                   }
-                  linktext
+                }
+                items {
+                  content {
+                    raw
+                  }
+                  link {
+                    link_type
+                    url
+                  }
                   scan
-                  title
-                  content
-                }
-                primary {
-                  title
-                }
-              }
-              ... on PRISMIC_SolutionpageBodyBenefits {
-                type
-                label
-                fields {
-                  image
-                  text
-                }
-                primary {
-                  title
-                  button
-                  buttonlink
+                  linktext {
+                    text
+                  }
+                  title {
+                    raw
+                  }
                 }
               }
-              ... on PRISMIC_SolutionpageBodyFeatures {
-                type
-                label
-                fields {
-                  description
-                  image
-                  title
-                }
+              ... on PrismicSolutionpageBodyBenefits {
+                id
+                slice_type
                 primary {
-                  title
-                  button
-                  buttonlink
+                  button {
+                    text
+                  }
+                  buttonlink {
+                    text
+                  }
+                  title {
+                    raw
+                  }
+                }
+                items {
+                  image {
+                    alt
+                    url
+                  }
+                  text {
+                    raw
+                  }
                 }
               }
-              ... on PRISMIC_SolutionpageBodyPlans {
-                type
-                label
+              ... on PrismicSolutionpageBodyFeatures {
+                id
+                slice_type
                 primary {
-                  title
+                  button {
+                    text
+                  }
+                  buttonlink {
+                    text
+                  }
+                  title {
+                    raw
+                  }
+                }
+                items {
+                  description {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                  }
+                  title {
+                    raw
+                  }
                 }
               }
-              ... on PRISMIC_SolutionpageBodyBooking {
-                type
-                label
+              ... on PrismicSolutionpageBodyBooking {
+                id
+                slice_type
                 primary {
-                  title
+                  title {
+                    raw
+                  }
+                }
+              }
+              ... on PrismicSolutionpageBodyPlans {
+                id
+                slice_type
+                primary {
+                  title {
+                    raw
+                  }
                 }
               }
             }
           }
+          uid
+          type
+          id
+          lang
         }
       }
-      allLayouts {
-        edges {
-          node {
+    }
+    allPrismicLayout {
+      edges {
+        node {
+          data {
             body2 {
-              ... on PRISMIC_LayoutBody2Agencies {
-                type
-                label
+              ... on PrismicLayoutBody2Agencies {
+                id
+                slice_type
                 primary {
-                  title
-                  description
-                  buttontext
-                  image
-                  page
+                  buttontext {
+                    text
+                  }
+                  description {
+                    text
+                  }
+                  image {
+                    alt
+                    url
+                  }
+                  link {
+                    link_type
+                    url
+                  }
+                  page {
+                    text
+                  }
+                  title {
+                    text
+                  }
                 }
               }
-              ... on PRISMIC_LayoutBody2Plans {
-                type
-                label
-                fields {
-                  image
-                  type
-                  cardtitle
-                  description
-                  benefits
-                  button
-                  buttonprice
-                  buttonlink {
-                    _linkType
-                    ... on PRISMIC__ExternalLink {
-                      target
-                      _linkType
-                      url
-                    }
+              ... on PrismicLayoutBody2Plans {
+                id
+                slice_type
+                items {
+                  benefits {
+                    raw
                   }
+                  button {
+                    raw
+                  }
+                  buttonlink {
+                    link_type
+                    url
+                  }
+                  buttonprice {
+                    raw
+                  }
+                  cardtitle {
+                    raw
+                  }
+                  description {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                  }
+                  type
                 }
               }
             }

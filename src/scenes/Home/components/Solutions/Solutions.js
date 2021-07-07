@@ -13,12 +13,13 @@ import { langPath } from '@helpers';
 import Image from '@components/Image/Image';
 import useGetEarthImage from './useGetEarthImage';
 
-const Solutions = ({ primary, fields }) => {
+const Solutions = ({ primary, items }) => {
   const [buildKey, setBuildKey] = useState();
   const { width } = useBreakpoints();
   const { arrow } = useGetImage();
   const currentLang = useContext(LangContext);
   const { background } = useGetEarthImage();
+  const { title, description } = primary;
 
   useEffect(() => {
     setBuildKey(+new Date());
@@ -46,37 +47,35 @@ const Solutions = ({ primary, fields }) => {
       <div className={style.solutions}>
         <div className={style.container}>
           <div className={style.title}>
-            <RichText render={primary.title} />
+            <RichText render={title.raw} />
           </div>
           <div className={style.descr}>
-            <RichText render={primary.description} />
+            <RichText render={description.raw} />
           </div>
           <Swiper {...params} key={buildKey}>
-            {fields.map(
-              ({ image, imageSharp, title, text, pagename }, index) => {
-                const link = `${langPath(
-                  currentLang
-                )}/solution/${RichText.asText(pagename)}`;
-                return (
-                  <div className={style.slide} key={`solutions${index}`}>
-                    <Link to={link} className={style.item}>
-                      <Image image={image} imageSharp={imageSharp} />
-                      <RichText render={title} />
-                      <div>
-                        (<RichText render={text} />)
-                      </div>
-                      <img
-                        className={style.arrow}
-                        src={arrow.publicURL}
-                        alt="arrow icon"
-                        loading="lazy"
-                      />
-                      <div className={style.shadow}></div>
-                    </Link>
-                  </div>
-                );
-              }
-            )}
+            {items.map(({ image, title: itemTitle, text, pagename }, index) => {
+              const link = `${langPath(currentLang)}/solution/${RichText.asText(
+                pagename.raw
+              )}`;
+              return (
+                <div className={style.slide} key={`solutions${index}`}>
+                  <Link to={link} className={style.item}>
+                    <Image image={image} />
+                    <RichText render={itemTitle.raw} />
+                    <div>
+                      (<RichText render={text.raw} />)
+                    </div>
+                    <img
+                      className={style.arrow}
+                      src={arrow.publicURL}
+                      alt="arrow icon"
+                      loading="lazy"
+                    />
+                    <div className={style.shadow}></div>
+                  </Link>
+                </div>
+              );
+            })}
           </Swiper>
         </div>
       </div>
@@ -86,7 +85,7 @@ const Solutions = ({ primary, fields }) => {
 
 Solutions.propTypes = {
   primary: object,
-  fields: array,
+  items: array,
 };
 
 export default Solutions;

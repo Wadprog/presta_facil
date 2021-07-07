@@ -69,9 +69,9 @@ const Reviews = ({
 
 Reviews.propTypes = {
   items: PropTypes.array.isRequired,
-  buttonText: PropTypes.array.isRequired,
-  buttonTextShort: PropTypes.array.isRequired,
-  buttonLink: PropTypes.array.isRequired,
+  buttonText: PropTypes.object.isRequired,
+  buttonTextShort: PropTypes.object.isRequired,
+  buttonLink: PropTypes.object.isRequired,
   logotype: PropTypes.object.isRequired,
 };
 

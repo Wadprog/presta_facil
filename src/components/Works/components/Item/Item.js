@@ -1,12 +1,12 @@
 import React from 'react';
 import style from './Item.module.scss';
 import { RichText } from 'prismic-reactjs';
-import { object, array } from 'prop-types';
+import { object } from 'prop-types';
 import Image from '@components/Image/Image';
 import { parseUrl } from '@helpers';
 
-const Item = ({ link, screenshot, screenshotSharp, name, tag }) => {
-  const tagList = tag ? tag[0].text.split(/\s*,\s*/) : null;
+const Item = ({ link, screenshot, name, tag }) => {
+  const tagList = tag.text ? tag.text.split(/\s*,\s*/) : null;
   const url = parseUrl(link);
   return (
     <a
@@ -16,11 +16,11 @@ const Item = ({ link, screenshot, screenshotSharp, name, tag }) => {
       rel="noopener noreferrer"
     >
       <div className={style.imageBlock}>
-        <Image image={screenshot} imageSharp={screenshotSharp} />
+        <Image image={screenshot} fluid={screenshot.fluid} />
       </div>
       <div className={style.textBlock}>
         <div className={style.name}>
-          <RichText render={name} />
+          <RichText render={name.raw} />
         </div>
         <div className={style.tagList}>
           {tagList &&
@@ -40,8 +40,8 @@ const Item = ({ link, screenshot, screenshotSharp, name, tag }) => {
 Item.propTypes = {
   screenshotSharp: object,
   screenshot: object,
-  name: array,
-  tag: array,
+  name: object,
+  tag: object,
   link: object,
 };
 

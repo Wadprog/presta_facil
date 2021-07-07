@@ -1,0 +1,227 @@
+{
+  "Main" : {
+    "pagetitle" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph,heading1",
+        "label" : "Page title",
+        "placeholder" : "Add page title"
+      }
+    },
+    "description" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Content description",
+        "placeholder" : "Add content description"
+      }
+    },
+    "date" : {
+      "type" : "Date",
+      "config" : {
+        "label" : "Date",
+        "placeholder" : "Add date"
+      }
+    },
+    "body" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : {
+          "text" : [ ],
+          "three_column_table" : [ ],
+          "four_column_table" : [ ]
+        },
+        "choices" : {
+          "text" : {
+            "type" : "Slice",
+            "fieldset" : "Text",
+            "description" : "Slice for reach text",
+            "icon" : "border_color",
+            "display" : "list",
+            "non-repeat" : {
+              "text" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,list-item,o-list-item",
+                  "allowTargetBlank" : true,
+                  "label" : "Text",
+                  "placeholder" : "Add text"
+                }
+              }
+            },
+            "repeat" : { }
+          },
+          "three_column_table" : {
+            "type" : "Slice",
+            "fieldset" : "Three column table",
+            "description" : "Slice for three column table",
+            "icon" : "border_all",
+            "display" : "list",
+            "non-repeat" : {
+              "thead1" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Col1 table header",
+                  "placeholder" : "Add col1 table header"
+                }
+              },
+              "thead2" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Col2 table header",
+                  "placeholder" : "Add col2 table header"
+                }
+              },
+              "thead3" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Col3 table header",
+                  "placeholder" : "Add col3 table header"
+                }
+              }
+            },
+            "repeat" : {
+              "col1" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "allowTargetBlank" : true,
+                  "label" : "Col1",
+                  "placeholder" : "Add col1 text"
+                }
+              },
+              "col2" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Col2",
+                  "placeholder" : "Add col2 text"
+                }
+              },
+              "col3" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Col3",
+                  "placeholder" : "Add col3 text"
+                }
+              }
+            }
+          },
+          "four_column_table" : {
+            "type" : "Slice",
+            "fieldset" : "Four column table",
+            "description" : "Slice for four column table",
+            "icon" : "border_inner",
+            "display" : "list",
+            "non-repeat" : {
+              "theader1" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Col1 table header",
+                  "placeholder" : "Add col1 table header"
+                }
+              },
+              "theader2" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Col2 table header",
+                  "placeholder" : "Add col2 table header"
+                }
+              },
+              "theader3" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Col3 table header",
+                  "placeholder" : "Add col3 table header"
+                }
+              },
+              "theader4" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Col4 table header",
+                  "placeholder" : "Add col4 table header"
+                }
+              }
+            },
+            "repeat" : {
+              "col1" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Col1",
+                  "placeholder" : "Add col1 text"
+                }
+              },
+              "col2" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Col2",
+                  "placeholder" : "Add col2 text"
+                }
+              },
+              "col3" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Col3",
+                  "placeholder" : "Add col3 text"
+                }
+              },
+              "col4" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Col4",
+                  "placeholder" : "Add col4 text"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "SEO" : {
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "UId",
+        "placeholder" : "Add UID"
+      }
+    },
+    "metatitle" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Meta title",
+        "placeholder" : "Add meta title, up to 60 symbols recommended"
+      }
+    },
+    "metadescription" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Meta description",
+        "placeholder" : "Add meta description, up to 160 symbols recommended."
+      }
+    },
+    "canonical" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Canonical URL",
+        "placeholder" : "Add canonical URL"
+      }
+    }
+  }
+}

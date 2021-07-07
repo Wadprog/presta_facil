@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import classnames from 'classnames';
 
+import { parseString } from '@helpers';
 import style from './Card.module.scss';
 
 const CHAT_LINK = '/contact-us';
@@ -66,7 +67,7 @@ const Card = ({
   };
 
   const getPlanName = () => {
-    const planFullName = title[0].text;
+    const planFullName = parseString(title.raw);
     const planName = planFullName.split(' ')[0].toLowerCase();
 
     return planName;
@@ -102,7 +103,7 @@ const Card = ({
       })}
     >
       <div className={style.title}>
-        <RichText render={title} />
+        <RichText render={title.raw} />
       </div>
       <div className={style.subtitle}>{isEnterprise ? '' : name}</div>
       {isEnterprise ? (
@@ -113,22 +114,22 @@ const Card = ({
             {getCost()}
           </div>
           <div className={style.condition}>
-            <RichText render={condition} />
+            <RichText render={condition.raw} />
           </div>
         </>
       )}
       <div className={style.text}>
-        <RichText render={description} />
+        <RichText render={description.raw} />
       </div>
       <div className={style.footer}>
         <a href={getLink()} className={style.button}>
           {colorized ? (
             <span className={style.gradientText}>
-              {isEnterprise ? 'CHAT WITH US' : RichText.asText(buttonText)}
+              {isEnterprise ? 'CHAT WITH US' : RichText.asText(buttonText.raw)}
             </span>
           ) : (
             <span>
-              {isEnterprise ? 'CHAT WITH US' : RichText.asText(buttonText)}
+              {isEnterprise ? 'CHAT WITH US' : RichText.asText(buttonText.raw)}
             </span>
           )}
         </a>

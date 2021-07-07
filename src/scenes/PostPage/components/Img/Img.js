@@ -5,11 +5,11 @@ import { object } from 'prop-types';
 import Image from '@components/Image/Image';
 
 const Img = ({ primary }) => {
-  const { image, imageSharp, caption } = primary;
+  const { image, caption } = primary;
   return (
     <div className={style.image}>
-      <Image image={image} imageSharp={imageSharp} />
-      {caption && <RichText render={caption} />}
+      <Image image={image} />
+      {caption && <RichText render={caption.raw} />}
     </div>
   );
 };

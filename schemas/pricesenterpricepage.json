@@ -1,0 +1,209 @@
+{
+  "Main" : {
+    "body" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : {
+          "feature" : [ ],
+          "hero" : [ ],
+          "callbanner" : [ ]
+        },
+        "choices" : {
+          "feature" : {
+            "type" : "Slice",
+            "fieldset" : "feature",
+            "description" : "feature secton",
+            "icon" : "airline_seat_individual_suite",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "heading2,strong",
+                  "label" : "title",
+                  "placeholder" : "Section title. is Required"
+                }
+              }
+            },
+            "repeat" : {
+              "image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "image"
+                }
+              },
+              "name" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "name",
+                  "placeholder" : "Feature name. is Required"
+                }
+              }
+            }
+          },
+          "hero" : {
+            "type" : "Slice",
+            "fieldset" : "hero",
+            "description" : "hero section",
+            "icon" : "account_balance",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "heading1,strong",
+                  "label" : "title",
+                  "placeholder" : "Section title. is require"
+                }
+              },
+              "subtitle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "subtitle",
+                  "placeholder" : "section desctiption"
+                }
+              },
+              "benefitstitle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading3",
+                  "label" : "benefitstitle",
+                  "placeholder" : "benefits block title"
+                }
+              },
+              "benefitslist" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "list-item",
+                  "label" : "benefitslist",
+                  "placeholder" : "benefit block  - list of benefits"
+                }
+              },
+              "ctatitle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "heading2,strong",
+                  "label" : "ctatitle",
+                  "placeholder" : "CTA block - title"
+                }
+              },
+              "ctatext" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "ctatext",
+                  "placeholder" : "CTA block - description"
+                }
+              },
+              "modalbuttontext" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Modal CTA button text",
+                  "placeholder" : "Add modal button text"
+                }
+              },
+              "modalbuttonlink" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Modal CTA button link",
+                  "placeholder" : "Add modal button link"
+                }
+              },
+              "image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "image"
+                }
+              },
+              "video" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "video",
+                  "placeholder" : "CTA block -  link to video",
+                  "select" : null
+                }
+              }
+            },
+            "repeat" : { }
+          },
+          "callbanner" : {
+            "type" : "Slice",
+            "fieldset" : "CallBanner",
+            "description" : "CallBanner to book call",
+            "icon" : "face",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "heading2,strong",
+                  "label" : "title",
+                  "placeholder" : "section title. is require"
+                }
+              },
+              "button" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "button",
+                  "placeholder" : "button text. is require"
+                }
+              },
+              "image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "image"
+                }
+              }
+            },
+            "repeat" : { }
+          }
+        }
+      }
+    }
+  },
+  "SEO" : {
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "UID",
+        "placeholder" : "Add UID, for example: pricing-enterprise"
+      }
+    },
+    "metatitle" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Metatitle",
+        "placeholder" : "Add metatitle, up to 60 characters recommended"
+      }
+    },
+    "metadescription" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Meta description",
+        "placeholder" : "Add meta description, up to 160 characters recommended"
+      }
+    },
+    "canonical" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Canonical URL",
+        "placeholder" : "Add canonical URL, for example: https://secureprivacy.ai/pricing-enterprise"
+      }
+    }
+  }
+}

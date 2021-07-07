@@ -5,19 +5,23 @@ import style from './BooksPage.module.scss';
 import Books from './components/Books/Books';
 import CallToAction from '@components/CallToAction/CallToAction';
 
-const BooksPage = ({ content }) => {
-  const { body, pagetitle } = content;
-
+const BooksPage = ({ content, pageTitle }) => {
   return (
     <div className={style.BooksPage}>
-      {body.map((section) => {
-        switch (section.type) {
+      {content.map((section) => {
+        switch (section.slice_type) {
           case 'books':
             return (
-              <Books {...section} key={section.type} pagetitle={pagetitle} />
+              <Books
+                {...section}
+                key={section.slice_type}
+                pagetitle={pageTitle}
+              />
             );
           case 'cta':
-            return <CallToAction {...section} key={section.type} />;
+            return <CallToAction {...section} key={section.slice_type} />;
+          default:
+            throw new Error(`Unknown section type: ${section.slice_type}`);
         }
       })}
     </div>
@@ -25,7 +29,8 @@ const BooksPage = ({ content }) => {
 };
 
 BooksPage.propTypes = {
-  content: PropTypes.object.isRequired,
+  content: PropTypes.array.isRequired,
+  pageTitle: PropTypes.object.isRequired,
 };
 
 export default BooksPage;

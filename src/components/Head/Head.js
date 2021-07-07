@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 
-import { parseString } from '@helpers';
-
 const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
   const url = 'https://secureprivacy.ai/';
 
@@ -17,39 +15,39 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
   );
 
   useEffect(() => {
-    const currentPageCanonical = parseString(canonical);
-    if (currentPageCanonical) {
-      setCanonicalUrl(<link rel="canonical" href={currentPageCanonical} />);
-      setOpengrapUrl(currentPageCanonical);
-    } else {
+    if (!canonical) {
       setCanonicalUrl(<link rel="canonical" href={url} />);
+      return;
     }
+
+    const currentPageCanonical = canonical.text;
+    setCanonicalUrl(<link rel="canonical" href={currentPageCanonical} />);
+    setOpengrapUrl(currentPageCanonical);
   }, []);
 
   useEffect(() => {
-    const currentPageTitle = parseString(metatitle);
-    if (currentPageTitle) {
-      setPageTitle(<title>{currentPageTitle}</title>);
-      setOpengraphTitle(currentPageTitle);
-    }
-    if (!currentPageTitle) {
+    if (!metatitle) {
       setPageTitle(<title>{meta.title}</title>);
+      return;
     }
+
+    const currentPageTitle = metatitle.text;
+    setPageTitle(<title>{currentPageTitle}</title>);
+    setOpengraphTitle(currentPageTitle);
   }, []);
 
   useEffect(() => {
-    const currentPageDescription = parseString(metadescription);
-    if (currentPageDescription) {
-      setPageDescription(
-        <meta content={currentPageDescription} name="description" />
-      );
-      setOpengraphDescription(currentPageDescription);
-    }
-    if (!currentPageDescription) {
+    if (!metadescription) {
       setPageDescription(
         <meta content={meta.description} name="description" />
       );
+      return;
     }
+    const currentPageDescription = metadescription.text;
+    setPageDescription(
+      <meta content={currentPageDescription} name="description" />
+    );
+    setOpengraphDescription(currentPageDescription);
   }, []);
 
   return (
@@ -108,9 +106,9 @@ Head.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
   }).isRequired,
-  canonical: PropTypes.array,
-  metatitle: PropTypes.array,
-  metadescription: PropTypes.array,
+  canonical: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  metatitle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  metadescription: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 export default Head;

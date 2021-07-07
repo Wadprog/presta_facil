@@ -1,0 +1,387 @@
+{
+  "Main" : {
+    "name" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1",
+        "label" : "name"
+      }
+    },
+    "body" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : {
+          "hero" : [ ],
+          "join" : [ ],
+          "program" : [ ],
+          "testimonials" : [ ],
+          "book" : [ ]
+        },
+        "choices" : {
+          "hero" : {
+            "type" : "Slice",
+            "fieldset" : "hero",
+            "description" : "hero",
+            "icon" : "face",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "heading1",
+                  "label" : "title"
+                }
+              },
+              "description" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "description"
+                }
+              },
+              "buttontext" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "buttonText",
+                  "placeholder" : "Schedule a call"
+                }
+              },
+              "buttonlink" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "buttonlink"
+                }
+              },
+              "modalvideo" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "modalVideo",
+                  "select" : null
+                }
+              },
+              "videobuttontext" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Video button text",
+                  "placeholder" : "Add video button text"
+                }
+              },
+              "modalctabuttontext" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Modal CTA button text",
+                  "placeholder" : "Add modal CTA button text"
+                }
+              },
+              "modalctabuttonlink" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Modal CTA button link",
+                  "placeholder" : "Add modal CTA button link"
+                }
+              },
+              "previewimage" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "Preview image"
+                }
+              }
+            },
+            "repeat" : {
+              "partnerslogo" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "partnersLogo"
+                }
+              }
+            }
+          },
+          "join" : {
+            "type" : "Slice",
+            "fieldset" : "join",
+            "description" : "join",
+            "icon" : "face",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "heading2,strong,em",
+                  "label" : "title"
+                }
+              },
+              "description" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "description"
+                }
+              },
+              "cardtitle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading3",
+                  "label" : "cardTitle"
+                }
+              },
+              "carddescription" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "cardDescription"
+                }
+              },
+              "cardsubtitle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading3",
+                  "label" : "cardSubtitle"
+                }
+              },
+              "cardsubdescription" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "cardSubdescription"
+                }
+              },
+              "buttontext" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "buttonText"
+                }
+              },
+              "buttonlink" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "buttonLink"
+                }
+              },
+              "numberofdomains" : {
+                "type" : "Number",
+                "config" : {
+                  "label" : "numberOfDomains"
+                }
+              },
+              "unitcost" : {
+                "type" : "Number",
+                "config" : {
+                  "label" : "unitcost"
+                }
+              }
+            },
+            "repeat" : { }
+          },
+          "program" : {
+            "type" : "Slice",
+            "fieldset" : "program",
+            "description" : "program",
+            "icon" : "face",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading2",
+                  "label" : "title"
+                }
+              },
+              "description" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph,strong,em",
+                  "label" : "description"
+                }
+              }
+            },
+            "repeat" : {
+              "image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "image"
+                }
+              },
+              "text" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph,strong,em",
+                  "label" : "text"
+                }
+              },
+              "category" : {
+                "type" : "Boolean",
+                "config" : {
+                  "placeholder_false" : "Benefits",
+                  "placeholder_true" : "Comission",
+                  "default_value" : false,
+                  "label" : "category"
+                }
+              }
+            }
+          },
+          "testimonials" : {
+            "type" : "Slice",
+            "fieldset" : "testimonials",
+            "description" : "testimonials",
+            "icon" : "face",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading2",
+                  "label" : "title"
+                }
+              },
+              "subtitle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "subtitle"
+                }
+              },
+              "buttontext" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "buttontext"
+                }
+              },
+              "buttontextshort" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "buttontextshort"
+                }
+              },
+              "buttonlink" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "buttonlink"
+                }
+              },
+              "image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "image"
+                }
+              }
+            },
+            "repeat" : {
+              "author" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "author"
+                }
+              },
+              "text" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "text"
+                }
+              }
+            }
+          },
+          "book" : {
+            "type" : "Slice",
+            "fieldset" : "book",
+            "description" : "book",
+            "icon" : "face",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading2",
+                  "label" : "title"
+                }
+              },
+              "subtitle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "subtitle"
+                }
+              },
+              "buttontext" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "buttontext"
+                }
+              },
+              "buttonlink" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "buttonlink"
+                }
+              },
+              "image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "image"
+                }
+              }
+            },
+            "repeat" : { }
+          }
+        }
+      }
+    }
+  },
+  "SEO" : {
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "UID",
+        "placeholder" : "Add UID, for example: pricing-reseller"
+      }
+    },
+    "metatitle" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Meta title",
+        "placeholder" : "Add meta title, up to 60 symbols recommended"
+      }
+    },
+    "metadescription" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Meta description",
+        "placeholder" : "Add meta description, up to 160 characters recommended"
+      }
+    },
+    "canonical" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Canonical URL",
+        "placeholder" : "Add canonical URL, for example: https://secureprivacy.ai/pricing-reseller"
+      }
+    }
+  }
+}

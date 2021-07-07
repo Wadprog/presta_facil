@@ -8,7 +8,7 @@ import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
 import Image from '@components/Image/Image';
 import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
 import Modal from '@components/Modal';
-import { parseString } from '../../../../helpers/utils';
+import { parseString } from '@helpers';
 
 const Hero = ({ primary, handleScroll }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -22,7 +22,6 @@ const Hero = ({ primary, handleScroll }) => {
     ctatitle,
     ctatext,
     image,
-    imageSharp,
     video,
     modalbuttonlink,
     modalbuttontext,
@@ -31,18 +30,18 @@ const Hero = ({ primary, handleScroll }) => {
     <section className={style.hero}>
       <div className={style.container}>
         <div className={style.title}>
-          <RichText render={title} />
+          <RichText render={title.raw} />
         </div>
         <div className={style.subtitle}>
-          <RichText render={subtitle} />
+          <RichText render={subtitle.raw} />
         </div>
         <div className={style.wrapper}>
           <div className={style.benefit}>
             <div className={style.title}>
-              <RichText render={benefitstitle} />
+              <RichText render={benefitstitle.raw} />
             </div>
             <div className={style.list}>
-              <RichText render={benefitslist} />
+              <RichText render={benefitslist.raw} />
             </div>
             <div className={style.buttonWrapper}>
               <Button
@@ -59,10 +58,10 @@ const Hero = ({ primary, handleScroll }) => {
           <div className={style.banner}>
             <div className={style.block}>
               <div className={style.title}>
-                <RichText render={ctatitle} />
+                <RichText render={ctatitle.raw} />
               </div>
               <div className={style.subtitle}>
-                <RichText render={ctatext} />
+                <RichText render={ctatext.raw} />
               </div>
               <div className={style.buttonWrapper}>
                 <Button variant={VARIANT.PRIMARY} to="/contact-us" fullWidth>
@@ -71,11 +70,7 @@ const Hero = ({ primary, handleScroll }) => {
               </div>
             </div>
             <div className={style.imageWrapper}>
-              <Image
-                image={image}
-                imageSharp={imageSharp}
-                className={style.image}
-              />
+              <Image image={image} className={style.image} />
               <div className={style.playButtonWrapper}>
                 <div className={style.playButton}>
                   <IconButton
@@ -95,8 +90,8 @@ const Hero = ({ primary, handleScroll }) => {
         open={modalIsOpen}
         closeModal={handleCloseModal}
         videoLink={video.url}
-        modalCtaButtonLink={parseString(modalbuttonlink)}
-        modalCtaButtonText={parseString(modalbuttontext)}
+        modalCtaButtonLink={parseString(modalbuttonlink.raw)}
+        modalCtaButtonText={parseString(modalbuttontext.raw)}
       />
     </section>
   );

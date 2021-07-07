@@ -3,18 +3,18 @@ import { object, string } from 'prop-types';
 import GatsbyImage from 'gatsby-image';
 import lozad from 'lozad';
 
-const Image = ({ image, imageSharp, className }) => {
+const Image = ({ image, fluid, className }) => {
   useEffect(() => {
     const observer = lozad();
     observer.observe();
   }, []);
 
-  if (imageSharp) {
+  if (fluid) {
     return (
       <GatsbyImage
         className={className}
-        fluid={imageSharp.childImageSharp.fluid}
-        alt={imageSharp.alt}
+        fluid={fluid}
+        alt={fluid.alt}
         draggable={false}
       />
     );
@@ -46,7 +46,7 @@ const Image = ({ image, imageSharp, className }) => {
 
 Image.propTypes = {
   image: object,
-  imageSharp: object,
+  fluid: object,
   className: string,
 };
 

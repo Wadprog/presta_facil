@@ -6,11 +6,12 @@ import { dateToString, langPath } from '@helpers';
 import { Link } from 'gatsby';
 import LangContext from '@contexts';
 
-const SlideItem = ({ backgroundpreview, title, date, description, _meta }) => {
+const SlideItem = ({ data, tags, uid: itemPath }) => {
+  const { backgroundpreview, title, date, description } = data;
   const currentLang = useContext(LangContext);
   return (
     <div className={style.item}>
-      {backgroundpreview ? (
+      {backgroundpreview.url ? (
         <img
           className={style.preview}
           src={backgroundpreview.url}
@@ -23,11 +24,11 @@ const SlideItem = ({ backgroundpreview, title, date, description, _meta }) => {
       <div className={style.container}>
         <div className={style.wrapper}>
           <div className={style.title}>
-            <RichText render={title} />
+            <RichText render={title.raw} />
           </div>
           <div className={style.block}>
             <ul className={style.categoryList}>
-              {_meta.tags.map((item, index) => {
+              {tags.map((item, index) => {
                 return (
                   <li className={style.tag} key={`${item}${index}`}>
                     {item}
@@ -39,11 +40,11 @@ const SlideItem = ({ backgroundpreview, title, date, description, _meta }) => {
           </div>
         </div>
         <div className={style.description}>
-          <RichText render={description} />
+          <RichText render={description.raw} />
         </div>
         <Link
           className={style.link}
-          to={langPath(currentLang) + '/blog/' + _meta.uid}
+          to={langPath(currentLang) + '/blog/' + itemPath}
         >
           Learn More
         </Link>
@@ -53,11 +54,9 @@ const SlideItem = ({ backgroundpreview, title, date, description, _meta }) => {
 };
 
 SlideItem.propTypes = {
-  backgroundpreview: object,
-  title: array,
-  date: string,
-  description: array,
-  _meta: object,
+  data: object,
+  tags: array,
+  uid: string,
 };
 
 export default SlideItem;

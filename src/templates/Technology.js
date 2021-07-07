@@ -6,15 +6,16 @@ import Technology from '@scenes/TechnologyPage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
-  const pageContext = data.prismic.allTechnologypages.edges[0];
+  const pageContext = data.allPrismicTechnologypage.edges[0].node;
   if (!pageContext) return null;
-  const body = pageContext.node;
+  const { uid, id, lang, type, alternate_languages, data: body } = pageContext;
+  const activeDocMeta = { id, uid, lang, type, alternate_languages };
   const { metatitle, metadescription, canonical } = body;
   const { body: pageContent } = body;
 
   return (
     <Layout
-      activeDocMeta={body._meta}
+      activeDocMeta={activeDocMeta}
       metatitle={metatitle}
       metadescription={metadescription}
       canonical={canonical}
@@ -30,103 +31,160 @@ Page.propTypes = {
 
 export const query = graphql`
   query($uid: String, $lang: String) {
-    prismic {
-      allTechnologypages(uid: $uid, lang: $lang) {
-        edges {
-          node {
-            _linkType
-            metatitle
-            metadescription
-            canonical
-            _meta {
-              uid
-              type
-              lang
-              alternateLanguages {
-                lang
-                type
-                uid
-              }
+    allPrismicTechnologypage(
+      filter: { uid: { eq: $uid }, lang: { eq: $lang } }
+    ) {
+      edges {
+        node {
+          uid
+          type
+          lang
+          id
+          alternate_languages {
+            id
+            lang
+            type
+            uid
+          }
+          data {
+            metatitle {
+              text
+            }
+            metadescription {
+              text
+            }
+            canonical {
+              text
             }
             body {
-              ... on PRISMIC_TechnologypageBodyHero {
-                type
-                label
+              ... on PrismicTechnologypageBodyHero {
+                id
+                slice_type
                 primary {
-                  buttonlink
-                  buttontext
-                  description
-                  image
-                  title
-                  imageSharp {
-                    id
-                    childImageSharp {
-                      id
-                      fluid {
-                        base64
-                        tracedSVG
-                        srcWebp
-                        srcSetWebp
-                        originalImg
-                        originalName
-                        src
-                        srcSet
-                        sizes
-                        presentationWidth
-                        presentationHeight
-                        aspectRatio
-                      }
+                  buttonlink {
+                    text
+                  }
+                  buttontext {
+                    raw
+                  }
+                  description {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                    fluid(srcSetBreakpoints: 10) {
+                      aspectRatio
+                      base64
+                      sizes
+                      src
+                      srcSet
+                      srcSetWebp
+                      srcWebp
                     }
+                    thumbnails
+                  }
+                  title {
+                    raw
                   }
                 }
               }
-              ... on PRISMIC_TechnologypageBodyBenefits {
-                type
-                label
-                fields {
-                  image
-                  text
-                }
+              ... on PrismicTechnologypageBodyBenefits {
+                id
+                slice_type
                 primary {
-                  description
-                  image
-                  subtitle
-                  title
+                  description {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                  }
+                  subtitle {
+                    raw
+                  }
+                  title {
+                    raw
+                  }
+                }
+                items {
+                  image {
+                    alt
+                    url
+                    thumbnails
+                  }
+                  text {
+                    raw
+                  }
                 }
               }
-              ... on PRISMIC_TechnologypageBodyWhatis {
-                type
-                label
+              ... on PrismicTechnologypageBodyWhatis {
+                id
+                slice_type
                 primary {
-                  buttonlink
-                  buttontext
-                  description
-                  image
-                  title
-                  subtitle
+                  buttonlink {
+                    text
+                  }
+                  buttontext {
+                    raw
+                  }
+                  description {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                  }
+                  subtitle {
+                    raw
+                  }
+                  title {
+                    raw
+                  }
                 }
               }
-              ... on PRISMIC_TechnologypageBodyHow {
-                type
-                label
+              ... on PrismicTechnologypageBodyHow {
+                id
+                slice_type
                 primary {
-                  description
-                  image
-                  list
-                  title
+                  description {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                  }
+                  list {
+                    raw
+                  }
+                  title {
+                    raw
+                  }
                 }
               }
-              ... on PRISMIC_TechnologypageBodyBanner {
-                label
+              ... on PrismicTechnologypageBodyBanner {
+                id
+                slice_type
                 primary {
-                  buttontext
-                  text
-                  title
-                  buttonlink
-                  link
-                  linktext
+                  buttonlink {
+                    text
+                  }
+                  buttontext {
+                    raw
+                  }
+                  link {
+                    text
+                  }
+                  linktext {
+                    text
+                  }
+                  text {
+                    raw
+                  }
+                  title {
+                    raw
+                  }
                 }
-                type
               }
             }
           }

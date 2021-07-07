@@ -1,9 +1,7 @@
 require('dotenv').config();
-const {
-  prismicRepositoryName,
-  defaultLanguage,
-  langs,
-} = require('./prismic-config');
+const { prismicRepositoryName } = require('./prismic-config');
+
+const linkResolver = require('./prismic/utils/linkResolver');
 
 module.exports = {
   siteMetadata: {
@@ -44,7 +42,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-webpack-bundle-analyser-v2`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-preact`,
     {
@@ -130,139 +127,41 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-prismic-graphql',
+      resolve: 'gatsby-source-prismic',
       options: {
         repositoryName: prismicRepositoryName,
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
-        defaultLang: defaultLanguage,
-        langs: langs,
-        shortenUrlLangs: true,
-        path: '/preview',
-        previews: true,
-        pages: [
-          {
-            type: 'Homepage',
-            match: '/:lang?',
-            component: require.resolve('./src/templates/Home.js'),
-            langs: langs,
-          },
-          {
-            type: 'Bookpage',
-            match: '/:lang?/books',
-            component: require.resolve('./src/templates/BooksPage.js'),
-            langs: langs,
-          },
-          {
-            type: 'Solutionpage',
-            match: '/:lang?/solution/:uid',
-            component: require.resolve('./src/templates/Solution.js'),
-            langs: langs,
-          },
-          {
-            type: 'Featurepage',
-            match: '/:lang?/feature/:uid',
-            component: require.resolve('./src/templates/Feature.js'),
-            langs: langs,
-          },
-          {
-            type: 'Technologypage',
-            match: '/:lang?/technology/:uid',
-            component: require.resolve('./src/templates/Technology.js'),
-            langs: langs,
-          },
-          {
-            type: 'Pricespage',
-            match: '/:lang?/pricing',
-            component: require.resolve('./src/templates/PricesPage.js'),
-            langs: langs,
-          },
-          {
-            type: 'Pricesenterpricepage',
-            match: '/:lang?/pricing-enterprise',
-            component: require.resolve(
-              './src/templates/PricingEnterpricePage.js'
-            ),
-            langs: langs,
-          },
-          {
-            type: 'Pricesresellerpage',
-            match: '/:lang?/pricing-reseller',
-            component: require.resolve(
-              './src/templates/PricingResellerPage.js'
-            ),
-            langs: langs,
-          },
-          {
-            type: 'Contact',
-            match: '/:lang?/contact-us',
-            component: require.resolve('./src/templates/ContactPage.js'),
-            langs: langs,
-          },
-          {
-            type: 'Videopage',
-            match: '/:lang?/video-blog',
-            component: require.resolve('./src/templates/VideoblogPage.js'),
-            langs: langs,
-          },
-          {
-            type: 'Blogpostpage',
-            match: '/:lang?/blog/:uid?',
-            component: require.resolve('./src/templates/Post.js'),
-            langs: langs,
-          },
-          {
-            type: 'Blogpostpage',
-            match: '/:lang?/blog',
-            component: require.resolve('./src/templates/BlogPage.js'),
-            langs: langs,
-          },
-          {
-            type: 'Singlebookpage',
-            match: '/:lang?/:uid',
-            component: require.resolve('./src/templates/BookPage.js'),
-            langs: langs,
-          },
-          {
-            type: 'Privacypolicy',
-            match: '/:lang?/:uid',
-            component: require.resolve('./src/templates/PrivacyPolicyPage.js'),
-            langs: langs,
-          },
-          {
-            type: 'Legal_pages',
-            match: '/:lang?/:uid',
-            component: require.resolve('./src/templates/LegalPage.js'),
-            langs: langs,
-          },
-          {
-            type: 'Thankyoupage',
-            match: '/:lang?/:uid',
-            component: require.resolve('./src/templates/ThankyouPage.js'),
-            langs: langs,
-          },
-          {
-            type: 'Subprocessors',
-            match: '/:lang?/:uid',
-            component: require.resolve('./src/templates/Subprocessors.js'),
-            langs: langs,
-          },
-          {
-            type: 'Tos',
-            match: '/:lang?/:uid',
-            component: require.resolve('./src/templates/TermsService.js'),
-            langs: langs,
-          },
-        ],
-        // extraPageFields: 'test_type',
-        omitPrismicScript: true,
-        sharpKeys: [
-          /image|photo|picture|illustration|screenshot|background|Image/,
-          'profilepic',
-        ],
+        linkResolver: () => (doc) => linkResolver(doc),
+        schemas: {
+          layout: require('./schemas/layout.json'),
+          thankyoupage: require('./schemas/thankyoupage.json'),
+          subprocessors: require('./schemas/subprocessors.json'),
+          featurepage: require('./schemas/featurepage.json'),
+          technologypage: require('./schemas/technologypage.json'),
+          singlebookpage: require('./schemas/singlebookpage.json'),
+          blogpostpage: require('./schemas/blogpostpage.json'),
+          blogpage: require('./schemas/blogpage.json'),
+          contact: require('./schemas/contact.json'),
+          videopage: require('./schemas/videopage.json'),
+          bookpage: require('./schemas/bookpage.json'),
+          homepage: require('./schemas/homepage.json'),
+          pricespage: require('./schemas/pricespage.json'),
+          pricesenterpricepage: require('./schemas/pricesenterpricepage.json'),
+          pricesresellerpage: require('./schemas/pricesresellerpage.json'),
+          legal_pages: require('./schemas/legal_pages.json'),
+          tos: require('./schemas/tos.json'),
+          quiz: require('./schemas/quiz.json'),
+          privacypolicy: require('./schemas/privacypolicy.json'),
+          solutionpage: require('./schemas/solutionpage.json'),
+        },
+        lang: '*',
+        prismicToolbar: false,
+        imageImgixParams: {
+          auto: 'compress,format',
+          fit: 'max',
+          q: 45,
+        },
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 };

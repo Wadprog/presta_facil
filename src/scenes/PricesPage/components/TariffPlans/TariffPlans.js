@@ -17,7 +17,7 @@ const CARDS_LIST_WIDTH = 920;
 
 const TariffPlans = ({
   primary,
-  fields,
+  items,
   isBarShowing,
   showBar,
   hideBar,
@@ -28,23 +28,23 @@ const TariffPlans = ({
 }) => {
   const laws = [
     {
-      title: primary.firstlawtitle[0].text,
-      location: primary.firstlawlocation[0].text,
+      title: primary.firstlawtitle.text,
+      location: primary.firstlawlocation.text,
     },
     {
-      title: primary.secondlawtitle[0].text,
-      location: primary.secondlawlocation[0].text,
+      title: primary.secondlawtitle.text,
+      location: primary.secondlawlocation.text,
     },
     {
-      title: primary.thirdlawtitle[0].text,
-      location: primary.thirdlawlocation[0].text,
+      title: primary.thirdlawtitle.text,
+      location: primary.thirdlawlocation.text,
     },
   ];
 
   const [isAnnual, setIsAnnual] = useState(false);
   const [selectedPlansIndexes, setSelectedPlansIndexes] = useState([0]);
   const [selectedPlans, setSelectedPlans] = useState([
-    primary.firstlawtitle[0].text,
+    primary.firstlawtitle.text,
   ]);
   const scrollDirection = useScrollDirection();
   const [currency, setCurrency] = useState('USD');
@@ -95,7 +95,7 @@ const TariffPlans = ({
           })}
         >
           <Bar
-            fields={fields}
+            fields={items}
             plans={selectedPlans}
             primary={primary}
             isAnnual={isAnnual}
@@ -130,7 +130,7 @@ const TariffPlans = ({
                 isAnnual={isAnnual}
                 selectedPlans={selectedPlans}
                 primary={primary}
-                fields={fields}
+                fields={items}
                 currency={currency}
                 isMobile={isMobile}
               />
@@ -138,7 +138,7 @@ const TariffPlans = ({
             {isStatusBarVisible && (
               <StatusBar
                 setActive={setActiveOnClick}
-                total={fields.length}
+                total={items.length}
                 active={activepoint}
               />
             )}
@@ -151,7 +151,7 @@ const TariffPlans = ({
 
 TariffPlans.propTypes = {
   primary: PropTypes.object.isRequired,
-  fields: PropTypes.array.isRequired,
+  items: PropTypes.array.isRequired,
   isBarShowing: PropTypes.bool.isRequired,
   showBar: PropTypes.func.isRequired,
   hideBar: PropTypes.func.isRequired,

@@ -6,19 +6,28 @@ import Layout from '@components/Layout';
 import ResellerPage from '@scenes/ResellerPage';
 
 const Page = ({ data }) => {
-  const resellerpageContent = data.prismic.allPricesresellerpages.edges[0];
+  const resellerpageContent = data.allPrismicPricesresellerpage.edges[0];
   if (!resellerpageContent) return null;
   const resellerpage = resellerpageContent.node;
-  const { metatitle, metadescription, canonical } = resellerpage;
+  const {
+    uid,
+    id,
+    type,
+    alternate_languages,
+    lang,
+    data: pageData,
+  } = resellerpage;
+  const activeDocMeta = { id, uid, lang, type, alternate_languages };
+  const { metatitle, metadescription, canonical, body: pageContent } = pageData;
 
   return (
     <Layout
-      activeDocMeta={resellerpage._meta}
+      activeDocMeta={activeDocMeta}
       metatitle={metatitle}
       metadescription={metadescription}
       canonical={canonical}
     >
-      <ResellerPage content={data} />
+      <ResellerPage content={pageContent} />
     </Layout>
   );
 };
@@ -28,127 +37,201 @@ Page.propTypes = {
 };
 
 export const query = graphql`
-  query($lang: String) {
-    prismic {
-      allPricesresellerpages(lang: $lang) {
-        edges {
-          node {
-            metatitle
-            metadescription
-            canonical
-            _meta {
-              uid
-              type
-              lang
-              alternateLanguages {
-                lang
-                type
-                uid
-              }
+  query($uid: String, $lang: String) {
+    allPrismicPricesresellerpage(
+      filter: { uid: { eq: $uid }, lang: { eq: $lang } }
+    ) {
+      edges {
+        node {
+          uid
+          type
+          lang
+          id
+          alternate_languages {
+            id
+            lang
+            type
+            uid
+          }
+          data {
+            name {
+              raw
+            }
+            metatitle {
+              text
+            }
+            metadescription {
+              text
+            }
+            canonical {
+              text
             }
             body {
-              ... on PRISMIC_PricesresellerpageBodyHero {
-                type
-                label
+              ... on PrismicPricesresellerpageBodyHero {
+                id
+                slice_type
                 primary {
-                  title
-                  description
-                  buttonlink
-                  buttontext
-                  videobuttontext
-                  modalctabuttontext
-                  modalctabuttonlink
-                  previewimage
-                  previewimageSharp {
-                    childImageSharp {
-                      fluid {
-                        aspectRatio
-                        base64
-                        originalImg
-                        originalName
-                        presentationHeight
-                        presentationWidth
-                        sizes
-                        src
-                        srcSet
-                        srcSetWebp
-                        srcWebp
-                        tracedSVG
-                      }
-                    }
+                  buttonlink {
+                    text
+                  }
+                  buttontext {
+                    text
+                  }
+                  description {
+                    text
+                  }
+                  modalctabuttonlink {
+                    text
+                  }
+                  modalctabuttontext {
+                    text
                   }
                   modalvideo {
-                    ... on PRISMIC__ExternalLink {
-                      _linkType
-                      target
-                      url
+                    link_type
+                    url
+                  }
+                  previewimage {
+                    alt
+                    url
+                    fluid(srcSetBreakpoints: 10) {
+                      aspectRatio
+                      base64
+                      sizes
+                      src
+                      srcSet
+                      srcSetWebp
+                      srcWebp
                     }
                   }
+                  title {
+                    text
+                  }
+                  videobuttontext {
+                    text
+                  }
                 }
-                fields {
-                  partnerslogo
+                items {
+                  partnerslogo {
+                    alt
+                    url
+                  }
                 }
               }
-              ... on PRISMIC_PricesresellerpageBodyJoin {
-                type
-                label
+              ... on PrismicPricesresellerpageBodyJoin {
+                id
+                slice_type
                 primary {
-                  title
-                  description
-                  cardtitle
-                  carddescription
-                  cardsubtitle
-                  cardsubdescription
-                  buttontext
-                  buttonlink
+                  buttonlink {
+                    raw
+                  }
+                  buttontext {
+                    raw
+                  }
+                  carddescription {
+                    raw
+                  }
+                  cardsubdescription {
+                    raw
+                  }
+                  cardsubtitle {
+                    raw
+                  }
+                  cardtitle {
+                    raw
+                  }
+                  description {
+                    raw
+                  }
                   numberofdomains
+                  title {
+                    raw
+                  }
                   unitcost
                 }
               }
-              ... on PRISMIC_PricesresellerpageBodyProgram {
-                type
-                label
+              ... on PrismicPricesresellerpageBodyProgram {
+                id
+                slice_type
                 primary {
-                  title
-                  description
+                  title {
+                    raw
+                  }
+                  description {
+                    raw
+                  }
                 }
-                fields {
+                items {
                   category
-                  text
-                  image
+                  image {
+                    alt
+                    url
+                  }
+                  text {
+                    raw
+                  }
                 }
               }
-              ... on PRISMIC_PricesresellerpageBodyTestimonials {
-                type
-                label
+              ... on PrismicPricesresellerpageBodyTestimonials {
+                id
+                slice_type
                 primary {
-                  title
-                  subtitle
-                  buttontext
-                  buttontextshort
-                  buttonlink
-                  image
+                  buttonlink {
+                    raw
+                  }
+                  buttontext {
+                    raw
+                  }
+                  buttontextshort {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                  }
+                  subtitle {
+                    raw
+                  }
+                  title {
+                    raw
+                  }
                 }
-                fields {
-                  author
-                  text
+                items {
+                  author {
+                    raw
+                  }
+                  text {
+                    raw
+                  }
                 }
               }
-              ... on PRISMIC_PricesresellerpageBodyBook {
-                type
-                label
+              ... on PrismicPricesresellerpageBodyBook {
+                id
+                slice_type
                 primary {
-                  title
-                  subtitle
-                  buttontext
-                  buttonlink
-                  image
-                  imageSharp {
-                    childImageSharp {
-                      fluid {
-                        ...GatsbyImageSharpFluid_withWebp
-                      }
+                  title {
+                    raw
+                  }
+                  subtitle {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                    fluid(srcSetBreakpoints: 10) {
+                      aspectRatio
+                      base64
+                      sizes
+                      src
+                      srcSet
+                      srcSetWebp
+                      srcWebp
                     }
+                  }
+                  buttontext {
+                    raw
+                  }
+                  buttonlink {
+                    raw
                   }
                 }
               }

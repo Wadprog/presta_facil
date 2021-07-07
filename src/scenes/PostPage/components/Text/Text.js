@@ -17,9 +17,10 @@ const htmlSerializer = (type, element, key) => {
 };
 
 const Text = ({ primary }) => {
+  const { text } = primary;
   return (
     <div className={style.text}>
-      {<RichText render={primary.text} htmlSerializer={htmlSerializer} />}
+      {<RichText render={text.raw} htmlSerializer={htmlSerializer} />}
     </div>
   );
 };

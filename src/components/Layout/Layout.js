@@ -1,10 +1,9 @@
 import React from 'react';
-import { bool, object, node, array } from 'prop-types';
+import { bool, object, node, array, oneOfType } from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
-import { withPreview } from 'gatsby-source-prismic-graphql';
+
 import LangContext from '@contexts';
 import { defaultLanguage } from '@/prismic-config';
-
 import Head from '@components/Head';
 import Header from '@components/Header';
 import Footer from '@components/Footer';
@@ -21,16 +20,13 @@ const Layout = ({
   metatitle,
   metadescription,
 }) => {
-  const layoutContext = data.prismic.allLayouts.edges[0];
-  if (!layoutContext) return null;
-
   const currentLang = activeDocMeta ? activeDocMeta.lang : defaultLanguage;
-  const edge = data.prismic.allLayouts.edges.filter(
-    (edge) => edge.node._meta.lang === currentLang
+  const edge = data.allPrismicLayout.edges.filter(
+    (edge) => edge.node.lang === currentLang
   );
 
-  const headerData = edge[0].node.body;
-  const footerData = edge[0].node.body1;
+  const headerData = edge[0].node.data.body;
+  const footerData = edge[0].node.data.body1;
 
   return (
     <LangContext.Provider
@@ -57,143 +53,179 @@ Layout.propTypes = {
   data: object,
   hideMenu: bool,
   activeDocMeta: object,
-  canonical: array,
-  metatitle: array,
-  metadescription: array,
+  canonical: oneOfType([object, array]),
+  metatitle: oneOfType([object, array]),
+  metadescription: oneOfType([object, array]),
 };
 
-const query = graphql`
-  query($lang: String) {
-    prismic {
-      allLayouts(lang: $lang) {
-        edges {
-          node {
-            _meta {
-              uid
-              type
-              lang
-              alternateLanguages {
+const LayoutWithData = (props) => {
+  return (
+    <StaticQuery
+      query={graphql`
+        query {
+          allPrismicLayout {
+            edges {
+              node {
+                alternate_languages {
+                  uid
+                  type
+                  lang
+                }
                 lang
                 type
-                uid
-              }
-            }
-            body {
-              ... on PRISMIC_LayoutBodyHeader {
-                type
-                label
-                primary {
-                  slogan
-                  buttontext
-                  logo
-                  buttonlink
-                  signinlink {
-                    ... on PRISMIC__ExternalLink {
-                      _linkType
-                      url
+                id
+                url
+                data {
+                  body {
+                    ... on PrismicLayoutBodyHeader {
+                      id
+                      slice_type
+                      slice_label
+                      primary {
+                        slogan {
+                          text
+                        }
+                        buttontext {
+                          text
+                        }
+                        logo {
+                          alt
+                          url
+                        }
+                        buttonlink {
+                          text
+                        }
+                        signinlink {
+                          link_type
+                          url
+                        }
+                      }
+                    }
+                    ... on PrismicLayoutBodyMenu {
+                      id
+                      slice_label
+                      slice_type
+                      primary {
+                        title {
+                          text
+                        }
+                      }
+                      items {
+                        image {
+                          alt
+                          url
+                        }
+                        link {
+                          text
+                        }
+                        name {
+                          text
+                        }
+                        externallink {
+                          link_type
+                          url
+                        }
+                      }
                     }
                   }
-                }
-              }
-              ... on PRISMIC_LayoutBodyMenu {
-                type
-                label
-                primary {
-                  title
-                }
-                fields {
-                  image
-                  link
-                  name
-                  externallink {
-                    ... on PRISMIC__ExternalLink {
-                      _linkType
-                      url
+                  body1 {
+                    ... on PrismicLayoutBody1Footer {
+                      id
+                      slice_label
+                      slice_type
+                      primary {
+                        buttontitle {
+                          raw
+                        }
+                        buttontext {
+                          text
+                        }
+                        buttonlink {
+                          text
+                        }
+                        copyright {
+                          text
+                        }
+                        logo {
+                          alt
+                          url
+                        }
+                        logotext {
+                          text
+                        }
+                        logolink {
+                          link_type
+                          url
+                        }
+                      }
+                      items {
+                        socialogo {
+                          alt
+                          url
+                        }
+                        sociallink {
+                          link_type
+                          url
+                        }
+                      }
+                    }
+                    ... on PrismicLayoutBody1Menu {
+                      id
+                      slice_label
+                      slice_type
+                      items {
+                        name {
+                          text
+                        }
+                        pagename {
+                          text
+                        }
+                        externallink {
+                          link_type
+                          url
+                        }
+                      }
+                      primary {
+                        title {
+                          text
+                        }
+                      }
+                    }
+                    ... on PrismicLayoutBody1Books {
+                      id
+                      slice_type
+                      slice_label
+                      items {
+                        image {
+                          alt
+                          url
+                        }
+                      }
+                      primary {
+                        title {
+                          raw
+                        }
+                      }
+                    }
+                    ... on PrismicLayoutBody1Badges {
+                      id
+                      slice_label
+                      slice_type
+                      items {
+                        badge {
+                          alt
+                          url
+                        }
+                      }
                     }
                   }
-                }
-              }
-            }
-            body1 {
-              ... on PRISMIC_LayoutBody1Footer {
-                type
-                label
-                primary {
-                  buttontitle
-                  buttontext
-                  buttonlink
-                  copyright
-                  logo
-                  logotext
-                  logolink {
-                    ... on PRISMIC__ExternalLink {
-                      _linkType
-                      url
-                    }
-                  }
-                }
-                fields {
-                  socialogo
-                  sociallink {
-                    ... on PRISMIC__ExternalLink {
-                      _linkType
-                      url
-                    }
-                  }
-                }
-              }
-              ... on PRISMIC_LayoutBody1Menu {
-                type
-                label
-                fields {
-                  name
-                  pagename
-                  externallink {
-                    ... on PRISMIC__ExternalLink {
-                      _linkType
-                      url
-                    }
-                  }
-                }
-                primary {
-                  title
-                }
-              }
-              ... on PRISMIC_LayoutBody1Books {
-                type
-                label
-                fields {
-                  image
-                }
-                primary {
-                  title
-                }
-              }
-              ... on PRISMIC_LayoutBody1Badges {
-                type
-                label
-                fields {
-                  badge
                 }
               }
             }
           }
         }
-      }
-    }
-  }
-`;
-
-const LayoutWithData = (props) => {
-  return (
-    <StaticQuery
-      query={`${query}`}
-      render={withPreview(
-        (data) => (
-          <Layout data={data} {...props} />
-        ),
-        query
-      )}
+      `}
+      render={(data) => <Layout data={data} {...props} />}
     />
   );
 };

@@ -14,46 +14,58 @@ import Agencies from '@components/Agencies';
 import 'swiper/swiper.scss';
 
 const Home = ({ content, currentLanguage }) => {
-  const body = content.prismic.allHomepages.edges[0].node.body;
   return (
     <div className={style.HomePage}>
-      {body.map((section, index) => {
-        switch (section.type) {
+      {content.map((section, index) => {
+        switch (section.slice_type) {
           case 'hero1':
-            return <Hero {...section} key={`${section.type}${index}`} />;
+            return <Hero {...section} key={`${section.slice_type}${index}`} />;
           case 'testimonials':
             return (
               <div
                 className={style.testimonials}
-                key={`${section.type}${index}`}
+                key={`${section.slice_type}${index}`}
               >
                 <Testimonials {...section} />
               </div>
             );
           case 'solutions':
-            return <Solutions {...section} key={`${section.type}${index}`} />;
+            return (
+              <Solutions {...section} key={`${section.slice_type}${index}`} />
+            );
           case 'technologies':
             return (
-              <Technologies {...section} key={`${section.type}${index}`} />
+              <Technologies
+                {...section}
+                key={`${section.slice_type}${index}`}
+              />
             );
           case 'features':
-            return <Features {...section} key={`${section.type}${index}`} />;
+            return (
+              <Features {...section} key={`${section.slice_type}${index}`} />
+            );
           case 'works':
-            return <Works {...section} key={`${section.type}${index}`} />;
+            return <Works {...section} key={`${section.slice_type}${index}`} />;
           case 'plans':
-            return <Plans {...section} key={`${section.type}${index}`} />;
+            return <Plans {...section} key={`${section.slice_type}${index}`} />;
           case 'articles':
             return (
               <Articles
                 currentLanguage={currentLanguage}
                 {...section}
-                key={`${section.type}${index}`}
+                key={`${section.slice_type}${index}`}
               />
             );
           case 'subscribe':
-            return <Subscribe {...section} key={`${section.type}${index}`} />;
+            return (
+              <Subscribe {...section} key={`${section.slice_type}${index}`} />
+            );
           case 'agencies':
-            return <Agencies {...section} key={`${section.type}${index}`} />;
+            return (
+              <Agencies {...section} key={`${section.slice_type}${index}`} />
+            );
+          default:
+            throw new Error(`Unknown section type: ${section.slice_type}`);
         }
       })}
     </div>
@@ -61,7 +73,7 @@ const Home = ({ content, currentLanguage }) => {
 };
 
 Home.propTypes = {
-  content: PropTypes.object.isRequired,
+  content: PropTypes.array.isRequired,
   currentLanguage: PropTypes.string.isRequired,
 };
 

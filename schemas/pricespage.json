@@ -1,0 +1,379 @@
+{
+  "Main" : {
+    "body" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : {
+          "hero" : [ ],
+          "feature" : [ ],
+          "features" : [ ],
+          "plans" : [ ],
+          "partners" : [ ],
+          "questions" : [ ],
+          "contactus" : [ ],
+          "plans2" : [ {
+            "name" : "plans2",
+            "display" : "plans2"
+          } ],
+          "packages" : [ ],
+          "packagesfeatures" : [ ],
+          "tariffplans" : [ ]
+        },
+        "choices" : {
+          "hero" : {
+            "type" : "Slice",
+            "fieldset" : "hero",
+            "description" : "hero",
+            "icon" : "face",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1,strong,em",
+                  "label" : "title"
+                }
+              },
+              "subtitle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "subtitle"
+                }
+              }
+            },
+            "repeat" : { }
+          },
+          "partners" : {
+            "type" : "Slice",
+            "fieldset" : "partners",
+            "description" : "partners",
+            "icon" : "face",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading3",
+                  "label" : "title"
+                }
+              }
+            },
+            "repeat" : {
+              "logotype" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "logotype"
+                }
+              }
+            }
+          },
+          "questions" : {
+            "type" : "Slice",
+            "fieldset" : "questions",
+            "description" : "questions",
+            "icon" : "face",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading2,strong",
+                  "label" : "title"
+                }
+              }
+            },
+            "repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading3",
+                  "label" : "title"
+                }
+              },
+              "content" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph,strong,hyperlink,image,list-item,o-list-item,o-list-item",
+                  "label" : "content"
+                }
+              },
+              "link" : {
+                "type" : "Link",
+                "config" : {
+                  "allowTargetBlank" : true,
+                  "label" : "link",
+                  "select" : null
+                }
+              },
+              "scan" : {
+                "type" : "Boolean",
+                "config" : {
+                  "default_value" : false,
+                  "label" : "scan"
+                }
+              }
+            }
+          },
+          "contactus" : {
+            "type" : "Slice",
+            "fieldset" : "contactus",
+            "description" : "contactus",
+            "icon" : "face",
+            "display" : "list",
+            "non-repeat" : {
+              "subtitle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "subtitle"
+                }
+              },
+              "buttontext" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "buttontext"
+                }
+              },
+              "buttonlink" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "buttonlink"
+                }
+              }
+            },
+            "repeat" : { }
+          },
+          "packagesfeatures" : {
+            "type" : "Slice",
+            "fieldset" : "packagesfeatures",
+            "description" : "packages features",
+            "icon" : "add_to_photos",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading3",
+                  "label" : "title"
+                }
+              }
+            },
+            "repeat" : {
+              "featuretitle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading4",
+                  "label" : "feature title"
+                }
+              },
+              "basicstatus" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "basic status"
+                }
+              },
+              "plusstatus" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "plus status"
+                }
+              },
+              "businessstatus" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+                  "label" : "business status"
+                }
+              },
+              "enterprisestatus" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "enterprise status"
+                }
+              }
+            }
+          },
+          "tariffplans" : {
+            "type" : "Slice",
+            "fieldset" : "tariffplans",
+            "description" : "tariff plan",
+            "icon" : "attach_money",
+            "display" : "list",
+            "non-repeat" : {
+              "monthlycondition" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "Monthly condition"
+                }
+              },
+              "annualcondition" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "Annual condition"
+                }
+              },
+              "buttontext" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "button text"
+                }
+              },
+              "buttonbaselink" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "button base link",
+                  "select" : null
+                }
+              },
+              "annualcoefficient" : {
+                "type" : "Number",
+                "config" : {
+                  "label" : "Annual coefficient"
+                }
+              },
+              "firstlawtitle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "first law title"
+                }
+              },
+              "firstlawlocation" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "first law location"
+                }
+              },
+              "secondlawtitle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "second law title"
+                }
+              },
+              "secondlawlocation" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "second law location"
+                }
+              },
+              "thirdlawtitle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "third law title"
+                }
+              },
+              "thirdlawlocation" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "third law location"
+                }
+              }
+            },
+            "repeat" : {
+              "plantitle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading3",
+                  "label" : "plan title"
+                }
+              },
+              "plandescription" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph,strong,em",
+                  "label" : "plan description"
+                }
+              },
+              "oneprivacypriceusd" : {
+                "type" : "Number",
+                "config" : {
+                  "label" : "one privacy price usd"
+                }
+              },
+              "twoprivacypriceusd" : {
+                "type" : "Number",
+                "config" : {
+                  "label" : "two privacy price usd"
+                }
+              },
+              "threeprivacypriceusd" : {
+                "type" : "Number",
+                "config" : {
+                  "label" : "three privacy price usd"
+                }
+              },
+              "oneprivacypriceeur" : {
+                "type" : "Number",
+                "config" : {
+                  "label" : "one privacy price eur"
+                }
+              },
+              "twoprivacypriceeur" : {
+                "type" : "Number",
+                "config" : {
+                  "label" : "two privacy price eur"
+                }
+              },
+              "threeprivacypriceeur" : {
+                "type" : "Number",
+                "config" : {
+                  "label" : "three privacy price eur"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "SEO" : {
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "UID",
+        "placeholder" : "Add UID, for example: pricing"
+      }
+    },
+    "metatitle" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Meta title",
+        "placeholder" : "Add metatitle, up to 60 characters recommended"
+      }
+    },
+    "metadescription" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Meta description",
+        "placeholder" : "Add meta description, up to 160 characters recommended"
+      }
+    },
+    "canonical" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Canonical URL",
+        "placeholder" : "Add canonical URL, for example: https://secureprivacy.ai/pricing"
+      }
+    }
+  }
+}

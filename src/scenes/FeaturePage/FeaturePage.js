@@ -11,13 +11,17 @@ const FeaturePage = ({ current: body }) => {
   return (
     <div className={style.SolutionPage}>
       {body.map((section, index) => {
-        switch (section.type) {
+        switch (section.slice_type) {
           case 'hero':
-            return <Hero {...section} key={`${section.type}${index}`} />;
+            return <Hero {...section} key={`${section.slice_type}${index}`} />;
           case 'works':
-            return <Works {...section} key={`${section.type}${index}`} />;
+            return <Works {...section} key={`${section.slice_type}${index}`} />;
           case 'questions':
-            return <Questions {...section} key={`${section.type}${index}`} />;
+            return (
+              <Questions {...section} key={`${section.slice_type}${index}`} />
+            );
+          default:
+            throw new Error(`Unknown section type: ${section.slice_type}`);
         }
       })}
     </div>

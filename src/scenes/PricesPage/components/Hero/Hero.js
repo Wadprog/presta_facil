@@ -5,14 +5,16 @@ import { RichText } from 'prismic-reactjs';
 import style from './Hero.module.scss';
 
 const Hero = ({ primary }) => {
+  const { title, subtitle } = primary;
+
   return (
     <div className={style.wrapper}>
       <div className={style.container}>
         <div className={style.title}>
-          <RichText render={primary.title} />
+          <RichText render={title.raw} />
         </div>
         <div className={style.subtitle}>
-          <RichText render={primary.subtitle} />
+          <RichText render={subtitle.raw} />
         </div>
       </div>
     </div>

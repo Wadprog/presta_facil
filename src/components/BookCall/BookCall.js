@@ -15,7 +15,7 @@ const BookCall = ({ primary }) => {
     <section className={style.section}>
       <div className={style.block}>
         <div className={style.title}>
-          <RichText render={title} />
+          <RichText render={title.raw} />
         </div>
         <div className={style.buttonWrapper}>
           <Button
@@ -24,7 +24,7 @@ const BookCall = ({ primary }) => {
             click={handleOpenModal}
             fullWidth
           >
-            <RichText render={button} />
+            <RichText render={button.raw} />
           </Button>
         </div>
       </div>

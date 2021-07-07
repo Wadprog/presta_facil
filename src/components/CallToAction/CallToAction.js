@@ -1,35 +1,30 @@
 import React from 'react';
-import style from './CallToAction.module.scss';
-import Button, { VARIANT } from '@components/Button/Button.js';
-import Image from '@components/Image/Image';
 import { object } from 'prop-types';
-import { parseString } from '@helpers';
 import { RichText } from 'prismic-reactjs';
 
+import Button, { VARIANT } from '@components/Button/Button.js';
+import Image from '@components/Image/Image';
+import { parseString } from '@helpers';
+import style from './CallToAction.module.scss';
+
 const CallToAction = ({ primary }) => {
-  const {
-    image,
-    imageSharp,
-    sectiontitle,
-    description,
-    buttontext,
-    buttonlink,
-  } = primary;
-  const link = parseString(buttonlink);
+  const { image, sectiontitle, description, buttontext, buttonlink } = primary;
+  const link = parseString(buttonlink.raw);
+
   return (
     <section className={style.section}>
       <div className={style.container}>
         <div className={style.image}>
-          <Image imageSharp={imageSharp} image={image} />
+          <Image image={image} fluid={image.fluid} />
         </div>
         <div className={style.textBlock}>
           <div className={style.title}>
-            <RichText render={sectiontitle} />
+            <RichText render={sectiontitle.raw} />
           </div>
-          <p className={style.description}>{parseString(description)}</p>
+          <p className={style.description}>{parseString(description.raw)}</p>
           <div className={style.button}>
             <Button variant={VARIANT.PRIMARY} to={link}>
-              {parseString(buttontext)}
+              {parseString(buttontext.raw)}
             </Button>
           </div>
         </div>

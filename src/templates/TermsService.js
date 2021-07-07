@@ -6,19 +6,39 @@ import TermsService from '../scenes/TermsService/index';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
-  const pageContext = data.prismic.allToss.edges[0];
+  const pageContext = data.allPrismicTos.edges[0];
   if (!pageContext) return null;
-  const body = pageContext.node;
-  const { title, description, canonical } = body;
+  const termsOfServicePage = pageContext.node;
+  const {
+    uid,
+    id,
+    type,
+    alternate_languages,
+    lang,
+    data: pageData,
+  } = termsOfServicePage;
+  const activeDocMeta = { id, uid, lang, type, alternate_languages };
+  const {
+    metatitle,
+    metadescription,
+    canonical,
+    body: pageContent,
+    date,
+    pagetitle: pageTitle,
+  } = pageData;
 
   return (
     <Layout
-      activeDocMeta={body._meta}
-      metatitle={title}
-      metadescription={description}
+      activeDocMeta={activeDocMeta}
+      metatitle={metatitle}
+      metadescription={metadescription}
       canonical={canonical}
     >
-      <TermsService current={body} />
+      <TermsService
+        pageContent={pageContent}
+        date={date}
+        pageTitle={pageTitle}
+      />
     </Layout>
   );
 };
@@ -29,65 +49,104 @@ Page.propTypes = {
 
 export const query = graphql`
   query($uid: String, $lang: String) {
-    prismic {
-      allToss(uid: $uid, lang: $lang) {
-        edges {
-          node {
-            body {
-              ... on PRISMIC_TosBodyText {
-                type
-                label
-                primary {
-                  text
-                }
-              }
-              ... on PRISMIC_TosBodyThree_column_table {
-                type
-                label
-                fields {
-                  col1
-                  col2
-                  col3
-                }
-                primary {
-                  thead1
-                  thead2
-                  thead3
-                }
-              }
-              ... on PRISMIC_TosBodyFour_column_table {
-                type
-                label
-                fields {
-                  col1
-                  col2
-                  col3
-                  col4
-                }
-                primary {
-                  theader1
-                  theader2
-                  theader3
-                  theader4
-                }
-              }
-            }
-            canonical
+    allPrismicTos(filter: { uid: { eq: $uid }, lang: { eq: $lang } }) {
+      edges {
+        node {
+          uid
+          type
+          lang
+          id
+          alternate_languages {
+            id
+            uid
+            lang
+            type
+          }
+          data {
             date
-            metadescription
-            metatitle
-            pagetitle
-            description
-            _meta {
-              alternateLanguages {
-                uid
-                type
-                lang
+            pagetitle {
+              text
+            }
+            metatitle {
+              text
+            }
+            metadescription {
+              text
+            }
+            description {
+              raw
+            }
+            canonical {
+              text
+            }
+            body {
+              ... on PrismicTosBodyText {
                 id
+                slice_type
+                primary {
+                  text {
+                    raw
+                  }
+                }
               }
-              uid
-              type
-              lang
+              ... on PrismicTosBodyThreeColumnTable {
+                id
+                slice_type
+                primary {
+                  thead1 {
+                    text
+                  }
+                  thead2 {
+                    text
+                  }
+                  thead3 {
+                    text
+                  }
+                }
+                items {
+                  col1 {
+                    text
+                  }
+                  col2 {
+                    text
+                  }
+                  col3 {
+                    text
+                  }
+                }
+              }
+              ... on PrismicTosBodyFourColumnTable {
+                id
+                slice_type
+                primary {
+                  theader1 {
+                    text
+                  }
+                  theader2 {
+                    text
+                  }
+                  theader3 {
+                    text
+                  }
+                  theader4 {
+                    text
+                  }
+                }
+                items {
+                  col1 {
+                    text
+                  }
+                  col2 {
+                    text
+                  }
+                  col3 {
+                    text
+                  }
+                  col4 {
+                    text
+                  }
+                }
+              }
             }
           }
         }

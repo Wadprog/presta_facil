@@ -6,19 +6,22 @@ import VideoBlogPage from '@scenes/VideoBlogPage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
-  const videoblogContent = data.prismic.allVideopages.edges[0];
+  const videoblogContent = data.allPrismicVideopage.edges[0];
   if (!videoblogContent) return null;
   const videoblog = videoblogContent.node;
-  const { metatitle, metadescription, canonical } = videoblog;
+  const { uid, id, type, alternate_languages, lang } = videoblog;
+  const activeDocMeta = { id, uid, lang, type, alternate_languages };
+  const { data: pageData } = videoblog;
+  const { metatitle, metadescription, canonical, body: pageContent } = pageData;
 
   return (
     <Layout
-      activeDocMeta={videoblog._meta}
+      activeDocMeta={activeDocMeta}
       metatitle={metatitle}
       metadescription={metadescription}
       canonical={canonical}
     >
-      <VideoBlogPage content={data} />
+      <VideoBlogPage content={pageContent} />
     </Layout>
   );
 };
@@ -28,51 +31,71 @@ Page.propTypes = {
 };
 
 export const query = graphql`
-  query($lang: String) {
-    prismic {
-      allVideopages(lang: $lang) {
-        edges {
-          node {
-            metatitle
-            metadescription
-            canonical
-            _meta {
-              uid
-              type
-              lang
-              alternateLanguages {
-                lang
-                type
-                uid
-              }
+  query($uid: String, $lang: String) {
+    allPrismicVideopage(filter: { uid: { eq: $uid }, lang: { eq: $lang } }) {
+      edges {
+        node {
+          uid
+          type
+          lang
+          id
+          alternate_languages {
+            id
+            lang
+            uid
+            type
+          }
+          data {
+            canonical {
+              text
+            }
+            metadescription {
+              text
+            }
+            metatitle {
+              text
             }
             body {
-              ... on PRISMIC_VideopageBodyVideolist {
-                type
-                label
-                fields {
-                  date
-                  tag
-                  title
-                  videourl {
-                    ... on PRISMIC__ExternalLink {
-                      url
-                    }
+              ... on PrismicVideopageBodyVideolist {
+                id
+                slice_type
+                primary {
+                  title {
+                    raw
                   }
                 }
-                primary {
-                  title
+                items {
+                  date
+                  tag
+                  title {
+                    raw
+                  }
+                  videourl {
+                    link_type
+                    url
+                  }
                 }
               }
-              ... on PRISMIC_VideopageBodyCta {
-                type
-                label
+              ... on PrismicVideopageBodyCta {
+                id
+                slice_type
                 primary {
-                  sectiontitle
-                  description
-                  buttontext
-                  buttonlink
-                  image
+                  buttonlink {
+                    raw
+                  }
+                  buttontext {
+                    raw
+                  }
+                  description {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                  }
+                  sectiontitle {
+                    raw
+                  }
                 }
               }
             }

@@ -33,19 +33,15 @@ Run `make clean` to clean cashe when you add new content in Prismic and want to 
 
 ## How to commit changes
 
-When you are ready, check build to insure that your changes do not break anything.
-
-```
-make build
-```
-
-Then you can see production version of site locally by running:
+When you are ready, check build to insure that your changes do not break anything. To build app and serve it locally, run:
 
 ```
 make serve
 ```
 
-Visit [http://localhost:9000/](http://localhost:8000/).
+Visit [http://localhost:9000/](http://localhost:9000/) to see production version of site.
+
+If you need just check that build is ok, run `make build`.
 
 If build is live, commit changes to GitHub repository. When you open pull request, Render will deploy test version of site. You will see it's URL in commit comment.
 

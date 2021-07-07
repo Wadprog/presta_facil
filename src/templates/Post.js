@@ -6,19 +6,29 @@ import Post from '@scenes/PostPage/PostPage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
-  const pageContext = data.prismic.allBlogpostpages.edges[0];
+  const pageContext = data.allPrismicBlogpostpage.edges[0];
   if (!pageContext) return null;
   const body = pageContext.node;
-  const { title, description, canonical } = body;
+  const {
+    alternate_languages,
+    data: pageData,
+    id,
+    lang,
+    type,
+    uid,
+    tags,
+  } = body;
+  const { title, description, canonical } = pageData;
+  const activeDocMeta = { id, uid, lang, type, alternate_languages };
 
   return (
     <Layout
-      activeDocMeta={body._meta}
+      activeDocMeta={activeDocMeta}
       metatitle={title}
       metadescription={description}
       canonical={canonical}
     >
-      <Post current={body} />
+      <Post current={pageData} tags={tags} />
     </Layout>
   );
 };
@@ -29,90 +39,124 @@ Page.propTypes = {
 
 export const query = graphql`
   query($uid: String, $lang: String) {
-    prismic {
-      allBlogpostpages(uid: $uid, lang: $lang) {
-        edges {
-          node {
-            _linkType
-            _meta {
-              uid
-              type
-              lang
-              tags
-              alternateLanguages {
-                lang
-                type
-                uid
-              }
+    allPrismicBlogpostpage(filter: { uid: { eq: $uid }, lang: { eq: $lang } }) {
+      edges {
+        node {
+          uid
+          type
+          lang
+          id
+          tags
+          alternate_languages {
+            id
+            lang
+            type
+            uid
+          }
+          data {
+            canonical {
+              text
             }
+            description {
+              text
+            }
+            title {
+              text
+            }
+            backgroundpreview {
+              alt
+              url
+            }
+            preview {
+              alt
+              url
+            }
+            date
             body {
-              ... on PRISMIC_BlogpostpageBodyText {
-                type
-                label
+              ... on PrismicBlogpostpageBodyText {
+                id
+                slice_type
                 primary {
-                  text
-                }
-              }
-              ... on PRISMIC_BlogpostpageBodyQuote {
-                type
-                label
-                primary {
-                  quote
-                }
-              }
-              ... on PRISMIC_BlogpostpageBodyImage {
-                type
-                label
-                primary {
-                  image
-                  caption
-                }
-              }
-              ... on PRISMIC_BlogpostpageBodyVideo {
-                type
-                label
-                primary {
-                  video {
-                    ... on PRISMIC__ExternalLink {
-                      _linkType
-                      url
-                    }
+                  text {
+                    raw
                   }
                 }
               }
-              ... on PRISMIC_BlogpostpageBodyAgencies {
-                type
-                label
+              ... on PrismicBlogpostpageBodyQuote {
+                id
+                slice_type
                 primary {
-                  sectiontitle
-                  description
-                  buttontext
-                  buttonlink
-                  image
+                  quote {
+                    raw
+                  }
                 }
               }
-              ... on PRISMIC_BlogpostpageBodyArticles {
-                type
-                label
+              ... on PrismicBlogpostpageBodyImage {
+                id
+                slice_type
                 primary {
-                  title
-                  buttontext
+                  caption {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                  }
                 }
               }
-              ... on PRISMIC_BlogpostpageBodySubscribe {
-                type
-                label
+              ... on PrismicBlogpostpageBodyVideo {
+                id
+                slice_type
                 primary {
-                  title
-                  buttontext
+                  video {
+                    url
+                  }
+                }
+              }
+              ... on PrismicBlogpostpageBodyAgencies {
+                id
+                slice_type
+                primary {
+                  buttonlink {
+                    raw
+                  }
+                  buttontext {
+                    raw
+                  }
+                  description {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                  }
+                }
+              }
+              ... on PrismicBlogpostpageBodyArticles {
+                id
+                slice_type
+                primary {
+                  buttontext {
+                    raw
+                  }
+                  title {
+                    raw
+                  }
+                }
+              }
+              ... on PrismicBlogpostpageBodySubscribe {
+                id
+                slice_type
+                primary {
+                  buttontext {
+                    raw
+                  }
+                  title {
+                    raw
+                  }
                 }
               }
             }
-            date
-            description
-            preview
-            title
-            canonical
           }
         }
       }

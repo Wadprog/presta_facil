@@ -1,15 +1,14 @@
 import React from 'react';
 import { array } from 'prop-types';
 
-import { parseString } from '@helpers';
 import style from './Table.module.scss';
 
 const renderTableRows = (rows) => {
   const tableRows = rows.map((header, index) => {
     const tableValues = Object.values(header);
     const cols = tableValues.map((value, index) => (
-      <td className={style.tableCell} key={`${index}, ${parseString(value)}`}>
-        {parseString(value)}
+      <td className={style.tableCell} key={`${index}, ${value.text}`}>
+        {value.text}
       </td>
     ));
 

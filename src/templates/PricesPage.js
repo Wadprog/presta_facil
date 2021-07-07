@@ -6,19 +6,28 @@ import Layout from '@components/Layout';
 import PricesPage from '@scenes/PricesPage';
 
 const Page = ({ data }) => {
-  const pricespageContent = data.prismic.allPricespages.edges[0];
+  const pricespageContent = data.allPrismicPricespage.edges[0];
   if (!pricespageContent) return null;
   const pricespage = pricespageContent.node;
-  const { metatitle, metadescription, canonical } = pricespage;
+  const {
+    uid,
+    id,
+    type,
+    alternate_languages,
+    lang,
+    data: pageData,
+  } = pricespage;
+  const activeDocMeta = { id, uid, lang, type, alternate_languages };
+  const { metatitle, metadescription, canonical, body: pageContent } = pageData;
 
   return (
     <Layout
-      activeDocMeta={pricespage._meta}
+      activeDocMeta={activeDocMeta}
       metatitle={metatitle}
       metadescription={metadescription}
       canonical={canonical}
     >
-      <PricesPage content={data} />
+      <PricesPage content={pageContent} />
     </Layout>
   );
 };
@@ -28,107 +37,170 @@ Page.propTypes = {
 };
 
 export const query = graphql`
-  query($lang: String) {
-    prismic {
-      allPricespages(lang: $lang) {
-        edges {
-          node {
-            metatitle
-            metadescription
-            canonical
-            _meta {
-              uid
-              type
-              lang
-              alternateLanguages {
-                lang
-                type
-                uid
-              }
+  query($uid: String, $lang: String) {
+    allPrismicPricespage(filter: { uid: { eq: $uid }, lang: { eq: $lang } }) {
+      edges {
+        node {
+          uid
+          type
+          lang
+          id
+          alternate_languages {
+            id
+            lang
+            type
+            uid
+          }
+          data {
+            canonical {
+              text
+            }
+            metadescription {
+              text
+            }
+            metatitle {
+              text
             }
             body {
-              ... on PRISMIC_PricespageBodyHero {
-                type
-                label
+              ... on PrismicPricespageBodyHero {
+                id
+                slice_type
                 primary {
-                  title
-                  subtitle
-                }
-              }
-              ... on PRISMIC_PricespageBodyTariffplans {
-                type
-                label
-                primary {
-                  monthlycondition
-                  annualcondition
-                  buttontext
-                  annualcoefficient
-                  firstlawtitle
-                  firstlawlocation
-                  secondlawtitle
-                  secondlawlocation
-                  thirdlawtitle
-                  thirdlawlocation
-                  buttonbaselink {
-                    ... on PRISMIC__ExternalLink {
-                      url
-                    }
+                  subtitle {
+                    raw
+                  }
+                  title {
+                    raw
                   }
                 }
-                fields {
-                  plantitle
-                  plandescription
-                  oneprivacypriceusd
-                  twoprivacypriceusd
-                  threeprivacypriceusd
+              }
+              ... on PrismicPricespageBodyPartners {
+                id
+                slice_type
+                primary {
+                  title {
+                    raw
+                  }
+                }
+                items {
+                  logotype {
+                    alt
+                    url
+                  }
+                }
+              }
+              ... on PrismicPricespageBodyQuestions {
+                id
+                slice_type
+                primary {
+                  title {
+                    raw
+                  }
+                }
+                items {
+                  content {
+                    raw
+                  }
+                  title {
+                    raw
+                  }
+                  link {
+                    link_type
+                    url
+                  }
+                }
+              }
+              ... on PrismicPricespageBodyContactus {
+                id
+                slice_type
+                primary {
+                  buttonlink {
+                    raw
+                  }
+                  buttontext {
+                    raw
+                  }
+                  subtitle {
+                    raw
+                  }
+                }
+              }
+              ... on PrismicPricespageBodyPackagesfeatures {
+                id
+                slice_type
+                primary {
+                  title {
+                    raw
+                  }
+                }
+                items {
+                  basicstatus {
+                    raw
+                  }
+                  businessstatus {
+                    raw
+                  }
+                  enterprisestatus {
+                    raw
+                  }
+                  featuretitle {
+                    raw
+                  }
+                  plusstatus {
+                    raw
+                  }
+                }
+              }
+              ... on PrismicPricespageBodyTariffplans {
+                id
+                slice_type
+                primary {
+                  annualcoefficient
+                  annualcondition {
+                    raw
+                  }
+                  buttonbaselink {
+                    link_type
+                    url
+                  }
+                  buttontext {
+                    raw
+                  }
+                  firstlawlocation {
+                    text
+                  }
+                  firstlawtitle {
+                    text
+                  }
+                  monthlycondition {
+                    raw
+                  }
+                  secondlawlocation {
+                    text
+                  }
+                  secondlawtitle {
+                    text
+                  }
+                  thirdlawlocation {
+                    text
+                  }
+                  thirdlawtitle {
+                    text
+                  }
+                }
+                items {
                   oneprivacypriceeur
-                  twoprivacypriceeur
+                  oneprivacypriceusd
+                  plandescription {
+                    raw
+                  }
+                  plantitle {
+                    raw
+                  }
                   threeprivacypriceeur
-                }
-              }
-              ... on PRISMIC_PricespageBodyPackagesfeatures {
-                type
-                label
-                primary {
-                  title
-                }
-                fields {
-                  featuretitle
-                  basicstatus
-                  plusstatus
-                  businessstatus
-                  enterprisestatus
-                }
-              }
-              ... on PRISMIC_PricespageBodyPartners {
-                type
-                label
-                primary {
-                  title
-                }
-                fields {
-                  logotype
-                }
-              }
-              ... on PRISMIC_PricespageBodyQuestions {
-                type
-                label
-                primary {
-                  title
-                }
-                fields {
-                  title
-                  content
-                  scan
-                }
-              }
-              ... on PRISMIC_PricespageBodyContactus {
-                type
-                label
-                primary {
-                  subtitle
-                  buttontext
-                  buttonlink
+                  threeprivacypriceusd
+                  twoprivacypriceeur
+                  twoprivacypriceusd
                 }
               }
             }

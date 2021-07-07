@@ -1,17 +1,22 @@
 import React, { useContext } from 'react';
-import style from './Agencies.module.scss';
-import Button, { VARIANT } from '@components/Button/Button.js';
 import { Link } from 'gatsby';
-import Image from '@components/Image/Image';
-import { RichText } from 'prismic-reactjs';
-import { parseString } from '@helpers';
 import { object, array } from 'prop-types';
+
 import LangContext from '@contexts';
 import { langPath } from '@helpers';
+import style from './Agencies.module.scss';
+import Button, { VARIANT } from '@components/Button/Button.js';
+import Image from '@components/Image/Image';
 
 const Agencies = ({ primary }) => {
   const currentLang = useContext(LangContext);
-  const buttonLink = parseString(primary.page);
+
+  const {
+    buttontext: buttonText,
+    title,
+    page: buttonLink,
+    description,
+  } = primary;
 
   return (
     <section className={style.agencies}>
@@ -20,19 +25,21 @@ const Agencies = ({ primary }) => {
           <Image imageSharp={primary.imageSharp} image={primary.image} />
         </div>
         <div className={style.textBlock}>
-          <h2 className={style.title}>{RichText.asText(primary.title)}</h2>
-          <p className={style.description}>
-            {RichText.asText(primary.description)}
-          </p>
+          <h2 className={style.title}>{title.text}</h2>
+          <p className={style.description}>{description.text}</p>
           <Link
-            to={`${langPath(currentLang)}/${buttonLink}`}
+            to={`${langPath(currentLang)}/${buttonLink.text}`}
             className={style.link}
           >
             Learn More
           </Link>
           <div className={style.button}>
-            <Button variant={VARIANT.TRANSPARENT} to={buttonLink} fullWidth>
-              {RichText.asText(primary.buttontext)}
+            <Button
+              variant={VARIANT.TRANSPARENT}
+              to={buttonLink.text}
+              fullWidth
+            >
+              {buttonText.text}
             </Button>
           </div>
         </div>

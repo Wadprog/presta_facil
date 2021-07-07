@@ -6,19 +6,34 @@ import BooksPage from '@scenes/BooksPage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
-  const bookpageContent = data.prismic.allBookpages.edges[0];
+  const bookpageContent = data.allPrismicBookpage.edges[0];
   if (!bookpageContent) return null;
   const { node: bookpageData } = bookpageContent;
-  const { metatitle, metadescription, canonical } = bookpageData;
+  const {
+    uid,
+    id,
+    type,
+    alternate_languages,
+    lang,
+    data: pageData,
+  } = bookpageData;
+  const activeDocMeta = { id, uid, lang, type, alternate_languages };
+  const {
+    metatitle,
+    metadescription,
+    canonical,
+    body: pageContent,
+    pagetitle: pageTitle,
+  } = pageData;
 
   return (
     <Layout
-      activeDocMeta={bookpageData._meta}
+      activeDocMeta={activeDocMeta}
       metatitle={metatitle}
       metadescription={metadescription}
       canonical={canonical}
     >
-      <BooksPage content={bookpageData} />
+      <BooksPage content={pageContent} pageTitle={pageTitle} />
     </Layout>
   );
 };
@@ -28,79 +43,87 @@ Page.propTypes = {
 };
 
 export const query = graphql`
-  query($lang: String) {
-    prismic {
-      allBookpages(lang: $lang) {
-        edges {
-          node {
-            metatitle
-            metadescription
-            canonical
-            pagetitle
-            _meta {
-              uid
-              type
-              lang
-              alternateLanguages {
-                lang
-                type
-                uid
-              }
+  query($uid: String, $lang: String) {
+    allPrismicBookpage(filter: { uid: { eq: $uid }, lang: { eq: $lang } }) {
+      edges {
+        node {
+          uid
+          type
+          lang
+          id
+          alternate_languages {
+            id
+            lang
+            type
+            uid
+          }
+          data {
+            canonical {
+              text
+            }
+            metadescription {
+              text
+            }
+            metatitle {
+              text
+            }
+            pagetitle {
+              raw
             }
             body {
-              ... on PRISMIC_BookpageBodyBooks {
-                type
-                label
-                fields {
-                  buttontext
-                  image
-                  bookpageurl
-                  imageSharp {
-                    childImageSharp {
-                      fluid {
-                        aspectRatio
-                        base64
-                        originalImg
-                        originalName
-                        presentationHeight
-                        presentationWidth
-                        sizes
-                        src
-                        srcSet
-                        srcSetWebp
-                        srcWebp
-                        tracedSVG
-                      }
+              ... on PrismicBookpageBodyBooks {
+                id
+                slice_type
+                items {
+                  bookpageurl {
+                    text
+                  }
+                  buttontext {
+                    text
+                  }
+                  image {
+                    url
+                    alt
+                    fluid(srcSetBreakpoints: 10) {
+                      aspectRatio
+                      base64
+                      sizes
+                      src
+                      srcSet
+                      srcSetWebp
+                      srcWebp
                     }
                   }
                 }
               }
-              ... on PRISMIC_BookpageBodyCta {
-                type
-                label
+              ... on PrismicBookpageBodyCta {
+                id
+                slice_type
                 primary {
-                  buttonlink
-                  buttontext
-                  description
-                  image
-                  sectiontitle
-                  imageSharp {
-                    childImageSharp {
-                      fluid {
-                        aspectRatio
-                        base64
-                        originalImg
-                        originalName
-                        presentationHeight
-                        presentationWidth
-                        sizes
-                        src
-                        srcSet
-                        srcSetWebp
-                        srcWebp
-                        tracedSVG
-                      }
+                  buttonlink {
+                    raw
+                  }
+                  buttontext {
+                    raw
+                  }
+                  description {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                    fluid(srcSetBreakpoints: 10) {
+                      aspectRatio
+                      base64
+                      sizes
+                      src
+                      srcSet
+                      srcSetWebp
+                      srcWebp
                     }
+                  }
+                  sectiontitle {
+                    raw
                   }
                 }
               }

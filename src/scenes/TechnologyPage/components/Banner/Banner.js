@@ -4,25 +4,25 @@ import { RichText } from 'prismic-reactjs';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import { Link } from 'gatsby';
 
-import { parseString, isExternalUrl } from '@helpers';
+import { isExternalUrl } from '@helpers';
 import styles from './Banner.module.scss';
 
 const Banner = ({ primary }) => {
   const { title, text, buttontext, buttonlink, link, linktext } = primary;
-  const buttonUrl = parseString(buttonlink);
-  const promoLink = parseString(link);
-  const promoLinkText = parseString(linktext);
+  const buttonUrl = buttonlink.text;
+  const promoLink = link.text;
+  const promoLinkText = linktext.text;
   if (isExternalUrl(promoLink)) {
     return (
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.wrapper}>
             <div className={styles.title}>
-              <RichText render={title} />
+              <RichText render={title.raw} />
             </div>
             <div className={styles.buttonWrapper}>
               <Button variant={VARIANT.PRIMARY} to={buttonUrl} fullWidth>
-                <RichText render={buttontext} />
+                <RichText render={buttontext.raw} />
               </Button>
               <a href={promoLink} className={styles.link}>
                 {promoLinkText}
@@ -30,7 +30,7 @@ const Banner = ({ primary }) => {
             </div>
           </div>
           <div className={styles.text}>
-            <RichText render={text} />
+            <RichText render={text.raw} />
           </div>
         </div>
       </section>
@@ -41,11 +41,11 @@ const Banner = ({ primary }) => {
       <div className={styles.container}>
         <div className={styles.wrapper}>
           <div className={styles.title}>
-            <RichText render={title} />
+            <RichText render={title.raw} />
           </div>
           <div className={styles.buttonWrapper}>
             <Button variant={VARIANT.PRIMARY} to={buttonUrl} fullWidth>
-              <RichText render={buttontext} />
+              <RichText render={buttontext.raw} />
             </Button>
             <Link to={promoLink} className={styles.link}>
               {promoLinkText}
@@ -53,7 +53,7 @@ const Banner = ({ primary }) => {
           </div>
         </div>
         <div className={styles.text}>
-          <RichText render={text} />
+          <RichText render={text.raw} />
         </div>
       </div>
     </section>
