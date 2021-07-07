@@ -183,7 +183,7 @@ const Form = ({ content }) => {
           className={style.successInformer}
           onClick={() => handleCloseInformer('successInformer')}
         >
-          {successInformerText.text}
+          {successInformerText}
         </button>
       )}
       {submitError && (
