@@ -1,7 +1,11 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/ssr-apis/
- */
+import React from 'react';
 
-// You can delete this file if you're not using it
+export const onRenderBody = ({ setHeadComponents }) => {
+  setHeadComponents([
+    <script
+      key="sp-app"
+      type="text/javascript"
+      src="https://app.secureprivacy.ai/script/606acb2d5761b5f013b48067.js"
+    ></script>,
+  ]);
+};
