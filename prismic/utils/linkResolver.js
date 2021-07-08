@@ -1,10 +1,4 @@
 const { defaultLanguage } = require('./../../prismic-config');
-// eslint-disable-next-line
-let path = [];
-
-if (typeof window !== 'undefined') {
-  path = window.location.pathname.split('/');
-}
 
 const linkResolver = (doc) => {
   const properties = doc._meta || doc;
