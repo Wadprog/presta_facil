@@ -22,12 +22,10 @@ const LanguageSwitcher = ({ activeDocMeta }) => {
   const currentLang = activeDocMeta
     ? activeDocMeta.lang.slice(0, 2)
     : defaultLanguage.slice(0, 2);
-
   const [isOpen, setIsOpen] = useState(false);
   const alternateLanguages = activeDocMeta
     ? activeDocMeta.alternate_languages
     : null;
-
   const convertToFullName = (shortName, LANGUAGE) => {
     for (const lang of Object.values(LANGUAGE)) {
       if (lang.SHORT_NAME === shortName) {
@@ -67,10 +65,15 @@ const LanguageSwitcher = ({ activeDocMeta }) => {
               ...altLang,
               lang: altLang.lang === defaultLanguage ? '' : altLangShort,
             };
+            const rawUrl = linkResolver(lang);
+            const destinationUrl = rawUrl.startsWith('//')
+              ? rawUrl.slice(1)
+              : rawUrl;
+
             return (
               <li
                 className={style.dropdownItem}
-                onClick={() => handleLangChange(linkResolver(lang))}
+                onClick={() => handleLangChange(destinationUrl)}
                 key={`alt-lang-${index}`}
               >
                 {convertToFullName(altLangShort, LANGUAGE)}
