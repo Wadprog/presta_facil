@@ -19,6 +19,7 @@ const Layout = ({
   canonical,
   metatitle,
   metadescription,
+  questions,
 }) => {
   const currentLang = activeDocMeta ? activeDocMeta.lang : defaultLanguage;
   const edge = data.allPrismicLayout.edges.filter(
@@ -37,6 +38,7 @@ const Layout = ({
           canonical={canonical}
           metatitle={metatitle}
           metadescription={metadescription}
+          questions={questions}
         />
         <Header data={headerData} hideMenu={hideMenu} />
         <main className={styles.main} id="main">
@@ -56,6 +58,7 @@ Layout.propTypes = {
   canonical: oneOfType([object, array]),
   metatitle: oneOfType([object, array]),
   metadescription: oneOfType([object, array]),
+  questions: array,
 };
 
 const LayoutWithData = (props) => {

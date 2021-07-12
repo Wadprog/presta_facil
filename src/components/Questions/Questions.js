@@ -10,9 +10,6 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion';
-import { FAQJsonLd } from 'gatsby-plugin-next-seo';
-
-import { parseString } from '@helpers';
 
 const propsWithUniqueKey = (props, key) => {
   return Object.assign(props || {}, { key });
@@ -39,21 +36,6 @@ const Questions = ({ primary, items }) => {
 
   const loadMoreQuestion = () => {
     setCounter(counter + COUNTER_STEP);
-  };
-
-  const makeSemanticMarkup = (questions) => {
-    if (questions.length === 0) {
-      return;
-    }
-
-    const markupList = questions.map(({ title, content }) => {
-      return {
-        question: parseString(title.raw),
-        answer: parseString(content.raw),
-      };
-    });
-
-    return <FAQJsonLd questions={markupList} />;
   };
 
   let questionsToRender;
@@ -110,7 +92,6 @@ const Questions = ({ primary, items }) => {
           </div>
         ) : null}
       </Accordion>
-      {makeSemanticMarkup(questionList)}
     </section>
   );
 };

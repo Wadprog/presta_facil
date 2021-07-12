@@ -1,8 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
+import { FAQJsonLd } from 'gatsby-plugin-next-seo';
 
-const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
+import { parseString } from '@helpers';
+
+const Head = ({
+  children,
+  meta,
+  canonical,
+  metatitle,
+  metadescription,
+  questions,
+}) => {
+  const faqLists = questions && questions.map((element) => element.items);
+  const faqList = faqLists && faqLists.flat();
   const url = 'https://secureprivacy.ai/';
 
   const [canonicalUrl, setCanonicalUrl] = useState(null);
@@ -50,6 +62,21 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
     setOpengraphDescription(currentPageDescription);
   }, []);
 
+  const makeSemanticMarkup = (questions) => {
+    if (questions.length === 0) {
+      return;
+    }
+
+    const markupList = questions.map(({ title, content }) => {
+      return {
+        question: parseString(title.raw),
+        answer: parseString(content.raw),
+      };
+    });
+
+    return <FAQJsonLd questions={markupList} />;
+  };
+
   return (
     <Helmet>
       {/* Encoding and styles */}
@@ -66,6 +93,7 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
       {canonicalUrl}
       {pageTitle}
       {pageDescription}
+      {faqList && makeSemanticMarkup(faqList)}
 
       {/* <!-- Twitter meta --> */}
       <meta content="summary" name="twitter:card" />
@@ -105,6 +133,7 @@ Head.propTypes = {
   canonical: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   metatitle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   metadescription: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  questions: PropTypes.array,
 };
 
 export default Head;
