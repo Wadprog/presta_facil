@@ -61,6 +61,7 @@ module.exports = {
         path: `${__dirname}/src/assets/images`,
       },
     },
+    `gatsby-plugin-next-seo`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
