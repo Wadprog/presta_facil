@@ -84,15 +84,6 @@ export const query = graphql`
                   image {
                     url
                     alt
-                    fluid(srcSetBreakpoints: 10) {
-                      aspectRatio
-                      base64
-                      sizes
-                      src
-                      srcSet
-                      srcSetWebp
-                      srcWebp
-                    }
                   }
                 }
               }
@@ -112,15 +103,6 @@ export const query = graphql`
                   image {
                     alt
                     url
-                    fluid(srcSetBreakpoints: 10) {
-                      aspectRatio
-                      base64
-                      sizes
-                      src
-                      srcSet
-                      srcSetWebp
-                      srcWebp
-                    }
                   }
                   sectiontitle {
                     raw
