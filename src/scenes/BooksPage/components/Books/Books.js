@@ -19,7 +19,7 @@ const Books = ({ items, pagetitle }) => {
             className={style.book}
             key={bookpageurl.text}
           >
-            <Image image={image} />
+            <Image image={image} fluid={image.fluid} />
             <div className={style.buttonWrapper}>
               <div className={style.button}>
                 {buttontext.text}

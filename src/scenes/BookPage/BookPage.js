@@ -109,7 +109,11 @@ const BookPage = ({ content }) => {
   return (
     <section className={style.bookPage}>
       <div className={style.container}>
-        <Image className={style.bookImage} image={bookImage} />
+        <Image
+          className={style.bookImage}
+          image={bookImage}
+          fluid={bookImage.fluid}
+        />
         <div className={style.formGroup}>
           <h1 className={style.bookPageTitle}>{bookPageTitle.text}</h1>
           <p className={style.bookPageDescription}>

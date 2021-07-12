@@ -73,6 +73,15 @@ export const query = graphql`
                   cookieimage {
                     alt
                     url
+                    fluid(srcSetBreakpoints: 10) {
+                      aspectRatio
+                      base64
+                      sizes
+                      src
+                      srcSet
+                      srcSetWebp
+                      srcWebp
+                    }
                   }
                   description {
                     raw
@@ -80,6 +89,15 @@ export const query = graphql`
                   heroimage {
                     alt
                     url
+                    fluid(srcSetBreakpoints: 10) {
+                      aspectRatio
+                      base64
+                      sizes
+                      src
+                      srcSet
+                      srcSetWebp
+                      srcWebp
+                    }
                   }
                   modalbuttondescription {
                     raw
@@ -100,10 +118,28 @@ export const query = graphql`
                   policyimage {
                     alt
                     url
+                    fluid(srcSetBreakpoints: 10) {
+                      aspectRatio
+                      base64
+                      sizes
+                      src
+                      srcSet
+                      srcSetWebp
+                      srcWebp
+                    }
                   }
                   preferenceimage {
                     alt
                     url
+                    fluid(srcSetBreakpoints: 10) {
+                      aspectRatio
+                      base64
+                      sizes
+                      src
+                      srcSet
+                      srcSetWebp
+                      srcWebp
+                    }
                   }
                   sub_title {
                     raw
