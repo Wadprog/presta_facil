@@ -58,6 +58,15 @@ export const query = graphql`
             bookimage {
               alt
               url
+              fluid(srcSetBreakpoints: 10) {
+                aspectRatio
+                base64
+                sizes
+                src
+                srcSet
+                srcSetWebp
+                srcWebp
+              }
               dimensions {
                 width
                 height
