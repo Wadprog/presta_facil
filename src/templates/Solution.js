@@ -23,9 +23,13 @@ const Page = ({ data }) => {
       metatitle={metatitle}
       metadescription={metadescription}
       canonical={canonical}
-      questions={questions}
     >
-      <SolutionPage current={body} mainSection={mainSection} pageUid={uid} />
+      <SolutionPage
+        current={body}
+        mainSection={mainSection}
+        pageUid={uid}
+        questions={questions}
+      />
     </Layout>
   );
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './SolutionPage.module.scss';
 import 'swiper/swiper.scss';
+import { FAQJsonLd } from 'gatsby-plugin-next-seo';
 
 import Hero from '@components/Hero';
 import Projects from './components/Projects/Projects';
@@ -11,12 +12,30 @@ import Questions from '@components/Questions/Questions';
 import Agencies from '@components/Agencies';
 import Plans from '@components/Plans';
 import Calendly from '@components/Calendly/Calendly';
+import { parseString } from '@helpers';
 
-const SolutionPage = ({ current, mainSection, pageUid }) => {
+const SolutionPage = ({ current, mainSection, pageUid, questions }) => {
   const body = current.data.body;
   const agenciesSection = mainSection[1].node.data.body2[0];
   const plansSection = mainSection[1].node.data.body2[1];
   const hospitalityPageUid = 'hospitality';
+  const faqLists = questions.map((element) => element.items);
+  const faqList = faqLists.flat();
+
+  const makeFaqSemanticMarkup = (questionsList) => {
+    if (questionsList.length === 0) {
+      return;
+    }
+
+    const markupList = questionsList.map(({ title, content }) => {
+      return {
+        question: parseString(title.raw),
+        answer: parseString(content.raw),
+      };
+    });
+
+    return <FAQJsonLd questions={markupList} />;
+  };
 
   return (
     <div className={style.SolutionPage}>
@@ -55,6 +74,7 @@ const SolutionPage = ({ current, mainSection, pageUid }) => {
         }
       })}
       {pageUid !== hospitalityPageUid && <Agencies {...agenciesSection} />}
+      {makeFaqSemanticMarkup(faqList)}
     </div>
   );
 };
@@ -63,6 +83,7 @@ SolutionPage.propTypes = {
   current: PropTypes.object.isRequired,
   mainSection: PropTypes.array,
   pageUid: PropTypes.string,
+  questions: PropTypes.array,
 };
 
 export default SolutionPage;
