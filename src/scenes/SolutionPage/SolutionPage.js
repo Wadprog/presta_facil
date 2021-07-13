@@ -22,7 +22,7 @@ const SolutionPage = ({ current, mainSection, pageUid, questions }) => {
   const faqLists = questions.map((element) => element.items);
   const faqList = faqLists.flat();
 
-  const makeFaqSemanticMarkup = (questionsList) => {
+  const makeFaqMarkupList = (questionsList) => {
     if (questionsList.length === 0) {
       return;
     }
@@ -34,7 +34,7 @@ const SolutionPage = ({ current, mainSection, pageUid, questions }) => {
       };
     });
 
-    return <FAQJsonLd questions={markupList} />;
+    return markupList;
   };
 
   return (
@@ -74,7 +74,7 @@ const SolutionPage = ({ current, mainSection, pageUid, questions }) => {
         }
       })}
       {pageUid !== hospitalityPageUid && <Agencies {...agenciesSection} />}
-      {makeFaqSemanticMarkup(faqList)}
+      <FAQJsonLd questions={makeFaqMarkupList(faqList)} />
     </div>
   );
 };
