@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { object } from 'prop-types';
 import { Link } from 'gatsby';
 import { LogoJsonLd } from 'gatsby-plugin-next-seo';
@@ -8,17 +8,22 @@ import { langPath } from '@helpers';
 
 const Logo = ({ img }) => {
   const currentLang = useContext(LangContext);
-  const { url, alt } = img;
+  const { url: logoUrl, alt } = img;
+  const siteUrl = 'https://secureprivacy.ai/';
+  const [logoMarkup, setLogoMarkup] = useState(null);
+
+  useEffect(() => {
+    const markup = <LogoJsonLd logo={logoUrl} url={siteUrl} />;
+
+    setLogoMarkup(markup);
+  }, []);
 
   return (
     <>
       <Link to={langPath(currentLang) + '/'}>
-        <img src={url} alt={alt} loading="lazy" width="105" height="43" />
+        <img src={logoUrl} alt={alt} loading="lazy" width="105" height="43" />
       </Link>
-      <LogoJsonLd
-        logo="https://images.prismic.io/secure-privacy/fea99b28-ad05-4398-8531-1b4178f1f9e6_logo.svg?auto=compress%2Cformat&fit=max&q=45"
-        url="https://secureprivacy.ai/"
-      />
+      {logoMarkup}
     </>
   );
 };
