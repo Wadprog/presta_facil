@@ -11,7 +11,7 @@ import Questions from '@components/Questions/Questions';
 import Agencies from '@components/Agencies';
 import Plans from '@components/Plans';
 import Calendly from '@components/Calendly/Calendly';
-import FaqSemanticMarkup from '../../components/FaqSemanticMarkup/FaqSemanticMarkup';
+import FaqSemanticMarkup from '@components/FaqSemanticMarkup/FaqSemanticMarkup';
 
 const SolutionPage = ({ current: body, mainSection, pageUid }) => {
   const agenciesSection = mainSection[1].node.data.body2[0];
