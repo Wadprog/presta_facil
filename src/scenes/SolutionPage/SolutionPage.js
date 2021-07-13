@@ -11,12 +11,15 @@ import Questions from '@components/Questions/Questions';
 import Agencies from '@components/Agencies';
 import Plans from '@components/Plans';
 import Calendly from '@components/Calendly/Calendly';
+import FaqSemanticMarkup from '@components/FaqSemanticMarkup/FaqSemanticMarkup';
 
-const SolutionPage = ({ current, mainSection, pageUid }) => {
-  const body = current.data.body;
+const SolutionPage = ({ current: body, mainSection, pageUid }) => {
   const agenciesSection = mainSection[1].node.data.body2[0];
   const plansSection = mainSection[1].node.data.body2[1];
   const hospitalityPageUid = 'hospitality';
+  const questions = body.filter((item) => item.slice_type === 'questions');
+  const faqLists = questions.map((element) => element.items);
+  const faqList = faqLists.flat();
 
   return (
     <div className={style.SolutionPage}>
@@ -55,12 +58,13 @@ const SolutionPage = ({ current, mainSection, pageUid }) => {
         }
       })}
       {pageUid !== hospitalityPageUid && <Agencies {...agenciesSection} />}
+      <FaqSemanticMarkup questions={faqList} />
     </div>
   );
 };
 
 SolutionPage.propTypes = {
-  current: PropTypes.object.isRequired,
+  current: PropTypes.array.isRequired,
   mainSection: PropTypes.array,
   pageUid: PropTypes.string,
 };

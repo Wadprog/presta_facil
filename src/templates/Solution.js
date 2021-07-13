@@ -10,7 +10,7 @@ const Page = ({ data }) => {
   if (!pageContext) return null;
   const body = pageContext.node;
   const { data: pageData, uid, id, lang, type, alternate_languages } = body;
-  const { metatitle, metadescription, canonical } = pageData;
+  const { metatitle, metadescription, canonical, body: pageContent } = pageData;
   const activeDocMeta = { id, uid, lang, type, alternate_languages };
   const mainSection = data.allPrismicLayout.edges;
 
@@ -21,7 +21,11 @@ const Page = ({ data }) => {
       metadescription={metadescription}
       canonical={canonical}
     >
-      <SolutionPage current={body} mainSection={mainSection} pageUid={uid} />
+      <SolutionPage
+        current={pageContent}
+        mainSection={mainSection}
+        pageUid={uid}
+      />
     </Layout>
   );
 };

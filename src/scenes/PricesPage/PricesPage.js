@@ -7,6 +7,7 @@ import TariffPlans from './components/TariffPlans';
 import Partners from './components/Partners';
 import Questions from './components/Questions';
 import ContactUs from './components/ContactUs';
+import FaqSemanticMarkup from '@components/FaqSemanticMarkup/FaqSemanticMarkup';
 import style from './PricesPage.module.scss';
 import { useBreakpoints } from '@hooks';
 
@@ -44,6 +45,10 @@ const PricesPage = ({ content }) => {
     myPackagesRef.current.scrollLeft = leftScroll;
   };
 
+  const questions = content.filter((item) => item.slice_type === 'questions');
+  const faqLists = questions.map((element) => element.items);
+  const faqList = faqLists.flat();
+
   const sections = content.map((item, index) => {
     switch (item.slice_type) {
       case 'hero':
@@ -78,14 +83,15 @@ const PricesPage = ({ content }) => {
         return <Questions key={index} {...item} />;
       case 'contactus':
         return <ContactUs key={index} {...item} />;
-      // default:
-      //   throw new Error(`Unknown section type: ${item.slice_type}`);
+      default:
+        throw new Error(`Unknown section type: ${item.slice_type}`);
     }
   });
 
   return (
     <div className={style.wrapper}>
       <div className={style.container}>{sections}</div>
+      <FaqSemanticMarkup questions={faqList} />
     </div>
   );
 };
