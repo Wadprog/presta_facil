@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import style from './SolutionPage.module.scss';
 import 'swiper/swiper.scss';
-import { FAQJsonLd } from 'gatsby-plugin-next-seo';
 
 import Hero from '@components/Hero';
 import Projects from './components/Projects/Projects';
@@ -12,37 +11,15 @@ import Questions from '@components/Questions/Questions';
 import Agencies from '@components/Agencies';
 import Plans from '@components/Plans';
 import Calendly from '@components/Calendly/Calendly';
-import { parseString } from '@helpers';
+import FaqSemanticMarkup from '../../components/FaqSemanticMarkup/FaqSemanticMarkup';
 
-const SolutionPage = ({ current, mainSection, pageUid, questions }) => {
-  const body = current.data.body;
+const SolutionPage = ({ current: body, mainSection, pageUid }) => {
   const agenciesSection = mainSection[1].node.data.body2[0];
   const plansSection = mainSection[1].node.data.body2[1];
   const hospitalityPageUid = 'hospitality';
-
-  const [faqMarkup, setFaqMarkup] = useState(null);
-
-  useEffect(() => {
-    const faqLists = questions.map((element) => element.items);
-    const faqList = faqLists.flat();
-
-    const makeFaqMarkupList = (questionsList) => {
-      if (questionsList.length === 0) {
-        return;
-      }
-
-      const markupList = questionsList.map(({ title, content }) => {
-        return {
-          question: parseString(title.raw),
-          answer: parseString(content.raw),
-        };
-      });
-
-      return <FAQJsonLd questions={markupList} />;
-    };
-
-    setFaqMarkup(makeFaqMarkupList(faqList));
-  }, []);
+  const questions = body.filter((item) => item.slice_type === 'questions');
+  const faqLists = questions.map((element) => element.items);
+  const faqList = faqLists.flat();
 
   return (
     <div className={style.SolutionPage}>
@@ -81,16 +58,15 @@ const SolutionPage = ({ current, mainSection, pageUid, questions }) => {
         }
       })}
       {pageUid !== hospitalityPageUid && <Agencies {...agenciesSection} />}
-      {faqMarkup}
+      <FaqSemanticMarkup questions={faqList} />
     </div>
   );
 };
 
 SolutionPage.propTypes = {
-  current: PropTypes.object.isRequired,
+  current: PropTypes.array.isRequired,
   mainSection: PropTypes.array,
   pageUid: PropTypes.string,
-  questions: PropTypes.array,
 };
 
 export default SolutionPage;

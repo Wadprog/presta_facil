@@ -13,9 +13,6 @@ const Page = ({ data }) => {
   const { metatitle, metadescription, canonical, body: pageContent } = pageData;
   const activeDocMeta = { id, uid, lang, type, alternate_languages };
   const mainSection = data.allPrismicLayout.edges;
-  const questions = pageContent.filter(
-    (item) => item.slice_type === 'questions'
-  );
 
   return (
     <Layout
@@ -25,10 +22,9 @@ const Page = ({ data }) => {
       canonical={canonical}
     >
       <SolutionPage
-        current={body}
+        current={pageContent}
         mainSection={mainSection}
         pageUid={uid}
-        questions={questions}
       />
     </Layout>
   );
