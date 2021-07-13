@@ -8,7 +8,7 @@ const FaqSemanticMarkup = ({ questions }) => {
   const [faqMarkup, setFaqMarkup] = useState(null);
 
   useEffect(() => {
-    const makeFaqMarkupList = (questionsList) => {
+    const makeFaqMarkup = (questionsList) => {
       if (questionsList.length === 0) {
         return;
       }
@@ -23,7 +23,7 @@ const FaqSemanticMarkup = ({ questions }) => {
       return <FAQJsonLd questions={markupList} />;
     };
 
-    setFaqMarkup(makeFaqMarkupList(questions));
+    setFaqMarkup(makeFaqMarkup(questions));
   }, []);
 
   return faqMarkup;
