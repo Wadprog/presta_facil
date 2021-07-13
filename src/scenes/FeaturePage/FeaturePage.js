@@ -6,8 +6,13 @@ import 'swiper/swiper.scss';
 import Hero from '@components/Hero';
 import Questions from '@components/Questions/Questions';
 import Works from './components/Works';
+import FaqSemanticMarkup from '../../components/FaqSemanticMarkup/FaqSemanticMarkup';
 
 const FeaturePage = ({ current: body }) => {
+  const questions = body.filter((item) => item.slice_type === 'questions');
+  const faqLists = questions.map((element) => element.items);
+  const faqList = faqLists.flat();
+
   return (
     <div className={style.SolutionPage}>
       {body.map((section, index) => {
@@ -24,6 +29,7 @@ const FeaturePage = ({ current: body }) => {
             throw new Error(`Unknown section type: ${section.slice_type}`);
         }
       })}
+      <FaqSemanticMarkup questions={faqList} />
     </div>
   );
 };
