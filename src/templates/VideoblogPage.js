@@ -21,7 +21,11 @@ const Page = ({ data }) => {
       metadescription={metadescription}
       canonical={canonical}
     >
-      <VideoBlogPage content={pageContent} />
+      <VideoBlogPage
+        content={pageContent}
+        canonical={canonical}
+        metatitle={metatitle}
+      />
     </Layout>
   );
 };

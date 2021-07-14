@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import style from './VideoBlogPage.module.scss';
+
 import Videos from './components/Videos/Videos';
 import CallToAction from '@components/CallToAction/CallToAction';
+import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
+import style from './VideoBlogPage.module.scss';
 
-const VideoBlogPage = ({ content }) => {
+const VideoBlogPage = ({ content, metatitle, canonical }) => {
   return (
     <div className={style.HomePage}>
       {content.map((section) => {
@@ -17,12 +19,18 @@ const VideoBlogPage = ({ content }) => {
             throw new Error(`Unknown section type: ${section.slice_type}`);
         }
       })}
+      <BreadcrumbsSemanticMarkup
+        pageTitle={metatitle.text}
+        pageUrl={canonical.text}
+      />
     </div>
   );
 };
 
 VideoBlogPage.propTypes = {
   content: PropTypes.array.isRequired,
+  canonical: PropTypes.object.isRequired,
+  metatitle: PropTypes.object.isRequired,
 };
 
 export default VideoBlogPage;
