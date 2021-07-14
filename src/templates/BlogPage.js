@@ -22,7 +22,7 @@ const Page = ({ data }) => {
       metadescription={metadescription}
       canonical={canonical}
     >
-      <BlogPage content={data} />
+      <BlogPage content={data} metatitle={metatitle} canonical={canonical} />
     </Layout>
   );
 };

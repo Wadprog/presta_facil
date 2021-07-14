@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import { isValidEmail } from '@helpers';
-import style from './BookPage.module.scss';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import Image from '@components/Image/Image';
+import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
+import style from './BookPage.module.scss';
 
-const BookPage = ({ content }) => {
+const BookPage = ({ content, canonical, metatitle }) => {
   const initialFormData = {
     firstName: '',
     lastName: '',
@@ -204,6 +205,10 @@ const BookPage = ({ content }) => {
             )}
           </form>
         </div>
+        <BreadcrumbsSemanticMarkup
+          pageTitle={metatitle.text}
+          pageUrl={canonical.text}
+        />
       </div>
     </section>
   );
@@ -211,6 +216,8 @@ const BookPage = ({ content }) => {
 
 BookPage.propTypes = {
   content: PropTypes.object.isRequired,
+  canonical: PropTypes.object.isRequired,
+  metatitle: PropTypes.object.isRequired,
 };
 
 export default BookPage;

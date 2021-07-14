@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import style from './TermsService.module.scss';
 import Text from './components/Text/Text';
 import Table from './components/Table/Table';
+import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
 import { dateToString } from '@helpers';
+import style from './TermsService.module.scss';
 
 const renderPageContent = (body) => {
   const content = body.map((data) => {
@@ -18,7 +19,7 @@ const renderPageContent = (body) => {
   return content;
 };
 
-const TermsServicePage = ({ pageContent, pageTitle, date }) => {
+const TermsServicePage = ({ pageContent, pageTitle, date, canonical }) => {
   return (
     <div className={style.page}>
       <div className={style.container}>
@@ -27,6 +28,10 @@ const TermsServicePage = ({ pageContent, pageTitle, date }) => {
         </div>
         <h1 className={style.title}>{pageTitle.text}</h1>
         {renderPageContent(pageContent)}
+        <BreadcrumbsSemanticMarkup
+          pageTitle={pageTitle.text}
+          pageUrl={canonical.text}
+        />
       </div>
     </div>
   );
@@ -36,6 +41,7 @@ TermsServicePage.propTypes = {
   pageContent: PropTypes.array.isRequired,
   pageTitle: PropTypes.object.isRequired,
   date: PropTypes.string.isRequired,
+  canonical: PropTypes.object.isRequired,
 };
 
 export default TermsServicePage;

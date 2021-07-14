@@ -6,9 +6,16 @@ import Feature from './components/Feature/Feature';
 import Works from '@components/Works';
 import Testimonials from '@components/Testimonials';
 import BookCall from '@components/BookCall/BookCall';
+import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
 import style from './EnterpricePage.module.scss';
 
-const EnterpricePage = ({ content, worksSection, testimonialsSection }) => {
+const EnterpricePage = ({
+  content,
+  worksSection,
+  testimonialsSection,
+  metatitle,
+  canonical,
+}) => {
   const sections = [...content, worksSection, testimonialsSection];
   let hero;
   let feature;
@@ -52,6 +59,10 @@ const EnterpricePage = ({ content, worksSection, testimonialsSection }) => {
       <Testimonials {...reviews} />
       <Works {...examples} />
       <BookCall {...callBanner} />
+      <BreadcrumbsSemanticMarkup
+        pageTitle={metatitle.text}
+        pageUrl={canonical.text}
+      />
     </div>
   );
 };
@@ -60,6 +71,8 @@ EnterpricePage.propTypes = {
   content: array.isRequired,
   worksSection: object.isRequired,
   testimonialsSection: object.isRequired,
+  canonical: object.isRequired,
+  metatitle: object.isRequired,
 };
 
 export default EnterpricePage;

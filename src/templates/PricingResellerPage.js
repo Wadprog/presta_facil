@@ -27,7 +27,11 @@ const Page = ({ data }) => {
       metadescription={metadescription}
       canonical={canonical}
     >
-      <ResellerPage content={pageContent} />
+      <ResellerPage
+        content={pageContent}
+        canonical={canonical}
+        metatitle={metatitle}
+      />
     </Layout>
   );
 };

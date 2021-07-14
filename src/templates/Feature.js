@@ -26,7 +26,11 @@ const Page = ({ data }) => {
       metadescription={metadescription}
       canonical={canonical}
     >
-      <Feature current={pageContent} />
+      <Feature
+        current={pageContent}
+        canonical={canonical}
+        metatitle={metatitle}
+      />
     </Layout>
   );
 };

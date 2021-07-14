@@ -27,7 +27,11 @@ const Page = ({ data }) => {
       metadescription={metadescription}
       canonical={canonical}
     >
-      <ContactUs content={pageData} />
+      <ContactUs
+        content={pageData}
+        metatitle={metatitle}
+        canonical={canonical}
+      />
     </Layout>
   );
 };

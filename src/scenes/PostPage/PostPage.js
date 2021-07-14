@@ -6,13 +6,16 @@ import { dateToString } from '@helpers';
 import Text from './components/Text/Text';
 import Img from './components/Img/Img';
 import Video from './components/Video/Video';
+import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
 import Subscribe from '@components/Subscribe';
 import CallToAction from '@components/CallToAction/CallToAction';
 
 import Articles from '@components/Articles/Articles';
 
 const PostPage = ({ current, tags }) => {
-  const { body, date, title, description } = current;
+  const { body, date, title, description, canonical } = current;
+  const baseItemName = 'Blog';
+  const baseItemUrl = 'https://secureprivacy.ai/blog';
 
   return (
     <div className={style.page}>
@@ -49,6 +52,12 @@ const PostPage = ({ current, tags }) => {
               );
           }
         })}
+        <BreadcrumbsSemanticMarkup
+          pageTitle={title.text}
+          pageUrl={canonical.text}
+          baseItemName={baseItemName}
+          baseItemUrl={baseItemUrl}
+        />
       </div>
       {body.map((section, index) => {
         switch (section.type) {

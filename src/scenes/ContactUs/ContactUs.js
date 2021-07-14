@@ -1,12 +1,13 @@
 import React from 'react';
 import { object } from 'prop-types';
 
-import style from './ContactUs.module.scss';
 import GradientText from '@components/GradientText';
 import { parseString } from '@helpers';
 import Form from './components/Form/Form';
+import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
+import style from './ContactUs.module.scss';
 
-const ContactUs = ({ content }) => {
+const ContactUs = ({ content, metatitle, canonical }) => {
   const { title } = content;
 
   return (
@@ -19,6 +20,10 @@ const ContactUs = ({ content }) => {
           />
         </h1>
         <Form content={content} />
+        <BreadcrumbsSemanticMarkup
+          pageTitle={metatitle.text}
+          pageUrl={canonical.text}
+        />
       </div>
     </div>
   );
@@ -26,6 +31,8 @@ const ContactUs = ({ content }) => {
 
 ContactUs.propTypes = {
   content: object,
+  canonical: object.isRequired,
+  metatitle: object.isRequired,
 };
 
 export default ContactUs;

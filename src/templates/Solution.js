@@ -25,6 +25,8 @@ const Page = ({ data }) => {
         current={pageContent}
         mainSection={mainSection}
         pageUid={uid}
+        canonical={canonical}
+        metatitle={metatitle}
       />
     </Layout>
   );

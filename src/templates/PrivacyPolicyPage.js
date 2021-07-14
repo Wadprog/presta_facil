@@ -33,7 +33,7 @@ const Page = ({ data }) => {
       metadescription={metadescription}
       canonical={canonical}
     >
-      <PrivacyPolicyPage pageTitle={pageTitle} />
+      <PrivacyPolicyPage pageTitle={pageTitle} canonical={canonical} />
     </Layout>
   );
 };

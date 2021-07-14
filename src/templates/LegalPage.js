@@ -27,7 +27,12 @@ const Page = ({ data }) => {
       metadescription={description}
       canonical={canonical}
     >
-      <LegalPage content={pageContent} title={title} date={date} />
+      <LegalPage
+        content={pageContent}
+        title={title}
+        date={date}
+        canonical={canonical}
+      />
     </Layout>
   );
 };

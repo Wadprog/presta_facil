@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import SearchInput from '@components/SearchInput/SearchInput';
+import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
 import { parseString } from '@helpers';
 import style from './Subprocessors.module.scss';
-import SearchInput from '@components/SearchInput/SearchInput';
 
 const mapping = {
   table: 'td',
@@ -83,7 +84,7 @@ const renderNoData = (data) => {
   );
 };
 
-const SubprocessorsPage = ({ content }) => {
+const SubprocessorsPage = ({ content, canonical, metatitle }) => {
   const { pagetitle: pageTitle, body } = content;
   const { items: tableColsHeaders, slice_type: headersType } = body[0];
   const { items: tableRows, slice_type: rowsType } = body[1];
@@ -122,6 +123,10 @@ const SubprocessorsPage = ({ content }) => {
             </tbody>
           </table>
         </div>
+        <BreadcrumbsSemanticMarkup
+          pageTitle={metatitle.text}
+          pageUrl={canonical.text}
+        />
       </div>
     </div>
   );
@@ -129,6 +134,8 @@ const SubprocessorsPage = ({ content }) => {
 
 SubprocessorsPage.propTypes = {
   content: PropTypes.object.isRequired,
+  canonical: PropTypes.object.isRequired,
+  metatitle: PropTypes.object.isRequired,
 };
 
 export default SubprocessorsPage;

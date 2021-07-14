@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import style from './BooksPage.module.scss';
 import Books from './components/Books/Books';
 import CallToAction from '@components/CallToAction/CallToAction';
+import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
+import { parseString } from '@helpers';
+import style from './BooksPage.module.scss';
 
-const BooksPage = ({ content, pageTitle }) => {
+const BooksPage = ({ content, pageTitle, canonical }) => {
   return (
     <div className={style.BooksPage}>
       {content.map((section) => {
@@ -24,6 +26,10 @@ const BooksPage = ({ content, pageTitle }) => {
             throw new Error(`Unknown section type: ${section.slice_type}`);
         }
       })}
+      <BreadcrumbsSemanticMarkup
+        pageTitle={parseString(pageTitle.raw)}
+        pageUrl={canonical.text}
+      />
     </div>
   );
 };
@@ -31,6 +37,7 @@ const BooksPage = ({ content, pageTitle }) => {
 BooksPage.propTypes = {
   content: PropTypes.array.isRequired,
   pageTitle: PropTypes.object.isRequired,
+  canonical: PropTypes.object.isRequired,
 };
 
 export default BooksPage;

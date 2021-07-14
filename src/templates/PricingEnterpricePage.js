@@ -41,6 +41,8 @@ const Page = ({ data }) => {
         content={pageContent}
         worksSection={worksSection}
         testimonialsSection={testimonialsSection}
+        metatitle={metatitle}
+        canonical={canonical}
       />
     </Layout>
   );

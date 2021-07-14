@@ -20,7 +20,11 @@ const Page = ({ data }) => {
       metadescription={metadescription}
       canonical={canonical}
     >
-      <Technology current={pageContent} />
+      <Technology
+        current={pageContent}
+        metatitle={metatitle}
+        canonical={canonical}
+      />
     </Layout>
   );
 };
