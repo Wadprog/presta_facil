@@ -8,13 +8,14 @@ import Partners from './components/Partners';
 import Questions from './components/Questions';
 import ContactUs from './components/ContactUs';
 import FaqSemanticMarkup from '@components/FaqSemanticMarkup/FaqSemanticMarkup';
+import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
 import style from './PricesPage.module.scss';
 import { useBreakpoints } from '@hooks';
 
 const CARDS_LIST_WIDTH = 920;
 const PLANS_CARDS_NUMBER = 4;
 
-const PricesPage = ({ content }) => {
+const PricesPage = ({ content, canonical, metatitle }) => {
   const [isBarShowing, setIsBarShowing] = useState(false);
   const [activepoint, setActivePoint] = useState(0);
   const { width } = useBreakpoints();
@@ -92,12 +93,18 @@ const PricesPage = ({ content }) => {
     <div className={style.wrapper}>
       <div className={style.container}>{sections}</div>
       <FaqSemanticMarkup questions={faqList} />
+      <BreadcrumbsSemanticMarkup
+        pageTitle={metatitle.text}
+        pageUrl={canonical.text}
+      />
     </div>
   );
 };
 
 PricesPage.propTypes = {
   content: PropTypes.array.isRequired,
+  canonical: PropTypes.object.isRequired,
+  metatitle: PropTypes.object.isRequired,
 };
 
 export default PricesPage;
