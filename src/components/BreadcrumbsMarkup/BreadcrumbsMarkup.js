@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 
 import { BreadcrumbJsonLd } from 'gatsby-plugin-next-seo';
 
-const BreadcrumbsSemanticMarkup = ({ pageUrl, pageTitle }) => {
+const BreadcrumbsSemanticMarkup = ({
+  pageUrl,
+  pageTitle,
+  baseItemName,
+  baseItemUrl,
+}) => {
   const [breadcrumbsMarkup, setBreadcrumbsMarkup] = useState(null);
-  const blogName = 'Blog';
-  const blogUrl = 'https://secureprivacy.ai/blog';
 
   useEffect(() => {
     const markup = (
@@ -14,8 +17,8 @@ const BreadcrumbsSemanticMarkup = ({ pageUrl, pageTitle }) => {
         itemListElements={[
           {
             position: 1,
-            name: blogName,
-            item: blogUrl,
+            name: baseItemName,
+            item: baseItemUrl,
           },
           {
             position: 2,
@@ -35,6 +38,8 @@ const BreadcrumbsSemanticMarkup = ({ pageUrl, pageTitle }) => {
 BreadcrumbsSemanticMarkup.propTypes = {
   pageUrl: PropTypes.string.isRequired,
   pageTitle: PropTypes.string.isRequired,
+  baseItemName: PropTypes.string.isRequired,
+  baseItemUrl: PropTypes.string.isRequired,
 };
 
 export default BreadcrumbsSemanticMarkup;

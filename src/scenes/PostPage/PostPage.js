@@ -6,7 +6,7 @@ import { dateToString } from '@helpers';
 import Text from './components/Text/Text';
 import Img from './components/Img/Img';
 import Video from './components/Video/Video';
-import BreadcrumbsSemanticMarkup from './components/BreadcrumbsMarkup/BreadcrumbsMarkup';
+import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
 import Subscribe from '@components/Subscribe';
 import CallToAction from '@components/CallToAction/CallToAction';
 
@@ -53,6 +53,8 @@ const PostPage = ({ current, tags }) => {
         <BreadcrumbsSemanticMarkup
           pageTitle={title.text}
           pageUrl={canonical.text}
+          baseItemName="Blog"
+          baseItemUrl="https://secureprivacy.ai/blog"
         />
       </div>
       {body.map((section, index) => {
