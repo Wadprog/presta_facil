@@ -6,9 +6,10 @@ import Join from './components/Join';
 import Program from './components/Program';
 import Testimonials from './components/Testimonials';
 import Book from './components/Book';
+import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
 import style from './ResellerPage.module.scss';
 
-const ResellerPage = ({ content }) => {
+const ResellerPage = ({ content, metatitle, canonical }) => {
   const sections = content.map((item, index) => {
     switch (item.slice_type) {
       case 'hero':
@@ -26,11 +27,21 @@ const ResellerPage = ({ content }) => {
     }
   });
 
-  return <div className={style.container}>{sections}</div>;
+  return (
+    <div className={style.container}>
+      {sections}
+      <BreadcrumbsSemanticMarkup
+        pageTitle={metatitle.text}
+        pageUrl={canonical.text}
+      />
+    </div>
+  );
 };
 
 ResellerPage.propTypes = {
   content: PropTypes.array.isRequired,
+  canonical: PropTypes.object.isRequired,
+  metatitle: PropTypes.object.isRequired,
 };
 
 export default ResellerPage;
