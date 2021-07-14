@@ -38,6 +38,7 @@ const Page = ({ data }) => {
         pageContent={pageContent}
         date={date}
         pageTitle={pageTitle}
+        canonical={canonical}
       />
     </Layout>
   );
