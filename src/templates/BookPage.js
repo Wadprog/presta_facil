@@ -26,7 +26,11 @@ const Page = ({ data }) => {
       metadescription={metadescription}
       canonical={canonical}
     >
-      <BookPage content={bookpageContent} />
+      <BookPage
+        content={bookpageContent}
+        metatitle={metatitle}
+        canonical={canonical}
+      />
     </Layout>
   );
 };
