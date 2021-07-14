@@ -33,7 +33,11 @@ const Page = ({ data }) => {
       metadescription={metadescription}
       canonical={canonical}
     >
-      <BooksPage content={pageContent} pageTitle={pageTitle} />
+      <BooksPage
+        content={pageContent}
+        pageTitle={pageTitle}
+        canonical={canonical}
+      />
     </Layout>
   );
 };
