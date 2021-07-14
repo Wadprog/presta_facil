@@ -14,6 +14,8 @@ import Articles from '@components/Articles/Articles';
 
 const PostPage = ({ current, tags }) => {
   const { body, date, title, description, canonical } = current;
+  const baseItemName = 'Blog';
+  const baseItemUrl = 'https://secureprivacy.ai/blog';
 
   return (
     <div className={style.page}>
@@ -53,8 +55,8 @@ const PostPage = ({ current, tags }) => {
         <BreadcrumbsSemanticMarkup
           pageTitle={title.text}
           pageUrl={canonical.text}
-          baseItemName="Blog"
-          baseItemUrl="https://secureprivacy.ai/blog"
+          baseItemName={baseItemName}
+          baseItemUrl={baseItemUrl}
         />
       </div>
       {body.map((section, index) => {

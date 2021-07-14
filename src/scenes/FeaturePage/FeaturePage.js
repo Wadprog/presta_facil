@@ -7,11 +7,14 @@ import Hero from '@components/Hero';
 import Questions from '@components/Questions/Questions';
 import Works from './components/Works';
 import FaqSemanticMarkup from '@components/FaqSemanticMarkup/FaqSemanticMarkup';
+import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
 
-const FeaturePage = ({ current: body }) => {
+const FeaturePage = ({ current: body, canonical, metatitle }) => {
   const questions = body.filter((item) => item.slice_type === 'questions');
   const faqLists = questions.map((element) => element.items);
   const faqList = faqLists.flat();
+  const baseItemName = 'Feature';
+  const baseItemUrl = 'https://secureprivacy.ai/feature';
 
   return (
     <div className={style.SolutionPage}>
@@ -30,6 +33,12 @@ const FeaturePage = ({ current: body }) => {
         }
       })}
       <FaqSemanticMarkup questions={faqList} />
+      <BreadcrumbsSemanticMarkup
+        pageTitle={metatitle.text}
+        pageUrl={canonical.text}
+        baseItemName={baseItemName}
+        baseItemUrl={baseItemUrl}
+      />
     </div>
   );
 };
@@ -37,6 +46,8 @@ const FeaturePage = ({ current: body }) => {
 FeaturePage.propTypes = {
   current: PropTypes.array.isRequired,
   mainSection: PropTypes.array,
+  canonical: PropTypes.object.isRequired,
+  metatitle: PropTypes.object.isRequired,
 };
 
 export default FeaturePage;
