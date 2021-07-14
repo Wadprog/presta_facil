@@ -27,8 +27,6 @@ const SolutionPage = ({
   const questions = body.filter((item) => item.slice_type === 'questions');
   const faqLists = questions.map((element) => element.items);
   const faqList = faqLists.flat();
-  const baseItemName = 'Solution';
-  const baseItemUrl = 'https://secureprivacy.ai/solution';
 
   return (
     <div className={style.SolutionPage}>
@@ -71,8 +69,6 @@ const SolutionPage = ({
       <BreadcrumbsSemanticMarkup
         pageTitle={metatitle.text}
         pageUrl={canonical.text}
-        baseItemName={baseItemName}
-        baseItemUrl={baseItemUrl}
       />
     </div>
   );

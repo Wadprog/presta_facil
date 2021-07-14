@@ -11,9 +11,6 @@ import Banner from './components/Banner/Banner';
 import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
 
 const TechnologyPage = ({ current: body, metatitle, canonical }) => {
-  const baseItemName = 'Technology';
-  const baseItemUrl = 'https://secureprivacy.ai/technology';
-
   return (
     <div className={style.TechnologyPage}>
       {body.map((section, index) => {
@@ -43,8 +40,6 @@ const TechnologyPage = ({ current: body, metatitle, canonical }) => {
       <BreadcrumbsSemanticMarkup
         pageTitle={metatitle.text}
         pageUrl={canonical.text}
-        baseItemName={baseItemName}
-        baseItemUrl={baseItemUrl}
       />
     </div>
   );
