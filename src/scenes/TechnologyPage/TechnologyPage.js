@@ -8,8 +8,12 @@ import Benefit from './components/Benefit/Benefit';
 import WhatIs from './components/WhatIs/WhatIs';
 import Features from './components/Features/Features';
 import Banner from './components/Banner/Banner';
+import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
 
-const TechnologyPage = ({ current: body }) => {
+const TechnologyPage = ({ current: body, metatitle, canonical }) => {
+  const baseItemName = 'Technology';
+  const baseItemUrl = 'https://secureprivacy.ai/technology';
+
   return (
     <div className={style.TechnologyPage}>
       {body.map((section, index) => {
@@ -36,12 +40,20 @@ const TechnologyPage = ({ current: body }) => {
             throw new Error(`Unknown section type: ${section.slice_type}`);
         }
       })}
+      <BreadcrumbsSemanticMarkup
+        pageTitle={metatitle.text}
+        pageUrl={canonical.text}
+        baseItemName={baseItemName}
+        baseItemUrl={baseItemUrl}
+      />
     </div>
   );
 };
 
 TechnologyPage.propTypes = {
   current: PropTypes.array.isRequired,
+  canonical: PropTypes.object.isRequired,
+  metatitle: PropTypes.object.isRequired,
 };
 
 export default TechnologyPage;
