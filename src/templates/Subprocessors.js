@@ -26,7 +26,11 @@ const Page = ({ data }) => {
       metadescription={metadescription}
       canonical={canonical}
     >
-      <SubprocessorsPage content={subprocessorsPageData} />
+      <SubprocessorsPage
+        content={subprocessorsPageData}
+        canonical={canonical}
+        metatitle={metatitle}
+      />
     </Layout>
   );
 };
