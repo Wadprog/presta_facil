@@ -12,14 +12,23 @@ import Agencies from '@components/Agencies';
 import Plans from '@components/Plans';
 import Calendly from '@components/Calendly/Calendly';
 import FaqSemanticMarkup from '@components/FaqSemanticMarkup/FaqSemanticMarkup';
+import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
 
-const SolutionPage = ({ current: body, mainSection, pageUid }) => {
+const SolutionPage = ({
+  current: body,
+  mainSection,
+  pageUid,
+  canonical,
+  metatitle,
+}) => {
   const agenciesSection = mainSection[1].node.data.body2[0];
   const plansSection = mainSection[1].node.data.body2[1];
   const hospitalityPageUid = 'hospitality';
   const questions = body.filter((item) => item.slice_type === 'questions');
   const faqLists = questions.map((element) => element.items);
   const faqList = faqLists.flat();
+  const baseItemName = 'Solution';
+  const baseItemUrl = 'https://secureprivacy.ai/solution';
 
   return (
     <div className={style.SolutionPage}>
@@ -59,6 +68,12 @@ const SolutionPage = ({ current: body, mainSection, pageUid }) => {
       })}
       {pageUid !== hospitalityPageUid && <Agencies {...agenciesSection} />}
       <FaqSemanticMarkup questions={faqList} />
+      <BreadcrumbsSemanticMarkup
+        pageTitle={metatitle.text}
+        pageUrl={canonical.text}
+        baseItemName={baseItemName}
+        baseItemUrl={baseItemUrl}
+      />
     </div>
   );
 };
@@ -67,6 +82,8 @@ SolutionPage.propTypes = {
   current: PropTypes.array.isRequired,
   mainSection: PropTypes.array,
   pageUid: PropTypes.string,
+  canonical: PropTypes.object.isRequired,
+  metatitle: PropTypes.object.isRequired,
 };
 
 export default SolutionPage;
