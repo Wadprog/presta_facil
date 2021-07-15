@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-
 import { BreadcrumbJsonLd } from 'gatsby-plugin-next-seo';
 
 const BreadcrumbsSemanticMarkup = ({
@@ -9,45 +8,38 @@ const BreadcrumbsSemanticMarkup = ({
   baseItemName,
   baseItemUrl,
 }) => {
-  const [breadcrumbsMarkup, setBreadcrumbsMarkup] = useState(null);
+  const [breadcrumbs, setBreadcrumbs] = useState(null);
 
   useEffect(() => {
-    let markup;
+    let breadcrumbItems;
+
     if (!baseItemName) {
-      markup = (
-        <BreadcrumbJsonLd
-          itemListElements={[
-            {
-              position: 1,
-              name: pageTitle,
-              item: pageUrl,
-            },
-          ]}
-        />
-      );
+      breadcrumbItems = [
+        {
+          position: 1,
+          name: pageTitle,
+          item: pageUrl,
+        },
+      ];
     } else {
-      markup = (
-        <BreadcrumbJsonLd
-          itemListElements={[
-            {
-              position: 1,
-              name: baseItemName,
-              item: baseItemUrl,
-            },
-            {
-              position: 2,
-              name: pageTitle,
-              item: pageUrl,
-            },
-          ]}
-        />
-      );
+      breadcrumbItems = [
+        {
+          position: 1,
+          name: baseItemName,
+          item: baseItemUrl,
+        },
+        {
+          position: 2,
+          name: pageTitle,
+          item: pageUrl,
+        },
+      ];
     }
 
-    setBreadcrumbsMarkup(markup);
+    setBreadcrumbs(breadcrumbItems);
   }, []);
 
-  return breadcrumbsMarkup;
+  return breadcrumbs && <BreadcrumbJsonLd itemListElements={breadcrumbs} />;
 };
 
 BreadcrumbsSemanticMarkup.propTypes = {

@@ -5,28 +5,20 @@ import { FAQJsonLd } from 'gatsby-plugin-next-seo';
 import { parseString } from '@helpers';
 
 const FaqSemanticMarkup = ({ questions }) => {
-  const [faqMarkup, setFaqMarkup] = useState(null);
+  const [faqList, setFaqList] = useState(null);
 
   useEffect(() => {
-    const makeFaqMarkup = (questionsList) => {
-      if (questionsList.length === 0) {
-        return;
-      }
+    const markupList = questions.map(({ title, content }) => {
+      return {
+        question: parseString(title.raw),
+        answer: parseString(content.raw),
+      };
+    });
 
-      const markupList = questionsList.map(({ title, content }) => {
-        return {
-          question: parseString(title.raw),
-          answer: parseString(content.raw),
-        };
-      });
+    setFaqList(markupList);
+  }, [questions]);
 
-      return <FAQJsonLd questions={markupList} />;
-    };
-
-    setFaqMarkup(makeFaqMarkup(questions));
-  }, []);
-
-  return faqMarkup;
+  return faqList && <FAQJsonLd questions={faqList} />;
 };
 
 FaqSemanticMarkup.propTypes = {
