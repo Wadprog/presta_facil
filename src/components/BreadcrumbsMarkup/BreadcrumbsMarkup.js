@@ -9,7 +9,7 @@ const BreadcrumbsSemanticMarkup = ({
   baseItemName,
   baseItemUrl,
 }) => {
-  const [breadcrumbs, setBreadcrumbsMarkup] = useState(null);
+  const [breadcrumbs, setBreadcrumbs] = useState(null);
 
   useEffect(() => {
     let breadcrumbItems;
@@ -37,7 +37,7 @@ const BreadcrumbsSemanticMarkup = ({
       ];
     }
 
-    setBreadcrumbsMarkup(breadcrumbItems);
+    setBreadcrumbs(breadcrumbItems);
   }, []);
 
   return breadcrumbs && <BreadcrumbJsonLd itemListElements={breadcrumbs} />;
