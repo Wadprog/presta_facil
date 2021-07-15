@@ -6,6 +6,7 @@ import { dateToString } from '@helpers';
 import Text from './components/Text/Text';
 import Img from './components/Img/Img';
 import Video from './components/Video/Video';
+import ArticleSemanticMarkup from './components/ArticleSemanticMarkup/ArticleSemanticMarkup';
 import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
 import Subscribe from '@components/Subscribe';
 import CallToAction from '@components/CallToAction/CallToAction';
@@ -13,7 +14,7 @@ import CallToAction from '@components/CallToAction/CallToAction';
 import Articles from '@components/Articles/Articles';
 
 const PostPage = ({ current, tags }) => {
-  const { body, date, title, description, canonical } = current;
+  const { body, date, title, description, canonical, preview } = current;
   const baseItemName = 'Blog';
   const baseItemUrl = 'https://secureprivacy.ai/blog';
 
@@ -57,6 +58,13 @@ const PostPage = ({ current, tags }) => {
           pageUrl={canonical.text}
           baseItemName={baseItemName}
           baseItemUrl={baseItemUrl}
+        />
+        <ArticleSemanticMarkup
+          title={title.text}
+          description={description.text}
+          date={date}
+          canonical={canonical.text}
+          image={preview}
         />
       </div>
       {body.map((section, index) => {
