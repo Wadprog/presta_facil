@@ -9,45 +9,38 @@ const BreadcrumbsSemanticMarkup = ({
   baseItemName,
   baseItemUrl,
 }) => {
-  const [breadcrumbsMarkup, setBreadcrumbsMarkup] = useState(null);
+  const [breadcrumbs, setBreadcrumbsMarkup] = useState(null);
 
   useEffect(() => {
-    let markup;
+    let breadcrumbItems;
+
     if (!baseItemName) {
-      markup = (
-        <BreadcrumbJsonLd
-          itemListElements={[
-            {
-              position: 1,
-              name: pageTitle,
-              item: pageUrl,
-            },
-          ]}
-        />
-      );
+      breadcrumbItems = [
+        {
+          position: 1,
+          name: pageTitle,
+          item: pageUrl,
+        },
+      ];
     } else {
-      markup = (
-        <BreadcrumbJsonLd
-          itemListElements={[
-            {
-              position: 1,
-              name: baseItemName,
-              item: baseItemUrl,
-            },
-            {
-              position: 2,
-              name: pageTitle,
-              item: pageUrl,
-            },
-          ]}
-        />
-      );
+      breadcrumbItems = [
+        {
+          position: 1,
+          name: baseItemName,
+          item: baseItemUrl,
+        },
+        {
+          position: 2,
+          name: pageTitle,
+          item: pageUrl,
+        },
+      ];
     }
 
-    setBreadcrumbsMarkup(markup);
+    setBreadcrumbsMarkup(breadcrumbItems);
   }, []);
 
-  return breadcrumbsMarkup;
+  return breadcrumbs && <BreadcrumbJsonLd itemListElements={breadcrumbs} />;
 };
 
 BreadcrumbsSemanticMarkup.propTypes = {
