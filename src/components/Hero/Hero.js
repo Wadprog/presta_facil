@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { object, array } from 'prop-types';
 import Swiper from 'react-id-swiper';
+import { RichText } from 'prismic-reactjs';
 
 import Button, { VARIANT } from '@components/Button/Button.js';
 import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
@@ -45,7 +46,9 @@ const Hero = ({ primary, items }) => {
     <div className={styles.hero}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.title}>{title.text}</div>
+          <div className={styles.title}>
+            <RichText render={title.raw} />
+          </div>
           <div className={styles.descr}>{description.text}</div>
           <div className={styles.buttonWrapper}>
             <Button variant={VARIANT.PRIMARY} to={buttonlink.text}>
