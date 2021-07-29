@@ -1,3 +1,5 @@
+[![Node.js CI](https://github.com/secureprivacy/sp-website/actions/workflows/node.js.yml/badge.svg)](https://github.com/secureprivacy/sp-website/actions/workflows/node.js.yml)
+
 # Secure Privacy
 
 This is Secure Privacy site. It is built with [Prismic CMS](https://prismic.io/), [Gatsby](https://www.gatsbyjs.com/) and deployed on [Render.com](https://render.com/).
