@@ -88,7 +88,7 @@ export const query = graphql`
                     thumbnails
                   }
                   title {
-                    text
+                    raw
                   }
                   videobuttontext {
                     text

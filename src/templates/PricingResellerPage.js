@@ -108,7 +108,7 @@ export const query = graphql`
                     }
                   }
                   title {
-                    text
+                    raw
                   }
                   videobuttontext {
                     text
