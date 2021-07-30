@@ -130,7 +130,7 @@ export const query = graphql`
                     raw
                   }
                   buttontext {
-                    text
+                    raw
                   }
                   buttonlink {
                     text
