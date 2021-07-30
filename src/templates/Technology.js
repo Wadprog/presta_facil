@@ -110,7 +110,6 @@ export const query = graphql`
                   image {
                     alt
                     url
-                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                   }
                 }
               }
@@ -147,7 +146,6 @@ export const query = graphql`
                   image {
                     alt
                     url
-                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                   }
                   list {
                     raw
@@ -170,7 +168,6 @@ export const query = graphql`
                   image {
                     alt
                     url
-                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                   }
                   description {
                     raw

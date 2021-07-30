@@ -150,7 +150,6 @@ export const query = graphql`
                   screenshot {
                     alt
                     url
-                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                   }
                   name {
                     raw
