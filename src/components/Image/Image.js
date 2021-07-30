@@ -9,8 +9,8 @@ const Image = ({ image, className }) => {
     observer.observe();
   }, []);
 
-  const imageAltTemplate = 'Secure Privacy presentational image';
-  const imageAlt = image.alt ? image.alt : imageAltTemplate;
+  const imageAltStub = ' ';
+  const imageAlt = image.alt ? image.alt : imageAltStub;
 
   if (image.hasOwnProperty('gatsbyImageData')) {
     return (
