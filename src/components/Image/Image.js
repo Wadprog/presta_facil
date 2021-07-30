@@ -18,6 +18,7 @@ const Image = ({ image, className }) => {
         className={className}
         image={image.gatsbyImageData}
         alt={imageAlt}
+        loading="eager"
       />
     );
   }

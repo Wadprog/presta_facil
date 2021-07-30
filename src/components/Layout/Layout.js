@@ -139,10 +139,6 @@ const LayoutWithData = (props) => {
                         badge {
                           alt
                           url
-                          gatsbyImageData(
-                            layout: CONSTRAINED
-                            placeholder: BLURRED
-                          )
                         }
                       }
                     }
@@ -158,10 +154,6 @@ const LayoutWithData = (props) => {
                         image {
                           alt
                           url
-                          gatsbyImageData(
-                            layout: CONSTRAINED
-                            placeholder: BLURRED
-                          )
                         }
                       }
                     }
@@ -184,10 +176,6 @@ const LayoutWithData = (props) => {
                         logo {
                           alt
                           url
-                          gatsbyImageData(
-                            placeholder: BLURRED
-                            layout: CONSTRAINED
-                          )
                         }
                         logolink {
                           link_type
@@ -205,10 +193,6 @@ const LayoutWithData = (props) => {
                         socialogo {
                           alt
                           url
-                          gatsbyImageData(
-                            layout: CONSTRAINED
-                            placeholder: BLURRED
-                          )
                         }
                       }
                     }
@@ -252,10 +236,6 @@ const LayoutWithData = (props) => {
                         image {
                           alt
                           url
-                          gatsbyImageData(
-                            layout: CONSTRAINED
-                            placeholder: BLURRED
-                          )
                         }
                         description {
                           raw
@@ -273,10 +253,6 @@ const LayoutWithData = (props) => {
                         image {
                           alt
                           url
-                          gatsbyImageData(
-                            layout: CONSTRAINED
-                            placeholder: BLURRED
-                          )
                         }
                         description {
                           raw
