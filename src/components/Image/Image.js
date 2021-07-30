@@ -9,12 +9,15 @@ const Image = ({ image, className }) => {
     observer.observe();
   }, []);
 
+  const imageAltTemplate = 'Secure Privacy presentational image';
+  const imageAlt = image.alt ? image.alt : imageAltTemplate;
+
   if (image.hasOwnProperty('gatsbyImageData')) {
     return (
       <GatsbyImage
         className={className}
         image={image.gatsbyImageData}
-        alt={image.alt}
+        alt={imageAlt}
       />
     );
   }
