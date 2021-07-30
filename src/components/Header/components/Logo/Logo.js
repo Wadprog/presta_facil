@@ -2,13 +2,14 @@ import React, { useState, useEffect, useContext } from 'react';
 import { object } from 'prop-types';
 import { Link } from 'gatsby';
 import { LogoJsonLd } from 'gatsby-plugin-next-seo';
+import Image from '@components/Image/Image';
 
 import LangContext from '@contexts';
 import { langPath } from '@helpers';
 
 const Logo = ({ img }) => {
   const currentLang = useContext(LangContext);
-  const { url: logoUrl, alt } = img;
+  const { url: logoUrl } = img;
   const siteUrl = 'https://secureprivacy.ai/';
   const [logoMarkup, setLogoMarkup] = useState(null);
 
@@ -21,7 +22,7 @@ const Logo = ({ img }) => {
   return (
     <>
       <Link to={langPath(currentLang) + '/'}>
-        <img src={logoUrl} alt={alt} loading="lazy" width="105" height="43" />
+        <Image image={img} />
       </Link>
       {logoMarkup}
     </>

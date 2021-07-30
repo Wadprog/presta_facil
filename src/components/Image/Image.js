@@ -1,21 +1,20 @@
 import React, { useEffect } from 'react';
 import { object, string } from 'prop-types';
-import GatsbyImage from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import lozad from 'lozad';
 
-const Image = ({ image, fluid, className }) => {
+const Image = ({ image, className }) => {
   useEffect(() => {
     const observer = lozad();
     observer.observe();
   }, []);
 
-  if (fluid) {
+  if (image.hasOwnProperty('gatsbyImageData')) {
     return (
       <GatsbyImage
         className={className}
-        fluid={fluid}
-        alt={fluid.alt}
-        draggable={false}
+        image={image.gatsbyImageData}
+        alt={image.alt}
       />
     );
   }
@@ -46,7 +45,6 @@ const Image = ({ image, fluid, className }) => {
 
 Image.propTypes = {
   image: object,
-  fluid: object,
   className: string,
 };
 

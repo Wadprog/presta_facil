@@ -66,44 +66,47 @@ const LayoutWithData = (props) => {
           allPrismicLayout {
             edges {
               node {
-                alternate_languages {
-                  uid
-                  type
-                  lang
-                }
                 lang
                 type
+                prismicId
                 id
-                url
+                alternate_languages {
+                  id
+                  lang
+                  uid
+                  type
+                }
                 data {
                   body {
-                    ... on PrismicLayoutBodyHeader {
+                    ... on PrismicLayoutDataBodyHeader {
                       id
                       slice_type
-                      slice_label
                       primary {
                         slogan {
-                          text
-                        }
-                        buttontext {
-                          text
-                        }
-                        logo {
-                          alt
-                          url
-                        }
-                        buttonlink {
                           text
                         }
                         signinlink {
                           link_type
                           url
                         }
+                        buttontext {
+                          text
+                        }
+                        buttonlink {
+                          text
+                        }
+                        logo {
+                          alt
+                          url
+                          gatsbyImageData(
+                            layout: CONSTRAINED
+                            placeholder: BLURRED
+                          )
+                        }
                       }
                     }
-                    ... on PrismicLayoutBodyMenu {
+                    ... on PrismicLayoutDataBodyMenu {
                       id
-                      slice_label
                       slice_type
                       primary {
                         title {
@@ -111,37 +114,65 @@ const LayoutWithData = (props) => {
                         }
                       }
                       items {
-                        image {
-                          alt
-                          url
-                        }
-                        link {
+                        name {
                           text
                         }
-                        name {
+                        link {
                           text
                         }
                         externallink {
                           link_type
                           url
                         }
+                        image {
+                          alt
+                          url
+                        }
                       }
                     }
                   }
                   body1 {
-                    ... on PrismicLayoutBody1Footer {
+                    ... on PrismicLayoutDataBody1Badges {
                       id
-                      slice_label
+                      slice_type
+                      items {
+                        badge {
+                          alt
+                          url
+                          gatsbyImageData(
+                            layout: CONSTRAINED
+                            placeholder: BLURRED
+                          )
+                        }
+                      }
+                    }
+                    ... on PrismicLayoutDataBody1Books {
+                      id
                       slice_type
                       primary {
-                        buttontitle {
+                        title {
                           raw
+                        }
+                      }
+                      items {
+                        image {
+                          alt
+                          url
+                        }
+                      }
+                    }
+                    ... on PrismicLayoutDataBody1Footer {
+                      id
+                      slice_type
+                      primary {
+                        buttonlink {
+                          text
                         }
                         buttontext {
                           text
                         }
-                        buttonlink {
-                          text
+                        buttontitle {
+                          raw
                         }
                         copyright {
                           text
@@ -149,72 +180,118 @@ const LayoutWithData = (props) => {
                         logo {
                           alt
                           url
-                        }
-                        logotext {
-                          text
+                          gatsbyImageData(
+                            placeholder: BLURRED
+                            layout: CONSTRAINED
+                          )
                         }
                         logolink {
                           link_type
                           url
                         }
+                        logotext {
+                          text
+                        }
                       }
                       items {
-                        socialogo {
-                          alt
-                          url
-                        }
                         sociallink {
                           link_type
                           url
                         }
+                        socialogo {
+                          alt
+                          url
+                          gatsbyImageData(
+                            layout: CONSTRAINED
+                            placeholder: BLURRED
+                          )
+                        }
                       }
                     }
-                    ... on PrismicLayoutBody1Menu {
+                    ... on PrismicLayoutDataBody1Menu {
                       id
-                      slice_label
                       slice_type
+                      primary {
+                        title {
+                          text
+                        }
+                      }
                       items {
+                        externallink {
+                          link_type
+                          url
+                        }
                         name {
                           text
                         }
                         pagename {
                           text
                         }
-                        externallink {
-                          link_type
-                          url
-                        }
-                      }
-                      primary {
-                        title {
-                          text
-                        }
                       }
                     }
-                    ... on PrismicLayoutBody1Books {
+                  }
+                  body2 {
+                    ... on PrismicLayoutDataBody2Agencies {
                       id
                       slice_type
-                      slice_label
-                      items {
-                        image {
-                          alt
-                          url
-                        }
-                      }
                       primary {
                         title {
                           raw
                         }
-                      }
-                    }
-                    ... on PrismicLayoutBody1Badges {
-                      id
-                      slice_label
-                      slice_type
-                      items {
-                        badge {
+                        page {
+                          text
+                        }
+                        link {
+                          link_type
+                          url
+                        }
+                        image {
                           alt
                           url
+                          gatsbyImageData(
+                            layout: CONSTRAINED
+                            placeholder: BLURRED
+                          )
+                        }
+                        description {
+                          raw
+                        }
+                        buttontext {
+                          raw
+                        }
+                      }
+                    }
+                    ... on PrismicLayoutDataBody2Plans {
+                      id
+                      slice_type
+                      items {
+                        type
+                        image {
+                          alt
+                          url
+                          gatsbyImageData(
+                            layout: CONSTRAINED
+                            placeholder: BLURRED
+                          )
+                        }
+                        description {
+                          raw
+                        }
+                        cardtitle {
+                          raw
+                        }
+                        buttonprice {
+                          raw
+                        }
+                        buttonlink {
+                          link_type
+                          url
+                        }
+                        button {
+                          raw
+                        }
+                        benefits {
+                          raw
                         }
                       }
                     }
