@@ -158,6 +158,10 @@ const LayoutWithData = (props) => {
                         image {
                           alt
                           url
+                          gatsbyImageData(
+                            layout: CONSTRAINED
+                            placeholder: BLURRED
+                          )
                         }
                       }
                     }

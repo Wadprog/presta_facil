@@ -9,7 +9,7 @@ const Benefit = ({ primary, items }) => {
   return (
     <section className={styles.benefit}>
       <div className={styles.background}>
-        <Image image={image} fluid={image.fluid} />
+        <Image image={image} />
       </div>
       <div className={styles.container}>
         <div className={styles.title}>
