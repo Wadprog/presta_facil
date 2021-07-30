@@ -27,7 +27,7 @@ const Image = ({ image, className }) => {
       <img
         className={`${className} lozad`}
         data-src={image.url}
-        alt={image.alt}
+        alt={imageAlt}
         draggable="false"
       />
     );
@@ -38,7 +38,7 @@ const Image = ({ image, className }) => {
       <img
         className="lozad"
         data-src={image.url}
-        alt={image.alt}
+        alt={imageAlt}
         draggable="false"
       />
     );

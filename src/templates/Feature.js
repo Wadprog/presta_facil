@@ -104,7 +104,6 @@ export const query = graphql`
                   partnerslogo {
                     alt
                     url
-                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                   }
                 }
               }
