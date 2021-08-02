@@ -79,17 +79,9 @@ const Header = ({ data, hideMenu }) => {
                   click={toggleMobileMenu}
                 >
                   {isOpenMenu ? (
-                    <img
-                      src={close.publicURL}
-                      alt="close menu"
-                      loading="lazy"
-                    />
+                    <img src={close.publicURL} alt="close menu" />
                   ) : (
-                    <img
-                      src={burger.publicURL}
-                      alt="burger menu"
-                      loading="lazy"
-                    />
+                    <img src={burger.publicURL} alt="burger menu" />
                   )}
                 </IconButton>
               </div>
