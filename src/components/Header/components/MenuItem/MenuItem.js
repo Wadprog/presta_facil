@@ -87,7 +87,7 @@ const MenuItem = ({ primary, items, activeMenu, handleActiveMenu }) => {
             })}
           </div>
           <div className={style.imageWrapper}>
-            <img src={image.url} alt={image.alt} />
+            <img src={image.url} alt={image.alt} loading="lazy" />
           </div>
         </div>
       </div>
