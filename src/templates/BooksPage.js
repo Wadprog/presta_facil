@@ -102,7 +102,6 @@ export const query = graphql`
                   image {
                     alt
                     url
-                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                   }
                   buttonlink {
                     raw
