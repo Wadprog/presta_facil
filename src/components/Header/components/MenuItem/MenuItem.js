@@ -5,7 +5,6 @@ import { Link } from 'gatsby';
 import { globalHistory as history } from '@reach/router';
 
 import Arrow from './image/arrow.inline.svg';
-import Image from '@components/Image/Image';
 import LangContext from '@contexts';
 import { langPath } from '@helpers';
 import style from './MenuItem.module.scss';
@@ -13,7 +12,6 @@ import style from './MenuItem.module.scss';
 const MenuItem = ({ primary, items, activeMenu, handleActiveMenu }) => {
   const [activeImage, setActiveImage] = useState(0);
   const [image, setImage] = useState(items[activeImage].image);
-  console.log("🚀 ~ file: MenuItem.js ~ line 16 ~ MenuItem ~ image", image)
   const [isLinkActive, setIsLinkActive] = useState(false);
   const { location } = history;
   const title = primary.title.text;
