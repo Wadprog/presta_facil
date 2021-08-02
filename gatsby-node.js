@@ -106,4 +106,40 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { ...page },
     });
   });
+
+  const singlebookpage = await graphql(`
+    {
+      allPrismicSinglebookpage {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  singlebookpage.data.allPrismicSinglebookpage.nodes.forEach((page) => {
+    createPage({
+      path: page.url,
+      component: path.resolve(__dirname, 'src/templates/BookPage.js'),
+      context: { ...page },
+    });
+  });
+};
+
+exports.onCreateWebpackConfig = (helper) => {
+  const { stage, actions, getConfig } = helper;
+  if (stage === 'develop' || stage === 'build-javascript') {
+    const config = getConfig();
+    const miniCssExtractPlugin = config.plugins.find(
+      (plugin) => plugin.constructor.name === 'MiniCssExtractPlugin'
+    );
+    if (miniCssExtractPlugin) {
+      miniCssExtractPlugin.options.ignoreOrder = true;
+    }
+    actions.replaceWebpackConfig(config);
+  }
 };
