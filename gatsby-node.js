@@ -208,6 +208,28 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { ...page },
     });
   });
+
+  const contact = await graphql(`
+    {
+      allPrismicContact {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  contact.data.allPrismicContact.nodes.forEach((page) => {
+    createPage({
+      path: page.url,
+      component: path.resolve(__dirname, 'src/templates/ContactPage.js'),
+      context: { ...page },
+    });
+  });
 };
 
 exports.onCreateWebpackConfig = (helper) => {
