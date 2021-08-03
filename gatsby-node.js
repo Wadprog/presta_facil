@@ -392,6 +392,28 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { ...page },
     });
   });
+
+  const privacypolicy = await graphql(`
+    {
+      allPrismicPrivacypolicy {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  privacypolicy.data.allPrismicPrivacypolicy.nodes.forEach((page) => {
+    createPage({
+      path: page.url,
+      component: path.resolve(__dirname, 'src/templates/PrivacyPolicyPage.js'),
+      context: { ...page },
+    });
+  });
 };
 
 exports.onCreateWebpackConfig = (helper) => {
