@@ -279,6 +279,31 @@ exports.createPages = async ({ graphql, actions }) => {
       });
     }
   );
+
+  const pricesresellerpage = await graphql(`
+    {
+      allPrismicPricesresellerpage {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  pricesresellerpage.data.allPrismicPricesresellerpage.nodes.forEach((page) => {
+    createPage({
+      path: page.url,
+      component: path.resolve(
+        __dirname,
+        'src/templates/PricingResellerPage.js'
+      ),
+      context: { ...page },
+    });
+  });
 };
 
 exports.onCreateWebpackConfig = (helper) => {
