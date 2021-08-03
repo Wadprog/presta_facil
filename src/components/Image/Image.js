@@ -1,21 +1,24 @@
 import React, { useEffect } from 'react';
 import { object, string } from 'prop-types';
-import GatsbyImage from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import lozad from 'lozad';
 
-const Image = ({ image, fluid, className }) => {
+const Image = ({ image, className }) => {
   useEffect(() => {
     const observer = lozad();
     observer.observe();
   }, []);
 
-  if (fluid) {
+  const imageAltStub = ' ';
+  const imageAlt = image.alt ? image.alt : imageAltStub;
+
+  if (image.hasOwnProperty('gatsbyImageData')) {
     return (
       <GatsbyImage
         className={className}
-        fluid={fluid}
-        alt={fluid.alt}
-        draggable={false}
+        image={image.gatsbyImageData}
+        alt={imageAlt}
+        loading="eager"
       />
     );
   }
@@ -25,7 +28,7 @@ const Image = ({ image, fluid, className }) => {
       <img
         className={`${className} lozad`}
         data-src={image.url}
-        alt={image.alt}
+        alt={imageAlt}
         draggable="false"
       />
     );
@@ -36,7 +39,7 @@ const Image = ({ image, fluid, className }) => {
       <img
         className="lozad"
         data-src={image.url}
-        alt={image.alt}
+        alt={imageAlt}
         draggable="false"
       />
     );
@@ -46,7 +49,6 @@ const Image = ({ image, fluid, className }) => {
 
 Image.propTypes = {
   image: object,
-  fluid: object,
   className: string,
 };
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { object, string } from 'prop-types';
+import { object, string, number } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import lozad from 'lozad';
 
@@ -8,7 +8,7 @@ import { dateToString } from '@helpers';
 
 import style from './Item.module.scss';
 
-const Item = ({ title, videourl, tag, date }) => {
+const Item = ({ title, videourl, tag, date, index }) => {
   const [previewImage, setPreviewImage] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState();
 
@@ -39,7 +39,12 @@ const Item = ({ title, videourl, tag, date }) => {
     <div className={style.item}>
       <div className={style.container}>
         <div className={style.preview} onClick={handleOpenModal}>
-          {previewImage && <img data-src={previewImage} className="lozad" />}
+          {previewImage && index === 0 && (
+            <img src={previewImage} loading="eager" />
+          )}
+          {index !== 0 && previewImage && (
+            <img data-src={previewImage} className="lozad" />
+          )}
         </div>
         <div className={style.title}>
           <RichText render={title.raw} />
@@ -73,6 +78,7 @@ Item.propTypes = {
   videourl: object,
   tag: string,
   date: string,
+  index: number,
 };
 
 export default Item;

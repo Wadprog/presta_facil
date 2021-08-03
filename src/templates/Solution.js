@@ -41,6 +41,10 @@ export const query = graphql`
     allPrismicSolutionpage(filter: { uid: { eq: $uid }, lang: { eq: $lang } }) {
       edges {
         node {
+          uid
+          type
+          lang
+          id
           alternate_languages {
             id
             lang
@@ -48,56 +52,108 @@ export const query = graphql`
             type
           }
           data {
-            canonical {
+            metatitle {
               text
             }
             metadescription {
               text
             }
-            metatitle {
+            canonical {
               text
             }
             body {
-              ... on PrismicSolutionpageBodyHero {
+              ... on PrismicSolutionpageDataBodyBenefits {
                 id
                 slice_type
                 primary {
+                  title {
+                    raw
+                  }
                   buttonlink {
                     text
                   }
-                  buttontext {
+                  button {
                     text
+                  }
+                }
+                items {
+                  text {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                  }
+                }
+              }
+              ... on PrismicSolutionpageDataBodyBooking {
+                id
+                slice_type
+                primary {
+                  title {
+                    raw
+                  }
+                }
+              }
+              ... on PrismicSolutionpageDataBodyFeatures {
+                id
+                slice_type
+                primary {
+                  title {
+                    raw
+                  }
+                  buttonlink {
+                    text
+                  }
+                  button {
+                    text
+                  }
+                }
+                items {
+                  title {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
                   }
                   description {
+                    raw
+                  }
+                }
+              }
+              ... on PrismicSolutionpageDataBodyHero {
+                id
+                slice_type
+                primary {
+                  videobuttontext {
                     text
                   }
-                  modalctabuttonlink {
-                    text
+                  title {
+                    raw
                   }
-                  modalctabuttontext {
-                    text
+                  previewimage {
+                    alt
+                    url
+                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                   }
                   modalvideo {
                     link_type
                     url
                   }
-                  previewimage {
-                    url
-                    fluid(srcSetBreakpoints: 10) {
-                      aspectRatio
-                      base64
-                      sizes
-                      src
-                      srcSet
-                      srcSetWebp
-                      srcWebp
-                    }
-                    thumbnails
+                  modalctabuttontext {
+                    text
                   }
-                  title {
-                    raw
+                  modalctabuttonlink {
+                    text
                   }
-                  videobuttontext {
+                  description {
+                    text
+                  }
+                  buttontext {
+                    text
+                  }
+                  buttonlink {
                     text
                   }
                 }
@@ -108,7 +164,16 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PrismicSolutionpageBodyProjects {
+              ... on PrismicSolutionpageDataBodyPlans {
+                id
+                slice_type
+                primary {
+                  title {
+                    raw
+                  }
+                }
+              }
+              ... on PrismicSolutionpageDataBodyProjects {
                 id
                 slice_type
                 primary {
@@ -117,121 +182,41 @@ export const query = graphql`
                   }
                 }
                 items {
-                  description {
-                    raw
-                  }
                   title {
                     raw
-                  }
-                  link {
-                    url
-                    link_type
                   }
                   screenshot {
                     alt
                     url
-                    fluid(srcSetBreakpoints: 10) {
-                      aspectRatio
-                      base64
-                      sizes
-                      src
-                      srcSet
-                      srcSetWebp
-                      srcWebp
-                    }
-                    thumbnails
-                  }
-                }
-              }
-              ... on PrismicSolutionpageBodyQuestions {
-                id
-                slice_type
-                primary {
-                  title {
-                    raw
-                  }
-                }
-                items {
-                  content {
-                    raw
                   }
                   link {
                     link_type
                     url
                   }
-                  scan
-                  linktext {
-                    text
-                  }
-                  title {
-                    raw
-                  }
-                }
-              }
-              ... on PrismicSolutionpageBodyBenefits {
-                id
-                slice_type
-                primary {
-                  button {
-                    text
-                  }
-                  buttonlink {
-                    text
-                  }
-                  title {
-                    raw
-                  }
-                }
-                items {
-                  image {
-                    alt
-                    url
-                  }
-                  text {
-                    raw
-                  }
-                }
-              }
-              ... on PrismicSolutionpageBodyFeatures {
-                id
-                slice_type
-                primary {
-                  button {
-                    text
-                  }
-                  buttonlink {
-                    text
-                  }
-                  title {
-                    raw
-                  }
-                }
-                items {
                   description {
                     raw
                   }
-                  image {
-                    alt
+                }
+              }
+              ... on PrismicSolutionpageDataBodyQuestions {
+                id
+                slice_type
+                primary {
+                  title {
+                    raw
+                  }
+                }
+                items {
+                  linktext {
+                    text
+                  }
+                  link {
+                    link_type
                     url
                   }
-                  title {
+                  content {
                     raw
                   }
-                }
-              }
-              ... on PrismicSolutionpageBodyBooking {
-                id
-                slice_type
-                primary {
-                  title {
-                    raw
-                  }
-                }
-              }
-              ... on PrismicSolutionpageBodyPlans {
-                id
-                slice_type
-                primary {
                   title {
                     raw
                   }
@@ -239,10 +224,6 @@ export const query = graphql`
               }
             }
           }
-          uid
-          type
-          id
-          lang
         }
       }
     }
@@ -251,60 +232,60 @@ export const query = graphql`
         node {
           data {
             body2 {
-              ... on PrismicLayoutBody2Agencies {
+              ... on PrismicLayoutDataBody2Agencies {
                 id
                 slice_type
                 primary {
-                  buttontext {
-                    text
+                  title {
+                    raw
                   }
-                  description {
+                  page {
                     text
-                  }
-                  image {
-                    alt
-                    url
                   }
                   link {
                     link_type
                     url
                   }
-                  page {
-                    text
+                  image {
+                    alt
+                    url
                   }
-                  title {
+                  description {
+                    raw
+                  }
+                  buttontext {
                     text
                   }
                 }
               }
-              ... on PrismicLayoutBody2Plans {
+              ... on PrismicLayoutDataBody2Plans {
                 id
                 slice_type
                 items {
-                  benefits {
+                  type
+                  image {
+                    alt
+                    url
+                  }
+                  description {
                     raw
                   }
-                  button {
+                  cardtitle {
+                    raw
+                  }
+                  buttonprice {
                     raw
                   }
                   buttonlink {
                     link_type
                     url
                   }
-                  buttonprice {
+                  button {
                     raw
                   }
-                  cardtitle {
+                  benefits {
                     raw
                   }
-                  description {
-                    raw
-                  }
-                  image {
-                    alt
-                    url
-                  }
-                  type
                 }
               }
             }

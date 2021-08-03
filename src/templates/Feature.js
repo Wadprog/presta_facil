@@ -44,13 +44,28 @@ export const query = graphql`
     allPrismicFeaturepage(filter: { uid: { eq: $uid }, lang: { eq: $lang } }) {
       edges {
         node {
-          id
           uid
-          type
           lang
+          id
+          type
+          alternate_languages {
+            lang
+            id
+            type
+            uid
+          }
           data {
+            metatitle {
+              text
+            }
+            metadescription {
+              text
+            }
+            canonical {
+              text
+            }
             body {
-              ... on PrismicFeaturepageBodyHero {
+              ... on PrismicFeaturepageDataBodyHero {
                 id
                 slice_type
                 primary {
@@ -70,22 +85,13 @@ export const query = graphql`
                     text
                   }
                   modalvideo {
-                    link_type
                     url
+                    link_type
                   }
                   previewimage {
                     alt
                     url
-                    fluid(srcSetBreakpoints: 10) {
-                      aspectRatio
-                      base64
-                      sizes
-                      src
-                      srcSet
-                      srcSetWebp
-                      srcWebp
-                    }
-                    thumbnails
+                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                   }
                   title {
                     raw
@@ -101,85 +107,60 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PrismicFeaturepageBodyWorks {
+              ... on PrismicFeaturepageDataBodyQuestions {
                 id
                 slice_type
                 primary {
-                  description {
+                  title {
                     raw
                   }
+                }
+                items {
                   title {
+                    raw
+                  }
+                  linktext {
+                    text
+                  }
+                  link {
+                    link_type
+                    url
+                  }
+                  content {
+                    raw
+                  }
+                }
+              }
+              ... on PrismicFeaturepageDataBodyWorks {
+                id
+                slice_type
+                primary {
+                  title {
+                    raw
+                  }
+                  description {
                     raw
                   }
                   slider
                 }
                 items {
-                  link {
-                    link_type
+                  tag {
+                    text
+                  }
+                  screenshot {
+                    alt
                     url
                   }
                   name {
                     raw
                   }
-                  screenshot {
-                    alt
-                    url
-                    fluid(srcSetBreakpoints: 10) {
-                      aspectRatio
-                      base64
-                      sizes
-                      src
-                      srcSet
-                      srcSetWebp
-                      srcWebp
-                    }
-                    thumbnails
-                  }
-                  tag {
-                    text
-                  }
-                }
-              }
-              ... on PrismicFeaturepageBodyQuestions {
-                id
-                slice_type
-                primary {
-                  title {
-                    raw
-                  }
-                }
-                items {
-                  content {
-                    raw
-                  }
                   link {
                     link_type
                     url
                   }
-                  linktext {
-                    text
-                  }
-                  title {
-                    raw
-                  }
                 }
               }
             }
-            canonical {
-              text
-            }
-            metadescription {
-              text
-            }
-            metatitle {
-              text
-            }
-          }
-          alternate_languages {
-            id
-            lang
-            type
-            uid
           }
         }
       }

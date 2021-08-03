@@ -70,12 +70,17 @@ export const query = graphql`
     ) {
       edges {
         node {
+          uid
+          type
+          lang
+          id
           alternate_languages {
             id
             lang
-            uid
             type
+            uid
           }
+          tags
           data {
             backgroundpreview {
               alt
@@ -85,32 +90,26 @@ export const query = graphql`
             description {
               raw
             }
+            title {
+              raw
+            }
             preview {
               alt
               url
             }
-            title {
-              raw
-            }
-          }
-          uid
-          lang
-          id
-          type
-          tags
-        }
-      }
-    }
-    allPrismicBlogpostpageBodySubscribe(limit: 1) {
-      edges {
-        node {
-          slice_type
-          primary {
-            title {
-              raw
-            }
-            buttontext {
-              raw
+            body {
+              ... on PrismicBlogpostpageDataBodySubscribe {
+                id
+                slice_type
+                primary {
+                  title {
+                    raw
+                  }
+                  buttontext {
+                    raw
+                  }
+                }
+              }
             }
           }
         }

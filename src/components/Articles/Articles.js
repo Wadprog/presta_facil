@@ -62,12 +62,17 @@ const SectionWithData = ({ primary, currentLanguage }) => {
           ) {
             edges {
               node {
+                uid
+                type
+                lang
+                id
                 alternate_languages {
                   id
                   lang
-                  uid
                   type
+                  uid
                 }
+                tags
                 data {
                   backgroundpreview {
                     alt
@@ -77,19 +82,14 @@ const SectionWithData = ({ primary, currentLanguage }) => {
                   description {
                     raw
                   }
+                  title {
+                    raw
+                  }
                   preview {
                     alt
                     url
                   }
-                  title {
-                    raw
-                  }
                 }
-                uid
-                lang
-                id
-                type
-                tags
               }
             }
           }

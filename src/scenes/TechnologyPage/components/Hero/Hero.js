@@ -32,7 +32,7 @@ const Hero = ({ primary }) => {
           </div>
         </div>
         <div className={styles.imageWrapper}>
-          <Image className={styles.image} fluid={image.fluid} image={image} />
+          <Image className={styles.image} image={image} />
         </div>
       </div>
     </div>

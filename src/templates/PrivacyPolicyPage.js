@@ -49,10 +49,10 @@ export const query = graphql`
     ) {
       edges {
         node {
-          lang
           uid
-          id
           type
+          lang
+          id
           alternate_languages {
             id
             lang
@@ -60,16 +60,16 @@ export const query = graphql`
             uid
           }
           data {
-            canonical {
-              text
-            }
-            metadescription {
+            pagetitle {
               text
             }
             metatitle {
               text
             }
-            pagetitle {
+            metadescription {
+              text
+            }
+            canonical {
               text
             }
           }

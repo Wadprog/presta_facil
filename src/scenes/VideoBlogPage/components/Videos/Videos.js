@@ -81,8 +81,8 @@ const Videos = ({ primary, items }) => {
           </div>
         </div>
         <div className={style.list}>
-          {videoList.map((item) => {
-            return <Item {...item} key={parseString(item.title.raw)} />;
+          {videoList.map((item, index) => {
+            return <Item {...item} index={index} key={index} />;
           })}
         </div>
         <div className={style.buttonWrapper}>

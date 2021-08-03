@@ -10,8 +10,11 @@ import style from './BlogPage.module.scss';
 const BlogPage = ({ content, canonical, metatitle }) => {
   const { title } = content.allPrismicBlogpage.edges[0].node.data;
   const articlesList = content.allPrismicBlogpostpage.edges;
-  const { allPrismicBlogpostpageBodySubscribe: subscribeSection } = content;
-  const subscribeSectionContent = subscribeSection.edges[0].node.primary;
+  const lastArticleData = articlesList[0].node.data.body;
+  const subscribeSection = lastArticleData.find(
+    (item) => item.slice_type === 'subscribe'
+  );
+  const { primary: subscribeSectionContent } = subscribeSection;
 
   return (
     <div className={style.HomePage}>

@@ -56,17 +56,17 @@ export const query = graphql`
             uid
           }
           data {
-            canonical {
+            metatitle {
               text
             }
             metadescription {
               text
             }
-            metatitle {
+            canonical {
               text
             }
             body {
-              ... on PrismicPricespageBodyHero {
+              ... on PrismicPricespageDataBodyHero {
                 id
                 slice_type
                 primary {
@@ -78,7 +78,7 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PrismicPricespageBodyPartners {
+              ... on PrismicPricespageDataBodyPartners {
                 id
                 slice_type
                 primary {
@@ -93,7 +93,7 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PrismicPricespageBodyQuestions {
+              ... on PrismicPricespageDataBodyQuestions {
                 id
                 slice_type
                 primary {
@@ -102,9 +102,6 @@ export const query = graphql`
                   }
                 }
                 items {
-                  content {
-                    raw
-                  }
                   title {
                     raw
                   }
@@ -112,24 +109,27 @@ export const query = graphql`
                     link_type
                     url
                   }
+                  content {
+                    raw
+                  }
                 }
               }
-              ... on PrismicPricespageBodyContactus {
+              ... on PrismicPricespageDataBodyContactus {
                 id
                 slice_type
                 primary {
-                  buttonlink {
+                  subtitle {
                     raw
                   }
                   buttontext {
                     raw
                   }
-                  subtitle {
+                  buttonlink {
                     raw
                   }
                 }
               }
-              ... on PrismicPricespageBodyPackagesfeatures {
+              ... on PrismicPricespageDataBodyPackagesfeatures {
                 id
                 slice_type
                 primary {
@@ -138,24 +138,24 @@ export const query = graphql`
                   }
                 }
                 items {
-                  basicstatus {
-                    raw
-                  }
-                  businessstatus {
-                    raw
-                  }
-                  enterprisestatus {
+                  plusstatus {
                     raw
                   }
                   featuretitle {
                     raw
                   }
-                  plusstatus {
+                  enterprisestatus {
+                    raw
+                  }
+                  businessstatus {
+                    raw
+                  }
+                  basicstatus {
                     raw
                   }
                 }
               }
-              ... on PrismicPricespageBodyTariffplans {
+              ... on PrismicPricespageDataBodyTariffplans {
                 id
                 slice_type
                 primary {
@@ -195,16 +195,16 @@ export const query = graphql`
                 items {
                   oneprivacypriceeur
                   oneprivacypriceusd
-                  plandescription {
-                    raw
-                  }
-                  plantitle {
-                    raw
-                  }
                   threeprivacypriceeur
                   threeprivacypriceusd
                   twoprivacypriceeur
                   twoprivacypriceusd
+                  plantitle {
+                    raw
+                  }
+                  plandescription {
+                    raw
+                  }
                 }
               }
             }

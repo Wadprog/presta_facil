@@ -61,6 +61,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-next-seo`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
@@ -141,8 +142,16 @@ module.exports = {
       options: {
         repositoryName: prismicRepositoryName,
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
-        linkResolver: () => (doc) => linkResolver(doc),
+        linkResolver: (doc) => linkResolver(doc),
         schemas: {
+          copmarepage: {},
+          pricespage2: {},
+          pricespage3: {},
+          pricespagetest: {},
+          quizpage: {},
+          schema_blog_post: {},
+          termsofuse: {},
+          test: {},
           layout: require('./schemas/layout.json'),
           thankyoupage: require('./schemas/thankyoupage.json'),
           subprocessors: require('./schemas/subprocessors.json'),
@@ -165,7 +174,6 @@ module.exports = {
           solutionpage: require('./schemas/solutionpage.json'),
         },
         lang: '*',
-        prismicToolbar: false,
         imageImgixParams: {
           auto: 'compress,format',
           fit: 'max',

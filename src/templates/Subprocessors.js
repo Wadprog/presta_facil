@@ -46,23 +46,29 @@ export const query = graphql`
         node {
           uid
           type
-          lang
           id
+          lang
+          alternate_languages {
+            lang
+            type
+            uid
+            id
+          }
           data {
-            canonical {
-              text
-            }
-            metadescription {
+            pagetitle {
               text
             }
             metatitle {
               text
             }
-            pagetitle {
+            metadescription {
+              text
+            }
+            canonical {
               text
             }
             body {
-              ... on PrismicSubprocessorsBodyTable {
+              ... on PrismicSubprocessorsDataBodyTable {
                 id
                 slice_type
                 items {
@@ -80,7 +86,7 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PrismicSubprocessorsBodyTableRowsHeaders {
+              ... on PrismicSubprocessorsDataBodyTableRowsHeaders {
                 id
                 slice_type
                 items {
@@ -99,12 +105,6 @@ export const query = graphql`
                 }
               }
             }
-          }
-          alternate_languages {
-            id
-            lang
-            type
-            uid
           }
         }
       }

@@ -49,18 +49,15 @@ export const query = graphql`
         node {
           uid
           type
-          lang
           id
+          lang
           alternate_languages {
             id
             lang
-            type
             uid
+            type
           }
           data {
-            name {
-              raw
-            }
             metatitle {
               text
             }
@@ -70,47 +67,42 @@ export const query = graphql`
             canonical {
               text
             }
+            name {
+              raw
+            }
             body {
-              ... on PrismicPricesresellerpageBodyHero {
+              ... on PrismicPricesresellerpageDataBodyHero {
                 id
                 slice_type
                 primary {
-                  buttonlink {
+                  title {
+                    raw
+                  }
+                  videobuttontext {
                     text
                   }
-                  buttontext {
-                    text
-                  }
-                  description {
-                    text
-                  }
-                  modalctabuttonlink {
-                    text
-                  }
-                  modalctabuttontext {
-                    text
+                  previewimage {
+                    alt
+                    url
+                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                   }
                   modalvideo {
                     link_type
                     url
                   }
-                  previewimage {
-                    alt
-                    url
-                    fluid(srcSetBreakpoints: 10) {
-                      aspectRatio
-                      base64
-                      sizes
-                      src
-                      srcSet
-                      srcSetWebp
-                      srcWebp
-                    }
+                  modalctabuttontext {
+                    text
                   }
-                  title {
-                    raw
+                  modalctabuttonlink {
+                    text
                   }
-                  videobuttontext {
+                  description {
+                    text
+                  }
+                  buttontext {
+                    text
+                  }
+                  buttonlink {
                     text
                   }
                 }
@@ -121,94 +113,61 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PrismicPricesresellerpageBodyJoin {
+              ... on PrismicPricesresellerpageDataBodyJoin {
                 id
                 slice_type
                 primary {
-                  buttonlink {
+                  unitcost
+                  title {
                     raw
                   }
-                  buttontext {
-                    raw
-                  }
-                  carddescription {
-                    raw
-                  }
-                  cardsubdescription {
-                    raw
-                  }
-                  cardsubtitle {
+                  numberofdomains
+                  description {
                     raw
                   }
                   cardtitle {
                     raw
                   }
-                  description {
+                  cardsubtitle {
                     raw
                   }
-                  numberofdomains
-                  title {
+                  cardsubdescription {
                     raw
                   }
-                  unitcost
-                }
-              }
-              ... on PrismicPricesresellerpageBodyProgram {
-                id
-                slice_type
-                primary {
-                  title {
-                    raw
-                  }
-                  description {
-                    raw
-                  }
-                }
-                items {
-                  category
-                  image {
-                    alt
-                    url
-                  }
-                  text {
-                    raw
-                  }
-                }
-              }
-              ... on PrismicPricesresellerpageBodyTestimonials {
-                id
-                slice_type
-                primary {
-                  buttonlink {
+                  carddescription {
                     raw
                   }
                   buttontext {
                     raw
                   }
-                  buttontextshort {
-                    raw
-                  }
-                  image {
-                    alt
-                    url
-                  }
-                  subtitle {
-                    raw
-                  }
-                  title {
-                    raw
-                  }
-                }
-                items {
-                  author {
-                    raw
-                  }
-                  text {
+                  buttonlink {
                     raw
                   }
                 }
               }
-              ... on PrismicPricesresellerpageBodyBook {
+              ... on PrismicPricesresellerpageDataBodyProgram {
+                id
+                slice_type
+                primary {
+                  title {
+                    raw
+                  }
+                  description {
+                    raw
+                  }
+                }
+                items {
+                  text {
+                    raw
+                  }
+                  category
+                  image {
+                    alt
+                    url
+                  }
+                }
+              }
+              ... on PrismicPricesresellerpageDataBodyTestimonials {
                 id
                 slice_type
                 primary {
@@ -221,15 +180,39 @@ export const query = graphql`
                   image {
                     alt
                     url
-                    fluid(srcSetBreakpoints: 10) {
-                      aspectRatio
-                      base64
-                      sizes
-                      src
-                      srcSet
-                      srcSetWebp
-                      srcWebp
-                    }
+                  }
+                  buttontextshort {
+                    raw
+                  }
+                  buttontext {
+                    raw
+                  }
+                  buttonlink {
+                    raw
+                  }
+                }
+                items {
+                  text {
+                    raw
+                  }
+                  author {
+                    raw
+                  }
+                }
+              }
+              ... on PrismicPricesresellerpageDataBodyBook {
+                id
+                slice_type
+                primary {
+                  title {
+                    raw
+                  }
+                  subtitle {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
                   }
                   buttontext {
                     raw

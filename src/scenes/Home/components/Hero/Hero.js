@@ -13,12 +13,7 @@ import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
 
 const renderMobileImages = (images) => {
   const renderedImages = images.map((imgElement, index) => (
-    <Image
-      image={imgElement}
-      fluid={imgElement.fluid}
-      className={styles.mobileImage}
-      key={index}
-    />
+    <Image image={imgElement} className={styles.mobileImage} key={index} />
   ));
   return renderedImages;
 };
@@ -104,11 +99,7 @@ const Hero = ({ primary, items }) => {
           </div>
         </div>
         <div className={styles.imageWrapper}>
-          <Image
-            image={mainImage}
-            fluid={mainImage.fluid}
-            className={styles.image}
-          />
+          <img src={mainImage.url} className={styles.image} loading="eager" />
           <div className={styles.playButtonWrapper}>
             <div className={styles.playButton}>
               <IconButton

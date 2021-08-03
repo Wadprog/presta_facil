@@ -53,21 +53,30 @@ export const query = graphql`
           alternate_languages {
             id
             lang
-            uid
             type
+            uid
           }
           data {
+            backgroundpreview {
+              alt
+              url
+            }
             title {
               text
+            }
+            preview {
+              alt
+              url
             }
             description {
               text
             }
+            date
             canonical {
               text
             }
             body {
-              ... on PrismicLegalPagesBodyText {
+              ... on PrismicLegalPagesDataBodyText {
                 id
                 slice_type
                 primary {
@@ -77,7 +86,6 @@ export const query = graphql`
                 }
               }
             }
-            date
           }
         }
       }

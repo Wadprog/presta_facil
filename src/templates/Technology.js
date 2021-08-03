@@ -43,13 +43,13 @@ export const query = graphql`
           uid
           type
           lang
-          id
           alternate_languages {
             id
             lang
             type
             uid
           }
+          id
           data {
             metatitle {
               text
@@ -61,7 +61,7 @@ export const query = graphql`
               text
             }
             body {
-              ... on PrismicTechnologypageBodyHero {
+              ... on PrismicTechnologypageDataBodyBanner {
                 id
                 slice_type
                 primary {
@@ -69,85 +69,74 @@ export const query = graphql`
                     text
                   }
                   buttontext {
-                    raw
+                    text
                   }
-                  description {
-                    raw
+                  link {
+                    text
                   }
-                  image {
-                    alt
-                    url
-                    fluid(srcSetBreakpoints: 10) {
-                      aspectRatio
-                      base64
-                      sizes
-                      src
-                      srcSet
-                      srcSetWebp
-                      srcWebp
-                    }
-                    thumbnails
-                  }
-                  title {
-                    raw
-                  }
-                }
-              }
-              ... on PrismicTechnologypageBodyBenefits {
-                id
-                slice_type
-                primary {
-                  description {
-                    raw
-                  }
-                  image {
-                    alt
-                    url
-                  }
-                  subtitle {
-                    raw
-                  }
-                  title {
-                    raw
-                  }
-                }
-                items {
-                  image {
-                    alt
-                    url
-                    thumbnails
+                  linktext {
+                    text
                   }
                   text {
                     raw
                   }
+                  title {
+                    raw
+                  }
                 }
               }
-              ... on PrismicTechnologypageBodyWhatis {
+              ... on PrismicTechnologypageDataBodyBenefits {
                 id
                 slice_type
                 primary {
-                  buttonlink {
-                    text
-                  }
-                  buttontext {
+                  title {
                     raw
                   }
-                  description {
+                  subtitle {
                     raw
                   }
                   image {
                     alt
                     url
                   }
-                  subtitle {
-                    raw
-                  }
-                  title {
+                  description {
                     raw
                   }
                 }
+                items {
+                  text {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                  }
+                }
               }
-              ... on PrismicTechnologypageBodyHow {
+              ... on PrismicTechnologypageDataBodyHero {
+                id
+                slice_type
+                primary {
+                  title {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+                  }
+                  description {
+                    raw
+                  }
+                  buttontext {
+                    raw
+                  }
+                  buttonlink {
+                    text
+                  }
+                }
+              }
+              ... on PrismicTechnologypageDataBodyHow {
                 id
                 slice_type
                 primary {
@@ -166,27 +155,28 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PrismicTechnologypageBodyBanner {
+              ... on PrismicTechnologypageDataBodyWhatis {
                 id
                 slice_type
                 primary {
-                  buttonlink {
-                    text
+                  title {
+                    raw
+                  }
+                  subtitle {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                  }
+                  description {
+                    raw
                   }
                   buttontext {
                     raw
                   }
-                  link {
+                  buttonlink {
                     text
-                  }
-                  linktext {
-                    text
-                  }
-                  text {
-                    raw
-                  }
-                  title {
-                    raw
                   }
                 }
               }

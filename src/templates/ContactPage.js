@@ -56,8 +56,41 @@ export const query = graphql`
             uid
           }
           data {
+            title {
+              raw
+            }
+            successinformer {
+              text
+            }
+            question2 {
+              text
+            }
+            question {
+              text
+            }
+            metatitle {
+              text
+            }
+            metadescription {
+              text
+            }
+            email {
+              text
+            }
+            counter {
+              text
+            }
+            company {
+              text
+            }
+            canonical {
+              text
+            }
+            button {
+              text
+            }
             body {
-              ... on PrismicContactBodyProviders {
+              ... on PrismicContactDataBodyProviders {
                 id
                 slice_type
                 items {
@@ -66,39 +99,6 @@ export const query = graphql`
                   }
                 }
               }
-            }
-            button {
-              text
-            }
-            canonical {
-              text
-            }
-            company {
-              text
-            }
-            counter {
-              text
-            }
-            email {
-              text
-            }
-            metadescription {
-              text
-            }
-            metatitle {
-              text
-            }
-            question {
-              text
-            }
-            question2 {
-              text
-            }
-            successinformer {
-              text
-            }
-            title {
-              raw
             }
           }
         }

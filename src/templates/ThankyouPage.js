@@ -39,6 +39,12 @@ export const query = graphql`
           type
           lang
           id
+          alternate_languages {
+            id
+            lang
+            type
+            uid
+          }
           data {
             title {
               text
@@ -61,12 +67,6 @@ export const query = graphql`
             buttonlink {
               text
             }
-          }
-          alternate_languages {
-            id
-            lang
-            type
-            uid
           }
         }
       }

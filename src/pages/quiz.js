@@ -47,15 +47,15 @@ export const query = graphql`
     allPrismicQuiz(filter: { uid: { eq: $uid }, lang: { eq: $lang } }) {
       edges {
         node {
-          type
           uid
+          type
           lang
           id
           alternate_languages {
-            uid
-            type
-            lang
             id
+            lang
+            type
+            uid
           }
           data {
             pagetitle {

@@ -59,12 +59,11 @@ export const query = graphql`
           id
           alternate_languages {
             id
-            uid
             lang
             type
+            uid
           }
           data {
-            date
             pagetitle {
               text
             }
@@ -75,13 +74,46 @@ export const query = graphql`
               text
             }
             description {
-              raw
+              text
             }
             canonical {
               text
             }
+            date
             body {
-              ... on PrismicTosBodyText {
+              ... on PrismicTosDataBodyFourColumnTable {
+                id
+                slice_type
+                primary {
+                  theader4 {
+                    text
+                  }
+                  theader3 {
+                    text
+                  }
+                  theader2 {
+                    text
+                  }
+                  theader1 {
+                    text
+                  }
+                }
+                items {
+                  col4 {
+                    text
+                  }
+                  col3 {
+                    text
+                  }
+                  col2 {
+                    text
+                  }
+                  col1 {
+                    text
+                  }
+                }
+              }
+              ... on PrismicTosDataBodyText {
                 id
                 slice_type
                 primary {
@@ -90,60 +122,28 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PrismicTosBodyThreeColumnTable {
+              ... on PrismicTosDataBodyThreeColumnTable {
                 id
                 slice_type
                 primary {
-                  thead1 {
+                  thead3 {
                     text
                   }
                   thead2 {
                     text
                   }
-                  thead3 {
+                  thead1 {
                     text
                   }
                 }
                 items {
-                  col1 {
+                  col3 {
                     text
                   }
                   col2 {
                     text
                   }
-                  col3 {
-                    text
-                  }
-                }
-              }
-              ... on PrismicTosBodyFourColumnTable {
-                id
-                slice_type
-                primary {
-                  theader1 {
-                    text
-                  }
-                  theader2 {
-                    text
-                  }
-                  theader3 {
-                    text
-                  }
-                  theader4 {
-                    text
-                  }
-                }
-                items {
                   col1 {
-                    text
-                  }
-                  col2 {
-                    text
-                  }
-                  col3 {
-                    text
-                  }
-                  col4 {
                     text
                   }
                 }

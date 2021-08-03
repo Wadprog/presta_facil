@@ -46,55 +46,48 @@ export const query = graphql`
     ) {
       edges {
         node {
-          alternate_languages {
-            lang
-            id
-            type
-            uid
-          }
           uid
           type
           lang
+          id
+          alternate_languages {
+            id
+            lang
+            type
+            uid
+          }
           data {
-            bookdescription {
-              text
-            }
-            bookimage {
-              alt
-              url
-              fluid(srcSetBreakpoints: 10) {
-                aspectRatio
-                base64
-                sizes
-                src
-                srcSet
-                srcSetWebp
-                srcWebp
-              }
-              dimensions {
-                width
-                height
-              }
-            }
-            booktitle {
-              text
-            }
-            bookurl {
-              text
-            }
-            buttontext {
-              text
-            }
-            canonical {
-              text
-            }
-            consenttext {
+            metatitle {
               text
             }
             metadescription {
               text
             }
-            metatitle {
+            consenttext {
+              text
+            }
+            canonical {
+              text
+            }
+            buttontext {
+              text
+            }
+            bookurl {
+              text
+            }
+            booktitle {
+              text
+            }
+            bookimage {
+              alt
+              url
+              gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+              dimensions {
+                height
+                width
+              }
+            }
+            bookdescription {
               text
             }
           }

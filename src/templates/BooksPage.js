@@ -62,20 +62,20 @@ export const query = graphql`
             uid
           }
           data {
-            canonical {
+            pagetitle {
+              raw
+            }
+            metatitle {
               text
             }
             metadescription {
               text
             }
-            metatitle {
+            canonical {
               text
             }
-            pagetitle {
-              raw
-            }
             body {
-              ... on PrismicBookpageBodyBooks {
+              ... on PrismicBookpageDataBodyBooks {
                 id
                 slice_type
                 items {
@@ -86,24 +86,23 @@ export const query = graphql`
                     text
                   }
                   image {
-                    url
                     alt
-                    fluid(srcSetBreakpoints: 10) {
-                      aspectRatio
-                      base64
-                      sizes
-                      src
-                      srcSet
-                      srcSetWebp
-                      srcWebp
-                    }
+                    url
+                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                   }
                 }
               }
-              ... on PrismicBookpageBodyCta {
+              ... on PrismicBookpageDataBodyCta {
                 id
                 slice_type
                 primary {
+                  sectiontitle {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                  }
                   buttonlink {
                     raw
                   }
@@ -111,22 +110,6 @@ export const query = graphql`
                     raw
                   }
                   description {
-                    raw
-                  }
-                  image {
-                    alt
-                    url
-                    fluid(srcSetBreakpoints: 10) {
-                      aspectRatio
-                      base64
-                      sizes
-                      src
-                      srcSet
-                      srcSetWebp
-                      srcWebp
-                    }
-                  }
-                  sectiontitle {
                     raw
                   }
                 }

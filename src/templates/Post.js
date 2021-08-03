@@ -46,7 +46,6 @@ export const query = graphql`
           type
           lang
           id
-          tags
           alternate_languages {
             id
             lang
@@ -54,66 +53,23 @@ export const query = graphql`
             uid
           }
           data {
-            canonical {
-              text
-            }
-            description {
-              text
-            }
-            title {
-              text
-            }
             backgroundpreview {
               alt
               url
+            }
+            title {
+              text
             }
             preview {
               alt
               url
             }
             date
+            canonical {
+              text
+            }
             body {
-              ... on PrismicBlogpostpageBodyText {
-                id
-                slice_type
-                primary {
-                  text {
-                    raw
-                  }
-                }
-              }
-              ... on PrismicBlogpostpageBodyQuote {
-                id
-                slice_type
-                primary {
-                  quote {
-                    raw
-                  }
-                }
-              }
-              ... on PrismicBlogpostpageBodyImage {
-                id
-                slice_type
-                primary {
-                  caption {
-                    raw
-                  }
-                  image {
-                    alt
-                    url
-                  }
-                }
-              }
-              ... on PrismicBlogpostpageBodyVideo {
-                id
-                slice_type
-                primary {
-                  video {
-                    url
-                  }
-                }
-              }
-              ... on PrismicBlogpostpageBodyAgencies {
+              ... on PrismicBlogpostpageDataBodyAgencies {
                 id
                 slice_type
                 primary {
@@ -130,34 +86,82 @@ export const query = graphql`
                     alt
                     url
                   }
-                }
-              }
-              ... on PrismicBlogpostpageBodyArticles {
-                id
-                slice_type
-                primary {
-                  buttontext {
-                    raw
-                  }
-                  title {
+                  sectiontitle {
                     raw
                   }
                 }
               }
-              ... on PrismicBlogpostpageBodySubscribe {
+              ... on PrismicBlogpostpageDataBodyArticles {
                 id
                 slice_type
                 primary {
+                  title {
+                    raw
+                  }
                   buttontext {
                     raw
                   }
+                }
+              }
+              ... on PrismicBlogpostpageDataBodyImage {
+                id
+                slice_type
+                primary {
+                  caption {
+                    raw
+                  }
+                  image {
+                    alt
+                    url
+                  }
+                }
+              }
+              ... on PrismicBlogpostpageDataBodyQuote {
+                id
+                slice_type
+                primary {
+                  quote {
+                    raw
+                  }
+                }
+              }
+              ... on PrismicBlogpostpageDataBodySubscribe {
+                id
+                slice_type
+                primary {
                   title {
                     raw
+                  }
+                  buttontext {
+                    raw
+                  }
+                }
+              }
+              ... on PrismicBlogpostpageDataBodyText {
+                id
+                slice_type
+                primary {
+                  text {
+                    raw
+                  }
+                }
+              }
+              ... on PrismicBlogpostpageDataBodyVideo {
+                id
+                slice_type
+                primary {
+                  video {
+                    link_type
+                    url
                   }
                 }
               }
             }
+            description {
+              text
+            }
           }
+          tags
         }
       }
     }

@@ -40,27 +40,26 @@ export const query = graphql`
       edges {
         node {
           uid
-          type
           lang
           id
           alternate_languages {
             id
             lang
-            uid
             type
+            uid
           }
           data {
-            canonical {
+            metatitle {
               text
             }
             metadescription {
               text
             }
-            metatitle {
+            canonical {
               text
             }
             body {
-              ... on PrismicVideopageBodyVideolist {
+              ... on PrismicVideopageDataBodyVideolist {
                 id
                 slice_type
                 primary {
@@ -80,7 +79,7 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PrismicVideopageBodyCta {
+              ... on PrismicVideopageDataBodyCta {
                 id
                 slice_type
                 primary {
@@ -93,12 +92,12 @@ export const query = graphql`
                   description {
                     raw
                   }
+                  sectiontitle {
+                    raw
+                  }
                   image {
                     alt
                     url
-                  }
-                  sectiontitle {
-                    raw
                   }
                 }
               }

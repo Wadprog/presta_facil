@@ -5,7 +5,6 @@ import { Link } from 'gatsby';
 import { globalHistory as history } from '@reach/router';
 
 import Arrow from './image/arrow.inline.svg';
-import Image from '@components/Image/Image';
 import LangContext from '@contexts';
 import { langPath } from '@helpers';
 import style from './MenuItem.module.scss';
@@ -86,7 +85,7 @@ const MenuItem = ({ primary, items, activeMenu, handleActiveMenu }) => {
             })}
           </div>
           <div className={style.imageWrapper}>
-            <Image image={image} />
+            <img src={image.url} alt={image.alt} loading="lazy" />
           </div>
         </div>
       </div>
