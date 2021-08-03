@@ -230,6 +230,28 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { ...page },
     });
   });
+
+  const pricespage = await graphql(`
+    {
+      allPrismicPricespage {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  pricespage.data.allPrismicPricespage.nodes.forEach((page) => {
+    createPage({
+      path: page.url,
+      component: path.resolve(__dirname, 'src/templates/PricesPage.js'),
+      context: { ...page },
+    });
+  });
 };
 
 exports.onCreateWebpackConfig = (helper) => {
