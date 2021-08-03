@@ -99,7 +99,7 @@ const Hero = ({ primary, items }) => {
           </div>
         </div>
         <div className={styles.imageWrapper}>
-          <Image image={mainImage} className={styles.image} />
+          <img src={mainImage.url} className={styles.image} loading="eager" />
           <div className={styles.playButtonWrapper}>
             <div className={styles.playButton}>
               <IconButton
