@@ -304,6 +304,28 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { ...page },
     });
   });
+
+  const thankyouPages = await graphql(`
+    {
+      allPrismicThankyoupage {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  thankyouPages.data.allPrismicThankyoupage.nodes.forEach((page) => {
+    createPage({
+      path: page.url,
+      component: path.resolve(__dirname, 'src/templates/ThankyouPage.js'),
+      context: { ...page },
+    });
+  });
 };
 
 exports.onCreateWebpackConfig = (helper) => {
