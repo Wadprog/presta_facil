@@ -14,9 +14,9 @@ const QuizPage = ({ pageTitle }) => {
   return (
     <div className={style.quizPage}>
       <div className={style.container}>
-        {/* <div className={style.headlineContainer}>
+        <div className={style.headlineContainer}>
           <RichText render={pageTitle.raw} />
-        </div> */}
+        </div>
         <iframe
           className={`${style.frame} lozad`}
           src="https://www.videoask.com/frwmkcwhp"
