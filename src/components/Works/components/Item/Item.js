@@ -16,7 +16,7 @@ const Item = ({ link, screenshot, name, tag }) => {
       rel="noopener noreferrer"
     >
       <div className={style.imageBlock}>
-        <Image image={screenshot} fluid={screenshot.fluid} />
+        <Image image={screenshot} />
       </div>
       <div className={style.textBlock}>
         <div className={style.name}>

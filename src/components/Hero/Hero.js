@@ -57,11 +57,7 @@ const Hero = ({ primary, items }) => {
           </div>
         </div>
         <div className={styles.imageWrapper}>
-          <Image
-            className={styles.image}
-            image={previewImage}
-            fluid={previewImage.fluid}
-          />
+          <Image className={styles.image} image={previewImage} />
           <div className={styles.playButtonWrapper}>
             <div className={styles.playButton}>
               <IconButton variant={VARIANT_ICON.PLAY} click={handleOpenModal}>

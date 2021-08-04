@@ -15,11 +15,7 @@ const Item = ({ title, link, description, screenshot }) => {
         <RichText render={description.raw} />
       </div>
       <div className={styles.imageWrapper}>
-        <Image
-          className={styles.image}
-          fluid={screenshot.fluid}
-          image={screenshot}
-        />
+        <Image className={styles.image} image={screenshot} />
       </div>
     </div>
   );

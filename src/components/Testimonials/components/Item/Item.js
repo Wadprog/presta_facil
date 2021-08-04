@@ -11,7 +11,7 @@ const Item = ({ photo, name, company, text }) => {
     <div className={style.container}>
       <Quote className={style.quote} />
       <div className={style.user}>
-        <Image image={photo} fluid={photo.fluid} className={style.photo} />
+        <Image image={photo} className={style.photo} />
         <div className={style.name}>
           <RichText render={name.raw} />
         </div>
