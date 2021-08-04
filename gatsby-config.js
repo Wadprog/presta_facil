@@ -89,7 +89,15 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `static/images/meta/tile.png`, // This path is relative to the root of the site.
+        icon: `static/images/meta/tile.png`,
+        icons: [
+          {
+            src: `static/images/meta/tile.png`,
+            sizes: '513x513',
+            type: 'image/png',
+            purpose: 'any maskable',
+          },
+        ],
       },
     },
     {
@@ -179,6 +187,18 @@ module.exports = {
           fit: 'max',
           q: 45,
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [
+          `/feature/*`,
+          `/solution/*`,
+          `/technology/*`,
+          `/pricing/`,
+          `/pricing-enterprise/`,
+        ],
       },
     },
   ],
