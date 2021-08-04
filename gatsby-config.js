@@ -189,7 +189,5 @@ module.exports = {
         },
       },
     },
-    `gatsby-plugin-preload-link-crossorigin`,
-    `gatsby-plugin-offline`,
   ],
 };
