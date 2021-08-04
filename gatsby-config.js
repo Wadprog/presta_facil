@@ -189,5 +189,6 @@ module.exports = {
         },
       },
     },
+    `gatsby-plugin-remove-serviceworker`,
   ],
 };
