@@ -189,17 +189,6 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `gatsby-plugin-offline`,
-      options: {
-        precachePages: [
-          `/feature/*`,
-          `/solution/*`,
-          `/technology/*`,
-          `/pricing/`,
-          `/pricing-enterprise/`,
-        ],
-      },
-    },
+    `gatsby-plugin-offline`,
   ],
 };
