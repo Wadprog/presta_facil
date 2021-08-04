@@ -21,7 +21,7 @@ const Item = ({ image, text, title, pagename }) => {
         <RichText render={text.raw} />
       </div>
       <div className={style.imageWrapper}>
-        <Image image={image} fluid={image.fluid} className={style.image} />
+        <Image image={image} className={style.image} />
       </div>
       <div className={style.buttonWrapper}>
         <Button variant={VARIANT.PRIMARY} fullWidth element="button">

@@ -30,7 +30,7 @@ const Book = ({ primary }) => {
           </div>
         </div>
         <div className={style.image}>
-          <Image image={image} fluid={image.fluid} />
+          <Image image={image} />
         </div>
         <div className={classnames(style.button, style.mobile)}>
           <Button
