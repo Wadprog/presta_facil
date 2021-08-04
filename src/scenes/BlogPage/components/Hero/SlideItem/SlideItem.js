@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { array, object, string } from 'prop-types';
-import style from './SlideItem.module.scss';
 import { RichText } from 'prismic-reactjs';
-import { dateToString, langPath } from '@helpers';
 import { Link } from 'gatsby';
+import { array, object, string } from 'prop-types';
+
+import { dateToString, langPath } from '@helpers';
 import LangContext from '@contexts';
+import style from './SlideItem.module.scss';
 
 const SlideItem = ({ data, tags, uid: itemPath }) => {
   const { backgroundpreview, title, date, description } = data;
@@ -16,7 +17,6 @@ const SlideItem = ({ data, tags, uid: itemPath }) => {
           className={style.preview}
           src={backgroundpreview.url}
           alt={backgroundpreview.alt}
-          loading="lazy"
         />
       ) : (
         <div className={style.placeholder}></div>
