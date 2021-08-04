@@ -190,17 +190,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-preload-link-crossorigin`,
-    {
-      resolve: `gatsby-plugin-offline`,
-      options: {
-        precachePages: [
-          `/feature/*`,
-          `/solution/*`,
-          `/technology/*`,
-          `/pricing/`,
-          `/pricing-enterprise/`,
-        ],
-      },
-    },
+    `gatsby-plugin-offline`,
   ],
 };
