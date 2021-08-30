@@ -8,11 +8,14 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion';
+import range from 'lodash.range';
+
+import styles from './Content.module.scss';
 
 const Content = ({ items }) => {
-  const contentItems = items.map(({ title, content }) => {
+  const contentItems = items.map(({ title, content }, index) => {
     return (
-      <AccordionItem key={title.text}>
+      <AccordionItem key={title.text} uuid={index.toString()}>
         <AccordionItemHeading>
           <AccordionItemButton>
             <RichText render={title.raw} />
@@ -25,9 +28,14 @@ const Content = ({ items }) => {
     );
   });
 
+  const preExpandedItems = range(items.length).map((item) => item.toString());
   const isContentItems = contentItems.length > 0;
 
-  return <Accordion>{isContentItems && contentItems}</Accordion>;
+  return (
+    <Accordion className={styles.accordion} preExpanded={preExpandedItems}>
+      {isContentItems && contentItems}
+    </Accordion>
+  );
 };
 
 Content.propTypes = {
