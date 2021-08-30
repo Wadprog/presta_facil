@@ -15,14 +15,20 @@ import styles from './Content.module.scss';
 const Content = ({ items }) => {
   const contentItems = items.map(({ title, content }, index) => {
     return (
-      <AccordionItem key={title.text} uuid={index.toString()}>
+      <AccordionItem
+        key={title.text}
+        uuid={index.toString()}
+        className={styles.accordionItem}
+      >
         <AccordionItemHeading>
-          <AccordionItemButton>
+          <AccordionItemButton className={styles.accordionItemButton}>
             <RichText render={title.raw} />
           </AccordionItemButton>
         </AccordionItemHeading>
-        <AccordionItemPanel>
-          <RichText render={content.raw} />
+        <AccordionItemPanel className={styles.accordionItemPanel}>
+          <div className={styles.content}>
+            <RichText render={content.raw} />
+          </div>
         </AccordionItemPanel>
       </AccordionItem>
     );
@@ -32,7 +38,12 @@ const Content = ({ items }) => {
   const isContentItems = contentItems.length > 0;
 
   return (
-    <Accordion className={styles.accordion} preExpanded={preExpandedItems}>
+    <Accordion
+      className={styles.accordion}
+      preExpanded={preExpandedItems}
+      allowMultipleExpanded
+      allowZeroExpanded
+    >
       {isContentItems && contentItems}
     </Accordion>
   );
