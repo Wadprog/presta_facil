@@ -12,6 +12,19 @@ import range from 'lodash.range';
 
 import styles from './Content.module.scss';
 
+const propsWithUniqueKey = (props, key) => {
+  return Object.assign(props || {}, { key });
+};
+
+const htmlSerializer = (type, element, key) => {
+  if (type !== 'image') {
+    return;
+  }
+
+  const props = { src: element.url, alt: element.alt || '', loading: 'lazy' };
+  return React.createElement('img', propsWithUniqueKey(props, key));
+};
+
 const Content = ({ items }) => {
   const contentItems = items.map(({ title, content }, index) => {
     return (
@@ -27,7 +40,7 @@ const Content = ({ items }) => {
         </AccordionItemHeading>
         <AccordionItemPanel className={styles.accordionItemPanel}>
           <div className={styles.content}>
-            <RichText render={content.raw} />
+            <RichText render={content.raw} htmlSerializer={htmlSerializer} />
           </div>
         </AccordionItemPanel>
       </AccordionItem>
