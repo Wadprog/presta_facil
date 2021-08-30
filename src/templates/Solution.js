@@ -222,6 +222,19 @@ export const query = graphql`
                   }
                 }
               }
+              ... on PrismicSolutionpageDataBodyContent {
+                id
+                slice_type
+                items {
+                  title {
+                    raw
+                    text
+                  }
+                  content {
+                    raw
+                  }
+                }
+              }
             }
           }
         }
