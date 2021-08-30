@@ -52,14 +52,16 @@ const Content = ({ items }) => {
   const isContentItems = contentItems.length > 0;
 
   return (
-    <Accordion
-      className={styles.accordion}
-      preExpanded={preExpandedItems}
-      allowMultipleExpanded
-      allowZeroExpanded
-    >
-      {isContentItems && contentItems}
-    </Accordion>
+    <section className={styles.benefits}>
+      <Accordion
+        className={styles.accordion}
+        preExpanded={preExpandedItems}
+        allowMultipleExpanded
+        allowZeroExpanded
+      >
+        {isContentItems && contentItems}
+      </Accordion>
+    </section>
   );
 };
 
