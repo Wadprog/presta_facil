@@ -26,6 +26,8 @@ const htmlSerializer = (type, element, key) => {
 };
 
 const Content = ({ items }) => {
+  const preExpandedItems = range(items.length).map((item) => item.toString());
+
   const contentItems = items.map(({ title, content }, index) => {
     return (
       <AccordionItem
@@ -47,7 +49,6 @@ const Content = ({ items }) => {
     );
   });
 
-  const preExpandedItems = range(items.length).map((item) => item.toString());
   const isContentItems = contentItems.length > 0;
 
   return (
