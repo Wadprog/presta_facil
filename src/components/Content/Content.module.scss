@@ -1,0 +1,16 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.accordion {
+  max-width: 896px;
+  margin: 0 auto;
+  :global {
+    [aria-expanded~='true'] {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      &::after {
+        transform: scale(-1);
+      }
+    }
+  }
+}
