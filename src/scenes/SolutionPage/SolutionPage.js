@@ -13,6 +13,7 @@ import Plans from '@components/Plans';
 import Calendly from '@components/Calendly/Calendly';
 import FaqSemanticMarkup from '@components/FaqSemanticMarkup/FaqSemanticMarkup';
 import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
+import Content from '@components/Content/Content';
 
 const SolutionPage = ({
   current: body,
@@ -62,6 +63,10 @@ const SolutionPage = ({
                 key={`${section.type}${index}`}
               />
             );
+          case 'content':
+            return <Content {...section} key={`${section.type}${index}`} />;
+          default:
+            throw new Error(`Unknown section type: ${section.slice_type}`);
         }
       })}
       {pageUid !== hospitalityPageUid && <Agencies {...agenciesSection} />}
