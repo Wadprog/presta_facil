@@ -8,6 +8,7 @@ import Questions from '@components/Questions/Questions';
 import Works from './components/Works';
 import FaqSemanticMarkup from '@components/FaqSemanticMarkup/FaqSemanticMarkup';
 import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
+import Content from '@components/Content/Content';
 
 const FeaturePage = ({ current: body, canonical, metatitle }) => {
   const questions = body.filter((item) => item.slice_type === 'questions');
@@ -25,6 +26,10 @@ const FeaturePage = ({ current: body, canonical, metatitle }) => {
           case 'questions':
             return (
               <Questions {...section} key={`${section.slice_type}${index}`} />
+            );
+          case 'content':
+            return (
+              <Content {...section} key={`${section.slice_type}${index}`} />
             );
           default:
             throw new Error(`Unknown section type: ${section.slice_type}`);
