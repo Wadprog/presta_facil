@@ -180,6 +180,19 @@ export const query = graphql`
                   }
                 }
               }
+              ... on PrismicTechnologypageDataBodyContent {
+                id
+                slice_type
+                items {
+                  title {
+                    raw
+                    text
+                  }
+                  content {
+                    raw
+                  }
+                }
+              }
             }
           }
         }
