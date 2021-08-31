@@ -266,6 +266,33 @@
               }
             },
             "repeat" : { }
+          },
+          "content" : {
+            "type" : "Slice",
+            "fieldset" : "content",
+            "description" : "content",
+            "icon" : "art_track",
+            "display" : "list",
+            "non-repeat" : { },
+            "repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading2",
+                  "label" : "title",
+                  "placeholder" : "Add title (question)"
+                }
+              },
+              "content" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item",
+                  "allowTargetBlank" : true,
+                  "label" : "content",
+                  "placeholder" : "Add content"
+                }
+              }
+            }
           }
         }
       }
