@@ -9,6 +9,7 @@ import WhatIs from './components/WhatIs/WhatIs';
 import Features from './components/Features/Features';
 import Banner from './components/Banner/Banner';
 import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
+import Content from '@components/Content/Content';
 
 const TechnologyPage = ({ current: body, metatitle, canonical }) => {
   return (
@@ -32,6 +33,10 @@ const TechnologyPage = ({ current: body, metatitle, canonical }) => {
           case 'banner':
             return (
               <Banner {...section} key={`${section.slice_type}${index}`} />
+            );
+          case 'content':
+            return (
+              <Content {...section} key={`${section.slice_type}${index}`} />
             );
           default:
             throw new Error(`Unknown section type: ${section.slice_type}`);
