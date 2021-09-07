@@ -27,6 +27,7 @@ const Page = ({ data }) => {
         pageUid={uid}
         canonical={canonical}
         metatitle={metatitle}
+        lang={lang}
       />
     </Layout>
   );
@@ -250,7 +251,7 @@ export const query = graphql`
                 slice_type
                 primary {
                   title {
-                    raw
+                    text
                   }
                   page {
                     text
