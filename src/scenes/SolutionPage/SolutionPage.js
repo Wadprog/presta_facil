@@ -23,8 +23,7 @@ const SolutionPage = ({
   metatitle,
   lang: pageLang,
 }) => {
-  const mainSectionLang =
-    mainSection[0].node.data.language.text === 'en-gb' ? 'en-gb' : 'pt-br';
+  const mainSectionLang = mainSection[0].node.data.language.text;
   const agenciesSection =
     pageLang === mainSectionLang
       ? mainSection[0].node.data.body2[0]
