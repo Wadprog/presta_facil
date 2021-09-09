@@ -21,14 +21,15 @@ const SolutionPage = ({
   pageUid,
   canonical,
   metatitle,
-  lang,
+  lang: pageLang,
 }) => {
+  const mainSectionLang = mainSection[0].node.data.language.text;
   const agenciesSection =
-    lang === 'en-gb'
+    pageLang === mainSectionLang
       ? mainSection[0].node.data.body2[0]
       : mainSection[1].node.data.body2[0];
   const plansSection =
-    lang === 'en-gb'
+    pageLang === mainSectionLang
       ? mainSection[0].node.data.body2[1]
       : mainSection[1].node.data.body2[1];
   const hospitalityPageUid = 'hospitality';
