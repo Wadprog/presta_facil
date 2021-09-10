@@ -270,6 +270,9 @@ export const query = graphql`
                   buttontext {
                     text
                   }
+                  linktext {
+                    text
+                  }
                 }
               }
               ... on PrismicLayoutDataBody2Plans {
