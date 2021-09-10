@@ -335,6 +335,9 @@ export const query = graphql`
                   buttontext {
                     text
                   }
+                  linktext {
+                    text
+                  }
                 }
               }
             }

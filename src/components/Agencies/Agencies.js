@@ -16,6 +16,7 @@ const Agencies = ({ primary }) => {
     title,
     page: buttonLink,
     description,
+    linktext: linkText,
   } = primary;
 
   return (
@@ -31,7 +32,7 @@ const Agencies = ({ primary }) => {
             to={`${langPath(currentLang)}/${buttonLink.text}`}
             className={style.link}
           >
-            Learn More
+            {linkText.text}
           </Link>
           <div className={style.button}>
             <Button

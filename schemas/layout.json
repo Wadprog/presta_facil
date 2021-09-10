@@ -57,6 +57,14 @@
                   "label": "page"
                 }
               },
+              "linktext": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Link text",
+                  "placeholder": "Add link text"
+                }
+              },
               "image": {
                 "type": "Image",
                 "config": {
