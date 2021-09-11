@@ -370,6 +370,14 @@
                   "single": "paragraph",
                   "label": "pageName"
                 }
+              },
+              "buttontext": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Button text",
+                  "placeholder": "Add button text (e.g. Learn more)"
+                }
               }
             }
           },

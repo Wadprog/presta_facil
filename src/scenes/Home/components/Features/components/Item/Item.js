@@ -9,7 +9,7 @@ import { parseString, langPath } from '@helpers';
 import LangContext from '@contexts';
 import Image from '@components/Image/Image';
 
-const Item = ({ image, text, title, pagename }) => {
+const Item = ({ image, text, title, pagename, buttontext }) => {
   const currentLang = useContext(LangContext);
   const link = langPath(currentLang) + '/' + parseString(pagename.raw);
   return (
@@ -25,7 +25,7 @@ const Item = ({ image, text, title, pagename }) => {
       </div>
       <div className={style.buttonWrapper}>
         <Button variant={VARIANT.PRIMARY} fullWidth element="button">
-          Learn more
+          {buttontext.text}
         </Button>
       </div>
     </Link>
@@ -36,6 +36,7 @@ Item.propTypes = {
   text: object,
   title: object,
   pagename: object,
+  buttontext: object,
 };
 
 export default Item;

@@ -216,6 +216,9 @@ export const query = graphql`
                   pagename {
                     raw
                   }
+                  buttontext {
+                    text
+                  }
                   image {
                     alt
                     url
