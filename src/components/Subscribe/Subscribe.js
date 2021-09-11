@@ -10,7 +10,7 @@ import useGetImages from './useGetImages';
 import styles from './Subscribe.module.scss';
 
 const Subscribe = ({ primary }) => {
-  const { title, buttontext: buttonText } = primary;
+  const { title, buttontext: buttonText, placeholder: placeHolder } = primary;
   const [data, setData] = useState({
     email: {
       value: '',
@@ -88,7 +88,7 @@ const Subscribe = ({ primary }) => {
                   <input type="hidden" name="act" value="sub" />
                   <input type="hidden" name="v" value="2" />
                   <input
-                    placeholder="Type your email"
+                    placeholder={placeHolder.text}
                     className={styles.input}
                     type="text"
                     name="email"

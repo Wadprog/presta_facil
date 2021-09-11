@@ -12,9 +12,12 @@ import useGetImages from './useGetImages';
 const Articles = ({ primary, data, currentLanguage }) => {
   const { buttontext, title } = primary;
   const articlesList = data.allPrismicBlogpostpage.edges;
-  const currentLangArticles = articlesList.filter(
-    (article) => article.node.lang === currentLanguage
-  );
+  const currentLangArticles = articlesList.filter((article) => {
+    const articleLang = article.node.lang
+      ? article.node.lang
+      : article.node.data.lang;
+    return articleLang === currentLanguage;
+  });
   const lastArticles = currentLangArticles.slice(0, 3);
   const { background } = useGetImages();
 
@@ -35,7 +38,7 @@ const Articles = ({ primary, data, currentLanguage }) => {
         {buttontext && (
           <div className={style.button}>
             <Button variant={VARIANT.TRANSPARENT} to="/blog">
-              {RichText.asText(buttontext.raw)}
+              <RichText render={buttontext.raw} />
             </Button>
           </div>
         )}
