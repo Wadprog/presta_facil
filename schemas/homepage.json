@@ -573,6 +573,14 @@
                   "label": "buttonText",
                   "placeholder": "send"
                 }
+              },
+              "placeholder": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Placeholder text",
+                  "placeholder": "Add placeholder (e.g. Type your email)"
+                }
               }
             },
             "repeat": {}

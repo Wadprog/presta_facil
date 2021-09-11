@@ -59,6 +59,9 @@ export const query = graphql`
             title {
               raw
             }
+            buttontext {
+              text
+            }
           }
         }
       }
@@ -107,6 +110,9 @@ export const query = graphql`
                   }
                   buttontext {
                     raw
+                  }
+                  placeholder {
+                    text
                   }
                 }
               }

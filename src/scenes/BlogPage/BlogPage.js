@@ -8,7 +8,7 @@ import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/Breadcrumbs
 import style from './BlogPage.module.scss';
 
 const BlogPage = ({ content, canonical, metatitle }) => {
-  const { title } = content.allPrismicBlogpage.edges[0].node.data;
+  const { title, buttontext } = content.allPrismicBlogpage.edges[0].node.data;
   const articlesList = content.allPrismicBlogpostpage.edges;
   const lastArticleData = articlesList[0].node.data.body;
   const subscribeSection = lastArticleData.find(
@@ -19,7 +19,7 @@ const BlogPage = ({ content, canonical, metatitle }) => {
   return (
     <div className={style.HomePage}>
       <Hero title={title} articles={articlesList} />
-      <Articles articlesList={articlesList} />
+      <Articles articlesList={articlesList} buttontext={buttontext} />
       <Subscribe primary={subscribeSectionContent} />
       <BreadcrumbsSemanticMarkup
         pageTitle={metatitle.text}

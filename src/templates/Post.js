@@ -28,7 +28,7 @@ const Page = ({ data }) => {
       metadescription={description}
       canonical={canonical}
     >
-      <Post current={pageData} tags={tags} />
+      <Post current={pageData} tags={tags} currentLanguage={lang} />
     </Layout>
   );
 };
@@ -134,6 +134,9 @@ export const query = graphql`
                   }
                   buttontext {
                     raw
+                  }
+                  placeholder {
+                    text
                   }
                 }
               }

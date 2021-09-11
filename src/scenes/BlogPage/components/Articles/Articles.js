@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { array } from 'prop-types';
+import { array, object } from 'prop-types';
 import style from './Articles.module.scss';
 import Filter from '@components/Filter/Filter';
 import Button, { VARIANT } from '@components/Button/Button.js';
@@ -11,7 +11,7 @@ import { parseString } from '@helpers';
 const numberToRender = 6; // started article on the page
 const COUNTER_STEP = 3;
 
-const Articles = ({ articlesList }) => {
+const Articles = ({ articlesList, buttontext }) => {
   const [counter, setCounter] = useState(numberToRender);
   const [list, setList] = useState([]);
   const [search, setSearch] = useState();
@@ -90,7 +90,7 @@ const Articles = ({ articlesList }) => {
             element="button"
             fullWidth
           >
-            More articles
+            {buttontext.text}
           </Button>
         )}
       </div>
@@ -100,6 +100,7 @@ const Articles = ({ articlesList }) => {
 
 Articles.propTypes = {
   articlesList: array,
+  buttontext: object,
 };
 
 export default Articles;

@@ -13,7 +13,7 @@ import CallToAction from '@components/CallToAction/CallToAction';
 
 import Articles from '@components/Articles/Articles';
 
-const PostPage = ({ current, tags }) => {
+const PostPage = ({ current, tags, currentLanguage }) => {
   const { body, date, title, description, canonical, preview } = current;
   const baseItemName = 'Blog';
   const baseItemUrl = 'https://secureprivacy.ai/blog';
@@ -68,7 +68,7 @@ const PostPage = ({ current, tags }) => {
         />
       </div>
       {body.map((section, index) => {
-        switch (section.type) {
+        switch (section.slice_type) {
           case 'agencies':
             return (
               <CallToAction
@@ -82,7 +82,11 @@ const PostPage = ({ current, tags }) => {
             );
           case 'articles':
             return (
-              <Articles {...section} key={`${section.slice_type}${index}`} />
+              <Articles
+                {...section}
+                key={`${section.slice_type}${index}`}
+                currentLanguage={currentLanguage}
+              />
             );
         }
       })}
@@ -93,6 +97,7 @@ const PostPage = ({ current, tags }) => {
 PostPage.propTypes = {
   current: PropTypes.object.isRequired,
   tags: PropTypes.array,
+  currentLanguage: PropTypes.string,
 };
 
 export default PostPage;
