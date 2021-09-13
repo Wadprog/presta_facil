@@ -11,7 +11,13 @@ import { parseString } from '@helpers';
 const numberToRender = 6; // started article on the page
 const COUNTER_STEP = 3;
 
-const Articles = ({ articlesList, buttontext }) => {
+const Articles = ({
+  articlesList,
+  buttontext,
+  subtitle,
+  placeholder,
+  filtersbuttontext,
+}) => {
   const [counter, setCounter] = useState(numberToRender);
   const [list, setList] = useState([]);
   const [search, setSearch] = useState();
@@ -65,15 +71,16 @@ const Articles = ({ articlesList, buttontext }) => {
   return (
     <section className={style.articles}>
       <div className={style.wrapper}>
-        <div className={style.title}>Recent news</div>
+        <div className={style.title}>{subtitle && subtitle.text}</div>
         <div className={style.search}>
-          <SearchInput onChange={handleInputChange} />
+          <SearchInput onChange={handleInputChange} placeholder={placeholder} />
         </div>
         <div className={style.filter}>
           <Filter
             tagList={uniqTagList}
             tagChange={handleTagChange}
             dateChange={handleDateRangeChange}
+            filtersbuttontext={filtersbuttontext}
           />
         </div>
       </div>
@@ -101,6 +108,9 @@ const Articles = ({ articlesList, buttontext }) => {
 Articles.propTypes = {
   articlesList: array,
   buttontext: object,
+  subtitle: object,
+  placeholder: object,
+  filtersbuttontext: object,
 };
 
 export default Articles;

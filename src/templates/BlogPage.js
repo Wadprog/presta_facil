@@ -62,6 +62,15 @@ export const query = graphql`
             buttontext {
               text
             }
+            subtitle {
+              text
+            }
+            placeholder {
+              text
+            }
+            filtersbuttontext {
+              text
+            }
           }
         }
       }

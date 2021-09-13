@@ -14,6 +14,30 @@
         "label": "More articles button text",
         "placeholder": "Add button text (e.g. More articles)"
       }
+    },
+    "subtitle": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Articles section title",
+        "placeholder": "Add articles section title (e.g. Recent news)"
+      }
+    },
+    "placeholder": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Search input placeholder",
+        "placeholder": "Add search input placeholder (e.g. Search)"
+      }
+    },
+    "filtersbuttontext": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Filters button text",
+        "placeholder": "Add filters button text (e.g. Filters)"
+      }
     }
   },
   "SEO": {

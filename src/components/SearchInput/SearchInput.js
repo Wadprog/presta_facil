@@ -1,15 +1,15 @@
 import React from 'react';
-import { func } from 'prop-types';
+import { func, object } from 'prop-types';
 
 import style from './SearchInput.module.scss';
 
-const SearchInput = ({ onChange }) => {
+const SearchInput = ({ onChange, placeholder }) => {
   return (
     <div className={style.container}>
       <input
         className={style.search}
         type="search"
-        placeholder="Search"
+        placeholder={placeholder.text}
         onChange={onChange}
       />
     </div>
@@ -18,10 +18,12 @@ const SearchInput = ({ onChange }) => {
 
 SearchInput.propTypes = {
   onChange: func,
+  placeholder: object,
 };
 
 SearchInput.defaultProps = {
   onChange: () => {},
+  placeholder: {},
 };
 
 export default SearchInput;
