@@ -6,13 +6,26 @@ import CallToAction from '@components/CallToAction/CallToAction';
 import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
 import style from './VideoBlogPage.module.scss';
 
-const VideoBlogPage = ({ content, metatitle, canonical }) => {
+const VideoBlogPage = ({
+  content,
+  metatitle,
+  canonical,
+  filtersbuttontext,
+  placeholder,
+}) => {
   return (
     <div className={style.HomePage}>
       {content.map((section) => {
         switch (section.slice_type) {
           case 'videolist':
-            return <Videos {...section} key={section.slice_type} />;
+            return (
+              <Videos
+                {...section}
+                key={section.slice_type}
+                filtersbuttontext={filtersbuttontext}
+                placeholder={placeholder}
+              />
+            );
           case 'cta':
             return <CallToAction {...section} key={section.slice_type} />;
           default:
@@ -31,6 +44,8 @@ VideoBlogPage.propTypes = {
   content: PropTypes.array.isRequired,
   canonical: PropTypes.object.isRequired,
   metatitle: PropTypes.object.isRequired,
+  filtersbuttontext: PropTypes.object.isRequired,
+  placeholder: PropTypes.object.isRequired,
 };
 
 export default VideoBlogPage;

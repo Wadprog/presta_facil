@@ -13,7 +13,7 @@ import Filter from '@components/Filter/Filter';
 const numberToRender = 9;
 const COUNTER_STEP = 3;
 
-const Videos = ({ primary, items }) => {
+const Videos = ({ primary, items, filtersbuttontext, placeholder }) => {
   const validFields = items.filter(
     (field) => field.tag && field.date && field.title && field.videourl
   );
@@ -70,13 +70,17 @@ const Videos = ({ primary, items }) => {
             <RichText render={title.raw} />
           </div>
           <div className={style.search}>
-            <SearchInput onChange={handleInputChange} />
+            <SearchInput
+              onChange={handleInputChange}
+              placeholder={placeholder}
+            />
           </div>
           <div className={style.filter}>
             <Filter
               tagList={uniqTagList}
               tagChange={handleTagChange}
               dateChange={handleDateRangeChange}
+              filtersbuttontext={filtersbuttontext}
             />
           </div>
         </div>
@@ -104,6 +108,8 @@ const Videos = ({ primary, items }) => {
 Videos.propTypes = {
   items: array,
   primary: object,
+  filtersbuttontext: object,
+  placeholder: object,
 };
 
 export default Videos;

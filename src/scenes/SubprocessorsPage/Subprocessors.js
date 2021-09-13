@@ -84,7 +84,7 @@ const renderNoData = (data) => {
   );
 };
 
-const SubprocessorsPage = ({ content, canonical, metatitle }) => {
+const SubprocessorsPage = ({ content, canonical, metatitle, placeholder }) => {
   const { pagetitle: pageTitle, body } = content;
   const { items: tableColsHeaders, slice_type: headersType } = body[0];
   const { items: tableRows, slice_type: rowsType } = body[1];
@@ -107,7 +107,10 @@ const SubprocessorsPage = ({ content, canonical, metatitle }) => {
         <h1 className={style.title}>{pageTitle.text}</h1>
         <div className={style.tableWrapper}>
           <div className={style.searchInputWrapper}>
-            <SearchInput onChange={handleInputChange} />
+            <SearchInput
+              onChange={handleInputChange}
+              placeholder={placeholder}
+            />
           </div>
           <table className={style.subprocessorsTable}>
             <thead>{renderTableRows(tableColsHeaders, headersType)}</thead>
@@ -136,6 +139,7 @@ SubprocessorsPage.propTypes = {
   content: PropTypes.object.isRequired,
   canonical: PropTypes.object.isRequired,
   metatitle: PropTypes.object.isRequired,
+  placeholder: PropTypes.object.isRequired,
 };
 
 export default SubprocessorsPage;

@@ -12,7 +12,14 @@ const Page = ({ data }) => {
   const { uid, id, type, alternate_languages, lang } = videoblog;
   const activeDocMeta = { id, uid, lang, type, alternate_languages };
   const { data: pageData } = videoblog;
-  const { metatitle, metadescription, canonical, body: pageContent } = pageData;
+  const {
+    metatitle,
+    metadescription,
+    canonical,
+    body: pageContent,
+    filtersbuttontext,
+    placeholder,
+  } = pageData;
 
   return (
     <Layout
@@ -25,6 +32,8 @@ const Page = ({ data }) => {
         content={pageContent}
         canonical={canonical}
         metatitle={metatitle}
+        filtersbuttontext={filtersbuttontext}
+        placeholder={placeholder}
       />
     </Layout>
   );
@@ -56,6 +65,12 @@ export const query = graphql`
               text
             }
             canonical {
+              text
+            }
+            placeholder {
+              text
+            }
+            filtersbuttontext {
               text
             }
             body {
