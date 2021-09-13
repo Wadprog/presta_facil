@@ -17,7 +17,12 @@ const Page = ({ data }) => {
     data: subprocessorsPageData,
   } = subprocessorsPageContent;
   const activeDocMeta = { id, uid, lang, type, alternate_languages };
-  const { metatitle, metadescription, canonical } = subprocessorsPageData;
+  const {
+    metatitle,
+    metadescription,
+    canonical,
+    placeholder,
+  } = subprocessorsPageData;
 
   return (
     <Layout
@@ -30,6 +35,7 @@ const Page = ({ data }) => {
         content={subprocessorsPageData}
         canonical={canonical}
         metatitle={metatitle}
+        placeholder={placeholder}
       />
     </Layout>
   );
@@ -56,6 +62,9 @@ export const query = graphql`
           }
           data {
             pagetitle {
+              text
+            }
+            placeholder {
               text
             }
             metatitle {
