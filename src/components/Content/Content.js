@@ -1,6 +1,6 @@
 import React from 'react';
 import { RichText } from 'prismic-reactjs';
-import { array } from 'prop-types';
+import { array, object } from 'prop-types';
 import {
   Accordion,
   AccordionItem,
@@ -25,7 +25,33 @@ const htmlSerializer = (type, element, key) => {
   return React.createElement('img', propsWithUniqueKey(props, key));
 };
 
-const Content = ({ items }) => {
+const Content = ({ primary, items }) => {
+  const { toctitle: tableOfContentTitle } = primary;
+  const tableOfContentItems = items.map(({ shorttitle: shortTitle }, index) => {
+    const { text: titleText } = shortTitle;
+    return <li key={`${titleText}${index}`}>{titleText}</li>;
+  });
+
+  const displayedByDefaultItems = tableOfContentItems.slice(0, 4);
+
+  const TableOfContent = () => {
+    return (
+      <AccordionItem className={styles.accordionItem}>
+        <AccordionItemHeading>
+          <AccordionItemButton className={styles.accordionItemButton}>
+            <div>{tableOfContentTitle.text}</div>
+            <ul>{displayedByDefaultItems}</ul>
+          </AccordionItemButton>
+        </AccordionItemHeading>
+        <AccordionItemPanel className={styles.accordionItemPanel}>
+          <div className={styles.content}>
+            <ul>{tableOfContentItems}</ul>
+          </div>
+        </AccordionItemPanel>
+      </AccordionItem>
+    );
+  };
+
   const preExpandedItems = range(items.length).map((item) => item.toString());
 
   const contentItems = items.map(({ title, content }, index) => {
@@ -59,6 +85,7 @@ const Content = ({ items }) => {
         allowMultipleExpanded
         allowZeroExpanded
       >
+        <TableOfContent />
         {isContentItems && contentItems}
       </Accordion>
     </section>
@@ -67,6 +94,7 @@ const Content = ({ items }) => {
 
 Content.propTypes = {
   items: array,
+  primary: object,
 };
 
 export default Content;
