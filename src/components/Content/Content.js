@@ -30,12 +30,20 @@ const htmlSerializer = (type, element, key) => {
 
 const anckorLinkOffset = 100;
 
+const handleItemClick = (e) => {
+  e.stopPropagation();
+};
+
 const Content = ({ primary, items }) => {
   const { toctitle: tableOfContentTitle } = primary;
   const tableOfContentItems = items.map(({ shorttitle: shortTitle }, index) => {
     const { text: titleText } = shortTitle;
     return (
-      <li className={styles.tableOfContentItems} key={`${titleText}${index}`}>
+      <li
+        className={styles.tableOfContentItems}
+        key={`${titleText}${index}`}
+        onClick={handleItemClick}
+      >
         <AnchorLink offset={anckorLinkOffset} href={`#${index.toString()}`}>
           {titleText}
         </AnchorLink>
