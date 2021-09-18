@@ -53,8 +53,13 @@ const Content = ({ primary, items }) => {
 
   const displayedByDefaultItems = tableOfContentItems.slice(0, 4);
   const MoreLink = () => {
-    const text = `...And 20 More`;
-    return <div className={cn(styles.moreLink)}>{text}</div>;
+    const moreItemsNumber = tableOfContentItems.length - 4;
+    if (moreItemsNumber < 1) {
+      return null;
+    }
+    const text = `...And ${moreItemsNumber} More`;
+
+    return <div className={styles.moreLink}>{text}</div>;
   };
 
   const TableOfContent = () => {
@@ -75,7 +80,7 @@ const Content = ({ primary, items }) => {
                 return (
                   !state.expanded && (
                     <>
-                      <ul className={cn(styles.tableOfContent)}>
+                      <ul className={styles.tableOfContent}>
                         {displayedByDefaultItems}
                       </ul>
                       <MoreLink />
