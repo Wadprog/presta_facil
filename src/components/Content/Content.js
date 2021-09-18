@@ -9,7 +9,6 @@ import {
   AccordionItemPanel,
   AccordionItemState,
 } from 'react-accessible-accordion';
-import range from 'lodash.range';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import cn from 'classnames';
 
@@ -57,7 +56,7 @@ const Content = ({ primary, items }) => {
     if (moreItemsNumber < 1) {
       return null;
     }
-    const text = `...And ${moreItemsNumber} More`;
+    const text = `...and ${moreItemsNumber} more`;
 
     return <div className={styles.moreLink}>{text}</div>;
   };
@@ -100,13 +99,10 @@ const Content = ({ primary, items }) => {
     );
   };
 
-  const preExpandedItems = range(items.length).map((item) => item.toString());
-
   const contentItems = items.map(({ title, content }, index) => {
     return (
       <AccordionItem
         key={title.text}
-        uuid={index.toString()}
         className={styles.accordionItem}
         id={index.toString()}
       >
@@ -130,7 +126,7 @@ const Content = ({ primary, items }) => {
     <section className={styles.benefits}>
       <Accordion
         className={styles.accordion}
-        preExpanded={preExpandedItems}
+        // preExpanded={preExpandedItems}
         allowMultipleExpanded
         allowZeroExpanded
       >
