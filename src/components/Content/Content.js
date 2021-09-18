@@ -7,8 +7,11 @@ import {
   AccordionItemHeading,
   AccordionItemButton,
   AccordionItemPanel,
+  AccordionItemState,
 } from 'react-accessible-accordion';
 import range from 'lodash.range';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
+import cn from 'classnames';
 
 import styles from './Content.module.scss';
 
@@ -25,27 +28,59 @@ const htmlSerializer = (type, element, key) => {
   return React.createElement('img', propsWithUniqueKey(props, key));
 };
 
+const anckorLinkOffset = 100;
+
 const Content = ({ primary, items }) => {
   const { toctitle: tableOfContentTitle } = primary;
   const tableOfContentItems = items.map(({ shorttitle: shortTitle }, index) => {
     const { text: titleText } = shortTitle;
-    return <li key={`${titleText}${index}`}>{titleText}</li>;
+    return (
+      <li className={styles.tableOfContentItems} key={`${titleText}${index}`}>
+        <AnchorLink offset={anckorLinkOffset} href={`#${index.toString()}`}>
+          {titleText}
+        </AnchorLink>
+      </li>
+    );
   });
 
   const displayedByDefaultItems = tableOfContentItems.slice(0, 4);
+  const MoreLink = () => {
+    const text = `...And 20 More`;
+    return <div className={cn(styles.moreLink)}>{text}</div>;
+  };
 
   const TableOfContent = () => {
     return (
       <AccordionItem className={styles.accordionItem}>
         <AccordionItemHeading>
-          <AccordionItemButton className={styles.accordionItemButton}>
-            <div>{tableOfContentTitle.text}</div>
-            <ul>{displayedByDefaultItems}</ul>
+          <AccordionItemButton
+            className={cn(
+              styles.accordionItemButton,
+              styles.tableofcontentHeader
+            )}
+          >
+            <div className={styles.tableofcontentTitle}>
+              {tableOfContentTitle.text}
+            </div>
+            <AccordionItemState>
+              {(state) => {
+                return (
+                  !state.expanded && (
+                    <>
+                      <ul className={cn(styles.tableOfContent)}>
+                        {displayedByDefaultItems}
+                      </ul>
+                      <MoreLink />
+                    </>
+                  )
+                );
+              }}
+            </AccordionItemState>
           </AccordionItemButton>
         </AccordionItemHeading>
         <AccordionItemPanel className={styles.accordionItemPanel}>
           <div className={styles.content}>
-            <ul>{tableOfContentItems}</ul>
+            <ul className={styles.expandedItems}>{tableOfContentItems}</ul>
           </div>
         </AccordionItemPanel>
       </AccordionItem>
@@ -60,6 +95,7 @@ const Content = ({ primary, items }) => {
         key={title.text}
         uuid={index.toString()}
         className={styles.accordionItem}
+        id={index.toString()}
       >
         <AccordionItemHeading>
           <AccordionItemButton className={styles.accordionItemButton}>
