@@ -191,6 +191,15 @@ export const query = graphql`
                   content {
                     raw
                   }
+                  shorttitle {
+                    text
+                  }
+                }
+                primary {
+                  toctitle {
+                    text
+                    raw
+                  }
                 }
               }
             }

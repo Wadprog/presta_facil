@@ -228,7 +228,16 @@
             "description": "content",
             "icon": "art_track",
             "display": "list",
-            "non-repeat": {},
+            "non-repeat": {
+              "toctitle": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Table of content section title",
+                  "placeholder": "Add table of content section title"
+                }
+              }
+            },
             "repeat": {
               "title": {
                 "type": "StructuredText",
@@ -245,6 +254,14 @@
                   "allowTargetBlank": true,
                   "label": "content",
                   "placeholder": "Add content"
+                }
+              },
+              "shorttitle": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Short title",
+                  "placeholder": "Add short title (for table of content)"
                 }
               }
             }

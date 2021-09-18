@@ -37,6 +37,7 @@
   background: #ffffff;
   border-radius: 12px;
   cursor: pointer;
+
   &:focus {
     outline: none;
   }
@@ -74,6 +75,31 @@
       width: 12px;
     }
   }
+
+  &.tableofcontentHeader {
+    display: block;
+    height: 293px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 10px;
+      background-image: url('./image/arrow.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      right: 48px;
+      top: 55px;
+      transition: 0.3s;
+      @media (max-width: $md) {
+        right: 15px;
+        width: 12px;
+        top: 36px;
+      }
+    }
+  
+  }
+
   h2 {
     font-weight: 600;
     font-size: 16px;
@@ -85,7 +111,7 @@
 }
 
 .accordionItemPanel {
-  padding: 0 48px 1px;
+  padding: 0 100px 1px;
   background: #ffffff;
   animation: down 0.2s linear;
   border-bottom-left-radius: 12px;
@@ -147,12 +173,12 @@
       &::before {
         content: '';
         position: absolute;
-        width: 4px;
-        height: 4px;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
         background-color: $green;
         left: 0;
-        top: 12px;
+        top: 8px;
       }
     }
   }
@@ -192,5 +218,72 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+.tableofcontentTitle {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 180%;
+  letter-spacing: 0.03em;
+  text-transform: capitalize;
+  color: $main-light;
+  margin-bottom: 20px;
+
+  @media (max-width: $md) {
+    margin-top: 20px;
+  }
+}
+
+.tableOfContent {
+  margin-bottom: 20px;
+  
+  li {
+    position: relative;
+    padding-left: 20px;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $green;
+      left: 0;
+      top: 8px;
+    }
+  }
+}
+
+.tableOfContentItems, .moreLink {
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 180%;
+  letter-spacing: 0.03em;
+
+  &:hover {
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: $green-gradient;
+  }
+
+  a {
+    color: $main-light;
+    &:hover {
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-image: $green-gradient;
+    }
+  }
+}
+
+.itemState {
+  display: none;
+}
+
+.expandedItems {
+  margin-top: -195px;
+  @media (max-width: $md) {
+    margin-top: -215px;
   }
 }
