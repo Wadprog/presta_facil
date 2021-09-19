@@ -1,13 +1,6 @@
 @import '@styles/variables/all';
 @import '@styles/mixins/all';
 
-.benefits {
-  padding: 64px 20px;
-  @media (max-width: $lg) {
-    padding: 48px 16px;
-  }
-}
-
 .accordion {
   max-width: 896px;
   margin: 0 auto;
@@ -80,6 +73,12 @@
     display: block;
     height: 293px;
 
+    padding: 36px 100px;
+    @media (max-width: $md) {
+      height: auto;
+      padding: 10px 40px 36px 20px;
+    }
+
     &::after {
       content: '';
       position: absolute;
@@ -89,7 +88,7 @@
       background-size: contain;
       background-repeat: no-repeat;
       right: 48px;
-      top: 55px;
+      top: 35px;
       transition: 0.3s;
       @media (max-width: $md) {
         right: 15px;
@@ -236,9 +235,19 @@
 }
 
 .tableOfContent {
+  margin-bottom: 20px;
+  @media (max-width: $md) {
+    margin-top: 35px;
+  }
+
   li {
     position: relative;
     padding-left: 20px;
+
+    @media (max-width: $md) {
+      margin-bottom: 30px;
+    }
+
     &::before {
       content: '';
       position: absolute;
@@ -258,6 +267,10 @@
   font-size: 16px;
   line-height: 180%;
   letter-spacing: 0.03em;
+
+  @media (max-width: $md) {
+    margin-bottom: 30px;
+  }
 
   &:hover {
     background-clip: text;
@@ -280,8 +293,14 @@
 }
 
 .expandedItems {
-  margin-top: -195px;
+  margin-top: -210px;
   @media (max-width: $md) {
-    margin-top: -215px;
+    margin-top: -20px;
+  }
+}
+
+.moreLink {
+  @media (max-width: $md) {
+    margin-bottom: -10px;
   }
 }
