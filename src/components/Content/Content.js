@@ -34,7 +34,10 @@ const handleItemClick = (e) => {
 };
 
 const Content = ({ primary, items }) => {
-  const { toctitle: tableOfContentTitle } = primary;
+  const {
+    toctitle: tableOfContentTitle,
+    maintitle: mainSectionTitle,
+  } = primary;
   const tableOfContentItems = items.map(({ shorttitle: shortTitle }, index) => {
     const { text: titleText } = shortTitle;
     return (
@@ -124,9 +127,11 @@ const Content = ({ primary, items }) => {
 
   return (
     <section className={styles.benefits}>
+      <div className={styles.title}>
+        <RichText render={mainSectionTitle.raw} />
+      </div>
       <Accordion
         className={styles.accordion}
-        // preExpanded={preExpandedItems}
         allowMultipleExpanded
         allowZeroExpanded
       >

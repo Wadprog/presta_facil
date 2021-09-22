@@ -274,6 +274,14 @@
             "icon": "art_track",
             "display": "list",
             "non-repeat": {
+              "maintitle": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "heading2, strong",
+                  "label": "Main section title",
+                  "placeholder": "Add main section title"
+                }
+              },
               "toctitle": {
                 "type": "StructuredText",
                 "config": {

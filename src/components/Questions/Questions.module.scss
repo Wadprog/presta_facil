@@ -192,6 +192,9 @@
         background-color: $green;
         left: 0;
         top: 12px;
+        @media (max-width: $md) {
+          top: 6px;
+        }
       }
     }
   }
