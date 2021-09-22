@@ -243,6 +243,9 @@ export const query = graphql`
                     text
                     raw
                   }
+                  maintitle {
+                    raw
+                  }
                 }
               }
             }
