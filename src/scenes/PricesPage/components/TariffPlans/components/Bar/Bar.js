@@ -36,6 +36,8 @@ const Bar = ({ plans, fields, primary, isAnnual, currency }) => {
               annualcoefficient={primary.annualcoefficient}
               isAnnual={isAnnual}
               isEnterprise={index === 3}
+              enterpriseCondition={primary.enterprisecondition.text}
+              enterpriseButtonText={primary.enterprisebuttontext.text}
             />
           </div>
         ))}

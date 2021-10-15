@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react';
 import { object } from 'prop-types';
-import { RichText } from 'prismic-reactjs';
 import lozad from 'lozad';
 
 import styles from './Calendly.module.scss';
 
 const Calendly = ({ primary }) => {
   const { title } = primary;
+
+  const titleText =
+    title.raw.length === 1
+      ? title.raw[0].text.split('\n')
+      : [title.raw[0].text, title.raw[1].text];
 
   useEffect(() => {
     const observer = lozad();
@@ -16,7 +20,11 @@ const Calendly = ({ primary }) => {
   return (
     <section className={styles.calendly}>
       <div className={styles.title}>
-        <RichText render={title.raw} />
+        <h2>
+          <strong>{titleText[0]}</strong>
+          <br />
+          {titleText[1]}
+        </h2>
       </div>
       <div className={styles.calendar}>
         <iframe

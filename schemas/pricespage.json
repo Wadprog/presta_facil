@@ -209,6 +209,34 @@
             "icon" : "attach_money",
             "display" : "list",
             "non-repeat" : {
+              "monthlyperiodtogglelabel" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "MonthlyPeriodToggleLabel"
+                }
+              },
+              "anualperiodtogglelabel" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "AnnualPeriodToggleLabel"
+                }
+              },
+              "currencydropdownlabel" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "CurrencyDropdownLabel"
+                }
+              },
+              "enterprisecondition" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "EnterpriseCondition"
+                }
+              },
               "monthlycondition" : {
                 "type" : "StructuredText",
                 "config" : {
@@ -221,6 +249,13 @@
                 "config" : {
                   "single" : "paragraph",
                   "label" : "Annual condition"
+                }
+              },
+              "enterprisebuttontext" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "EnterpriseButtonText"
                 }
               },
               "buttontext" : {

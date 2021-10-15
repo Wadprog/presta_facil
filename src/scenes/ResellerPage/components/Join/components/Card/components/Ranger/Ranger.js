@@ -4,11 +4,11 @@ import InputRange from 'react-input-range';
 
 import style from './Ranger.module.scss';
 
-const Ranger = ({ value, min, max, onChange }) => {
+const Ranger = ({ value, min, max, onChange, numberOfDomainsLabel }) => {
   return (
     <div className={style.container}>
       <div className={style.bar}>
-        <div className={style.title}>Number of domains</div>
+        <div className={style.title}>{numberOfDomainsLabel}</div>
         <div className={style.totalBox}>
           <div className={style.totalValue}>{value}</div>
         </div>
@@ -36,6 +36,7 @@ Ranger.propTypes = {
   max: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
+  numberOfDomainsLabel: PropTypes.string.isRequired,
 };
 
 export default Ranger;

@@ -26,6 +26,7 @@ const Menu = ({ data, open }) => {
           <MenuItem
             {...item}
             key={index}
+            index={index}
             activeMenu={activeMenu}
             handleActiveMenu={handleActiveMenu}
           />

@@ -27,7 +27,8 @@ const htmlSerializer = (type, element, key) => {
 const COUNTER_STEP = 6;
 
 const Questions = ({ primary, items }) => {
-  const { title } = primary;
+  const { title, loadmorebuttontext } = primary;
+  console.log(primary);
   const [counter, setCounter] = useState(COUNTER_STEP);
   const [questionList, setQuestionList] = useState(items.slice(0, counter));
   useEffect(() => {
@@ -88,7 +89,10 @@ const Questions = ({ primary, items }) => {
         <div>{questionsToRender}</div>
         {items.length > counter ? (
           <div className={styles.buttonWrapper}>
-            <Button onClick={loadMoreQuestion} />
+            <Button
+              onClick={loadMoreQuestion}
+              text={loadmorebuttontext?.text}
+            />
           </div>
         ) : null}
       </Accordion>

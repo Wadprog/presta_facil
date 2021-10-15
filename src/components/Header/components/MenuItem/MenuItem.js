@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { object, array, string, func } from 'prop-types';
+import { object, array, string, func, number } from 'prop-types';
 import classnames from 'classnames';
 import { Link } from 'gatsby';
 import { globalHistory as history } from '@reach/router';
@@ -9,7 +9,7 @@ import LangContext from '@contexts';
 import { langPath } from '@helpers';
 import style from './MenuItem.module.scss';
 
-const MenuItem = ({ primary, items, activeMenu, handleActiveMenu }) => {
+const MenuItem = ({ primary, items, activeMenu, handleActiveMenu, index }) => {
   const [activeImage, setActiveImage] = useState(0);
   const [image, setImage] = useState(items[activeImage].image);
   const [isLinkActive, setIsLinkActive] = useState(false);
@@ -33,7 +33,7 @@ const MenuItem = ({ primary, items, activeMenu, handleActiveMenu }) => {
 
   const classItem = classnames({
     [style.item]: true,
-    [style[title]]: true,
+    [style[`${index === 1 ? 'Features' : title}`]]: true,
     [style.open]: activeMenu === title,
     [style.linkActive]: isLinkActive,
   });
@@ -99,6 +99,7 @@ MenuItem.propTypes = {
   activeMenu: string,
   handleActiveMenu: func,
   location: string,
+  index: number,
 };
 
 export default MenuItem;

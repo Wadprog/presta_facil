@@ -11,6 +11,7 @@ const Join = ({ primary }) => {
     buttonlink,
     buttontext,
     numberofdomains,
+    numberofdomainslabel,
     cardsubdescription,
     description,
     unitcost,
@@ -36,6 +37,7 @@ const Join = ({ primary }) => {
             buttonLink={buttonlink}
             buttonText={buttontext}
             numberOfDomains={+numberofdomains}
+            numberOfDomainsLabel={numberofdomainslabel.text}
             unitCost={+unitcost}
           />
         </div>

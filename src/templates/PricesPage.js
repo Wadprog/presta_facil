@@ -159,6 +159,22 @@ export const query = graphql`
                 id
                 slice_type
                 primary {
+                  monthlyperiodtogglelabel {
+                    text
+                  }
+                  anualperiodtogglelabel {
+                    raw
+                    text
+                  }
+                  currencydropdownlabel {
+                    text
+                  }
+                  enterprisecondition {
+                    text
+                  }
+                  enterprisebuttontext {
+                    text
+                  }
                   annualcoefficient
                   annualcondition {
                     raw

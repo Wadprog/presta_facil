@@ -181,6 +181,14 @@
                   "multi": "heading2,strong",
                   "label": "title"
                 }
+              },
+              "loadmorebuttontext": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "loadMoreButtonText",
+                  "placeholder": "Write button text"
+                }
               }
             },
             "repeat": {
@@ -232,7 +240,7 @@
               "maintitle": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "heading2, strong",
+                  "multi": "heading2,strong",
                   "label": "Main section title",
                   "placeholder": "Add main section title"
                 }

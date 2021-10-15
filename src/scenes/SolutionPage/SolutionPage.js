@@ -34,8 +34,14 @@ const SolutionPage = ({
       : mainSection[1].node.data.body2[1];
   const hospitalityPageUid = 'hospitality';
   const questions = body.filter((item) => item.slice_type === 'questions');
+  const contentQuestions = body.filter((item) => item.slice_type === 'content');
+  const contentFaqLists = contentQuestions.map((element) => element.items);
   const faqLists = questions.map((element) => element.items);
   const faqList = faqLists.flat();
+  const contentFaqList = contentFaqLists.flat();
+  const newFaqList = [...faqList, ...contentFaqList];
+
+  console.log(newFaqList);
 
   return (
     <div className={style.SolutionPage}>

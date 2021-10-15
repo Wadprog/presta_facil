@@ -125,6 +125,9 @@ export const query = graphql`
                   description {
                     raw
                   }
+                  numberofdomainslabel {
+                    text
+                  }
                   cardtitle {
                     raw
                   }

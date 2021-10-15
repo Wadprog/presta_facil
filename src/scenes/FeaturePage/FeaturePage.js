@@ -11,7 +11,7 @@ import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/Breadcrumbs
 import Content from '@components/Content/Content';
 
 const FeaturePage = ({ current: body, canonical, metatitle }) => {
-  const questions = body.filter((item) => item.slice_type === 'questions');
+  const questions = body.filter((item) => item.slice_type === 'content');
   const faqLists = questions.map((element) => element.items);
   const faqList = faqLists.flat();
 

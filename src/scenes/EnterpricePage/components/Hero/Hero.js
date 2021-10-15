@@ -19,13 +19,19 @@ const Hero = ({ primary, handleScroll }) => {
     subtitle,
     benefitstitle,
     benefitslist,
+    benefitsbuttontext,
     ctatitle,
     ctatext,
+    ctabuttontext,
     image,
     video,
+    videoplaybuttontext,
     modalbuttonlink,
     modalbuttontext,
   } = primary;
+
+  console.log(primary);
+
   return (
     <section className={style.hero}>
       <div className={style.container}>
@@ -51,7 +57,7 @@ const Hero = ({ primary, handleScroll }) => {
                   handleScroll();
                 }}
               >
-                See all features
+                {benefitsbuttontext.text}
               </Button>
             </div>
           </div>
@@ -65,7 +71,7 @@ const Hero = ({ primary, handleScroll }) => {
               </div>
               <div className={style.buttonWrapper}>
                 <Button variant={VARIANT.PRIMARY} to="/contact-us" fullWidth>
-                  contact us
+                  {ctabuttontext.text}
                 </Button>
               </div>
             </div>
@@ -80,7 +86,9 @@ const Hero = ({ primary, handleScroll }) => {
                     <PLayIcon />
                   </IconButton>
                 </div>
-                <div className={style.playButtonText}>How it works</div>
+                <div className={style.playButtonText}>
+                  {videoplaybuttontext.text}
+                </div>
               </div>
             </div>
           </div>

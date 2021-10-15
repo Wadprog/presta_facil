@@ -10,7 +10,11 @@ const currencies = [
   { title: 'EUR', value: 'EUR' },
 ];
 
-const CurrencyDropdown = ({ selectCurrency, currency }) => {
+const CurrencyDropdown = ({
+  selectCurrency,
+  currency,
+  currencyDropdownLabel,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const setCurrency = (index) => {
     selectCurrency(currencies[index].value);
@@ -19,7 +23,7 @@ const CurrencyDropdown = ({ selectCurrency, currency }) => {
 
   return (
     <div className={style.container}>
-      <p className={style.title}>Currency</p>
+      <p className={style.title}>{currencyDropdownLabel}</p>
       <div className={style.wrapper}>
         <div className={style.selected} onClick={() => setIsOpen(!isOpen)}>
           {currency}
@@ -54,6 +58,7 @@ const CurrencyDropdown = ({ selectCurrency, currency }) => {
 CurrencyDropdown.propTypes = {
   selectCurrency: PropTypes.func.isRequired,
   currency: PropTypes.string.isRequired,
+  currencyDropdownLabel: PropTypes.string.isRequired,
 };
 
 export default CurrencyDropdown;

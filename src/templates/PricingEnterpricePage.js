@@ -112,11 +112,20 @@ export const query = graphql`
                   ctatext {
                     raw
                   }
+                  ctabuttontext {
+                    text
+                  }
+                  videoplaybuttontext {
+                    text
+                  }
                   benefitstitle {
                     raw
                   }
                   benefitslist {
                     raw
+                  }
+                  benefitsbuttontext {
+                    text
                   }
                 }
               }

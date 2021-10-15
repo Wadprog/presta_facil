@@ -336,3 +336,19 @@
     }
   }
 }
+
+.Soluções {
+  @extend .Solutions;
+}
+
+.Tecnologias {
+  @extend .Technologies;
+}
+
+.Planos {
+  @extend .Pricing;
+}
+
+.Recursos {
+  @extend .Resources;
+}
