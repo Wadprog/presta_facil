@@ -48,6 +48,8 @@ const Dashboard = ({
             annualcoefficient={primary.annualcoefficient}
             isEnterprise={index === 3}
             isMobile={isMobile}
+            enterpriseCondition={primary.enterprisecondition.text}
+            enterpriseButtonText={primary.enterprisebuttontext.text}
           />
         ))}
       </div>

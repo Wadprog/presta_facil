@@ -93,6 +93,7 @@ export const query = graphql`
                 primary {
                   title {
                     raw
+                    text
                   }
                 }
               }

@@ -1,157 +1,164 @@
 {
-  "Main": {
-    "placeholder": {
-      "type": "StructuredText",
-      "config": {
-        "multi": "paragraph",
-        "label": "Search input placeholder",
-        "placeholder": "Add search input placeholder"
+  "Main" : {
+    "placeholder" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Search input placeholder",
+        "placeholder" : "Add search input placeholder"
       }
     },
-    "filtersbuttontext": {
-      "type": "StructuredText",
-      "config": {
-        "multi": "paragraph",
-        "label": "Filters button text",
-        "placeholder": "Add filters button text"
+    "filtersbuttontext" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Filters button text",
+        "placeholder" : "Add filters button text"
       }
     },
-    "body": {
-      "type": "Slices",
-      "fieldset": "Slice zone",
-      "config": {
-        "labels": {
-          "videolist": []
+    "body" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : {
+          "videolist" : [ ]
         },
-        "choices": {
-          "videolist": {
-            "type": "Slice",
-            "fieldset": "VideoList",
-            "description": "Video list section",
-            "icon": "airport_shuttle",
-            "display": "list",
-            "non-repeat": {
-              "title": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "heading1,strong",
-                  "label": "title"
+        "choices" : {
+          "videolist" : {
+            "type" : "Slice",
+            "fieldset" : "VideoList",
+            "description" : "Video list section",
+            "icon" : "airport_shuttle",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "heading1,strong",
+                  "label" : "title"
+                }
+              },
+              "loadmorebuttontext" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "loadMoreButtonText"
                 }
               }
             },
-            "repeat": {
-              "title": {
-                "type": "StructuredText",
-                "config": {
-                  "single": "heading3",
-                  "label": "title",
-                  "placeholder": "Video title. NB! Required field."
+            "repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading3",
+                  "label" : "title",
+                  "placeholder" : "Video title. NB! Required field."
                 }
               },
-              "videourl": {
-                "type": "Link",
-                "config": {
-                  "label": "videourl",
-                  "placeholder": "Video URL (youtube, vimeo, etc. ). NB! Required field.",
-                  "select": null
+              "videourl" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "videourl",
+                  "placeholder" : "Video URL (youtube, vimeo, etc. ). NB! Required field.",
+                  "select" : null
                 }
               },
-              "date": {
-                "type": "Date",
-                "config": {
-                  "label": "date",
-                  "placeholder": "Date. NB! Required field."
+              "date" : {
+                "type" : "Date",
+                "config" : {
+                  "label" : "date",
+                  "placeholder" : "Date. NB! Required field."
                 }
               },
-              "tag": {
-                "type": "Text",
-                "config": {
-                  "label": "tag",
-                  "placeholder": "Tags with comma separator. NB! Required field."
+              "tag" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "tag",
+                  "placeholder" : "Tags with comma separator. NB! Required field."
                 }
               }
             }
           },
-          "cta": {
-            "type": "Slice",
-            "fieldset": "cta",
-            "description": "cta",
-            "icon": "pages",
-            "display": "list",
-            "non-repeat": {
-              "sectiontitle": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "heading2,strong",
-                  "label": "sectionTitle"
+          "cta" : {
+            "type" : "Slice",
+            "fieldset" : "cta",
+            "description" : "cta",
+            "icon" : "pages",
+            "display" : "list",
+            "non-repeat" : {
+              "sectiontitle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "heading2,strong",
+                  "label" : "sectionTitle"
                 }
               },
-              "description": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph",
-                  "label": "description"
+              "description" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "description"
                 }
               },
-              "buttontext": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph",
-                  "label": "buttonText"
+              "buttontext" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "buttonText"
                 }
               },
-              "buttonlink": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph",
-                  "label": "buttonlink"
+              "buttonlink" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "buttonlink"
                 }
               },
-              "image": {
-                "type": "Image",
-                "config": {
-                  "constraint": {},
-                  "thumbnails": [],
-                  "label": "image"
+              "image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "image"
                 }
               }
             },
-            "repeat": {}
+            "repeat" : { }
           }
         }
       }
     }
   },
-  "SEO": {
-    "uid": {
-      "type": "UID",
-      "config": {
-        "label": "UID",
-        "placeholder": "Add UID, for example: video-blog"
+  "SEO" : {
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "UID",
+        "placeholder" : "Add UID, for example: video-blog"
       }
     },
-    "metatitle": {
-      "type": "StructuredText",
-      "config": {
-        "multi": "paragraph",
-        "label": "Meta title",
-        "placeholder": "Add meta title, up to 60 characters recommended"
+    "metatitle" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Meta title",
+        "placeholder" : "Add meta title, up to 60 characters recommended"
       }
     },
-    "metadescription": {
-      "type": "StructuredText",
-      "config": {
-        "multi": "paragraph",
-        "label": "Meta description",
-        "placeholder": "Add meta description, up to 160 symbols recommended"
+    "metadescription" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Meta description",
+        "placeholder" : "Add meta description, up to 160 symbols recommended"
       }
     },
-    "canonical": {
-      "type": "StructuredText",
-      "config": {
-        "multi": "paragraph",
-        "label": "Canonical URL",
-        "placeholder": "Add canonical URL, for example: https://secureprivacy.ai/video-blog"
+    "canonical" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Canonical URL",
+        "placeholder" : "Add canonical URL, for example: https://secureprivacy.ai/video-blog"
       }
     }
   }

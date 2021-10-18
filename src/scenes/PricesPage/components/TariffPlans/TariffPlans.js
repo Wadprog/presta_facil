@@ -41,6 +41,8 @@ const TariffPlans = ({
     },
   ];
 
+  const { currencydropdownlabel } = primary;
+
   const [isAnnual, setIsAnnual] = useState(false);
   const [selectedPlansIndexes, setSelectedPlansIndexes] = useState([0]);
   const [selectedPlans, setSelectedPlans] = useState([
@@ -104,7 +106,11 @@ const TariffPlans = ({
         </div>
         <div className={style.container}>
           <div className={style.header}>
-            <PeriodSwitcher isAnnual={isAnnual} togglePeriod={togglePeriod} />
+            <PeriodSwitcher
+              isAnnual={isAnnual}
+              togglePeriod={togglePeriod}
+              primary={primary}
+            />
           </div>
           <div
             className={classnames({
@@ -119,6 +125,7 @@ const TariffPlans = ({
                 onSelect={selectPlan}
                 selectCurrency={selectCurrency}
                 currency={currency}
+                currencyDropdownLabel={currencydropdownlabel.text}
               />
             </div>
             <div

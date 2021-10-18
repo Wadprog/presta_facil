@@ -169,6 +169,13 @@
                   "label" : "buttonLink"
                 }
               },
+              "numberofdomainslabel" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "numberOfDomainsLabel"
+                }
+              },
               "numberofdomains" : {
                 "type" : "Number",
                 "config" : {

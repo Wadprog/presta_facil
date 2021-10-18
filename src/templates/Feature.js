@@ -114,6 +114,9 @@ export const query = graphql`
                   title {
                     raw
                   }
+                  loadmorebuttontext {
+                    text
+                  }
                 }
                 items {
                   title {

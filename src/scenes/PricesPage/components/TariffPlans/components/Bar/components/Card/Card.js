@@ -24,6 +24,8 @@ const Card = ({
   isAnnual,
   annualcoefficient,
   isEnterprise,
+  enterpriseCondition,
+  enterpriseButtonText,
 }) => {
   const [colorized, setColorized] = useState(false);
   const getCost = () => {
@@ -102,7 +104,7 @@ const Card = ({
         </div>
       </div>
       {isEnterprise ? (
-        <div className={style.enterprise}>Contact us</div>
+        <div className={style.enterprise}>{enterpriseCondition}</div>
       ) : (
         <div className={classnames([style.cost, style[currency]])}>
           {getCost()}
@@ -112,11 +114,15 @@ const Card = ({
         <a href={getLink()} className={style.button}>
           {colorized ? (
             <span className={style.gradientText}>
-              {isEnterprise ? 'CHAT WITH US' : RichText.asText(buttonText.raw)}
+              {isEnterprise
+                ? enterpriseButtonText
+                : RichText.asText(buttonText.raw)}
             </span>
           ) : (
             <span>
-              {isEnterprise ? 'CHAT WITH US' : RichText.asText(buttonText.raw)}
+              {isEnterprise
+                ? enterpriseButtonText
+                : RichText.asText(buttonText.raw)}
             </span>
           )}
         </a>
@@ -145,6 +151,8 @@ Card.propTypes = {
   threeprivacypriceeur: PropTypes.number,
   isAnnual: PropTypes.bool.isRequired,
   annualcoefficient: PropTypes.number.isRequired,
+  enterpriseCondition: PropTypes.string.isRequired,
+  enterpriseButtonText: PropTypes.string.isRequired,
 };
 
 export default Card;

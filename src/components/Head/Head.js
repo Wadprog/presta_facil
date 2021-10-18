@@ -39,13 +39,13 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
   useEffect(() => {
     if (!metadescription) {
       setPageDescription(
-        <meta content={meta.description} name="description" />
+        <meta name="description" content={meta.description} />
       );
       return;
     }
     const currentPageDescription = metadescription.text;
     setPageDescription(
-      <meta content={currentPageDescription} name="description" />
+      <meta name="description" content={currentPageDescription} />
     );
     setOpengraphDescription(currentPageDescription);
   }, []);

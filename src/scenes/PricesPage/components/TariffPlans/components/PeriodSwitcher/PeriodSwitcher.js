@@ -4,7 +4,9 @@ import classnames from 'classnames';
 
 import style from './PeriodSwitcher.module.scss';
 
-const PeriodSwitcher = ({ isAnnual, togglePeriod }) => {
+const PeriodSwitcher = ({ isAnnual, togglePeriod, primary }) => {
+  const { monthlyperiodtogglelabel, anualperiodtogglelabel } = primary;
+
   return (
     <div className={style.wrapper}>
       <div className={style.container}>
@@ -13,7 +15,7 @@ const PeriodSwitcher = ({ isAnnual, togglePeriod }) => {
             [style.selected]: !isAnnual,
           })}
         >
-          <span className={style.name}>Monthly</span>
+          <span className={style.name}>{monthlyperiodtogglelabel.text}</span>
         </div>
         <label className={style.label}>
           <input type="checkbox" checked={isAnnual} onChange={togglePeriod} />
@@ -29,8 +31,12 @@ const PeriodSwitcher = ({ isAnnual, togglePeriod }) => {
             [style.selected]: isAnnual,
           })}
         >
-          <span className={style.name}>Annual</span>{' '}
-          <span className={style.notice}>(2 months for free)</span>
+          <span className={style.name}>
+            {anualperiodtogglelabel.raw[0].text}
+          </span>{' '}
+          <span className={style.notice}>
+            {anualperiodtogglelabel.raw[1].text}
+          </span>
         </div>
       </div>
     </div>
@@ -38,6 +44,7 @@ const PeriodSwitcher = ({ isAnnual, togglePeriod }) => {
 };
 
 PeriodSwitcher.propTypes = {
+  primary: PropTypes.object.isRequired,
   isAnnual: PropTypes.bool.isRequired,
   togglePeriod: PropTypes.func.isRequired,
 };

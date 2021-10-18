@@ -60,7 +60,7 @@ const Videos = ({ primary, items, filtersbuttontext, placeholder }) => {
     setDateRange(value);
   };
 
-  const { title } = primary;
+  const { title, loadmorebuttontext } = primary;
 
   return (
     <div className={style.page}>
@@ -96,7 +96,7 @@ const Videos = ({ primary, items, filtersbuttontext, placeholder }) => {
               click={loadMoreVideo}
               element="button"
             >
-              load more
+              {loadmorebuttontext.text}
             </Button>
           )}
         </div>

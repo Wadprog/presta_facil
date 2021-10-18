@@ -15,6 +15,7 @@ const Card = ({
   buttonLink,
   buttonText,
   numberOfDomains,
+  numberOfDomainsLabel,
   unitCost,
 }) => {
   const [rangeValue, setRangeValue] = useState(1);
@@ -35,6 +36,7 @@ const Card = ({
             max={numberOfDomains}
             value={rangeValue}
             onChange={handleRangerChange}
+            numberOfDomainsLabel={numberOfDomainsLabel}
           />
         </div>
       </div>
@@ -68,6 +70,7 @@ Card.propTypes = {
   buttonLink: PropTypes.object.isRequired,
   buttonText: PropTypes.object.isRequired,
   numberOfDomains: PropTypes.number.isRequired,
+  numberOfDomainsLabel: PropTypes.string.isRequired,
   unitCost: PropTypes.number.isRequired,
 };
 

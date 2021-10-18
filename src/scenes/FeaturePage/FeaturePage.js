@@ -12,8 +12,12 @@ import Content from '@components/Content/Content';
 
 const FeaturePage = ({ current: body, canonical, metatitle }) => {
   const questions = body.filter((item) => item.slice_type === 'questions');
-  const faqLists = questions.map((element) => element.items);
-  const faqList = faqLists.flat();
+  const contentQuestions = body.filter((item) => item.slice_type === 'content');
+  const questionsSliceFaqLists = questions.map((element) => element.items);
+  const contentSliceFaqLists = contentQuestions.map((element) => element.items);
+  const questionsSliceFaqList = questionsSliceFaqLists.flat();
+  const contentSliceFaqList = contentSliceFaqLists.flat();
+  const generalFaqList = [...questionsSliceFaqList, ...contentSliceFaqList];
 
   return (
     <div className={style.SolutionPage}>
@@ -35,7 +39,7 @@ const FeaturePage = ({ current: body, canonical, metatitle }) => {
             throw new Error(`Unknown section type: ${section.slice_type}`);
         }
       })}
-      <FaqSemanticMarkup questions={faqList} />
+      <FaqSemanticMarkup questions={generalFaqList} />
       <BreadcrumbsSemanticMarkup
         pageTitle={metatitle.text}
         pageUrl={canonical.text}

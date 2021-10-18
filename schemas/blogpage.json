@@ -3,7 +3,7 @@
     "title": {
       "type": "StructuredText",
       "config": {
-        "multi": "heading2,strong",
+        "multi": "heading1,strong",
         "label": "title"
       }
     },

@@ -84,6 +84,14 @@
                   "placeholder" : "benefit block  - list of benefits"
                 }
               },
+              "benefitsbuttontext" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "BenefitsButtonText",
+                  "placeholder" : "Write button text"
+                }
+              },
               "ctatitle" : {
                 "type" : "StructuredText",
                 "config" : {
@@ -98,6 +106,22 @@
                   "multi" : "paragraph",
                   "label" : "ctatext",
                   "placeholder" : "CTA block - description"
+                }
+              },
+              "ctabuttontext" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "CTAButtonText",
+                  "placeholder" : "Write button text"
+                }
+              },
+              "videoplaybuttontext" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "VideoPlayButtonText",
+                  "placeholder" : "Write button text"
                 }
               },
               "modalbuttontext" : {

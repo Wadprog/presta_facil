@@ -11,6 +11,7 @@ const PlanSwitcher = ({
   onSelect,
   selectCurrency,
   currency,
+  currencyDropdownLabel,
 }) => {
   return (
     <div className={style.container}>
@@ -34,7 +35,11 @@ const PlanSwitcher = ({
         );
       })}
       <div className={style.line}></div>
-      <CurrencyDropdown selectCurrency={selectCurrency} currency={currency} />
+      <CurrencyDropdown
+        selectCurrency={selectCurrency}
+        currency={currency}
+        currencyDropdownLabel={currencyDropdownLabel}
+      />
     </div>
   );
 };
@@ -45,6 +50,7 @@ PlanSwitcher.propTypes = {
   onSelect: PropTypes.func.isRequired,
   selectCurrency: PropTypes.func.isRequired,
   currency: PropTypes.string.isRequired,
+  currencyDropdownLabel: PropTypes.string.isRequired,
 };
 
 export default PlanSwitcher;
