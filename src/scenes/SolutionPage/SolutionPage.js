@@ -35,13 +35,11 @@ const SolutionPage = ({
   const hospitalityPageUid = 'hospitality';
   const questions = body.filter((item) => item.slice_type === 'questions');
   const contentQuestions = body.filter((item) => item.slice_type === 'content');
-  const contentFaqLists = contentQuestions.map((element) => element.items);
-  const faqLists = questions.map((element) => element.items);
-  const faqList = faqLists.flat();
-  const contentFaqList = contentFaqLists.flat();
-  const newFaqList = [...faqList, ...contentFaqList];
-
-  console.log(newFaqList);
+  const questionsSliceFaqLists = questions.map((element) => element.items);
+  const contentSliceFaqLists = contentQuestions.map((element) => element.items);
+  const questionsSliceFaqList = questionsSliceFaqLists.flat();
+  const contentSliceFaqList = contentSliceFaqLists.flat();
+  const generalFaqList = [...questionsSliceFaqList, ...contentSliceFaqList];
 
   return (
     <div className={style.SolutionPage}>
@@ -84,7 +82,7 @@ const SolutionPage = ({
         }
       })}
       {pageUid !== hospitalityPageUid && <Agencies {...agenciesSection} />}
-      <FaqSemanticMarkup questions={faqList} />
+      <FaqSemanticMarkup questions={generalFaqList} />
       <BreadcrumbsSemanticMarkup
         pageTitle={metatitle.text}
         pageUrl={canonical.text}

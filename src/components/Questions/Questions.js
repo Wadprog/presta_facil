@@ -28,7 +28,6 @@ const COUNTER_STEP = 6;
 
 const Questions = ({ primary, items }) => {
   const { title, loadmorebuttontext } = primary;
-  console.log(primary);
   const [counter, setCounter] = useState(COUNTER_STEP);
   const [questionList, setQuestionList] = useState(items.slice(0, counter));
   useEffect(() => {
