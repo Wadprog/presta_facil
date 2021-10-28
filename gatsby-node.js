@@ -143,6 +143,28 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
+  const videoarticlepage = await graphql(`
+    {
+      allPrismicVideoarticlepage {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  videoarticlepage.data.allPrismicVideoarticlepage.nodes.forEach((page) => {
+    createPage({
+      path: page.url,
+      component: path.resolve(__dirname, 'src/templates/VideoArticlePage.js'),
+      context: { ...page },
+    });
+  });
+
   const videopage = await graphql(`
     {
       allPrismicVideopage {

@@ -69,6 +69,12 @@ const linkResolver = (doc) => {
       : `/${properties.lang.slice(0, 2)}/video-blog`;
   }
 
+  if (properties.type === 'videoarticlepage') {
+    return properties.lang === defaultLanguage
+      ? '/video-article'
+      : `/${properties.lang.slice(0, 2)}/video-article`;
+  }
+
   if (properties.type === 'copmarepage') {
     return properties.lang === defaultLanguage
       ? `/${properties.uid}`

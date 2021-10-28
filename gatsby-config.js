@@ -170,6 +170,7 @@ module.exports = {
           blogpage: require('./schemas/blogpage.json'),
           contact: require('./schemas/contact.json'),
           videopage: require('./schemas/videopage.json'),
+          videoarticlepage: require('./schemas/videoarticlepage.json'),
           bookpage: require('./schemas/bookpage.json'),
           homepage: require('./schemas/homepage.json'),
           pricespage: require('./schemas/pricespage.json'),
