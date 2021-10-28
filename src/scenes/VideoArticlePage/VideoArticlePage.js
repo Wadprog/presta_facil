@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import CallToAction from '@components/CallToAction/CallToAction';
 import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
+import Container from './components/Container';
 
 import style from './VideoArticlePage.module.scss';
-import Container from './components/Container';
 
 const VideoArticlePage = ({ content, canonical, metatitle }) => (
   <div className={style.videoArticlePage}>

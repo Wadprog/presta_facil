@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 
-import style from './Container.module.scss';
 import Video from './components/Video';
 
-import cn from 'classnames';
+import style from './Container.module.scss';
 
 const Container = ({ content }) => {
   const videoItems = content.body[0].items;

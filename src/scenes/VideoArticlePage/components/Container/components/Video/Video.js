@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import lozad from 'lozad';
+
 import Modal from '@components/Modal';
 
 import style from './Video.module.scss';
