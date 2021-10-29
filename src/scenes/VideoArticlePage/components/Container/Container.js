@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
+import { RichText } from 'prismic-reactjs';
 
 import Video from './components/Video';
 
@@ -15,7 +16,7 @@ const Container = ({ content }) => {
       <div className={style.content}>
         <div className={style.head}>
           <div className={style.title}>
-            <h1>{content.title.text}</h1>
+            <RichText render={content.title.raw}></RichText>
           </div>
           <div className={style.subtitle}>
             <p>{content.subtitle.text}</p>

@@ -54,7 +54,10 @@ const Video = ({ data, index }) => {
             <img data-src={previewImage} className="lozad" />
           )}
         </div>
-        <div className={style.button} />
+        <div className={style.button}>
+          <div className={style.button__arrow} />
+          <div className={style.button__background} />
+        </div>
       </div>
       {modalIsOpen && (
         <Modal

@@ -92,7 +92,7 @@ export const query = graphql`
               text
             }
             title {
-              text
+              raw
             }
             canonical {
               text

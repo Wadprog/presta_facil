@@ -3,7 +3,7 @@
     "title": {
       "type": "StructuredText",
       "config": {
-        "single": "heading1",
+        "multi": "heading1",
         "label": "Title",
         "placeholder": "Add title text"
       }

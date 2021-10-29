@@ -75,15 +75,16 @@
   flex-direction: column;
   gap: 8px;
   align-items: center;
-  padding: 0 0 0 106px;
+  max-width: 640px;
+  margin: 0 0 0 130px;
 
   @media (max-width: $lg) {
-    padding: 0 0 0 53px;
+    margin: 0 0 0 65px;
   }
 
   @media (max-width: $md) {
-    width: 95%;
-    padding: 0;
+    max-width: 600px;
+    margin: 0;
   }
 }
 
@@ -102,7 +103,6 @@
 }
 
 .subtitle {
-  max-width: 640px;
   color: $main-light;
   font-weight: 300;
   font-size: 18px;
