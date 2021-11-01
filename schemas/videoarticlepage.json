@@ -1,0 +1,142 @@
+{
+  "Main": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "heading1",
+        "label": "Title",
+        "placeholder": "Add title text"
+      }
+    },
+    "subtitle": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "SubTitle",
+        "placeholder": "Add subtitle text"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {},
+        "choices": {
+          "video_article_list": {
+            "type": "Slice",
+            "fieldset": "Video Article List",
+            "description": "List of \"Video Articles\"",
+            "icon": "ondemand_video",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {
+              "videotitle": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Video Title",
+                  "placeholder": "Video title [required field]"
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Description",
+                  "placeholder": "Description text"
+                }
+              },
+              "videourl": {
+                "type": "Link",
+                "config": {
+                  "label": "videoUrl",
+                  "placeholder": "Video URL (youtube, vimeo, etc. ) [required field]",
+                  "select": null
+                }
+              }
+            }
+          },
+          "cta": {
+            "type": "Slice",
+            "fieldset": "cta",
+            "description": "cta",
+            "icon": "pages",
+            "display": "list",
+            "non-repeat": {
+              "sectiontitle": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "heading2,strong",
+                  "label": "sectionTitle"
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "description"
+                }
+              },
+              "buttontext": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "buttonText"
+                }
+              },
+              "buttonlink": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "buttonlink"
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "image"
+                }
+              }
+            },
+            "repeat": {}
+          }
+        }
+      }
+    }
+  },
+  "SEO": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "UID",
+        "placeholder": "Add UID, for example: video-article"
+      }
+    },
+    "metatitle": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Meta Title",
+        "placeholder": "Add meta title, up to 60 characters recommended"
+      }
+    },
+    "metadescription": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Meta Description",
+        "placeholder": "Add meta description, up to 160 symbols recommended"
+      }
+    },
+    "canonical": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Canonical URL",
+        "placeholder": "Add canonical URL, for example: https://secureprivacy.ai/video-article"
+      }
+    }
+  }
+}
