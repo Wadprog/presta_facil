@@ -21,17 +21,25 @@ const Hero = ({ title, articles }) => {
 
   const firstFourArticles = articles.slice(0, 4);
 
+  // TODO: remove/refactor after solution in post –– https://community.prismic.io/t/gatsby-prismic-wrong-text-tag/7693
+  const getFixedTitle = (array, type) => {
+    const titleClone = JSON.parse(JSON.stringify(array));
+    titleClone[0].type = type;
+
+    return titleClone;
+  };
+
   return (
     <section className={style.hero}>
       <div className={style.title}>
-        <RichText render={title.raw} />
+        <RichText render={getFixedTitle(title.raw, 'heading1')} />
       </div>
       <div className={style.slider}>
         <Swiper {...params}>
           {firstFourArticles.map(({ node }, index) => {
             return (
               <div className={style.slide} key={index}>
-                <SlideItem {...node} />
+                <SlideItem getFixedTitle={getFixedTitle} {...node} />
               </div>
             );
           })}

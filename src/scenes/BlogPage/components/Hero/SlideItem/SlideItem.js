@@ -1,15 +1,16 @@
 import React, { useContext } from 'react';
 import { RichText } from 'prismic-reactjs';
 import { Link } from 'gatsby';
-import { array, object, string } from 'prop-types';
+import { array, func, object, string } from 'prop-types';
 
 import { dateToString, langPath } from '@helpers';
 import LangContext from '@contexts';
 import style from './SlideItem.module.scss';
 
-const SlideItem = ({ data, tags, uid: itemPath }) => {
+const SlideItem = ({ data, tags, uid: itemPath, getFixedTitle }) => {
   const { backgroundpreview, title, date, description } = data;
   const currentLang = useContext(LangContext);
+
   return (
     <div className={style.item}>
       {backgroundpreview.url ? (
@@ -24,7 +25,7 @@ const SlideItem = ({ data, tags, uid: itemPath }) => {
       <div className={style.container}>
         <div className={style.wrapper}>
           <div className={style.title}>
-            <RichText render={title.raw} />
+            <RichText render={getFixedTitle(title.raw, 'heading2')} />
           </div>
           <div className={style.block}>
             <ul className={style.categoryList}>
@@ -57,6 +58,7 @@ SlideItem.propTypes = {
   data: object,
   tags: array,
   uid: string,
+  getFixedTitle: func,
 };
 
 export default SlideItem;
