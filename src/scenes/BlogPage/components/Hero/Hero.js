@@ -21,7 +21,7 @@ const Hero = ({ title, articles }) => {
 
   const firstFourArticles = articles.slice(0, 4);
 
-  //! Temporarily, check this post for fix –– https://community.prismic.io/t/gatsby-prismic-wrong-text-tag/7693
+  // TODO: remove/refactor after solution in post –– https://community.prismic.io/t/gatsby-prismic-wrong-text-tag/7693
   const getFixedTitle = (array, type) => {
     const titleClone = JSON.parse(JSON.stringify(array));
     titleClone[0].type = type;
