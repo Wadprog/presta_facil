@@ -67,9 +67,6 @@ export const query = graphql`
             canonical {
               text
             }
-            name {
-              raw
-            }
             body {
               ... on PrismicPricesresellerpageDataBodyHero {
                 id

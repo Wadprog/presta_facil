@@ -1,12 +1,5 @@
 {
   "Main" : {
-    "name" : {
-      "type" : "StructuredText",
-      "config" : {
-        "single" : "heading1",
-        "label" : "name"
-      }
-    },
     "body" : {
       "type" : "Slices",
       "fieldset" : "Slice zone",
