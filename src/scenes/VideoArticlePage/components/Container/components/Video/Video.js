@@ -15,7 +15,7 @@ const Video = ({ data, index }) => {
 
   useEffect(() => {
     const localCdnHostname = 'secure-privacy';
-    const urlHostname = new URL(urlString).hostname;
+    const { hostname: urlHostname } = new URL(urlString);
 
     const isLocal = urlHostname.includes(localCdnHostname);
 
