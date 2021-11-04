@@ -71,8 +71,8 @@ const linkResolver = (doc) => {
 
   if (properties.type === 'videoarticlepage') {
     return properties.lang === defaultLanguage
-      ? '/video-article'
-      : `/${properties.lang.slice(0, 2)}/video-article`;
+      ? `/videos/${properties.uid}`
+      : `/${properties.lang.slice(0, 2)}/videos/${properties.uid}`;
   }
 
   if (properties.type === 'copmarepage') {
