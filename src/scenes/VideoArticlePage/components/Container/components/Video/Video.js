@@ -7,14 +7,24 @@ import Modal from '@components/Modal';
 import style from './Video.module.scss';
 
 const Video = ({ data, index }) => {
+  const [localPreviewImage, setLocalPreviewImage] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState();
 
-  const url = data.videourl.url;
+  const urlString = data.videourl.url;
 
   useEffect(() => {
-    if (!previewImage) {
-      fetch(`https://noembed.com/embed?url=${url}`)
+    const localCdnHostname = 'secure-privacy';
+    const { hostname: urlHostname } = new URL(urlString);
+
+    const isLocal = urlHostname.includes(localCdnHostname);
+
+    if (!localPreviewImage && isLocal) {
+      setLocalPreviewImage(true);
+    }
+
+    if (!previewImage && !isLocal) {
+      fetch(`https://noembed.com/embed?url=${urlString}`)
         .then((response) => response.json())
         .then((data) => {
           if (data.thumbnail_url) {
@@ -23,12 +33,12 @@ const Video = ({ data, index }) => {
           }
         });
     }
-  }, [previewImage, modalIsOpen]);
+  }, [modalIsOpen]);
 
   useEffect(() => {
     const observer = lozad();
     observer.observe();
-  }, [previewImage]);
+  }, [previewImage, localPreviewImage]);
 
   const handleOpenModal = () => setModalIsOpen(true);
   const handleCloseModal = () => setModalIsOpen(false);
@@ -47,6 +57,16 @@ const Video = ({ data, index }) => {
       </div>
       <div className={style.player} onClick={handleOpenModal}>
         <div className={style.preview}>
+          {localPreviewImage && index === 0 && (
+            <video src={`${urlString}#t=0.1`} preload="metadata" />
+          )}
+          {index !== 0 && localPreviewImage && (
+            <video
+              src={`${urlString}#t=0.1`}
+              className="lozad"
+              preload="metadata"
+            />
+          )}
           {previewImage && index === 0 && (
             <img src={previewImage} loading="eager" />
           )}
@@ -63,7 +83,7 @@ const Video = ({ data, index }) => {
         <Modal
           open={modalIsOpen}
           closeModal={handleCloseModal}
-          videoLink={url}
+          videoLink={urlString}
         />
       )}
     </div>
