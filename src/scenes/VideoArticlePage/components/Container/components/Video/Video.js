@@ -57,23 +57,21 @@ const Video = ({ data, index }) => {
       </div>
       <div className={style.player} onClick={handleOpenModal}>
         <div className={style.preview}>
-          {(previewImage || localPreviewImage) &&
-          index === 0 &&
-          previewImage ? (
-            <img src={previewImage} loading="eager" />
-          ) : (
+          {localPreviewImage && index === 0 && (
             <video src={`${urlString}#t=0.1`} preload="metadata" />
           )}
-          {index !== 0 &&
-          (previewImage || localPreviewImage) &&
-          previewImage ? (
-            <img data-src={previewImage} className="lozad" />
-          ) : (
+          {index !== 0 && localPreviewImage && (
             <video
               src={`${urlString}#t=0.1`}
               className="lozad"
               preload="metadata"
             />
+          )}
+          {previewImage && index === 0 && (
+            <img src={previewImage} loading="eager" />
+          )}
+          {index !== 0 && previewImage && (
+            <img data-src={previewImage} className="lozad" />
           )}
         </div>
         <div className={style.button}>
