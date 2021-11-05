@@ -15,11 +15,26 @@ const ModalContainer = ({
   videoLink,
   modalCtaButtonLink,
   modalCtaButtonText,
+  removeCtaButton,
+  autoPlay,
 }) => {
   const [isOpen, setIsOpen] = useState(open);
+
   useEffect(() => {
     setIsOpen(open);
   }, [open]);
+
+  useEffect(() => {
+    const close = (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    };
+
+    window.addEventListener('keyup', close);
+
+    return () => window.removeEventListener('keyup', close);
+  }, []);
 
   const customStyles = {
     content: {
@@ -32,16 +47,25 @@ const ModalContainer = ({
       background: 'rgba(3, 13,33, 0.75)',
     },
   };
+
   return (
     <Modal isOpen={isOpen} style={customStyles}>
       <div className={style.container}>
-        <ReactPlayer url={videoLink} width="100%" height="100%" controls />
+        <ReactPlayer
+          url={videoLink}
+          playing={autoPlay}
+          width="100%"
+          height="100%"
+          controls
+        />
       </div>
-      <div className={style.button}>
-        <Button variant={VARIANT.PRIMARY} to={modalCtaButtonLink}>
-          {modalCtaButtonText}
-        </Button>
-      </div>
+      {!removeCtaButton && (
+        <div className={style.button}>
+          <Button variant={VARIANT.PRIMARY} to={modalCtaButtonLink}>
+            {modalCtaButtonText}
+          </Button>
+        </div>
+      )}
       <div className={style.buttonClose}>
         <IconButton variant={VARIANT_ICON.CLOSE} click={closeModal}>
           <Icon />
@@ -57,12 +81,16 @@ ModalContainer.propTypes = {
   videoLink: string,
   modalCtaButtonLink: string,
   modalCtaButtonText: string,
+  removeCtaButton: bool,
+  autoPlay: bool,
 };
 
 ModalContainer.defaultProps = {
   videoLink: '',
   modalCtaButtonLink: '',
   modalCtaButtonText: '',
+  autoPlay: false,
+  removeCtaButton: false,
 };
 
 export default ModalContainer;
