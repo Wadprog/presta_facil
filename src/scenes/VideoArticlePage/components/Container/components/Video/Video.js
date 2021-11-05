@@ -84,6 +84,8 @@ const Video = ({ data, index }) => {
           open={modalIsOpen}
           closeModal={handleCloseModal}
           videoLink={urlString}
+          autoPlay
+          removeCtaButton
         />
       )}
     </div>
