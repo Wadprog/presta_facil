@@ -1,10 +1,11 @@
 {
   "Main": {
-    "zendesk": {
-      "type": "Embed",
+    "videoask": {
+      "type": "Link",
       "config": {
-        "label": "Zendesk",
-        "placeholder": "<!-- Start of secureprivacy Zendesk Widget script --> <script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=7c1de950-9031-4521-8e28-c9defa10512b\"> </script> <!-- End of secureprivacy Zendesk Widget script -->"
+        "label": "VideoAsk",
+        "placeholder": "Paste a VideoAsk URL (https://www.videoask.com/xxxxx)",
+        "select": null
       }
     },
     "body": {
@@ -477,10 +478,7 @@
               "type": {
                 "type": "Select",
                 "config": {
-                  "options": [
-                    "business",
-                    "enterprise"
-                  ],
+                  "options": ["business", "enterprise"],
                   "label": "type"
                 }
               },
