@@ -25,6 +25,7 @@ const Button = ({
   fullWidth,
   isHeader,
   element,
+  ignoreLang,
 }) => {
   const classes = classnames({
     [styles.button]: true,
@@ -56,7 +57,7 @@ const Button = ({
         type={type}
         disabled={disabled}
         onClick={click}
-        to={`${langPath(currentLang)}/${to}`}
+        to={ignoreLang ? `/${to}` : `${langPath(currentLang)}/${to}`}
       >
         {children}
       </Component>
@@ -85,6 +86,7 @@ Button.propTypes = {
   fullWidth: PropTypes.bool,
   isHeader: PropTypes.bool,
   element: PropTypes.any,
+  ignoreLang: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -96,6 +98,7 @@ Button.defaultProps = {
   fullWidth: false,
   isHeader: false,
   element: Link,
+  ignoreLang: false,
 };
 export default Button;
 export { VARIANT };

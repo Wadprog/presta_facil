@@ -32,7 +32,7 @@ const WhatIs = ({ primary }) => {
             <RichText render={subtitle.raw} />
           </div>
           <div className={styles.buttonWrapper}>
-            <Button variant={VARIANT.PRIMARY} to={buttonlink.text}>
+            <Button variant={VARIANT.PRIMARY} to={buttonlink.text} ignoreLang>
               <RichText render={buttontext.raw} />
             </Button>
           </div>
