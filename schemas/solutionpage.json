@@ -49,6 +49,22 @@
                   "label": "buttonlink"
                 }
               },
+              "secondbuttontext": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "secondButtonText",
+                  "placeholder": "For example: What is CCPA?"
+                }
+              },
+              "secondbuttonlink": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "secondButtonLink"
+                }
+              },
               "modalvideo": {
                 "type": "Link",
                 "config": {
@@ -356,7 +372,7 @@
               "maintitle": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "heading2, strong",
+                  "multi": "heading2,strong",
                   "label": "Main section title",
                   "placeholder": "Add main section title"
                 }

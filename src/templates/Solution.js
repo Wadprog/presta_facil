@@ -158,6 +158,12 @@ export const query = graphql`
                   buttonlink {
                     text
                   }
+                  secondbuttonlink {
+                    text
+                  }
+                  secondbuttontext {
+                    text
+                  }
                 }
                 items {
                   partnerslogo {

@@ -25,6 +25,8 @@ const Hero = ({ primary, items }) => {
     description,
     buttonlink,
     buttontext,
+    secondbuttonlink,
+    secondbuttontext,
   } = primary;
 
   const videoLink = modalVideo ? modalVideo.url : '';
@@ -50,11 +52,26 @@ const Hero = ({ primary, items }) => {
             <RichText render={title.raw} />
           </div>
           <div className={styles.descr}>{description.text}</div>
-          <div className={styles.buttonWrapper}>
-            <Button variant={VARIANT.PRIMARY} to={buttonlink.text}>
-              {buttontext.text}
-            </Button>
-          </div>
+          {secondbuttonlink && secondbuttontext ? (
+            <div className={styles.buttons}>
+              <div className={styles.buttonWrapper}>
+                <Button variant={VARIANT.PRIMARY} to={buttonlink.text}>
+                  {buttontext.text}
+                </Button>
+              </div>
+              <div className={styles.buttonWrapper}>
+                <Button variant={VARIANT.PRIMARY} to={secondbuttonlink.text}>
+                  {secondbuttontext.text}
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div className={styles.buttonWrapper}>
+              <Button variant={VARIANT.PRIMARY} to={buttonlink.text}>
+                {buttontext.text}
+              </Button>
+            </div>
+          )}
         </div>
         <div className={styles.imageWrapper}>
           <Image className={styles.image} image={previewImage} />

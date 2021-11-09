@@ -92,6 +92,13 @@
   }
 }
 
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5%;
+}
+
 .buttonWrapper {
   display: flex;
   @media (max-width: $md) {
