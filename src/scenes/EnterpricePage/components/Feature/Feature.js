@@ -12,14 +12,14 @@ const Feature = ({ primary, items, scrollToRef }) => {
     <section ref={scrollToRef} className={style.feature}>
       <div className={style.container}>
         <div className={style.title}>
-          <RichText render={title.raw} />
+          <RichText render={title.richText} />
         </div>
         <ul className={style.list}>
           {items.map(({ image, name }) => {
             return (
-              <li className={style.item} key={parseString(name.raw)}>
+              <li className={style.item} key={parseString(name.richText)}>
                 <Image image={image} className={style.icon} />
-                <RichText render={name.raw} />
+                <RichText render={name.richText} />
               </li>
             );
           })}

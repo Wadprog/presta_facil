@@ -26,7 +26,7 @@ const Books = ({ data }) => {
 
   return (
     <div className={style.container}>
-      <RichText render={primary.title.raw} />
+      <RichText render={primary.title.richText} />
       <Swiper {...params}>
         {items.map(({ image }, index) => {
           return (

@@ -57,7 +57,7 @@ export const query = graphql`
           }
           data {
             title {
-              raw
+              richText
             }
             successinformer {
               text

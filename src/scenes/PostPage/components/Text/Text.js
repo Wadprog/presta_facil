@@ -20,7 +20,7 @@ const Text = ({ primary }) => {
   const { text } = primary;
   return (
     <div className={style.text}>
-      {<RichText render={text.raw} htmlSerializer={htmlSerializer} />}
+      {<RichText render={text.richText} htmlSerializer={htmlSerializer} />}
     </div>
   );
 };

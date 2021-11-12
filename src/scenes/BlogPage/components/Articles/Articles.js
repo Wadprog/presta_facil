@@ -36,7 +36,7 @@ const Articles = ({
       const { data: postData, tags } = node;
       const { title, date } = postData;
       const filterBySearch = debounceSearchResult
-        ? parseString(title.raw)
+        ? parseString(title.richText)
             .toLowerCase()
             .includes(debounceSearchResult.toLowerCase())
         : true;

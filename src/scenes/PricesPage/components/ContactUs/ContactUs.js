@@ -16,15 +16,15 @@ const ContactUs = ({ primary }) => {
       <div className={style.container}>
         <div className={style.button}>
           <Button
-            to={RichText.asText(buttonLink.raw)}
+            to={RichText.asText(buttonLink.richText)}
             variant={VARIANT.PRIMARY}
             fullWidth={true}
           >
-            {RichText.asText(buttonText.raw)}
+            {RichText.asText(buttonText.richText)}
           </Button>
         </div>
         <div className={style.subtitle}>
-          <RichText render={subTitle.raw} />
+          <RichText render={subTitle.richText} />
         </div>
       </div>
     </div>

@@ -10,8 +10,8 @@ const FaqSemanticMarkup = ({ questions }) => {
   useEffect(() => {
     const markupList = questions.map(({ title, content }) => {
       return {
-        question: parseString(title.raw),
-        answer: parseString(content.raw),
+        question: parseString(title.richText),
+        answer: parseString(content.richText),
       };
     });
 

@@ -41,10 +41,10 @@ const Features = ({ primary, items }) => {
       <div className={style.features}>
         <div className={style.container}>
           <div className={style.title}>
-            <RichText render={title.raw} />
+            <RichText render={title.richText} />
           </div>
           <div className={style.descr}>
-            <RichText render={description.raw} />
+            <RichText render={description.richText} />
           </div>
           <div className={style.slider} key={buildKey}>
             <Swiper {...params}>

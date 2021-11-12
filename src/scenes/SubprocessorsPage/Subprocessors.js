@@ -19,9 +19,9 @@ const renderTableRows = (rows, rowsType) => {
     const cols = tableValues.map((value, index) => (
       <CurrentTag
         className={style.tableCell}
-        key={`${index}, ${parseString(value.raw)}`}
+        key={`${index}, ${parseString(value.richText)}`}
       >
-        {parseString(value.raw)}
+        {parseString(value.richText)}
       </CurrentTag>
     ));
 
@@ -42,9 +42,9 @@ const renderMobileTable = (rows) => {
       <tr className={style.tableRow} key={`${index}, ${value}`}>
         <td
           className={style.tableCell}
-          key={`${index}, ${parseString(value.raw)}`}
+          key={`${index}, ${parseString(value.richText)}`}
         >
-          {parseString(value.raw)}
+          {parseString(value.richText)}
         </td>
       </tr>
     ));
@@ -60,7 +60,7 @@ const filterTableData = (data, searchInfo) => {
 
   const filteredTableData = data.filter((row) => {
     const rowValues = Object.values(row);
-    const parsedValues = rowValues.map((value) => parseString(value.raw));
+    const parsedValues = rowValues.map((value) => parseString(value.richText));
 
     for (const value of parsedValues) {
       const content = value.toLowerCase();

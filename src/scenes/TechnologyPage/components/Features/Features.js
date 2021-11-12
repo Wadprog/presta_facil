@@ -9,14 +9,14 @@ const Features = ({ primary }) => {
   return (
     <section className={styles.section}>
       <div className={styles.title}>
-        <RichText render={title.raw} />
+        <RichText render={title.richText} />
       </div>
       <div className={styles.description}>
-        <RichText render={description.raw} />
+        <RichText render={description.richText} />
       </div>
       <div className={styles.container}>
         <div className={styles.listWrapper}>
-          <RichText render={list.raw} />
+          <RichText render={list.richText} />
         </div>
         <div className={styles.imageWrapper}>
           <Image image={image} />

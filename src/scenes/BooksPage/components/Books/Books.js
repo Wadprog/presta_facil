@@ -10,7 +10,7 @@ const Books = ({ items, pagetitle }) => {
   return (
     <div className={style.page}>
       <div className={style.headlineContainer}>
-        <RichText render={pagetitle.raw} />
+        <RichText render={pagetitle.richText} />
       </div>
       <div className={style.container}>
         {items.map(({ image, buttontext, bookpageurl }) => (

@@ -40,10 +40,10 @@ const Technologies = ({ primary, items }) => {
       <div className={style.integration}>
         <div className={style.container}>
           <div className={style.title}>
-            <RichText render={title.raw} />
+            <RichText render={title.richText} />
           </div>
           <div className={style.descr}>
-            <RichText render={description.raw} />
+            <RichText render={description.richText} />
           </div>
           <Swiper {...params} key={buildKey}>
             {items.map((item, index) => {

@@ -71,10 +71,10 @@ export const query = graphql`
                 slice_type
                 primary {
                   subtitle {
-                    raw
+                    richText
                   }
                   title {
-                    raw
+                    richText
                   }
                 }
               }
@@ -83,7 +83,7 @@ export const query = graphql`
                 slice_type
                 primary {
                   title {
-                    raw
+                    richText
                   }
                 }
                 items {
@@ -98,19 +98,19 @@ export const query = graphql`
                 slice_type
                 primary {
                   title {
-                    raw
+                    richText
                   }
                 }
                 items {
                   title {
-                    raw
+                    richText
                   }
                   link {
                     link_type
                     url
                   }
                   content {
-                    raw
+                    richText
                   }
                 }
               }
@@ -119,13 +119,13 @@ export const query = graphql`
                 slice_type
                 primary {
                   subtitle {
-                    raw
+                    richText
                   }
                   buttontext {
-                    raw
+                    richText
                   }
                   buttonlink {
-                    raw
+                    richText
                   }
                 }
               }
@@ -134,24 +134,24 @@ export const query = graphql`
                 slice_type
                 primary {
                   title {
-                    raw
+                    richText
                   }
                 }
                 items {
                   plusstatus {
-                    raw
+                    richText
                   }
                   featuretitle {
-                    raw
+                    richText
                   }
                   enterprisestatus {
-                    raw
+                    richText
                   }
                   businessstatus {
-                    raw
+                    richText
                   }
                   basicstatus {
-                    raw
+                    richText
                   }
                 }
               }
@@ -163,7 +163,7 @@ export const query = graphql`
                     text
                   }
                   anualperiodtogglelabel {
-                    raw
+                    richText
                     text
                   }
                   currencydropdownlabel {
@@ -177,14 +177,14 @@ export const query = graphql`
                   }
                   annualcoefficient
                   annualcondition {
-                    raw
+                    richText
                   }
                   buttonbaselink {
                     link_type
                     url
                   }
                   buttontext {
-                    raw
+                    richText
                   }
                   firstlawlocation {
                     text
@@ -193,7 +193,7 @@ export const query = graphql`
                     text
                   }
                   monthlycondition {
-                    raw
+                    richText
                   }
                   secondlawlocation {
                     text
@@ -216,10 +216,10 @@ export const query = graphql`
                   twoprivacypriceeur
                   twoprivacypriceusd
                   plantitle {
-                    raw
+                    richText
                   }
                   plandescription {
-                    raw
+                    richText
                   }
                 }
               }

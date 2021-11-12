@@ -47,7 +47,7 @@ const Item = ({ title, videourl, tag, date, index }) => {
           )}
         </div>
         <div className={style.title}>
-          <RichText render={title.raw} />
+          <RichText render={title.richText} />
         </div>
         <div className={style.wrapper}>
           <div className={style.tagList}>

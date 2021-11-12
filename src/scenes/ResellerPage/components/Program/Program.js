@@ -15,10 +15,10 @@ const Program = ({ primary, items }) => {
       <div className={style.container}>
         <div className={style.message}>
           <div className={style.title}>
-            <RichText render={title.raw} />
+            <RichText render={title.richText} />
           </div>
           <div className={style.description}>
-            <RichText render={description.raw} />
+            <RichText render={description.richText} />
           </div>
         </div>
         <div className={style.cards}>

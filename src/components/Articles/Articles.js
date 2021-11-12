@@ -28,7 +28,7 @@ const Articles = ({ primary, data, currentLanguage }) => {
     >
       <section className={style.articles}>
         <div className={style.title}>
-          <RichText render={title.raw} />
+          <RichText render={title.RichText} />
         </div>
         <div className={style.list}>
           {lastArticles.map((item) => {
@@ -38,7 +38,7 @@ const Articles = ({ primary, data, currentLanguage }) => {
         {buttontext && (
           <div className={style.button}>
             <Button variant={VARIANT.TRANSPARENT} to="/blog">
-              <RichText render={buttontext.raw} />
+              <RichText render={buttontext.RichText} />
             </Button>
           </div>
         )}
@@ -83,10 +83,10 @@ const SectionWithData = ({ primary, currentLanguage }) => {
                   }
                   date
                   description {
-                    raw
+                    richText
                   }
                   title {
-                    raw
+                    richText
                   }
                   preview {
                     alt

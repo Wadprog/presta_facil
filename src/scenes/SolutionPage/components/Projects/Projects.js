@@ -10,7 +10,7 @@ const Projects = ({ primary, items }) => {
     <section className={styles.projects}>
       <div className={styles.container}>
         <div className={styles.title}>
-          <RichText render={title.raw} />
+          <RichText render={title.richText} />
         </div>
         <div className={styles.list}>
           {items.map((item) => {

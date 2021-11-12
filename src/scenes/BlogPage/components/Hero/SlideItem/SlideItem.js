@@ -25,7 +25,7 @@ const SlideItem = ({ data, tags, uid: itemPath, getFixedTitle }) => {
       <div className={style.container}>
         <div className={style.wrapper}>
           <div className={style.title}>
-            <RichText render={getFixedTitle(title.raw, 'heading2')} />
+            <RichText render={getFixedTitle(title.richText, 'heading2')} />
           </div>
           <div className={style.block}>
             <ul className={style.categoryList}>
@@ -41,7 +41,7 @@ const SlideItem = ({ data, tags, uid: itemPath, getFixedTitle }) => {
           </div>
         </div>
         <div className={style.description}>
-          <RichText render={description.raw} />
+          <RichText render={description.richText} />
         </div>
         <Link
           className={style.link}

@@ -63,22 +63,22 @@ const PlansFeatures = ({ primary, items, showBar, hideBar, activepoint }) => {
     <>
       <div className={style.wrapper}>
         <div className={style.title}>
-          <RichText render={primary.title.raw} />
+          <RichText render={primary.title.richText} />
         </div>
         <ul className={style.list}>
           {items.map((item, index) => {
             const basicStatus = parseCellValue(
-              RichText.asText(item.basicstatus.raw)
+              RichText.asText(item.basicstatus.richText)
             );
             const plusStatus = parseCellValue(
-              RichText.asText(item.plusstatus.raw)
+              RichText.asText(item.plusstatus.richText)
             );
             const businessStatus = parseCellValue(
-              RichText.asText(item.businessstatus.raw),
+              RichText.asText(item.businessstatus.richText),
               { withGradient: true }
             );
             const enterpriseStatus = parseCellValue(
-              RichText.asText(item.enterprisestatus.raw)
+              RichText.asText(item.enterprisestatus.richText)
             );
 
             return (
@@ -89,7 +89,7 @@ const PlansFeatures = ({ primary, items, showBar, hideBar, activepoint }) => {
                     [style.namemobile]: isMobile,
                   })}
                 >
-                  <RichText render={item.featuretitle.raw} />
+                  <RichText render={item.featuretitle.richText} />
                 </div>
                 <div
                   className={classnames(style.statuses, style.statusesdesktop)}

@@ -79,7 +79,7 @@ export const query = graphql`
                 slice_type
                 primary {
                   title {
-                    raw
+                    richText
                   }
                   loadmorebuttontext {
                     text
@@ -89,7 +89,7 @@ export const query = graphql`
                   date
                   tag
                   title {
-                    raw
+                    richText
                   }
                   videourl {
                     link_type
@@ -102,16 +102,16 @@ export const query = graphql`
                 slice_type
                 primary {
                   buttonlink {
-                    raw
+                    richText
                   }
                   buttontext {
-                    raw
+                    richText
                   }
                   description {
-                    raw
+                    richText
                   }
                   sectiontitle {
-                    raw
+                    richText
                   }
                   image {
                     alt

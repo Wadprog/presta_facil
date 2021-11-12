@@ -32,7 +32,7 @@ const Hero = ({ title, articles }) => {
   return (
     <section className={style.hero}>
       <div className={style.title}>
-        <RichText render={getFixedTitle(title.raw, 'heading1')} />
+        <RichText render={getFixedTitle(title.richText, 'heading1')} />
       </div>
       <div className={style.slider}>
         <Swiper {...params}>

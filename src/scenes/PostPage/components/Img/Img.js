@@ -9,7 +9,7 @@ const Img = ({ primary }) => {
   return (
     <div className={style.image}>
       <Image image={image} />
-      {caption && <RichText render={caption.raw} />}
+      {caption && <RichText render={caption.richText} />}
     </div>
   );
 };

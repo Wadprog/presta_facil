@@ -74,7 +74,7 @@ const Subscribe = ({ primary }) => {
       >
         <div className={styles.block}>
           <div className={styles.title}>
-            <RichText render={title.raw} />
+            <RichText render={title.richText} />
           </div>
           <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
             {!isSubmitted ? (
@@ -111,7 +111,7 @@ const Subscribe = ({ primary }) => {
                     element="button"
                     fullWidth
                   >
-                    {RichText.asText(buttonText.raw)}
+                    {RichText.asText(buttonText.richText)}
                   </Button>
                 </div>
               </Fragment>

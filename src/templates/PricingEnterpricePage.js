@@ -90,16 +90,16 @@ export const query = graphql`
                     url
                   }
                   title {
-                    raw
+                    richText
                   }
                   subtitle {
-                    raw
+                    richText
                   }
                   modalbuttontext {
-                    raw
+                    richText
                   }
                   modalbuttonlink {
-                    raw
+                    richText
                   }
                   image {
                     alt
@@ -107,10 +107,10 @@ export const query = graphql`
                     gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                   }
                   ctatitle {
-                    raw
+                    richText
                   }
                   ctatext {
-                    raw
+                    richText
                   }
                   ctabuttontext {
                     text
@@ -119,10 +119,10 @@ export const query = graphql`
                     text
                   }
                   benefitstitle {
-                    raw
+                    richText
                   }
                   benefitslist {
-                    raw
+                    richText
                   }
                   benefitsbuttontext {
                     text
@@ -134,12 +134,12 @@ export const query = graphql`
                 slice_type
                 primary {
                   title {
-                    raw
+                    richText
                   }
                 }
                 items {
                   name {
-                    raw
+                    richText
                   }
                   image {
                     alt
@@ -152,14 +152,14 @@ export const query = graphql`
                 slice_type
                 primary {
                   title {
-                    raw
+                    richText
                   }
                   image {
                     alt
                     url
                   }
                   button {
-                    raw
+                    richText
                   }
                 }
               }
@@ -178,17 +178,17 @@ export const query = graphql`
                 slice_type
                 items {
                   text {
-                    raw
+                    richText
                   }
                   photo {
                     alt
                     url
                   }
                   name {
-                    raw
+                    richText
                   }
                   company {
-                    raw
+                    richText
                   }
                 }
               }
@@ -200,10 +200,10 @@ export const query = graphql`
                     text
                   }
                   dropdownlable {
-                    raw
+                    richText
                   }
                   title {
-                    raw
+                    richText
                   }
                 }
                 items {
@@ -215,10 +215,10 @@ export const query = graphql`
                     url
                   }
                   name {
-                    raw
+                    richText
                   }
                   tag {
-                    raw
+                    richText
                   }
                   screenshot {
                     alt

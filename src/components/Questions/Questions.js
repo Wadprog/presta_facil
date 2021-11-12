@@ -47,13 +47,13 @@ const Questions = ({ primary, items }) => {
             <AccordionItem key={index} className={styles.accordionItem}>
               <AccordionItemHeading className={styles.accordionItemHeading}>
                 <AccordionItemButton className={styles.accordionItemButton}>
-                  <RichText render={title.raw} />
+                  <RichText render={title.richText} />
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel className={styles.accordionItemPanel}>
                 <div className={styles.content}>
                   <RichText
-                    render={content.raw}
+                    render={content.richText}
                     htmlSerializer={htmlSerializer}
                   />
                   {link && linktext && (
@@ -78,7 +78,7 @@ const Questions = ({ primary, items }) => {
   return (
     <section className={styles.benefits}>
       <div className={styles.title}>
-        <RichText render={title.raw} />
+        <RichText render={title.richText} />
       </div>
       <Accordion
         className={styles.accordion}

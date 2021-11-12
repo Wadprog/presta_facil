@@ -11,10 +11,10 @@ const Hero = ({ primary }) => {
     <div className={style.wrapper}>
       <div className={style.container}>
         <div className={style.title}>
-          <RichText render={title.raw} />
+          <RichText render={title.richText} />
         </div>
         <div className={style.subtitle}>
-          <RichText render={subtitle.raw} />
+          <RichText render={subtitle.richText} />
         </div>
       </div>
     </div>

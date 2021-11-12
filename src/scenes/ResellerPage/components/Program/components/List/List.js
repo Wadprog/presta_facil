@@ -15,7 +15,7 @@ const List = ({ items }) => {
                 <img src={item.image.url} alt={item.image.alt} loading="lazy" />
               </div>
               <div className={style.text}>
-                <RichText render={item.text.raw} />
+                <RichText render={item.text.richText} />
               </div>
             </div>
           </div>

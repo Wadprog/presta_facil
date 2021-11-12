@@ -31,7 +31,7 @@ const Videos = ({ primary, items, filtersbuttontext, placeholder }) => {
   useEffect(() => {
     const filteredList = validFields.filter(({ title, date, tag }) => {
       const filterBySearch = debounceSearchResult
-        ? parseString(title.raw)
+        ? parseString(title.richText)
             .toLowerCase()
             .includes(debounceSearchResult.toLowerCase())
         : true;
@@ -67,7 +67,7 @@ const Videos = ({ primary, items, filtersbuttontext, placeholder }) => {
       <div className={style.container}>
         <div className={style.wrapper}>
           <div className={style.title}>
-            <RichText render={title.raw} />
+            <RichText render={title.richText} />
           </div>
           <div className={style.search}>
             <SearchInput

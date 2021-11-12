@@ -50,7 +50,7 @@ const Footer = ({ data, activeDocMeta }) => {
         <div className={style.container}>
           <div className={style.banners}>
             <div className={style.quizWrapper}>
-              <RichText render={primary.buttontitle.raw} />
+              <RichText render={primary.buttontitle.richText} />
               <Button
                 variant={buttonVariant}
                 isHeader={true}

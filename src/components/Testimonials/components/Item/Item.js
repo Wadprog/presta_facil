@@ -13,14 +13,14 @@ const Item = ({ photo, name, company, text }) => {
       <div className={style.user}>
         <Image image={photo} className={style.photo} />
         <div className={style.name}>
-          <RichText render={name.raw} />
+          <RichText render={name.richText} />
         </div>
         <div className={style.position}>
-          <RichText render={company.raw} />
+          <RichText render={company.richText} />
         </div>
       </div>
       <div className={style.review}>
-        <RichText render={text.raw} />
+        <RichText render={text.richText} />
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ const Card = ({
     <div className={style.container}>
       <div className={style.header}>
         <div className={style.author}>
-          <RichText render={author.raw} />
+          <RichText render={author.richText} />
         </div>
         <div className={style.stars}>
           <img src={stars} alt="stars" loading="lazy" draggable={false} />
@@ -27,25 +27,25 @@ const Card = ({
       </div>
       <div className={style.main}>
         <div className={style.text}>
-          <RichText render={text.raw} />
+          <RichText render={text.richText} />
         </div>
       </div>
       <div className={style.footer}>
         <a
-          href={RichText.asText(buttonLink.raw)}
+          href={RichText.asText(buttonLink.richText)}
           target="_blank"
           rel="noopener noreferrer"
           className={style.link}
         >
           <span className={classnames(style.title, style.full)}>
             <GradientText
-              text={RichText.asText(buttonText.raw)}
+              text={RichText.asText(buttonText.richText)}
               background="linear-gradient(87.97deg, #24b04b -46.17%, #0263bc 186.99%)"
             />
           </span>
           <span className={classnames(style.title, style.short)}>
             <GradientText
-              text={RichText.asText(buttonTextShort.raw)}
+              text={RichText.asText(buttonTextShort.richText)}
               background="linear-gradient(87.97deg, #24b04b -46.17%, #0263bc 186.99%)"
             />
           </span>

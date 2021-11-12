@@ -70,7 +70,7 @@ const Card = ({
   };
 
   const getPlanName = () => {
-    const planFullName = parseString(title.raw);
+    const planFullName = parseString(title.richText);
     const planName = planFullName.split(' ')[0].toLowerCase();
 
     return planName;
@@ -96,7 +96,7 @@ const Card = ({
       <div className={style.main}>
         <div className={style.title}>
           <div className={style.type}>
-            <RichText render={title.raw} />
+            <RichText render={title.richText} />
           </div>
           <div className={style.name}>
             {isEnterprise ? '' : selectedPlans.join(', ')}
@@ -116,13 +116,13 @@ const Card = ({
             <span className={style.gradientText}>
               {isEnterprise
                 ? enterpriseButtonText
-                : RichText.asText(buttonText.raw)}
+                : RichText.asText(buttonText.richText)}
             </span>
           ) : (
             <span>
               {isEnterprise
                 ? enterpriseButtonText
-                : RichText.asText(buttonText.raw)}
+                : RichText.asText(buttonText.richText)}
             </span>
           )}
         </a>

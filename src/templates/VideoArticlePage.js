@@ -64,16 +64,16 @@ export const query = graphql`
                 slice_type
                 primary {
                   buttonlink {
-                    raw
+                    richText
                   }
                   buttontext {
-                    raw
+                    richText
                   }
                   description {
-                    raw
+                    richText
                   }
                   sectiontitle {
-                    raw
+                    richText
                   }
                   image {
                     alt
@@ -92,7 +92,7 @@ export const query = graphql`
               text
             }
             title {
-              raw
+              richText
             }
             canonical {
               text

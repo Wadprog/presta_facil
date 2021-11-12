@@ -111,12 +111,15 @@ const Content = ({ primary, items }) => {
       >
         <AccordionItemHeading>
           <AccordionItemButton className={styles.accordionItemButton}>
-            <RichText render={title.raw} />
+            <RichText render={title.richText} />
           </AccordionItemButton>
         </AccordionItemHeading>
         <AccordionItemPanel className={styles.accordionItemPanel}>
           <div className={styles.content}>
-            <RichText render={content.raw} htmlSerializer={htmlSerializer} />
+            <RichText
+              render={content.richText}
+              htmlSerializer={htmlSerializer}
+            />
           </div>
         </AccordionItemPanel>
       </AccordionItem>
@@ -128,7 +131,7 @@ const Content = ({ primary, items }) => {
   return (
     <section className={styles.benefits}>
       <div className={styles.title}>
-        <RichText render={mainSectionTitle.raw} />
+        <RichText render={mainSectionTitle.richText} />
       </div>
       <Accordion
         className={styles.accordion}

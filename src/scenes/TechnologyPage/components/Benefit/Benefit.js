@@ -13,13 +13,13 @@ const Benefit = ({ primary, items }) => {
       </div>
       <div className={styles.container}>
         <div className={styles.title}>
-          <RichText render={title.raw} />
+          <RichText render={title.richText} />
         </div>
         <div className={styles.description}>
-          <RichText render={description.raw} />
+          <RichText render={description.richText} />
         </div>
         <div className={styles.subtitle}>
-          <RichText render={subtitle.raw} />
+          <RichText render={subtitle.richText} />
         </div>
         <ul className={styles.list}>
           {items.map(({ image, text }, index) => {
@@ -29,7 +29,7 @@ const Benefit = ({ primary, items }) => {
                 <div className={styles.imageWrapper}>
                   <Image image={image} />
                 </div>
-                <RichText render={text.raw} />
+                <RichText render={text.richText} />
               </li>
             );
           })}

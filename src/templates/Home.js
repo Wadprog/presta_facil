@@ -59,13 +59,13 @@ export const query = graphql`
                 slice_type
                 primary {
                   trusted {
-                    raw
+                    richText
                   }
                   title {
-                    raw
+                    richText
                   }
                   sub_title {
-                    raw
+                    richText
                   }
                   preferenceimage {
                     alt
@@ -85,20 +85,20 @@ export const query = graphql`
                     text
                   }
                   modalbuttontitle {
-                    raw
+                    richText
                   }
                   modalctabuttonlink {
                     text
                   }
                   modalbuttondescription {
-                    raw
+                    richText
                   }
                   heroimage {
                     alt
                     url
                   }
                   description {
-                    raw
+                    richText
                   }
                   cookieimage {
                     alt
@@ -106,16 +106,16 @@ export const query = graphql`
                     gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                   }
                   buttonsecondarylink {
-                    raw
+                    richText
                   }
                   buttonsecondary {
-                    raw
+                    richText
                   }
                   buttonlink {
                     text
                   }
                   button {
-                    raw
+                    richText
                   }
                 }
                 items {
@@ -130,17 +130,17 @@ export const query = graphql`
                 slice_type
                 items {
                   text {
-                    raw
+                    richText
                   }
                   photo {
                     alt
                     url
                   }
                   name {
-                    raw
+                    richText
                   }
                   company {
-                    raw
+                    richText
                   }
                 }
               }
@@ -149,21 +149,21 @@ export const query = graphql`
                 slice_type
                 primary {
                   title {
-                    raw
+                    richText
                   }
                   description {
-                    raw
+                    richText
                   }
                 }
                 items {
                   title {
-                    raw
+                    richText
                   }
                   text {
-                    raw
+                    richText
                   }
                   pagename {
-                    raw
+                    richText
                   }
                   image {
                     alt
@@ -176,10 +176,10 @@ export const query = graphql`
                 slice_type
                 primary {
                   title {
-                    raw
+                    richText
                   }
                   description {
-                    raw
+                    richText
                   }
                 }
                 items {
@@ -188,10 +188,10 @@ export const query = graphql`
                     url
                   }
                   name {
-                    raw
+                    richText
                   }
                   pagename {
-                    raw
+                    richText
                   }
                 }
               }
@@ -200,21 +200,21 @@ export const query = graphql`
                 slice_type
                 primary {
                   title {
-                    raw
+                    richText
                   }
                   description {
-                    raw
+                    richText
                   }
                 }
                 items {
                   title {
-                    raw
+                    richText
                   }
                   text {
-                    raw
+                    richText
                   }
                   pagename {
-                    raw
+                    richText
                   }
                   buttontext {
                     text
@@ -233,10 +233,10 @@ export const query = graphql`
                     text
                   }
                   dropdownlable {
-                    raw
+                    richText
                   }
                   title {
-                    raw
+                    richText
                   }
                 }
                 items {
@@ -248,14 +248,14 @@ export const query = graphql`
                     url
                   }
                   name {
-                    raw
+                    richText
                   }
                   screenshot {
                     alt
                     url
                   }
                   tag {
-                    raw
+                    richText
                   }
                 }
               }
@@ -264,7 +264,7 @@ export const query = graphql`
                 slice_type
                 primary {
                   title {
-                    raw
+                    richText
                   }
                 }
                 items {
@@ -273,24 +273,24 @@ export const query = graphql`
                     url
                   }
                   description {
-                    raw
+                    richText
                   }
                   cardtitle {
-                    raw
+                    richText
                   }
                   type
                   buttonprice {
-                    raw
+                    richText
                   }
                   buttonlink {
                     link_type
                     url
                   }
                   button {
-                    raw
+                    richText
                   }
                   benefits {
-                    raw
+                    richText
                   }
                 }
               }
@@ -299,10 +299,10 @@ export const query = graphql`
                 slice_type
                 primary {
                   title {
-                    raw
+                    richText
                   }
                   buttontext {
-                    raw
+                    richText
                   }
                 }
               }
@@ -311,10 +311,10 @@ export const query = graphql`
                 slice_type
                 primary {
                   title {
-                    raw
+                    richText
                   }
                   buttontext {
-                    raw
+                    richText
                   }
                   placeholder {
                     text

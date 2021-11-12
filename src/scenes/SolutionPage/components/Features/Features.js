@@ -35,7 +35,7 @@ const Features = ({ primary, items }) => {
   return (
     <section className={styles.features}>
       <div className={styles.title}>
-        <RichText render={title.raw} />
+        <RichText render={title.richText} />
       </div>
       <Swiper {...params} key={buildKey}>
         {items.map(({ image, imageSharp, title, description }, index) => {
@@ -46,8 +46,8 @@ const Features = ({ primary, items }) => {
                 imageSharp={imageSharp}
                 image={image}
               />
-              <RichText render={title.raw} />
-              <RichText render={description.raw} />
+              <RichText render={title.richText} />
+              <RichText render={description.richText} />
             </div>
           );
         })}

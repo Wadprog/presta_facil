@@ -24,8 +24,8 @@ const ArticlePreview = ({ node }) => {
         )}
       </div>
       <div className={style.textBlock}>
-        <h3 className={style.title}>{parseString(title.raw)}</h3>
-        <p className={style.text}>{parseString(description.raw)}</p>
+        <h3 className={style.title}>{parseString(title.richText)}</h3>
+        <p className={style.text}>{parseString(description.richText)}</p>
         <div className={style.wrapper}>
           <ul className={style.categoryList}>
             {tags.map((item, index) => {

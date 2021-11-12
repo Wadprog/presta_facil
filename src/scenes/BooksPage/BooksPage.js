@@ -27,7 +27,7 @@ const BooksPage = ({ content, pageTitle, canonical }) => {
         }
       })}
       <BreadcrumbsSemanticMarkup
-        pageTitle={parseString(pageTitle.raw)}
+        pageTitle={parseString(pageTitle.richText)}
         pageUrl={canonical.text}
       />
     </div>

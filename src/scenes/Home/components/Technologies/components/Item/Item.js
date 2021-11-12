@@ -13,7 +13,7 @@ import Image from '@components/Image/Image';
 const Item = ({ image, name, pagename }) => {
   const currentLang = useContext(LangContext);
   const link = `${langPath(currentLang)}/technology/${RichText.asText(
-    pagename.raw
+    pagename.richText
   )
     .toLowerCase()
     .replace(' ', '-')}`;
@@ -25,7 +25,7 @@ const Item = ({ image, name, pagename }) => {
       </div>
       <Image image={image} className={style.icon} />
       <div className={style.name}>
-        <RichText render={name.raw} />
+        <RichText render={name.richText} />
       </div>
     </Link>
   );
