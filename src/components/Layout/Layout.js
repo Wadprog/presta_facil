@@ -147,7 +147,7 @@ const LayoutWithData = (props) => {
                       slice_type
                       primary {
                         title {
-                          raw
+                          richText
                         }
                       }
                       items {
@@ -168,7 +168,7 @@ const LayoutWithData = (props) => {
                           text
                         }
                         buttontitle {
-                          raw
+                          richText
                         }
                         copyright {
                           text
@@ -224,7 +224,7 @@ const LayoutWithData = (props) => {
                       slice_type
                       primary {
                         title {
-                          raw
+                          richText
                         }
                         page {
                           text
@@ -238,10 +238,10 @@ const LayoutWithData = (props) => {
                           url
                         }
                         description {
-                          raw
+                          richText
                         }
                         buttontext {
-                          raw
+                          richText
                         }
                       }
                     }
@@ -255,23 +255,23 @@ const LayoutWithData = (props) => {
                           url
                         }
                         description {
-                          raw
+                          richText
                         }
                         cardtitle {
-                          raw
+                          richText
                         }
                         buttonprice {
-                          raw
+                          richText
                         }
                         buttonlink {
                           link_type
                           url
                         }
                         button {
-                          raw
+                          richText
                         }
                         benefits {
-                          raw
+                          richText
                         }
                       }
                     }

@@ -83,10 +83,10 @@ const SectionWithData = ({ primary, currentLanguage }) => {
                   }
                   date
                   description {
-                    raw
+                    richText
                   }
                   title {
-                    raw
+                    richText
                   }
                   preview {
                     alt

@@ -59,7 +59,7 @@ export const query = graphql`
           }
           data {
             pagetitle {
-              raw
+              richText
             }
             metatitle {
               text
