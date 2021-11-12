@@ -14,7 +14,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        exclude: [
+        excludes: [
           '/preview',
           '/preview/copmarepage',
           '/preview/featurepage',
