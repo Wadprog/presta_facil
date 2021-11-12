@@ -74,20 +74,20 @@ export const query = graphql`
                 slice_type
                 primary {
                   buttonlink {
-                    raw
+                    richText
                   }
                   buttontext {
-                    raw
+                    richText
                   }
                   description {
-                    raw
+                    richText
                   }
                   image {
                     alt
                     url
                   }
                   sectiontitle {
-                    raw
+                    richText
                   }
                 }
               }
@@ -96,10 +96,10 @@ export const query = graphql`
                 slice_type
                 primary {
                   title {
-                    raw
+                    richText
                   }
                   buttontext {
-                    raw
+                    richText
                   }
                 }
               }
@@ -108,7 +108,7 @@ export const query = graphql`
                 slice_type
                 primary {
                   caption {
-                    raw
+                    richText
                   }
                   image {
                     alt
@@ -121,7 +121,7 @@ export const query = graphql`
                 slice_type
                 primary {
                   quote {
-                    raw
+                    richText
                   }
                 }
               }
@@ -130,10 +130,10 @@ export const query = graphql`
                 slice_type
                 primary {
                   title {
-                    raw
+                    richText
                   }
                   buttontext {
-                    raw
+                    richText
                   }
                   placeholder {
                     text
@@ -145,7 +145,7 @@ export const query = graphql`
                 slice_type
                 primary {
                   text {
-                    raw
+                    richText
                   }
                 }
               }

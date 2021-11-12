@@ -82,16 +82,16 @@ export const query = graphql`
                 slice_type
                 items {
                   col1 {
-                    raw
+                    richText
                   }
                   col2 {
-                    raw
+                    richText
                   }
                   col3 {
-                    raw
+                    richText
                   }
                   col4 {
-                    raw
+                    richText
                   }
                 }
               }
@@ -100,16 +100,16 @@ export const query = graphql`
                 slice_type
                 items {
                   col1 {
-                    raw
+                    richText
                   }
                   col2 {
-                    raw
+                    richText
                   }
                   col3 {
-                    raw
+                    richText
                   }
                   col4 {
-                    raw
+                    richText
                   }
                 }
               }

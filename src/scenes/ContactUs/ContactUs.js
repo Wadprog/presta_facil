@@ -15,7 +15,7 @@ const ContactUs = ({ content, metatitle, canonical }) => {
       <div className={style.container}>
         <h1 className={style.title}>
           <GradientText
-            text={parseString(title.raw)}
+            text={parseString(title.richText)}
             background="linear-gradient(87.97deg, #24b04b -46.17%, #0263bc 186.99%)"
           />
         </h1>

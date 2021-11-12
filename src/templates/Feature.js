@@ -94,7 +94,7 @@ export const query = graphql`
                     gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                   }
                   title {
-                    raw
+                    richText
                   }
                   videobuttontext {
                     text
@@ -112,7 +112,7 @@ export const query = graphql`
                 slice_type
                 primary {
                   title {
-                    raw
+                    richText
                   }
                   loadmorebuttontext {
                     text
@@ -120,7 +120,7 @@ export const query = graphql`
                 }
                 items {
                   title {
-                    raw
+                    richText
                   }
                   linktext {
                     text
@@ -130,7 +130,7 @@ export const query = graphql`
                     url
                   }
                   content {
-                    raw
+                    richText
                   }
                 }
               }
@@ -139,10 +139,10 @@ export const query = graphql`
                 slice_type
                 primary {
                   title {
-                    raw
+                    richText
                   }
                   description {
-                    raw
+                    richText
                   }
                   slider
                 }
@@ -155,7 +155,7 @@ export const query = graphql`
                     url
                   }
                   name {
-                    raw
+                    richText
                   }
                   link {
                     link_type
@@ -168,11 +168,11 @@ export const query = graphql`
                 slice_type
                 items {
                   title {
-                    raw
+                    richText
                     text
                   }
                   content {
-                    raw
+                    richText
                   }
                   shorttitle {
                     text
@@ -181,10 +181,10 @@ export const query = graphql`
                 primary {
                   toctitle {
                     text
-                    raw
+                    richText
                   }
                   maintitle {
-                    raw
+                    richText
                   }
                 }
               }

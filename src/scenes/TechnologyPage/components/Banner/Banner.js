@@ -18,11 +18,11 @@ const Banner = ({ primary }) => {
         <div className={styles.container}>
           <div className={styles.wrapper}>
             <div className={styles.title}>
-              <RichText render={title.raw} />
+              <RichText render={title.richText} />
             </div>
             <div className={styles.buttonWrapper}>
               <Button variant={VARIANT.PRIMARY} to={buttonUrl} fullWidth>
-                <RichText render={buttontext.raw} />
+                <RichText render={buttontext.richText} />
               </Button>
               <a href={promoLink} className={styles.link}>
                 {promoLinkText}
@@ -30,7 +30,7 @@ const Banner = ({ primary }) => {
             </div>
           </div>
           <div className={styles.text}>
-            <RichText render={text.raw} />
+            <RichText render={text.richText} />
           </div>
         </div>
       </section>
@@ -41,11 +41,11 @@ const Banner = ({ primary }) => {
       <div className={styles.container}>
         <div className={styles.wrapper}>
           <div className={styles.title}>
-            <RichText render={title.raw} />
+            <RichText render={title.richText} />
           </div>
           <div className={styles.buttonWrapper}>
             <Button variant={VARIANT.PRIMARY} to={buttonUrl} fullWidth>
-              <RichText render={buttontext.raw} />
+              <RichText render={buttontext.richText} />
             </Button>
             <Link to={promoLink} className={styles.link}>
               {promoLinkText}
@@ -53,7 +53,7 @@ const Banner = ({ primary }) => {
           </div>
         </div>
         <div className={styles.text}>
-          <RichText render={text.raw} />
+          <RichText render={text.richText} />
         </div>
       </div>
     </section>

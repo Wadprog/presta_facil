@@ -16,7 +16,7 @@ const Container = ({ content }) => {
       <div className={style.content}>
         <div className={style.head}>
           <div className={style.title}>
-            <RichText render={content.title.raw}></RichText>
+            <RichText render={content.title.richText}></RichText>
           </div>
           <div className={style.subtitle}>
             <p>{content.subtitle.text}</p>

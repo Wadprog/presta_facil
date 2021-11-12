@@ -36,18 +36,18 @@ const Hero = ({ primary, handleScroll }) => {
     <section className={style.hero}>
       <div className={style.container}>
         <div className={style.title}>
-          <RichText render={title.raw} />
+          <RichText render={title.richText} />
         </div>
         <div className={style.subtitle}>
-          <RichText render={subtitle.raw} />
+          <RichText render={subtitle.richText} />
         </div>
         <div className={style.wrapper}>
           <div className={style.benefit}>
             <div className={style.title}>
-              <RichText render={benefitstitle.raw} />
+              <RichText render={benefitstitle.richText} />
             </div>
             <div className={style.list}>
-              <RichText render={benefitslist.raw} />
+              <RichText render={benefitslist.richText} />
             </div>
             <div className={style.buttonWrapper}>
               <Button
@@ -64,10 +64,10 @@ const Hero = ({ primary, handleScroll }) => {
           <div className={style.banner}>
             <div className={style.block}>
               <div className={style.title}>
-                <RichText render={ctatitle.raw} />
+                <RichText render={ctatitle.richText} />
               </div>
               <div className={style.subtitle}>
-                <RichText render={ctatext.raw} />
+                <RichText render={ctatext.richText} />
               </div>
               <div className={style.buttonWrapper}>
                 <Button variant={VARIANT.PRIMARY} to="/contact-us" fullWidth>
@@ -98,8 +98,8 @@ const Hero = ({ primary, handleScroll }) => {
         open={modalIsOpen}
         closeModal={handleCloseModal}
         videoLink={video.url}
-        modalCtaButtonLink={parseString(modalbuttonlink.raw)}
-        modalCtaButtonText={parseString(modalbuttontext.raw)}
+        modalCtaButtonLink={parseString(modalbuttonlink.richText)}
+        modalCtaButtonText={parseString(modalbuttontext.richText)}
       />
     </section>
   );

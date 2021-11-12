@@ -69,7 +69,7 @@ const Card = ({
   };
 
   const getPlanName = () => {
-    const planFullName = parseString(title.raw);
+    const planFullName = parseString(title.richText);
     const planName = planFullName.split(' ')[0].toLowerCase();
 
     return planName;
@@ -105,7 +105,7 @@ const Card = ({
       })}
     >
       <div className={style.title}>
-        <RichText render={title.raw} />
+        <RichText render={title.richText} />
       </div>
       <div className={style.subtitle}>{isEnterprise ? '' : name}</div>
       {isEnterprise ? (
@@ -116,12 +116,12 @@ const Card = ({
             {getCost()}
           </div>
           <div className={style.condition}>
-            <RichText render={condition.raw} />
+            <RichText render={condition.richText} />
           </div>
         </>
       )}
       <div className={style.text}>
-        <RichText render={description.raw} />
+        <RichText render={description.richText} />
       </div>
       <div className={style.footer}>
         <a href={getLink()} className={style.button}>
@@ -129,13 +129,13 @@ const Card = ({
             <span className={style.gradientText}>
               {isEnterprise
                 ? enterpriseButtonText
-                : RichText.asText(buttonText.raw)}
+                : RichText.asText(buttonText.richText)}
             </span>
           ) : (
             <span>
               {isEnterprise
                 ? enterpriseButtonText
-                : RichText.asText(buttonText.raw)}
+                : RichText.asText(buttonText.richText)}
             </span>
           )}
         </a>

@@ -6,7 +6,9 @@ import style from './Text.module.scss';
 
 const Text = ({ primary }) => {
   const { text } = primary;
-  return <div className={style.text}>{<RichText render={text.raw} />}</div>;
+  return (
+    <div className={style.text}>{<RichText render={text.richText} />}</div>
+  );
 };
 
 Text.propTypes = {

@@ -32,10 +32,10 @@ const PeriodSwitcher = ({ isAnnual, togglePeriod, primary }) => {
           })}
         >
           <span className={style.name}>
-            {anualperiodtogglelabel.raw[0].text}
+            {anualperiodtogglelabel.richText[0].text}
           </span>{' '}
           <span className={style.notice}>
-            {anualperiodtogglelabel.raw[1].text}
+            {anualperiodtogglelabel.richText[1].text}
           </span>
         </div>
       </div>

@@ -47,23 +47,23 @@ const Solutions = ({ primary, items }) => {
       <div className={style.solutions}>
         <div className={style.container}>
           <div className={style.title}>
-            <RichText render={title.raw} />
+            <RichText render={title.richText} />
           </div>
           <div className={style.descr}>
-            <RichText render={description.raw} />
+            <RichText render={description.richText} />
           </div>
           <Swiper {...params} key={buildKey}>
             {items.map(({ image, title: itemTitle, text, pagename }, index) => {
               const link = `${langPath(currentLang)}/solution/${RichText.asText(
-                pagename.raw
+                pagename.richText
               )}`;
               return (
                 <div className={style.slide} key={`solutions${index}`}>
                   <Link to={link} className={style.item}>
                     <Image image={image} />
-                    <RichText render={itemTitle.raw} />
+                    <RichText render={itemTitle.richText} />
                     <div>
-                      (<RichText render={text.raw} />)
+                      (<RichText render={text.richText} />)
                     </div>
                     <img
                       className={style.arrow}

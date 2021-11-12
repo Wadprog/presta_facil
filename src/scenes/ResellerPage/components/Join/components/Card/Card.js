@@ -26,10 +26,10 @@ const Card = ({
     <div className={style.container}>
       <div className={style.operationArea}>
         <div className={style.title}>
-          <RichText render={title.raw} />
+          <RichText render={title.richText} />
         </div>
         <div className={style.description}>
-          <RichText render={description.raw} />
+          <RichText render={description.richText} />
         </div>
         <div className={style.rangerBox}>
           <Ranger
@@ -42,19 +42,19 @@ const Card = ({
       </div>
       <div className={style.totalArea}>
         <div className={style.subtitle}>
-          <RichText render={subtitle.raw} />
+          <RichText render={subtitle.richText} />
         </div>
         <div className={style.subdescription}>
-          <RichText render={subdescription.raw} />
+          <RichText render={subdescription.richText} />
         </div>
         <div className={style.total}>{total}</div>
         <div className={style.buttonBox}>
           <Button
-            to={RichText.asText(buttonLink.raw)}
+            to={RichText.asText(buttonLink.richText)}
             variant={VARIANT.PRIMARY}
             fullWidth={true}
           >
-            {RichText.asText(buttonText.raw)}
+            {RichText.asText(buttonText.richText)}
           </Button>
         </div>
       </div>

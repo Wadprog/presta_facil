@@ -14,18 +14,18 @@ const Book = ({ primary }) => {
       <div className={style.container}>
         <div className={style.message}>
           <div className={style.title}>
-            <RichText render={title.raw} />
+            <RichText render={title.richText} />
           </div>
           <div className={style.subtitle}>
-            <RichText render={subtitle.raw} />
+            <RichText render={subtitle.richText} />
           </div>
           <div className={classnames(style.button, style.desktop)}>
             <Button
-              to={RichText.asText(buttonlink.raw)}
+              to={RichText.asText(buttonlink.richText)}
               variant={VARIANT.PRIMARY}
               fullWidth={true}
             >
-              {RichText.asText(buttontext.raw)}
+              {RichText.asText(buttontext.richText)}
             </Button>
           </div>
         </div>
@@ -34,11 +34,11 @@ const Book = ({ primary }) => {
         </div>
         <div className={classnames(style.button, style.mobile)}>
           <Button
-            to={RichText.asText(buttonlink.raw)}
+            to={RichText.asText(buttonlink.richText)}
             variant={VARIANT.PRIMARY}
             fullWidth={true}
           >
-            {RichText.asText(buttontext.raw)}
+            {RichText.asText(buttontext.richText)}
           </Button>
         </div>
       </div>

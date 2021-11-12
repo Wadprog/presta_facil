@@ -20,14 +20,14 @@ const Hero = ({ primary }) => {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.title}>
-            <RichText render={title.raw} />
+            <RichText render={title.richText} />
           </div>
           <div className={styles.descr}>
-            <RichText render={description.raw} />
+            <RichText render={description.richText} />
           </div>
           <div className={styles.buttonWrapper}>
             <Button variant={VARIANT.PRIMARY} to={buttonLink.text}>
-              <RichText render={buttonText.raw} />
+              <RichText render={buttonText.richText} />
             </Button>
           </div>
         </div>

@@ -8,9 +8,9 @@ const Calendly = ({ primary }) => {
   const { title } = primary;
 
   const titleText =
-    title.raw.length === 1
-      ? title.raw[0].text.split('\n')
-      : [title.raw[0].text, title.raw[1].text];
+    title.richText.length === 1
+      ? title.richText[0].text.split('\n')
+      : [title.richText[0].text, title.richText[1].text];
 
   useEffect(() => {
     const observer = lozad();

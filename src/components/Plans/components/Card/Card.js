@@ -51,16 +51,18 @@ const Card = ({
         href={destinationUrl}
         onClick={(e) => handleClick(e, type)}
       >
-        <h3 className={style.title}>{RichText.asText(cardtitle.raw)}</h3>
-        <p className={style.text}>{RichText.asText(description.raw)}</p>
+        <h3 className={style.title}>{RichText.asText(cardtitle.richText)}</h3>
+        <p className={style.text}>{RichText.asText(description.richText)}</p>
         <div className={style.benefit}>
-          {benefits && <RichText render={benefits.raw} />}
+          {benefits && <RichText render={benefits.richText} />}
         </div>
         <div className={style.button}>
-          {buttonprice.raw.length > 0 && (
+          {buttonprice.richText.length > 0 && (
             <div className={style.priceWrapper}>
               <span>from</span>
-              <p className={style.price}>{RichText.asText(buttonprice.raw)}</p>
+              <p className={style.price}>
+                {RichText.asText(buttonprice.richText)}
+              </p>
             </div>
           )}
           {image.url && (
@@ -70,7 +72,7 @@ const Card = ({
               className={style.buttonImage}
             />
           )}
-          <p className={style.buttonText}>{RichText.asText(button.raw)}</p>
+          <p className={style.buttonText}>{RichText.asText(button.richText)}</p>
           <Arrow />
         </div>
       </a>

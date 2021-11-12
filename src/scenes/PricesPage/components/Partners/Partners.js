@@ -19,7 +19,7 @@ const Partners = ({ primary, items }) => {
   return (
     <div className={style.wrapper}>
       <div className={style.title}>
-        <RichText render={title.raw} />
+        <RichText render={title.richText} />
       </div>
       <div className={style.slider} key={key}>
         <Swiper {...parameters}>

@@ -23,10 +23,10 @@ const Join = ({ primary }) => {
     <div className={style.container}>
       <div className={style.wrapper}>
         <div className={style.title}>
-          <RichText render={title.raw} />
+          <RichText render={title.richText} />
         </div>
         <div className={style.description}>
-          <RichText render={description.raw} />
+          <RichText render={description.richText} />
         </div>
         <div className={style.cardBox}>
           <Card

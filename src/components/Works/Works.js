@@ -58,11 +58,11 @@ const Works = ({ primary, items }) => {
       <div className={style.container}>
         <div className={style.wrapper}>
           <div className={style.title}>
-            <RichText render={title.raw} />
+            <RichText render={title.richText} />
           </div>
           <div className={style.dropdown}>
             <div className={style.label}>
-              <RichText render={dropdownlable.raw} />
+              <RichText render={dropdownlable.richText} />
             </div>
             <Dropdown
               options={categoryList}

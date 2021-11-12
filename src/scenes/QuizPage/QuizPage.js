@@ -15,7 +15,7 @@ const QuizPage = ({ pageTitle }) => {
     <div className={style.quizPage}>
       <div className={style.container}>
         <div className={style.headlineContainer}>
-          <RichText render={pageTitle.raw} />
+          <RichText render={pageTitle.richText} />
         </div>
         <iframe
           className={`${style.frame} lozad`}

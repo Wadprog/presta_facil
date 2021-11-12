@@ -10,7 +10,7 @@ const Benefits = ({ primary, items }) => {
     <section className={styles.benefits}>
       <div className={styles.container}>
         <div className={styles.title}>
-          <RichText render={title.raw} />
+          <RichText render={title.richText} />
         </div>
         <div className={styles.list}>
           {items.map(({ image, text }) => {
@@ -19,7 +19,7 @@ const Benefits = ({ primary, items }) => {
                 <div className={styles.imageWrapper}>
                   <img src={image.url} alt={image.alt} loading="lazy" />
                 </div>
-                <RichText render={text.raw} />
+                <RichText render={text.richText} />
               </div>
             );
           })}

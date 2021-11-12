@@ -9,7 +9,7 @@ import style from './CallToAction.module.scss';
 
 const CallToAction = ({ primary }) => {
   const { image, sectiontitle, description, buttontext, buttonlink } = primary;
-  const link = parseString(buttonlink.raw);
+  const link = parseString(buttonlink.richText);
 
   return (
     <section className={style.section}>
@@ -19,12 +19,14 @@ const CallToAction = ({ primary }) => {
         </div>
         <div className={style.textBlock}>
           <div className={style.title}>
-            <RichText render={sectiontitle.raw} />
+            <RichText render={sectiontitle.richText} />
           </div>
-          <p className={style.description}>{parseString(description.raw)}</p>
+          <p className={style.description}>
+            {parseString(description.richText)}
+          </p>
           <div className={style.button}>
             <Button variant={VARIANT.PRIMARY} to={link}>
-              {parseString(buttontext.raw)}
+              {parseString(buttontext.richText)}
             </Button>
           </div>
         </div>

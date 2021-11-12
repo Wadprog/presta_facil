@@ -11,14 +11,14 @@ import Image from '@components/Image/Image';
 
 const Item = ({ image, text, title, pagename, buttontext }) => {
   const currentLang = useContext(LangContext);
-  const link = langPath(currentLang) + '/' + parseString(pagename.raw);
+  const link = langPath(currentLang) + '/' + parseString(pagename.richText);
   return (
     <Link to={link} className={style.item}>
       <div className={style.title}>
-        <RichText render={title.raw} />
+        <RichText render={title.richText} />
       </div>
       <div className={style.text}>
-        <RichText render={text.raw} />
+        <RichText render={text.richText} />
       </div>
       <div className={style.imageWrapper}>
         <Image image={image} className={style.image} />

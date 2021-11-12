@@ -63,7 +63,7 @@ export const query = graphql`
           }
           data {
             pagetitle {
-              raw
+              richText
             }
             metatitle {
               text
@@ -97,20 +97,20 @@ export const query = graphql`
                 slice_type
                 primary {
                   sectiontitle {
-                    raw
+                    richText
                   }
                   image {
                     alt
                     url
                   }
                   buttonlink {
-                    raw
+                    richText
                   }
                   buttontext {
-                    raw
+                    richText
                   }
                   description {
-                    raw
+                    richText
                   }
                 }
               }

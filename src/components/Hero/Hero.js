@@ -49,7 +49,7 @@ const Hero = ({ primary, items }) => {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.title}>
-            <RichText render={title.raw} />
+            <RichText render={title.richText} />
           </div>
           <div className={styles.descr}>{description.text}</div>
           {secondbuttonlink && secondbuttontext ? (

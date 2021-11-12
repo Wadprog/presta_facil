@@ -57,7 +57,7 @@ export const query = graphql`
               text
             }
             title {
-              raw
+              richText
             }
             buttontext {
               text
@@ -100,10 +100,10 @@ export const query = graphql`
             }
             date
             description {
-              raw
+              richText
             }
             title {
-              raw
+              richText
             }
             preview {
               alt
@@ -115,10 +115,10 @@ export const query = graphql`
                 slice_type
                 primary {
                   title {
-                    raw
+                    richText
                   }
                   buttontext {
-                    raw
+                    richText
                   }
                   placeholder {
                     text

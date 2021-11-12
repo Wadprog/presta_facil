@@ -24,7 +24,7 @@ const Plans = ({ primary, items }) => {
   return (
     <div className={style.plans}>
       <div className={style.title}>
-        <RichText render={title.raw} />
+        <RichText render={title.richText} />
       </div>
       <div className={style.container}>
         {items.map((card, index) => {

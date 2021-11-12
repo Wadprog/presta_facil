@@ -67,21 +67,21 @@ const Hero = ({ primary, items }) => {
             {renderMobileImages(mobileImages)}
           </div>
           <div className={styles.upTitle}>
-            <RichText render={subTitle.raw} />
+            <RichText render={subTitle.richText} />
           </div>
           <div className={styles.title}>
-            <RichText render={title.raw} />
+            <RichText render={title.richText} />
           </div>
           <div className={styles.descr}>
-            <RichText render={description.raw} />
+            <RichText render={description.richText} />
           </div>
           <div className={styles.buttonWrapper}>
             <Button variant={VARIANT.PRIMARY} to={`${buttonLink}`}>
-              <RichText render={button.raw} />
+              <RichText render={button.richText} />
             </Button>
           </div>
           <div className={styles.trustedWrapper}>
-            <RichText render={trusted.raw} />
+            <RichText render={trusted.richText} />
             <div className={styles.companies}>
               <Swiper {...params}>
                 {items.map(({ trustedlogo }) => {
@@ -111,7 +111,7 @@ const Hero = ({ primary, items }) => {
               </IconButton>
             </div>
             <div className={styles.playButtonText}>
-              <RichText render={modalbuttontitle.raw} />
+              <RichText render={modalbuttontitle.richText} />
             </div>
           </div>
         </div>

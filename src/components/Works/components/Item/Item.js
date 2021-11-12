@@ -20,7 +20,7 @@ const Item = ({ link, screenshot, name, tag }) => {
       </div>
       <div className={style.textBlock}>
         <div className={style.name}>
-          <RichText render={name.raw} />
+          <RichText render={name.richText} />
         </div>
         <div className={style.tagList}>
           {tagList &&

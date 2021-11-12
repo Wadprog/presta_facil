@@ -8,11 +8,11 @@ const Item = ({ title, link, description, screenshot }) => {
   return (
     <div className={styles.item} key={link.url}>
       <div className={styles.content}>
-        <RichText render={title.raw} />
+        <RichText render={title.richText} />
         <a href={link.url} target="_blank" rel="noopener noreferrer">
           {link.url.replace(/(^\w+:|^)\/\//, '')}
         </a>
-        <RichText render={description.raw} />
+        <RichText render={description.richText} />
       </div>
       <div className={styles.imageWrapper}>
         <Image className={styles.image} image={screenshot} />

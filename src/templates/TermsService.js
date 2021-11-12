@@ -118,7 +118,7 @@ export const query = graphql`
                 slice_type
                 primary {
                   text {
-                    raw
+                    richText
                   }
                 }
               }

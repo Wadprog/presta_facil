@@ -23,17 +23,17 @@ const WhatIs = ({ primary }) => {
         </div>
         <div className={styles.content}>
           <div className={styles.title}>
-            <RichText render={title.raw} />
+            <RichText render={title.richText} />
           </div>
           <div className={styles.description}>
-            <RichText render={description.raw} />
+            <RichText render={description.richText} />
           </div>
           <div className={styles.subtitle}>
-            <RichText render={subtitle.raw} />
+            <RichText render={subtitle.richText} />
           </div>
           <div className={styles.buttonWrapper}>
             <Button variant={VARIANT.PRIMARY} to={buttonlink.text} ignoreLang>
-              <RichText render={buttontext.raw} />
+              <RichText render={buttontext.richText} />
             </Button>
           </div>
         </div>
