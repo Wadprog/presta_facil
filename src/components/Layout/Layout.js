@@ -36,6 +36,11 @@ const Layout = ({
   const headerData = edge[0].node.data.body;
   const footerData = edge[0].node.data.body1;
 
+  console.log(
+    `process.env.GATSBY_PRISMIC_REPO_NAME`,
+    process.env.GATSBY_PRISMIC_REPO_NAME
+  );
+
   return (
     <PrismicPreviewProvider
       repositoryConfigs={[
