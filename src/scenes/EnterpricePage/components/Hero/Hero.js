@@ -30,8 +30,6 @@ const Hero = ({ primary, handleScroll }) => {
     modalbuttontext,
   } = primary;
 
-  console.log(primary);
-
   return (
     <section className={style.hero}>
       <div className={style.container}>
