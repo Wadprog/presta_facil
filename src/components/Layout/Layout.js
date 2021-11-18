@@ -2,22 +2,14 @@ import React from 'react';
 import { bool, object, node, array, oneOfType } from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
-import linkResolver from '../../../prismic/utils/linkResolver';
-
 import LangContext from '@contexts';
 import { defaultLanguage } from '@/prismic-config';
 import Head from '@components/Head';
 import Header from '@components/Header';
 import Footer from '@components/Footer';
 
-import HomePage from '../../templates/Home';
-
 import styles from './Layout.module.scss';
 import '@styles/index.scss';
-import {
-  PrismicPreviewProvider,
-  componentResolverFromMap,
-} from 'gatsby-plugin-prismic-previews';
 
 const Layout = ({
   children,
@@ -36,23 +28,8 @@ const Layout = ({
   const headerData = edge[0].node.data.body;
   const footerData = edge[0].node.data.body1;
 
-  console.log(
-    `process.env.GATSBY_PRISMIC_REPO_NAME`,
-    process.env.GATSBY_PRISMIC_REPO_NAME
-  );
 
   return (
-    <PrismicPreviewProvider
-      repositoryConfigs={[
-        {
-          repositoryName: process.env.GATSBY_PRISMIC_REPO_NAME,
-          linkResolver,
-          componentResolver: componentResolverFromMap({
-            home: HomePage,
-          }),
-        },
-      ]}
-    >
       <LangContext.Provider
         value={currentLang === defaultLanguage ? '' : currentLang.slice(0, 2)}
       >
@@ -69,7 +46,6 @@ const Layout = ({
           <Footer activeDocMeta={activeDocMeta} data={footerData} />
         </div>
       </LangContext.Provider>
-    </PrismicPreviewProvider>
   );
 };
 
