@@ -2,14 +2,22 @@ import React from 'react';
 import { bool, object, node, array, oneOfType } from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
+import linkResolver from '../../../prismic/utils/linkResolver';
+
 import LangContext from '@contexts';
 import { defaultLanguage } from '@/prismic-config';
 import Head from '@components/Head';
 import Header from '@components/Header';
 import Footer from '@components/Footer';
 
+import HomePage from '../../templates/Home';
+
 import styles from './Layout.module.scss';
 import '@styles/index.scss';
+import {
+  PrismicPreviewProvider,
+  componentResolverFromMap,
+} from 'gatsby-plugin-prismic-previews';
 
 const Layout = ({
   children,
@@ -28,23 +36,40 @@ const Layout = ({
   const headerData = edge[0].node.data.body;
   const footerData = edge[0].node.data.body1;
 
+  console.log(
+    `process.env.GATSBY_PRISMIC_REPO_NAME`,
+    process.env.GATSBY_PRISMIC_REPO_NAME
+  );
+
   return (
-    <LangContext.Provider
-      value={currentLang === defaultLanguage ? '' : currentLang.slice(0, 2)}
+    <PrismicPreviewProvider
+      repositoryConfigs={[
+        {
+          repositoryName: process.env.GATSBY_PRISMIC_REPO_NAME,
+          linkResolver,
+          componentResolver: componentResolverFromMap({
+            home: HomePage,
+          }),
+        },
+      ]}
     >
-      <div className={styles.container}>
-        <Head
-          canonical={canonical}
-          metatitle={metatitle}
-          metadescription={metadescription}
-        />
-        <Header data={headerData} hideMenu={hideMenu} />
-        <main className={styles.main} id="main">
-          {children}
-        </main>
-        <Footer activeDocMeta={activeDocMeta} data={footerData} />
-      </div>
-    </LangContext.Provider>
+      <LangContext.Provider
+        value={currentLang === defaultLanguage ? '' : currentLang.slice(0, 2)}
+      >
+        <div className={styles.container}>
+          <Head
+            canonical={canonical}
+            metatitle={metatitle}
+            metadescription={metadescription}
+          />
+          <Header data={headerData} hideMenu={hideMenu} />
+          <main className={styles.main} id="main">
+            {children}
+          </main>
+          <Footer activeDocMeta={activeDocMeta} data={footerData} />
+        </div>
+      </LangContext.Provider>
+    </PrismicPreviewProvider>
   );
 };
 
