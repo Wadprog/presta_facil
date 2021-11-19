@@ -28,23 +28,24 @@ const Layout = ({
   const headerData = edge[0].node.data.body;
   const footerData = edge[0].node.data.body1;
 
+
   return (
-    <LangContext.Provider
-      value={currentLang === defaultLanguage ? '' : currentLang.slice(0, 2)}
-    >
-      <div className={styles.container}>
-        <Head
-          canonical={canonical}
-          metatitle={metatitle}
-          metadescription={metadescription}
-        />
-        <Header data={headerData} hideMenu={hideMenu} />
-        <main className={styles.main} id="main">
-          {children}
-        </main>
-        <Footer activeDocMeta={activeDocMeta} data={footerData} />
-      </div>
-    </LangContext.Provider>
+      <LangContext.Provider
+        value={currentLang === defaultLanguage ? '' : currentLang.slice(0, 2)}
+      >
+        <div className={styles.container}>
+          <Head
+            canonical={canonical}
+            metatitle={metatitle}
+            metadescription={metadescription}
+          />
+          <Header data={headerData} hideMenu={hideMenu} />
+          <main className={styles.main} id="main">
+            {children}
+          </main>
+          <Footer activeDocMeta={activeDocMeta} data={footerData} />
+        </div>
+      </LangContext.Provider>
   );
 };
 
