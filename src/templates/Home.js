@@ -21,11 +21,7 @@ const Page = ({ data }) => {
       metadescription={metadescription}
       canonical={canonical}
     >
-      <Home
-        videoask={pageData.videoask}
-        content={pageContent}
-        currentLanguage={lang}
-      />
+      <Home content={pageContent} currentLanguage={lang} />
     </Layout>
   );
 };
@@ -81,8 +77,25 @@ export const query = graphql`
                     url
                     gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                   }
+                  modalvideo {
+                    link_type
+                    url
+                  }
+                  modalctabuttontext {
+                    text
+                  }
+                  modalbuttontitle {
+                    richText
+                  }
+                  modalctabuttonlink {
+                    text
+                  }
                   modalbuttondescription {
                     richText
+                  }
+                  heroimage {
+                    alt
+                    url
                   }
                   description {
                     richText
@@ -333,9 +346,6 @@ export const query = graphql`
                   }
                 }
               }
-            }
-            videoask {
-              raw
             }
           }
         }

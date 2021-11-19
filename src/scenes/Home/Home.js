@@ -13,19 +13,13 @@ import Subscribe from '@components/Subscribe';
 import Agencies from '@components/Agencies';
 import 'swiper/swiper.scss';
 
-const Home = ({ content, currentLanguage, videoask }) => {
+const Home = ({ content, currentLanguage }) => {
   return (
     <div className={style.HomePage}>
       {content.map((section, index) => {
         switch (section.slice_type) {
           case 'hero1':
-            return (
-              <Hero
-                {...section}
-                videoask={videoask}
-                key={`${section.slice_type}${index}`}
-              />
-            );
+            return <Hero {...section} key={`${section.slice_type}${index}`} />;
           case 'testimonials':
             return (
               <div
@@ -81,7 +75,6 @@ const Home = ({ content, currentLanguage, videoask }) => {
 Home.propTypes = {
   content: PropTypes.array.isRequired,
   currentLanguage: PropTypes.string.isRequired,
-  videoask: PropTypes.object,
 };
 
 export default Home;
