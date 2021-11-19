@@ -218,16 +218,69 @@
   }
 }
 
-.videoWrapper {
-   position: relative;
-   width: 48%;
-   z-index: 2;
- 
-   @media (max-width: $md) {
-     width: 100%;
-     height: 600px;
-   }
- }
+.imageWrapper {
+  position: relative;
+  width: 48%;
+  .image {
+    width: 88%;
+    @media (max-width: $md) {
+      height: 0px;
+    }
+  }
+  z-index: 2;
+  @media (max-width: $md) {
+    width: 100%;
+    .image {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+.playButtonWrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: calc(46% - 50px);
+  top: 73%;
+  @media (max-width: $lg) {
+    top: 60%;
+  }
+  @media (max-width: $md) {
+    flex-direction: column;
+    top: 30%;
+    left: 0;
+    width: 100%;
+    align-items: center;
+  }
+  .playButton {
+    margin-bottom: 16px;
+    @media (max-width: $md) {
+      margin-bottom: 16px;
+    }
+  }
+  .playButtonText {
+    max-width: 101px;
+    @media (max-width: $md) {
+      max-width: 100%;
+      text-align: center;
+    }
+    h4 {
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 0.03em;
+      text-transform: capitalize;
+      line-height: 1.6;
+    }
+    p {
+      font-weight: 300;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      opacity: 0.75;
+    }
+  }
+}
 
 .slide {
   display: flex;
