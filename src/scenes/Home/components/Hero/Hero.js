@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { object, array } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import Swiper from 'react-id-swiper';
 
 import Button, { VARIANT } from '@components/Button/Button.js';
-import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
-import Modal from '@components/Modal';
 import Image from '@components/Image/Image';
 import styles from './Hero.module.scss';
-import PLayIcon from '@src/assets/images/homepage/icons/play.inline.svg';
-import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
 
 const renderMobileImages = (images) => {
   const renderedImages = images.map((imgElement, index) => (
@@ -18,11 +14,9 @@ const renderMobileImages = (images) => {
   return renderedImages;
 };
 
-const Hero = ({ primary, items }) => {
+const Hero = ({ primary, items, videoask }) => {
   const {
     buttonlink,
-    modalctabuttonlink,
-    modalctabuttontext,
     cookieimage,
     policyimage,
     preferenceimage,
@@ -31,20 +25,10 @@ const Hero = ({ primary, items }) => {
     description,
     button,
     trusted,
-    heroimage: mainImage,
-    modalbuttontitle,
   } = primary;
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const handleOpenModal = () => setModalIsOpen(true);
-  const handleCloseModal = () => setModalIsOpen(false);
   const buttonLink = buttonlink.text;
-  const modalCtaButtonLink = modalctabuttonlink.text;
-  const modalCtaButtonText = modalctabuttontext.text;
 
   const mobileImages = [policyimage, preferenceimage, cookieimage];
-
-  const [modalBookIsOpen, setModalBookIsOpen] = useState(false);
-  const handleCloseModalBook = () => setModalBookIsOpen(false);
 
   const params = {
     slidesPerView: 3,
@@ -98,32 +82,17 @@ const Hero = ({ primary, items }) => {
             </div>
           </div>
         </div>
-        <div className={styles.imageWrapper}>
-          <img src={mainImage.url} className={styles.image} loading="eager" />
-          <div className={styles.playButtonWrapper}>
-            <div className={styles.playButton}>
-              <IconButton
-                isGradient={true}
-                variant={VARIANT_ICON.PLAY}
-                click={handleOpenModal}
-              >
-                <PLayIcon />
-              </IconButton>
-            </div>
-            <div className={styles.playButtonText}>
-              <RichText render={modalbuttontitle.richText} />
-            </div>
-          </div>
+        <div className={styles.videoWrapper}>
+          <iframe
+            src={videoask.raw.url}
+            width="100%"
+            height="100%"
+            frameBorder="0"
+            style={{ borderRadius: 24, background: 'white' }}
+            allow="camera *; microphone *; autoplay *; encrypted-media *; fullscreen *; display-capture *;"
+          />
         </div>
       </div>
-      <Modal
-        open={modalIsOpen}
-        closeModal={handleCloseModal}
-        videoLink={primary.modalvideo.url}
-        modalCtaButtonLink={modalCtaButtonLink}
-        modalCtaButtonText={modalCtaButtonText}
-      />
-      <ModalBookCall open={modalBookIsOpen} closeModal={handleCloseModalBook} />
     </div>
   );
 };
@@ -131,6 +100,7 @@ const Hero = ({ primary, items }) => {
 Hero.propTypes = {
   primary: object,
   items: array,
+  videoask: object,
 };
 
 export default Hero;
