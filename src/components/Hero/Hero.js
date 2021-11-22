@@ -60,7 +60,7 @@ const Hero = ({ primary, items }) => {
                 </Button>
               </div>
               <div className={styles.buttonWrapper}>
-                <Button variant={VARIANT.PRIMARY} to={secondbuttonlink.text}>
+                <Button variant={VARIANT.SOLUTION} to={secondbuttonlink.text}>
                   {secondbuttontext.text}
                 </Button>
               </div>
