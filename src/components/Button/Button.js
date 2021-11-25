@@ -13,6 +13,7 @@ const VARIANT = {
   WHITE: 'white',
   GRADIENT: 'gradient',
   THANKYOU: 'thankyou',
+  SOLUTION: 'solutionpage',
 };
 
 const Button = ({
