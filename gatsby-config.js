@@ -181,6 +181,7 @@ module.exports = {
           quiz: require('./schemas/quiz.json'),
           privacypolicy: require('./schemas/privacypolicy.json'),
           solutionpage: require('./schemas/solutionpage.json'),
+          publicscanner: require('./schemas/publicscanner.json'),
         },
         lang: '*',
         imageImgixParams: {
