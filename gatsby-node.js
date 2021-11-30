@@ -349,6 +349,28 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
+  const publicscanner = await graphql(`
+    {
+      allPrismicPublicscanner {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  publicscanner.data.allPrismicPublicscanner.nodes.forEach((page) => {
+    createPage({
+      path: '/public-scanner',
+      component: path.resolve(__dirname, 'src/templates/PublicScanner.js'),
+      context: { ...page },
+    });
+  });
+
   const subprocessors = await graphql(`
     {
       allPrismicSubprocessors {
