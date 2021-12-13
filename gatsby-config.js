@@ -105,7 +105,13 @@ module.exports = {
       options: {
         host: 'https://secureprivacy.ai/',
         sitemap: 'https://secureprivacy.ai/sitemap.xml',
-        policy: [{ userAgent: '*', allow: '/' }],
+        policy: [
+          {
+            userAgent: '*',
+            allow: '/',
+            disallow: ['/solution/hospitality', '/quiz', '/thank-you'],
+          },
+        ],
       },
     },
     {
