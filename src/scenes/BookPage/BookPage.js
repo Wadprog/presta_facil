@@ -13,7 +13,7 @@ const BookPage = ({ content, canonical, metatitle }) => {
     firstName: '',
     lastName: '',
     email: '',
-    consent: true,
+    consent: false,
   };
 
   const [formData, setFormData] = useState(initialFormData);

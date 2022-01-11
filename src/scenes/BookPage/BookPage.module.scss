@@ -95,6 +95,10 @@
   width: 100%;
 }
 
+.lastItem{
+  margin-top:16px;
+}
+
 .formInputWrapper:nth-child(1) {
   margin-right: 16px;
   @media (max-width: $md) {
@@ -154,9 +158,10 @@
   position: absolute;
   font-weight: 400;
   opacity: 0.75;
-  top: 40%;
-  left: 108px;
-  color: $red;
+  top: 52%;
+  left: 14px;
+  color: #ea2d2d;
+  transform: translate(-50%, -50%);
 }
 
 .formInputError {

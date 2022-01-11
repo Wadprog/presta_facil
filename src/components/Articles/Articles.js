@@ -6,11 +6,10 @@ import BackgroundImage from 'gatsby-background-image';
 
 import ArticlePreview from '@components/ArticlePreview';
 import style from './Articles.module.scss';
-import Button, { VARIANT } from '@components/Button/Button.js';
 import useGetImages from './useGetImages';
 
 const Articles = ({ primary, data, currentLanguage }) => {
-  const { buttontext, title } = primary;
+  const { title } = primary;
   const articlesList = data.allPrismicBlogpostpage.edges;
   const currentLangArticles = articlesList.filter((article) => {
     const articleLang = article.node.lang
@@ -35,13 +34,6 @@ const Articles = ({ primary, data, currentLanguage }) => {
             return <ArticlePreview {...item} key={item.node.uid} />;
           })}
         </div>
-        {buttontext && (
-          <div className={style.button}>
-            <Button variant={VARIANT.TRANSPARENT} to="/blog">
-              <RichText render={buttontext.RichText} />
-            </Button>
-          </div>
-        )}
       </section>
     </BackgroundImage>
   );
