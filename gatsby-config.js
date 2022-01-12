@@ -109,7 +109,12 @@ module.exports = {
           {
             userAgent: '*',
             allow: '/',
-            disallow: ['/solution/hospitality', '/quiz', '/thank-you'],
+            disallow: [
+              '/solution/hospitality',
+              '/quiz',
+              '/thank-you',
+              '/thank-you-book',
+            ],
           },
         ],
       },

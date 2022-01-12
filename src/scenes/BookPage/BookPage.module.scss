@@ -228,7 +228,7 @@ input[type="checkbox"]:before {
   left: 0;
   border: 2px solid #011949;
   border-radius: 4px;
-  background-color: #011949;
+  background-color: transparent;
   @media (max-width: $lg) {
     width: 16px;
     height: 16px;
@@ -241,7 +241,7 @@ input[type="checkbox"]:checked:after {
   display: block;
   width: 5px;
   height: 10px;
-  border: solid #fff;
+  border: solid #011949;
   border-width: 0 2px 2px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
