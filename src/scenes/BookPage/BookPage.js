@@ -252,6 +252,10 @@ const BookPage = ({ content, canonical, metatitle }) => {
                 margin: 0;
                 margin-bottom: 15px; 
               }
+
+              p.first-paragraph{
+                margin-top: 15px; 
+              }
                 p li,
                 ul li,
                 ol li {
@@ -468,10 +472,13 @@ const BookPage = ({ content, canonical, metatitle }) => {
                           <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                             <tr>
                               <td>
-                                <p>Hi there ${formData.firstName},</p>
-                                <p>We received your request for downloading the E-Book ${bookPageTitle.text
-                                  .split('E-Book ')
-                                  .pop()}</p>
+                                <p class="first-paragraph">Hi there ${
+                                  formData.firstName
+                                },</p>
+                                <p> We received your request for downloading the E-Book about ${bookImage.alt.substring(
+                                  0,
+                                  4
+                                )} </p>
                                 <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                                   <tbody>
                                     <tr>
@@ -489,7 +496,7 @@ const BookPage = ({ content, canonical, metatitle }) => {
                                     </tr>
                                   </tbody>
                                 </table>
-                                <p>Good luck! Hope our E-book is helpful.</p>
+                                <p>We hope you will find this E-Book useful!</p>
                               </td>
                             </tr>
                           </table>
