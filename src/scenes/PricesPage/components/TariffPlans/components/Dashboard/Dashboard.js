@@ -17,6 +17,10 @@ const Dashboard = ({
     ? primary.annualcondition
     : primary.monthlycondition;
 
+  React.useEffect(() => {
+    console.log(primary);
+  }, []);
+
   return (
     <div className={style.container}>
       <div
@@ -50,6 +54,7 @@ const Dashboard = ({
             isMobile={isMobile}
             enterpriseCondition={primary.enterprisecondition.text}
             enterpriseButtonText={primary.enterprisebuttontext.text}
+            enterpriseButtonLink={primary.enterprisebuttonlink.url}
           />
         ))}
       </div>

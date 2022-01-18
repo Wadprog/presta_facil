@@ -104,7 +104,7 @@
     font-size: 16px;
     line-height: 180%;
     letter-spacing: 0.03em;
-    text-transform: capitalize;
+    
     color: $main-light;
   }
 }
@@ -225,7 +225,7 @@
   font-size: 16px;
   line-height: 180%;
   letter-spacing: 0.03em;
-  text-transform: capitalize;
+  
   color: $main-light;
   margin-bottom: 20px;
 
@@ -333,7 +333,7 @@
       font-weight: 900;
       color: $green;
       letter-spacing: 0.03em;
-      text-transform: capitalize;
+      
     }
     @media (max-width: $md) {
       padding: 0 16px;

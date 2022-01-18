@@ -258,6 +258,13 @@
                   "label" : "EnterpriseButtonText"
                 }
               },
+              "enterprisebuttonlink" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "EnterpriseButtonLink",
+                  "select" : null
+                }
+              },
               "buttontext" : {
                 "type" : "StructuredText",
                 "config" : {

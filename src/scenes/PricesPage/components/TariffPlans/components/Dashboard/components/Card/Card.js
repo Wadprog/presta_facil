@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import { parseString } from '@helpers';
 import style from './Card.module.scss';
 
-const CHAT_LINK = '/contact-us';
+//const CHAT_LINK = '/contact-us';
 
 const Card = ({
   isEnterprise,
@@ -31,6 +31,7 @@ const Card = ({
   isMobile,
   enterpriseCondition,
   enterpriseButtonText,
+  enterpriseButtonLink,
 }) => {
   const [colorized, setColorized] = useState(false);
   const getCost = () => {
@@ -83,7 +84,7 @@ const Card = ({
 
   const getLink = () => {
     if (isEnterprise) {
-      return CHAT_LINK;
+      return enterpriseButtonLink;
     }
 
     const link = `${
@@ -171,6 +172,7 @@ Card.propTypes = {
   isMobile: PropTypes.bool.isRequired,
   enterpriseCondition: PropTypes.string.isRequired,
   enterpriseButtonText: PropTypes.string.isRequired,
+  enterpriseButtonLink: PropTypes.string.isRequired,
 };
 
 export default Card;
