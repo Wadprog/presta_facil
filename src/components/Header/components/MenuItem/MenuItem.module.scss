@@ -353,6 +353,27 @@
   @extend .Resources;
 }
 
+.Lösungen ~ .Features{
+  .imageWrapper{
+    max-width: 247px;
+  }
+  .list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 360px;
+    @media (max-width: $lg) {
+      width: 100%;
+      margin-top: 22px;
+    }
+  }
+  .link {
+    width: 161px;
+    @media (max-width: $lg) {
+      width: calc(50% - 6px);
+    }
+  }
+}
 
 .Lösungen {
   @extend .Solutions;
