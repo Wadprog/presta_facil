@@ -33,14 +33,14 @@
   line-height: 130%;
   max-width: 800px;
   margin: 0 auto 50px;
-  text-transform: capitalize;
+  
   text-align: center;
   strong {
     font-family: $font-gramatika-black;
     font-weight: 900;
     color: $green;
     letter-spacing: 0.03em;
-    text-transform: capitalize;
+    
   }
   @media (max-width: $md) {
     text-align: left;

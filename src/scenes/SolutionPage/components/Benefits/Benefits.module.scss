@@ -36,7 +36,7 @@
       font-family: $font-gramatika-black;
       font-weight: 900;
       letter-spacing: 0.03em;
-      text-transform: capitalize;
+      
     }
     @media (max-width: $md) {
       font-size: 28px;
@@ -110,7 +110,7 @@
     font-size: 18px;
     line-height: 180%;
     text-align: center;
-    text-transform: capitalize;
+    
     color: $main-light;
     @media (max-width: $lg) {
       font-size: 16px;

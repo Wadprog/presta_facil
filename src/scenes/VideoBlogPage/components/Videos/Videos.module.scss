@@ -40,13 +40,13 @@
     font-size: 42px;
     line-height: 130%;
     text-align: center;
-    text-transform: capitalize;
+    
 
     strong {
       font-family: $font-gramatika-black;
       font-weight: 900;
       letter-spacing: 0.03em;
-      text-transform: capitalize;
+      
       color: $green;
     }
     @media (max-width: $md) {

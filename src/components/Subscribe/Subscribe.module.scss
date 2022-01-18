@@ -37,12 +37,12 @@
   font-size: 32px;
   line-height: 130%;
   max-width: 410px;
-  text-transform: capitalize;
+  
   strong {
     font-weight: 600;
     color: $green;
     letter-spacing: 0.03em;
-    text-transform: capitalize;
+    
   }
   @media (max-width: $lg) {
     margin-bottom: 32px;
