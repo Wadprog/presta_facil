@@ -17,10 +17,6 @@ const Dashboard = ({
     ? primary.annualcondition
     : primary.monthlycondition;
 
-  React.useEffect(() => {
-    console.log(primary);
-  }, []);
-
   return (
     <div className={style.container}>
       <div
