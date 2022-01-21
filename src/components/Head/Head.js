@@ -117,11 +117,10 @@ const Head = ({
     setDefaultHrefLangs(defaultLang);
     setHrefLangs(test);
   }, []);
-
   return (
-    <Helmet>
+    <Helmet htmlAttributes={{ lang: currentLang }}>
       {/* Encoding and styles */}
-      <html lang={currentLang.substring(0, 2)} />
+      <html />
       <link
         rel="alternate"
         hrefLang="x-default"
