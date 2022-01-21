@@ -37,6 +37,8 @@ const Layout = ({
           canonical={canonical}
           metatitle={metatitle}
           metadescription={metadescription}
+          currentLang={currentLang}
+          activeDocMeta={activeDocMeta}
         />
         <Header data={headerData} hideMenu={hideMenu} />
         <main className={styles.main} id="main">
