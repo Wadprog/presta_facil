@@ -65,62 +65,77 @@ const Head = ({
 
   useEffect(() => {
     const allHrefLangs = activeDocMeta.alternate_languages.map((val) => {
+      const completePath = url + location.pathname;
+      var myRegexp = /^(.*\/)/g;
+      var match = myRegexp.exec(completePath);
+
+      const completPaths =
+        val.type === 'homepage'
+          ? completePath
+          : match[1] + (val.uid ? val.uid : '');
       if (val.lang.substring(0, 2) == 'en') {
         return {
-          completePath:
-            url +
-            location.pathname
-              .replace('/de/', '')
-              .replace('/pt/', '')
-              .replace('//', '/'),
+          completePath: completPaths
+            .replace('/de/', '')
+            .replace('/pt/', '')
+            .replace('.ai//', '.ai/'),
           lang: val.lang.substring(0, 2),
         };
       }
       if (val.lang.substring(0, 2) == 'pt') {
         return {
-          completePath: url + 'pt' + location.pathname.replace('/de/', 'pt/'),
+          completePath: completPaths
+            .replace('.ai//', '.ai/pt/')
+            .replace('/de/', 'pt/')
+            .replace('ptpt', 'pt'),
           lang: val.lang.substring(0, 2),
         };
       }
       if (val.lang.substring(0, 2) == 'de') {
         return {
-          completePath: url + 'de' + location.pathname.replace('/pt/', 'de/'),
+          completePath: completPaths
+            .replace('.ai//', '.ai/de/')
+            .replace('/pt/', 'de/')
+            .replace('dede', 'de'),
           lang: val.lang.substring(0, 2),
         };
       }
     });
 
+    const completePath = url + location.pathname;
     const defaulLang = {
-      completePath:
-        url +
-        location.pathname
-          .replace(
-            '/pt/',
-            currentLang.substring(0, 2) == 'en'
-              ? ''
-              : `${currentLang.substring(0, 2)}/`
-          )
-          .replace(
-            '/de/',
-            currentLang.substring(0, 2) == 'en'
-              ? ''
-              : `${currentLang.substring(0, 2)}/`
-          )
-          .substring(1),
+      completePath: completePath
+        .replace(
+          '/pt/',
+          currentLang.substring(0, 2) == 'en'
+            ? ''
+            : `${currentLang.substring(0, 2)}/`
+        )
+        .replace(
+          '/de/',
+          currentLang.substring(0, 2) == 'en'
+            ? ''
+            : `${currentLang.substring(0, 2)}/`
+        )
+        .replace('.ai//', '.ai/'),
       lang: currentLang.substring(0, 2),
     };
 
     let defaultLang = [...allHrefLangs, defaulLang].filter(
       (val) => val.lang == 'en'
     );
-    const test = [...allHrefLangs, defaulLang];
+
+    const hrefLangComplete = [...allHrefLangs, defaulLang];
+
     setDefaultHrefLangs(defaultLang);
-    setHrefLangs(test);
+
+    setHrefLangs(hrefLangComplete);
   }, []);
   return (
-    <Helmet htmlAttributes={{ lang: currentLang }}>
+    <Helmet>
       {/* Encoding and styles */}
-      <html />
+      <html lang={currentLang.substring(0, 2)} />
+
       <link
         rel="alternate"
         hrefLang="x-default"
