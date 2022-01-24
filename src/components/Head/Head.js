@@ -1,15 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
+import { globalHistory as history } from '@reach/router';
 
-const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
+const Head = ({
+  children,
+  meta,
+  canonical,
+  metatitle,
+  metadescription,
+  currentLang,
+  activeDocMeta,
+}) => {
   const url = 'https://secureprivacy.ai/';
+  const { location } = history;
 
   const [canonicalUrl, setCanonicalUrl] = useState(null);
   const [pageTitle, setPageTitle] = useState(null);
   const [pageDescription, setPageDescription] = useState(null);
   const [opengraphUrl, setOpengrapUrl] = useState(url);
   const [opengraphTitle, setOpengraphTitle] = useState(meta.title);
+  const [hrefLangs, setHrefLangs] = useState([]);
+
+  const [defaultHrefLangs, setDefaultHrefLangs] = useState(null);
   const [opengraphDescription, setOpengraphDescription] = useState(
     meta.description
   );
@@ -50,10 +63,98 @@ const Head = ({ children, meta, canonical, metatitle, metadescription }) => {
     setOpengraphDescription(currentPageDescription);
   }, []);
 
+  useEffect(() => {
+    const allHrefLangs = activeDocMeta.alternate_languages.map((val) => {
+      const completePath = url + location.pathname;
+      var myRegexp = /^(.*\/)/g;
+      var match = myRegexp.exec(completePath);
+
+      const completPaths =
+        val.type === 'homepage'
+          ? completePath
+          : match[1] + (val.uid ? val.uid : '');
+      if (val.lang.substring(0, 2) == 'en') {
+        return {
+          completePath: completPaths
+            .replace('/de/', '')
+            .replace('/pt/', '')
+            .replace('.ai//', '.ai/'),
+          lang: val.lang.substring(0, 2),
+        };
+      }
+      if (val.lang.substring(0, 2) == 'pt') {
+        return {
+          completePath: completPaths
+            .replace('.ai//', '.ai/pt/')
+            .replace('/de/', 'pt/')
+            .replace('ptpt', 'pt'),
+          lang: val.lang.substring(0, 2),
+        };
+      }
+      if (val.lang.substring(0, 2) == 'de') {
+        return {
+          completePath: completPaths
+            .replace('.ai//', '.ai/de/')
+            .replace('/pt/', 'de/')
+            .replace('dede', 'de'),
+          lang: val.lang.substring(0, 2),
+        };
+      }
+    });
+
+    const completePath = url + location.pathname;
+    const defaulLang = {
+      completePath: completePath
+        .replace(
+          '/pt/',
+          currentLang.substring(0, 2) == 'en'
+            ? ''
+            : `${currentLang.substring(0, 2)}/`
+        )
+        .replace(
+          '/de/',
+          currentLang.substring(0, 2) == 'en'
+            ? ''
+            : `${currentLang.substring(0, 2)}/`
+        )
+        .replace('.ai//', '.ai/'),
+      lang: currentLang.substring(0, 2),
+    };
+
+    let defaultLang = [...allHrefLangs, defaulLang].filter(
+      (val) => val.lang == 'en'
+    );
+
+    const hrefLangComplete = [...allHrefLangs, defaulLang];
+
+    setDefaultHrefLangs(defaultLang);
+
+    setHrefLangs(hrefLangComplete);
+  }, []);
   return (
     <Helmet>
       {/* Encoding and styles */}
-      <html lang="en" />
+      <html lang={currentLang.substring(0, 2)} />
+
+      <link
+        rel="alternate"
+        hrefLang="x-default"
+        href={
+          defaultHrefLangs &&
+          defaultHrefLangs.length &&
+          defaultHrefLangs[0].completePath
+        }
+      />
+      {hrefLangs.map((val) => {
+        return (
+          <link
+            rel="alternate"
+            hrefLang={val.lang}
+            href={val.completePath}
+            key={val.lang}
+          />
+        );
+      })}
       <meta charSet="utf-8" />
       <meta httpEquiv="x-ua-compatible" content="ie=edge"></meta>
       <meta
@@ -102,6 +203,8 @@ Head.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
   }).isRequired,
+  currentLang: PropTypes.string.isRequired,
+  activeDocMeta: PropTypes.any,
   canonical: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   metatitle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   metadescription: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
