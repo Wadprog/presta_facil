@@ -167,10 +167,12 @@ const Head = ({
       {canonicalUrl}
       {pageTitle}
       {pageDescription}
+      <meta name="title" content={opengraphTitle} />
 
       {/* <!-- Twitter meta --> */}
       <meta content="summary" name="twitter:card" />
       <meta content={opengraphTitle} name="twitter:title" />
+
       <meta content={opengraphDescription} name="twitter:description" />
       <meta content={`${url}images/meta/tile.png`} name="twitter:image" />
       <meta content={opengraphUrl} name="twitter:url" />
