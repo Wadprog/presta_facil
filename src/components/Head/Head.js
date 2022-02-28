@@ -78,6 +78,7 @@ const Head = ({
           completePath: completPaths
             .replace('/de/', '')
             .replace('/pt/', '')
+            .replace('/fr/', '')
             .replace('.ai//', '.ai/'),
           lang: val.lang.substring(0, 2),
         };
@@ -87,6 +88,7 @@ const Head = ({
           completePath: completPaths
             .replace('.ai//', '.ai/pt/')
             .replace('/de/', 'pt/')
+            .replace('/fr/', 'pt/')
             .replace('ptpt', 'pt'),
           lang: val.lang.substring(0, 2),
         };
@@ -96,7 +98,19 @@ const Head = ({
           completePath: completPaths
             .replace('.ai//', '.ai/de/')
             .replace('/pt/', 'de/')
+            .replace('/fr/', 'de/')
             .replace('dede', 'de'),
+          lang: val.lang.substring(0, 2),
+        };
+      }
+
+      if (val.lang.substring(0, 2) == 'fr') {
+        return {
+          completePath: completPaths
+            .replace('.ai//', '.ai/fr/')
+            .replace('/pt/', 'fr/')
+            .replace('/de/', 'fr/')
+            .replace('frfr', 'fr'),
           lang: val.lang.substring(0, 2),
         };
       }
@@ -113,6 +127,12 @@ const Head = ({
         )
         .replace(
           '/de/',
+          currentLang.substring(0, 2) == 'en'
+            ? ''
+            : `${currentLang.substring(0, 2)}/`
+        )
+        .replace(
+          '/fr/',
           currentLang.substring(0, 2) == 'en'
             ? ''
             : `${currentLang.substring(0, 2)}/`

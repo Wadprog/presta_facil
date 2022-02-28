@@ -20,6 +20,10 @@ const LANGUAGE = {
     FULL_NAME: 'German',
     SHORT_NAME: 'de',
   },
+  FR: {
+    FULL_NAME: 'French',
+    SHORT_NAME: 'fr',
+  },
 };
 
 const LanguageSwitcher = ({ activeDocMeta }) => {
