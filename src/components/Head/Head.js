@@ -142,7 +142,7 @@ const Head = ({
     };
 
     let defaultLang = [...allHrefLangs, defaulLang].filter(
-      (val) => val.lang == 'en'
+      (val) => val && val.lang == 'en'
     );
 
     const hrefLangComplete = [...allHrefLangs, defaulLang];
