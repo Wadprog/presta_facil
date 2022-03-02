@@ -380,6 +380,10 @@
   @extend .Pricing;
 }
 
+.Tarification {
+  @extend .Pricing;
+}
+
 .Ressources {
   @extend .Resources;
 }
