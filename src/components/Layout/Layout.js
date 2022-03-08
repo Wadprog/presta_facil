@@ -1,5 +1,5 @@
 import React from 'react';
-import { bool, object, node, array, oneOfType } from 'prop-types';
+import { bool, object, node, array, oneOfType, any } from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
 import LangContext from '@contexts';
@@ -40,7 +40,12 @@ const Layout = ({
           currentLang={currentLang}
           activeDocMeta={activeDocMeta}
         />
-        <Header data={headerData} hideMenu={hideMenu} />
+        <Header
+          data={headerData}
+          hideMenu={hideMenu}
+          metatitle={metatitle}
+          type={activeDocMeta}
+        />
         <main className={styles.main} id="main">
           {children}
         </main>
@@ -55,6 +60,7 @@ Layout.propTypes = {
   data: object,
   hideMenu: bool,
   activeDocMeta: object,
+  type: any,
   canonical: oneOfType([object, array]),
   metatitle: oneOfType([object, array]),
   metadescription: oneOfType([object, array]),

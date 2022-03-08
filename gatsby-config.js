@@ -157,6 +157,59 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-breadcrumb`,
+      options: {
+        // defaultCrumb: optional To create a default crumb
+        // see Click Tracking default crumb example below
+        exclude: [
+          ``,
+          `**/fr/`,
+          `**/de/`,
+          `/fr/`,
+          `/de/`,
+          `fr/`,
+          `de/`,
+          `**/fr/**`,
+          `**/de/**`,
+          `**/dev-404-page/**`,
+          `**/404/**`,
+          `**/404.html`,
+        ],
+        defaultCrumb: {
+          location: {
+            pathname: '/',
+          },
+          crumbSeparator: '  >  ',
+        },
+        crumbLabelUpdates: [
+          {
+            pathname: '/books',
+            crumbLabel: 'Books',
+          },
+          {
+            pathname: '/technology',
+            crumbLabel: 'Technologies',
+          },
+          {
+            pathname: '/solution',
+            crumbLabel: 'Solutions',
+          },
+          {
+            pathname: '/feature',
+            crumbLabel: 'Features',
+          },
+          {
+            pathname: '/pricing',
+            crumbLabel: 'Pricing',
+          },
+          {
+            pathname: '/blog',
+            crumbLabel: 'Blog',
+          },
+        ],
+      },
+    },
+    {
       resolve: 'gatsby-source-prismic',
       options: {
         repositoryName: prismicRepositoryName,

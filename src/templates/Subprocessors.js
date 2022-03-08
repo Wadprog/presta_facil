@@ -30,6 +30,7 @@ const Page = ({ data }) => {
       metatitle={metatitle}
       metadescription={metadescription}
       canonical={canonical}
+      type={type}
     >
       <SubprocessorsPage
         content={subprocessorsPageData}

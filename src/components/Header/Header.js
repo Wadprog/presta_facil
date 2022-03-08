@@ -9,20 +9,24 @@ import Logo from './components/Logo';
 import Menu from './components/Menu';
 import { useScrollDirection } from '@hooks';
 import useGetImage from './useGetImage';
-import { array, bool, object } from 'prop-types';
+import { any, array, bool, object } from 'prop-types';
 import { parseUrl } from '@helpers';
 import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
+import { Breadcrumb } from 'gatsby-plugin-breadcrumb';
+import { globalHistory as history } from '@reach/router';
+const linkResolver = require('../../../prismic/utils/linkResolver');
 
 const GRADIENT_ORANGE =
   'linear-gradient(262.53deg, #FB5F47 38.27%, #F9BE5A 113.07%)';
 const GRADIENT_GREEN =
   'linear-gradient(87.97deg, #24b04b -46.17%, #0263bc 186.99%)';
 
-const Header = ({ data, hideMenu }) => {
+const Header = ({ data, hideMenu, metatitle, type }) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleCloseModal = () => setModalIsOpen(false);
   const menuItemsData = data.filter((item) => item.slice_type === 'menu');
+  const { location } = history;
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -42,6 +46,8 @@ const Header = ({ data, hideMenu }) => {
     document.querySelector('html').classList.toggle('fixed');
   };
   useEffect(() => {
+    console.log(location, metatitle, type, data);
+    console.log(linkResolver(type));
     return () => document.querySelector('html').classList.remove('fixed');
   }, []);
 
@@ -93,6 +99,20 @@ const Header = ({ data, hideMenu }) => {
                 }
               />
             </div>
+            <div className={style.breadcrumbContainer}>
+              <Breadcrumb
+                usePathPrefix={linkResolver(type).split('/')[1]}
+                location={location}
+                crumbLabel={metatitle.text}
+                title={`${type.lang === 'en-gb' ? '' : type.lang.slice(0, 2)} ${
+                  type.lang !== 'en-gb' ? ' > ' : ''
+                } ${
+                  type.lang === 'en-gb'
+                    ? linkResolver(type).split('/')[1]
+                    : linkResolver(type).split('/')[2]
+                }`}
+              />
+            </div>
           </div>
         </div>
       </header>
@@ -109,6 +129,8 @@ Header.propTypes = {
   data: array,
   hideMenu: bool,
   activeDocMeta: object,
+  metatitle: object,
+  type: any,
 };
 
 export default Header;
