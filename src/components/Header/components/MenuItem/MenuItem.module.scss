@@ -353,6 +353,16 @@
   @extend .Resources;
 }
 
+.Ressourcen{
+  @extend .Resources;
+}
+
+
+
+.Technologien{
+  @extend .Technologies;
+}
+
 .Lösungen ~ .Features{
   .imageWrapper{
     max-width: 247px;

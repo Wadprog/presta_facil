@@ -159,22 +159,6 @@ module.exports = {
     {
       resolve: `gatsby-plugin-breadcrumb`,
       options: {
-        // defaultCrumb: optional To create a default crumb
-        // see Click Tracking default crumb example below
-        exclude: [
-          ``,
-          `**/fr/`,
-          `**/de/`,
-          `/fr/`,
-          `/de/`,
-          `fr/`,
-          `de/`,
-          `**/fr/**`,
-          `**/de/**`,
-          `**/dev-404-page/**`,
-          `**/404/**`,
-          `**/404.html`,
-        ],
         defaultCrumb: {
           location: {
             pathname: '/',

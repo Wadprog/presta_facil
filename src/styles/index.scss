@@ -11,6 +11,7 @@
         font-size: 12px;
         line-height: 160%;
         text-transform: capitalize;
+        
     }
     &__separator{
         margin: 0 5px;
@@ -23,6 +24,9 @@
         font-size: 12px;
         line-height: 160%;
         text-decoration: none;
+        &:hover{
+            color: rgba(1, 25, 73, .8);
+        }
     }
     &__item{
         color: rgba(1, 25, 73, .5);
@@ -30,11 +34,15 @@
         font-size: 12px;
         line-height: 160%;
         text-decoration: none;
+     
     }
     & a {
         color: rgba(1, 25, 73, .5);
         font-weight: 300;
         font-size: 12px;
         line-height: 160%;
+        &:hover{
+            color: rgba(1, 25, 73, .8);
+        }
     }
   }

@@ -99,20 +99,22 @@ const Header = ({ data, hideMenu, metatitle, type }) => {
                 }
               />
             </div>
-            <div className={style.breadcrumbContainer}>
-              <Breadcrumb
-                usePathPrefix={linkResolver(type).split('/')[1]}
-                location={location}
-                crumbLabel={metatitle.text}
-                title={`${type.lang === 'en-gb' ? '' : type.lang.slice(0, 2)} ${
-                  type.lang !== 'en-gb' ? ' > ' : ''
-                } ${
-                  type.lang === 'en-gb'
-                    ? linkResolver(type).split('/')[1]
-                    : linkResolver(type).split('/')[2]
-                }`}
-              />
-            </div>
+            {type && type.type !== 'homepage' && (
+              <div className={style.breadcrumbContainer}>
+                <Breadcrumb
+                  usePathPrefix={linkResolver(type).split('/')[1]}
+                  location={location}
+                  crumbLabel={metatitle.text}
+                  title={`${
+                    type.lang === 'en-gb' ? '' : type.lang.slice(0, 2)
+                  } ${type.lang !== 'en-gb' ? ' > ' : ''} ${
+                    type.lang === 'en-gb'
+                      ? linkResolver(type).split('/')[1]
+                      : linkResolver(type).split('/')[2]
+                  }`}
+                />
+              </div>
+            )}
           </div>
         </div>
       </header>
