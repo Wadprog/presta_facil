@@ -16,6 +16,15 @@
   margin: 0 auto;
 }
 
+.breadcrumbContainer{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
 .top {
   position: relative;
   display: flex;

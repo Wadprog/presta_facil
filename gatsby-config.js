@@ -157,6 +157,43 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-breadcrumb`,
+      options: {
+        defaultCrumb: {
+          location: {
+            pathname: '/',
+          },
+          crumbSeparator: '  >  ',
+        },
+        crumbLabelUpdates: [
+          {
+            pathname: '/books',
+            crumbLabel: 'Books',
+          },
+          {
+            pathname: '/technology',
+            crumbLabel: 'Technologies',
+          },
+          {
+            pathname: '/solution',
+            crumbLabel: 'Solutions',
+          },
+          {
+            pathname: '/feature',
+            crumbLabel: 'Features',
+          },
+          {
+            pathname: '/pricing',
+            crumbLabel: 'Pricing',
+          },
+          {
+            pathname: '/blog',
+            crumbLabel: 'Blog',
+          },
+        ],
+      },
+    },
+    {
       resolve: 'gatsby-source-prismic',
       options: {
         repositoryName: prismicRepositoryName,
