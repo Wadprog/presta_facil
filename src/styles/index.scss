@@ -5,6 +5,7 @@
 .breadcrumb{
     display: flex;
     flex-direction: row;
+    margin-left:3px;
     &__title{
         color: rgba(1, 25, 73, .5);
         font-weight: 300;
@@ -14,8 +15,9 @@
         
     }
     &__separator{
-        margin: 0 5px;
+        margin: 0 0px 0 0px;
     }
+  
     &__list{
         display: flex;
         flex-direction: row;
@@ -34,9 +36,12 @@
         font-size: 12px;
         line-height: 160%;
         text-decoration: none;
-     
+    }
+    & a:not(&__link__active){
+        display: none;
     }
     & a {
+        margin-left:3px;
         color: rgba(1, 25, 73, .5);
         font-weight: 300;
         font-size: 12px;
