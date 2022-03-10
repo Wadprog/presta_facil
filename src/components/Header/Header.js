@@ -46,8 +46,6 @@ const Header = ({ data, hideMenu, metatitle, type }) => {
     document.querySelector('html').classList.toggle('fixed');
   };
   useEffect(() => {
-    console.log(location, metatitle, type, data);
-    console.log(linkResolver(type));
     return () => document.querySelector('html').classList.remove('fixed');
   }, []);
 
@@ -104,6 +102,7 @@ const Header = ({ data, hideMenu, metatitle, type }) => {
                 <Breadcrumb
                   usePathPrefix={linkResolver(type).split('/')[1]}
                   location={location}
+                  crumbSeparator={''}
                   crumbLabel={metatitle.text}
                   title={`${
                     type.lang === 'en-gb' ? '' : type.lang.slice(0, 2)
