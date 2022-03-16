@@ -11,19 +11,19 @@ const propsWithUniqueKey = (props, key) => {
 const htmlSerializer = (type, element, key, children) => {
   if (type === prismicH.Element.heading1) {
     let id = element.text.replace(/\W+/g, '-').toLowerCase();
-    return React.createElement('h1', { id: id }, children.join(''));
+    return React.createElement('h1', { id: id }, children);
   }
   if (type === prismicH.Element.heading2) {
     let id = element.text.replace(/\W+/g, '-').toLowerCase();
-    return React.createElement('h2', { id: id }, children.join(''));
+    return React.createElement('h2', { id: id }, children);
   }
   if (type === prismicH.Element.heading3) {
     let id = element.text.replace(/\W+/g, '-').toLowerCase();
-    return React.createElement('h3', { id: id }, children.join(''));
+    return React.createElement('h3', { id: id }, children);
   }
   if (type === prismicH.Element.heading4) {
     let id = element.text.replace(/\W+/g, '-').toLowerCase();
-    return React.createElement('h4', { id: id }, children.join(''));
+    return React.createElement('h4', { id: id }, children);
   }
 
   if (type !== 'image') {
