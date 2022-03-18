@@ -209,6 +209,28 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
+  const category = await graphql(`
+    {
+      allPrismicCategory {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  category.data.allPrismicCategory.nodes.forEach((page) => {
+    createPage({
+      path: page.url,
+      component: path.resolve(__dirname, 'src/templates/Category.js'),
+      context: { ...page },
+    });
+  });
+
   const blogpostpage = await graphql(`
     {
       allPrismicBlogpostpage {

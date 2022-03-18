@@ -1,26 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { RichText } from 'prismic-reactjs';
-import Swiper from 'react-id-swiper';
 import { array, object } from 'prop-types';
-import SlideItem from './SlideItem/SlideItem';
+// import SlideItem from './SlideItem/SlideItem';
 import style from './Hero.module.scss';
+import { Link } from 'gatsby';
 
 const Hero = ({ title, articles }) => {
-  const params = {
-    slidesPerView: 'auto',
-    spaceBetween: 56,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-  };
-
-  const firstFourArticles = articles.slice(0, 4);
-
   // TODO: remove/refactor after solution in post –– https://community.prismic.io/t/gatsby-prismic-wrong-text-tag/7693
   const getFixedTitle = (array, type) => {
     const titleClone = JSON.parse(JSON.stringify(array));
@@ -29,21 +14,29 @@ const Hero = ({ title, articles }) => {
     return titleClone;
   };
 
+  let tagList = [];
+  articles.forEach(({ node }) => {
+    tagList = [...tagList, ...node.tags];
+  });
+  const uniqTagList = [...new Set(tagList)];
+
+  useEffect(() => {
+    console.log(articles);
+  }, []);
+
   return (
     <section className={style.hero}>
       <div className={style.title}>
         <RichText render={getFixedTitle(title.richText, 'heading1')} />
       </div>
       <div className={style.slider}>
-        <Swiper {...params}>
-          {firstFourArticles.map(({ node }, index) => {
-            return (
-              <div className={style.slide} key={index}>
-                <SlideItem getFixedTitle={getFixedTitle} {...node} />
-              </div>
-            );
-          })}
-        </Swiper>
+        {uniqTagList.map((item, index) => {
+          return (
+            <Link key={`${item}${index}`} to={`/${item.toLowerCase()}`}>
+              <li className={style.tag}>{item}</li>
+            </Link>
+          );
+        })}
       </div>
     </section>
   );
@@ -52,6 +45,7 @@ const Hero = ({ title, articles }) => {
 Hero.propTypes = {
   articles: array,
   title: object,
+  buttontext: array,
 };
 
 export default Hero;

@@ -8,7 +8,7 @@ import ArticlePreview from '@components/ArticlePreview';
 import { useDebounce } from '@hooks';
 import { parseString } from '@helpers';
 
-const numberToRender = 6; // started article on the page
+const numberToRender = 9; // started article on the page
 const COUNTER_STEP = 3;
 
 const Articles = ({
@@ -90,7 +90,7 @@ const Articles = ({
         })}
       </div>
       <div className={style.buttonWrapper}>
-        {articlesList.length > counter && list.length >= 6 && (
+        {articlesList.length > counter && list.length >= 9 && (
           <Button
             variant={VARIANT.TRANSPARENT}
             click={handleClickLoadMore}

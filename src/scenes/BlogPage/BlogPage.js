@@ -22,9 +22,17 @@ const BlogPage = ({ content, canonical, metatitle }) => {
   );
   const { primary: subscribeSectionContent } = subscribeSection;
 
+  React.useEffect(() => {
+    console.log(content);
+  }, []);
+
   return (
     <div className={style.HomePage}>
-      <Hero title={title} articles={articlesList} />
+      <Hero
+        title={title}
+        articles={articlesList}
+        filtersbuttontext={filtersbuttontext}
+      />
       <Articles
         articlesList={articlesList}
         buttontext={buttontext}
@@ -42,12 +50,12 @@ const BlogPage = ({ content, canonical, metatitle }) => {
 };
 
 BlogPage.propTypes = {
-  content: object.isRequired,
-  canonical: object.isRequired,
-  metatitle: object.isRequired,
-  filtersbuttontext: object.isRequired,
-  placeholder: object.isRequired,
-  subtitle: object.isRequired,
+  content: object,
+  canonical: object,
+  metatitle: object,
+  filtersbuttontext: object,
+  placeholder: object,
+  subtitle: object,
 };
 
 export default BlogPage;
