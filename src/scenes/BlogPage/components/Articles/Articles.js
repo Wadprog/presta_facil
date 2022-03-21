@@ -17,6 +17,7 @@ const Articles = ({
   subtitle,
   placeholder,
   filtersbuttontext,
+  isCategory,
 }) => {
   const [counter, setCounter] = useState(numberToRender);
   const [list, setList] = useState([]);
@@ -32,6 +33,13 @@ const Articles = ({
   const uniqTagList = [...new Set(tagList)];
 
   useEffect(() => {
+    if (
+      isCategory &&
+      Object.keys(isCategory) &&
+      isCategory.type === 'category'
+    ) {
+      setSelectedTag([`${isCategory.uid.toUpperCase()}`]);
+    }
     const filteredList = articlesList.filter(({ node }) => {
       const { data: postData, tags } = node;
       const { title, date } = postData;
@@ -111,6 +119,7 @@ Articles.propTypes = {
   subtitle: object,
   placeholder: object,
   filtersbuttontext: object,
+  isCategory: object,
 };
 
 export default Articles;

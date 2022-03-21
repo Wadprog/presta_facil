@@ -13,9 +13,14 @@ const Page = ({ data }) => {
   const { id, uid, lang, type, alternate_languages, data: pageData } = blogpage;
   const activeDocMeta = { id, uid, lang, type, alternate_languages };
 
-  const { metatitle, metadescription, canonical } = pageData;
+  const {
+    metatitle,
+    metadescription,
+    canonical,
+    category_description,
+  } = pageData;
   React.useEffect(() => {
-    console.log(data);
+    console.log(blogpageContent);
   }, []);
   return (
     <Layout
@@ -24,7 +29,13 @@ const Page = ({ data }) => {
       metadescription={metadescription}
       canonical={canonical}
     >
-      <BlogPage content={data} metatitle={metatitle} canonical={canonical} />
+      <BlogPage
+        content={data}
+        metatitle={metatitle}
+        canonical={canonical}
+        type={{ type, uid }}
+        categoryTitle={category_description}
+      />
     </Layout>
   );
 };
@@ -34,7 +45,7 @@ Page.propTypes = {
 };
 
 export const query = graphql`
-  query {
+  query($lang: String) {
     allPrismicCategory {
       edges {
         node {
@@ -49,6 +60,9 @@ export const query = graphql`
             uid
           }
           data {
+            category_description {
+              text
+            }
             metatitle {
               text
             }
@@ -62,7 +76,7 @@ export const query = graphql`
         }
       }
     }
-    allPrismicBlogpage {
+    allPrismicBlogpage(filter: { lang: { eq: $lang } }) {
       edges {
         node {
           uid
@@ -105,6 +119,7 @@ export const query = graphql`
       }
     }
     allPrismicBlogpostpage(
+      filter: { lang: { eq: $lang } }
       limit: 1000001
       sort: { fields: data___date, order: DESC }
     ) {

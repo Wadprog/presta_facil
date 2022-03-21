@@ -32,6 +32,10 @@
   text-transform: uppercase;
   margin-right: 10px;
   color: #011949;
+  &.active{
+    background: linear-gradient(89.23deg, rgb(36, 176, 75) -46.17%, rgb(2, 99, 188) 186.99%);
+    color: white;
+  }
   &:hover{
     filter: brightness(110%) saturate(140%);
     transform: translateY(-3px);
@@ -42,7 +46,14 @@
     margin-bottom: 12px;
   }
 }
-
+.title.category h1{
+  strong{
+    font-family: $font-gramatika;
+    font-weight: 400;
+    color: #011949;
+    letter-spacing: 0.05em;
+  }
+}
 .title h1 {
   font-family: $font-gramatika;
   font-weight: 400;

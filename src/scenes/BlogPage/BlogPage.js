@@ -7,7 +7,7 @@ import Articles from './components/Articles/Articles';
 import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
 import style from './BlogPage.module.scss';
 
-const BlogPage = ({ content, canonical, metatitle }) => {
+const BlogPage = ({ content, canonical, metatitle, type, categoryTitle }) => {
   const {
     title,
     buttontext,
@@ -23,7 +23,7 @@ const BlogPage = ({ content, canonical, metatitle }) => {
   const { primary: subscribeSectionContent } = subscribeSection;
 
   React.useEffect(() => {
-    console.log(content);
+    // console.log(type);
   }, []);
 
   return (
@@ -32,6 +32,9 @@ const BlogPage = ({ content, canonical, metatitle }) => {
         title={title}
         articles={articlesList}
         filtersbuttontext={filtersbuttontext}
+        isCategory={type}
+        content={content}
+        categoryTitle={categoryTitle}
       />
       <Articles
         articlesList={articlesList}
@@ -39,6 +42,7 @@ const BlogPage = ({ content, canonical, metatitle }) => {
         subtitle={subtitle}
         placeholder={placeholder}
         filtersbuttontext={filtersbuttontext}
+        isCategory={type}
       />
       <Subscribe primary={subscribeSectionContent} />
       <BreadcrumbsSemanticMarkup
@@ -56,6 +60,8 @@ BlogPage.propTypes = {
   filtersbuttontext: object,
   placeholder: object,
   subtitle: object,
+  type: object,
+  categoryTitle: object,
 };
 
 export default BlogPage;
