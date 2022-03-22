@@ -22,10 +22,6 @@ const BlogPage = ({ content, canonical, metatitle, type, categoryTitle }) => {
   );
   const { primary: subscribeSectionContent } = subscribeSection;
 
-  React.useEffect(() => {
-    // console.log(type);
-  }, []);
-
   return (
     <div className={style.HomePage}>
       <Hero

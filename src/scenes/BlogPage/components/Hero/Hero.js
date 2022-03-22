@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { RichText } from 'prismic-reactjs';
 import { array, object } from 'prop-types';
 // import SlideItem from './SlideItem/SlideItem';
@@ -17,8 +17,6 @@ const Hero = ({ title, articles, isCategory, categoryTitle }) => {
     if (isCategory && isCategory.type === 'category') {
       titleClone[0].text = categoryTitle.text;
     }
-    console.log(titleClone);
-
     return titleClone;
   };
 
@@ -27,10 +25,6 @@ const Hero = ({ title, articles, isCategory, categoryTitle }) => {
     tagList = [...tagList, ...node.tags];
   });
   const uniqTagList = [...new Set(tagList)];
-
-  useEffect(() => {
-    console.log(title, categoryTitle);
-  }, []);
 
   return (
     <section className={style.hero}>
@@ -53,7 +47,8 @@ const Hero = ({ title, articles, isCategory, categoryTitle }) => {
               <li
                 className={`${style.tag} ${
                   isCategory &&
-                  isCategory.uid.toLowerCase() === item.toLowerCase() &&
+                  isCategory.uid.replace('-', ' ').toLowerCase() ===
+                    item.toLowerCase() &&
                   style.active
                 }`}
               >

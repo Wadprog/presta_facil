@@ -19,9 +19,7 @@ const Page = ({ data }) => {
     canonical,
     category_description,
   } = pageData;
-  React.useEffect(() => {
-    console.log(blogpageContent);
-  }, []);
+
   return (
     <Layout
       activeDocMeta={activeDocMeta}
@@ -45,8 +43,8 @@ Page.propTypes = {
 };
 
 export const query = graphql`
-  query($lang: String) {
-    allPrismicCategory {
+  query($uid: String, $lang: String) {
+    allPrismicCategory(filter: { uid: { eq: $uid }, lang: { eq: $lang } }) {
       edges {
         node {
           uid
