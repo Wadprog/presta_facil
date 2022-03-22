@@ -230,6 +230,7 @@ module.exports = {
           privacypolicy: require('./schemas/privacypolicy.json'),
           solutionpage: require('./schemas/solutionpage.json'),
           publicscanner: require('./schemas/publicscanner.json'),
+          category: require('./schemas/category.json'),
         },
         lang: '*',
         imageImgixParams: {

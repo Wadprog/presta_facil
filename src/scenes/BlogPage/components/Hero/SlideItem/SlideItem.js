@@ -7,7 +7,7 @@ import { dateToString, langPath } from '@helpers';
 import LangContext from '@contexts';
 import style from './SlideItem.module.scss';
 
-const SlideItem = ({ data, tags, uid: itemPath, getFixedTitle }) => {
+const SlideItem = ({ data, uid: itemPath }) => {
   const { backgroundpreview, title, date, description } = data;
   const currentLang = useContext(LangContext);
 
@@ -25,10 +25,10 @@ const SlideItem = ({ data, tags, uid: itemPath, getFixedTitle }) => {
       <div className={style.container}>
         <div className={style.wrapper}>
           <div className={style.title}>
-            <RichText render={getFixedTitle(title.richText, 'heading2')} />
+            <h2>{title.richText}</h2>
           </div>
           <div className={style.block}>
-            <ul className={style.categoryList}>
+            {/* <ul className={style.categoryList}>
               {tags.map((item, index) => {
                 return (
                   <li className={style.tag} key={`${item}${index}`}>
@@ -36,7 +36,7 @@ const SlideItem = ({ data, tags, uid: itemPath, getFixedTitle }) => {
                   </li>
                 );
               })}
-            </ul>
+            </ul> */}
             <p className={style.date}>{dateToString(date)}</p>
           </div>
         </div>

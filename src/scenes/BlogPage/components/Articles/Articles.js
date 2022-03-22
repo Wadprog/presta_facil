@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { array, object } from 'prop-types';
 import style from './Articles.module.scss';
 import Filter from '@components/Filter/Filter';
@@ -7,9 +7,11 @@ import SearchInput from '@components/SearchInput/SearchInput';
 import ArticlePreview from '@components/ArticlePreview';
 import { useDebounce } from '@hooks';
 import { parseString } from '@helpers';
-
-const numberToRender = 6; // started article on the page
+import LangContext from '@contexts';
+import { langPath } from '@helpers';
+const numberToRender = 9; // started article on the page
 const COUNTER_STEP = 3;
+import { Link } from 'gatsby';
 
 const Articles = ({
   articlesList,
@@ -17,6 +19,7 @@ const Articles = ({
   subtitle,
   placeholder,
   filtersbuttontext,
+  isCategory,
 }) => {
   const [counter, setCounter] = useState(numberToRender);
   const [list, setList] = useState([]);
@@ -24,6 +27,7 @@ const Articles = ({
   const [selectedTag, setSelectedTag] = useState(null);
   const [dateRange, setDateRange] = useState();
   const debounceSearchResult = useDebounce(search, 500);
+  const currentLang = useContext(LangContext);
 
   let tagList = [];
   articlesList.forEach(({ node }) => {
@@ -32,6 +36,13 @@ const Articles = ({
   const uniqTagList = [...new Set(tagList)];
 
   useEffect(() => {
+    if (
+      isCategory &&
+      Object.keys(isCategory) &&
+      isCategory.type === 'category'
+    ) {
+      setSelectedTag([`${isCategory.uid.replace('-', ' ').toLowerCase()}`]);
+    }
     const filteredList = articlesList.filter(({ node }) => {
       const { data: postData, tags } = node;
       const { title, date } = postData;
@@ -44,12 +55,16 @@ const Articles = ({
         ? dateRange.startDate <= Date.parse(date) &&
           Date.parse(date) <= dateRange.endDate
         : true;
-      const filterByTag = selectedTag
-        ? selectedTag.includes(tags.join(''))
-        : true;
+      let filterByTag = true;
+      if (selectedTag) {
+        filterByTag = selectedTag
+          ? selectedTag.some((f) => tags.join('').toLowerCase().includes(f))
+          : true;
+      }
 
       return filterBySearch && filterByDate && filterByTag;
     });
+
     setList(filteredList.slice(0, counter));
   }, [counter, debounceSearchResult, selectedTag, dateRange]);
 
@@ -90,7 +105,7 @@ const Articles = ({
         })}
       </div>
       <div className={style.buttonWrapper}>
-        {articlesList.length > counter && list.length >= 6 && (
+        {articlesList.length > counter && list.length >= 9 && (
           <Button
             variant={VARIANT.TRANSPARENT}
             click={handleClickLoadMore}
@@ -99,6 +114,24 @@ const Articles = ({
           >
             {buttontext.text}
           </Button>
+        )}
+      </div>
+      <div className={style.wrappernoList}>
+        {!list.length && (
+          <>
+            <h5> {`No blogposts were found with this tag 😥`} </h5>
+            <div className={style.buttonWrapper}>
+              <Link to={`${langPath(currentLang)}/blog`}>
+                <Button
+                  variant={VARIANT.TRANSPARENT}
+                  element="button"
+                  fullWidth
+                >
+                  Back to Blog
+                </Button>
+              </Link>
+            </div>
+          </>
         )}
       </div>
     </section>
@@ -111,6 +144,7 @@ Articles.propTypes = {
   subtitle: object,
   placeholder: object,
   filtersbuttontext: object,
+  isCategory: object,
 };
 
 export default Articles;

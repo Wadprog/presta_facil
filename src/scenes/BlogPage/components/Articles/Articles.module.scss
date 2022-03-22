@@ -10,7 +10,7 @@
 }
 
 .wrapper {
-  display: flex;
+  display: none;
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 0 auto 72px;
@@ -79,6 +79,23 @@
     margin-top: 24px;
   }
 }
+.wrappernoList{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 auto 72px;
+  max-width: 1152px;
+  flex-direction: column;
+  h5{
+    font-family: $font-gramatika;
+    font-weight: 400;
+    color: #011949;
+    letter-spacing: 0.05em;
+    font-size: 25px;
+  }
+}
+
 
 .buttonWrapper {
   margin: 96px auto 0;

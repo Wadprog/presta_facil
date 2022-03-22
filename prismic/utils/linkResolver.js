@@ -2,11 +2,16 @@ const { defaultLanguage } = require('./../../prismic-config');
 
 const linkResolver = (doc) => {
   const properties = doc._meta || doc;
-
   if (properties.type === 'homepage') {
     return properties.lang === defaultLanguage
       ? '/'
       : `/${properties.lang.slice(0, 2)}/`;
+  }
+
+  if (properties.type === 'category' && properties.uid) {
+    return properties.lang === defaultLanguage
+      ? `/${properties.uid}`
+      : `/${properties.lang.slice(0, 2)}/${properties.uid}`;
   }
 
   if (properties.type === 'contact') {

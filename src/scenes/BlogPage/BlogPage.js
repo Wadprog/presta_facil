@@ -7,7 +7,7 @@ import Articles from './components/Articles/Articles';
 import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
 import style from './BlogPage.module.scss';
 
-const BlogPage = ({ content, canonical, metatitle }) => {
+const BlogPage = ({ content, canonical, metatitle, type, categoryTitle }) => {
   const {
     title,
     buttontext,
@@ -24,13 +24,21 @@ const BlogPage = ({ content, canonical, metatitle }) => {
 
   return (
     <div className={style.HomePage}>
-      <Hero title={title} articles={articlesList} />
+      <Hero
+        title={title}
+        articles={articlesList}
+        filtersbuttontext={filtersbuttontext}
+        isCategory={type}
+        content={content}
+        categoryTitle={categoryTitle}
+      />
       <Articles
         articlesList={articlesList}
         buttontext={buttontext}
         subtitle={subtitle}
         placeholder={placeholder}
         filtersbuttontext={filtersbuttontext}
+        isCategory={type}
       />
       <Subscribe primary={subscribeSectionContent} />
       <BreadcrumbsSemanticMarkup
@@ -42,12 +50,14 @@ const BlogPage = ({ content, canonical, metatitle }) => {
 };
 
 BlogPage.propTypes = {
-  content: object.isRequired,
-  canonical: object.isRequired,
-  metatitle: object.isRequired,
-  filtersbuttontext: object.isRequired,
-  placeholder: object.isRequired,
-  subtitle: object.isRequired,
+  content: object,
+  canonical: object,
+  metatitle: object,
+  filtersbuttontext: object,
+  placeholder: object,
+  subtitle: object,
+  type: object,
+  categoryTitle: object,
 };
 
 export default BlogPage;
