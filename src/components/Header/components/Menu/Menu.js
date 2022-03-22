@@ -1,11 +1,13 @@
 import React, { useState, useContext } from 'react';
 import style from './Menu.module.scss';
-import { array, bool } from 'prop-types';
+import { array, bool, string } from 'prop-types';
 import classnames from 'classnames';
 import MenuItem from '../MenuItem/MenuItem';
 import { Link } from 'gatsby';
 import LangContext from '@contexts';
 import { langPath } from '@helpers';
+import { globalHistory as history } from '@reach/router';
+
 const Menu = ({ data, open }) => {
   const [activeMenu, setActiveMenu] = useState('');
   const menuclass = classnames({
@@ -13,6 +15,7 @@ const Menu = ({ data, open }) => {
     [style.open]: open,
   });
   const currentLang = useContext(LangContext);
+  const { location } = history;
 
   const handleActiveMenu = (title = '') => {
     if (title === activeMenu) {
@@ -60,6 +63,7 @@ const Menu = ({ data, open }) => {
 Menu.propTypes = {
   data: array,
   open: bool,
+  location: string,
 };
 
 export default Menu;
