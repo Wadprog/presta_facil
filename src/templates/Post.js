@@ -20,7 +20,9 @@ const Page = ({ data }) => {
   } = body;
   const { title, description, canonical } = pageData;
   const activeDocMeta = { id, uid, lang, type, alternate_languages };
-
+  React.useEffect(() => {
+    console.log(data);
+  }, []);
   return (
     <Layout
       activeDocMeta={activeDocMeta}
@@ -53,6 +55,9 @@ export const query = graphql`
             uid
           }
           data {
+            categories {
+              is_pilar_page_
+            }
             backgroundpreview {
               alt
               url

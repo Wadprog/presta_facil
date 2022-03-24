@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './PostPage.module.scss';
 import { dateToString } from '@helpers';
+import classnames from 'classnames';
 
 import Text from './components/Text/Text';
+import TableOfContents from './components/TableOfContents/TableOfContents';
+
 import Img from './components/Img/Img';
 import Video from './components/Video/Video';
 import ArticleSemanticMarkup from './components/ArticleSemanticMarkup/ArticleSemanticMarkup';
@@ -12,60 +15,120 @@ import Subscribe from '@components/Subscribe';
 import CallToAction from '@components/CallToAction/CallToAction';
 
 import Articles from '@components/Articles/Articles';
+import { useScrollDirection } from '@hooks';
 
 const PostPage = ({ current, tags, currentLanguage }) => {
-  const { body, date, title, description, canonical, preview } = current;
+  const {
+    body,
+    date,
+    title,
+    description,
+    canonical,
+    preview,
+    categories,
+  } = current;
   const baseItemName = 'Blog';
   const baseItemUrl = 'https://secureprivacy.ai/blog';
+  const [isPilarPage, setIsPilarPage] = React.useState(false);
+
+  React.useEffect(() => {
+    categories[0].is_pilar_page_ && setIsPilarPage(true);
+  }, [categories]);
+
+  const scrollDir = useScrollDirection();
+
+  const headerStyles = classnames(style.page, {
+    [style.pillarpage]: isPilarPage,
+    [style.scrolledMenu]: scrollDir === 'down',
+    [style.scrolledMenuUp]: scrollDir === 'up',
+  });
 
   return (
-    <div className={style.page}>
-      <div className={style.container}>
-        <div className={style.wrapper}>
-          <ul className={style.categoryList}>
-            {tags.map((item) => {
-              return (
-                <li className={style.categoryItem} key={item}>
-                  {item}
-                </li>
-              );
+    <div className={headerStyles}>
+      {isPilarPage && (
+        <div className={style.tableOfContentsContainer}>
+          <div className={style.tableOfContents}>
+            <div className={style.toTopContainer}>
+              <div className={style.toTop}>
+                <h6> {title.text} </h6>
+                <span className={style.toTop__Arrow}></span>
+              </div>
+              <div className={style.line}> </div>
+            </div>
+            {body.map((section, index) => {
+              switch (section.slice_type) {
+                case 'text':
+                  console.log(section);
+                  return (
+                    <TableOfContents
+                      {...section}
+                      key={`${section.slice_type}${index}`}
+                    />
+                  );
+              }
             })}
-          </ul>
-          <div className={style.date}>{dateToString(date)}</div>
+            <div className={style.toTopContainer}>
+              <div className={`${style.line} ${style.bottom}`}> </div>
+              <div className={style.toTop}>
+                <a className={style.end}> {`To the end`} </a>
+                <span className={`${style.toTop__Arrow} ${style.bottomArrow}`}>
+                  {''}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className={style.title}>
-          <h1>{title.text}</h1>
+      )}
+      <div className={style.container}>
+        <div>
+          <div className={style.wrapper}>
+            <ul className={style.categoryList}>
+              {tags.map((item) => {
+                return (
+                  <li className={style.categoryItem} key={item}>
+                    {item}
+                  </li>
+                );
+              })}
+            </ul>
+            <div className={style.date}>{dateToString(date)}</div>
+          </div>
+          <div className={style.title}>
+            <h1>{title.text}</h1>
+          </div>
+          <div className={style.description}>
+            <p>{description.text}</p>
+          </div>
+          {body.map((section, index) => {
+            switch (section.slice_type) {
+              case 'text':
+                return (
+                  <Text {...section} key={`${section.slice_type}${index}`} />
+                );
+              case 'image':
+                return (
+                  <Img {...section} key={`${section.slice_type}${index}`} />
+                );
+              case 'video':
+                return (
+                  <Video {...section} key={`${section.slice_type}${index}`} />
+                );
+            }
+          })}
+          <BreadcrumbsSemanticMarkup
+            pageTitle={title.text}
+            pageUrl={canonical.text}
+            baseItemName={baseItemName}
+            baseItemUrl={baseItemUrl}
+          />
+          <ArticleSemanticMarkup
+            title={title.text}
+            description={description.text}
+            date={date}
+            canonical={canonical.text}
+            image={preview}
+          />
         </div>
-        <div className={style.description}>
-          <p>{description.text}</p>
-        </div>
-        {body.map((section, index) => {
-          switch (section.slice_type) {
-            case 'text':
-              return (
-                <Text {...section} key={`${section.slice_type}${index}`} />
-              );
-            case 'image':
-              return <Img {...section} key={`${section.slice_type}${index}`} />;
-            case 'video':
-              return (
-                <Video {...section} key={`${section.slice_type}${index}`} />
-              );
-          }
-        })}
-        <BreadcrumbsSemanticMarkup
-          pageTitle={title.text}
-          pageUrl={canonical.text}
-          baseItemName={baseItemName}
-          baseItemUrl={baseItemUrl}
-        />
-        <ArticleSemanticMarkup
-          title={title.text}
-          description={description.text}
-          date={date}
-          canonical={canonical.text}
-          image={preview}
-        />
       </div>
       {body.map((section, index) => {
         switch (section.slice_type) {

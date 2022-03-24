@@ -249,24 +249,31 @@
       }
     }
   },
-  "Meta": {
-    "categories": {
-      "type": "Group",
-      "config": {
-        "fields": {
-          "category": {
-            "type": "Link",
-            "config": {
-              "select": "document",
-              "customtypes": [
-                "category"
-              ],
-              "label": "category",
-              "placeholder": "Category"
+  "Meta" : {
+    "categories" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "category" : {
+            "type" : "Link",
+            "config" : {
+              "select" : "document",
+              "customtypes" : [ "category" ],
+              "label" : "category",
+              "placeholder" : "Category"
+            }
+          },
+          "is_pilar_page_" : {
+            "type" : "Boolean",
+            "config" : {
+              "placeholder_false" : "false",
+              "placeholder_true" : "true",
+              "default_value" : false,
+              "label" : "Is Pilar Page?"
             }
           }
         },
-        "label": "Categories"
+        "label" : "Categories"
       }
     }
   }
