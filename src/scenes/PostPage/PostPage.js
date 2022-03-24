@@ -13,7 +13,6 @@ import ArticleSemanticMarkup from './components/ArticleSemanticMarkup/ArticleSem
 import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
 import Subscribe from '@components/Subscribe';
 import CallToAction from '@components/CallToAction/CallToAction';
-
 import Articles from '@components/Articles/Articles';
 import { useScrollDirection } from '@hooks';
 
@@ -49,16 +48,18 @@ const PostPage = ({ current, tags, currentLanguage }) => {
         <div className={style.tableOfContentsContainer}>
           <div className={style.tableOfContents}>
             <div className={style.toTopContainer}>
-              <div className={style.toTop}>
+              <a
+                href={`#${title.text.replace(/\W+/g, '-').toLowerCase()}`}
+                className={style.toTop}
+              >
                 <h6> {title.text} </h6>
                 <span className={style.toTop__Arrow}></span>
-              </div>
+              </a>
               <div className={style.line}> </div>
             </div>
             {body.map((section, index) => {
               switch (section.slice_type) {
                 case 'text':
-                  console.log(section);
                   return (
                     <TableOfContents
                       {...section}
@@ -67,7 +68,7 @@ const PostPage = ({ current, tags, currentLanguage }) => {
                   );
               }
             })}
-            <div className={style.toTopContainer}>
+            <a href={`#call-to-action`} className={style.toTop}>
               <div className={`${style.line} ${style.bottom}`}> </div>
               <div className={style.toTop}>
                 <a className={style.end}> {`To the end`} </a>
@@ -75,7 +76,7 @@ const PostPage = ({ current, tags, currentLanguage }) => {
                   {''}
                 </span>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       )}
@@ -94,7 +95,9 @@ const PostPage = ({ current, tags, currentLanguage }) => {
             <div className={style.date}>{dateToString(date)}</div>
           </div>
           <div className={style.title}>
-            <h1>{title.text}</h1>
+            <h1 id={`${title.text.replace(/\W+/g, '-').toLowerCase()}`}>
+              {title.text}
+            </h1>
           </div>
           <div className={style.description}>
             <p>{description.text}</p>

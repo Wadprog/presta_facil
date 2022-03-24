@@ -12,7 +12,7 @@ const CallToAction = ({ primary }) => {
   const link = parseString(buttonlink.richText);
 
   return (
-    <section className={style.section}>
+    <section id="call-to-action" className={style.section}>
       <div className={style.container}>
         <div className={style.image}>
           <Image image={image} />

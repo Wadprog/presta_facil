@@ -1,10 +1,16 @@
 @import '@styles/variables/all';
 @import '@styles/mixins/all';
 
+.isCurrent{
+    color: #24B04B;
+}
+
 .text {
   max-width: 636px;
   margin: 0 auto 15px;
   color: $main-dark;
+  counter-reset: heading;
+
   & + .text {
     margin-top: 15px;
     @media (max-width: $lg) {
@@ -44,6 +50,10 @@
     margin-top: 22px;
   }
 
+  .mainCounter{
+  counter-reset: heading;
+ }
+ 
   a {
     display: block;
     font-weight: 600;
@@ -52,11 +62,23 @@
     &.h2{
       font-size: 14px;
       margin: 1.5rem 0 .8rem 0;
+      counter-reset: subheading;
+      line-height: 130%;
+
+      &:before {
+        content:  counter(heading)". ";
+        counter-increment: heading;
+      }
     }
     &.h3{
       font-size: 13px;
       margin: 1rem 0 .8rem 1rem;
+      line-height: 130%;
 
+      &:before {
+        content:  counter(subheading)". ";
+        counter-increment: subheading;
+      }
     }
     &:hover {
       color: #138a81;
@@ -76,22 +98,29 @@
     }
   }
   ul {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding-left: 40px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 0px;
     li {
       position: relative;
-      padding-left: 20px;
-      &::before {
-        content: '';
-        position: absolute;
-        width: 4px;
-        height: 4px;
-        border-radius: 50%;
-        background-color: $green;
-        left: 0;
-        top: 12px;
-      }
+      // padding-left: 20px;
+      // &::before {
+      //   content: '';
+      //   position: absolute;
+      //   width: 4px;
+      //   height: 4px;
+      //   border-radius: 50%;
+      //   background-color: $green;
+      //   left: 0;
+      //   top: 12px;
+      // }
     }
+  }
+}
+
+
+@media only screen and (max-width: 1000px) {
+  nav {
+    display: none;
   }
 }
