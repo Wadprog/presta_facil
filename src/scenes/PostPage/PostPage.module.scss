@@ -7,6 +7,9 @@
   background-color: $bg-blue;
   color: $main-light;
   position: relative;
+  h1{
+    font-size: 48px;
+  }
   &.pillarpage.scrolledMenu{
     .tableOfContents{
       top: 116px;
@@ -15,7 +18,7 @@
 
   &.pillarpage.scrolledMenuUp{
     .tableOfContents{
-      top: 288px;
+      top: 210px;
     }
   }
   &.pillarpage.downSectionActive{
@@ -69,6 +72,23 @@
   transition: all 0.3s ease-in-out;
   z-index: 2;
 
+  .ToCContent{
+    max-height: calc(85vh - 90px);
+    overflow: auto;
+    &::-webkit-scrollbar {
+      width: 3px;
+      height: 27px;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background-color: #24B04B;
+      border-radius: 3px;
+  
+      &:hover {
+      background: #24B04B;
+      }
+    }
+  }
   h6{
     font-family: $font-sofia-pro;
     font-style: normal;

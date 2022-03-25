@@ -80,17 +80,19 @@ const PostPage = ({ current, tags, currentLanguage }) => {
               </a>
               <div className={style.line}> </div>
             </div>
-            {body.map((section, index) => {
-              switch (section.slice_type) {
-                case 'text':
-                  return (
-                    <TableOfContents
-                      {...section}
-                      key={`${section.slice_type}${index}`}
-                    />
-                  );
-              }
-            })}
+            <div className={style.ToCContent}>
+              {body.map((section, index) => {
+                switch (section.slice_type) {
+                  case 'text':
+                    return (
+                      <TableOfContents
+                        {...section}
+                        key={`${section.slice_type}${index}`}
+                      />
+                    );
+                }
+              })}
+            </div>
             <a href={`#call-to-action`} className={style.toTop}>
               <div className={`${style.line} ${style.bottom}`}> </div>
               <div className={style.toBottom}>
