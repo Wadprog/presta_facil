@@ -39,7 +39,6 @@ const useScrollDirection = ({
 
     return () => window.removeEventListener('scroll', onScroll);
   }, [initialDirection, thresholdPixels]);
-
   return scrollDir;
 };
 

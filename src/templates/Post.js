@@ -53,6 +53,9 @@ export const query = graphql`
             uid
           }
           data {
+            categories {
+              is_pilar_page_
+            }
             backgroundpreview {
               alt
               url
