@@ -4,13 +4,20 @@ import { RichText } from 'prismic-reactjs';
 import { object } from 'prop-types';
 import * as prismicH from '@prismicio/helpers';
 // import ScrollSpy from 'react-scrollspy';
+// import scrollTo from 'gatsby-plugin-smoothscroll';
 
 const htmlSerializer = (type, element, key, children) => {
   if (type === prismicH.Element.heading2) {
     let id = element.text.replace(/\W+/g, '-').toLowerCase();
     return React.createElement(
       'a',
-      { href: `#${id}`, className: style.h2 },
+      {
+        // onClick: () => {
+        //   scrollTo(`#${id}`);
+        // },
+        href: `#${id}`,
+        className: style.h2,
+      },
       `${children}`
     );
   }
@@ -18,7 +25,13 @@ const htmlSerializer = (type, element, key, children) => {
     let id = element.text.replace(/\W+/g, '-').toLowerCase();
     return React.createElement(
       'a',
-      { href: `#${id}`, className: style.h3 },
+      {
+        // onClick: () => {
+        //   scrollTo(`#${id}`);
+        // },
+        href: `#${id}`,
+        className: style.h3,
+      },
       `${children.join('')}`
     );
   }

@@ -11,6 +11,7 @@ module.exports = {
     author: `Secure privacy`,
   },
   plugins: [
+    // `gatsby-plugin-smoothscroll`,
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {

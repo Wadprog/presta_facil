@@ -55,3 +55,8 @@
 .isCurrent{
     color: #24B04B;
 }
+
+html,
+body {
+  scroll-behavior: smooth;
+}

@@ -72,7 +72,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 26px 32px 32px;
+  padding: 22px 27px 27px;
   background: #ffffff;
   color: $main-light;
   border-radius: 20px;
@@ -109,7 +109,7 @@
 .categoryList {
   display: grid;
   grid-template-columns: 1fr 1fr;
- 
+  margin-right:6px;
   gap: 3px;
 }
 
@@ -138,6 +138,8 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
   opacity: 0.5;
+  text-align: end;
+  align-self: end;
 }
 
 .arrow {

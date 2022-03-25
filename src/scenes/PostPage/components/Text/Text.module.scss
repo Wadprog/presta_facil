@@ -1,6 +1,10 @@
 @import '@styles/variables/all';
 @import '@styles/mixins/all';
 
+section{
+offset-anchor: 5rem;
+}
+
 .text {
   max-width: 636px;
   margin: 0 auto 42px;

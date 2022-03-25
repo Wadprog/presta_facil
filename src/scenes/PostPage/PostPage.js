@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import style from './PostPage.module.scss';
 import { dateToString } from '@helpers';
@@ -15,6 +15,24 @@ import Subscribe from '@components/Subscribe';
 import CallToAction from '@components/CallToAction/CallToAction';
 import Articles from '@components/Articles/Articles';
 import { useScrollDirection } from '@hooks';
+
+const useOnScreen = (ref) => {
+  const [isIntersecting, setIntersecting] = useState(false);
+
+  const observer = new IntersectionObserver(([entry]) =>
+    setIntersecting(entry.isIntersecting)
+  );
+
+  useEffect(() => {
+    observer.observe(ref.current);
+    // Remove the observer as soon as the component is unmounted
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  return isIntersecting;
+};
 
 const PostPage = ({ current, tags, currentLanguage }) => {
   const {
@@ -40,11 +58,16 @@ const PostPage = ({ current, tags, currentLanguage }) => {
     [style.pillarpage]: isPilarPage,
     [style.scrolledMenu]: scrollDir === 'down',
     [style.scrolledMenuUp]: scrollDir === 'up',
+    // [style.downSectionActive]: isVisible,
   });
+
+  const ref = useRef();
+
+  const inViewport = useOnScreen(ref); // Trigger if 200px is visible from the element
 
   return (
     <div className={headerStyles}>
-      {isPilarPage && (
+      {isPilarPage && inViewport !== true && (
         <div className={style.tableOfContentsContainer}>
           <div className={style.tableOfContents}>
             <div className={style.toTopContainer}>
@@ -70,11 +93,9 @@ const PostPage = ({ current, tags, currentLanguage }) => {
             })}
             <a href={`#call-to-action`} className={style.toTop}>
               <div className={`${style.line} ${style.bottom}`}> </div>
-              <div className={style.toTop}>
+              <div className={style.toBottom}>
                 <a className={style.end}> {`To the end`} </a>
-                <span className={`${style.toTop__Arrow} ${style.bottomArrow}`}>
-                  {''}
-                </span>
+                <span className={style.toBottom__Arrow}>{''}</span>
               </div>
             </a>
           </div>
@@ -133,29 +154,31 @@ const PostPage = ({ current, tags, currentLanguage }) => {
           />
         </div>
       </div>
-      {body.map((section, index) => {
-        switch (section.slice_type) {
-          case 'agencies':
-            return (
-              <CallToAction
-                {...section}
-                key={`${section.slice_type}${index}`}
-              />
-            );
-          case 'subscribe':
-            return (
-              <Subscribe {...section} key={`${section.slice_type}${index}`} />
-            );
-          case 'articles':
-            return (
-              <Articles
-                {...section}
-                key={`${section.slice_type}${index}`}
-                currentLanguage={currentLanguage}
-              />
-            );
-        }
-      })}
+      <div ref={ref}>
+        {body.map((section, index) => {
+          switch (section.slice_type) {
+            case 'agencies':
+              return (
+                <CallToAction
+                  {...section}
+                  key={`${section.slice_type}${index}`}
+                />
+              );
+            case 'subscribe':
+              return (
+                <Subscribe {...section} key={`${section.slice_type}${index}`} />
+              );
+            case 'articles':
+              return (
+                <Articles
+                  {...section}
+                  key={`${section.slice_type}${index}`}
+                  currentLanguage={currentLanguage}
+                />
+              );
+          }
+        })}
+      </div>
     </div>
   );
 };
