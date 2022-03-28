@@ -16,11 +16,12 @@
     }
   }
 
-  // &.pillarpage.scrolledMenuUp{
-  //   .tableOfContents{
-  //     top: 210px;
-  //   }
-  // }
+  &.pillarpage.upSectionActive{
+    .tableOfContents{
+      top: 288px;
+    }
+  }
+
   &.pillarpage.downSectionActive{
     .tableOfContentsContainer{
       display: none;
@@ -30,12 +31,21 @@
   &.pillarpage{
     & .container{
       transform: translateX(110px);
+
+      @media only screen and (max-width: 1320px) {
+        transform: translateX(152px);
+      }
+
       @media only screen and (max-width: 1000px) {
         transform: translateX(0px);
       }
     }
     &::before {
       transform: translateX(calc(-50% + 110px));
+      @media only screen and (max-width: 1320px) {
+        transform: translateX(calc(-50% + 152px));
+      }
+
       @media only screen and (max-width: 1000px) {
         transform: translateX(calc(-50% + 0px));
       }
@@ -73,17 +83,23 @@
   height: auto;
   left: auto;
   transform: translateX(-74px);
-  top: 288px;
+  top: 210px;
   background: #FFFFFF;
   box-shadow: 0px 30px 120px rgba(46, 66, 70, 0.2);
   border-radius: 12px 30px;
-  padding: 20px;
+  padding: 20px 0 20px 20px;
   transition: all 0.3s ease-in-out;
   z-index: 2;
-
+  @media only screen and (max-width: 1320px) {
+    transform: translateX(-22px);
+  }
   .ToCContent{
     max-height: calc(85vh - 90px);
     overflow: auto;
+    padding-right: 20px;
+    @media only screen and (max-width: 1320px) {
+      max-height: calc(71vh - 90px);
+    }
     &::-webkit-scrollbar {
       width: 3px;
       height: 27px;
@@ -122,7 +138,11 @@
       height: 5px;
     }
   }
+  .toBottomContainer{
+    padding-right: 20px;
+  }
   .toTopContainer{
+    padding-right: 20px;
     .toTop{
       display: flex;
       justify-content: space-between;
@@ -211,6 +231,10 @@
   border-radius: 100px;
   line-height: 14px;
   margin: 2px;
+  span{
+    transform: translatey(-3px);
+    display: flex;
+  }
 }
 
 .title {

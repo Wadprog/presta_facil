@@ -31,7 +31,7 @@ const ArticlePreview = ({ node }) => {
             {tags.map((item, index) => {
               return (
                 <li className={style.tag} key={`${item}${index}`}>
-                  {item}
+                  <span>{item}</span>
                 </li>
               );
             })}
