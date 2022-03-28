@@ -69,7 +69,6 @@ const PostPage = ({ current, tags, currentLanguage }) => {
 
   return (
     <div className={headerStyles}>
-      {console.log(inViewportTitleTop)}
       {isPilarPage && inViewport !== true && (
         <div className={style.tableOfContentsContainer}>
           <div
