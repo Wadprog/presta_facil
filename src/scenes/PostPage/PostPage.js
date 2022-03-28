@@ -24,7 +24,9 @@ const useOnScreen = (ref) => {
       setIntersecting(entry.isIntersecting)
     );
 
-    observer.observe(ref.current);
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
     // Remove the observer as soon as the component is unmounted
     return () => {
       observer.disconnect();
@@ -57,19 +59,23 @@ const PostPage = ({ current, tags, currentLanguage }) => {
   const headerStyles = classnames(style.page, {
     [style.pillarpage]: isPilarPage,
     [style.scrolledMenu]: scrollDir === 'down',
-    [style.scrolledMenuUp]: scrollDir === 'up',
-    // [style.downSectionActive]: isVisible,
   });
 
   const ref = useRef();
+  const refTitle = useRef();
 
   const inViewport = useOnScreen(ref); // Trigger if 200px is visible from the element
+  const inViewportTitleTop = useOnScreen(refTitle); // Trigger if 200px is visible from the element
 
   return (
     <div className={headerStyles}>
+      {console.log(inViewportTitleTop)}
       {isPilarPage && inViewport !== true && (
         <div className={style.tableOfContentsContainer}>
-          <div className={style.tableOfContents}>
+          <div
+            className={style.tableOfContents}
+            style={inViewportTitleTop === true && { top: '288px' }}
+          >
             <div className={style.toTopContainer}>
               <a
                 href={`#${title.text.replace(/\W+/g, '-').toLowerCase()}`}
@@ -108,7 +114,7 @@ const PostPage = ({ current, tags, currentLanguage }) => {
       <div className={style.container}>
         <div>
           <div className={style.wrapper}>
-            <ul className={style.categoryList}>
+            <ul className={style.categoryList} ref={refTitle}>
               {tags.map((item) => {
                 return (
                   <li className={style.categoryItem} key={item}>
