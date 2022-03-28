@@ -93,13 +93,15 @@ const PostPage = ({ current, tags, currentLanguage }) => {
                 }
               })}
             </div>
-            <a href={`#call-to-action`} className={style.toTop}>
-              <div className={`${style.line} ${style.bottom}`}> </div>
-              <div className={style.toBottom}>
-                <a className={style.end}> {`To the end`} </a>
-                <span className={style.toBottom__Arrow}>{''}</span>
-              </div>
-            </a>
+            <div className={style.toBottomContainer}>
+              <a href={`#call-to-action`} className={style.toTop}>
+                <div className={`${style.line} ${style.bottom}`}> </div>
+                <div className={style.toBottom}>
+                  <a className={style.end}> {`To the end`} </a>
+                  <span className={style.toBottom__Arrow}>{''}</span>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       )}
@@ -110,7 +112,7 @@ const PostPage = ({ current, tags, currentLanguage }) => {
               {tags.map((item) => {
                 return (
                   <li className={style.categoryItem} key={item}>
-                    {item}
+                    <span>{item}</span>
                   </li>
                 );
               })}

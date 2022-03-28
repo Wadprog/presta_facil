@@ -67,7 +67,7 @@
       line-height: 130%;
 
       &:before {
-        content:  counter(heading)". ";
+        content:  "SECTION " counter(heading)": ";
         counter-increment: heading;
       }
     }
@@ -77,7 +77,7 @@
       line-height: 130%;
 
       &:before {
-        content:  counter(subheading)". ";
+        content:  counter(heading)"." counter(subheading)". ";
         counter-increment: subheading;
       }
     }

@@ -10,12 +10,12 @@ const ThankyouPage = ({ content }) => {
     <div aria-label={link.text} className={style.thankyouPage}>
       <div className={style.container}>
         <IframeResizer
-          src="https://test-scanner.secureprivacy.ai/"
+          src="https://quiz.secureprivacy.ai/s/is-your-cookie-banner-compliant/tt-5b844e"
           inPageLinks
           style={{
             width: '1px',
             minWidth: '100%',
-            minHeight: '100%',
+            minHeight: '60vh',
           }}
           frameBorder="no"
           checkOrigin="false"
