@@ -39,6 +39,19 @@ const Button = ({
 
   const Component = element;
 
+  if (to.includes('quiz.secureprivacy.ai')) {
+    return (
+      <a
+        className={classes}
+        href={to}
+        target="_blank"
+        rel="nofollow noreferrer noopener"
+      >
+        {children}
+      </a>
+    );
+  }
+
   if (isExternalUrl(to)) {
     return (
       <a
