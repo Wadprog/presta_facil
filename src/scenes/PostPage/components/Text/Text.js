@@ -3,6 +3,7 @@ import style from './Text.module.scss';
 import { RichText } from 'prismic-reactjs';
 import { object } from 'prop-types';
 import * as prismicH from '@prismicio/helpers';
+import Button, { VARIANT } from '@components/Button/Button.js';
 
 const propsWithUniqueKey = (props, key) => {
   return Object.assign(props || {}, { key });
@@ -28,6 +29,19 @@ const htmlSerializer = (type, element, key, children) => {
   if (type === prismicH.Element.heading4) {
     let id = element.text.replace(/\W+/g, '-').toLowerCase();
     return React.createElement('h4', { id: id }, children);
+  }
+
+  if (type === prismicH.Element.hyperlink) {
+    if (element.data.url.includes('quiz.secureprivacy.ai')) {
+      console.log(element, children);
+      return (
+        <div className={style.button}>
+          <Button variant={VARIANT.PRIMARY} to={element.data.url}>
+            {children[0]}
+          </Button>
+        </div>
+      );
+    }
   }
 
   if (type !== 'image') {
