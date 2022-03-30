@@ -143,6 +143,42 @@ export const query = graphql`
                   }
                 }
               }
+              ... on PrismicBlogpostpageDataBodyTable {
+                id
+                slice_type
+                items {
+                  col1 {
+                    richText
+                  }
+                  col2 {
+                    richText
+                  }
+                  col3 {
+                    richText
+                  }
+                  col4 {
+                    richText
+                  }
+                }
+              }
+              ... on PrismicBlogpostpageDataBodyTableRowsHeaders {
+                id
+                slice_type
+                items {
+                  col1 {
+                    richText
+                  }
+                  col2 {
+                    richText
+                  }
+                  col3 {
+                    richText
+                  }
+                  col4 {
+                    richText
+                  }
+                }
+              }
               ... on PrismicBlogpostpageDataBodyText {
                 id
                 slice_type

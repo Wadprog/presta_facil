@@ -165,6 +165,8 @@ const PostPage = ({ current, tags, currentLanguage }) => {
       </div>
       <div ref={ref}>
         {body.map((section, index) => {
+          console.log(section.slice_type);
+
           switch (section.slice_type) {
             case 'agencies':
               return (

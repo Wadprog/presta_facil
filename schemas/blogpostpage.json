@@ -244,36 +244,122 @@
               }
             },
             "repeat": {}
+          },
+          "table": {
+            "type": "Slice",
+            "fieldset": "Table",
+            "description": "Table",
+            "icon": "border_color",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {
+              "col1": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Col1",
+                  "placeholder": "Add col1 text"
+                }
+              },
+              "col2": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Col2",
+                  "placeholder": "Add col2 text"
+                }
+              },
+              "col3": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Col3",
+                  "placeholder": "Add col3 text"
+                }
+              },
+              "col4": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Col4",
+                  "placeholder": "Add col4 text"
+                }
+              }
+            }
+          },
+          "table_rows_headers": {
+            "type": "Slice",
+            "fieldset": "Table rows headers",
+            "description": "Table rows headers",
+            "icon": "border_top",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {
+              "col1": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Col1",
+                  "placeholder": "Add col 1 text"
+                }
+              },
+              "col2": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Col2",
+                  "placeholder": "Add col2 text"
+                }
+              },
+              "col3": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Col3",
+                  "placeholder": "Add col3 text"
+                }
+              },
+              "col4": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Col4",
+                  "placeholder": "Add col4 text"
+                }
+              }
+            }
           }
         }
       }
     }
   },
-  "Meta" : {
-    "categories" : {
-      "type" : "Group",
-      "config" : {
-        "fields" : {
-          "category" : {
-            "type" : "Link",
-            "config" : {
-              "select" : "document",
-              "customtypes" : [ "category" ],
-              "label" : "category",
-              "placeholder" : "Category"
+  "Meta": {
+    "categories": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "category": {
+            "type": "Link",
+            "config": {
+              "select": "document",
+              "customtypes": [
+                "category"
+              ],
+              "label": "category",
+              "placeholder": "Category"
             }
           },
-          "is_pilar_page_" : {
-            "type" : "Boolean",
-            "config" : {
-              "placeholder_false" : "false",
-              "placeholder_true" : "true",
-              "default_value" : false,
-              "label" : "Is Pilar Page?"
+          "is_pilar_page_": {
+            "type": "Boolean",
+            "config": {
+              "placeholder_false": "false",
+              "placeholder_true": "true",
+              "default_value": false,
+              "label": "Is Pilar Page?"
             }
           }
         },
-        "label" : "Categories"
+        "label": "Categories"
       }
     }
   }
