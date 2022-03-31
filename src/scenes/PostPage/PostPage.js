@@ -5,6 +5,7 @@ import { dateToString } from '@helpers';
 import classnames from 'classnames';
 
 import Text from './components/Text/Text';
+import Table from './components/Table/Table';
 import TableOfContents from './components/TableOfContents/TableOfContents';
 
 import Img from './components/Img/Img';
@@ -49,6 +50,7 @@ const PostPage = ({ current, tags, currentLanguage }) => {
   const baseItemName = 'Blog';
   const baseItemUrl = 'https://secureprivacy.ai/blog';
   const [isPilarPage, setIsPilarPage] = React.useState(false);
+  const [table, setTable] = React.useState({});
 
   React.useEffect(() => {
     categories[0].is_pilar_page_ && setIsPilarPage(true);
@@ -133,7 +135,17 @@ const PostPage = ({ current, tags, currentLanguage }) => {
             <p>{description.text}</p>
           </div>
           {body.map((section, index) => {
+            if (section.slice_type === 'table') {
+              setTable(section);
+            }
             switch (section.slice_type) {
+              case 'table_rows_headers':
+                return (
+                  <Table
+                    section={[section, table]}
+                    key={`${section.slice_type}${index}`}
+                  />
+                );
               case 'text':
                 return (
                   <Text {...section} key={`${section.slice_type}${index}`} />

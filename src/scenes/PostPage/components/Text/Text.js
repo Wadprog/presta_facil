@@ -32,8 +32,13 @@ const htmlSerializer = (type, element, key, children) => {
   }
 
   if (type === prismicH.Element.hyperlink) {
-    if (element.data.url.includes('quiz.secureprivacy.ai')) {
-      console.log(element, children);
+    if (
+      element.data.url.includes('quiz.secureprivacy.ai') ||
+      element.data.url.includes(
+        'app.secureprivacy.ai/#/onboarding/create-account'
+      ) ||
+      element.data.url.includes('https://calendly.com/secure-privacy/45min')
+    ) {
       return (
         <div className={style.button}>
           <Button variant={VARIANT.PRIMARY} to={element.data.url}>
