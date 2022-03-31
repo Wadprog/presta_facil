@@ -33,7 +33,7 @@ const htmlSerializer = (type, element, key, children) => {
 
   if (type === prismicH.Element.hyperlink) {
     if (element.data.url.includes('quiz.secureprivacy.ai')) {
-      console.log(element, children);
+      // console.log(element, children);
       return (
         <div className={style.button}>
           <Button variant={VARIANT.PRIMARY} to={element.data.url}>
