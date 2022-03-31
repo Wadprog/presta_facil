@@ -7,6 +7,8 @@
   background-color: $bg-blue;
   color: $main-light;
   position: relative;
+  z-index: 1;
+
   h1{
     font-size: 48px;
   }
@@ -64,6 +66,7 @@
     top: 188px;
     left: 50%;
     transform: translateX(-50%);
+    z-index: -1;
     @media (max-width: $lg) {
       display: none;
     }
