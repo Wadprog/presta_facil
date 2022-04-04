@@ -4,10 +4,11 @@ import { RichText } from 'prismic-reactjs';
 import { object } from 'prop-types';
 import * as prismicH from '@prismicio/helpers';
 import Button, { VARIANT } from '@components/Button/Button.js';
+import Img from '../Img/Img';
 
-const propsWithUniqueKey = (props, key) => {
-  return Object.assign(props || {}, { key });
-};
+// const propsWithUniqueKey = (props, key) => {
+//   return Object.assign(props || {}, { key });
+// };
 
 const htmlSerializer = (type, element, key, children) => {
   if (type === prismicH.Element.heading1) {
@@ -52,8 +53,13 @@ const htmlSerializer = (type, element, key, children) => {
   if (type !== 'image') {
     return;
   }
-  const props = { src: element.url, alt: element.alt || '', loading: 'lazy' };
-  return React.createElement('img', propsWithUniqueKey(props, key));
+  const props = {
+    image: {
+      url: element.url,
+      alt: element.alt,
+    },
+  };
+  return <Img primary={props}></Img>;
 };
 
 const Text = ({ primary }) => {

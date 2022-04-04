@@ -148,11 +148,15 @@ const PostPage = ({ current, tags, currentLanguage }) => {
                 );
               case 'text':
                 return (
-                  <Text {...section} key={`${section.slice_type}${index}`} />
+                  <>
+                    <Text {...section} key={`${section.slice_type}${index}`} />
+                  </>
                 );
               case 'image':
                 return (
-                  <Img {...section} key={`${section.slice_type}${index}`} />
+                  <>
+                    <Img {...section} key={`${section.slice_type}${index}`} />
+                  </>
                 );
               case 'video':
                 return (

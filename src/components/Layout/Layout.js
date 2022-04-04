@@ -3,6 +3,8 @@ import { bool, object, node, array, oneOfType, any } from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
 import LangContext from '@contexts';
+import ActiveDocMeta from '@contextsType';
+
 import { defaultLanguage } from '@/prismic-config';
 import Head from '@components/Head';
 import Header from '@components/Header';
@@ -38,29 +40,31 @@ const Layout = ({
     });
   }
   return (
-    <LangContext.Provider
-      value={currentLang === defaultLanguage ? '' : currentLang.slice(0, 2)}
-    >
-      <div className={styles.container}>
-        <Head
-          canonical={canonical}
-          metatitle={metatitle}
-          metadescription={metadescription}
-          currentLang={currentLang}
-          activeDocMeta={activeDocMeta}
-        />
-        <Header
-          data={headerData}
-          hideMenu={hideMenu}
-          metatitle={metatitle}
-          type={activeDocMeta}
-        />
-        <main className={styles.main} id="main">
-          {children}
-        </main>
-        <Footer activeDocMeta={activeDocMeta} data={footerData} />
-      </div>
-    </LangContext.Provider>
+    <ActiveDocMeta.Provider value={activeDocMeta}>
+      <LangContext.Provider
+        value={currentLang === defaultLanguage ? '' : currentLang.slice(0, 2)}
+      >
+        <div className={styles.container}>
+          <Head
+            canonical={canonical}
+            metatitle={metatitle}
+            metadescription={metadescription}
+            currentLang={currentLang}
+            activeDocMeta={activeDocMeta}
+          />
+          <Header
+            data={headerData}
+            hideMenu={hideMenu}
+            metatitle={metatitle}
+            type={activeDocMeta}
+          />
+          <main className={styles.main} id="main">
+            {children}
+          </main>
+          <Footer activeDocMeta={activeDocMeta} data={footerData} />
+        </div>
+      </LangContext.Provider>
+    </ActiveDocMeta.Provider>
   );
 };
 
