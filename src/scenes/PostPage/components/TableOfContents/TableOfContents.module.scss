@@ -67,7 +67,7 @@
       line-height: 130%;
 
       &:before {
-        content:  "SECTION " counter(heading)": ";
+        content:  counter(heading)". ";
         counter-increment: heading;
       }
     }

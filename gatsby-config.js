@@ -11,7 +11,6 @@ module.exports = {
     author: `Secure privacy`,
   },
   plugins: [
-    // `gatsby-plugin-smoothscroll`,
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
@@ -139,6 +138,7 @@ module.exports = {
           '@': '',
           '@src': 'src',
           '@contexts': 'src/contexts',
+          '@contextsType': 'src/contextsType',
           '@components': 'src/components',
           '@pages': 'src/pages',
           '@styles': 'src/styles',
