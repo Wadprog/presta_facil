@@ -138,6 +138,7 @@ const PostPage = ({ current, tags, currentLanguage }) => {
             if (section.slice_type === 'table') {
               setTable(section);
             }
+
             switch (section.slice_type) {
               case 'table_rows_headers':
                 return (

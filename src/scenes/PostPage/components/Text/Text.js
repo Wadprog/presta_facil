@@ -64,10 +64,15 @@ const htmlSerializer = (type, element, key, children) => {
 
 const Text = ({ primary }) => {
   const { text } = primary;
+
+  React.useEffect(() => {
+    console.log(text);
+  }, []);
+
   return (
-    <div className={style.text}>
+    <section className={style.text}>
       {<RichText render={text.richText} htmlSerializer={htmlSerializer} />}
-    </div>
+    </section>
   );
 };
 

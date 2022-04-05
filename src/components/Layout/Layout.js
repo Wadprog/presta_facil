@@ -12,6 +12,7 @@ import Footer from '@components/Footer';
 
 import styles from './Layout.module.scss';
 import '@styles/index.scss';
+// import { useScrollDirection } from '@hooks';
 
 const Layout = ({
   children,
@@ -26,19 +27,21 @@ const Layout = ({
   const edge = data.allPrismicLayout.edges.filter(
     (edge) => edge.node.lang === currentLang
   );
+  // const scrollDir = useScrollDirection();
 
   const headerData = edge[0].node.data.body;
   const footerData = edge[0].node.data.body1;
 
-  if (typeof window !== 'undefined') {
-    // eslint-disable-next-line global-require
-    require('smooth-scroll')('a[href*="#"]', {
-      speed: 300,
-      speedAsDuration: true,
-      easing: 'easeInOutCubic',
-      offset: 140,
-    });
-  }
+  // if (typeof window !== 'undefined') {
+  //   // eslint-disable-next-line global-require
+  //   require('smooth-scroll')('a[href*="#"]', {
+  //     speed: 300,
+  //     speedAsDuration: true,
+  //     easing: 'easeInOutCubic',
+  //     offset: scrollDir === 'up' ? 200 : 110,
+  //   });
+  // }
+
   return (
     <ActiveDocMeta.Provider value={activeDocMeta}>
       <LangContext.Provider

@@ -3,36 +3,39 @@ import style from './TableOfContents.module.scss';
 import { RichText } from 'prismic-reactjs';
 import { object } from 'prop-types';
 import * as prismicH from '@prismicio/helpers';
-// import ScrollSpy from 'react-scrollspy';
-// import scrollTo from 'gatsby-plugin-smoothscroll';
+import { Link } from 'react-scroll';
+import { useScrollDirection } from '@hooks';
 
 const htmlSerializer = (type, element, key, children) => {
+  const scrollDir = useScrollDirection();
   if (type === prismicH.Element.heading2) {
     let id = element.text.replace(/\W+/g, '-').toLowerCase();
-    return React.createElement(
-      'a',
-      {
-        // onClick: () => {
-        //   scrollTo(`#${id}`);
-        // },
-        href: `#${id}`,
-        className: style.h2,
-      },
-      `${children}`
+    return (
+      <Link
+        activeClass={style.isCurrent}
+        className={style.h2}
+        to={id}
+        spy={true}
+        smooth={true}
+        offset={scrollDir === 'up' ? -200 : -110}
+      >
+        {children}
+      </Link>
     );
   }
   if (type === prismicH.Element.heading3) {
     let id = element.text.replace(/\W+/g, '-').toLowerCase();
-    return React.createElement(
-      'a',
-      {
-        // onClick: () => {
-        //   scrollTo(`#${id}`);
-        // },
-        href: `#${id}`,
-        className: style.h3,
-      },
-      `${children.join('')}`
+    return (
+      <Link
+        activeClass={style.isCurrent}
+        className={style.h3}
+        to={id}
+        spy={true}
+        smooth={true}
+        offset={scrollDir === 'up' ? -200 : -110}
+      >
+        {children}
+      </Link>
     );
   }
   if (type !== prismicH.Element.heading2) {
