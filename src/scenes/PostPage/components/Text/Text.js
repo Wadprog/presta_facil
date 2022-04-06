@@ -66,7 +66,7 @@ const Text = ({ primary }) => {
   const { text } = primary;
 
   React.useEffect(() => {
-    console.log(text);
+    // console.log(text);
   }, []);
 
   return (

@@ -179,6 +179,13 @@ export const query = graphql`
                   }
                 }
               }
+              ... on PrismicBlogpostpageDataBodyTwitterEmbedPost {
+                id
+                slice_type
+                items {
+                  twitter_post
+                }
+              }
               ... on PrismicBlogpostpageDataBodyText {
                 id
                 slice_type

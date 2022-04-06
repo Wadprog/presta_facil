@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import style from './PostPage.module.scss';
 import { dateToString } from '@helpers';
@@ -16,6 +16,10 @@ import Subscribe from '@components/Subscribe';
 import CallToAction from '@components/CallToAction/CallToAction';
 import Articles from '@components/Articles/Articles';
 import { useScrollDirection } from '@hooks';
+import { Link } from 'gatsby';
+import LangContext from '@contexts';
+import { langPath } from '@helpers';
+import { TwitterTweetEmbed } from 'react-twitter-embed';
 
 const useOnScreen = (ref) => {
   const [isIntersecting, setIntersecting] = useState(false);
@@ -51,6 +55,7 @@ const PostPage = ({ current, tags, currentLanguage }) => {
   const baseItemUrl = 'https://secureprivacy.ai/blog';
   const [isPilarPage, setIsPilarPage] = React.useState(false);
   const [table, setTable] = React.useState({});
+  const currentLang = useContext(LangContext);
 
   React.useEffect(() => {
     categories[0].is_pilar_page_ && setIsPilarPage(true);
@@ -118,9 +123,16 @@ const PostPage = ({ current, tags, currentLanguage }) => {
             <ul className={style.categoryList} ref={refTitle}>
               {tags.map((item) => {
                 return (
-                  <li className={style.categoryItem} key={item}>
-                    <span>{item}</span>
-                  </li>
+                  <Link
+                    key={`${item}`}
+                    to={`${langPath(currentLang)}/${item
+                      .replace(/\W+/g, '-')
+                      .toLowerCase()}`}
+                  >
+                    <li className={style.categoryItem} key={item}>
+                      <span>{item}</span>
+                    </li>
+                  </Link>
                 );
               })}
             </ul>
@@ -146,6 +158,21 @@ const PostPage = ({ current, tags, currentLanguage }) => {
                     section={[section, table]}
                     key={`${section.slice_type}${index}`}
                   />
+                );
+              case 'twitter_embed_post':
+                console.log(section);
+                return (
+                  <div className={style.containerTwitter}>
+                    {section.items &&
+                      section.items.length &&
+                      section.items.map((val, index) => {
+                        return (
+                          <div className={style.innerTweet} key={index}>
+                            <TwitterTweetEmbed tweetId={val.twitter_post} />
+                          </div>
+                        );
+                      })}
+                  </div>
                 );
               case 'text':
                 return (

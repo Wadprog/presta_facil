@@ -186,7 +186,22 @@
   }
 
 }
+.containerTwitter {
+  margin: 100px auto 128px;
+  width: 100%;
+  @media (max-width: $lg) {
+    margin-top: 0;
+    margin-bottom: 48px;
+  }
+  *{
+    width: 100%;
+    margin: 0 auto;
 
+  }
+  .innerTweet{
+    width: 100%;
+  }
+}
 .container {
   margin: 100px auto 128px;
   padding: 54px 90px 108px;
@@ -235,6 +250,13 @@
   border-radius: 100px;
   line-height: 14px;
   margin: 2px;
+  color: #011949;
+  &:hover{
+    filter: brightness(110%) saturate(140%);
+    transform: translateY(-3px);
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0px 5px 10px rgba(44, 59, 82, 0.15);
+  }
   span{
     transform: translatey(-3px);
     display: flex;
