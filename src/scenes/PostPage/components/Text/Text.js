@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './Text.module.scss';
 import { RichText } from 'prismic-reactjs';
 import { object } from 'prop-types';
@@ -11,26 +11,22 @@ import Img from '../Img/Img';
 // };
 
 const htmlSerializer = (type, element, key, children) => {
-  if (type === prismicH.Element.heading1) {
-    let id = element.text.replace(/\W+/g, '-').toLowerCase();
-    return React.createElement('h1', { id: id }, children);
-  }
-  if (type === prismicH.Element.heading2) {
-    let id = element.text.replace(/\W+/g, '-').toLowerCase();
-    return React.createElement('section', { id: id }, [
-      React.createElement('h2', null, children),
-    ]);
-  }
-  if (type === prismicH.Element.heading3) {
-    let id = element.text.replace(/\W+/g, '-').toLowerCase();
-    return React.createElement('section', { id: id }, [
-      React.createElement('h3', null, children),
-    ]);
-  }
-  if (type === prismicH.Element.heading4) {
-    let id = element.text.replace(/\W+/g, '-').toLowerCase();
-    return React.createElement('h4', { id: id }, children);
-  }
+  // if (type === prismicH.Element.heading1) {
+  //   return React.createElement('h1', children);
+  // }
+  // if (type === prismicH.Element.heading2) {
+  //   return React.createElement('section', [
+  //     React.createElement('h2', children),
+  //   ]);
+  // }
+  // if (type === prismicH.Element.heading3) {
+  //   return React.createElement('section', [
+  //     React.createElement('h3', children),
+  //   ]);
+  // }
+  // if (type === prismicH.Element.heading4) {
+  //   return React.createElement('h4', children);
+  // }
 
   if (type === prismicH.Element.hyperlink) {
     if (
@@ -64,13 +60,20 @@ const htmlSerializer = (type, element, key, children) => {
 
 const Text = ({ primary }) => {
   const { text } = primary;
-
+  const [id, setId] = useState('');
   React.useEffect(() => {
-    // console.log(text);
-  }, []);
+    if (text.richText && text.richText.length) {
+      text.richText.map((val) => {
+        if (val.type === 'heading2' || val.type === 'heading3') {
+          let id = val.text.replace(/\W+/g, '-').toLowerCase();
+          setId(id);
+        }
+      });
+    }
+  }, [text.RichText]);
 
   return (
-    <section className={style.text}>
+    <section id={id} className={style.text}>
       {<RichText render={text.richText} htmlSerializer={htmlSerializer} />}
     </section>
   );

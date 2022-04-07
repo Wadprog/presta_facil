@@ -38,24 +38,17 @@ const htmlSerializer = (type, element, key, children) => {
       </Link>
     );
   }
-  if (type !== prismicH.Element.heading2) {
-    return null;
-  }
 };
 
 const tableOfContents = ({ primary }) => {
   const { text } = primary;
   return (
-    <div className={`${style.text} ${style.mainCounter}`}>
-      {
-        <RichText
-          render={text.richText.filter(
-            (val) => val.type === 'heading2' || val.type === 'heading3'
-          )}
-          htmlSerializer={htmlSerializer}
-        />
-      }
-    </div>
+    <RichText
+      render={text.richText.filter(
+        (val) => val.type === 'heading2' || val.type === 'heading3'
+      )}
+      htmlSerializer={htmlSerializer}
+    />
   );
 };
 

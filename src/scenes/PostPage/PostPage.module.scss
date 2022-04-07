@@ -100,6 +100,8 @@
     max-height: calc(85vh - 90px);
     overflow: auto;
     padding-right: 20px;
+    counter-reset: heading;
+
     @media only screen and (max-width: 1320px) {
       max-height: calc(71vh - 90px);
     }
@@ -303,6 +305,119 @@
     margin-bottom: 48px;
     font-size: 16px;
   }
+}
+
+
+.isCurrent{
+  color: #24B04B!important;
+}
+
+.textMain {
+max-width: 636px;
+margin: 0 auto 15px;
+color: $main-dark;
+counter-reset: heading;
+
+& + .text {
+  margin-top: 15px;
+  @media (max-width: $lg) {
+    margin-top: 15px;
+  }
+}
+&:last-of-type {
+  margin-bottom: 0;
+}
+
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  line-height: 125%;
+  margin: 22px 0;
+}
+h2 {
+  font-size: 32px;
+}
+h3 {
+  font-size: 28px;
+}
+h4 {
+  font-size: 24px;
+}
+p,
+li {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 200%;
+  letter-spacing: 0.03em;
+  color: $second-dark;
+}
+p + p,
+p + li {
+  margin-top: 22px;
+}
+
+a {
+  display: block;
+  font-weight: 600;
+  color: rgba(1, 25, 73, 0.6);
+  transition: 0.3s;
+  cursor: pointer;
+  &.h2{
+    font-size: 14px;
+    margin: 1.5rem 0 .8rem 0;
+    counter-reset: subheading;
+    line-height: 130%;
+    &:before {
+      content:  counter(heading)". ";
+      counter-increment: heading;
+    }
+  }
+  &.h3{
+    font-size: 13px;
+    margin: 1rem 0 .8rem 1rem;
+    line-height: 130%;
+    &:before {
+      content:  counter(heading)"." counter(subheading)". ";
+      counter-increment: subheading;
+    }
+  }
+  &:hover {
+    color: #138a81;
+  }
+}
+ol {
+  counter-reset: li;
+  li {
+    position: relative;
+    counter-increment: li;
+    padding-left: 20px;
+    &::before {
+      content: counter(li) '.';
+      position: absolute;
+      left: 0;
+    }
+  }
+}
+ul {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-left: 0px;
+  li {
+    position: relative;
+    // padding-left: 20px;
+    // &::before {
+    //   content: '';
+    //   position: absolute;
+    //   width: 4px;
+    //   height: 4px;
+    //   border-radius: 50%;
+    //   background-color: $green;
+    //   left: 0;
+    //   top: 12px;
+    // }
+  }
+}
 }
 
 

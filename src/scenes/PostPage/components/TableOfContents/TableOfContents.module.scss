@@ -5,12 +5,10 @@
     color: #24B04B!important;
 }
 
-.text {
+.textMain {
   max-width: 636px;
   margin: 0 auto 15px;
   color: $main-dark;
-  counter-reset: heading;
-
   & + .text {
     margin-top: 15px;
     @media (max-width: $lg) {
@@ -20,6 +18,7 @@
   &:last-of-type {
     margin-bottom: 0;
   }
+}
 
   h2,
   h3,
@@ -50,10 +49,6 @@
     margin-top: 22px;
   }
 
-  .mainCounter{
-  counter-reset: heading;
- }
- 
   a {
     display: block;
     font-weight: 600;
@@ -65,7 +60,6 @@
       margin: 1.5rem 0 .8rem 0;
       counter-reset: subheading;
       line-height: 130%;
-
       &:before {
         content:  counter(heading)". ";
         counter-increment: heading;
@@ -75,7 +69,6 @@
       font-size: 13px;
       margin: 1rem 0 .8rem 1rem;
       line-height: 130%;
-
       &:before {
         content:  counter(heading)"." counter(subheading)". ";
         counter-increment: subheading;
@@ -117,6 +110,5 @@
       // }
     }
   }
-}
 
 
