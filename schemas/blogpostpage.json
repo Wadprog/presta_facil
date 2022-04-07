@@ -59,7 +59,13 @@
           "quote": [],
           "image": [],
           "video": [],
-          "agencies": []
+          "agencies": [],
+          "twitter_embed_post": [
+            {
+              "display": "twitter",
+              "name": "twitter"
+            }
+          ]
         },
         "choices": {
           "text": {
@@ -325,6 +331,23 @@
                   "multi": "paragraph",
                   "label": "Col4",
                   "placeholder": "Add col4 text"
+                }
+              }
+            }
+          },
+          "twitter_embed_post": {
+            "type": "Slice",
+            "fieldset": "Twitter Embed Post",
+            "description": "Embed Twitter Post",
+            "icon": "image",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {
+              "twitter_post": {
+                "type": "Text",
+                "config": {
+                  "label": "twitter_post",
+                  "placeholder": "Twitter post ID, Example: 1507286462064214043"
                 }
               }
             }
