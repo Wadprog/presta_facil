@@ -105,13 +105,6 @@ const TariffPlans = ({
           />
         </div>
         <div className={style.container}>
-          <div className={style.header}>
-            <PeriodSwitcher
-              isAnnual={isAnnual}
-              togglePeriod={togglePeriod}
-              primary={primary}
-            />
-          </div>
           <div
             className={classnames({
               [style.body]: !isMobile,
@@ -119,6 +112,13 @@ const TariffPlans = ({
             })}
           >
             <div className={style.sidebar}>
+              <div className={style.header}>
+                <PeriodSwitcher
+                  isAnnual={isAnnual}
+                  togglePeriod={togglePeriod}
+                  primary={primary}
+                />
+              </div>
               <PlanSwitcher
                 plans={laws}
                 selectedPlans={selectedPlansIndexes}

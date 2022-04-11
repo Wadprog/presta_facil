@@ -114,6 +114,20 @@ export const query = graphql`
                   }
                 }
               }
+
+              ... on PrismicPricespageDataBodyWidgetSliderWithPlans {
+                id
+                slice_type
+                items {
+                  law_image {
+                    alt
+                    url
+                  }
+                  law_text {
+                    richText
+                  }
+                }
+              }
               ... on PrismicPricespageDataBodyContactus {
                 id
                 slice_type
@@ -138,7 +152,7 @@ export const query = graphql`
                   }
                 }
                 items {
-                  plusstatus {
+                  prostatus {
                     richText
                   }
                   featuretitle {
@@ -148,9 +162,6 @@ export const query = graphql`
                     richText
                   }
                   businessstatus {
-                    richText
-                  }
-                  basicstatus {
                     richText
                   }
                 }

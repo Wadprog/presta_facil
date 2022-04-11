@@ -28,6 +28,7 @@ const Plans = ({ primary, items }) => {
       </div>
       <div className={style.container}>
         {items.map((card, index) => {
+          console.log(card);
           return (
             <Card
               {...card}

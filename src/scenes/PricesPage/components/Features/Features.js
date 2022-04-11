@@ -16,9 +16,7 @@ const Features = ({ primary, fields, isPremium, showBar, hideBar }) => {
         </div>
         <ul className={style.list}>
           {fields.map((item, index) => {
-            const basicStatus = parseCellValue(
-              RichText.asText(item.basicstatus)
-            );
+            const basicStatus = parseCellValue(RichText.asText(item.prostatus));
             const premiumStatus = parseCellValue(
               RichText.asText(item.premiumstatus),
               { withGradient: true }

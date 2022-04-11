@@ -33,6 +33,8 @@ const Dashboard = ({
         </Button>
       </div>
       <div className={style.cards}>
+        {console.log(primary.basicplandescription)}
+
         <Card
           title={primary.basicplantitle}
           name={selectedPlansNames}
