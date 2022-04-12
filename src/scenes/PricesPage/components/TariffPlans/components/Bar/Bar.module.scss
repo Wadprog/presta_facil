@@ -33,7 +33,7 @@
 }
 
 .card {
-  width: 206px;
+  flex-basis: calc(29% + 3px);
   margin-right: 16px;
 
   &:last-child {

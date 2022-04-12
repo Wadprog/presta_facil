@@ -11,7 +11,11 @@ import PeriodSwitcher from './components/PeriodSwitcher';
 import PlanSwitcher from './components/PlanSwitcher';
 import { useBreakpoints } from '@hooks';
 import style from './TariffPlans.module.scss';
+import { RichText } from 'prismic-reactjs';
+import Swiper from 'react-id-swiper';
+import Image from '@components/Image/Image';
 
+// const DEFAULT_SLIDES = 7;
 const MOBILE_VIEW = 1220;
 const CARDS_LIST_WIDTH = 920;
 
@@ -25,6 +29,7 @@ const TariffPlans = ({
   scrollableRef,
   setActiveOnClick,
   setActive,
+  sliderPlans,
 }) => {
   const laws = [
     {
@@ -53,14 +58,37 @@ const TariffPlans = ({
   const [isStatusBarVisible, setIsStatusBarVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { width } = useBreakpoints();
+  const [itemsSlider, setItemSlider] = useState([]);
 
   const selectCurrency = (value) => setCurrency(value);
 
+  const params = {
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  };
   useEffect(() => {
     const mobile = width < MOBILE_VIEW;
     setIsStatusBarVisible(width < CARDS_LIST_WIDTH);
     setIsMobile(mobile);
   }, [width]);
+
+  useEffect(() => {
+    if (sliderPlans && sliderPlans.length) {
+      setItemSlider(sliderPlans);
+    }
+  }, [sliderPlans]);
 
   const selectPlan = (value) => {
     const isSelected = selectedPlansIndexes.includes(value);
@@ -113,6 +141,11 @@ const TariffPlans = ({
           >
             <div className={style.sidebar}>
               <div className={style.header}>
+                <div className={style.condition}>
+                  <RichText
+                    render={primary.widget_currency_billing_title.richText}
+                  />
+                </div>
                 <PeriodSwitcher
                   isAnnual={isAnnual}
                   togglePeriod={togglePeriod}
@@ -127,6 +160,28 @@ const TariffPlans = ({
                 currency={currency}
                 currencyDropdownLabel={currencydropdownlabel.text}
               />
+              <div className={style.widgetSlider}>
+                <div className={style.text}>
+                  <RichText render={primary.all_plans_support.richText} />
+                </div>
+                <Swiper {...params}>
+                  {itemsSlider &&
+                    itemsSlider.length &&
+                    itemsSlider.map((val, index) => {
+                      return (
+                        <div key={index} className={style.slide}>
+                          <div className={style.image}>
+                            <Image
+                              image={val.law_image}
+                              key={val.law_image.url}
+                            />
+                          </div>
+                          <RichText render={val.law_text.richText} />
+                        </div>
+                      );
+                    })}
+                </Swiper>
+              </div>
             </div>
             <div
               className={style.main}
@@ -169,6 +224,7 @@ TariffPlans.propTypes = {
   ]).isRequired,
   setActiveOnClick: PropTypes.func.isRequired,
   setActive: PropTypes.func.isRequired,
+  sliderPlans: PropTypes.any,
 };
 
 export default TariffPlans;

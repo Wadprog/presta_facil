@@ -170,8 +170,14 @@ export const query = graphql`
                 id
                 slice_type
                 primary {
+                  widget_currency_billing_title {
+                    richText
+                  }
                   monthlyperiodtogglelabel {
                     text
+                  }
+                  all_plans_support {
+                    richText
                   }
                   anualperiodtogglelabel {
                     richText

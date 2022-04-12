@@ -5,8 +5,15 @@ import classnames from 'classnames';
 
 import { parseString } from '@helpers';
 import style from './Card.module.scss';
+import * as prismicH from '@prismicio/helpers';
 
 //const CHAT_LINK = '/contact-us';
+
+const htmlSerializer = (type, element, key, children) => {
+  if (type === prismicH.Element.paragraph) {
+    return React.createElement('div', { className: 'liTag' }, children);
+  }
+};
 
 const Card = ({
   isEnterprise,
@@ -33,7 +40,7 @@ const Card = ({
   enterpriseButtonText,
   enterpriseButtonLink,
   bottomClarification,
-  // checkFeaturesOnCard,
+  checkFeaturesOnCard,
   planBenefits,
 }) => {
   const [colorized, setColorized] = useState(false);
@@ -128,10 +135,16 @@ const Card = ({
           </div>
         </div>
       )}
+      <div className={style.planBenefits}>
+        <RichText render={planBenefits.richText} />
+      </div>
+      <div className={style.checkItems}>
+        <RichText
+          render={checkFeaturesOnCard.richText}
+          htmlSerializer={htmlSerializer}
+        />
+      </div>
       <div className={style.footer}>
-        <div className={style.text}>
-          <RichText render={planBenefits.richText} />
-        </div>
         <a href={getLink()} className={style.button}>
           {colorized ? (
             <span className={style.gradientText}>
@@ -147,7 +160,7 @@ const Card = ({
             </span>
           )}
         </a>
-        <div className={style.condition}>
+        <div className={style.bottomClarification}>
           <RichText render={bottomClarification.richText} />
         </div>
       </div>

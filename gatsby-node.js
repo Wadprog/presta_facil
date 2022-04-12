@@ -297,6 +297,28 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
+  const pricespagetest = await graphql(`
+    {
+      allPrismicPricespagetest {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  pricespagetest.data.allPrismicPricespagetest.nodes.forEach((page) => {
+    createPage({
+      path: page.url,
+      component: path.resolve(__dirname, 'src/templates/PricesPageTest.js'),
+      context: { ...page },
+    });
+  });
+
   const pricesenterpricepage = await graphql(`
     {
       allPrismicPricesenterpricepage {

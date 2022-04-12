@@ -19,7 +19,6 @@ const Dashboard = ({
 
   return (
     <div className={style.container}>
-      {console.log(fields, primary)}
       <div
         className={classnames({
           [style.cardsmobile]: isMobile,

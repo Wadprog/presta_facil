@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import Icon from '../PlanSwitcher/components/Icon';
 
 import style from './PeriodSwitcher.module.scss';
 
@@ -22,12 +23,7 @@ const PeriodSwitcher = ({ isAnnual, togglePeriod, primary }) => {
         </div>
         <label className={style.label}>
           <input type="checkbox" checked={isAnnual} onChange={togglePeriod} />
-          <span className={style.icon}></span>
-          <span
-            className={classnames(style.pointer, {
-              [style.selected]: isAnnual,
-            })}
-          ></span>
+          <Icon checked={isAnnual} />
         </label>
         <div
           className={classnames(style.title, {

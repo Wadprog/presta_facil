@@ -1,21 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import Icon from './components/Icon';
+// import Icon from './components/Icon';
 import CurrencyDropdown from './components/CurrencyDropdown';
 import style from './PlanSwitcher.module.scss';
 
 const PlanSwitcher = ({
-  plans,
-  selectedPlans,
-  onSelect,
+  // plans,
+  // selectedPlans,
+  // onSelect,
   selectCurrency,
   currency,
   currencyDropdownLabel,
 }) => {
   return (
     <div className={style.container}>
-      {plans.map(({ title, location }, index) => {
+      {/* {plans.map(({ title, location }, index) => {
         const isChecked = selectedPlans.includes(index);
         const onChange = () => onSelect(index);
 
@@ -34,7 +33,7 @@ const PlanSwitcher = ({
           </label>
         );
       })}
-      <div className={style.line}></div>
+      <div className={style.line}></div> */}
       <CurrencyDropdown
         selectCurrency={selectCurrency}
         currency={currency}

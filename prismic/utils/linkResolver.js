@@ -46,14 +46,14 @@ const linkResolver = (doc) => {
 
   if (properties.type === 'pricespage') {
     return properties.lang === defaultLanguage
-      ? '/pricing'
-      : `/${properties.lang.slice(0, 2)}/pricing`;
+      ? `/${properties.uid}`
+      : `/${properties.lang.slice(0, 2)}/${properties.uid}`;
   }
 
   if (properties.type === 'pricespagetest') {
     return properties.lang === defaultLanguage
-      ? '/pricestest'
-      : `/${properties.lang.slice(0, 2)}/pricestest`;
+      ? `/${properties.uid}`
+      : `/${properties.lang.slice(0, 2)}/${properties.uid}`;
   }
 
   if (properties.type === 'pricesenterpricepage') {
