@@ -11,7 +11,7 @@ import style from './Card.module.scss';
 const Card = ({
   isEnterprise,
   title,
-  name,
+  // name,
   selectedlawsnumber,
   oneprivacypriceusd,
   twoprivacypriceusd,
@@ -32,6 +32,9 @@ const Card = ({
   enterpriseCondition,
   enterpriseButtonText,
   enterpriseButtonLink,
+  bottomClarification,
+  // checkFeaturesOnCard,
+  planBenefits,
 }) => {
   const [colorized, setColorized] = useState(false);
   const getCost = () => {
@@ -96,7 +99,7 @@ const Card = ({
 
   return (
     <div
-      onMouseEnter={() => setColorized(true)}
+      onMouseEnter={() => setColorized(false)}
       onMouseLeave={() => setColorized(false)}
       className={classnames(style.container, {
         [style.colorized]: colorized,
@@ -107,24 +110,28 @@ const Card = ({
     >
       <div className={style.title}>
         <RichText render={title.richText} />
+        <hr />
+        <div className={style.text}>
+          <RichText render={description.richText} />
+        </div>
       </div>
-      <div className={style.subtitle}>{isEnterprise ? '' : name}</div>
+      {/* <div className={style.subtitle}>{isEnterprise ? '' : name}</div> */}
       {isEnterprise ? (
         <div className={style.enterprise}>{enterpriseCondition}</div>
       ) : (
-        <>
+        <div className={style.wrappperPrice}>
           <div className={classnames([style.cost, style[currency]])}>
             {getCost()}
           </div>
           <div className={style.condition}>
             <RichText render={condition.richText} />
           </div>
-        </>
+        </div>
       )}
-      <div className={style.text}>
-        <RichText render={description.richText} />
-      </div>
       <div className={style.footer}>
+        <div className={style.text}>
+          <RichText render={planBenefits.richText} />
+        </div>
         <a href={getLink()} className={style.button}>
           {colorized ? (
             <span className={style.gradientText}>
@@ -140,6 +147,9 @@ const Card = ({
             </span>
           )}
         </a>
+        <div className={style.condition}>
+          <RichText render={bottomClarification.richText} />
+        </div>
       </div>
     </div>
   );
@@ -161,6 +171,9 @@ Card.propTypes = {
   twoprivacypriceeur: PropTypes.number,
   threeprivacypriceeur: PropTypes.number,
   condition: PropTypes.arrayOf.isRequired,
+  bottomClarification: PropTypes.arrayOf.isRequired,
+  planBenefits: PropTypes.arrayOf.isRequired,
+  checkFeaturesOnCard: PropTypes.arrayOf.isRequired,
   description: PropTypes.arrayOf.isRequired,
   buttonText: PropTypes.arrayOf.isRequired,
   buttonLink: PropTypes.object.isRequired,

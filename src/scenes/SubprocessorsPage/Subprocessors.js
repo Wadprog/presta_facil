@@ -101,10 +101,6 @@ const SubprocessorsPage = ({ content, canonical, metatitle, placeholder }) => {
     setTableData(newData);
   }, [search]);
 
-  useEffect(() => {
-    console.log(body);
-  }, []);
-
   return (
     <div className={style.subprocessorsPage}>
       <div className={style.container}>

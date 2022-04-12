@@ -235,6 +235,15 @@ export const query = graphql`
                   plandescription {
                     richText
                   }
+                  plan_benefits {
+                    richText
+                  }
+                  bottom_clarification {
+                    richText
+                  }
+                  check_features_on_card {
+                    richText
+                  }
                 }
               }
             }

@@ -19,6 +19,7 @@ const Dashboard = ({
 
   return (
     <div className={style.container}>
+      {console.log(fields, primary)}
       <div
         className={classnames({
           [style.cardsmobile]: isMobile,
@@ -51,6 +52,9 @@ const Dashboard = ({
             enterpriseCondition={primary.enterprisecondition.text}
             enterpriseButtonText={primary.enterprisebuttontext.text}
             enterpriseButtonLink={primary.enterprisebuttonlink.url}
+            bottomClarification={item.bottom_clarification}
+            planBenefits={item.plan_benefits}
+            checkFeaturesOnCard={item.check_features_on_card}
           />
         ))}
       </div>

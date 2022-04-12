@@ -8,7 +8,7 @@ const PeriodSwitcher = ({ isAnnual, togglePeriod, primary }) => {
   const { monthlyperiodtogglelabel, anualperiodtogglelabel } = primary;
 
   useEffect(() => {
-    console.log(primary);
+    // console.log(primary);
   }, []);
   return (
     <div className={style.wrapper}>

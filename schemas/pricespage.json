@@ -190,7 +190,7 @@
               "widget_currency_billing_title": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
                   "label": "Widget Currency Billing Title",
                   "placeholder": "Billing widget title"
                 }
@@ -387,6 +387,14 @@
                   "multi": "paragraph",
                   "label": "Bottom clarification"
                 }
+              },
+              "check_features_on_card": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "strong, list-item",
+                  "label": "Check features on card",
+                  "placeholder": "features inside main card for 3 plans"
+                }
               }
             }
           },
@@ -412,7 +420,7 @@
               "law_text": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "multi": "preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
                   "label": "law text"
                 }
               }
