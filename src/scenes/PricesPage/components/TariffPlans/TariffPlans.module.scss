@@ -88,7 +88,7 @@
   padding: 2px 8px 0px;
   background: linear-gradient(89.52deg, rgba(36, 176, 75, 0.2) -46.17%, rgba(2, 99, 188, 0.2) 186.99%);
   border-radius: 8px;
-  height: 56px;
+  height: 66px;
   width:100%;
   margin-top: 2rem;
   position: relative;
@@ -128,55 +128,16 @@
 }
 
 .widgetSlider{
-
- :global {
-   .swiper-container {
-     padding: 0 30px;
-     max-width: 206px;
-     &::before,
-     &::after {
-       content: '';
-       position: absolute;
-       height: 100px;
-       width: 30px;
-       background-color: rgba(67, 73, 85, 1);
-       left: -2px;
-       top: 0;
-       z-index: 3;
-     }
-     &::after {
-       content: '';
-       left: unset;
-       right: -2px;
-     }
-     @media (max-width: $md) {
-       max-width: 290px;
-     }
-   }
-   .next,
-   .prev {
-     position: absolute;
-     top: 50%;
-     left: 0;
-     border: solid #fff;
-     border-width: 0 2px 2px 0;
-     display: inline-block;
-     padding: 3px;
-     cursor: pointer;
-     z-index: 11;
-   }
-   .prev {
-     transform: rotate(135deg);
-     left: 2px;
-   }
-   .next {
-     left: unset;
-     right: 2px;
-     transform: rotate(-45deg);
-   }
-   .prev.swiper-button-disabled,
-   .next.swiper-button-disabled {
-     opacity: 0.3;
-   }
- }
+  :global {
+    .swiper-container {
+      width: 100%;
+    }
+    .swiper-wrapper {
+      align-items: center;
+    }
+    .swiper-slide {
+      display: flex;
+      align-items: center;
+    }
+  }
 }

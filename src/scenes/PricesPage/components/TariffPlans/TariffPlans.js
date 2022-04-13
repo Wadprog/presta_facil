@@ -13,6 +13,8 @@ import { useBreakpoints } from '@hooks';
 import style from './TariffPlans.module.scss';
 import { RichText } from 'prismic-reactjs';
 import Swiper from 'react-id-swiper';
+// import { Autoplay, Swiper as RealSwiper } from 'swiper/js/swiper.esm';
+
 import Image from '@components/Image/Image';
 
 // const DEFAULT_SLIDES = 7;
@@ -46,6 +48,8 @@ const TariffPlans = ({
     },
   ];
 
+  // RealSwiper.use([Autoplay]);
+
   const { currencydropdownlabel } = primary;
 
   const [isAnnual, setIsAnnual] = useState(false);
@@ -69,14 +73,10 @@ const TariffPlans = ({
       delay: 2500,
       disableOnInteraction: false,
     },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
+    direction: 'horizontal',
+    slidesPerView: 1,
+    loop: true,
+    autoHeight: true,
   };
   useEffect(() => {
     const mobile = width < MOBILE_VIEW;
@@ -164,23 +164,64 @@ const TariffPlans = ({
                 <div className={style.text}>
                   <RichText render={primary.all_plans_support.richText} />
                 </div>
-                <Swiper {...params}>
-                  {itemsSlider &&
-                    itemsSlider.length &&
-                    itemsSlider.map((val, index) => {
-                      return (
-                        <div key={index} className={style.slide}>
-                          <div className={style.image}>
-                            <Image
-                              image={val.law_image}
-                              key={val.law_image.url}
-                            />
-                          </div>
-                          <RichText render={val.law_text.richText} />
-                        </div>
-                      );
-                    })}
-                </Swiper>
+                {itemsSlider && itemsSlider.length && (
+                  <Swiper {...params}>
+                    <div className={style.slide}>
+                      <div className={style.image}>
+                        <Image
+                          image={itemsSlider[0].law_image}
+                          key={itemsSlider[0].law_image.url}
+                        />
+                      </div>
+                      <RichText render={itemsSlider[0].law_text.richText} />
+                    </div>
+                    <div className={style.slide}>
+                      <div className={style.image}>
+                        <Image
+                          image={itemsSlider[1].law_image}
+                          key={itemsSlider[1].law_image.url}
+                        />
+                      </div>
+                      <RichText render={itemsSlider[1].law_text.richText} />
+                    </div>
+                    <div className={style.slide}>
+                      <div className={style.image}>
+                        <Image
+                          image={itemsSlider[2].law_image}
+                          key={itemsSlider[2].law_image.url}
+                        />
+                      </div>
+                      <RichText render={itemsSlider[2].law_text.richText} />
+                    </div>
+                    <div className={style.slide}>
+                      <div className={style.image}>
+                        <Image
+                          image={itemsSlider[3].law_image}
+                          key={itemsSlider[3].law_image.url}
+                        />
+                      </div>
+                      <RichText render={itemsSlider[3].law_text.richText} />
+                    </div>
+                    <div className={style.slide}>
+                      <div className={style.image}>
+                        <Image
+                          image={itemsSlider[4].law_image}
+                          key={itemsSlider[4].law_image.url}
+                        />
+                      </div>
+                      <RichText render={itemsSlider[4].law_text.richText} />
+                    </div>
+                    <div className={style.slide}>
+                      <div className={style.image}>
+                        <Image
+                          image={itemsSlider[5].law_image}
+                          key={itemsSlider[5].law_image.url}
+                        />
+                      </div>
+                      <RichText render={itemsSlider[5].law_text.richText} />
+                    </div>
+                  </Swiper>
+                )}
               </div>
             </div>
             <div
