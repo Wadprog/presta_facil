@@ -51,6 +51,9 @@ const Dashboard = ({
             enterpriseCondition={primary.enterprisecondition.text}
             enterpriseButtonText={primary.enterprisebuttontext.text}
             enterpriseButtonLink={primary.enterprisebuttonlink.url}
+            bottomClarification={item.bottom_clarification}
+            planBenefits={item.plan_benefits}
+            checkFeaturesOnCard={item.check_features_on_card}
           />
         ))}
       </div>

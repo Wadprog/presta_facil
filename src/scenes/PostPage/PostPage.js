@@ -160,7 +160,6 @@ const PostPage = ({ current, tags, currentLanguage }) => {
                   />
                 );
               case 'twitter_embed_post':
-                console.log(section);
                 return (
                   <div className={style.containerTwitter}>
                     {section.items &&

@@ -5,13 +5,20 @@ import classnames from 'classnames';
 
 import { parseString } from '@helpers';
 import style from './Card.module.scss';
+import * as prismicH from '@prismicio/helpers';
 
 //const CHAT_LINK = '/contact-us';
+
+const htmlSerializer = (type, element, key, children) => {
+  if (type === prismicH.Element.paragraph) {
+    return React.createElement('div', { className: 'liTag' }, children);
+  }
+};
 
 const Card = ({
   isEnterprise,
   title,
-  name,
+  // name,
   selectedlawsnumber,
   oneprivacypriceusd,
   twoprivacypriceusd,
@@ -32,6 +39,9 @@ const Card = ({
   enterpriseCondition,
   enterpriseButtonText,
   enterpriseButtonLink,
+  bottomClarification,
+  checkFeaturesOnCard,
+  planBenefits,
 }) => {
   const [colorized, setColorized] = useState(false);
   const getCost = () => {
@@ -96,7 +106,7 @@ const Card = ({
 
   return (
     <div
-      onMouseEnter={() => setColorized(true)}
+      onMouseEnter={() => setColorized(false)}
       onMouseLeave={() => setColorized(false)}
       className={classnames(style.container, {
         [style.colorized]: colorized,
@@ -107,22 +117,32 @@ const Card = ({
     >
       <div className={style.title}>
         <RichText render={title.richText} />
+        <hr />
+        <div className={style.text}>
+          <RichText render={description.richText} />
+        </div>
       </div>
-      <div className={style.subtitle}>{isEnterprise ? '' : name}</div>
+      {/* <div className={style.subtitle}>{isEnterprise ? '' : name}</div> */}
       {isEnterprise ? (
         <div className={style.enterprise}>{enterpriseCondition}</div>
       ) : (
-        <>
+        <div className={style.wrappperPrice}>
           <div className={classnames([style.cost, style[currency]])}>
             {getCost()}
           </div>
           <div className={style.condition}>
             <RichText render={condition.richText} />
           </div>
-        </>
+        </div>
       )}
-      <div className={style.text}>
-        <RichText render={description.richText} />
+      <div className={style.planBenefits}>
+        <RichText render={planBenefits.richText} />
+      </div>
+      <div className={style.checkItems}>
+        <RichText
+          render={checkFeaturesOnCard.richText}
+          htmlSerializer={htmlSerializer}
+        />
       </div>
       <div className={style.footer}>
         <a href={getLink()} className={style.button}>
@@ -140,6 +160,9 @@ const Card = ({
             </span>
           )}
         </a>
+        <div className={style.bottomClarification}>
+          <RichText render={bottomClarification.richText} />
+        </div>
       </div>
     </div>
   );
@@ -161,6 +184,9 @@ Card.propTypes = {
   twoprivacypriceeur: PropTypes.number,
   threeprivacypriceeur: PropTypes.number,
   condition: PropTypes.arrayOf.isRequired,
+  bottomClarification: PropTypes.arrayOf.isRequired,
+  planBenefits: PropTypes.arrayOf.isRequired,
+  checkFeaturesOnCard: PropTypes.arrayOf.isRequired,
   description: PropTypes.arrayOf.isRequired,
   buttonText: PropTypes.arrayOf.isRequired,
   buttonLink: PropTypes.object.isRequired,

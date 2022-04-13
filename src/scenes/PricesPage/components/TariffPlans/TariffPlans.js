@@ -11,7 +11,13 @@ import PeriodSwitcher from './components/PeriodSwitcher';
 import PlanSwitcher from './components/PlanSwitcher';
 import { useBreakpoints } from '@hooks';
 import style from './TariffPlans.module.scss';
+import { RichText } from 'prismic-reactjs';
+import Swiper from 'react-id-swiper';
+// import { Autoplay, Swiper as RealSwiper } from 'swiper/js/swiper.esm';
 
+import Image from '@components/Image/Image';
+
+// const DEFAULT_SLIDES = 7;
 const MOBILE_VIEW = 1220;
 const CARDS_LIST_WIDTH = 920;
 
@@ -25,6 +31,7 @@ const TariffPlans = ({
   scrollableRef,
   setActiveOnClick,
   setActive,
+  sliderPlans,
 }) => {
   const laws = [
     {
@@ -41,6 +48,8 @@ const TariffPlans = ({
     },
   ];
 
+  // RealSwiper.use([Autoplay]);
+
   const { currencydropdownlabel } = primary;
 
   const [isAnnual, setIsAnnual] = useState(false);
@@ -53,14 +62,33 @@ const TariffPlans = ({
   const [isStatusBarVisible, setIsStatusBarVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { width } = useBreakpoints();
+  const [itemsSlider, setItemSlider] = useState([]);
 
   const selectCurrency = (value) => setCurrency(value);
 
+  const params = {
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    direction: 'horizontal',
+    slidesPerView: 1,
+    loop: true,
+    autoHeight: true,
+  };
   useEffect(() => {
     const mobile = width < MOBILE_VIEW;
     setIsStatusBarVisible(width < CARDS_LIST_WIDTH);
     setIsMobile(mobile);
   }, [width]);
+
+  useEffect(() => {
+    if (sliderPlans && sliderPlans.length) {
+      setItemSlider(sliderPlans);
+    }
+  }, [sliderPlans]);
 
   const selectPlan = (value) => {
     const isSelected = selectedPlansIndexes.includes(value);
@@ -105,13 +133,6 @@ const TariffPlans = ({
           />
         </div>
         <div className={style.container}>
-          <div className={style.header}>
-            <PeriodSwitcher
-              isAnnual={isAnnual}
-              togglePeriod={togglePeriod}
-              primary={primary}
-            />
-          </div>
           <div
             className={classnames({
               [style.body]: !isMobile,
@@ -119,6 +140,18 @@ const TariffPlans = ({
             })}
           >
             <div className={style.sidebar}>
+              <div className={style.header}>
+                <div className={style.condition}>
+                  <RichText
+                    render={primary.widget_currency_billing_title.richText}
+                  />
+                </div>
+                <PeriodSwitcher
+                  isAnnual={isAnnual}
+                  togglePeriod={togglePeriod}
+                  primary={primary}
+                />
+              </div>
               <PlanSwitcher
                 plans={laws}
                 selectedPlans={selectedPlansIndexes}
@@ -127,6 +160,69 @@ const TariffPlans = ({
                 currency={currency}
                 currencyDropdownLabel={currencydropdownlabel.text}
               />
+              <div className={style.widgetSlider}>
+                <div className={style.text}>
+                  <RichText render={primary.all_plans_support.richText} />
+                </div>
+                {itemsSlider && itemsSlider.length && (
+                  <Swiper {...params}>
+                    <div className={style.slide}>
+                      <div className={style.image}>
+                        <Image
+                          image={itemsSlider[0].law_image}
+                          key={itemsSlider[0].law_image.url}
+                        />
+                      </div>
+                      <RichText render={itemsSlider[0].law_text.richText} />
+                    </div>
+                    <div className={style.slide}>
+                      <div className={style.image}>
+                        <Image
+                          image={itemsSlider[1].law_image}
+                          key={itemsSlider[1].law_image.url}
+                        />
+                      </div>
+                      <RichText render={itemsSlider[1].law_text.richText} />
+                    </div>
+                    <div className={style.slide}>
+                      <div className={style.image}>
+                        <Image
+                          image={itemsSlider[2].law_image}
+                          key={itemsSlider[2].law_image.url}
+                        />
+                      </div>
+                      <RichText render={itemsSlider[2].law_text.richText} />
+                    </div>
+                    <div className={style.slide}>
+                      <div className={style.image}>
+                        <Image
+                          image={itemsSlider[3].law_image}
+                          key={itemsSlider[3].law_image.url}
+                        />
+                      </div>
+                      <RichText render={itemsSlider[3].law_text.richText} />
+                    </div>
+                    <div className={style.slide}>
+                      <div className={style.image}>
+                        <Image
+                          image={itemsSlider[4].law_image}
+                          key={itemsSlider[4].law_image.url}
+                        />
+                      </div>
+                      <RichText render={itemsSlider[4].law_text.richText} />
+                    </div>
+                    <div className={style.slide}>
+                      <div className={style.image}>
+                        <Image
+                          image={itemsSlider[5].law_image}
+                          key={itemsSlider[5].law_image.url}
+                        />
+                      </div>
+                      <RichText render={itemsSlider[5].law_text.richText} />
+                    </div>
+                  </Swiper>
+                )}
+              </div>
             </div>
             <div
               className={style.main}
@@ -169,6 +265,7 @@ TariffPlans.propTypes = {
   ]).isRequired,
   setActiveOnClick: PropTypes.func.isRequired,
   setActive: PropTypes.func.isRequired,
+  sliderPlans: PropTypes.any,
 };
 
 export default TariffPlans;

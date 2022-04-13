@@ -78,19 +78,7 @@
       color: #138a81;
     }
   }
-  ol {
-    counter-reset: li;
-    li {
-      position: relative;
-      counter-increment: li;
-      padding-left: 20px;
-      &::before {
-        content: counter(li) '.';
-        position: absolute;
-        left: 0;
-      }
-    }
-  }
+
   ul {
     margin-top: 0px;
     margin-bottom: 0px;

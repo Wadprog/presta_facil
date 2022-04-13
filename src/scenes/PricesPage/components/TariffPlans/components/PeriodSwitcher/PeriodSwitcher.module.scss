@@ -2,7 +2,15 @@
 @import '@styles/mixins/all';
 
 .wrapper {
-  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(234, 237, 242, 0.7);
+  border: 1px solid #D0DAEB;
+  border-radius: 8px;
+  width: 100%;
 }
 
 .container {
@@ -25,7 +33,6 @@
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
 .notice {

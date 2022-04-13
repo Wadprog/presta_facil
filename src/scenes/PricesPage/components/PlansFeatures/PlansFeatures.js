@@ -67,11 +67,11 @@ const PlansFeatures = ({ primary, items, showBar, hideBar, activepoint }) => {
         </div>
         <ul className={style.list}>
           {items.map((item, index) => {
-            const basicStatus = parseCellValue(
-              RichText.asText(item.basicstatus.richText)
-            );
+            // const basicStatus = parseCellValue(
+            //   RichText.asText(item.basicstatus.richText)
+            // );
             const plusStatus = parseCellValue(
-              RichText.asText(item.plusstatus.richText)
+              RichText.asText(item.prostatus.richText)
             );
             const businessStatus = parseCellValue(
               RichText.asText(item.businessstatus.richText),
@@ -96,11 +96,11 @@ const PlansFeatures = ({ primary, items, showBar, hideBar, activepoint }) => {
                 >
                   {!isMobile ? (
                     <>
-                      <div
+                      {/* <div
                         className={classnames(style.cell, style.celldesktop)}
                       >
                         {basicStatus}
-                      </div>
+                      </div> */}
                       <div
                         className={classnames(style.cell, style.celldesktop)}
                       >
@@ -119,7 +119,6 @@ const PlansFeatures = ({ primary, items, showBar, hideBar, activepoint }) => {
                     </>
                   ) : (
                     detectActiveFeaturesList(
-                      basicStatus,
                       plusStatus,
                       businessStatus,
                       enterpriseStatus

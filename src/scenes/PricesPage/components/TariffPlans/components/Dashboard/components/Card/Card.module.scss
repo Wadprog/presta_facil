@@ -3,25 +3,37 @@
 
 .container {
   padding: 10px;
-  width: 206px;
-  border: 1px solid rgba(1, 25, 73, 0.3);
+  // width: 206px;
+  // border: 1px solid rgba(1, 25, 73, 0.3);
   border-radius: 10px 25px;
-
+  background: #FFFFFF;
+  box-shadow: 0px 16px 60px rgba(28, 86, 76, 0.2);
+  border-radius: 20px;
+  flex-basis: 33%;
+  position: relative;
   color: $main-light;
-  margin-right: 16px;
-
+  margin-right: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  &:before{
+    content: '';
+    border: 1px solid rgba(1, 25, 73, 0.3);
+    width: calc(100% + 16px);
+    height: calc(100% + 16px);
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    border-radius: 24px;
 
+  }
   &:last-child {
     margin-right: 0;
   }
 
-  &:hover {
-    cursor: pointer;
-  }
 }
 
 .enterprise {
@@ -68,13 +80,37 @@
     height: 100%;
   }
 }
+.wrappperPrice{
+  background-color: rgba(208, 218, 235, 0.5);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
 
+}
 .title {
   font-weight: 600;
   font-size: 18px;
   line-height: 1.25;
   letter-spacing: 0.03em;
-
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  
+  h3{
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  hr{
+    background-color: rgba(208, 218, 235, 1);
+    height: 1px;
+    border: none;
+    width: 100%;
+  }
   h4 {
     font-weight: inherit;
     font-size: inherit;
@@ -105,25 +141,21 @@
 
   display: flex;
   align-items: center;
-  margin-top: 23px;
 
   font-family: $font-gramatika;
   font-weight: 600;
-  font-size: 48px;
+  font-size: 20px;
   line-height: 1.25;
   letter-spacing: 0.03em;
 
   &:before {
-    transform: translateY(6px);
-
     display: block;
     margin-right: 2px;
 
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.25;
     letter-spacing: 0.03em;
-    opacity: 0.5;
   }
   &.USD {
     &:before {
@@ -139,9 +171,6 @@
 }
 
 .condition {
-  margin-top: 8px;
-  margin-bottom: 32px;
-
   font-weight: 500;
   font-size: 14px;
   line-height: 1.25;
@@ -150,42 +179,114 @@
 
 .text {
   margin: auto 0;
-
+  min-height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: $font-sofia-pro;
   font-style: normal;
   font-weight: 300;
   font-size: 12px;
   line-height: 1.5;
   text-align: center;
+  p{
+    font-size: 14px;
+    line-height: 140%;
+  }
 }
 
+.checkItems{
+  margin: 1.5rem 0;
+}
+.planBenefits{
+  p{
+    color: #011949;
+    font-family: "Gramatika", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
+:global{
+  .liTag {
+    position: relative;
+    margin-bottom: 8px;
+    &:before{
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background-image: url('./Correct.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: block;
+    }
+    border: 1px solid #D0DAEB;
+    border-radius: 8px;
+    padding: 12px 16px 12px 45px;
+  }
+}
 .footer {
-  margin-top: 24px;
+  margin-top: auto;
   width: 100%;
-  max-width: 204px;
+  position: relative;
+ 
+  .bottomClarification{
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    text-align: center;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    p {
+      font-family: $font-sofia-pro;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 1.5;
+      text-align: center;
+      color: rgba(1, 25, 73, 0.5);
+      display: flex;
+      text-align: center;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      align-self: center;
+    }
+  }
 }
 
 .button {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid rgba($main-light, 0.3);
+  // border: 1px solid rgba($main-light, 0.3);
   border-radius: 5px 20px;
   height: 48px;
-
-  background: #ffffff;
-  color: $main-light;
+  color:white;
+  background: linear-gradient(89.52deg, #24B04B -46.17%, #0263BC 186.99%);  color: $main-light;
   font-weight: bold;
   font-size: 16px;
   line-height: 1.8;
   text-transform: uppercase;
-
+  margin-bottom: 34px;
   transition: 0.3s;
-
+  span{
+    color: white;
+  }
   @media (min-width: $lg) {
     &:hover {
       color: $green;
-      border-color: $green;
+      background: white;
+      background: #FFFFFF;
+      box-shadow: 0px 16px 60px rgba(28, 86, 76, 0.2);
     }
   }
 }

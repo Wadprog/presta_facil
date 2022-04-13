@@ -114,6 +114,20 @@ export const query = graphql`
                   }
                 }
               }
+
+              ... on PrismicPricespageDataBodyWidgetSliderWithPlans {
+                id
+                slice_type
+                items {
+                  law_image {
+                    alt
+                    url
+                  }
+                  law_text {
+                    richText
+                  }
+                }
+              }
               ... on PrismicPricespageDataBodyContactus {
                 id
                 slice_type
@@ -138,7 +152,7 @@ export const query = graphql`
                   }
                 }
                 items {
-                  plusstatus {
+                  prostatus {
                     richText
                   }
                   featuretitle {
@@ -150,17 +164,20 @@ export const query = graphql`
                   businessstatus {
                     richText
                   }
-                  basicstatus {
-                    richText
-                  }
                 }
               }
               ... on PrismicPricespageDataBodyTariffplans {
                 id
                 slice_type
                 primary {
+                  widget_currency_billing_title {
+                    richText
+                  }
                   monthlyperiodtogglelabel {
                     text
+                  }
+                  all_plans_support {
+                    richText
                   }
                   anualperiodtogglelabel {
                     richText
@@ -222,6 +239,15 @@ export const query = graphql`
                     richText
                   }
                   plandescription {
+                    richText
+                  }
+                  plan_benefits {
+                    richText
+                  }
+                  bottom_clarification {
+                    richText
+                  }
+                  check_features_on_card {
                     richText
                   }
                 }

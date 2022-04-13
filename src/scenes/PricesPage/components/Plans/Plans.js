@@ -219,11 +219,14 @@ const Plans = ({
           />
         </div>
         <div className={style.container}>
-          <div className={style.header}>
-            <PeriodSwitcher isAnnual={isAnnual} togglePeriod={togglePeriod} />
-          </div>
           <div className={style.body}>
             <div className={style.sidebar}>
+              <div className={style.header}>
+                <PeriodSwitcher
+                  isAnnual={isAnnual}
+                  togglePeriod={togglePeriod}
+                />
+              </div>
               <PlanSwitcher
                 plans={fields}
                 selectedPlans={selectedPlans}

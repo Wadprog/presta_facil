@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Hero from './components/Hero';
@@ -18,6 +18,9 @@ const PLANS_CARDS_NUMBER = 4;
 const PricesPage = ({ content, canonical, metatitle }) => {
   const [isBarShowing, setIsBarShowing] = useState(false);
   const [activepoint, setActivePoint] = useState(0);
+  const [itemsSlider, setItemSlider] = useState([]);
+  const [itemsSliderFull, setItemSliderFull] = useState([]);
+
   const { width } = useBreakpoints();
   const myPackagesRef = useRef(null);
 
@@ -50,6 +53,22 @@ const PricesPage = ({ content, canonical, metatitle }) => {
   const faqLists = questions.map((element) => element.items);
   const faqList = faqLists.flat();
 
+  useEffect(() => {
+    if (content && content.length) {
+      content.map((item) => {
+        if (item.slice_type === 'widget_slider_with_plans') {
+          setItemSlider(item.items);
+        }
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (itemsSlider && itemsSlider.length) {
+      setItemSliderFull(itemsSlider);
+    }
+  }, [itemsSlider]);
+
   const sections = content.map((item, index) => {
     switch (item.slice_type) {
       case 'hero':
@@ -66,6 +85,7 @@ const PricesPage = ({ content, canonical, metatitle }) => {
             scrollableRef={myPackagesRef}
             setActive={setActive}
             setActiveOnClick={setActiveOnClick}
+            sliderPlans={itemsSliderFull}
           />
         );
       case 'packagesfeatures':
@@ -85,7 +105,8 @@ const PricesPage = ({ content, canonical, metatitle }) => {
       case 'contactus':
         return <ContactUs key={index} {...item} />;
       default:
-        throw new Error(`Unknown section type: ${item.slice_type}`);
+        return null;
+      // throw new Error(`Unknown section type: ${item.slice_type}`);
     }
   });
 
