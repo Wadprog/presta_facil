@@ -43,7 +43,6 @@ const linkResolver = (doc) => {
       ? '/books'
       : `/${properties.lang.slice(0, 2)}/books`;
   }
-
   if (properties.type === 'pricespage') {
     return properties.lang === defaultLanguage
       ? `/${properties.uid}`
