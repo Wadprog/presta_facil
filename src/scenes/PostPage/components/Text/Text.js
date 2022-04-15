@@ -34,7 +34,7 @@ const htmlSerializer = (type, element, key, children) => {
       element.data.url.includes(
         'app.secureprivacy.ai/#/onboarding/create-account'
       ) ||
-      element.data.url.includes('https://calendly.com/secure-privacy/45min')
+      element.data.url.includes('https://calendly.com/')
     ) {
       return (
         <div className={style.button}>

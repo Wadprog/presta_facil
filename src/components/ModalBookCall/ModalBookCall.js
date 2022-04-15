@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
-import { bool, func } from 'prop-types';
+import { bool, func, string } from 'prop-types';
 import lozad from 'lozad';
 
 import IconButton, { VARIANT_ICON } from '@components/IconButton/IconButton.js';
@@ -9,7 +9,7 @@ import Icon from './image/close-icon.inline.svg';
 
 Modal.setAppElement('#___gatsby');
 
-const ModalBookCall = ({ open, closeModal }) => {
+const ModalBookCall = ({ open, closeModal, calendlyLink }) => {
   const [isOpen, setIsOpen] = useState(open);
   useEffect(() => {
     setIsOpen(open);
@@ -35,7 +35,7 @@ const ModalBookCall = ({ open, closeModal }) => {
     <Modal isOpen={isOpen} style={customStyles}>
       <div className={style.container}>
         <iframe
-          src="https://calendly.com/secure-privacy/45min"
+          src={calendlyLink}
           width="100%"
           height="100%"
           frameBorder="0"
@@ -53,6 +53,7 @@ const ModalBookCall = ({ open, closeModal }) => {
 
 ModalBookCall.propTypes = {
   open: bool,
+  calendlyLink: string,
   closeModal: func,
 };
 

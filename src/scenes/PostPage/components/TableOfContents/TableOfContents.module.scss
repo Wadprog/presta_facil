@@ -50,27 +50,28 @@
   }
 
   a {
-    display: block;
     font-weight: 600;
     color: rgba(1, 25, 73, 0.6);
     transition: 0.3s;
     cursor: pointer;
     &.h2{
+      display: block;
       font-size: 14px;
       margin: 1.5rem 0 .8rem 0;
       counter-reset: subheading;
       line-height: 130%;
       &:before {
-        content:  counter(heading)". ";
+        content:  counter(heading) ". ";
         counter-increment: heading;
       }
     }
     &.h3{
+      display: block;
       font-size: 13px;
       margin: 1rem 0 .8rem 1rem;
       line-height: 130%;
       &:before {
-        content:  counter(heading)"." counter(subheading)". ";
+        content:  counter(heading) "." counter(subheading) ". ";
         counter-increment: subheading;
       }
     }
