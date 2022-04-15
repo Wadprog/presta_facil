@@ -45,7 +45,11 @@ const Footer = ({ data, activeDocMeta }) => {
 
   return (
     <>
-      <ModalBookCall open={modalIsOpen} closeModal={handleCloseModal} />
+      <ModalBookCall
+        calendlyLink={primary.buttonlink.text}
+        open={modalIsOpen}
+        closeModal={handleCloseModal}
+      />
       <footer className={style.footer}>
         <div className={style.container}>
           <div className={style.banners}>
