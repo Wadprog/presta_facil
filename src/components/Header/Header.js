@@ -117,7 +117,11 @@ const Header = ({ data, hideMenu, metatitle, type }) => {
           </div>
         </div>
       </header>
-      <ModalBookCall open={modalIsOpen} closeModal={handleCloseModal} />
+      <ModalBookCall
+        open={modalIsOpen}
+        calendlyLink={primary.buttonlink.text}
+        closeModal={handleCloseModal}
+      />
     </>
   );
 };
