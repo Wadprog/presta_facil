@@ -88,7 +88,6 @@
   padding: 2px 8px 0px;
   background: linear-gradient(89.52deg, rgba(36, 176, 75, 0.2) -46.17%, rgba(2, 99, 188, 0.2) 186.99%);
   border-radius: 8px;
-  height: 66px;
   width:100%;
   margin-top: 2rem;
   position: relative;
@@ -138,6 +137,28 @@
     .swiper-slide {
       display: flex;
       align-items: center;
+      div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      pre{
+        font-family: 'Sofia Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 16px;
+        letter-spacing: 0.03em;
+        text-transform: capitalize;
+        margin-left: -5px;
+        transform: translatey(-3px);
+        /* Linear */
+
+        background: linear-gradient(89.52deg, #24B04B -46.17%, #0263BC 186.99%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
     }
   }
 }

@@ -53,6 +53,12 @@ export const query = graphql`
             uid
           }
           data {
+            metadescription {
+              text
+            }
+            metatitle {
+              text
+            }
             categories {
               is_pilar_page_
             }

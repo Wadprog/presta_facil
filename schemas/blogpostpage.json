@@ -1,11 +1,5 @@
 {
   "Main": {
-    "uid": {
-      "type": "UID",
-      "config": {
-        "label": "pagename"
-      }
-    },
     "title": {
       "type": "StructuredText",
       "config": {
@@ -18,14 +12,6 @@
       "config": {
         "multi": "paragraph",
         "label": "description"
-      }
-    },
-    "canonical": {
-      "type": "StructuredText",
-      "config": {
-        "multi": "paragraph",
-        "label": "Canonical URL",
-        "placeholder": "Add canonical URL, for example: https://secureprivacy.ai/blog/virginia-cdpa"
       }
     },
     "date": {
@@ -356,6 +342,39 @@
       }
     }
   },
+  "SEO": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "UID",
+        "placeholder": "Add UID, for example: blog"
+      }
+    },
+    "metatitle": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Meta title",
+        "placeholder": "Add meta title, up to 60 symbols recommended"
+      }
+    },
+    "metadescription": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Meta description",
+        "placeholder": "Add meta description, up to 160 symbols"
+      }
+    },
+    "canonical": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Canonical URL",
+        "placeholder": "Add canonical URL, for example: https://secureprivacy.ai/blog"
+      }
+    }
+  },
   "Meta": {
     "categories": {
       "type": "Group",
@@ -379,6 +398,14 @@
               "placeholder_true": "true",
               "default_value": false,
               "label": "Is Pilar Page?"
+            }
+          },
+          "table_of_content_title": {
+            "type": "StructuredText",
+            "config": {
+              "single": "heading6",
+              "label": "table of content title",
+              "placeholder": "table of content title"
             }
           }
         },
