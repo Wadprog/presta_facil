@@ -44,9 +44,7 @@ const tableOfContents = ({ primary }) => {
   const { text } = primary;
   return (
     <RichText
-      render={text.richText.filter(
-        (val) => val.type === 'heading2' || val.type === 'heading3'
-      )}
+      render={text.richText.filter((val) => val.type === 'heading2')}
       htmlSerializer={htmlSerializer}
     />
   );
