@@ -139,7 +139,9 @@ const TariffPlans = ({
               [style.bodymobile]: isMobile,
             })}
           >
-            <div className={style.sidebar}>
+            <div
+              className={`${style.sidebar} ${isBarShowing && style.sidebarBar}`}
+            >
               <div className={style.header}>
                 <div className={style.condition}>
                   <RichText
@@ -160,7 +162,7 @@ const TariffPlans = ({
                 currency={currency}
                 currencyDropdownLabel={currencydropdownlabel.text}
               />
-              <div className={style.widgetSlider}>
+              <div className={`${style.widgetSlider}`}>
                 <div className={style.text}>
                   <RichText render={primary.all_plans_support.richText} />
                 </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { any } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import classnames from 'classnames';
 
@@ -27,7 +27,12 @@ const Card = ({
   enterpriseCondition,
   enterpriseButtonText,
   enterpriseButtonLink,
+  primary,
 }) => {
+  const condition = isAnnual
+    ? primary.annualcondition
+    : primary.monthlycondition;
+
   const [colorized, setColorized] = useState(false);
   const getCost = () => {
     let cost = 0;
@@ -91,24 +96,27 @@ const Card = ({
   return (
     <div
       className={classnames(style.container, { [style.colorized]: colorized })}
-      onMouseEnter={() => setColorized(true)}
+      onMouseEnter={() => setColorized(false)}
       onMouseLeave={() => setColorized(false)}
     >
       <div className={style.main}>
         <div className={style.title}>
           <div className={style.type}>
             <RichText render={title.richText} />
-          </div>
-          <div className={style.name}>
-            {isEnterprise ? '' : selectedPlans.join(', ')}
+            <hr />
           </div>
         </div>
       </div>
       {isEnterprise ? (
         <div className={style.enterprise}>{enterpriseCondition}</div>
       ) : (
-        <div className={classnames([style.cost, style[currency]])}>
-          {getCost()}
+        <div className={style.wrapperPrice}>
+          <div className={classnames([style.cost, style[currency]])}>
+            {getCost()}
+          </div>
+          <div className={style.condition}>
+            <RichText render={condition.richText} />
+          </div>
         </div>
       )}
       <div className={style.footer}>
@@ -150,6 +158,7 @@ Card.propTypes = {
   oneprivacypriceeur: PropTypes.number,
   twoprivacypriceeur: PropTypes.number,
   threeprivacypriceeur: PropTypes.number,
+  primary: any,
   isAnnual: PropTypes.bool.isRequired,
   annualcoefficient: PropTypes.number.isRequired,
   enterpriseCondition: PropTypes.string.isRequired,
