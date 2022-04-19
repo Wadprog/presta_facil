@@ -61,6 +61,9 @@ export const query = graphql`
             }
             categories {
               is_pilar_page_
+              table_of_content_title {
+                richText
+              }
             }
             backgroundpreview {
               alt

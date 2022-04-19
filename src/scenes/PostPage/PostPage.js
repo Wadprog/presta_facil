@@ -58,6 +58,7 @@ const PostPage = ({ current, tags, currentLanguage }) => {
   const currentLang = useContext(LangContext);
 
   React.useEffect(() => {
+    console.log(categories[0].table_of_content_title);
     categories[0].is_pilar_page_ && setIsPilarPage(true);
   }, [categories]);
 
@@ -87,7 +88,11 @@ const PostPage = ({ current, tags, currentLanguage }) => {
                 href={`#${title.text.replace(/\W+/g, '-').toLowerCase()}`}
                 className={style.toTop}
               >
-                <h6> {title.text} </h6>
+                <h6>
+                  {categories[0].table_of_content_title.richText.length
+                    ? categories[0].table_of_content_title.richText[0].text
+                    : 'Table of Contents'}
+                </h6>
                 <span className={style.toTop__Arrow}></span>
               </a>
               <div className={style.line}> </div>

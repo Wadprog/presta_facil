@@ -64,7 +64,7 @@ const Text = ({ primary }) => {
   React.useEffect(() => {
     if (text.richText && text.richText.length) {
       text.richText.map((val) => {
-        if (val.type === 'heading2' || val.type === 'heading3') {
+        if (val.type === 'heading2') {
           let id = val.text.replace(/\W+/g, '-').toLowerCase();
           setId(id);
         }
