@@ -13,7 +13,6 @@ import { useBreakpoints } from '@hooks';
 import style from './TariffPlans.module.scss';
 import { RichText } from 'prismic-reactjs';
 import Swiper from 'react-id-swiper';
-// import { Autoplay, Swiper as RealSwiper } from 'swiper/js/swiper.esm';
 
 import Image from '@components/Image/Image';
 
@@ -48,8 +47,6 @@ const TariffPlans = ({
     },
   ];
 
-  // RealSwiper.use([Autoplay]);
-
   const { currencydropdownlabel } = primary;
 
   const [isAnnual, setIsAnnual] = useState(false);
@@ -67,7 +64,7 @@ const TariffPlans = ({
   const selectCurrency = (value) => setCurrency(value);
 
   const params = {
-    spaceBetween: 30,
+    spaceBetween: 0,
     centeredSlides: true,
     autoplay: {
       delay: 2500,
@@ -77,6 +74,7 @@ const TariffPlans = ({
     slidesPerView: 1,
     loop: true,
     autoHeight: true,
+    // containerClass: 'test1',
   };
   useEffect(() => {
     const mobile = width < MOBILE_VIEW;
@@ -125,11 +123,17 @@ const TariffPlans = ({
           })}
         >
           <Bar
+            itemsSlider={itemsSlider}
             fields={items}
             plans={selectedPlans}
             primary={primary}
             isAnnual={isAnnual}
             currency={currency}
+            togglePeriod={togglePeriod}
+            law={laws}
+            selectedPlansIndexes={selectedPlansIndexes}
+            selectPlan={selectPlan}
+            selectCurrency={selectCurrency}
           />
         </div>
         <div className={style.container}>
@@ -139,9 +143,7 @@ const TariffPlans = ({
               [style.bodymobile]: isMobile,
             })}
           >
-            <div
-              className={`${style.sidebar} ${isBarShowing && style.sidebarBar}`}
-            >
+            <div className={`${style.sidebar}`}>
               <div className={style.header}>
                 <div className={style.condition}>
                   <RichText
@@ -171,8 +173,9 @@ const TariffPlans = ({
                     <div className={style.slide}>
                       <div className={style.image}>
                         <Image
+                          className={'swiper-origin'}
                           image={itemsSlider[0].law_image}
-                          key={itemsSlider[0].law_image.url}
+                          key={itemsSlider[0].law_text.richText[0].text}
                         />
                       </div>
                       <RichText render={itemsSlider[0].law_text.richText} />
@@ -180,8 +183,9 @@ const TariffPlans = ({
                     <div className={style.slide}>
                       <div className={style.image}>
                         <Image
+                          className={'swiper-origin'}
                           image={itemsSlider[1].law_image}
-                          key={itemsSlider[1].law_image.url}
+                          key={itemsSlider[1].law_text.richText[0].text}
                         />
                       </div>
                       <RichText render={itemsSlider[1].law_text.richText} />
@@ -189,8 +193,9 @@ const TariffPlans = ({
                     <div className={style.slide}>
                       <div className={style.image}>
                         <Image
+                          className={'swiper-origin'}
                           image={itemsSlider[2].law_image}
-                          key={itemsSlider[2].law_image.url}
+                          key={itemsSlider[2].law_text.richText[0].text}
                         />
                       </div>
                       <RichText render={itemsSlider[2].law_text.richText} />
@@ -198,8 +203,9 @@ const TariffPlans = ({
                     <div className={style.slide}>
                       <div className={style.image}>
                         <Image
+                          className={'swiper-origin'}
                           image={itemsSlider[3].law_image}
-                          key={itemsSlider[3].law_image.url}
+                          key={itemsSlider[3].law_text.richText[0].text}
                         />
                       </div>
                       <RichText render={itemsSlider[3].law_text.richText} />
@@ -207,8 +213,9 @@ const TariffPlans = ({
                     <div className={style.slide}>
                       <div className={style.image}>
                         <Image
+                          className={'swiper-origin'}
                           image={itemsSlider[4].law_image}
-                          key={itemsSlider[4].law_image.url}
+                          key={itemsSlider[4].law_text.richText[0].text}
                         />
                       </div>
                       <RichText render={itemsSlider[4].law_text.richText} />
@@ -216,8 +223,9 @@ const TariffPlans = ({
                     <div className={style.slide}>
                       <div className={style.image}>
                         <Image
+                          className={'swiper-origin'}
                           image={itemsSlider[5].law_image}
-                          key={itemsSlider[5].law_image.url}
+                          key={itemsSlider[5].law_text.richText[0].text}
                         />
                       </div>
                       <RichText render={itemsSlider[5].law_text.richText} />

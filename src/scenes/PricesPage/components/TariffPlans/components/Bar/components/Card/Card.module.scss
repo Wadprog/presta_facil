@@ -41,6 +41,8 @@
   align-items: center;
   justify-content: center;
   height: 64px;
+  margin-bottom: 1.5rem;
+
 }
 
 .type {
@@ -130,11 +132,19 @@ hr{
 }
 
 .enterprise {
-  font-size: 24px;
+  font-family: 'Sofia Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
   line-height: 30px;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  margin: 20px 0 27px;
+  margin: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  margin-top: 1.1rem;
+
 }
 
 .footer {
