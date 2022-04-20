@@ -9,10 +9,17 @@
   background: #FFFFFF;
   box-shadow: 0px 16px 60px rgba(28, 86, 76, 0.2);
   border-radius: 20px;
-  flex-basis: 33%;
+  @media (min-width: $lg) {
+    flex-basis: 33%;
+    margin-right: 40px;
+
+  }
+  @media (max-width: $lg) {
+    flex-basis: 100%;
+    margin-bottom: 2rem;
+  }
   position: relative;
   color: $main-light;
-  margin-right: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,11 +44,18 @@
 }
 
 .enterprise {
-  font-size: 24px;
+  font-family: 'Sofia Pro';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 20px;
   line-height: 30px;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  margin: 60px 0 50px;
+  margin: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+
 }
 
 .colorized {
@@ -89,6 +103,7 @@
   align-items: center;
   justify-content: center;
   height: 64px;
+  margin-bottom: 1.5rem;
 
 }
 .title {
@@ -196,7 +211,7 @@
 }
 
 .checkItems{
-  margin: 1.5rem 0;
+  margin: 0.5rem 0 1.5rem 0;
 }
 .planBenefits{
   p{

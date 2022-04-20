@@ -2,7 +2,10 @@
 @import '@styles/mixins/all';
 
 .container {
-  width: 920px;
+  width: 100%;
+  @media (min-width: $lg) {
+    width: 920px;
+  }
   margin: 0 auto;
   z-index: 4;
 }
@@ -21,4 +24,5 @@
   border-radius: 20px;
   padding: 24px;
   padding-bottom: 75px;
+  flex-direction: column;
 }

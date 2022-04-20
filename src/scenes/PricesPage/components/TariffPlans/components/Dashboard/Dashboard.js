@@ -46,7 +46,7 @@ const Dashboard = ({
             currency={currency}
             isAnnual={isAnnual}
             annualcoefficient={primary.annualcoefficient}
-            isEnterprise={index === 3}
+            isEnterprise={index === 2}
             isMobile={isMobile}
             enterpriseCondition={primary.enterprisecondition.text}
             enterpriseButtonText={primary.enterprisebuttontext.text}

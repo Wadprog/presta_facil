@@ -11,7 +11,7 @@ const Image = ({ image, className }) => {
 
   const imageAltStub = ' ';
   const imageAlt = image.alt ? image.alt : imageAltStub;
-
+  const [loaded, setLoaded] = React.useState(false);
   if (image.hasOwnProperty('gatsbyImageData')) {
     return (
       <GatsbyImage
@@ -22,8 +22,19 @@ const Image = ({ image, className }) => {
       />
     );
   }
+  if (image && className === 'swiper-origin') {
+    return (
+      <img
+        style={loaded ? {} : { display: 'none' }}
+        src={image.url}
+        alt={imageAlt}
+        draggable="false"
+        onLoad={() => setLoaded(true)}
+      />
+    );
+  }
 
-  if (image && className) {
+  if (image && className && className !== 'swiper-origin') {
     return (
       <img
         className={`${className} lozad`}
@@ -37,13 +48,14 @@ const Image = ({ image, className }) => {
   if (image && !className) {
     return (
       <img
-        className="lozad"
+        className={`lozad`}
         data-src={image.url}
         alt={imageAlt}
         draggable="false"
       />
     );
   }
+
   return null;
 };
 
