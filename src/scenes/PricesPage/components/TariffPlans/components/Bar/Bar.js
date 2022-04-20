@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import PeriodSwitcher from '../PeriodSwitcher/PeriodSwitcher';
+// import PeriodSwitcher from '../PeriodSwitcher/PeriodSwitcher';
 import Card from './components/Card';
 import style from './Bar.module.scss';
 
 const Bar = ({ plans, fields, primary, isAnnual, currency }) => {
   return (
     <div className={style.wrapper}>
-      <div className={style.container}>
+      {/* <div className={style.container}>
         <div>
           <div className={style.switcher}>
             <PeriodSwitcher isAnnual={isAnnual} primary={primary} />
           </div>
         </div>
-      </div>
+      </div> */}
       <div className={style.block}>
         {fields.map((field, index) => (
           <div className={style.card} key={index}>
@@ -37,6 +37,7 @@ const Bar = ({ plans, fields, primary, isAnnual, currency }) => {
               enterpriseCondition={primary.enterprisecondition.text}
               enterpriseButtonText={primary.enterprisebuttontext.text}
               enterpriseButtonLink={primary.enterprisebuttonlink.url}
+              primary={primary}
             />
           </div>
         ))}

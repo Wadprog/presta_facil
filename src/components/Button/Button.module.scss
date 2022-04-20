@@ -38,7 +38,11 @@
 
 .gradient {
   z-index: 2;
-  display: flex;
+  display: inline;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 16px;
+
   line-height: 46px;
   border: 1px solid rgba(#24B04B, $alpha: 0.3);
   transition: 0.3s;
@@ -128,7 +132,7 @@
   height: 48px;
   @media (max-width: 767px) {
     font-size: 12px;
-    padding: 0 16px 0;
+    padding: 16px;
   }
 }
 

@@ -3,7 +3,7 @@
 
 .container {
   box-shadow: 0px 40px 100px rgba(28, 86, 76, 0.3);
-  border-radius: 12px 30px;
+  border-radius: 20px;
   padding: 16px;
 
   background: #ffffff;
@@ -12,7 +12,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  height: 300px;
+  justify-content: space-around;
   &.colorized {
     background: $green-gradient;
     color: #ffffff;
@@ -29,9 +30,22 @@
   }
 }
 
+.wrapperPrice{
+  margin-top: 1.1rem;
+
+  background-color: rgba(208, 218, 235, 0.5);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+}
+
 .type {
   font-weight: 600;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1.25;
   letter-spacing: 0.03em;
 
@@ -45,8 +59,11 @@
 .main {
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
-
+.title{
+  width: 100%;
+}
 .name {
   font-weight: 300;
   height: 34px;
@@ -61,33 +78,34 @@
   }
 }
 
+hr{
+  background-color: rgba(208, 218, 235, 1);
+  height: 1px;
+  border: none;
+  width: 100%;
+}
+
 .cost {
   position: relative;
 
-  margin: 16px 0 16px 24px;
+  display: flex;
+  align-items: center;
 
   font-family: $font-gramatika;
   font-weight: 600;
-  font-size: 36px;
+  font-size: 20px;
   line-height: 1.25;
   letter-spacing: 0.03em;
 
   &:before {
-    position: absolute;
-    top: 50%;
-    right: 100%;
-    transform: translateY(-50%);
-
     display: block;
-    margin-top: 2px;
     margin-right: 2px;
 
     font-weight: 500;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.25;
     letter-spacing: 0.03em;
   }
-
   &.USD {
     &:before {
       content: '$';
@@ -98,6 +116,16 @@
     &:before {
       content: '€';
     }
+  }
+}
+
+.condition {
+  p{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.25;
+    letter-spacing: 0.03em;
+    color: $main-dark;
   }
 }
 
@@ -114,15 +142,17 @@
 }
 
 .button {
+  margin-top: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid rgba($main-light, 0.3);
+  // border: 1px solid rgba($main-light, 0.3);
   border-radius: 5px 20px;
   height: 48px;
 
-  background: #ffffff;
-  color: $main-light;
+  background: $green-gradient;
+  color: white;
+
   font-weight: bold;
   font-size: 16px;
   letter-spacing: 0.1em;
@@ -133,7 +163,8 @@
   @media (min-width: $lg) {
     &:hover {
       color: $green;
-      border-color: $green;
+      background-color: white;
+      border: 1px solid $green;
     }
   }
 }
