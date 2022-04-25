@@ -26,6 +26,10 @@ const Header = ({ data, hideMenu, metatitle, type }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleCloseModal = () => setModalIsOpen(false);
   const menuItemsData = data.filter((item) => item.slice_type === 'menu');
+  const menuSingleData = data.filter(
+    (item) => item.slice_type === 'menu_single'
+  );
+
   const { location } = history;
 
   const handleClick = (e) => {
@@ -90,7 +94,11 @@ const Header = ({ data, hideMenu, metatitle, type }) => {
                 </IconButton>
               </div>
               <Logo img={primary.logo} />
-              <Menu data={menuItemsData} open={isOpenMenu} />
+              <Menu
+                data={menuItemsData}
+                menuSingleData={menuSingleData[0]}
+                open={isOpenMenu}
+              />
               <SingInButton
                 onClick={() =>
                   window && window.open(parseUrl(primary.signinlink), '_self')
