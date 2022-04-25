@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Waypoint } from 'react-waypoint';
 import classnames from 'classnames';
@@ -13,6 +13,7 @@ import { useBreakpoints } from '@hooks';
 import style from './TariffPlans.module.scss';
 import { RichText } from 'prismic-reactjs';
 import Swiper from 'react-id-swiper';
+import LangContext from '@contexts';
 
 import Image from '@components/Image/Image';
 
@@ -32,6 +33,8 @@ const TariffPlans = ({
   setActive,
   sliderPlans,
 }) => {
+  const currentLang = useContext(LangContext);
+
   const laws = [
     {
       title: primary.firstlawtitle.text,
@@ -55,7 +58,13 @@ const TariffPlans = ({
     primary.firstlawtitle.text,
   ]);
   const scrollDirection = useScrollDirection();
-  const [currency, setCurrency] = useState('USD');
+  const [currency, setCurrency] = useState(
+    currentLang.toLowerCase().includes('fr') ||
+      currentLang.toLowerCase().includes('de') ||
+      currentLang.toLowerCase().includes('pt')
+      ? 'EUR'
+      : 'USD'
+  );
   const [isStatusBarVisible, setIsStatusBarVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { width } = useBreakpoints();

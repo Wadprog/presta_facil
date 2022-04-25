@@ -74,7 +74,25 @@
                 }
               }
             },
-            "repeat": {}
+            "repeat": {
+              "single_field": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "single_field",
+                  "placeholder": "single field with no childs"
+                }
+              },
+              "single_field_link": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "single field link",
+                  "placeholder": "single field link",
+                  "select": null
+                }
+              }
+            }
           },
           "plans": {
             "type": "Slice",
@@ -156,10 +174,7 @@
       "type": "Slices",
       "fieldset": "Slice zone",
       "config": {
-        "labels": {
-          "header": [],
-          "menu": []
-        },
+        "labels": null,
         "choices": {
           "header": {
             "type": "Slice",
@@ -251,6 +266,32 @@
                   "allowTargetBlank": true,
                   "label": "externallink",
                   "select": null
+                }
+              }
+            }
+          },
+          "menu_single": {
+            "type": "Slice",
+            "fieldset": "menu single",
+            "description": "menu single without children",
+            "icon": "link",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {
+              "menu_single_title": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "menu single title",
+                  "placeholder": "menu single title"
+                }
+              },
+              "menu_single_link": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "menu single link",
+                  "placeholder": "menu single link"
                 }
               }
             }

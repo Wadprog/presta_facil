@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Waypoint } from 'react-waypoint';
 import classnames from 'classnames';
@@ -11,6 +11,7 @@ import PeriodSwitcher from './components/PeriodSwitcher';
 import PlanSwitcher from './components/PlanSwitcher';
 import { useBreakpoints } from '@hooks';
 import style from './TariffPlans.module.scss';
+import LangContext from '@contexts';
 
 const MOBILE_VIEW = 1220;
 const CARDS_LIST_WIDTH = 920;
@@ -26,6 +27,8 @@ const TariffPlans = ({
   setActiveOnClick,
   setActive,
 }) => {
+  const currentLang = useContext(LangContext);
+
   const laws = [
     {
       title: primary.firstlawtitle.text,
@@ -49,7 +52,13 @@ const TariffPlans = ({
     primary.firstlawtitle.text,
   ]);
   const scrollDirection = useScrollDirection();
-  const [currency, setCurrency] = useState('USD');
+  const [currency, setCurrency] = useState(
+    currentLang.toLowerCase().includes('fr') ||
+      currentLang.toLowerCase().includes('de') ||
+      currentLang.toLowerCase().includes('pt')
+      ? 'EUR'
+      : 'USD'
+  );
   const [isStatusBarVisible, setIsStatusBarVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { width } = useBreakpoints();

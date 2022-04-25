@@ -129,6 +129,18 @@ const LayoutWithData = (props) => {
                         }
                       }
                     }
+                    ... on PrismicLayoutDataBodyMenuSingle {
+                      id
+                      slice_type
+                      items {
+                        menu_single_title {
+                          richText
+                        }
+                        menu_single_link {
+                          url
+                        }
+                      }
+                    }
                     ... on PrismicLayoutDataBodyMenu {
                       id
                       slice_type
