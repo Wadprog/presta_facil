@@ -37,8 +37,8 @@ const ModalBookCall = ({ open, closeModal, calendlyLink }) => {
         <iframe
           src={
             calendlyLink
-              ? calendlyLink
-              : 'https://calendly.com/secure-privacy/45min'
+              ? `${calendlyLink}?hide_gdpr_banner=1`
+              : 'https://calendly.com/secure-privacy/45min?hide_gdpr_banner=1'
           }
           width="100%"
           height="100%"
