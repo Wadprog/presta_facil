@@ -38,6 +38,8 @@ const Form = ({ content }) => {
     email,
     question,
     question2,
+    wrong_email,
+    required_field,
   } = content;
   const { text: successInformerText } = successinformer;
   const [formState, setFormState] = useState(initialState);
@@ -124,7 +126,7 @@ const Form = ({ content }) => {
           <Input
             id="company"
             placeholder={company.text}
-            errorMessage="Required field"
+            errorMessage={required_field.text}
             name="company"
             valid={!formErrors.includes('company')}
             value={formState.company}
@@ -133,7 +135,7 @@ const Form = ({ content }) => {
           <Input
             id="email"
             placeholder={email.text}
-            errorMessage="Wrong or non-business email"
+            errorMessage={wrong_email.text}
             name="email"
             valid={!formErrors.includes('email')}
             value={formState.email}

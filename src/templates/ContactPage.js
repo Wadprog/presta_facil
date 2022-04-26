@@ -74,6 +74,12 @@ export const query = graphql`
             metadescription {
               text
             }
+            wrong_email {
+              text
+            }
+            required_field {
+              text
+            }
             email {
               text
             }

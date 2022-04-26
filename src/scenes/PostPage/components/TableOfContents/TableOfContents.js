@@ -17,7 +17,7 @@ const htmlSerializer = (type, element, key, children) => {
         to={id}
         spy={true}
         smooth={true}
-        offset={scrollDir === 'up' ? -200 : -110}
+        offset={scrollDir === 'up' ? -170 : -210}
       >
         {children}
       </Link>

@@ -13,7 +13,7 @@ const Works = ({ primary, items }) => {
   const categoryList = categories.text.split(/\s*,\s*/);
   const defaultCategory = categoryList[0];
   const [category, setCategory] = useState(defaultCategory);
-  const [sorterWorks, setSorterWorks] = useState(items);
+  const [sorterWorks, setSorterWorks] = useState([]);
 
   useEffect(() => {
     setSorterWorks(

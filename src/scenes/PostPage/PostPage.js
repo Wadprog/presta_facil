@@ -58,7 +58,6 @@ const PostPage = ({ current, tags, currentLanguage }) => {
   const currentLang = useContext(LangContext);
 
   React.useEffect(() => {
-    console.log(categories[0].table_of_content_title);
     categories[0].is_pilar_page_ && setIsPilarPage(true);
   }, [categories]);
 

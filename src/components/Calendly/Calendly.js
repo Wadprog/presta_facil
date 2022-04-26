@@ -28,7 +28,7 @@ const Calendly = ({ primary }) => {
       </div>
       <div className={styles.calendar}>
         <iframe
-          data-src="https://calendly.com/secure-privacy/45min"
+          data-src="https://calendly.com/secure-privacy/45min?hide_gdpr_banner=1"
           sp-consent="Calendly"
           width="100%"
           height="100%"
