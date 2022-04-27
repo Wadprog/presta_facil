@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { object } from 'prop-types';
 import style from './LanguageSwitcher.module.scss';
 import { navigate } from 'gatsby';
@@ -31,6 +31,7 @@ const LanguageSwitcher = ({ activeDocMeta }) => {
     ? activeDocMeta.lang.slice(0, 2)
     : defaultLanguage.slice(0, 2);
   const [isOpen, setIsOpen] = useState(false);
+
   const alternateLanguages = activeDocMeta
     ? activeDocMeta.alternate_languages
     : null;
@@ -45,8 +46,40 @@ const LanguageSwitcher = ({ activeDocMeta }) => {
   };
 
   const handleLangChange = (link) => {
+    window.localStorage.setItem('desired-language', 'no-redirect');
     navigate(link);
   };
+
+  const getRedirectLanguage = () => {
+    window.localStorage.setItem('desired-language', 'redirect');
+    if (typeof navigator === `undefined`) {
+      return 'en-GB';
+    }
+    const lang =
+      navigator && navigator.language && navigator.language.split('-')[0];
+    if (!lang) return 'en-GB';
+    switch (lang) {
+      case 'de':
+        return 'de-de';
+      case 'fr':
+        return 'fr-fr';
+      case 'pt':
+        return 'pt-br';
+      default:
+        return 'en-gb';
+    }
+  };
+
+  useEffect(() => {
+    if (window.localStorage.getItem('desired-language') !== 'no-redirect') {
+      const urlLang = getRedirectLanguage();
+      const lang = activeDocMeta;
+      lang.lang = urlLang;
+      const rawUrl = linkResolver(lang);
+      const destinationUrl = rawUrl.startsWith('//') ? rawUrl.slice(1) : rawUrl;
+      navigate(destinationUrl, { replace: true });
+    }
+  }, []);
 
   return (
     <div className={style.container}>
