@@ -71,7 +71,10 @@ const LanguageSwitcher = ({ activeDocMeta }) => {
   };
 
   useEffect(() => {
-    if (window.localStorage.getItem('desired-language') !== 'no-redirect') {
+    if (
+      window.localStorage.getItem('desired-language') !== 'no-redirect' &&
+      activeDocMeta
+    ) {
       const urlLang = getRedirectLanguage();
       const lang = activeDocMeta;
       lang.lang = urlLang;
