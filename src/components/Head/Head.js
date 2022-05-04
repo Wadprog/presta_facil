@@ -64,57 +64,59 @@ const Head = ({
   }, []);
 
   useEffect(() => {
-    const allHrefLangs = activeDocMeta.alternate_languages.map((val) => {
-      const completePath = url + location.pathname;
-      var myRegexp = /^(.*\/)/g;
-      var match = myRegexp.exec(completePath);
+    const allHrefLangs =
+      activeDocMeta &&
+      activeDocMeta.alternate_languages.map((val) => {
+        const completePath = url + location.pathname;
+        var myRegexp = /^(.*\/)/g;
+        var match = myRegexp.exec(completePath);
 
-      const completPaths =
-        val.type === 'homepage'
-          ? completePath
-          : match[1] + (val.uid ? val.uid : '');
-      if (val.lang.substring(0, 2) == 'en') {
-        return {
-          completePath: completPaths
-            .replace('/de/', '')
-            .replace('/pt/', '')
-            .replace('/fr/', '')
-            .replace('.ai//', '.ai/'),
-          lang: val.lang.substring(0, 2),
-        };
-      }
-      if (val.lang.substring(0, 2) == 'pt') {
-        return {
-          completePath: completPaths
-            .replace('.ai//', '.ai/pt/')
-            .replace('/de/', 'pt/')
-            .replace('/fr/', 'pt/')
-            .replace('ptpt', 'pt'),
-          lang: val.lang.substring(0, 2),
-        };
-      }
-      if (val.lang.substring(0, 2) == 'de') {
-        return {
-          completePath: completPaths
-            .replace('.ai//', '.ai/de/')
-            .replace('/pt/', 'de/')
-            .replace('/fr/', 'de/')
-            .replace('dede', 'de'),
-          lang: val.lang.substring(0, 2),
-        };
-      }
+        const completPaths =
+          val.type === 'homepage'
+            ? completePath
+            : match[1] + (val.uid ? val.uid : '');
+        if (val.lang.substring(0, 2) == 'en') {
+          return {
+            completePath: completPaths
+              .replace('/de/', '')
+              .replace('/pt/', '')
+              .replace('/fr/', '')
+              .replace('.ai//', '.ai/'),
+            lang: val.lang.substring(0, 2),
+          };
+        }
+        if (val.lang.substring(0, 2) == 'pt') {
+          return {
+            completePath: completPaths
+              .replace('.ai//', '.ai/pt/')
+              .replace('/de/', 'pt/')
+              .replace('/fr/', 'pt/')
+              .replace('ptpt', 'pt'),
+            lang: val.lang.substring(0, 2),
+          };
+        }
+        if (val.lang.substring(0, 2) == 'de') {
+          return {
+            completePath: completPaths
+              .replace('.ai//', '.ai/de/')
+              .replace('/pt/', 'de/')
+              .replace('/fr/', 'de/')
+              .replace('dede', 'de'),
+            lang: val.lang.substring(0, 2),
+          };
+        }
 
-      if (val.lang.substring(0, 2) == 'fr') {
-        return {
-          completePath: completPaths
-            .replace('.ai//', '.ai/fr/')
-            .replace('/pt/', 'fr/')
-            .replace('/de/', 'fr/')
-            .replace('frfr', 'fr'),
-          lang: val.lang.substring(0, 2),
-        };
-      }
-    });
+        if (val.lang.substring(0, 2) == 'fr') {
+          return {
+            completePath: completPaths
+              .replace('.ai//', '.ai/fr/')
+              .replace('/pt/', 'fr/')
+              .replace('/de/', 'fr/')
+              .replace('frfr', 'fr'),
+            lang: val.lang.substring(0, 2),
+          };
+        }
+      });
 
     const completePath = url + location.pathname;
     const defaulLang = {
@@ -140,17 +142,25 @@ const Head = ({
         .replace('.ai//', '.ai/'),
       lang: currentLang.substring(0, 2),
     };
+    let defaultLang;
+    if (allHrefLangs) {
+      defaultLang = [...allHrefLangs, defaulLang].filter(
+        (val) => val && val.lang == 'en'
+      );
+    }
+    if (!allHrefLangs) {
+      defaultLang = defaulLang;
+    }
 
-    let defaultLang = [...allHrefLangs, defaulLang].filter(
-      (val) => val && val.lang == 'en'
-    );
-
-    const hrefLangComplete = [...allHrefLangs, defaulLang];
+    const hrefLangComplete = allHrefLangs
+      ? [...allHrefLangs, defaulLang]
+      : [defaulLang];
 
     setDefaultHrefLangs(defaultLang);
 
     setHrefLangs(hrefLangComplete);
-  }, []);
+  }, [activeDocMeta]);
+
   return (
     <Helmet>
       {/* Encoding and styles */}
