@@ -43,7 +43,6 @@ const Hero = ({ primary, items }) => {
       },
     },
   };
-
   return (
     <div className={styles.hero}>
       <div className={styles.container}>
@@ -52,7 +51,10 @@ const Hero = ({ primary, items }) => {
             <RichText render={title.richText} />
           </div>
           <div className={styles.descr}>{description.text}</div>
-          {secondbuttonlink && secondbuttontext ? (
+          {secondbuttonlink &&
+          secondbuttonlink.text &&
+          secondbuttontext &&
+          secondbuttontext.text ? (
             <div className={styles.buttons}>
               <div className={styles.buttonWrapper}>
                 <Button variant={VARIANT.PRIMARY} to={buttonlink.text}>
