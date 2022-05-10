@@ -11,10 +11,14 @@ const Plans = ({ primary, items }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleCloseModal = () => setModalIsOpen(false);
   const firstCardData = items[0];
+  const secondCardData = items[1];
+  const secondbuttonUrl = parseUrl(secondCardData.buttonlink);
+
   const buttonUrl = parseUrl(firstCardData.buttonlink);
   const { title } = primary;
 
   const handleClick = (e, type) => {
+    console.log(items);
     if (type === 'enterprise') {
       e.preventDefault();
       setModalIsOpen(!modalIsOpen);
@@ -39,7 +43,11 @@ const Plans = ({ primary, items }) => {
           );
         })}
       </div>
-      <ModalBookCall open={modalIsOpen} closeModal={handleCloseModal} />
+      <ModalBookCall
+        open={modalIsOpen}
+        closeModal={handleCloseModal}
+        calendlyLink={secondbuttonUrl}
+      />
     </div>
   );
 };

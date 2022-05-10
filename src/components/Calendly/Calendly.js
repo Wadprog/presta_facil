@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { object } from 'prop-types';
+import { object, string } from 'prop-types';
 import lozad from 'lozad';
 
 import styles from './Calendly.module.scss';
 
-const Calendly = ({ primary }) => {
+const Calendly = ({ primary, calendlyLink }) => {
   const { title } = primary;
 
   const titleText =
@@ -28,7 +28,11 @@ const Calendly = ({ primary }) => {
       </div>
       <div className={styles.calendar}>
         <iframe
-          data-src="https://calendly.com/secure-privacy/45min?hide_gdpr_banner=1"
+          data-src={
+            calendlyLink
+              ? `${calendlyLink}?hide_gdpr_banner=1`
+              : 'https://calendly.com/secure-privacy/45min?hide_gdpr_banner=1'
+          }
           sp-consent="Calendly"
           width="100%"
           height="100%"
@@ -42,6 +46,7 @@ const Calendly = ({ primary }) => {
 
 Calendly.propTypes = {
   primary: object,
+  calendlyLink: string,
 };
 
 export default Calendly;

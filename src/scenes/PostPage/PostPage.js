@@ -92,7 +92,6 @@ const PostPage = ({ current, tags, currentLanguage }) => {
                     ? categories[0].table_of_content_title.richText[0].text
                     : 'Table of Contents'}
                 </h6>
-                <span className={style.toTop__Arrow}></span>
               </a>
               <div className={style.line}> </div>
             </div>
@@ -108,15 +107,6 @@ const PostPage = ({ current, tags, currentLanguage }) => {
                     );
                 }
               })}
-            </div>
-            <div className={style.toBottomContainer}>
-              <a href={`#call-to-action`} className={style.toTop}>
-                <div className={`${style.line} ${style.bottom}`}> </div>
-                <div className={style.toBottom}>
-                  <a className={style.end}> {`To the end`} </a>
-                  <span className={style.toBottom__Arrow}>{''}</span>
-                </div>
-              </a>
             </div>
           </div>
         </div>
