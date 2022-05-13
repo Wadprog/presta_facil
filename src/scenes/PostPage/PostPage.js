@@ -178,15 +178,7 @@ const PostPage = ({ current, tags, currentLanguage }) => {
                             )}
                             {val.twitter_post.length < 30 && (
                               <div className={style.innerTweet} key={index}>
-                                <TwitterTweetEmbed
-                                  tweetId={val.twitter_post}
-                                  onLoad={(tweetWidgetEl) => {
-                                    const tweetEl = tweetWidgetEl.shadowRoot.querySelector(
-                                      '.EmbeddedTweet'
-                                    );
-                                    tweetEl.style.border = '5px solid red';
-                                  }}
-                                />
+                                <TwitterTweetEmbed tweetId={val.twitter_post} />
                               </div>
                             )}
                           </>
