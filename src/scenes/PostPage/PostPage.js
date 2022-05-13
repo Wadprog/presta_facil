@@ -73,6 +73,11 @@ const PostPage = ({ current, tags, currentLanguage }) => {
 
   const inViewport = useOnScreen(ref); // Trigger if 200px is visible from the element
   const inViewportTitleTop = useOnScreen(refTitle); // Trigger if 200px is visible from the element
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://platform.twitter.com/widgets.js';
+    document.getElementsByClassName('twitter-tweet')[0].appendChild(script);
+  }, []);
 
   return (
     <div className={headerStyles}>
@@ -160,9 +165,23 @@ const PostPage = ({ current, tags, currentLanguage }) => {
                       section.items.length &&
                       section.items.map((val, index) => {
                         return (
-                          <div className={style.innerTweet} key={index}>
-                            <TwitterTweetEmbed tweetId={val.twitter_post} />
-                          </div>
+                          <>
+                            {val.twitter_post.length > 30 && (
+                              <div
+                                key={index}
+                                dangerouslySetInnerHTML={{
+                                  __html: `
+                                      ${val.twitter_post}
+                                  `,
+                                }}
+                              ></div>
+                            )}
+                            {val.twitter_post.length < 30 && (
+                              <div className={style.innerTweet} key={index}>
+                                <TwitterTweetEmbed tweetId={val.twitter_post} />
+                              </div>
+                            )}
+                          </>
                         );
                       })}
                   </div>
