@@ -23,15 +23,13 @@ const SolutionPage = ({
   metatitle,
   lang: pageLang,
 }) => {
-  const mainSectionLang = mainSection[0].node.data.language.text;
-  const agenciesSection =
-    pageLang === mainSectionLang
-      ? mainSection[0].node.data.body2[0]
-      : mainSection[1].node.data.body2[0];
-  const plansSection =
-    pageLang === mainSectionLang
-      ? mainSection[0].node.data.body2[1]
-      : mainSection[1].node.data.body2[1];
+  const mainSectionLang = mainSection.filter(
+    ({ node }) => node.data.language.text === pageLang
+  );
+
+  const agenciesSection = mainSectionLang[0].node.data.body2[0];
+  const plansSection = mainSectionLang[0].node.data.body2[1];
+
   const hospitalityPageUid = 'hospitality';
   const questions = body.filter((item) => item.slice_type === 'questions');
   const contentQuestions = body.filter((item) => item.slice_type === 'content');

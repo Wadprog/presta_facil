@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { object } from 'prop-types';
 import style from './LanguageSwitcher.module.scss';
-import { navigate } from 'gatsby';
+// import { navigate } from 'gatsby';
 import linkResolver from '../../../prismic/utils/linkResolver';
 import { defaultLanguage } from '@/prismic-config';
 import Arrow from './image/arrow.inline.svg';
 import classnames from 'classnames';
+import { Link } from 'gatsby';
 
 const LANGUAGE = {
   EN: {
@@ -45,44 +46,46 @@ const LanguageSwitcher = ({ activeDocMeta }) => {
     return shortName;
   };
 
-  const handleLangChange = (link) => {
-    window.localStorage.setItem('desired-language', 'no-redirect');
-    navigate(link);
-  };
+  // const handleLangChange = (link) => {
+  //   // window.localStorage.setItem('desired-language', 'no-redirect');
+  //   navigate(link);
+  // };
 
-  const getRedirectLanguage = () => {
-    window.localStorage.setItem('desired-language', 'redirect');
-    if (typeof navigator === `undefined`) {
-      return 'en-GB';
-    }
-    const lang =
-      navigator && navigator.language && navigator.language.split('-')[0];
-    if (!lang) return 'en-GB';
-    switch (lang) {
-      case 'de':
-        return 'de-de';
-      case 'fr':
-        return 'fr-fr';
-      case 'pt':
-        return 'pt-br';
-      default:
-        return 'en-gb';
-    }
-  };
+  // REDIRECT BEING DISABLE BECAUSE OF SEO AND 404 ISSUES.
 
-  useEffect(() => {
-    if (
-      window.localStorage.getItem('desired-language') !== 'no-redirect' &&
-      activeDocMeta
-    ) {
-      const urlLang = getRedirectLanguage();
-      const lang = activeDocMeta;
-      lang.lang = urlLang;
-      const rawUrl = linkResolver(lang);
-      const destinationUrl = rawUrl.startsWith('//') ? rawUrl.slice(1) : rawUrl;
-      navigate(destinationUrl, { replace: true });
-    }
-  }, []);
+  // const getRedirectLanguage = () => {
+  //   window.localStorage.setItem('desired-language', 'redirect');
+  //   if (typeof navigator === `undefined`) {
+  //     return 'en-GB';
+  //   }
+  //   const lang =
+  //     navigator && navigator.language && navigator.language.split('-')[0];
+  //   if (!lang) return 'en-GB';
+  //   switch (lang) {
+  //     case 'de':
+  //       return 'de-de';
+  //     case 'fr':
+  //       return 'fr-fr';
+  //     case 'pt':
+  //       return 'pt-br';
+  //     default:
+  //       return 'en-gb';
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (
+  //     window.localStorage.getItem('desired-language') !== 'no-redirect' &&
+  //     activeDocMeta
+  //   ) {
+  //     const urlLang = getRedirectLanguage();
+  //     const lang = activeDocMeta;
+  //     lang.lang = urlLang;
+  //     const rawUrl = linkResolver(lang);
+  //     const destinationUrl = rawUrl.startsWith('//') ? rawUrl.slice(1) : rawUrl;
+  //     navigate(destinationUrl, { replace: true });
+  //   }
+  // }, []);
 
   return (
     <div className={style.container}>
@@ -115,13 +118,13 @@ const LanguageSwitcher = ({ activeDocMeta }) => {
               : rawUrl;
 
             return (
-              <li
+              <Link
                 className={style.dropdownItem}
-                onClick={() => handleLangChange(destinationUrl)}
+                to={destinationUrl}
                 key={`alt-lang-${index}`}
               >
                 {convertToFullName(altLangShort, LANGUAGE)}
-              </li>
+              </Link>
             );
           })}
       </ul>

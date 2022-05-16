@@ -173,7 +173,7 @@
   opacity: 0.75;
   transition: opacity 0.3s;
   margin-bottom: 16px;
-
+  text-transform: capitalize;
   @media (max-width: $lg) {
     font-size: 14px;
     width: calc(50% - 6px);
