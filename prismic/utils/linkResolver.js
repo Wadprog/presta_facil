@@ -100,8 +100,8 @@ const linkResolver = (doc) => {
 
   if (properties.type === 'singlebookpage' && properties.uid) {
     return properties.lang === defaultLanguage
-      ? `${properties.uid}`
-      : `/${properties.lang.slice(0, 2)}${properties.uid}`;
+      ? `/${properties.uid}`
+      : `/${properties.lang.slice(0, 2)}/${properties.uid}`;
   }
 
   if (properties.type === 'privacypolicy') {
