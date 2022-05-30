@@ -76,7 +76,13 @@ const PostPage = ({ current, tags, currentLanguage }) => {
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://platform.twitter.com/widgets.js';
-    document.getElementsByClassName('twitter-tweet')[0].appendChild(script);
+    const noElementHasTypeTweetClass = !document.getElementsByClassName(
+      'twitter-tweet'
+    ).length;
+
+    if (!noElementHasTypeTweetClass) {
+      document.getElementsByClassName('twitter-tweet')[0].appendChild(script);
+    }
   }, []);
 
   return (
