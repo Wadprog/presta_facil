@@ -73,7 +73,7 @@ const Hero = ({ primary, items, videoask }) => {
                     <div className={styles.slide} key={trustedlogo.url}>
                       <Image
                         image={trustedlogo}
-                        className={styles.companyLogo}
+                        className={`${styles.companyLogo} swiper-origin`}
                       />
                     </div>
                   );
