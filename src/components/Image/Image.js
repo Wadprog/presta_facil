@@ -22,9 +22,10 @@ const Image = ({ image, className }) => {
       />
     );
   }
-  if (image && className === 'swiper-origin') {
+  if (image && className && className.includes('swiper-origin')) {
     return (
       <img
+        className={`${className}`}
         style={loaded ? {} : { display: 'none' }}
         src={image.url}
         alt={imageAlt}
@@ -34,7 +35,7 @@ const Image = ({ image, className }) => {
     );
   }
 
-  if (image && className && className !== 'swiper-origin') {
+  if (image && className && !className.includes('swiper-origin')) {
     return (
       <img
         className={`${className} lozad`}
