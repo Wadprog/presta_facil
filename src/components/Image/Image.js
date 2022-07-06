@@ -11,7 +11,6 @@ const Image = ({ image, className }) => {
 
   const imageAltStub = ' ';
   const imageAlt = image.alt ? image.alt : imageAltStub;
-  const [loaded, setLoaded] = React.useState(false);
   if (image.hasOwnProperty('gatsbyImageData')) {
     return (
       <GatsbyImage
@@ -26,11 +25,9 @@ const Image = ({ image, className }) => {
     return (
       <img
         className={`${className}`}
-        style={loaded ? {} : { display: 'none' }}
         src={image.url}
         alt={imageAlt}
         draggable="false"
-        onLoad={() => setLoaded(true)}
       />
     );
   }
