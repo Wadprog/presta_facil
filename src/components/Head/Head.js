@@ -214,6 +214,7 @@ const Head = ({
       <meta content={`${url}images/meta/tile.png`} property="og:image" />
       <meta content={opengraphUrl} property="og:url" />
       <meta property="og:locale" content="en_US" />
+
       {typeof window !== 'undefined' && (
         <script
           async
