@@ -165,7 +165,6 @@ const Head = ({
     <Helmet>
       {/* Encoding and styles */}
       <html lang={currentLang.substring(0, 2)} />
-
       <link
         rel="alternate"
         hrefLang="x-default"
@@ -216,6 +215,15 @@ const Head = ({
       <meta content={opengraphUrl} property="og:url" />
       <meta property="og:locale" content="en_US" />
 
+      {typeof window !== 'undefined' && (
+        <script
+          async
+          defer
+          id="customfitinit"
+          type="text/javascript"
+          src="https://sdk.customfit.ai/4a59af50-feb5-11ec-8fd0-1773d79a51b6/cf-js-sdk-min.js"
+        ></script>
+      )}
       {/* Specified tags */}
       {children}
     </Helmet>
