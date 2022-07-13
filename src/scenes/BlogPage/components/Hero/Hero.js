@@ -47,7 +47,7 @@ const Hero = ({ title, articles, isCategory, categoryTitle }) => {
               <li
                 className={`${style.tag} ${
                   isCategory &&
-                  isCategory.uid.replace('-', ' ').toLowerCase() ===
+                  isCategory.uid.replaceAll('-', ' ').toLowerCase() ===
                     item.toLowerCase() &&
                   style.active
                 }`}

@@ -41,7 +41,7 @@ const Articles = ({
       Object.keys(isCategory) &&
       isCategory.type === 'category'
     ) {
-      setSelectedTag([`${isCategory.uid.replace('-', ' ').toLowerCase()}`]);
+      setSelectedTag([`${isCategory.uid.replaceAll('-', ' ').toLowerCase()}`]);
     }
     const filteredList = articlesList.filter(({ node }) => {
       const { data: postData, tags } = node;
