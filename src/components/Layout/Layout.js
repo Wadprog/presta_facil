@@ -155,6 +155,25 @@ const LayoutWithData = (props) => {
                         }
                       }
                     }
+                    ... on PrismicLayoutDataBodyPublicScannerCta {
+                      id
+                      slice_type
+                      primary {
+                        activate_public_scanner_cta
+                        scan_website_button {
+                          text
+                        }
+                        public_scanner_cta_title {
+                          text
+                        }
+                        input_field_website {
+                          text
+                        }
+                        wrong_url_message {
+                          text
+                        }
+                      }
+                    }
                   }
                   body1 {
                     ... on PrismicLayoutDataBody1Badges {

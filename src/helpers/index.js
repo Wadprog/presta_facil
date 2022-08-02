@@ -6,6 +6,7 @@ import {
   dateToString,
   langPath,
   isExternalUrl,
+  validateUrl,
 } from './utils';
 
 export {
@@ -16,4 +17,5 @@ export {
   dateToString,
   langPath,
   isExternalUrl,
+  validateUrl,
 };
