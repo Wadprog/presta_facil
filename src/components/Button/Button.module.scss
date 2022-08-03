@@ -102,6 +102,7 @@
   transition: box-shadow 0.3s;
   &:hover {
     box-shadow: 0 0 0 1px rgba(#fff, 1);
+    color: rgba(255, 255, 255,0.8);
   }
   &:active {
     background: $dark-gradient, $green-gradient;

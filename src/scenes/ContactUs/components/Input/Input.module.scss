@@ -4,7 +4,8 @@
 .container {
   position: relative;
   width: 100%;
-
+  align-items: stretch;
+  display: flex;
   & + .container {
     margin-left: 18px;
     @media (max-width: $sm) {

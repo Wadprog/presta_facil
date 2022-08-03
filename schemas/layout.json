@@ -291,10 +291,64 @@
                 "config": {
                   "allowTargetBlank": true,
                   "label": "menu single link",
-                  "placeholder": "menu single link"
+                  "placeholder": "menu single link",
+                  "select": null
                 }
               }
             }
+          },
+          "public_scanner_cta": {
+            "type": "Slice",
+            "fieldset": "Public Scanner CTA",
+            "description": "Public Scanner CTA",
+            "icon": "local_parking",
+            "display": "list",
+            "non-repeat": {
+              "public_scanner_cta_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "public scanner cta title",
+                  "placeholder": "Scan your website for cookies"
+                }
+              },
+              "input_field_website": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "input field website",
+                  "placeholder": "yourwebsite.com"
+                }
+              },
+              "wrong_url_message": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "wrong url message",
+                  "placeholder": "wrong url message"
+                }
+              },
+              "scan_website_button": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "scan website button",
+                  "placeholder": "Scan Website"
+                }
+              },
+              "activate_public_scanner_cta": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "false",
+                  "placeholder_true": "true",
+                  "default_value": false,
+                  "label": "Activate public scanner cta"
+                }
+              }
+            },
+            "repeat": {}
           }
         }
       }
