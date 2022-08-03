@@ -21,10 +21,10 @@ import isURL from 'validator/lib/isURL';
 const linkResolver = require('../../../prismic/utils/linkResolver');
 
 const initialState = {
-  email: '',
+  url: '',
 };
 
-const errors = { email: 'email' };
+const errors = { url: 'url' };
 
 const GRADIENT_ORANGE =
   'linear-gradient(262.53deg, #FB5F47 38.27%, #F9BE5A 113.07%)';
@@ -58,6 +58,12 @@ const Header = ({ data, hideMenu, metatitle, type }) => {
 
   const { location } = history;
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleOnSubmit(event);
+    }
+  };
+
   const handleInputChange = ({ target: { name, value } }) => {
     setFormState((state) => ({ ...state, [name]: value }));
     formErrors.length > 0 &&
@@ -89,26 +95,26 @@ const Header = ({ data, hideMenu, metatitle, type }) => {
   const buttonVariant =
     scrollDir === 'down' ? VARIANT.PRIMARY : VARIANT.GRADIENT;
 
-  const validateForm = (userEmail) => {
-    const isValidUserEmail = isURL(userEmail);
+  const validateForm = (userurl) => {
+    const isValidUserurl = isURL(userurl);
 
-    if (!isValidUserEmail) {
-      setFormErrors([...formErrors, errors.email]);
+    if (!isValidUserurl) {
+      setFormErrors([...formErrors, errors.url]);
     }
 
-    const validForm = isValidUserEmail;
+    const validForm = isValidUserurl;
 
     return validForm;
   };
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    const { email } = formState;
-    const isValidForm = validateForm(email);
+    const { url } = formState;
+    const isValidForm = validateForm(url);
 
     isValidForm &&
       window.open(
-        `https://spscannerui.z6.web.core.windows.net/#/${email}`,
-        '_self' // <- This is what makes it open in a new window.
+        `https://scanner.secureprivacy.ai/#/${url}`,
+        '_blank' // <- This is what makes it open in a new window.
       );
   };
 
@@ -116,12 +122,18 @@ const Header = ({ data, hideMenu, metatitle, type }) => {
     <>
       <header className={headerStyles}>
         <div className={style.container}>
-          {console.log(publicScannerCta)}
-          <div className={style.top}>
+          <div
+            className={
+              publicScannerCtaPrimary &&
+              publicScannerCtaPrimary.activate_public_scanner_cta
+                ? style.topScanner
+                : style.top
+            }
+          >
             {publicScannerCtaPrimary &&
             publicScannerCtaPrimary.activate_public_scanner_cta ? (
               <>
-                <div className={style.slogan}>
+                <div className={style.sloganScanner}>
                   <GradientText
                     text={publicScannerCtaPrimary.public_scanner_cta_title.text}
                     background={gradientTextBg}
@@ -133,29 +145,30 @@ const Header = ({ data, hideMenu, metatitle, type }) => {
                     className={style.symbol}
                   />
                 </div>
-                <div>
+                <div className={style.buttonScanContainer}>
                   <Input
-                    id="email"
+                    id="url"
                     placeholder={
                       publicScannerCtaPrimary.input_field_website.text
                     }
                     errorMessage={
                       publicScannerCtaPrimary.wrong_url_message.text
                     }
-                    name="email"
-                    valid={!formErrors.includes('email')}
-                    value={formState.email}
+                    name="url"
+                    valid={!formErrors.includes('url')}
+                    value={formState.url}
                     handleChange={handleInputChange}
+                    onKeyDown={handleKeyDown}
                   />
-                </div>
-                <div className={style.button}>
-                  <Button
-                    variant={buttonVariant}
-                    isHeader={true}
-                    click={handleOnSubmit}
-                  >
-                    {publicScannerCtaPrimary.scan_website_button.text}
-                  </Button>
+                  <div className={style.buttonScan}>
+                    <Button
+                      variant={VARIANT.SECONDARY}
+                      isHeader={true}
+                      click={handleOnSubmit}
+                    >
+                      {publicScannerCtaPrimary.scan_website_button.text}
+                    </Button>
+                  </div>
                 </div>
               </>
             ) : (

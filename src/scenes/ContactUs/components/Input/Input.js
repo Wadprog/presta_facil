@@ -12,6 +12,7 @@ const Input = ({
   handleChange,
   errorMessage,
   valid,
+  onKeyDown,
 }) => {
   const classes = classnames({
     [style.container]: true,
@@ -26,6 +27,7 @@ const Input = ({
         onChange={handleChange}
         value={value}
         name={name}
+        onKeyDown={onKeyDown}
       />
       <label className={style.label} htmlFor={id}>
         {placeholder}
@@ -43,6 +45,7 @@ Input.propTypes = {
   errorMessage: string,
   placeholder: string,
   handleChange: func,
+  onKeyDown: func,
   value: oneOfType([string, number]),
   name: string,
 };
@@ -52,6 +55,7 @@ Input.defaultProps = {
   valid: false,
   errorMessage: '',
   placeholder: '',
+  onKeyDown: () => {},
   handleChange: () => {},
 };
 
