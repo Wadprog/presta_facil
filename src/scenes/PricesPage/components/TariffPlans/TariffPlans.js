@@ -14,7 +14,7 @@ import style from './TariffPlans.module.scss';
 import { RichText } from 'prismic-reactjs';
 import Swiper from 'react-id-swiper';
 import LangContext from '@contexts';
-
+import BussinessCardsSwitcher from './components/BussinessCardsSwitcher';
 import Image from '@components/Image/Image';
 
 // const DEFAULT_SLIDES = 7;
@@ -53,6 +53,9 @@ const TariffPlans = ({
   const { currencydropdownlabel } = primary;
 
   const [isAnnual, setIsAnnual] = useState(false);
+
+  const [cardsSelected, setCardsSelected] = useState(false);
+
   const [selectedPlansIndexes, setSelectedPlansIndexes] = useState([0]);
   const [selectedPlans, setSelectedPlans] = useState([
     primary.firstlawtitle.text,
@@ -69,6 +72,7 @@ const TariffPlans = ({
   const [isMobile, setIsMobile] = useState(false);
   const { width } = useBreakpoints();
   const [itemsSlider, setItemSlider] = useState([]);
+  const [itemsCards, setItemsCards] = useState(items.slice(0, 3));
 
   const selectCurrency = (value) => setCurrency(value);
 
@@ -117,6 +121,13 @@ const TariffPlans = ({
     setIsAnnual(!isAnnual);
   };
 
+  const toggleBussinessCards = () => {
+    setCardsSelected(!cardsSelected);
+    setItemsCards(cardsSelected ? items.slice(0, 3) : items.slice(3, 5));
+  };
+
+  console.log(primary, items);
+
   return (
     <Waypoint onEnter={hideBar} onLeave={showBar}>
       <div
@@ -133,7 +144,7 @@ const TariffPlans = ({
         >
           <Bar
             itemsSlider={itemsSlider}
-            fields={items}
+            fields={itemsCards}
             plans={selectedPlans}
             primary={primary}
             isAnnual={isAnnual}
@@ -146,6 +157,11 @@ const TariffPlans = ({
           />
         </div>
         <div className={style.container}>
+          <BussinessCardsSwitcher
+            isAnnual={cardsSelected}
+            togglePeriod={toggleBussinessCards}
+            primary={primary}
+          />
           <div
             className={classnames({
               [style.body]: !isMobile,
@@ -252,7 +268,7 @@ const TariffPlans = ({
                 isAnnual={isAnnual}
                 selectedPlans={selectedPlans}
                 primary={primary}
-                fields={items}
+                fields={itemsCards}
                 currency={currency}
                 isMobile={isMobile}
               />
