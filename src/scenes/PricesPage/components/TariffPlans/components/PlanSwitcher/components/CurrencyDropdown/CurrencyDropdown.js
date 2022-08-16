@@ -6,8 +6,8 @@ import Arrow from './image/arrow.inline.svg';
 import style from './CurrencyDropdown.module.scss';
 
 const currencies = [
-  { title: 'USD', value: 'USD' },
-  { title: 'EUR', value: 'EUR' },
+  { title: 'US Dollar $', value: 'US Dollar $' },
+  { title: 'Euros €', value: 'Euros €' },
 ];
 
 const CurrencyDropdown = ({

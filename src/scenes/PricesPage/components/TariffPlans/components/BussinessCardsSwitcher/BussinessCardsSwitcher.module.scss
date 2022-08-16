@@ -15,7 +15,7 @@
   justify-content: space-around;
   align-items: center;
   position: relative;
-  width: 296px;
+  width: 276px;
 }
 
 .title {
@@ -24,6 +24,7 @@
   width: 100%;
   color: #011949;
   text-align: center;
+  text-transform:uppercase;
   &.selected {
     color: white;
   }

@@ -32,6 +32,7 @@ const TariffPlans = ({
   setActiveOnClick,
   setActive,
   sliderPlans,
+  businessToggle,
 }) => {
   const currentLang = useContext(LangContext);
 
@@ -65,13 +66,15 @@ const TariffPlans = ({
     currentLang.toLowerCase().includes('fr') ||
       currentLang.toLowerCase().includes('de') ||
       currentLang.toLowerCase().includes('pt')
-      ? 'EUR'
-      : 'USD'
+      ? 'Euros €'
+      : 'US Dollar $'
   );
   const [isStatusBarVisible, setIsStatusBarVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { width } = useBreakpoints();
   const [itemsSlider, setItemSlider] = useState([]);
+  const [itemsBusinessToggle, setItemBusinessToggle] = useState([]);
+
   const [itemsCards, setItemsCards] = useState(items.slice(0, 3));
 
   const selectCurrency = (value) => setCurrency(value);
@@ -99,7 +102,11 @@ const TariffPlans = ({
     if (sliderPlans && sliderPlans.length) {
       setItemSlider(sliderPlans);
     }
-  }, [sliderPlans]);
+
+    if (businessToggle && businessToggle.length > 0) {
+      setItemBusinessToggle(businessToggle);
+    }
+  }, [sliderPlans, businessToggle]);
 
   const selectPlan = (value) => {
     const isSelected = selectedPlansIndexes.includes(value);
@@ -125,8 +132,6 @@ const TariffPlans = ({
     setCardsSelected(!cardsSelected);
     setItemsCards(cardsSelected ? items.slice(0, 3) : items.slice(3, 5));
   };
-
-  console.log(primary, items);
 
   return (
     <Waypoint onEnter={hideBar} onLeave={showBar}>
@@ -161,6 +166,7 @@ const TariffPlans = ({
             isAnnual={cardsSelected}
             togglePeriod={toggleBussinessCards}
             primary={primary}
+            businessToggle={itemsBusinessToggle}
           />
           <div
             className={classnames({
@@ -288,6 +294,7 @@ const TariffPlans = ({
 };
 
 TariffPlans.propTypes = {
+  businessToggle: PropTypes.array.isRequired,
   primary: PropTypes.object.isRequired,
   items: PropTypes.array.isRequired,
   isBarShowing: PropTypes.bool.isRequired,

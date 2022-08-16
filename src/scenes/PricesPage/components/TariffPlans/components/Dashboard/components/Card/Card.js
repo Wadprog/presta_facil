@@ -46,7 +46,7 @@ const Card = ({
   const [colorized, setColorized] = useState(false);
   const getCost = () => {
     let cost = 0;
-    if (currency === 'USD') {
+    if (currency === 'US Dollar $') {
       switch (selectedlawsnumber) {
         case 1:
           cost = oneprivacypriceusd;
@@ -97,9 +97,9 @@ const Card = ({
       return enterpriseButtonLink;
     }
 
-    const link = `${
-      buttonLink.url
-    }/${getPlans()}/${getPlanName()}/${currency}/${getPeriod()}`;
+    const link = `${buttonLink.url}/${getPlans()}/${getPlanName()}/${
+      currency === 'Euros €' ? 'EUR' : 'USD'
+    }/${getPeriod()}`;
 
     return link;
   };
@@ -126,7 +126,12 @@ const Card = ({
         </div>
       ) : (
         <div className={style.wrappperPrice}>
-          <div className={classnames([style.cost, style[currency]])}>
+          <div
+            className={classnames([
+              style.cost,
+              style[currency === 'Euros €' ? 'EUR' : 'USD'],
+            ])}
+          >
             {getCost()}
           </div>
           <div className={style.condition}>

@@ -35,7 +35,7 @@
     transform: translate(-50%, -50%);
     display: block;
     border-radius: 24px;
-
+    pointer-events: none;
   }
   &:last-child {
     margin-right: 0;
@@ -54,7 +54,7 @@ line-height: 20px;
   height: 64px;
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
 
 }
 

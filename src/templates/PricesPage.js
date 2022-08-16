@@ -66,6 +66,18 @@ export const query = graphql`
               text
             }
             body {
+              ... on PrismicPricespageDataBodyBussinessEnterpriseToggle {
+                id
+                slice_type
+                items {
+                  business_toggle {
+                    richText
+                  }
+                  enterprise_toggle {
+                    richText
+                  }
+                }
+              }
               ... on PrismicPricespageDataBodyHero {
                 id
                 slice_type

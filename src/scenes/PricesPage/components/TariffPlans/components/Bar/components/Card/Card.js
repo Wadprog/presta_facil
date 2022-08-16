@@ -24,10 +24,12 @@ const Card = ({
   isAnnual,
   annualcoefficient,
   isEnterprise,
+  isStarter,
   enterpriseCondition,
   enterpriseButtonText,
   enterpriseButtonLink,
   primary,
+  planBenefits,
 }) => {
   const condition = isAnnual
     ? primary.annualcondition
@@ -107,11 +109,18 @@ const Card = ({
           </div>
         </div>
       </div>
-      {isEnterprise ? (
-        <div className={style.enterprise}>{enterpriseCondition}</div>
+      {isEnterprise || isStarter ? (
+        <div className={style.enterprise}>
+          {isEnterprise ? enterpriseCondition : planBenefits.richText[0].text}
+        </div>
       ) : (
         <div className={style.wrapperPrice}>
-          <div className={classnames([style.cost, style[currency]])}>
+          <div
+            className={classnames([
+              style.cost,
+              style[currency === 'Euros €' ? 'EUR' : 'USD'],
+            ])}
+          >
             {getCost()}
           </div>
           <div className={style.condition}>
@@ -142,9 +151,12 @@ const Card = ({
 
 Card.defaultProps = {
   isEnterprise: false,
+  isStarter: false,
 };
 
 Card.propTypes = {
+  planBenefits: PropTypes.arrayOf.isRequired,
+  isStarter: PropTypes.bool,
   isEnterprise: PropTypes.bool,
   title: PropTypes.object.isRequired,
   selectedPlans: PropTypes.arrayOf.isRequired,

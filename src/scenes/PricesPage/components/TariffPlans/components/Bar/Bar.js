@@ -151,11 +151,13 @@ const Bar = ({
               threeprivacypriceeur={field.threeprivacypriceeur}
               annualcoefficient={primary.annualcoefficient}
               isAnnual={isAnnual}
-              isEnterprise={index === 4}
+              isEnterprise={field.plantitle.richText[0].text === 'ENTERPRISE'}
+              isStarter={field.plantitle.richText[0].text === 'STARTER'}
               enterpriseCondition={primary.enterprisecondition.text}
               enterpriseButtonText={primary.enterprisebuttontext.text}
               enterpriseButtonLink={primary.enterprisebuttonlink.url}
               primary={primary}
+              planBenefits={field.plan_benefits}
             />
           </div>
         ))}
