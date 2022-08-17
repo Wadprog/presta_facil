@@ -173,6 +173,12 @@ export const query = graphql`
                   enterprisestatus {
                     richText
                   }
+                  growth_status {
+                    richText
+                  }
+                  starter_status {
+                    richText
+                  }
                   businessstatus {
                     richText
                   }

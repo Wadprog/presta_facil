@@ -33,7 +33,7 @@ const PlanSwitcher = ({ plans, selectedPlans, onSelect }) => {
 };
 
 PlanSwitcher.propTypes = {
-  plans: PropTypes.array.isRequired,
+  plans: PropTypes.array,
   selectedPlans: PropTypes.array.isRequired,
   onSelect: PropTypes.func.isRequired,
 };

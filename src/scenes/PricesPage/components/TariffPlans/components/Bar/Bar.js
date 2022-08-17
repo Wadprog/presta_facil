@@ -176,7 +176,7 @@ Bar.propTypes = {
   selectCurrency: any,
   selectPlan: any,
   currencydropdownlabel: any,
-  plans: PropTypes.array.isRequired,
+  plans: PropTypes.array,
   isAnnual: PropTypes.bool.isRequired,
   currency: PropTypes.string.isRequired,
 };

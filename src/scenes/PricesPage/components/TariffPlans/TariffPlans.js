@@ -16,6 +16,8 @@ import Swiper from 'react-id-swiper';
 import LangContext from '@contexts';
 import BussinessCardsSwitcher from './components/BussinessCardsSwitcher';
 import Image from '@components/Image/Image';
+import { globalHistory as history } from '@reach/router';
+import { navigate } from 'gatsby';
 
 // const DEFAULT_SLIDES = 7;
 const MOBILE_VIEW = 1220;
@@ -35,6 +37,7 @@ const TariffPlans = ({
   businessToggle,
 }) => {
   const currentLang = useContext(LangContext);
+  const { location } = history;
 
   const laws = [
     {
@@ -108,6 +111,15 @@ const TariffPlans = ({
     }
   }, [sliderPlans, businessToggle]);
 
+  useEffect(() => {
+    setCardsSelected(location.hash.includes('enterprise') ? true : false);
+    setItemsCards(
+      !location.hash.includes('enterprise')
+        ? items.slice(0, 3)
+        : items.slice(3, 5)
+    );
+  }, [location]);
+
   const selectPlan = (value) => {
     const isSelected = selectedPlansIndexes.includes(value);
     let indexes;
@@ -131,6 +143,9 @@ const TariffPlans = ({
   const toggleBussinessCards = () => {
     setCardsSelected(!cardsSelected);
     setItemsCards(cardsSelected ? items.slice(0, 3) : items.slice(3, 5));
+    navigate(
+      `${location.pathname}#${cardsSelected ? 'business' : 'enterprise'}`
+    );
   };
 
   return (
