@@ -7,79 +7,110 @@ import classnames from 'classnames';
 import { parseCellValue } from './utils';
 import { useBreakpoints } from '@hooks';
 import style from './PlansFeatures.module.scss';
+import { globalHistory as history } from '@reach/router';
 
 const MOBILE_VIEW = 780;
 
-const PlansFeatures = ({ primary, items, showBar, hideBar, activepoint }) => {
+const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const [itemsBasedOnHash, setItemsBasedOnHash] = useState(items);
+  const [enterpriseHash, setEnterpriseHash] = useState(false);
+
   const { width } = useBreakpoints();
+  const { location } = history;
 
   useEffect(() => {
     const mobile = width < MOBILE_VIEW;
     setIsMobile(mobile);
   }, [width]);
 
+  useEffect(() => {
+    const enterpriseArray = items.map(
+      // eslint-disable-next-line no-unused-vars
+      ({ starter_status, prostatus, businessstatus, ...item }) => item
+    );
+    const businessArray = items.map(
+      // eslint-disable-next-line no-unused-vars
+      ({ growth_status, enterprisestatus, ...item }) => item
+    );
+    !location.hash.includes('enterprise')
+      ? setItemsBasedOnHash(businessArray)
+      : setItemsBasedOnHash(enterpriseArray);
+
+    location.hash.includes('enterprise')
+      ? setEnterpriseHash(true)
+      : setEnterpriseHash(false);
+  }, [location]);
+
   const detectActiveFeaturesList = (
-    basicStatus,
-    plusStatus,
+    starterStatus,
+    proStatus,
     businessStatus,
+    growthStatus,
     enterpriseStatus
   ) => {
-    switch (activepoint) {
-      case 0:
-        return (
-          <div className={classnames(style.cell, style.cellmobile)}>
-            {basicStatus}
-          </div>
-        );
-      case 1:
-        return (
-          <div className={classnames(style.cell, style.cellmobile)}>
-            {plusStatus}
-          </div>
-        );
-      case 2:
-        return (
-          <div className={classnames(style.cell, style.cellmobile)}>
-            {businessStatus}
-          </div>
-        );
-      case 3:
-        return (
-          <div className={classnames(style.cell, style.cellmobile)}>
-            {enterpriseStatus}
-          </div>
-        );
-      default:
-        return (
-          <div className={classnames(style.cell, style.cellmobile)}>
-            {basicStatus}
-          </div>
-        );
+    if (enterpriseHash) {
+      switch (activepoint) {
+        case 0:
+          return (
+            <div className={classnames(style.cell, style.cellmobile)}>
+              {growthStatus}
+            </div>
+          );
+        default:
+          return (
+            <div className={classnames(style.cell, style.cellmobile)}>
+              {enterpriseStatus}
+            </div>
+          );
+      }
+    }
+    if (!enterpriseHash) {
+      switch (activepoint) {
+        case 0:
+          return (
+            <div className={classnames(style.cell, style.cellmobile)}>
+              {starterStatus}
+            </div>
+          );
+        case 1:
+          return (
+            <div className={classnames(style.cell, style.cellmobile)}>
+              {proStatus}
+            </div>
+          );
+        case 2:
+          return (
+            <div className={classnames(style.cell, style.cellmobile)}>
+              {businessStatus}
+            </div>
+          );
+      }
     }
   };
-
   return (
     <>
       <div className={style.wrapper}>
-        <div className={style.title}>
-          <RichText render={primary.title.richText} />
-        </div>
         <ul className={style.list}>
-          {items.map((item, index) => {
-            // const basicStatus = parseCellValue(
-            //   RichText.asText(item.basicstatus.richText)
-            // );
-            const plusStatus = parseCellValue(
-              RichText.asText(item.prostatus.richText)
-            );
-            const businessStatus = parseCellValue(
-              RichText.asText(item.businessstatus.richText),
-              { withGradient: true }
-            );
-            const enterpriseStatus = parseCellValue(
-              RichText.asText(item.enterprisestatus.richText)
-            );
+          {itemsBasedOnHash.map((item, index) => {
+            const starterStatus =
+              !enterpriseHash &&
+              parseCellValue(RichText.asText(item?.starter_status?.richText));
+            const plusStatus =
+              !enterpriseHash &&
+              parseCellValue(RichText.asText(item?.prostatus?.richText));
+            const businessStatus =
+              !enterpriseHash &&
+              parseCellValue(RichText.asText(item?.businessstatus?.richText), {
+                withGradient: true,
+              });
+            const enterpriseStatus =
+              enterpriseHash &&
+              parseCellValue(RichText.asText(item?.enterprisestatus?.richText));
+
+            const growthStatus =
+              enterpriseHash &&
+              parseCellValue(RichText.asText(item?.growth_status?.richText));
 
             return (
               <li key={index} className={style.item}>
@@ -88,39 +119,72 @@ const PlansFeatures = ({ primary, items, showBar, hideBar, activepoint }) => {
                     [style.namedesktop]: !isMobile,
                     [style.namemobile]: isMobile,
                   })}
-                >
-                  <RichText render={item.featuretitle.richText} />
-                </div>
+                ></div>
                 <div
                   className={classnames(style.statuses, style.statusesdesktop)}
                 >
                   {!isMobile ? (
                     <>
-                      {/* <div
-                        className={classnames(style.cell, style.celldesktop)}
-                      >
-                        {basicStatus}
-                      </div> */}
-                      <div
-                        className={classnames(style.cell, style.celldesktop)}
-                      >
-                        {plusStatus}
-                      </div>
-                      <div
-                        className={classnames(style.cell, style.celldesktop)}
-                      >
-                        {businessStatus}
-                      </div>
-                      <div
-                        className={classnames(style.cell, style.celldesktop)}
-                      >
-                        {enterpriseStatus}
-                      </div>
+                      {!enterpriseHash && (
+                        <>
+                          <div
+                            className={classnames(
+                              style.cell,
+                              style.celldesktop,
+                              starterStatus && style.active
+                            )}
+                          >
+                            <RichText render={item.featuretitle.richText} />
+                          </div>
+                          <div
+                            className={classnames(
+                              style.cell,
+                              style.celldesktop,
+                              plusStatus && style.active
+                            )}
+                          >
+                            <RichText render={item.featuretitle.richText} />
+                          </div>
+                          <div
+                            className={classnames(
+                              style.cell,
+                              style.celldesktop,
+                              businessStatus && style.active
+                            )}
+                          >
+                            <RichText render={item.featuretitle.richText} />
+                          </div>
+                        </>
+                      )}
+                      {enterpriseHash && (
+                        <>
+                          <div
+                            className={classnames(
+                              style.cell,
+                              style.celldesktop,
+                              growthStatus && style.active
+                            )}
+                          >
+                            <RichText render={item.featuretitle.richText} />
+                          </div>
+                          <div
+                            className={classnames(
+                              style.cell,
+                              style.celldesktop,
+                              enterpriseStatus && style.active
+                            )}
+                          >
+                            <RichText render={item.featuretitle.richText} />
+                          </div>
+                        </>
+                      )}
                     </>
                   ) : (
                     detectActiveFeaturesList(
+                      starterStatus,
                       plusStatus,
                       businessStatus,
+                      growthStatus,
                       enterpriseStatus
                     )
                   )}

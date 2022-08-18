@@ -25,7 +25,14 @@ const Card = ({
           </div>
           <div className={style.name}>{name}</div>
         </div>
-        <div className={classnames([style.cost, style[currency]])}>{cost}</div>
+        <div
+          className={classnames([
+            style.cost,
+            style[currency === 'Euros €' ? 'EUR' : 'USD'],
+          ])}
+        >
+          {cost}
+        </div>
       </div>
       <div className={style.footer}>
         <a href={buttonLink.url} className={style.button}>

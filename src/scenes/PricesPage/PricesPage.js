@@ -20,6 +20,8 @@ const PricesPage = ({ content, canonical, metatitle }) => {
   const [activepoint, setActivePoint] = useState(0);
   const [itemsSlider, setItemSlider] = useState([]);
   const [itemsSliderFull, setItemSliderFull] = useState([]);
+  const [businessToggle, setBusinessToggle] = useState([]);
+  const [businessToggleFull, setBusinessToggleFull] = useState([]);
 
   const { width } = useBreakpoints();
   const myPackagesRef = useRef(null);
@@ -59,6 +61,9 @@ const PricesPage = ({ content, canonical, metatitle }) => {
         if (item.slice_type === 'widget_slider_with_plans') {
           setItemSlider(item.items);
         }
+        if (item.slice_type === 'bussiness_enterprise_toggle') {
+          setBusinessToggle(item.items);
+        }
       });
     }
   }, []);
@@ -67,7 +72,10 @@ const PricesPage = ({ content, canonical, metatitle }) => {
     if (itemsSlider && itemsSlider.length) {
       setItemSliderFull(itemsSlider);
     }
-  }, [itemsSlider]);
+    if (businessToggle && businessToggle.length) {
+      setBusinessToggleFull(businessToggle);
+    }
+  }, [itemsSlider, businessToggle]);
 
   const sections = content.map((item, index) => {
     switch (item.slice_type) {
@@ -86,6 +94,7 @@ const PricesPage = ({ content, canonical, metatitle }) => {
             setActive={setActive}
             setActiveOnClick={setActiveOnClick}
             sliderPlans={itemsSliderFull}
+            businessToggle={businessToggleFull}
           />
         );
       case 'packagesfeatures':

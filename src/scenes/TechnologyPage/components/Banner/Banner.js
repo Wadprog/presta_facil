@@ -22,7 +22,7 @@ const Banner = ({ primary }) => {
             </div>
             <div className={styles.buttonWrapper}>
               <Button variant={VARIANT.PRIMARY} to={buttonUrl} fullWidth>
-                <RichText render={buttontext.richText} />
+                {buttontext.text}
               </Button>
               <a href={promoLink} className={styles.link}>
                 {promoLinkText}
@@ -45,6 +45,7 @@ const Banner = ({ primary }) => {
           </div>
           <div className={styles.buttonWrapper}>
             <Button variant={VARIANT.PRIMARY} to={buttonUrl} fullWidth>
+              {'ASDASD'}
               <RichText render={buttontext.richText} />
             </Button>
             <Link to={promoLink} className={styles.link}>

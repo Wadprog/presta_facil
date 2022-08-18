@@ -177,6 +177,20 @@
                   "single": "paragraph",
                   "label": "enterprise status"
                 }
+              },
+              "growth_status": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Growth status"
+                }
+              },
+              "starter_status": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "starter status"
+                }
               }
             }
           },
@@ -391,7 +405,7 @@
               "check_features_on_card": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "strong, list-item",
+                  "multi": "strong,list-item",
                   "label": "Check features on card",
                   "placeholder": "features inside main card for 3 plans"
                 }
@@ -422,6 +436,30 @@
                 "config": {
                   "multi": "preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
                   "label": "law text"
+                }
+              }
+            }
+          },
+          "bussiness_enterprise_toggle": {
+            "type": "Slice",
+            "fieldset": "bussiness enterprise toggle",
+            "description": "bussiness enterprise toggle",
+            "icon": "business_center",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {
+              "business_toggle": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "business toggle"
+                }
+              },
+              "enterprise_toggle": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "enterprise toggle"
                 }
               }
             }
