@@ -122,6 +122,10 @@
   &:last-child {
     margin-right: 0;
   }
+  & h4{
+    margin-left: 5px;
+  
+  }
 
   :global(.default-text) {
     color: $main-light;
