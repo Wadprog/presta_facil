@@ -46,9 +46,9 @@ const PricesPage = ({ content, canonical, metatitle }) => {
     myPackagesRef.current.scrollLeft = value;
   };
 
-  console.log(cardNumber);
-
   const setActiveOnClick = (index) => {
+    setCardNumber(location.hash.includes('enterprise') ? 2 : 3);
+
     setActivePoint(index);
     const hiddenWidth = CARDS_LIST_WIDTH - width;
     const hiddenWidthPerCard = hiddenWidth / cardNumber;
@@ -60,6 +60,10 @@ const PricesPage = ({ content, canonical, metatitle }) => {
   const questions = content.filter((item) => item.slice_type === 'questions');
   const faqLists = questions.map((element) => element.items);
   const faqList = faqLists.flat();
+
+  useEffect(() => {
+    location.hash.includes('enterprise') && setActivePoint(0);
+  }, [location]);
 
   useEffect(() => {
     if (content && content.length) {
@@ -111,6 +115,7 @@ const PricesPage = ({ content, canonical, metatitle }) => {
             showBar={showBar}
             hideBar={hideBar}
             activepoint={activepoint}
+            setActiveOnClick={setActiveOnClick}
           />
         );
       case 'partners':
