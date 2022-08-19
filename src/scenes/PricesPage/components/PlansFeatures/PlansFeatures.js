@@ -47,20 +47,35 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
     proStatus,
     businessStatus,
     growthStatus,
-    enterpriseStatus
+    enterpriseStatus,
+    featureTitle
   ) => {
     if (enterpriseHash) {
       switch (activepoint) {
         case 0:
           return (
-            <div className={classnames(style.cell, style.cellmobile)}>
-              {growthStatus}
+            <div
+              className={classnames(
+                style.cell,
+                style.cellmobile,
+                growthStatus && style.active
+              )}
+            >
+              {typeof growthStatus !== 'boolean' && `${growthStatus} `}
+              <RichText render={featureTitle} />
             </div>
           );
-        default:
+        case 1:
           return (
-            <div className={classnames(style.cell, style.cellmobile)}>
-              {enterpriseStatus}
+            <div
+              className={classnames(
+                style.cell,
+                style.cellmobile,
+                enterpriseStatus && style.active
+              )}
+            >
+              {typeof enterpriseStatus !== 'boolean' && `${enterpriseStatus} `}
+              <RichText render={featureTitle} />
             </div>
           );
       }
@@ -69,20 +84,41 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
       switch (activepoint) {
         case 0:
           return (
-            <div className={classnames(style.cell, style.cellmobile)}>
-              {starterStatus}
+            <div
+              className={classnames(
+                style.cell,
+                style.cellmobile,
+                starterStatus && style.active
+              )}
+            >
+              {typeof starterStatus !== 'boolean' && `${starterStatus} `}
+              <RichText render={featureTitle} />
             </div>
           );
         case 1:
           return (
-            <div className={classnames(style.cell, style.cellmobile)}>
-              {proStatus}
+            <div
+              className={classnames(
+                style.cell,
+                style.cellmobile,
+                proStatus && style.active
+              )}
+            >
+              {typeof proStatus !== 'boolean' && `${proStatus} `}
+              <RichText render={featureTitle} />
             </div>
           );
         case 2:
           return (
-            <div className={classnames(style.cell, style.cellmobile)}>
-              {businessStatus}
+            <div
+              className={classnames(
+                style.cell,
+                style.cellmobile,
+                businessStatus && style.active
+              )}
+            >
+              {typeof businessStatus !== 'boolean' && `${businessStatus} `}
+              <RichText render={featureTitle} />
             </div>
           );
       }
@@ -112,6 +148,7 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
               enterpriseHash &&
               parseCellValue(RichText.asText(item?.growth_status?.richText));
 
+            const featureTitle = item?.featuretitle?.richText;
             return (
               <li key={index} className={style.item}>
                 <div
@@ -134,6 +171,8 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
                               starterStatus && style.active
                             )}
                           >
+                            {typeof starterStatus !== 'boolean' &&
+                              `${starterStatus} `}
                             <RichText render={item.featuretitle.richText} />
                           </div>
                           <div
@@ -143,6 +182,8 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
                               plusStatus && style.active
                             )}
                           >
+                            {typeof plusStatus !== 'boolean' &&
+                              `${plusStatus} `}
                             <RichText render={item.featuretitle.richText} />
                           </div>
                           <div
@@ -152,6 +193,8 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
                               businessStatus && style.active
                             )}
                           >
+                            {typeof businessStatus !== 'boolean' &&
+                              `${businessStatus} `}
                             <RichText render={item.featuretitle.richText} />
                           </div>
                         </>
@@ -165,6 +208,8 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
                               growthStatus && style.active
                             )}
                           >
+                            {typeof growthStatus !== 'boolean' &&
+                              `${growthStatus} `}
                             <RichText render={item.featuretitle.richText} />
                           </div>
                           <div
@@ -174,6 +219,8 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
                               enterpriseStatus && style.active
                             )}
                           >
+                            {typeof enterpriseStatus !== 'boolean' &&
+                              `${enterpriseStatus} `}
                             <RichText render={item.featuretitle.richText} />
                           </div>
                         </>
@@ -185,7 +232,8 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
                       plusStatus,
                       businessStatus,
                       growthStatus,
-                      enterpriseStatus
+                      enterpriseStatus,
+                      featureTitle
                     )
                   )}
                 </div>

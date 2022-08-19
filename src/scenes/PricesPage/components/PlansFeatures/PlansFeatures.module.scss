@@ -73,7 +73,7 @@
 }
 
 .statusesmobile {
-  width: calc(100% - 180px);
+  width: calc(100% - 0px);
   overflow-x: scroll;
 }
 
@@ -99,7 +99,7 @@
 }
 
 .namemobile {
-  width: 180px;
+  width: 0px;
 }
 
 .cell {
@@ -121,6 +121,10 @@
   }
   &:last-child {
     margin-right: 0;
+  }
+  & h4{
+    margin-left: 5px;
+  
   }
 
   :global(.default-text) {

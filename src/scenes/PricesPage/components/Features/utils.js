@@ -5,13 +5,17 @@ import DefaultIcon from './images/check-grey.inline.svg';
 import GradientIcon from './images/check-gradient.inline.svg';
 
 const parseCellValue = function (value = '', { withGradient } = {}) {
-  switch (value.toLowerCase()) {
+  switch (value) {
     case 'yes':
       return withGradient ? <GradientIcon /> : <DefaultIcon />;
     case 'no':
-      return null;
+      return false;
     case '':
-      return null;
+      return false;
+    case '∞':
+      return 'Unlimited';
+    case !isNaN(parseInt(value)):
+      return parseInt(value);
     default:
       return withGradient ? (
         <GradientText

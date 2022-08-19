@@ -11,17 +11,19 @@ import FaqSemanticMarkup from '@components/FaqSemanticMarkup/FaqSemanticMarkup';
 import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
 import style from './PricesPage.module.scss';
 import { useBreakpoints } from '@hooks';
+import { globalHistory as history } from '@reach/router';
 
 const CARDS_LIST_WIDTH = 920;
-const PLANS_CARDS_NUMBER = 4;
 
 const PricesPage = ({ content, canonical, metatitle }) => {
   const [isBarShowing, setIsBarShowing] = useState(false);
+  const [cardNumber, setCardNumber] = useState(0);
   const [activepoint, setActivePoint] = useState(0);
   const [itemsSlider, setItemSlider] = useState([]);
   const [itemsSliderFull, setItemSliderFull] = useState([]);
   const [businessToggle, setBusinessToggle] = useState([]);
   const [businessToggleFull, setBusinessToggleFull] = useState([]);
+  const { location } = history;
 
   const { width } = useBreakpoints();
   const myPackagesRef = useRef(null);
@@ -29,31 +31,39 @@ const PricesPage = ({ content, canonical, metatitle }) => {
   const showBar = () => setIsBarShowing(true);
   const hideBar = () => setIsBarShowing(false);
 
+  useEffect(() => {
+    setCardNumber(location.hash.includes('enterprise') ? 2 : 3);
+  }, [location]);
+
   const setActive = (value) => {
     const hiddenWidth = CARDS_LIST_WIDTH - width;
-    const hiddenWidthPerCard = hiddenWidth / PLANS_CARDS_NUMBER;
+    const hiddenWidthPerCard = hiddenWidth / cardNumber;
     const active =
-      Math.ceil(value / hiddenWidthPerCard) > PLANS_CARDS_NUMBER - 1
-        ? PLANS_CARDS_NUMBER - 1
+      Math.ceil(value / hiddenWidthPerCard) > cardNumber - 1
+        ? cardNumber - 1
         : Math.ceil(value / hiddenWidthPerCard);
     setActivePoint(active);
     myPackagesRef.current.scrollLeft = value;
   };
 
   const setActiveOnClick = (index) => {
+    setCardNumber(location.hash.includes('enterprise') ? 2 : 3);
+
     setActivePoint(index);
     const hiddenWidth = CARDS_LIST_WIDTH - width;
-    const hiddenWidthPerCard = hiddenWidth / PLANS_CARDS_NUMBER;
+    const hiddenWidthPerCard = hiddenWidth / cardNumber;
     const leftScroll =
-      index === PLANS_CARDS_NUMBER - 1
-        ? hiddenWidth
-        : index * hiddenWidthPerCard;
+      index === cardNumber - 1 ? hiddenWidth : index * hiddenWidthPerCard;
     myPackagesRef.current.scrollLeft = leftScroll;
   };
 
   const questions = content.filter((item) => item.slice_type === 'questions');
   const faqLists = questions.map((element) => element.items);
   const faqList = faqLists.flat();
+
+  useEffect(() => {
+    location.hash.includes('enterprise') && setActivePoint(0);
+  }, [location]);
 
   useEffect(() => {
     if (content && content.length) {
@@ -105,6 +115,7 @@ const PricesPage = ({ content, canonical, metatitle }) => {
             showBar={showBar}
             hideBar={hideBar}
             activepoint={activepoint}
+            setActiveOnClick={setActiveOnClick}
           />
         );
       case 'partners':

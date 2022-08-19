@@ -297,7 +297,7 @@ const TariffPlans = ({
             {isStatusBarVisible && (
               <StatusBar
                 setActive={setActiveOnClick}
-                total={items.length}
+                total={itemsCards.length}
                 active={activepoint}
               />
             )}
