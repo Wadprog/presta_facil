@@ -168,7 +168,8 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
                             className={classnames(
                               style.cell,
                               style.celldesktop,
-                              starterStatus && style.active
+                              starterStatus && style.active,
+                              starterStatus === 'disabled' && style.disabled
                             )}
                           >
                             {typeof starterStatus !== 'boolean' &&
@@ -179,7 +180,8 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
                             className={classnames(
                               style.cell,
                               style.celldesktop,
-                              plusStatus && style.active
+                              plusStatus && style.active,
+                              plusStatus === 'disabled' && style.disabled
                             )}
                           >
                             {typeof plusStatus !== 'boolean' &&
@@ -190,7 +192,8 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
                             className={classnames(
                               style.cell,
                               style.celldesktop,
-                              businessStatus && style.active
+                              businessStatus && style.active,
+                              businessStatus === 'disabled' && style.disabled
                             )}
                           >
                             {typeof businessStatus !== 'boolean' &&

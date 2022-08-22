@@ -119,6 +119,9 @@
   &.active{
     color: #011949;
   }
+  &.disabled{
+    display: none;
+  }
   &:last-child {
     margin-right: 0;
   }

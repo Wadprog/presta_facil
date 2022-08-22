@@ -9,6 +9,8 @@ const parseCellValue = function (value = '') {
         return false;
       case '∞':
         return 'Unlimited';
+      case 'disabled':
+        return 'disabled';
       default:
         return +value;
     }
