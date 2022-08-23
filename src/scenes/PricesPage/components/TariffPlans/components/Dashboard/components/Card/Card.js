@@ -142,7 +142,7 @@ const Card = ({
       <div className={style.planBenefits}>{description.richText[0].text}</div>
       {!isStarter && (
         <div className={style.text}>
-          {currency === 'Euros €'
+          {currency === 'Euros €' && planBenefits.richText.length
             ? planBenefits.richText[0].text.split('$').join('€')
             : planBenefits.richText[0].text}
         </div>
