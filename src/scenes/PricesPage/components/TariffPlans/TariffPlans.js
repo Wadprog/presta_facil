@@ -191,7 +191,9 @@ const TariffPlans = ({
           >
             <div className={`${style.sidebar}`}>
               <div className={style.header}>
-                <div className={style.condition}>
+                <div
+                  className={`${style.condition} ${isAnnual && style.visible}`}
+                >
                   <RichText
                     render={primary.widget_currency_billing_title.richText}
                   />
