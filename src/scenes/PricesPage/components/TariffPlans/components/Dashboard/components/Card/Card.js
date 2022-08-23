@@ -139,23 +139,22 @@ const Card = ({
           </div>
         </div>
       )}
-      <div className={style.planBenefits}>
-        <RichText render={description.richText} />
-      </div>
+      <div className={style.planBenefits}>{description.richText[0].text}</div>
       {!isStarter && (
         <div className={style.text}>
-          <RichText render={planBenefits.richText} />
+          {currency === 'Euros €' &&
+          planBenefits &&
+          planBenefits.richText &&
+          planBenefits.richText.length
+            ? planBenefits.richText[0].text.split('$').join('€')
+            : !planBenefits.richText.length
+            ? ''
+            : planBenefits.richText[0].text}
         </div>
       )}
       <div className={style.text}>
         <RichText render={bottomClarification.richText} />
       </div>
-      {/* <div className={style.checkItems}>
-        <RichText
-          render={checkFeaturesOnCard.richText}
-          htmlSerializer={htmlSerializer}
-        />
-      </div> */}
       <div className={style.footer}>
         <a href={getLink()} className={style.button}>
           {colorized ? (
