@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes, { any } from 'prop-types';
 import PeriodSwitcher from '../PeriodSwitcher/PeriodSwitcher';
-import Card from './components/Card';
+// import Card from './components/Card';
 import style from './Bar.module.scss';
 import Swiper from 'react-id-swiper';
 import { RichText } from 'prismic-reactjs';
@@ -9,8 +9,6 @@ import Image from '@components/Image/Image';
 import PlanSwitcher from '../PlanSwitcher/PlanSwitcher';
 
 const Bar = ({
-  plans,
-  fields,
   primary,
   isAnnual,
   currency,
@@ -41,7 +39,9 @@ const Bar = ({
           <div className={style.switcher}>
             <div className={`${style.sidebar}`}>
               <div className={style.header}>
-                <div className={style.condition}>
+                <div
+                  className={`${style.condition} ${isAnnual && style.visible}`}
+                >
                   <RichText
                     render={primary.widget_currency_billing_title.richText}
                   />
@@ -133,7 +133,7 @@ const Bar = ({
           </div>
         </div>
       </div>
-      <div className={style.block}>
+      {/* <div className={style.block}>
         {fields.map((field, index) => (
           <div className={style.card} key={index}>
             <Card
@@ -161,7 +161,7 @@ const Bar = ({
             />
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
