@@ -32,6 +32,10 @@
 }
 
 .condition {
+  opacity: 0;
+  &.visible{
+    opacity: 1;
+  }
   p{
     font-family: 'Sofia Pro';
     font-style: normal;
