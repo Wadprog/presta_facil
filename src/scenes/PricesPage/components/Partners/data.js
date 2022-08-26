@@ -1,15 +1,20 @@
 const parameters = {
-  slidesPerView: 3,
+  slidesPerView: 'auto',
   spaceBetween: 16,
   breakpoints: {
-    768: {
-      spaceBetween: 32,
-    },
     992: {
-      allowTouchMove: false,
-      slidesPerView: 'auto',
+      spaceBetween: 34,
     },
   },
+  centeredSlides: true,
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
+  loopSlides: 50,
+  loopAdditionalSlides: 50,
+  direction: 'horizontal',
+  loop: true,
 };
 
 export { parameters };

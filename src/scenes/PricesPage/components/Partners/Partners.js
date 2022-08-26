@@ -21,7 +21,7 @@ const Partners = ({ primary, items }) => {
       <div className={style.title}>
         <RichText render={title.richText} />
       </div>
-      <div className={style.slider} key={key}>
+      <div className={style.companies} key={key}>
         <Swiper {...parameters}>
           {items.map(({ logotype }) => {
             return (
@@ -29,6 +29,7 @@ const Partners = ({ primary, items }) => {
                 <img
                   src={logotype.url}
                   alt={logotype.alt}
+                  className={`${style.companyLogo} swiper-origin`}
                   draggable="false"
                   loading="lazy"
                 />
