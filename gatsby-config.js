@@ -225,6 +225,7 @@ module.exports = {
           videoarticlepage: require('./schemas/videoarticlepage.json'),
           bookpage: require('./schemas/bookpage.json'),
           homepage: require('./schemas/homepage.json'),
+          landing_page_v1: require('./schemas/landing_page_v1.json'),
           pricespage: require('./schemas/pricespage.json'),
           pricespagetest: require('./schemas/pricespagetest.json'),
           pricesenterpricepage: require('./schemas/pricesenterpricepage.json'),
