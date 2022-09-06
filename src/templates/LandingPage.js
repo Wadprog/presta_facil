@@ -338,6 +338,10 @@ export const query = graphql`
                   placeholder {
                     text
                   }
+                  cta_image {
+                    alt
+                    url
+                  }
                 }
               }
               ... on PrismicLandingPageV1DataBodyAgencies {
