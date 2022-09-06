@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { object, array } from 'prop-types';
 import BackgroundImage from 'gatsby-background-image';
-import Swiper from 'react-id-swiper';
 import { RichText } from 'prismic-reactjs';
 
 import Item from './components/Item';
@@ -18,21 +17,6 @@ const FeaturesCheckList = ({ primary, items }) => {
   useEffect(() => {
     setBuildKey(+new Date());
   }, [width]);
-
-  const params = {
-    slidesPerView: 'auto',
-    spaceBetween: 16,
-    breakpoints: {
-      768: {
-        spaceBetween: 32,
-      },
-      992: {
-        spaceBetween: 0,
-        allowTouchMove: false,
-      },
-    },
-  };
-
   return (
     <BackgroundImage
       fluid={background.childImageSharp.fluid}
@@ -40,14 +24,16 @@ const FeaturesCheckList = ({ primary, items }) => {
     >
       <div className={style.features}>
         <div className={style.container}>
-          <div className={style.title}>
-            <RichText render={title.richText} />
-          </div>
-          <div className={style.descr}>
-            <RichText render={description.richText} />
+          <div className={style.textContainer}>
+            <div className={style.title}>
+              <RichText render={title.richText} />
+            </div>
+            <div className={style.descr}>
+              <RichText render={description.richText} />
+            </div>
           </div>
           <div className={style.slider} key={buildKey}>
-            <Swiper {...params}>
+            <div className={style.swiperwrapper}>
               {items.map((item, index) => {
                 return (
                   <div className={style.slide} key={`Features${index}`}>
@@ -55,7 +41,7 @@ const FeaturesCheckList = ({ primary, items }) => {
                   </div>
                 );
               })}
-            </Swiper>
+            </div>
           </div>
         </div>
       </div>

@@ -10,28 +10,28 @@
     padding: 0;
   }
 
-  :global {
-    .swiper-container {
-      @media (min-width: $lg) {
-        overflow: visible;
-      }
+  .swiper-container {
+    @media (min-width: $lg) {
+      overflow: visible;
     }
-    .swiper-wrapper {
-      padding: 0 16px 60px;
-      @media (min-width: $lg) {
-        padding: 0 0;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: stretch;
-      }
+  }
+  .swiperwrapper {
+    padding: 0 16px 60px;
+    display:flex;
+    @media (min-width: $lg) {
+      padding: 0 0;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: stretch;
     }
-    .swiper-slide {
-      @media (max-width: $lg) {
-        height: auto;
-      }
+  }
+  .swiper-slide {
+    @media (max-width: $lg) {
+      height: auto;
     }
   }
 }
+
 
 .background {
   &:before,
@@ -64,7 +64,7 @@
   strong {
     font-family: $font-gramatika-black;
     font-weight: 900;
-    color: $green;
+    color: #030d21;
     letter-spacing: 0.03em;
     
   }
@@ -95,10 +95,14 @@
 
 .slide {
   position: relative;
-  max-width: 495px;
+  width: 100%;
+  display: flex;
+  align-self: stretch;
+  margin-top: 60px;
   &:nth-child(2n) {
-    margin-top: 60px;
-    margin-left: 30px;
+    & > * {
+      flex-direction: row-reverse;
+    }
   }
   @media (max-width: 1024px) {
     max-width: 460px;
