@@ -214,6 +214,36 @@ export const query = graphql`
                   }
                 }
               }
+              ... on PrismicLandingPageV1DataBodyFeatureschecklist {
+                id
+                slice_type
+                primary {
+                  title {
+                    richText
+                  }
+                  description {
+                    richText
+                  }
+                }
+                items {
+                  title {
+                    richText
+                  }
+                  text {
+                    richText
+                  }
+                  checklist_negative {
+                    richText
+                  }
+                  checklist_positive {
+                    richText
+                  }
+                  image {
+                    alt
+                    url
+                  }
+                }
+              }
               ... on PrismicLandingPageV1DataBodyWorks {
                 id
                 slice_type

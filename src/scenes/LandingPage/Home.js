@@ -6,6 +6,8 @@ import Testimonials from '@components/Testimonials';
 import Solutions from './components/Solutions';
 import Technologies from './components/Technologies';
 import Features from './components/Features';
+import FeaturesChecklist from './components/FeaturesCheckList';
+
 import Works from '@components/Works';
 import Plans from '@components/Plans';
 import Articles from '@components/Articles/Articles';
@@ -17,6 +19,7 @@ const Home = ({ content, currentLanguage, videoask }) => {
   return (
     <div className={style.HomePage}>
       {content.map((section, index) => {
+        console.log(section.slice_type);
         switch (section.slice_type) {
           case 'hero1':
             return (
@@ -49,6 +52,13 @@ const Home = ({ content, currentLanguage, videoask }) => {
           case 'features':
             return (
               <Features {...section} key={`${section.slice_type}${index}`} />
+            );
+          case 'featureschecklist':
+            return (
+              <FeaturesChecklist
+                {...section}
+                key={`${section.slice_type}${index}`}
+              />
             );
           case 'works':
             return <Works {...section} key={`${section.slice_type}${index}`} />;
