@@ -1,0 +1,97 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 83px;
+  height: 104px;
+  padding-top: 15px;
+  transition: 0.3s;
+  &::before {
+    content: '';
+    position: absolute;
+    width: 40%;
+    height: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 30px 80px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+  }
+  @media (min-width: $lg) {
+    width: 128px;
+    height: 128px;
+    padding-top: 25px;
+
+    &:hover {
+      padding-top: 15px;
+      cursor: pointer;
+      &::before {
+        box-shadow: none;
+        box-shadow: 0px 30px 80px rgba(0, 0, 0, 0.3);
+      }
+      .hoverBg {
+        position: relative;
+        opacity: 1;
+      }
+
+      .mainBg {
+        position: absolute;
+        opacity: 0;
+      }
+      .icon {
+        transform: scale(0.8);
+      }
+    }
+  }
+  .name {
+    font-family: $font-gramatika;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 150%;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 12px;
+    z-index: 1;
+    color: #2e3542;
+    @media (max-width: $lg) {
+      font-size: 9px;
+    }
+  }
+  .icon {
+    z-index: 1;
+    transition: 0.3s;
+    @media (max-width: $lg) {
+      max-width: 26px;
+      transform: scale(0.8);
+    }
+  }
+  .background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  .hoverBg {
+    position: absolute;
+    opacity: 0;
+    width: 120px;
+    path {
+      fill: #fff;
+    }
+    @media (max-width: $lg) {
+      position: relative;
+      opacity: 1;
+      width: 83px;
+    }
+  }
+  .mainBg {
+    @media (max-width: $lg) {
+      display: none;
+    }
+  }
+}

@@ -253,6 +253,28 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
+  const landing_page_v1 = await graphql(`
+    {
+      allPrismicLandingPageV1 {
+        nodes {
+          id
+          uid
+          lang
+          type
+          url
+        }
+      }
+    }
+  `);
+
+  landing_page_v1.data.allPrismicLandingPageV1.nodes.forEach((page) => {
+    createPage({
+      path: page.url,
+      component: path.resolve(__dirname, 'src/templates/LandingPage.js'),
+      context: { ...page },
+    });
+  });
+
   const contact = await graphql(`
     {
       allPrismicContact {

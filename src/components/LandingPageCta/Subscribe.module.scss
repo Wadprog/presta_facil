@@ -1,0 +1,194 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.container {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  @media (max-width: $md) {
+    padding: 32px 16px;
+  }
+}
+
+.background {
+  overflow: hidden;
+  border-radius: 0px;
+  margin: 0;
+  padding: 75px 80px 60px;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  background-color: #ffffff;
+  @media (max-width: $md) {
+    padding: 75px 5px 60px;
+  }
+}
+.imageWrapper{
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  flex-basis: 45%;
+  & .image{
+    width: 100%;
+    object-fit: cover;
+    max-height: 298px;
+
+  }
+}
+
+.block {
+  display: flex;
+  box-sizing: border-box;
+  flex-basis: 45%;
+  align-items: flex-start;
+  flex-direction: column;
+  @media (max-width: $lg) {
+    flex-direction: column;
+    padding: 54px 32px;
+    max-width: 600px;
+  }
+}
+.title h2 {
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 130%;
+  max-width: 410px;
+  margin-bottom: 1.5rem;
+  strong {
+    font-weight: 600;
+    color: $green;
+    letter-spacing: 0.03em;
+    
+  }
+  @media (max-width: $lg) {
+    margin-bottom: 32px;
+  }
+  @media (max-width: $md) {
+    text-align: left;
+    font-size: 28px;
+  }
+}
+
+.form {
+  display: flex;
+  margin-left: auto;
+  @media (max-width: $lg) {
+    margin-left: 0;
+  }
+  @media (max-width: $md) {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.input {
+  font-family: $font-sofia-pro;
+  padding: 12px 22px;
+  background: $bg-blue;
+  border: 1px solid rgba(1, 25, 73, 0.3);
+  border-radius: 12px;
+  color: $main-light;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 180%;
+  letter-spacing: 0.03em;
+  box-sizing: border-box;
+  width: 335px;
+
+  @media (max-width: $md) {
+    width: 100%;
+    margin-bottom: 28px;
+  }
+
+  &::placeholder {
+    color: rgba($color: $main-light, $alpha: 0.75);
+  }
+  &:focus {
+    border-color: $main-light;
+    outline: none;
+  }
+}
+
+.errorMessage {
+  position: absolute;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 160%;
+  color: $red;
+  letter-spacing: 0.05em;
+  top: -20px;
+  right: 0;
+  opacity: 0;
+}
+.error {
+  .input {
+    position: relative;
+    border-color: $red;
+    color: $red;
+  }
+  .errorMessage {
+    opacity: 1;
+  }
+}
+
+.success {
+  .input {
+    color: $green;
+    border-color: $green;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    color: $green;
+    width: 15px;
+    height: 11px;
+    background-image: url('./images/checkmark.svg');
+    background-size: contain;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.button {                                                                     
+  margin-top: 32px;
+  min-width: 128px;
+  @media (max-width: $md) {
+    margin-left: 0;
+    button {
+      max-width: 100%;
+    }
+  }
+}
+
+.successMessage {
+  padding: 13px 48px 12px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  color: #fff;
+  background-color: $green;
+}
+
+.networkErrorMessage {
+  position: absolute;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 160%;
+  color: $red;
+  letter-spacing: 0.05em;
+  top: -20px;
+  right: 0;
+  opacity: 1;
+}

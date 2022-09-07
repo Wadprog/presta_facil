@@ -30,7 +30,6 @@ const Layout = ({
 
   const headerData = edge[0].node.data.body;
   const footerData = edge[0].node.data.body1;
-
   return (
     <ActiveDocMeta.Provider value={activeDocMeta}>
       <LangContext.Provider
@@ -53,7 +52,9 @@ const Layout = ({
           <main className={styles.main} id="main">
             {children}
           </main>
-          <Footer activeDocMeta={activeDocMeta} data={footerData} />
+          {activeDocMeta && activeDocMeta.type !== 'landing_page_v1' && (
+            <Footer activeDocMeta={activeDocMeta} data={footerData} />
+          )}
         </div>
       </LangContext.Provider>
     </ActiveDocMeta.Provider>

@@ -174,10 +174,15 @@ const Header = ({ data, hideMenu, metatitle, type }) => {
             ) : (
               <>
                 <div className={style.slogan}>
-                  <GradientText
-                    text={primary.slogan.text}
-                    background={gradientTextBg}
-                  />
+                  {type && type.type === 'landing_page_v1' && (
+                    <Logo img={primary.logo} />
+                  )}
+                  {type && type.type !== 'landing_page_v1' && (
+                    <GradientText
+                      text={primary.slogan.text}
+                      background={gradientTextBg}
+                    />
+                  )}
                 </div>
                 <div className={style.button}>
                   <Button
@@ -192,48 +197,51 @@ const Header = ({ data, hideMenu, metatitle, type }) => {
             )}
           </div>
           <div className={style.bottom}>
-            <div className={style.bottomContainer}>
-              <div className={style.burger}>
-                <IconButton
-                  variant={VARIANT_ICON.BURGER}
-                  click={toggleMobileMenu}
-                >
-                  {isOpenMenu ? (
-                    <img src={close.publicURL} alt="close menu" />
-                  ) : (
-                    <img src={burger.publicURL} alt="burger menu" />
-                  )}
-                </IconButton>
-              </div>
-              <Logo img={primary.logo} />
-              <Menu
-                data={menuItemsData}
-                menuSingleData={menuSingleData[0]}
-                open={isOpenMenu}
-              />
-              <SingInButton
-                onClick={() =>
-                  window && window.open(parseUrl(primary.signinlink), '_self')
-                }
-              />
-            </div>
-            {type && type.type !== 'homepage' && (
-              <div className={style.breadcrumbContainer}>
-                <Breadcrumb
-                  usePathPrefix={linkResolver(type).split('/')[1]}
-                  location={location}
-                  crumbSeparator={''}
-                  crumbLabel={metatitle.text}
-                  title={`${
-                    type.lang === 'en-gb' ? '' : type.lang.slice(0, 2)
-                  } ${type.lang !== 'en-gb' ? ' > ' : ''} ${
-                    type.lang === 'en-gb'
-                      ? linkResolver(type).split('/')[1]
-                      : linkResolver(type).split('/')[2]
-                  }`}
+            {type && type.type !== 'landing_page_v1' && (
+              <div className={style.bottomContainer}>
+                <div className={style.burger}>
+                  <IconButton
+                    variant={VARIANT_ICON.BURGER}
+                    click={toggleMobileMenu}
+                  >
+                    {isOpenMenu ? (
+                      <img src={close.publicURL} alt="close menu" />
+                    ) : (
+                      <img src={burger.publicURL} alt="burger menu" />
+                    )}
+                  </IconButton>
+                </div>
+                <Logo img={primary.logo} />
+                <Menu
+                  data={menuItemsData}
+                  menuSingleData={menuSingleData[0]}
+                  open={isOpenMenu}
+                />
+                <SingInButton
+                  onClick={() =>
+                    window && window.open(parseUrl(primary.signinlink), '_self')
+                  }
                 />
               </div>
             )}
+            {(type && type.type !== 'homepage') ||
+              (type && type.type !== 'landing_page_v1' && (
+                <div className={style.breadcrumbContainer}>
+                  <Breadcrumb
+                    usePathPrefix={linkResolver(type).split('/')[1]}
+                    location={location}
+                    crumbSeparator={''}
+                    crumbLabel={metatitle.text}
+                    title={`${
+                      type.lang === 'en-gb' ? '' : type.lang.slice(0, 2)
+                    } ${type.lang !== 'en-gb' ? ' > ' : ''} ${
+                      type.lang === 'en-gb'
+                        ? linkResolver(type).split('/')[1]
+                        : linkResolver(type).split('/')[2]
+                    }`}
+                  />
+                </div>
+              ))}
           </div>
         </div>
       </header>
