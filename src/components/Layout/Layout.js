@@ -30,7 +30,6 @@ const Layout = ({
 
   const headerData = edge[0].node.data.body;
   const footerData = edge[0].node.data.body1;
-  console.log(activeDocMeta);
   return (
     <ActiveDocMeta.Provider value={activeDocMeta}>
       <LangContext.Provider
