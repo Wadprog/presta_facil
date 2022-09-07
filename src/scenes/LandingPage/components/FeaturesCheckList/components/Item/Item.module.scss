@@ -20,7 +20,7 @@
   flex-basis: 100%;
 
   @media (min-width: $lg) {
-  flex-basis: 47%;
+  flex-basis: 46%;
   }
   flex-direction: column;
   text-align: left;
@@ -66,6 +66,14 @@
   line-height: 125%;
   color: #011949 !important;
   font-size: 24px;
+}
+
+.subtitle h6, .subtitle *{
+  font-weight: 700;
+  line-height: 125%;
+  color: $green !important;
+  font-size: 20px;
+  margin-top: 1rem;
 }
 
 .title h3 {
@@ -119,7 +127,7 @@
   position: relative;
   flex-basis: 100%;
   @media (min-width: $lg) {
-  flex-basis: 47%;
+  flex-basis: 46%;
   }
 display: flex;
   &::before,

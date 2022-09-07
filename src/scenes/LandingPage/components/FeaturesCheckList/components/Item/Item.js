@@ -9,6 +9,7 @@ const Item = ({
   image,
   text,
   title,
+  subtitle,
   checklist_negative,
   checklist_positive,
 }) => {
@@ -17,6 +18,9 @@ const Item = ({
       <div className={style.textContainer}>
         <div className={style.title}>
           <RichText render={title.richText} />
+        </div>
+        <div className={style.subtitle}>
+          <RichText render={subtitle.richText} />
         </div>
         <div className={style.text}>
           <RichText render={text.richText} />
@@ -38,6 +42,7 @@ Item.propTypes = {
   image: object,
   text: object,
   title: object,
+  subtitle: object,
   pagename: object,
   buttontext: object,
   checklist_positive: object,

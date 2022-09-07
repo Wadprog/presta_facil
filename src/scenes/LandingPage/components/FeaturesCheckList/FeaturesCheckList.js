@@ -12,7 +12,7 @@ const FeaturesCheckList = ({ primary, items }) => {
   const [buildKey, setBuildKey] = useState();
   const { width } = useBreakpoints();
   const { background } = useGetImages();
-  const { title, description } = primary;
+  const { title, description, subtitle } = primary;
 
   useEffect(() => {
     setBuildKey(+new Date());
@@ -27,6 +27,9 @@ const FeaturesCheckList = ({ primary, items }) => {
           <div className={style.textContainer}>
             <div className={style.title}>
               <RichText render={title.richText} />
+            </div>
+            <div className={style.subtitle}>
+              <RichText render={subtitle.richText} />
             </div>
             <div className={style.descr}>
               <RichText render={description.richText} />

@@ -394,6 +394,14 @@
                   "multi": "paragraph",
                   "label": "description"
                 }
+              },
+              "subtitle": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
+                  "label": "subtitle",
+                  "placeholder": "subtitle"
+                }
               }
             },
             "repeat": {
@@ -414,6 +422,14 @@
                   "single": "heading6",
                   "label": "title",
                   "placeholder": "title"
+                }
+              },
+              "subtitle": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
+                  "label": "subtitle",
+                  "placeholder": "subtitle"
                 }
               },
               "text": {

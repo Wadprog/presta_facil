@@ -221,12 +221,18 @@ export const query = graphql`
                   title {
                     richText
                   }
+                  subtitle {
+                    richText
+                  }
                   description {
                     richText
                   }
                 }
                 items {
                   title {
+                    richText
+                  }
+                  subtitle {
                     richText
                   }
                   text {

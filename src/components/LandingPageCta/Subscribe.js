@@ -85,7 +85,6 @@ const Subscribe = ({ primary }) => {
       !isError && data.email.isValid && data.email.value.length > 0,
   });
 
-  console.log(compliant_input_is_active);
   return (
     <>
       <div className={styles.container}>

@@ -54,9 +54,29 @@
   }
 }
 
+.subtitle p {
+  font-family: $font-sofia-pro;
+  font-weight: 400;
+  color: #030d21;
+  letter-spacing: 0.03em;
+  font-size: 30px;
+  line-height: 125%;
+  margin-bottom: 2rem;
+
+}
+
+.subtitle strong {
+    font-family: $font-sofia-pro;
+    font-weight: 900;
+    color: $green;
+    letter-spacing: 0.03em;
+    font-size: 30px;
+    line-height: 125%;
+    margin-bottom: 2rem;
+}
 .title h2 {
   font-family: $font-gramatika;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 42px;
   line-height: 125%;
   max-width: 850px;

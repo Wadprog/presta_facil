@@ -53,7 +53,9 @@ const Layout = ({
           <main className={styles.main} id="main">
             {children}
           </main>
-          <Footer activeDocMeta={activeDocMeta} data={footerData} />
+          {activeDocMeta.type !== 'landing_page_v1' && (
+            <Footer activeDocMeta={activeDocMeta} data={footerData} />
+          )}
         </div>
       </LangContext.Provider>
     </ActiveDocMeta.Provider>
