@@ -653,6 +653,14 @@
                   "placeholder": "send"
                 }
               },
+              "buttonlink": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "buttonLink",
+                  "placeholder": "buttonLink"
+                }
+              },
               "compliant_input_is_active": {
                 "type": "Boolean",
                 "config": {

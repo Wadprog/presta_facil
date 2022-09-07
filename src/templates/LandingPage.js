@@ -332,6 +332,13 @@ export const query = graphql`
                   title {
                     richText
                   }
+                  buttonlink {
+                    link_type
+                    url
+                  }
+                  text {
+                    richText
+                  }
                   buttontext {
                     richText
                   }
@@ -342,6 +349,7 @@ export const query = graphql`
                     alt
                     url
                   }
+                  compliant_input_is_active
                 }
               }
               ... on PrismicLandingPageV1DataBodyAgencies {

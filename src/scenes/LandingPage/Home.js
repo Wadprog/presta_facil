@@ -11,7 +11,7 @@ import FeaturesChecklist from './components/FeaturesCheckList';
 import Works from '@components/Works';
 import Plans from '@components/Plans';
 import Articles from '@components/Articles/Articles';
-import Subscribe from '@components/Subscribe';
+import Subscribe from '@components/LandingPageCta';
 import Agencies from '@components/Agencies';
 import 'swiper/swiper.scss';
 
@@ -19,7 +19,6 @@ const Home = ({ content, currentLanguage, videoask }) => {
   return (
     <div className={style.HomePage}>
       {content.map((section, index) => {
-        console.log(section.slice_type);
         switch (section.slice_type) {
           case 'hero1':
             return (

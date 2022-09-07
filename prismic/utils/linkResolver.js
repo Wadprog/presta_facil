@@ -2,7 +2,6 @@ const { defaultLanguage } = require('./../../prismic-config');
 
 const linkResolver = (doc) => {
   const properties = doc._meta || doc;
-  console.log(properties.type);
   if (properties.type === 'homepage') {
     return properties.lang === defaultLanguage
       ? '/'
