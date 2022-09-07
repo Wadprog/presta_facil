@@ -53,7 +53,7 @@ const Layout = ({
           <main className={styles.main} id="main">
             {children}
           </main>
-          {activeDocMeta.type !== 'landing_page_v1' && (
+          {activeDocMeta && activeDocMeta.type !== 'landing_page_v1' && (
             <Footer activeDocMeta={activeDocMeta} data={footerData} />
           )}
         </div>
