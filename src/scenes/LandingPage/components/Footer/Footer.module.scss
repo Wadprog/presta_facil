@@ -3,7 +3,7 @@
 
 .hero {
   position: relative;
-  padding: 140px 20px 140px;
+  padding: 180px 20px 210px;
   margin-top: 80px;
   &::before {
     content: '';
@@ -42,7 +42,7 @@
   }
   
   @media (max-width: $lg) {
-    padding: 120px 16px 120px;
+    padding: 140px 16px 200px;
     &::before {
       display: none;
     }
@@ -191,6 +191,7 @@
   text-transform: uppercase;
   width: 105%;
   justify-content: center;
+  margin-bottom: 3rem;
   p {
     white-space: nowrap;
   }
@@ -205,7 +206,7 @@
   align-items: center;
   margin-left: 32px;
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
   .companyLogo {
     filter: grayscale(100%);
     opacity: 0.3;
@@ -239,4 +240,94 @@
 .slide {
   display: flex;
   align-items: center;
+}
+
+.checklist_positive {
+  width: 100%;
+  margin-bottom: 4rem;
+  ul {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    flex-direction: column;
+  }
+  li {
+    position: relative;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 160%;
+    letter-spacing: 0.0em;
+    margin-left:30px;
+    margin-bottom: .7rem;
+    &::before {
+      content: '';
+      position: relative;
+      width: 22px;
+      height: 22px;
+      background:  url('./image/checkbox-icon.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      border-radius: 50%;
+      left: -12px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  
+    @media (min-width: $lg) {
+      max-width: 40%;
+    }
+  }
+}
+.reviewsWrapper{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  & .star{
+    width: 13px;
+    height: 13px;
+    margin-right: 1px;
+  }
+  & p{
+    margin-left: 8px;
+  }
+}
+
+.badgesWrapper{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  justify-content: space-around;
+  align-items: center;
+  & .badge{
+    object-fit: contain!important;
+  }
+}
+.badgesImagesWrapper{
+  display: flex;
+  width: 100%;
+  max-width: 400px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.secondRowBadgesWrapper{
+  display: flex;
+  width: 100%;
+  max-width: 400px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top:3rem;
+  & a:first-child{
+      margin-right: 35px;
+  }
+  & a {
+    & img{
+      max-width: 61px;
+    }
+  }
 }

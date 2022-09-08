@@ -18,6 +18,10 @@
   .swiperwrapper {
     padding: 0 16px 60px;
     display:flex;
+    @media (max-width: $lg) {
+      flex-direction: column;
+
+    }
     @media (min-width: $lg) {
       padding: 0 0;
       flex-wrap: wrap;
@@ -119,9 +123,11 @@
   display: flex;
   align-self: stretch;
   margin-top: 60px;
-  &:nth-child(2n) {
-    & > * {
-      flex-direction: row-reverse;
+  @media (min-width: $lg) {
+    &:nth-child(2n) {
+      & > * {
+        flex-direction: row-reverse;
+      }
     }
   }
   @media (max-width: 1024px) {
@@ -131,12 +137,10 @@
     max-width: 400px;
     height: auto;
     margin-bottom: 0;
-    &:nth-child(2n) {
-      margin-top: 0;
-      margin-left: 0;
-    }
+    margin-top: 40px;
+   
   }
   @media (max-width: $md) {
-    max-width: 280px;
+    max-width: 100%;
   }
 }

@@ -24,6 +24,7 @@
   flex-direction: row;
   background-color: #ffffff;
   @media (max-width: $md) {
+    flex-direction: column;
     padding: 75px 5px 60px;
   }
 }
