@@ -25,6 +25,167 @@
           "agencies": []
         },
         "choices": {
+          "footer": {
+            "type": "Slice",
+            "fieldset": "footer",
+            "description": "footer section",
+            "icon": "account_balance",
+            "display": "list",
+            "non-repeat": {
+              "sub_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "subtitle"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1,heading2",
+                  "label": "title"
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph,strong",
+                  "label": "description"
+                }
+              },
+              "button": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "button"
+                }
+              },
+              "buttonlink": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "buttonlink"
+                }
+              },
+              "buttonsecondary": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "button secondary"
+                }
+              },
+              "buttonsecondarylink": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "button secondary link"
+                }
+              },
+              "checklist_advantages": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "list-item",
+                  "label": "checklist advantages",
+                  "placeholder": "checklist_advantages"
+                }
+              },
+              "reviewstext": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "reviewstext",
+                  "placeholder": "reviews text"
+                }
+              },
+              "badge1": {
+                "type": "Image",
+                "config": {
+                  "constraint": {
+                    "width": null,
+                    "height": null
+                  },
+                  "thumbnails": [],
+                  "label": "badge1"
+                }
+              },
+              "badge2": {
+                "type": "Image",
+                "config": {
+                  "constraint": {
+                    "width": null,
+                    "height": null
+                  },
+                  "thumbnails": [],
+                  "label": "badge2"
+                }
+              },
+              "badge3": {
+                "type": "Image",
+                "config": {
+                  "constraint": {
+                    "width": null,
+                    "height": null
+                  },
+                  "thumbnails": [],
+                  "label": "badge3"
+                }
+              },
+              "badge4": {
+                "type": "Image",
+                "config": {
+                  "constraint": {
+                    "width": null,
+                    "height": null
+                  },
+                  "thumbnails": [],
+                  "label": "badge4"
+                }
+              },
+              "badge5": {
+                "type": "Image",
+                "config": {
+                  "constraint": {
+                    "width": null,
+                    "height": null
+                  },
+                  "thumbnails": [],
+                  "label": "badge5"
+                }
+              },
+              "badge_6": {
+                "type": "Image",
+                "config": {
+                  "constraint": {
+                    "width": null,
+                    "height": null
+                  },
+                  "thumbnails": [],
+                  "label": "badge 6"
+                }
+              },
+              "badge7": {
+                "type": "Image",
+                "config": {
+                  "constraint": {
+                    "width": null,
+                    "height": null
+                  },
+                  "thumbnails": [],
+                  "label": "badge7"
+                }
+              }
+            },
+            "repeat": {
+              "trustedlogo": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "trustedLogo"
+                }
+              }
+            }
+          },
           "hero1": {
             "type": "Slice",
             "fieldset": "hero",
@@ -409,8 +570,8 @@
                 "type": "Image",
                 "config": {
                   "constraint": {
-                    "width": 300,
-                    "height": 300
+                    "width": null,
+                    "height": null
                   },
                   "thumbnails": [],
                   "label": "image"
@@ -454,6 +615,15 @@
                   "multi": "list-item",
                   "label": "checklist_positive",
                   "placeholder": "checklist positive items"
+                }
+              },
+              "compliance_button_active": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "false",
+                  "placeholder_true": "true",
+                  "default_value": false,
+                  "label": "compliance_button_active"
                 }
               }
             }

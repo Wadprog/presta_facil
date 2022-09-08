@@ -117,6 +117,80 @@ export const query = graphql`
                   }
                 }
               }
+              ... on PrismicLandingPageV1DataBodyFooter {
+                id
+                slice_type
+                primary {
+                  title {
+                    richText
+                  }
+                  sub_title {
+                    richText
+                  }
+                  badge1 {
+                    alt
+                    url
+                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+                  }
+                  badge2 {
+                    alt
+                    url
+                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+                  }
+                  badge3 {
+                    alt
+                    url
+                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+                  }
+                  badge4 {
+                    alt
+                    url
+                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+                  }
+                  badge5 {
+                    alt
+                    url
+                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+                  }
+                  badge_6 {
+                    alt
+                    url
+                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+                  }
+                  badge7 {
+                    alt
+                    url
+                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+                  }
+                  description {
+                    richText
+                  }
+                  checklist_advantages {
+                    richText
+                  }
+                  reviewstext {
+                    richText
+                  }
+                  buttonsecondarylink {
+                    richText
+                  }
+                  buttonsecondary {
+                    richText
+                  }
+                  buttonlink {
+                    text
+                  }
+                  button {
+                    richText
+                  }
+                }
+                items {
+                  trustedlogo {
+                    alt
+                    url
+                  }
+                }
+              }
               ... on PrismicLandingPageV1DataBodyTestimonials {
                 id
                 slice_type
@@ -244,6 +318,7 @@ export const query = graphql`
                   checklist_positive {
                     richText
                   }
+                  compliance_button_active
                   image {
                     alt
                     url

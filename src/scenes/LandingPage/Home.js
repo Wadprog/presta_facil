@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './HomePage.module.scss';
 import Hero from './components/Hero';
+import Footer from './components/Footer';
+
 import Testimonials from '@components/Testimonials';
 import Solutions from './components/Solutions';
 import Technologies from './components/Technologies';
@@ -23,6 +25,14 @@ const Home = ({ content, currentLanguage, videoask }) => {
           case 'hero1':
             return (
               <Hero
+                {...section}
+                videoask={videoask}
+                key={`${section.slice_type}${index}`}
+              />
+            );
+          case 'footer':
+            return (
+              <Footer
                 {...section}
                 videoask={videoask}
                 key={`${section.slice_type}${index}`}
