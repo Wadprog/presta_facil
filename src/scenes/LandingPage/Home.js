@@ -56,7 +56,7 @@ const Home = ({
               return (
                 <Hero
                   {...section}
-                  handleCTAClick={handleClick}
+                  handleCTAClick={setCtaIsOpen}
                   compliance_cta_active={compliance_cta_active}
                   videoask={videoask}
                   key={`${section.slice_type}${index}`}
@@ -132,8 +132,11 @@ const Home = ({
       </div>
       <Modal open={ctaIsOpen} closeModal={handleCloseCta}>
         <div className={style.ctaContainer}>
-          <Testimonials {...testimonials} />
-          <Footer {...footer} videoask={videoask} isModal={true} />
+          <div className={style.ctaContainerLeft}>
+            <Testimonials {...testimonials} />
+            <Footer {...footer} videoask={videoask} isModal={true} />
+          </div>
+          <div className={style.ctaContainerRight}></div>
         </div>
       </Modal>
     </>

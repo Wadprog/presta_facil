@@ -96,7 +96,7 @@ const Hero = ({
     const { url } = formState;
     const isValidForm = validateForm(url);
 
-    isValidForm && handleCTAClick;
+    isValidForm && handleCTAClick(true);
     // window.open(
     //   `https://scanner.secureprivacy.ai/#/${url}`,
     //   '_self' // <- This is what makes it open in a new window.
@@ -148,7 +148,7 @@ const Hero = ({
 
           {compliance_cta_active && (
             <>
-              <div className={styles.title}>
+              <div className={styles.upTitleCompliance}>
                 <RichText render={compliance_title.richText} />
               </div>
               <div className={styles.buttonScanContainer}>
@@ -167,6 +167,8 @@ const Hero = ({
                     variant={VARIANT.PRIMARY}
                     isHeader={true}
                     click={handleOnSubmit}
+                    fullWidth={true}
+                    className={styles.button}
                   >
                     <RichText render={button.richText} />
                   </Button>

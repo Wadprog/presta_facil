@@ -134,6 +134,15 @@
     font-size: 10px;
   }
 }
+.upTitleCompliance{
+  @extend .upTitle;
+  text-transform:none;
+  margin: 5rem 0 1rem 0;
+  font-size: 21px;
+  @media (max-width: $lg) {
+    font-size: 20px;
+  }
+}
 .title {
   font-family: $font-gramatika;
   font-weight: bold;
@@ -242,17 +251,24 @@
 }
 
 .buttonScanContainer{
-  flex-basis: 50%;
-  @media (min-width: $lg) {
-    margin-left: 3rem;
-  }
-  @media (max-width: $lg) {
-    flex-basis: 100%;
-    align-self: stretch;
-  }
-
+  flex-basis: 100%;
   display: flex;
+  width: 100%;
+  @media (min-width: $md) {
+    min-width: 651px;
+    max-width: 651px;
+  }
+  align-items: center;
+  justify-content: center;
   & .buttonScan{
     padding-left: 16px;
+    @media (min-width: $md) {
+      min-width: 280px;
+    }
+    & .button{
+      @media (min-width: $md) {
+        min-width: 280px;
+      }
+    }
   }
 }
