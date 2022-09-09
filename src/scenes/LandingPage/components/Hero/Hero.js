@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { object, array } from 'prop-types';
+import { object, array, any } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import Swiper from 'react-id-swiper';
 
@@ -7,6 +7,8 @@ import Button, { VARIANT } from '@components/Button/Button.js';
 import Image from '@components/Image/Image';
 import styles from './Hero.module.scss';
 import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
+import isURL from 'validator/lib/isURL';
+import Input from '../../../../scenes/ContactUs/components/Input/Input';
 
 const renderMobileImages = (images) => {
   const renderedImages = images.map((imgElement, index) => (
@@ -15,7 +17,19 @@ const renderMobileImages = (images) => {
   return renderedImages;
 };
 
-const Hero = ({ primary, items, videoask }) => {
+const initialState = {
+  url: '',
+};
+
+const errors = { url: 'url' };
+
+const Hero = ({
+  primary,
+  items,
+  videoask,
+  handleCTAClick,
+  compliance_cta_active,
+}) => {
   const {
     buttonlink,
     cookieimage,
@@ -26,9 +40,18 @@ const Hero = ({ primary, items, videoask }) => {
     description,
     button,
     trusted,
+    compliance_title,
+    your_website_url,
   } = primary;
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [formState, setFormState] = useState(initialState);
+  const [formErrors, setFormErrors] = useState([]);
+
   const handleCloseModal = () => setModalIsOpen(false);
+  const handleClick = (e) => {
+    e.preventDefault();
+    setModalIsOpen(!modalIsOpen);
+  };
 
   const mobileImages = [policyimage, preferenceimage, cookieimage];
 
@@ -45,9 +68,39 @@ const Hero = ({ primary, items, videoask }) => {
     },
   };
 
-  const handleClick = (e) => {
+  const validateForm = (userurl) => {
+    const isValidUserurl = isURL(userurl);
+
+    if (!isValidUserurl) {
+      setFormErrors([...formErrors, errors.url]);
+    }
+
+    const validForm = isValidUserurl;
+
+    return validForm;
+  };
+
+  const handleInputChange = ({ target: { name, value } }) => {
+    setFormState((state) => ({ ...state, [name]: value }));
+    formErrors.length > 0 &&
+      setFormErrors([...formErrors.filter((error) => error != name)]);
+  };
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleOnSubmit(event);
+    }
+  };
+
+  const handleOnSubmit = (e) => {
     e.preventDefault();
-    setModalIsOpen(!modalIsOpen);
+    const { url } = formState;
+    const isValidForm = validateForm(url);
+
+    isValidForm && handleCTAClick;
+    // window.open(
+    //   `https://scanner.secureprivacy.ai/#/${url}`,
+    //   '_self' // <- This is what makes it open in a new window.
+    // );
   };
 
   return (
@@ -67,11 +120,13 @@ const Hero = ({ primary, items, videoask }) => {
             <div className={styles.descr}>
               <RichText render={description.richText} />
             </div>
-            <div className={styles.buttonWrapper}>
-              <Button variant={VARIANT.PRIMARY} click={handleClick}>
-                <RichText render={button.richText} />
-              </Button>
-            </div>
+            {!compliance_cta_active && (
+              <div className={styles.buttonWrapper}>
+                <Button variant={VARIANT.PRIMARY} click={handleClick}>
+                  <RichText render={button.richText} />
+                </Button>
+              </div>
+            )}
             <div className={styles.trustedWrapper}>
               <RichText render={trusted.richText} />
               <div className={styles.companies}>
@@ -90,16 +145,47 @@ const Hero = ({ primary, items, videoask }) => {
               </div>
             </div>
           </div>
-          <div className={styles.videoWrapper}>
-            <iframe
-              src={videoask.raw.url}
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              style={{ borderRadius: 24, background: 'white' }}
-              allow="camera *; microphone *; autoplay *; encrypted-media *; fullscreen *; display-capture *;"
-            />
-          </div>
+
+          {compliance_cta_active && (
+            <>
+              <div className={styles.title}>
+                <RichText render={compliance_title.richText} />
+              </div>
+              <div className={styles.buttonScanContainer}>
+                <Input
+                  id="url"
+                  placeholder={RichText.asText(your_website_url.richText)}
+                  errorMessage={'Please enter valid URL'}
+                  name="url"
+                  valid={!formErrors.includes('url')}
+                  value={formState.url}
+                  handleChange={handleInputChange}
+                  onKeyDown={handleKeyDown}
+                />
+                <div className={styles.buttonScan}>
+                  <Button
+                    variant={VARIANT.PRIMARY}
+                    isHeader={true}
+                    click={handleOnSubmit}
+                  >
+                    <RichText render={button.richText} />
+                  </Button>
+                </div>
+              </div>
+            </>
+          )}
+          {videoask && videoask.raw && videoask.raw.url && (
+            <div className={styles.videoWrapper}>
+              <iframe
+                src={videoask.raw.url}
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                style={{ borderRadius: 24, background: 'white' }}
+                allow="camera *; microphone *; autoplay *; encrypted-media *; fullscreen *; display-capture *;"
+              />
+            </div>
+          )}
         </div>
       </div>
       <ModalBookCall
@@ -115,6 +201,8 @@ Hero.propTypes = {
   primary: object,
   items: array,
   videoask: object,
+  handleCTAClick: any,
+  compliance_cta_active: any,
 };
 
 export default Hero;

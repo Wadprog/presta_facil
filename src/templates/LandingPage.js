@@ -24,6 +24,7 @@ const Page = ({ data }) => {
     >
       <Home
         videoask={pageData.videoask}
+        compliance_cta_active={pageData.compliance_cta_active}
         content={pageContent}
         currentLanguage={lang}
       />
@@ -76,26 +77,11 @@ export const query = graphql`
                   sub_title {
                     richText
                   }
-                  preferenceimage {
-                    alt
-                    url
-                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
-                  }
-                  policyimage {
-                    alt
-                    url
-                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
-                  }
                   modalbuttondescription {
                     richText
                   }
                   description {
                     richText
-                  }
-                  cookieimage {
-                    alt
-                    url
-                    gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                   }
                   buttonsecondarylink {
                     richText
@@ -107,6 +93,12 @@ export const query = graphql`
                     text
                   }
                   button {
+                    richText
+                  }
+                  compliance_title {
+                    richText
+                  }
+                  your_website_url {
                     richText
                   }
                 }
@@ -288,6 +280,69 @@ export const query = graphql`
                   }
                 }
               }
+              ... on PrismicLandingPageV1DataBodyOption1Cta {
+                id
+                slice_type
+                primary {
+                  nearly_there {
+                    richText
+                  }
+                  company_name {
+                    richText
+                  }
+                  your_name {
+                    richText
+                  }
+                  your_company_email {
+                    richText
+                  }
+                  phone_nr_to_contact_you {
+                    richText
+                  }
+                  bottom_text {
+                    richText
+                  }
+                  receive_report {
+                    richText
+                  }
+                }
+              }
+              ... on PrismicLandingPageV1DataBodyOptionTwoCta {
+                id
+                slice_type
+                primary {
+                  pre_title_text {
+                    richText
+                  }
+                  go_straight_to_your_results {
+                    richText
+                  }
+                  checklist {
+                    richText
+                  }
+                  email {
+                    richText
+                  }
+                  phone {
+                    richText
+                  }
+                  receive_report_button {
+                    richText
+                  }
+                  minute_consultation {
+                    richText
+                  }
+                  walk_you_through_text {
+                    richText
+                  }
+                  checklist_long {
+                    richText
+                  }
+                  calendly_link {
+                    richText
+                  }
+                }
+              }
               ... on PrismicLandingPageV1DataBodyFeatureschecklist {
                 id
                 slice_type
@@ -462,6 +517,7 @@ export const query = graphql`
             videoask {
               raw
             }
+            compliance_cta_active
           }
         }
       }

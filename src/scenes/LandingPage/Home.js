@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import style from './HomePage.module.scss';
 import Hero from './components/Hero';
@@ -16,84 +16,127 @@ import Articles from '@components/Articles/Articles';
 import Subscribe from '@components/LandingPageCta';
 import Agencies from '@components/Agencies';
 import 'swiper/swiper.scss';
+import Modal from './components/Modal';
 
-const Home = ({ content, currentLanguage, videoask }) => {
+const Home = ({
+  content,
+  currentLanguage,
+  videoask,
+  compliance_cta_active,
+}) => {
+  const option1cta = content.find((item) => item.slice_type === 'option_1_cta');
+  const testimonials = content.find(
+    (item) => item.slice_type === 'testimonials'
+  );
+
+  const footer = content.find((item) => item.slice_type === 'footer');
+
+  const [ctaIsOpen, setCtaIsOpen] = useState(false);
+  const handleCloseCta = () => setCtaIsOpen(false);
+  const handleClick = (e) => {
+    e.preventDefault();
+    setCtaIsOpen(!ctaIsOpen);
+  };
+
+  console.log(
+    option1cta,
+    compliance_cta_active,
+    handleCloseCta,
+    handleClick,
+    testimonials
+  );
+
   return (
-    <div className={style.HomePage}>
-      {content.map((section, index) => {
-        switch (section.slice_type) {
-          case 'hero1':
-            return (
-              <Hero
-                {...section}
-                videoask={videoask}
-                key={`${section.slice_type}${index}`}
-              />
-            );
-          case 'footer':
-            return (
-              <Footer
-                {...section}
-                videoask={videoask}
-                key={`${section.slice_type}${index}`}
-              />
-            );
-          case 'testimonials':
-            return (
-              <div
-                className={style.testimonials}
-                key={`${section.slice_type}${index}`}
-              >
-                <Testimonials {...section} />
-              </div>
-            );
-          case 'solutions':
-            return (
-              <Solutions {...section} key={`${section.slice_type}${index}`} />
-            );
-          case 'technologies':
-            return (
-              <Technologies
-                {...section}
-                key={`${section.slice_type}${index}`}
-              />
-            );
-          case 'features':
-            return (
-              <Features {...section} key={`${section.slice_type}${index}`} />
-            );
-          case 'featureschecklist':
-            return (
-              <FeaturesChecklist
-                {...section}
-                key={`${section.slice_type}${index}`}
-              />
-            );
-          case 'works':
-            return <Works {...section} key={`${section.slice_type}${index}`} />;
-          case 'plans':
-            return <Plans {...section} key={`${section.slice_type}${index}`} />;
-          case 'articles':
-            return (
-              <Articles
-                currentLanguage={currentLanguage}
-                {...section}
-                key={`${section.slice_type}${index}`}
-              />
-            );
-          case 'subscribe':
-            return (
-              <Subscribe {...section} key={`${section.slice_type}${index}`} />
-            );
-          case 'agencies':
-            return (
-              <Agencies {...section} key={`${section.slice_type}${index}`} />
-            );
-          default:
-            return null;
-        }
-      })}
-    </div>
+    <>
+      <div className={style.HomePage}>
+        {content.map((section, index) => {
+          console.log(section.slice_type);
+          switch (section.slice_type) {
+            case 'hero1':
+              return (
+                <Hero
+                  {...section}
+                  handleCTAClick={handleClick}
+                  compliance_cta_active={compliance_cta_active}
+                  videoask={videoask}
+                  key={`${section.slice_type}${index}`}
+                />
+              );
+            case 'footer':
+              return (
+                <Footer
+                  {...section}
+                  videoask={videoask}
+                  key={`${section.slice_type}${index}`}
+                />
+              );
+            case 'testimonials':
+              return (
+                <div
+                  className={style.testimonials}
+                  key={`${section.slice_type}${index}`}
+                >
+                  <Testimonials {...section} />
+                </div>
+              );
+            case 'solutions':
+              return (
+                <Solutions {...section} key={`${section.slice_type}${index}`} />
+              );
+            case 'technologies':
+              return (
+                <Technologies
+                  {...section}
+                  key={`${section.slice_type}${index}`}
+                />
+              );
+            case 'features':
+              return (
+                <Features {...section} key={`${section.slice_type}${index}`} />
+              );
+            case 'featureschecklist':
+              return (
+                <FeaturesChecklist
+                  {...section}
+                  key={`${section.slice_type}${index}`}
+                />
+              );
+            case 'works':
+              return (
+                <Works {...section} key={`${section.slice_type}${index}`} />
+              );
+            case 'plans':
+              return (
+                <Plans {...section} key={`${section.slice_type}${index}`} />
+              );
+            case 'articles':
+              return (
+                <Articles
+                  currentLanguage={currentLanguage}
+                  {...section}
+                  key={`${section.slice_type}${index}`}
+                />
+              );
+            case 'subscribe':
+              return (
+                <Subscribe {...section} key={`${section.slice_type}${index}`} />
+              );
+            case 'agencies':
+              return (
+                <Agencies {...section} key={`${section.slice_type}${index}`} />
+              );
+            default:
+              return null;
+          }
+        })}
+      </div>
+      <Modal open={ctaIsOpen} closeModal={handleCloseCta}>
+        <div className={style.ctaContainer}>
+          <Testimonials {...testimonials} />
+          <Footer {...footer} videoask={videoask} isModal={true} />
+        </div>
+      </Modal>
+    </>
   );
 };
 
@@ -101,6 +144,7 @@ Home.propTypes = {
   content: PropTypes.array.isRequired,
   currentLanguage: PropTypes.string.isRequired,
   videoask: PropTypes.object,
+  compliance_cta_active: PropTypes.boolean,
 };
 
 export default Home;

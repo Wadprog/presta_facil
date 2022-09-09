@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { object, array } from 'prop-types';
+import { object, array, Boolean } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import Swiper from 'react-id-swiper';
 
@@ -8,7 +8,7 @@ import Image from '@components/Image/Image';
 import styles from './Footer.module.scss';
 import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
 import star from './image/star.svg';
-const Footer = ({ primary, items }) => {
+const Footer = ({ primary, items, isModal = false }) => {
   const {
     buttonlink,
     badge1,
@@ -50,42 +50,44 @@ const Footer = ({ primary, items }) => {
     <>
       <div className={styles.hero}>
         <div className={styles.container}>
-          <div className={styles.content}>
-            <div className={styles.trustedWrapper}>
-              <div className={styles.companies}>
-                <Swiper {...params}>
-                  {items.map(({ trustedlogo }) => {
-                    return (
-                      <div className={styles.slide} key={trustedlogo.url}>
-                        <Image
-                          image={trustedlogo}
-                          className={`${styles.companyLogo} swiper-origin`}
-                        />
-                      </div>
-                    );
-                  })}
-                </Swiper>
+          {!isModal && (
+            <div className={styles.content}>
+              <div className={styles.trustedWrapper}>
+                <div className={styles.companies}>
+                  <Swiper {...params}>
+                    {items.map(({ trustedlogo }) => {
+                      return (
+                        <div className={styles.slide} key={trustedlogo.url}>
+                          <Image
+                            image={trustedlogo}
+                            className={`${styles.companyLogo} swiper-origin`}
+                          />
+                        </div>
+                      );
+                    })}
+                  </Swiper>
+                </div>
+              </div>
+              <div className={styles.upTitle}>
+                <RichText render={subTitle.richText} />
+              </div>
+              <div className={styles.title}>
+                <RichText render={title.richText} />
+              </div>
+              <div className={styles.descr}>
+                <RichText render={description.richText} />
+              </div>
+              <div className={styles.checklist_positive}>
+                <RichText render={checklist_advantages.richText} />
+              </div>
+
+              <div className={styles.buttonWrapper}>
+                <Button variant={VARIANT.PRIMARY} click={handleClick}>
+                  <RichText render={button.richText} />
+                </Button>
               </div>
             </div>
-            <div className={styles.upTitle}>
-              <RichText render={subTitle.richText} />
-            </div>
-            <div className={styles.title}>
-              <RichText render={title.richText} />
-            </div>
-            <div className={styles.descr}>
-              <RichText render={description.richText} />
-            </div>
-            <div className={styles.checklist_positive}>
-              <RichText render={checklist_advantages.richText} />
-            </div>
-
-            <div className={styles.buttonWrapper}>
-              <Button variant={VARIANT.PRIMARY} click={handleClick}>
-                <RichText render={button.richText} />
-              </Button>
-            </div>
-          </div>
+          )}
           <div className={styles.badgesWrapper}>
             <div className={styles.reviewsWrapper}>
               {[0, 1, 2, 3, 4].map((val, i) => (
@@ -189,6 +191,7 @@ Footer.propTypes = {
   primary: object,
   items: array,
   videoask: object,
+  isModal: Boolean,
 };
 
 export default Footer;

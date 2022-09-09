@@ -8,22 +8,20 @@
         "select": null
       }
     },
+    "compliance_cta_active": {
+      "type": "Boolean",
+      "config": {
+        "placeholder_false": "false",
+        "placeholder_true": "true",
+        "default_value": false,
+        "label": "compliance cta active"
+      }
+    },
     "body": {
       "type": "Slices",
       "fieldset": "Slice zone",
       "config": {
-        "labels": {
-          "hero": [],
-          "testimonials": [],
-          "solutions": [],
-          "technologies": [],
-          "features": [],
-          "works": [],
-          "plans": [],
-          "articles": [],
-          "subscribe": [],
-          "agencies": []
-        },
+        "labels": null,
         "choices": {
           "footer": {
             "type": "Slice",
@@ -265,46 +263,6 @@
                   "placeholder": "Insert button link"
                 }
               },
-              "main-image": {
-                "type": "Image",
-                "config": {
-                  "constraint": {},
-                  "thumbnails": [],
-                  "label": "main-image"
-                }
-              },
-              "heroimage": {
-                "type": "Image",
-                "config": {
-                  "constraint": {},
-                  "thumbnails": [],
-                  "label": "Hero image"
-                }
-              },
-              "cookieimage": {
-                "type": "Image",
-                "config": {
-                  "constraint": {},
-                  "thumbnails": [],
-                  "label": "Cookie banner image"
-                }
-              },
-              "preferenceimage": {
-                "type": "Image",
-                "config": {
-                  "constraint": {},
-                  "thumbnails": [],
-                  "label": "Preference center image"
-                }
-              },
-              "policyimage": {
-                "type": "Image",
-                "config": {
-                  "constraint": {},
-                  "thumbnails": [],
-                  "label": "Cookie policy image"
-                }
-              },
               "trusted": {
                 "type": "StructuredText",
                 "config": {
@@ -327,6 +285,22 @@
                   "multi": "paragraph",
                   "label": "modalButtonDescription",
                   "placeholder": "With founder  Dan Storbaek"
+                }
+              },
+              "compliance_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading6",
+                  "label": "compliance title",
+                  "placeholder": "Check your compliance today for free!"
+                }
+              },
+              "your_website_url": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "your website url",
+                  "placeholder": "your website url"
                 }
               }
             },
@@ -559,7 +533,7 @@
               "subtitle": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em",
                   "label": "subtitle",
                   "placeholder": "subtitle"
                 }
@@ -588,7 +562,7 @@
               "subtitle": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em",
                   "label": "subtitle",
                   "placeholder": "subtitle"
                 }
@@ -844,7 +818,8 @@
                 "config": {
                   "allowTargetBlank": true,
                   "label": "buttonLink",
-                  "placeholder": "buttonLink"
+                  "placeholder": "buttonLink",
+                  "select": null
                 }
               },
               "compliant_input_is_active": {
@@ -916,6 +891,162 @@
                   "constraint": {},
                   "thumbnails": [],
                   "label": "image"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "option_two_cta": {
+            "type": "Slice",
+            "fieldset": "option two cta",
+            "description": "option two cta",
+            "icon": "web",
+            "display": "list",
+            "non-repeat": {
+              "pre_title_text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "pre title text",
+                  "placeholder": "pre title text"
+                }
+              },
+              "go_straight_to_your_results": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading4",
+                  "label": "go straight to your results",
+                  "placeholder": "go straight to your results"
+                }
+              },
+              "checklist": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "list-item",
+                  "label": "checklist",
+                  "placeholder": "checklist"
+                }
+              },
+              "email": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "email",
+                  "placeholder": "email"
+                }
+              },
+              "phone": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "phone",
+                  "placeholder": "phone"
+                }
+              },
+              "receive_report_button": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "receive report button",
+                  "placeholder": "receive report button text"
+                }
+              },
+              "minute_consultation": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "minute consultation",
+                  "placeholder": "minute consultation"
+                }
+              },
+              "walk_you_through_text": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading6",
+                  "label": "walk you through text",
+                  "placeholder": "walk you through text"
+                }
+              },
+              "checklist_long": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "list-item",
+                  "label": "checklist long",
+                  "placeholder": "checklist long"
+                }
+              },
+              "calendly_link": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "calendly link",
+                  "placeholder": "calendly link"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "option_1_cta": {
+            "type": "Slice",
+            "fieldset": "option one cta",
+            "description": "option one cta",
+            "icon": "web",
+            "display": "list",
+            "non-repeat": {
+              "nearly_there": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading4",
+                  "label": "nearly there",
+                  "placeholder": "nearly there"
+                }
+              },
+              "your_name": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Your name",
+                  "placeholder": "Your name"
+                }
+              },
+              "company_name": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Company name",
+                  "placeholder": "Company name"
+                }
+              },
+              "your_company_email": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Your company email",
+                  "placeholder": "Your company email"
+                }
+              },
+              "phone_nr_to_contact_you": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Phone nr. to contact you",
+                  "placeholder": "Phone nr. to contact you"
+                }
+              },
+              "bottom_text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "bottom text",
+                  "placeholder": "bottom text"
+                }
+              },
+              "receive_report": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "receive report",
+                  "placeholder": "receive report"
                 }
               }
             },
