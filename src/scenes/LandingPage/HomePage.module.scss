@@ -34,6 +34,10 @@
     align-items: center;
     justify-content: center;
 
+    @media (max-width: $md) {
+      display: none;
+    }
+
     &::after {
       content: '';
       position: absolute;
@@ -53,5 +57,11 @@
     background-color: white;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+
+    @media (max-width: $md) {
+      flex-basis: 100%;
+      padding: 30px;
+    }
   }
 }

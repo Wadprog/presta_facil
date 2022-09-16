@@ -97,10 +97,10 @@ const Hero = ({
     const isValidForm = validateForm(url);
 
     isValidForm && handleCTAClick(true);
-    // window.open(
-    //   `https://scanner.secureprivacy.ai/#/${url}`,
-    //   '_self' // <- This is what makes it open in a new window.
-    // );
+    window.localStorage.setItem(
+      'scan',
+      `https://scanner.secureprivacy.ai/#/${url}`
+    );
   };
 
   return (

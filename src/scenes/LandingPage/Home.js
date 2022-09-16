@@ -34,24 +34,15 @@ const Home = ({
 
   const [ctaIsOpen, setCtaIsOpen] = useState(false);
   const handleCloseCta = () => setCtaIsOpen(false);
-  const handleClick = (e) => {
-    e.preventDefault();
-    setCtaIsOpen(!ctaIsOpen);
-  };
-
-  console.log(
-    option1cta,
-    compliance_cta_active,
-    handleCloseCta,
-    handleClick,
-    testimonials
-  );
+  // const handleClick = (e) => {
+  //   e.preventDefault();
+  //   setCtaIsOpen(!ctaIsOpen);
+  // };
 
   return (
     <>
       <div className={style.HomePage}>
         {content.map((section, index) => {
-          console.log(section.slice_type);
           switch (section.slice_type) {
             case 'hero1':
               return (

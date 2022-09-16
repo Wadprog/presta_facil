@@ -9,16 +9,15 @@ import { RichText } from 'prismic-reactjs';
 const initialState = {
   company: '',
   email: '',
-  name: '',
+  your_name: '',
   phoneNumber: '',
 };
 
-// const errors = { email: 'email', company: 'company' };
+const errors = { email: 'email' };
 
-const CONTACT_FORM_URL = process.env.GATSBY_CONTACT_FORM_URL;
+const CONTACT_FORM_URL = `https://test.secureprivacy.ai/api/email`;
 
 const Form = ({ content }) => {
-  console.log(content);
   const {
     successinformer,
     company_name,
@@ -50,8 +49,11 @@ const Form = ({ content }) => {
     return mapping[informerType];
   };
 
-  const validateForm = (companyName, userEmail) => {
-    const isValidUserEmail = isValidEmail(userEmail);
+  const validateForm = (userEmail) => {
+    const isValidUserEmail = userEmail ? isValidEmail(userEmail) : true;
+    if (!isValidUserEmail) {
+      setFormErrors([...formErrors, errors.email]);
+    }
 
     const validForm = isValidUserEmail;
 
@@ -60,16 +62,27 @@ const Form = ({ content }) => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
-    const { company, email } = formState;
-    const isValidForm = validateForm(company, email);
-    isValidForm &&
+    const { company, email, your_name, phoneNumber } = formState;
+    const isValidForm = validateForm(email);
+    if (!company && !your_name && !phoneNumber) {
+      window.open(window.localStorage.getItem('scan'), '_self');
+    }
+    if (isValidForm && company && your_name && phoneNumber) {
       fetch(CONTACT_FORM_URL, {
         method: 'POST',
-        headers: {},
-        body: new FormData(e.target),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          To: 'hello@secureprivacy.ai',
+          Subject: 'Secure Privacy - landing page CTA',
+          Body: `"<div style="font-family: Arial, Helvetica, sans-serif; font-size:10pt;">\n<h3>Hello secureprivacy, this email was sent by ${email} or someone from his organization to receive more info about secureprivacy</h3>\n\n<p>\n<b>Name: ${your_name}</b>\n<br />\n\n</p>\n\n\n<p>\n<b>Company: ${company}</b>\n<br />\n\n</p>\n\n\n<p>\n<b>Phone Number: ${phoneNumber}</b>\n<br />\n\n</p>\n<p>\nThank you, <br />\nSecure Privacy Team<br />\nSupport Email: <a href="mailto:hello@secureprivacy.ai" target="_blank"> support@secureprivacy.ai </a><br />\n<a href="https://secureprivacy.ai/" target="_blank">https://secureprivacy.ai/ </a><br />\n</p><br />\n</div>\n"`,
+        }),
       })
         .then(() => {
+          window.open(window.localStorage.getItem('scan'), '_self');
+
           if (submitError) {
             setSubmitError(null);
           }
@@ -82,6 +95,7 @@ const Form = ({ content }) => {
           }
           setSubmitError(err);
         });
+    }
   };
 
   return (
@@ -96,11 +110,11 @@ const Form = ({ content }) => {
         <div className={style.container}>
           <div className={style.row}>
             <Input
-              id="name"
+              id="your_name"
               placeholder={RichText.asText(your_name.richText)}
-              name="name"
-              valid={!formErrors.includes('name')}
-              value={formState.name}
+              name="your_name"
+              valid={!formErrors.includes('your_name')}
+              value={formState.your_name}
               handleChange={handleInputChange}
             />
             <Input

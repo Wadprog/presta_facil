@@ -9,6 +9,11 @@
 }
 
 .nearlyThere {
+  max-width: 473px;
+  justify-content: flex-start;
+  display: flex;
+  width: 100%;
+
   & h4 {
     font-family: $font-gramatika;
     font-weight: bold;
