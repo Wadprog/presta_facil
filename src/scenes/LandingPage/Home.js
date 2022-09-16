@@ -138,7 +138,7 @@ const Home = ({
             <Footer {...footer} videoask={videoask} isModal={true} />
           </div>
           <div className={style.ctaContainerRight}>
-            <Form content={option1cta} />
+            <Form content={option1cta.primary} />
           </div>
         </div>
       </Modal>

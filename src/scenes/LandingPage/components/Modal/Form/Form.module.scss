@@ -8,12 +8,28 @@
   z-index: 1;
 }
 
+.nearlyThere {
+  & h4 {
+    font-family: $font-gramatika;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+
+    @media (max-width: $lg) {
+      font-size: 36px;
+    }
+  }
+}
+
 .row {
   display: flex;
+  flex-direction: column;
 
-  & + .row {
+  &+.row {
     margin-top: 16px;
   }
+
   @media (max-width: $sm) {
     flex-direction: column;
   }
@@ -22,20 +38,23 @@
 .buttonRow {
   display: flex;
   margin-top: 32px;
+
   @media (max-width: $sm) {
     flex-direction: column;
   }
 }
 
 .buttonWrapper {
-  width: 50%;
+  width: 100%;
   background: $bg-blue;
+
   @media (max-width: $md) {
     width: 100%;
   }
 
-  & + .buttonWrapper {
+  &+.buttonWrapper {
     margin-left: 30px;
+
     @media (max-width: $sm) {
       margin-left: 0;
       margin-top: 16px;
@@ -86,6 +105,7 @@
   filter: drop-shadow(0 50px 70px #24b04b);
 
   content: '';
+
   @media (max-width: 1279px) {
     display: none;
   }
@@ -134,6 +154,7 @@
   filter: drop-shadow(0 50px 70px $red);
 
   content: '';
+
   @media (max-width: 1279px) {
     @media (max-width: 1279px) {
       display: none;
