@@ -127,27 +127,29 @@ const Hero = ({
                 </Button>
               </div>
             )}
-            <div className={styles.trustedWrapper}>
-              <RichText render={trusted.richText} />
-              <div className={styles.companies}>
-                <Swiper {...params}>
-                  {items.map(({ trustedlogo }) => {
-                    return (
-                      <div className={styles.slide} key={trustedlogo.url}>
-                        <Image
-                          image={trustedlogo}
-                          className={`${styles.companyLogo} swiper-origin`}
-                        />
-                      </div>
-                    );
-                  })}
-                </Swiper>
+            {!compliance_cta_active && (
+              <div className={styles.trustedWrapper}>
+                <RichText render={trusted.richText} />
+                <div className={styles.companies}>
+                  <Swiper {...params}>
+                    {items.map(({ trustedlogo }) => {
+                      return (
+                        <div className={styles.slide} key={trustedlogo.url}>
+                          <Image
+                            image={trustedlogo}
+                            className={`${styles.companyLogo} swiper-origin`}
+                          />
+                        </div>
+                      );
+                    })}
+                  </Swiper>
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           {compliance_cta_active && (
-            <>
+            <div className={styles.ctaOpener}>
               <div className={styles.upTitleCompliance}>
                 <RichText render={compliance_title.richText} />
               </div>
@@ -174,7 +176,24 @@ const Hero = ({
                   </Button>
                 </div>
               </div>
-            </>
+              <div className={styles.trustedWrapper}>
+                <RichText render={trusted.richText} />
+                <div className={styles.companies}>
+                  <Swiper {...params}>
+                    {items.map(({ trustedlogo }) => {
+                      return (
+                        <div className={styles.slide} key={trustedlogo.url}>
+                          <Image
+                            image={trustedlogo}
+                            className={`${styles.companyLogo} swiper-origin`}
+                          />
+                        </div>
+                      );
+                    })}
+                  </Swiper>
+                </div>
+              </div>
+            </div>
           )}
           {videoask && videoask.raw && videoask.raw.url && (
             <div className={styles.videoWrapper}>

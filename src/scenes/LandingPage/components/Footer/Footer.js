@@ -48,7 +48,7 @@ const Footer = ({ primary, items, isModal = false }) => {
 
   return (
     <>
-      <div className={styles.hero}>
+      <div className={`${styles.hero} ${isModal && styles.isModal}`}>
         <div className={styles.container}>
           {!isModal && (
             <div className={styles.content}>

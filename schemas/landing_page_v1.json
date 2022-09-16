@@ -1048,6 +1048,22 @@
                   "label": "receive report",
                   "placeholder": "receive report"
                 }
+              },
+              "successinformer": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "successinformer",
+                  "placeholder": "success informer"
+                }
+              },
+              "wrong_email": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "wrong email",
+                  "placeholder": "wrong email"
+                }
               }
             },
             "repeat": {}

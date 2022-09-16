@@ -305,6 +305,12 @@ export const query = graphql`
                   receive_report {
                     richText
                   }
+                  successinformer {
+                    richText
+                  }
+                  wrong_email {
+                    richText
+                  }
                 }
               }
               ... on PrismicLandingPageV1DataBodyOptionTwoCta {

@@ -17,6 +17,7 @@ import Subscribe from '@components/LandingPageCta';
 import Agencies from '@components/Agencies';
 import 'swiper/swiper.scss';
 import Modal from './components/Modal';
+import Form from './components/Modal/Form/Form';
 
 const Home = ({
   content,
@@ -133,10 +134,12 @@ const Home = ({
       <Modal open={ctaIsOpen} closeModal={handleCloseCta}>
         <div className={style.ctaContainer}>
           <div className={style.ctaContainerLeft}>
-            <Testimonials {...testimonials} />
+            <Testimonials {...testimonials} isModal={true} />
             <Footer {...footer} videoask={videoask} isModal={true} />
           </div>
-          <div className={style.ctaContainerRight}></div>
+          <div className={style.ctaContainerRight}>
+            <Form content={option1cta} />
+          </div>
         </div>
       </Modal>
     </>
