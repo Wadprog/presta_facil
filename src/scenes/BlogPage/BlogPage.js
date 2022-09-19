@@ -20,7 +20,8 @@ const BlogPage = ({ content, canonical, metatitle, type, categoryTitle }) => {
   const subscribeSection = lastArticleData.find(
     (item) => item.slice_type === 'subscribe'
   );
-  const { primary: subscribeSectionContent } = subscribeSection;
+
+  // const { primary: subscribeSectionContent } = subscribeSection;
 
   return (
     <div className={style.HomePage}>
@@ -40,7 +41,7 @@ const BlogPage = ({ content, canonical, metatitle, type, categoryTitle }) => {
         filtersbuttontext={filtersbuttontext}
         isCategory={type}
       />
-      <Subscribe primary={subscribeSectionContent} />
+      {subscribeSection && <Subscribe primary={subscribeSection.primary} />}
       <BreadcrumbsSemanticMarkup
         pageTitle={metatitle.text}
         pageUrl={canonical.text}
