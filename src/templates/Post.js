@@ -115,6 +115,15 @@ export const query = graphql`
                   }
                 }
               }
+              ... on PrismicBlogpostpageDataBodyCodeSnippet {
+                id
+                slice_type
+                primary {
+                  quote {
+                    richText
+                  }
+                }
+              }
               ... on PrismicBlogpostpageDataBodyImage {
                 id
                 slice_type

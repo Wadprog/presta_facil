@@ -1,0 +1,168 @@
+@import '@styles/variables/all';
+@import '@styles/mixins/all';
+
+.form {
+  position: relative;
+  max-width: 473px;
+  width: 100%;
+  z-index: 1;
+}
+
+.nearlyThere {
+  max-width: 473px;
+  justify-content: flex-start;
+  display: flex;
+  width: 100%;
+
+  & h4 {
+    font-family: $font-gramatika;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+
+    @media (max-width: $lg) {
+      font-size: 36px;
+    }
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+
+  &+.row {
+    margin-top: 16px;
+  }
+
+  @media (max-width: $sm) {
+    flex-direction: column;
+  }
+}
+
+.buttonRow {
+  display: flex;
+  margin-top: 32px;
+
+  @media (max-width: $sm) {
+    flex-direction: column;
+  }
+}
+
+.buttonWrapper {
+  width: 100%;
+  background: $bg-blue;
+
+  @media (max-width: $md) {
+    width: 100%;
+  }
+
+  &+.buttonWrapper {
+    margin-left: 30px;
+
+    @media (max-width: $sm) {
+      margin-left: 0;
+      margin-top: 16px;
+    }
+  }
+}
+
+.successInformer {
+  position: relative;
+  top: 50px;
+  right: 300px;
+
+  width: 524px;
+  padding-top: 21px;
+  padding-bottom: 16px;
+
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+  font-family: $font-sofia-pro;
+  line-height: 27px;
+
+  background-color: #24b04b;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+
+  @media (max-width: 1279px) {
+    right: 0;
+    max-width: 100%;
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+.successInformer::before {
+  position: absolute;
+  z-index: -10;
+  left: 120px;
+  top: 32px;
+
+  display: block;
+  width: 301px;
+  height: 32px;
+  border-radius: 100px;
+
+  background: inherit;
+  filter: drop-shadow(0 50px 70px #24b04b);
+
+  content: '';
+
+  @media (max-width: 1279px) {
+    display: none;
+  }
+}
+
+.errorInformer {
+  position: relative;
+  top: 50px;
+  right: 300px;
+
+  width: 524px;
+  padding-top: 21px;
+  padding-bottom: 16px;
+
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+  font-family: $font-sofia-pro;
+  line-height: 27px;
+
+  background: $red;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+
+  @media (max-width: 1279px) {
+    right: 0;
+    max-width: 100%;
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+.errorInformer::before {
+  position: absolute;
+  z-index: -10;
+  left: 120px;
+  top: 32px;
+
+  display: block;
+  width: 301px;
+  height: 32px;
+  border-radius: 100px;
+
+  background: inherit;
+  filter: drop-shadow(0 50px 70px $red);
+
+  content: '';
+
+  @media (max-width: 1279px) {
+    @media (max-width: 1279px) {
+      display: none;
+    }
+  }
+}

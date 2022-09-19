@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Swiper from 'react-id-swiper';
 import { useBreakpoints } from '@hooks';
-import { array } from 'prop-types';
+import { array, bool } from 'prop-types';
 import ArrowButton from '@components/ArrowButton/ArrowButton';
 import style from './Testimonials.module.scss';
 import Item from './components/Item';
 
-const Testimonials = ({ items }) => {
+const Testimonials = ({ items, isModal = false }) => {
   const [buildKey, setBuildKey] = useState();
   const { width } = useBreakpoints();
 
@@ -14,7 +14,7 @@ const Testimonials = ({ items }) => {
     setBuildKey(+new Date());
   }, [width]);
   return (
-    <div className={style.testimonials}>
+    <div className={!isModal && style.testimonials}>
       <div className={style.container}>
         <Swiper {...params} key={buildKey}>
           {items.map((item, index) => {
@@ -53,6 +53,7 @@ const params = {
 
 Testimonials.propTypes = {
   items: array,
+  isModal: bool,
 };
 
 export default Testimonials;

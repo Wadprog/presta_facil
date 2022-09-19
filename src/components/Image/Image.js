@@ -10,8 +10,8 @@ const Image = ({ image, className }) => {
   }, []);
 
   const imageAltStub = ' ';
-  const imageAlt = image.alt ? image.alt : imageAltStub;
-  if (image.hasOwnProperty('gatsbyImageData')) {
+  const imageAlt = image && image.alt ? image.alt : imageAltStub;
+  if (image && image.hasOwnProperty('gatsbyImageData')) {
     return (
       <GatsbyImage
         className={className}

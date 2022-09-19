@@ -6,7 +6,7 @@ import BlogPage from '@scenes/BlogPage';
 import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
-  const blogpageContent = data.allPrismicBlogpage.edges[0];
+  const blogpageContent = data?.allPrismicBlogpage?.edges[0];
   if (!blogpageContent) return null;
   const blogpage = blogpageContent.node;
 

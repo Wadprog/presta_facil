@@ -5,6 +5,9 @@
   position: relative;
   padding: 180px 20px 210px;
   margin-top: 80px;
+  &.isModal{
+    padding:0;
+  }
   &::before {
     content: '';
     position: absolute;
