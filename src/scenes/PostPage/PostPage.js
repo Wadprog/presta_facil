@@ -58,6 +58,7 @@ const PostPage = ({ current, tags, currentLanguage }) => {
   const currentLang = useContext(LangContext);
 
   React.useEffect(() => {
+    console.log('Inside post page');
     categories[0].is_pilar_page_ && setIsPilarPage(true);
   }, [categories]);
 
@@ -196,6 +197,21 @@ const PostPage = ({ current, tags, currentLanguage }) => {
                 return (
                   <>
                     <Text {...section} key={`${section.slice_type}${index}`} />
+                  </>
+                );
+
+              case 'code_snippet':
+                return (
+                  <>
+                    <div
+                      className={style.thinkific}
+                      key={index}
+                      dangerouslySetInnerHTML={{
+                        __html: `
+                        <iframe src="https://training.secureprivacy.ai/embeds/products/show?button_text=Certify%20me&amp;button_bg_color=%23179473&amp;button_text_color=%23FFFFFF&amp;card_bg_color=%23FFFFFF&amp;card_text_color=%237D7D7D&amp;card_type=card&amp;product_id=${section.primary.quote.richText[0].text}&amp;link_type=checkout&amp;embed_version=0.0.2&amp;index=0" id="thinkific-product-embed-iframe-0" frameborder="0" height="245" width="230" scrolling="no" style="height: 272px; max-width: 230px;"></iframe>
+                        `,
+                      }}
+                    ></div>
                   </>
                 );
               case 'image':

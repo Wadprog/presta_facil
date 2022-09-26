@@ -222,7 +222,11 @@
     padding-right: 16px;
   }
 }
-
+.thinkific {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .wrapper {
   display: flex;
   align-items: center;
