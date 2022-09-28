@@ -5,19 +5,19 @@
   position: relative;
   padding: 180px 20px 210px;
   margin-top: 80px;
-  &.isModal{
-    padding:0;
+
+  &.isModal {
+    padding: 0;
   }
+
   &::before {
     content: '';
     position: absolute;
     width: 195px;
     height: 175px;
-    background: linear-gradient(
-      243.67deg,
-      #00ce7b -2.64%,
-      rgba(82, 119, 192, 0) 111.75%
-    );
+    background: linear-gradient(243.67deg,
+        #00ce7b -2.64%,
+        rgba(82, 119, 192, 0) 111.75%);
     opacity: 0.25;
     filter: blur(40px);
     border-radius: 30px 5px;
@@ -43,13 +43,15 @@
       display: none;
     }
   }
-  
+
   @media (max-width: $lg) {
     padding: 140px 16px 200px;
+
     &::before {
       display: none;
     }
   }
+
   @media (max-width: $md) {
     margin-top: 94px;
     padding-top: 112px;
@@ -60,9 +62,11 @@
     .swiper-container {
       width: 100%;
     }
+
     .swiper-wrapper {
       align-items: center;
     }
+
     .swiper-slide {
       display: flex;
       align-items: center;
@@ -82,9 +86,11 @@
   flex-direction: column;
   text-align: center;
   align-items: center;
+
   @media (max-width: $lg) {
     padding-left: 0;
   }
+
   @media (max-width: $md) {
     flex-direction: column;
     max-width: 500px;
@@ -94,15 +100,19 @@
 
 .mobileImagesWrapper {
   display: none;
+
   .mobileImage {
+
     &:first-child,
     &:last-child {
       width: 30%;
     }
+
     &:nth-child(2) {
       width: 32%;
     }
   }
+
   @media (max-width: $md) {
     display: flex;
     margin: 0 auto;
@@ -112,18 +122,21 @@
     padding-bottom: 30px;
   }
 }
+
 .content {
   position: relative;
   max-width: 750px;
   width: 70%;
   margin-right: 20px;
   z-index: 4;
+
   @media (max-width: $md) {
     width: 100%;
     margin-right: 0;
     text-align: center;
   }
 }
+
 .upTitle {
   font-family: $font-gramatika;
   font-weight: bold;
@@ -133,16 +146,19 @@
   text-transform: uppercase;
   opacity: 0.5;
   margin-bottom: 12px;
+
   @media (max-width: $lg) {
     font-size: 10px;
   }
 }
+
 .title {
   font-family: $font-gramatika;
   font-weight: bold;
   font-size: 48px;
   line-height: 1.15;
   margin-bottom: 16px;
+
   @media (max-width: $lg) {
     font-size: 36px;
   }
@@ -155,6 +171,7 @@
   letter-spacing: 0.03em;
   opacity: 0.75;
   margin-bottom: 45px;
+
   @media (max-width: $lg) {
     font-size: 14px;
     margin-bottom: 40px;
@@ -167,6 +184,7 @@
   flex: 0 auto;
   margin-bottom: 70px;
   align-items: center;
+
   @media (max-width: $lg) {
     margin-bottom: 60px;
     flex-direction: column;
@@ -176,6 +194,7 @@
     align-items: center;
 
   }
+
   @media (max-width: $md) {
     max-width: 100%;
   }
@@ -195,33 +214,40 @@
   width: 105%;
   justify-content: center;
   margin-bottom: 3rem;
+
   p {
     white-space: nowrap;
   }
+
   @media (max-width: $md) {
     width: 100%;
     flex-direction: column;
     margin-bottom: 40px;
   }
 }
+
 .companies {
   display: flex;
   align-items: center;
   margin-left: 32px;
   width: 100%;
   max-width: 600px;
+
   .companyLogo {
     filter: grayscale(100%);
     opacity: 0.3;
     max-width: 100px;
     width: 100%;
+
     &:last-child {
       margin-right: 0;
     }
   }
+
   @media (max-width: $md) {
     margin-left: 0;
     margin-top: 20px;
+
     .сompanyLogo {
       max-width: 70px;
     }
@@ -229,16 +255,17 @@
 }
 
 .videoWrapper {
-   position: relative;
-   width: 48%;
-   z-index: 2;
-   height: 500px;
-   margin-top: 3rem;
-   @media (max-width: $md) {
-     width: 100%;
-     height: 600px;
-   }
- }
+  position: relative;
+  width: 48%;
+  z-index: 2;
+  height: 500px;
+  margin-top: 3rem;
+
+  @media (max-width: $md) {
+    width: 100%;
+    height: 600px;
+  }
+}
 
 .slide {
   display: flex;
@@ -248,26 +275,31 @@
 .checklist_positive {
   width: 100%;
   margin-bottom: 4rem;
+
   ul {
     display: flex;
     justify-content: flex-start;
     width: 100%;
     flex-direction: column;
+    align-items: center;
+
   }
+
   li {
     position: relative;
     font-weight: 300;
     font-size: 16px;
     line-height: 160%;
     letter-spacing: 0.0em;
-    margin-left:30px;
+    margin-left: 30px;
     margin-bottom: .7rem;
+
     &::before {
       content: '';
       position: relative;
       width: 22px;
       height: 22px;
-      background:  url('./image/checkbox-icon.svg');
+      background: url('./image/checkbox-icon.svg');
       background-repeat: no-repeat;
       background-size: contain;
       border-radius: 50%;
@@ -275,41 +307,46 @@
       display: inline-block;
       vertical-align: middle;
     }
-  
+
     @media (min-width: $lg) {
       max-width: 40%;
     }
   }
 }
-.reviewsWrapper{
+
+.reviewsWrapper {
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
-  & .star{
+
+  & .star {
     width: 13px;
     height: 13px;
     margin-right: 1px;
   }
-  & p{
+
+  & p {
     margin-left: 8px;
   }
 }
 
-.badgesWrapper{
+.badgesWrapper {
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 400px;
   justify-content: space-around;
   align-items: center;
-  & .badge{
-    object-fit: contain!important;
+
+  & .badge {
+    object-fit: contain !important;
   }
 }
-.badgesImagesWrapper{
+
+.badgesImagesWrapper {
   display: flex;
   width: 100%;
   max-width: 400px;
@@ -317,19 +354,21 @@
   align-items: center;
 }
 
-.secondRowBadgesWrapper{
+.secondRowBadgesWrapper {
   display: flex;
   width: 100%;
   max-width: 400px;
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  margin-top:3rem;
-  & a:first-child{
-      margin-right: 35px;
+  margin-top: 3rem;
+
+  & a:first-child {
+    margin-right: 35px;
   }
+
   & a {
-    & img{
+    & img {
       max-width: 61px;
     }
   }

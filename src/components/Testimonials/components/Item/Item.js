@@ -1,14 +1,14 @@
 import React from 'react';
 import { RichText } from 'prismic-reactjs';
-import { object } from 'prop-types';
+import { bool, object } from 'prop-types';
 
 import style from './Item.module.scss';
 import Quote from './image/quote.inline.svg';
 import Image from '@components/Image/Image';
 
-const Item = ({ photo, name, company, text }) => {
+const Item = ({ photo, name, company, text, isModal }) => {
   return (
-    <div className={style.container}>
+    <div className={`${style.container} ${isModal && style.containerModal}`}>
       <Quote className={style.quote} />
       <div className={style.user}>
         <Image image={photo} className={style.photo} />
@@ -31,6 +31,7 @@ Item.propTypes = {
   name: object,
   company: object,
   text: object,
+  isModal: bool,
 };
 
 export default Item;
