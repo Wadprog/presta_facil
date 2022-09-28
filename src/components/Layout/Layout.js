@@ -9,6 +9,7 @@ import { defaultLanguage } from '@/prismic-config';
 import Head from '@components/Head';
 import Header from '@components/Header';
 import Footer from '@components/Footer';
+import MinimalFooter from '../MinimalFooter/MinimalFooter';
 
 import styles from './Layout.module.scss';
 import '@styles/index.scss';
@@ -54,6 +55,9 @@ const Layout = ({
           </main>
           {activeDocMeta && activeDocMeta.type !== 'landing_page_v1' && (
             <Footer activeDocMeta={activeDocMeta} data={footerData} />
+          )}
+          {activeDocMeta && activeDocMeta.type === 'landing_page_v1' && (
+            <MinimalFooter activeDocMeta={activeDocMeta} data={footerData} />
           )}
         </div>
       </LangContext.Provider>

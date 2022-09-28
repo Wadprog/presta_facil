@@ -15,12 +15,12 @@ const Testimonials = ({ items, isModal = false }) => {
   }, [width]);
   return (
     <div className={!isModal && style.testimonials}>
-      <div className={style.container}>
+      <div className={`${style.container} ${isModal && style.containerModal}`}>
         <Swiper {...params} key={buildKey}>
           {items.map((item, index) => {
             return (
               <div className={style.slide} key={`testimonials${index}`}>
-                <Item {...item} />
+                <Item {...item} isModal={isModal} />
               </div>
             );
           })}

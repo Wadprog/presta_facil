@@ -28,6 +28,7 @@
   & .ctaContainerLeft {
     display: flex;
     flex-basis: 50%;
+    max-width: 50%;
     background-color: #f7f9fb;
     flex-direction: column;
     height: 100%;
@@ -54,6 +55,7 @@
   & .ctaContainerRight {
     display: flex;
     flex-basis: 50%;
+    max-width: 50%;
     background-color: white;
     align-items: center;
     justify-content: center;
