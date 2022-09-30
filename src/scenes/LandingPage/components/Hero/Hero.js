@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { object, array, any } from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import Swiper from 'react-id-swiper';
@@ -9,6 +9,8 @@ import styles from './Hero.module.scss';
 import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
 import isURL from 'validator/lib/isURL';
 import Input from '../../../../scenes/ContactUs/components/Input/Input';
+import { navigate } from 'gatsby';
+import { globalHistory as history } from '@reach/router';
 
 const renderMobileImages = (images) => {
   const renderedImages = images.map((imgElement, index) => (
@@ -46,6 +48,7 @@ const Hero = ({
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [formState, setFormState] = useState(initialState);
   const [formErrors, setFormErrors] = useState([]);
+  const { location } = history;
 
   const handleCloseModal = () => setModalIsOpen(false);
   const handleClick = (e) => {
@@ -97,11 +100,19 @@ const Hero = ({
     const isValidForm = validateForm(url);
 
     isValidForm && handleCTAClick(true);
+    navigate(`${location.pathname}#cta-form`);
+
     window.localStorage.setItem(
       'scan',
       `https://scanner.secureprivacy.ai/#/${url}`
     );
   };
+
+  useEffect(() => {
+    location.hash.includes('cta-form')
+      ? handleCTAClick(true)
+      : handleCTAClick(false);
+  }, [location]);
 
   return (
     <>
@@ -146,55 +157,55 @@ const Hero = ({
                 </div>
               </div>
             )}
+            {compliance_cta_active && (
+              <div className={styles.ctaOpener}>
+                <div className={styles.upTitleCompliance}>
+                  <RichText render={compliance_title.richText} />
+                </div>
+                <div className={styles.buttonScanContainer}>
+                  <Input
+                    id="url"
+                    placeholder={RichText.asText(your_website_url.richText)}
+                    errorMessage={'Please enter valid URL'}
+                    name="url"
+                    valid={!formErrors.includes('url')}
+                    value={formState.url}
+                    handleChange={handleInputChange}
+                    onKeyDown={handleKeyDown}
+                  />
+                  <div className={styles.buttonScan}>
+                    <Button
+                      variant={VARIANT.PRIMARY}
+                      isHeader={true}
+                      click={handleOnSubmit}
+                      fullWidth={true}
+                      className={styles.button}
+                    >
+                      <RichText render={button.richText} />
+                    </Button>
+                  </div>
+                </div>
+                <div className={styles.trustedWrapper}>
+                  <RichText render={trusted.richText} />
+                  <div className={styles.companies}>
+                    <Swiper {...params}>
+                      {items.map(({ trustedlogo }) => {
+                        return (
+                          <div className={styles.slide} key={trustedlogo.url}>
+                            <Image
+                              image={trustedlogo}
+                              className={`${styles.companyLogo} swiper-origin`}
+                            />
+                          </div>
+                        );
+                      })}
+                    </Swiper>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
-          {compliance_cta_active && (
-            <div className={styles.ctaOpener}>
-              <div className={styles.upTitleCompliance}>
-                <RichText render={compliance_title.richText} />
-              </div>
-              <div className={styles.buttonScanContainer}>
-                <Input
-                  id="url"
-                  placeholder={RichText.asText(your_website_url.richText)}
-                  errorMessage={'Please enter valid URL'}
-                  name="url"
-                  valid={!formErrors.includes('url')}
-                  value={formState.url}
-                  handleChange={handleInputChange}
-                  onKeyDown={handleKeyDown}
-                />
-                <div className={styles.buttonScan}>
-                  <Button
-                    variant={VARIANT.PRIMARY}
-                    isHeader={true}
-                    click={handleOnSubmit}
-                    fullWidth={true}
-                    className={styles.button}
-                  >
-                    <RichText render={button.richText} />
-                  </Button>
-                </div>
-              </div>
-              <div className={styles.trustedWrapper}>
-                <RichText render={trusted.richText} />
-                <div className={styles.companies}>
-                  <Swiper {...params}>
-                    {items.map(({ trustedlogo }) => {
-                      return (
-                        <div className={styles.slide} key={trustedlogo.url}>
-                          <Image
-                            image={trustedlogo}
-                            className={`${styles.companyLogo} swiper-origin`}
-                          />
-                        </div>
-                      );
-                    })}
-                  </Swiper>
-                </div>
-              </div>
-            </div>
-          )}
           {videoask && videoask.raw && videoask.raw.url && (
             <div className={styles.videoWrapper}>
               <iframe

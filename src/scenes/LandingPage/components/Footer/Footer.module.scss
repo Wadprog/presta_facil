@@ -153,12 +153,17 @@
 }
 
 .title {
-  font-family: $font-gramatika;
-  font-weight: bold;
+  font-family: "Gramatika", sans-serif;
+  font-weight: 400;
   font-size: 48px;
   line-height: 1.15;
   margin-bottom: 16px;
-
+  strong {
+    font-family: $font-gramatika-black;
+    font-weight: 900;
+    color: #24b04b;
+    letter-spacing: 0.03em;
+  }
   @media (max-width: $lg) {
     font-size: 36px;
   }
@@ -372,4 +377,85 @@
       max-width: 61px;
     }
   }
+}
+
+
+.bagdesStyledWrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 200px;
+  width: 100%;
+  @media (max-width: $md) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 100px;
+    & a{
+      margin-bottom: 5rem;
+      flex-basis: 45%;
+
+    }
+  }
+ 
+  & a{
+    position: relative;
+    display: flex;
+    width: 100%;
+    max-width: 200px;
+    justify-content: space-around;
+    align-items: center;
+  }
+  & a:before{
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 35px;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    box-shadow: 0px 20px 50px rgba(44, 59, 82, 0.15);
+  }
+  & a:hover{
+    &:before{
+      border-radius: 38px;
+      transform: translate(-50%, -50%) scale(1.1);
+      box-shadow: 0px 50px 70px rgba(44, 59, 82, 0.15);
+      transition: all 0.2s ease-in-out;
+    }
+  }
+  & a:nth-child(5){
+    & img{
+      width: 80px;
+    }
+  }
+  & a:nth-child(6){
+    & img{
+      width: 80px;
+    }
+  }
+
+  @media (min-width: $md) {
+    & a:nth-child(1){
+      transform: translatey(-90px);
+    }
+    & a:nth-child(2){
+      transform: translatey(-20px);
+    }
+    & a:nth-child(3){
+      transform: translatey(-80px);
+    }
+    & a:nth-child(4){
+      transform: translatey(-30px);
+    }
+    & a:nth-child(5){
+      transform: translatey(-100px);
+    }
+    & a:nth-child(6){
+      transform: translatey(-30px);
+    }
+  }
+
 }

@@ -17,7 +17,6 @@ const Footer = ({ primary, items, isModal = false }) => {
     badge4,
     badge5,
     badge_6,
-    badge7,
     sub_title: subTitle,
     title,
     description,
@@ -105,11 +104,12 @@ const Footer = ({ primary, items, isModal = false }) => {
                 className={`${styles.reviewstext}`}
               />
             </div>
+          </div>
+          <div className={styles.bagdesStyledWrapper}>
             <a
               href="https://www.g2.com/products/secure-privacy/reviews"
               target="_blank"
               rel="noreferrer"
-              className={styles.badgesImagesWrapper}
             >
               <img
                 src={badge1.url}
@@ -118,6 +118,12 @@ const Footer = ({ primary, items, isModal = false }) => {
                 draggable="false"
                 loading="lazy"
               />
+            </a>
+            <a
+              href="https://www.g2.com/products/secure-privacy/reviews"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img
                 src={badge2.url}
                 alt={badge2.alt}
@@ -125,6 +131,12 @@ const Footer = ({ primary, items, isModal = false }) => {
                 draggable="false"
                 loading="lazy"
               />
+            </a>
+            <a
+              href="https://www.g2.com/products/secure-privacy/reviews"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img
                 src={badge3.url}
                 alt={badge3.alt}
@@ -132,6 +144,12 @@ const Footer = ({ primary, items, isModal = false }) => {
                 draggable="false"
                 loading="lazy"
               />
+            </a>
+            <a
+              href="https://www.g2.com/products/secure-privacy/reviews"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img
                 src={badge4.url}
                 alt={badge4.alt}
@@ -140,41 +158,32 @@ const Footer = ({ primary, items, isModal = false }) => {
                 loading="lazy"
               />
             </a>
-            <div className={styles.secondRowBadgesWrapper}>
-              <a
-                href="https://www.capterra.com/p/169167/Secure-Privacy"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img
-                  src={badge5.url}
-                  alt={badge5.alt}
-                  className={`${styles.badge}`}
-                  draggable="false"
-                  loading="lazy"
-                />
-              </a>
-              <a
-                href="https://www.getapp.com/finance-accounting-software/a/secure-privacy"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img
-                  src={badge_6.url}
-                  alt={badge_6.alt}
-                  className={`${styles.badge}`}
-                  draggable="false"
-                  loading="lazy"
-                />
-              </a>
-            </div>
-            <img
-              src={badge7.url}
-              alt={badge7.alt}
-              className={`${styles.badge}`}
-              draggable="false"
-              loading="lazy"
-            />
+            <a
+              href="https://www.capterra.com/p/169167/Secure-Privacy"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src={badge5.url}
+                alt={badge5.alt}
+                className={`${styles.badge}`}
+                draggable="false"
+                loading="lazy"
+              />
+            </a>
+            <a
+              href="https://www.getapp.com/finance-accounting-software/a/secure-privacy"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src={badge_6.url}
+                alt={badge_6.alt}
+                className={`${styles.badge}`}
+                draggable="false"
+                loading="lazy"
+              />
+            </a>
           </div>
         </div>
       </div>

@@ -79,8 +79,8 @@
     margin-bottom: 2rem;
 }
 .title h2 {
-  font-family: $font-gramatika;
-  font-weight: 600;
+  font-family: "Gramatika", sans-serif;
+  font-weight: 400;
   font-size: 42px;
   line-height: 125%;
   max-width: 850px;
@@ -88,7 +88,7 @@
   strong {
     font-family: $font-gramatika-black;
     font-weight: 900;
-    color: #030d21;
+    color: #24b04b;
     letter-spacing: 0.03em;
     
   }
@@ -122,7 +122,7 @@
   width: 100%;
   display: flex;
   align-self: stretch;
-  margin-top: 60px;
+  margin-top: 128px;
   @media (min-width: $lg) {
     &:nth-child(2n) {
       & > * {
@@ -137,8 +137,7 @@
     max-width: 400px;
     height: auto;
     margin-bottom: 0;
-    margin-top: 40px;
-   
+    margin-top: 80px;
   }
   @media (max-width: $md) {
     max-width: 100%;

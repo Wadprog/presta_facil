@@ -26,9 +26,6 @@ const Home = ({
   compliance_cta_active,
 }) => {
   const option1cta = content.find((item) => item.slice_type === 'option_1_cta');
-  const testimonials = content.find(
-    (item) => item.slice_type === 'testimonials'
-  );
 
   const footer = content.find((item) => item.slice_type === 'footer');
 
@@ -111,7 +108,12 @@ const Home = ({
               );
             case 'subscribe':
               return (
-                <Subscribe {...section} key={`${section.slice_type}${index}`} />
+                <div className={style.subscribeContainer}>
+                  <Subscribe
+                    {...section}
+                    key={`${section.slice_type}${index}`}
+                  />
+                </div>
               );
             case 'agencies':
               return (
@@ -125,7 +127,6 @@ const Home = ({
       <Modal open={ctaIsOpen} closeModal={handleCloseCta}>
         <div className={style.ctaContainer}>
           <div className={style.ctaContainerLeft}>
-            <Testimonials {...testimonials} isModal={true} />
             <Footer {...footer} videoask={videoask} isModal={true} />
           </div>
           <div className={style.ctaContainerRight}>
