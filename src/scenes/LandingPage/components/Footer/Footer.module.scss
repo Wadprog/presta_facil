@@ -3,7 +3,7 @@
 
 .hero {
   position: relative;
-  padding: 180px 20px 210px;
+  padding: 80px 20px 128px;
   margin-top: 80px;
 
   &.isModal {
@@ -339,7 +339,7 @@
 }
 
 .badgesWrapper {
-  display: flex;
+  display: none!important;
   flex-direction: column;
   width: 100%;
   max-width: 400px;
@@ -381,7 +381,7 @@
 
 
 .bagdesStyledWrapper{
-  display: flex;
+  display: none!important;
   flex-direction: row;
   justify-content: space-between;
   margin-top: 200px;

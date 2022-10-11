@@ -31,11 +31,6 @@ const Home = ({
 
   const [ctaIsOpen, setCtaIsOpen] = useState(false);
   const handleCloseCta = () => setCtaIsOpen(false);
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   setCtaIsOpen(!ctaIsOpen);
-  // };
-
   return (
     <>
       <div className={style.HomePage}>
