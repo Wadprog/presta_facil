@@ -78,7 +78,19 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PrismicPricespageDataBodyHero {
+              ... on PrismicPricespageDataBodyHeroBusiness {
+                id
+                slice_type
+                primary {
+                  subtitle {
+                    richText
+                  }
+                  title {
+                    richText
+                  }
+                }
+              }
+              ... on PrismicPricespageDataBodyHeroEnterprise {
                 id
                 slice_type
                 primary {
