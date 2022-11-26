@@ -90,11 +90,11 @@ const PricesPage = ({ content, canonical, metatitle }) => {
   const sections = content.map((item, index) => {
     switch (item.slice_type) {
       case 'hero_business':
-        return location.hash.includes('business') ? (
+        return location?.hash?.includes('business') ? (
           <Hero key={index} {...item} />
         ) : null;
       case 'hero_enterprise':
-        return location.hash.includes('enterprise') ? (
+        return location?.hash?.includes('enterprise') ? (
           <Hero key={index} {...item} />
         ) : null;
       case 'tariffplans':
