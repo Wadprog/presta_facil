@@ -173,7 +173,13 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
                             )}
                           >
                             {typeof starterStatus !== 'boolean' &&
-                              `${starterStatus} `}
+                              `${
+                                item.featuretitle.richText[0].text.includes(
+                                  'domain'
+                                )
+                                  ? 'Up to'
+                                  : ''
+                              } ${starterStatus} `}
                             <RichText render={item.featuretitle.richText} />
                           </div>
                           <div

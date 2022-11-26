@@ -6,10 +6,34 @@
       "config": {
         "labels": null,
         "choices": {
-          "hero": {
+          "hero_business": {
             "type": "Slice",
-            "fieldset": "hero",
-            "description": "hero",
+            "fieldset": "hero_business",
+            "description": "hero business",
+            "icon": "face",
+            "display": "list",
+            "non-repeat": {
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1,strong,em",
+                  "label": "title"
+                }
+              },
+              "subtitle": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "subtitle"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "hero_enterprise": {
+            "type": "Slice",
+            "fieldset": "hero_enterprise",
+            "description": "hero enterprise",
             "icon": "face",
             "display": "list",
             "non-repeat": {
