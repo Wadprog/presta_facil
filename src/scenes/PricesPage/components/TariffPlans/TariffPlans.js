@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import { Waypoint } from 'react-waypoint';
 import classnames from 'classnames';
 
-import { useScrollDirection } from '@hooks';
+import { useScrollDirection, useBreakpoints } from '@hooks';
 import Dashboard from './components/Dashboard';
 import Bar from './components/Bar';
 import StatusBar from './components/StatusBar';
-import PeriodSwitcher from './components/PeriodSwitcher';
 import PlanSwitcher from './components/PlanSwitcher';
-import { useBreakpoints } from '@hooks';
 import style from './TariffPlans.module.scss';
 import { RichText } from 'prismic-reactjs';
 import Swiper from 'react-id-swiper';
@@ -19,7 +17,6 @@ import Image from '@components/Image/Image';
 import { globalHistory as history } from '@reach/router';
 import { navigate } from 'gatsby';
 
-// const DEFAULT_SLIDES = 7;
 const MOBILE_VIEW = 1220;
 const CARDS_LIST_WIDTH = 920;
 
@@ -116,7 +113,7 @@ const TariffPlans = ({
     setItemsCards(
       !location.hash.includes('enterprise')
         ? items.slice(0, 3)
-        : items.slice(3, 5)
+        : items.slice(3, 6)
     );
   }, [location]);
 
@@ -142,11 +139,13 @@ const TariffPlans = ({
 
   const toggleBussinessCards = () => {
     setCardsSelected(!cardsSelected);
-    setItemsCards(cardsSelected ? items.slice(0, 3) : items.slice(3, 5));
+    setItemsCards(cardsSelected ? items.slice(0, 3) : items.slice(3, 6));
     navigate(
       `${location.pathname}#${cardsSelected ? 'business' : 'enterprise'}`
     );
   };
+
+  // console.log(toggleBussinessCards());
 
   return (
     <Waypoint onEnter={hideBar} onLeave={showBar}>
@@ -174,12 +173,13 @@ const TariffPlans = ({
             selectedPlansIndexes={selectedPlansIndexes}
             selectPlan={selectPlan}
             selectCurrency={selectCurrency}
+            toggleBussinessCards={toggleBussinessCards}
           />
         </div>
         <div className={style.container}>
           <BussinessCardsSwitcher
-            isAnnual={cardsSelected}
-            togglePeriod={toggleBussinessCards}
+            isAnnual={isAnnual}
+            togglePeriod={togglePeriod}
             primary={primary}
             businessToggle={itemsBusinessToggle}
           />
@@ -191,18 +191,11 @@ const TariffPlans = ({
           >
             <div className={`${style.sidebar}`}>
               <div className={style.header}>
-                <div
-                  className={`${style.condition} ${isAnnual && style.visible}`}
-                >
-                  <RichText
-                    render={primary.widget_currency_billing_title.richText}
-                  />
-                </div>
-                <PeriodSwitcher
+                {/* <PeriodSwitcher
                   isAnnual={isAnnual}
                   togglePeriod={togglePeriod}
                   primary={primary}
-                />
+                /> */}
               </div>
               <PlanSwitcher
                 plans={laws}
@@ -294,6 +287,7 @@ const TariffPlans = ({
                 fields={itemsCards}
                 currency={currency}
                 isMobile={isMobile}
+                toggleBussinessCards={toggleBussinessCards}
               />
             </div>
             {isStatusBarVisible && (

@@ -25,13 +25,14 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
   }, [width]);
 
   useEffect(() => {
+    console.log(items);
     const enterpriseArray = items.map(
       // eslint-disable-next-line no-unused-vars
-      ({ starter_status, prostatus, businessstatus, ...item }) => item
+      ({ free_status, businessstatus, more_plans, ...item }) => item
     );
     const businessArray = items.map(
       // eslint-disable-next-line no-unused-vars
-      ({ growth_status, enterprisestatus, ...item }) => item
+      ({ growth_status, unlimitedstatus, enterprisestatus, ...item }) => item
     );
     !location.hash.includes('enterprise')
       ? setItemsBasedOnHash(businessArray)
@@ -43,10 +44,11 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
   }, [location]);
 
   const detectActiveFeaturesList = (
-    starterStatus,
-    proStatus,
+    freeStatus,
     businessStatus,
+    morePlans,
     growthStatus,
+    unlimitedStatus,
     enterpriseStatus,
     featureTitle
   ) => {
@@ -71,6 +73,19 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
               className={classnames(
                 style.cell,
                 style.cellmobile,
+                unlimitedStatus && style.active
+              )}
+            >
+              {typeof unlimitedStatus !== 'boolean' && `${unlimitedStatus} `}
+              <RichText render={featureTitle} />
+            </div>
+          );
+        case 2:
+          return (
+            <div
+              className={classnames(
+                style.cell,
+                style.cellmobile,
                 enterpriseStatus && style.active
               )}
             >
@@ -88,27 +103,27 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
               className={classnames(
                 style.cell,
                 style.cellmobile,
-                starterStatus && style.active
+                freeStatus && style.active
               )}
             >
-              {typeof starterStatus !== 'boolean' && `${starterStatus} `}
+              {typeof freeStatus !== 'boolean' && `${freeStatus} `}
               <RichText render={featureTitle} />
             </div>
           );
-        case 1:
+        case 2:
           return (
             <div
               className={classnames(
                 style.cell,
                 style.cellmobile,
-                proStatus && style.active
+                style.disabled
               )}
             >
-              {typeof proStatus !== 'boolean' && `${proStatus} `}
+              {typeof morePlans !== 'boolean' && `${morePlans} `}
               <RichText render={featureTitle} />
             </div>
           );
-        case 2:
+        case 1:
           return (
             <div
               className={classnames(
@@ -129,12 +144,13 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
       <div className={style.wrapper}>
         <ul className={style.list}>
           {itemsBasedOnHash.map((item, index) => {
-            const starterStatus =
+            console.log(item);
+            const freeStatus =
               !enterpriseHash &&
-              parseCellValue(RichText.asText(item?.starter_status?.richText));
-            const plusStatus =
+              parseCellValue(RichText.asText(item?.free_status?.richText));
+            const morePlansStatus =
               !enterpriseHash &&
-              parseCellValue(RichText.asText(item?.prostatus?.richText));
+              parseCellValue(RichText.asText(item?.more_plans?.richText));
             const businessStatus =
               !enterpriseHash &&
               parseCellValue(RichText.asText(item?.businessstatus?.richText), {
@@ -147,6 +163,10 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
             const growthStatus =
               enterpriseHash &&
               parseCellValue(RichText.asText(item?.growth_status?.richText));
+
+            const unlimitedStatus =
+              enterpriseHash &&
+              parseCellValue(RichText.asText(item?.unlimitedstatus?.richText));
 
             const featureTitle = item?.featuretitle?.richText;
             return (
@@ -168,30 +188,18 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
                             className={classnames(
                               style.cell,
                               style.celldesktop,
-                              starterStatus && style.active,
-                              starterStatus === 'disabled' && style.disabled
+                              freeStatus && style.active,
+                              freeStatus === 'disabled' && style.disabled
                             )}
                           >
-                            {typeof starterStatus !== 'boolean' &&
+                            {typeof freeStatus !== 'boolean' &&
                               `${
-                                item.featuretitle.richText[0].text.includes(
+                                item.featuretitle?.richText[0]?.text?.includes(
                                   'domain'
                                 )
                                   ? 'Up to'
                                   : ''
-                              } ${starterStatus} `}
-                            <RichText render={item.featuretitle.richText} />
-                          </div>
-                          <div
-                            className={classnames(
-                              style.cell,
-                              style.celldesktop,
-                              plusStatus && style.active,
-                              plusStatus === 'disabled' && style.disabled
-                            )}
-                          >
-                            {typeof plusStatus !== 'boolean' &&
-                              `${plusStatus} `}
+                              } ${freeStatus} `}
                             <RichText render={item.featuretitle.richText} />
                           </div>
                           <div
@@ -204,6 +212,18 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
                           >
                             {typeof businessStatus !== 'boolean' &&
                               `${businessStatus} `}
+                            <RichText render={item.featuretitle.richText} />
+                          </div>
+                          <div
+                            className={classnames(
+                              style.cell,
+                              style.celldesktop,
+                              morePlansStatus && style.active,
+                              morePlansStatus === 'disabled' && style.disabled
+                            )}
+                          >
+                            {typeof plusStatus !== 'boolean' &&
+                              `${morePlansStatus} `}
                             <RichText render={item.featuretitle.richText} />
                           </div>
                         </>
@@ -225,6 +245,17 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
                             className={classnames(
                               style.cell,
                               style.celldesktop,
+                              unlimitedStatus && style.active
+                            )}
+                          >
+                            {typeof unlimitedStatus !== 'boolean' &&
+                              `${unlimitedStatus} `}
+                            <RichText render={item.featuretitle.richText} />
+                          </div>
+                          <div
+                            className={classnames(
+                              style.cell,
+                              style.celldesktop,
                               enterpriseStatus && style.active
                             )}
                           >
@@ -237,10 +268,11 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
                     </>
                   ) : (
                     detectActiveFeaturesList(
-                      starterStatus,
-                      plusStatus,
+                      freeStatus,
+                      morePlansStatus,
                       businessStatus,
                       growthStatus,
+                      unlimitedStatus,
                       enterpriseStatus,
                       featureTitle
                     )

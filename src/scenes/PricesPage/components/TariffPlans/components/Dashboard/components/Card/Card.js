@@ -5,15 +5,7 @@ import classnames from 'classnames';
 
 import { parseString } from '@helpers';
 import style from './Card.module.scss';
-// import * as prismicH from '@prismicio/helpers';
-
-//const CHAT_LINK = '/contact-us';
-
-// const htmlSerializer = (type, element, key, children) => {
-//   if (type === prismicH.Element.paragraph) {
-//     return React.createElement('div', { className: 'liTag' }, children);
-//   }
-// };
+import Arrow from '../../../../../../../../../src/components/ArticlePreview/image/arrow.inline.svg';
 
 const Card = ({
   isEnterprise,
@@ -39,9 +31,10 @@ const Card = ({
   enterpriseCondition,
   enterpriseButtonText,
   enterpriseButtonLink,
-  bottomClarification,
   planBenefits,
   isStarter,
+  isMorePlans,
+  toggleBussinessCards,
 }) => {
   const [colorized, setColorized] = useState(false);
   const getCost = () => {
@@ -113,17 +106,22 @@ const Card = ({
         [style.colorizedmobile]: isMobile && colorized,
         [style.colorizeddesktop]: !isMobile && colorized,
         [style.disabled]: disabled,
+        [style.isMorePlans]: isMorePlans,
       })}
     >
       <div className={style.title}>
         <RichText render={title.richText} />
-        <hr />
+        {!isMorePlans && <hr />}
+      </div>
+
+      <div className={style.text}>
+        <RichText render={planBenefits.richText} />
       </div>
       {/* <div className={style.subtitle}>{isEnterprise ? '' : name}</div> */}
-      {isEnterprise || isStarter ? (
-        <div className={style.enterprise}>
-          {isEnterprise ? enterpriseCondition : planBenefits.richText[0].text}
-        </div>
+      {isEnterprise || isStarter || isMorePlans ? (
+        isEnterprise && (
+          <div className={style.enterprise}>{enterpriseCondition}</div>
+        )
       ) : (
         <div className={style.wrappperPrice}>
           <div
@@ -139,7 +137,13 @@ const Card = ({
           </div>
         </div>
       )}
-      <div className={style.planBenefits}>{description.richText[0].text}</div>
+      <div
+        className={`${style.planBenefits} ${
+          isMorePlans && style.isMorePlansDescription
+        }`}
+      >
+        <RichText render={description.richText} />
+      </div>
       {!isStarter && (
         <div className={style.text}>
           {currency === 'Euros €' &&
@@ -152,26 +156,34 @@ const Card = ({
             : planBenefits.richText[0].text}
         </div>
       )}
-      <div className={style.text}>
-        <RichText render={bottomClarification.richText} />
-      </div>
-      <div className={style.footer}>
-        <a href={getLink()} className={style.button}>
-          {colorized ? (
-            <span className={style.gradientText}>
-              {isEnterprise
-                ? enterpriseButtonText
-                : RichText.asText(buttonText.richText)}
-            </span>
-          ) : (
-            <span>
-              {isEnterprise
-                ? enterpriseButtonText
-                : RichText.asText(buttonText.richText)}
-            </span>
-          )}
-        </a>
-      </div>
+      {isMorePlans && (
+        <div
+          className={style.isMorePlansButton}
+          onClick={() => toggleBussinessCards()}
+        >
+          <Arrow />
+        </div>
+      )}
+
+      {!isMorePlans && (
+        <div className={style.footer}>
+          <a href={getLink()} className={style.button}>
+            {colorized ? (
+              <span className={style.gradientText}>
+                {isEnterprise
+                  ? enterpriseButtonText
+                  : RichText.asText(buttonText.richText)}
+              </span>
+            ) : (
+              <span>
+                {isEnterprise
+                  ? enterpriseButtonText
+                  : RichText.asText(buttonText.richText)}
+              </span>
+            )}
+          </a>
+        </div>
+      )}
     </div>
   );
 };
@@ -202,12 +214,14 @@ Card.propTypes = {
   disabled: PropTypes.bool.isRequired,
   currency: PropTypes.string.isRequired,
   isAnnual: PropTypes.bool.isRequired,
+  isMorePlans: PropTypes.bool.isRequired,
   annualcoefficient: PropTypes.number.isRequired,
   selectedPlans: PropTypes.arrayOf.isRequired,
   isMobile: PropTypes.bool.isRequired,
   enterpriseCondition: PropTypes.string.isRequired,
   enterpriseButtonText: PropTypes.string.isRequired,
   enterpriseButtonLink: PropTypes.string.isRequired,
+  toggleBussinessCards: PropTypes.any,
 };
 
 export default Card;

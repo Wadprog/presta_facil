@@ -132,7 +132,6 @@ const PricesPage = ({ content, canonical, metatitle }) => {
         return <ContactUs key={index} {...item} />;
       default:
         return null;
-      // throw new Error(`Unknown section type: ${item.slice_type}`);
     }
   });
 

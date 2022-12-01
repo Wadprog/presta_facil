@@ -176,9 +176,6 @@ export const query = graphql`
                   }
                 }
                 items {
-                  prostatus {
-                    richText
-                  }
                   featuretitle {
                     richText
                   }
@@ -188,10 +185,16 @@ export const query = graphql`
                   growth_status {
                     richText
                   }
-                  starter_status {
+                  free_status {
                     richText
                   }
                   businessstatus {
+                    richText
+                  }
+                  unlimitedstatus {
+                    richText
+                  }
+                  more_plans {
                     richText
                   }
                 }

@@ -181,11 +181,11 @@
                   "label": "feature title"
                 }
               },
-              "prostatus": {
+              "unlimitedstatus": {
                 "type": "StructuredText",
                 "config": {
                   "single": "paragraph",
-                  "label": "pro status"
+                  "label": "unlimited status"
                 }
               },
               "businessstatus": {
@@ -209,11 +209,19 @@
                   "label": "Growth status"
                 }
               },
-              "starter_status": {
+              "free_status": {
                 "type": "StructuredText",
                 "config": {
                   "multi": "paragraph",
-                  "label": "starter status"
+                  "label": "free status"
+                }
+              },
+              "more_plans": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                  "label": "more plans",
+                  "placeholder": "more plans (put disabled here)"
                 }
               }
             }

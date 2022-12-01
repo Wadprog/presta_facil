@@ -8,6 +8,7 @@
   align-items: center;
   padding: 8px 12px;
   width: 100%;
+  position: relative;
 }
 
 .container {
@@ -24,7 +25,8 @@
   width: 100%;
   color: #011949;
   text-align: center;
-  text-transform:uppercase;
+  text-transform: uppercase;
+
   &.selected {
     color: white;
   }
@@ -63,4 +65,28 @@
   WIDTH: 100%;
   background: linear-gradient(89.52deg, #24b04b -46.17%, #0263bc 186.99%);
   opacity: 0.2;
+}
+
+
+.condition {
+  position: absolute;
+  left: 50%;
+  bottom: calc(50% - 74px);
+  transform: translate(-50%, -50%);
+
+  p {
+    font-family: 'Sofia Pro';
+    font-style: normal;
+    font-weight: 400;
+    color: #677592;
+    font-size: 14px;
+
+  }
+
+  strong {
+    background: linear-gradient(89.52deg, #24B04B -46.17%, #0263BC 186.99%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 }
