@@ -12,6 +12,7 @@ const Dashboard = ({
   primary,
   currency,
   isMobile,
+  toggleBussinessCards,
 }) => {
   const condition = isAnnual
     ? primary.annualcondition
@@ -47,6 +48,7 @@ const Dashboard = ({
             isAnnual={isAnnual}
             annualcoefficient={primary.annualcoefficient}
             isEnterprise={item.plantitle.richText[0].text === 'ENTERPRISE'}
+            isMorePlans={item.plantitle.richText[0].text.includes('?')}
             isStarter={item.plantitle.richText[0].text === 'FREE'}
             isMobile={isMobile}
             enterpriseCondition={primary.enterprisecondition.text}
@@ -55,6 +57,7 @@ const Dashboard = ({
             bottomClarification={item.bottom_clarification}
             planBenefits={item.plan_benefits}
             checkFeaturesOnCard={item.check_features_on_card}
+            toggleBussinessCards={toggleBussinessCards}
           />
         ))}
       </div>
@@ -69,6 +72,7 @@ Dashboard.propTypes = {
   primary: PropTypes.object.isRequired,
   currency: PropTypes.string.isRequired,
   isMobile: PropTypes.bool.isRequired,
+  toggleBussinessCards: PropTypes.any,
 };
 
 export default Dashboard;

@@ -56,9 +56,11 @@
 
 .sidebar {
   width: calc(100% - 24px);
+
   @media (min-width: $lg) {
-    width: 240px; 
+    width: 240px;
   }
+
   box-shadow: 0px 50px 70px rgba(44, 59, 82, 0.15);
   border-radius: 12px 30px;
   padding: 12px;
@@ -71,10 +73,12 @@
 
 .condition {
   opacity: 0;
-  &.visible{
+
+  &.visible {
     opacity: 1;
   }
-  p{
+
+  p {
     font-family: 'Sofia Pro';
     font-style: normal;
     font-weight: 400;
@@ -82,7 +86,8 @@
     font-size: 14px;
 
   }
-  strong{
+
+  strong {
     background: linear-gradient(89.52deg, #24B04B -46.17%, #0263BC 186.99%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -90,7 +95,7 @@
   }
 }
 
-.widgetSlider{
+.widgetSlider {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -98,12 +103,12 @@
   padding: 2px 8px 0px;
   background: linear-gradient(89.52deg, rgba(36, 176, 75, 0.2) -46.17%, rgba(2, 99, 188, 0.2) 186.99%);
   border-radius: 8px;
-  width:100%;
+  width: 100%;
   margin-top: 2rem;
   position: relative;
 
   .text {
-    p{
+    p {
       font-family: 'Sofia Pro';
       font-style: normal;
       font-weight: 400;
@@ -117,12 +122,13 @@
   }
 }
 
-.slide{
+.slide {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
 }
+
 .main {
   margin: 48px -16px 0;
 
@@ -136,25 +142,28 @@
   display: none;
 }
 
-.widgetSlider{
+.widgetSlider {
   :global {
     .swiper-container {
       width: 100%;
     }
+
     .swiper-wrapper {
       align-items: center;
     }
+
     .swiper-slide {
       display: flex;
       align-items: center;
       transform: translatex(-4px);
 
-      div{
+      div {
         display: flex;
         align-items: center;
         justify-content: center;
       }
-      pre{
+
+      pre {
         font-family: 'Sofia Pro';
         font-style: normal;
         font-weight: 700;

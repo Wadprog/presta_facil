@@ -22,6 +22,7 @@ const PricesPage = ({ content, canonical, metatitle }) => {
   const [itemsSlider, setItemSlider] = useState([]);
   const [itemsSliderFull, setItemSliderFull] = useState([]);
   const [businessToggle, setBusinessToggle] = useState([]);
+  const [showTitle, setShowTitle] = useState(false);
   const [businessToggleFull, setBusinessToggleFull] = useState([]);
   const { location } = history;
 
@@ -90,11 +91,11 @@ const PricesPage = ({ content, canonical, metatitle }) => {
   const sections = content.map((item, index) => {
     switch (item.slice_type) {
       case 'hero_business':
-        return location?.hash?.includes('business') ? (
+        return location?.hash?.includes('business') && showTitle ? (
           <Hero key={index} {...item} />
         ) : null;
       case 'hero_enterprise':
-        return location?.hash?.includes('enterprise') ? (
+        return location?.hash?.includes('enterprise') && showTitle ? (
           <Hero key={index} {...item} />
         ) : null;
       case 'tariffplans':
@@ -111,6 +112,7 @@ const PricesPage = ({ content, canonical, metatitle }) => {
             setActiveOnClick={setActiveOnClick}
             sliderPlans={itemsSliderFull}
             businessToggle={businessToggleFull}
+            setShowTitle={setShowTitle}
           />
         );
       case 'packagesfeatures':
@@ -132,7 +134,6 @@ const PricesPage = ({ content, canonical, metatitle }) => {
         return <ContactUs key={index} {...item} />;
       default:
         return null;
-      // throw new Error(`Unknown section type: ${item.slice_type}`);
     }
   });
 

@@ -5,15 +5,7 @@ import classnames from 'classnames';
 
 import { parseString } from '@helpers';
 import style from './Card.module.scss';
-// import * as prismicH from '@prismicio/helpers';
-
-//const CHAT_LINK = '/contact-us';
-
-// const htmlSerializer = (type, element, key, children) => {
-//   if (type === prismicH.Element.paragraph) {
-//     return React.createElement('div', { className: 'liTag' }, children);
-//   }
-// };
+import Arrow from '../../../../../../../../../src/components/ArticlePreview/image/arrow.inline.svg';
 
 const Card = ({
   isEnterprise,
@@ -26,7 +18,6 @@ const Card = ({
   oneprivacypriceeur,
   twoprivacypriceeur,
   threeprivacypriceeur,
-  condition,
   description,
   buttonText,
   buttonLink,
@@ -39,9 +30,11 @@ const Card = ({
   enterpriseCondition,
   enterpriseButtonText,
   enterpriseButtonLink,
-  bottomClarification,
   planBenefits,
   isStarter,
+  isMorePlans,
+  toggleBussinessCards,
+  checkFeaturesOnCard,
 }) => {
   const [colorized, setColorized] = useState(false);
   const getCost = () => {
@@ -113,65 +106,87 @@ const Card = ({
         [style.colorizedmobile]: isMobile && colorized,
         [style.colorizeddesktop]: !isMobile && colorized,
         [style.disabled]: disabled,
+        [style.isMorePlans]: isMorePlans,
       })}
     >
+      {isMorePlans && <div className={style.isMorePlansBg}></div>}
+
       <div className={style.title}>
         <RichText render={title.richText} />
-        <hr />
+        {!isMorePlans && <hr />}
       </div>
-      {/* <div className={style.subtitle}>{isEnterprise ? '' : name}</div> */}
-      {isEnterprise || isStarter ? (
-        <div className={style.enterprise}>
-          {isEnterprise ? enterpriseCondition : planBenefits.richText[0].text}
-        </div>
-      ) : (
-        <div className={style.wrappperPrice}>
-          <div
-            className={classnames([
-              style.cost,
-              style[currency === 'Euros €' ? 'EUR' : 'USD'],
-            ])}
-          >
-            {getCost()}
-          </div>
-          <div className={style.condition}>
-            <RichText render={condition.richText} />
-          </div>
-        </div>
-      )}
-      <div className={style.planBenefits}>{description.richText[0].text}</div>
-      {!isStarter && (
+      <div className={style.innerWrapper}>
         <div className={style.text}>
-          {currency === 'Euros €' &&
-          planBenefits &&
-          planBenefits.richText &&
-          planBenefits.richText.length
-            ? planBenefits.richText[0].text.split('$').join('€')
-            : !planBenefits.richText.length
-            ? ''
-            : planBenefits.richText[0].text}
+          <RichText render={planBenefits.richText} />
+        </div>
+        {/* <div className={style.subtitle}>{isEnterprise ? '' : name}</div> */}
+        {isEnterprise || isMorePlans ? (
+          isEnterprise && (
+            <div className={style.enterprise}>{enterpriseCondition}</div>
+          )
+        ) : (
+          <div className={style.wrappperPrice}>
+            <div
+              className={classnames([
+                style.cost,
+                style[currency === 'Euros €' ? 'EUR' : 'USD'],
+              ])}
+            >
+              {isStarter ? <RichText render={title.richText} /> : getCost()}
+            </div>
+            <div className={style.condition}>
+              <RichText render={description.richText} />
+            </div>
+          </div>
+        )}
+        {isMorePlans && (
+          <div
+            className={`${style.planBenefits} ${style.isMorePlansDescription}`}
+          >
+            <RichText render={description.richText} />
+          </div>
+        )}
+        {!isMorePlans && (
+          <div className={style.bottomText}>
+            {currency === 'Euros €' &&
+            checkFeaturesOnCard &&
+            checkFeaturesOnCard.richText &&
+            checkFeaturesOnCard.richText.length
+              ? checkFeaturesOnCard.richText[0].text.split('$').join('€')
+              : !checkFeaturesOnCard.richText.length
+              ? ''
+              : checkFeaturesOnCard.richText[0].text}
+          </div>
+        )}
+        {isMorePlans && (
+          <div
+            className={style.isMorePlansButton}
+            onClick={() => toggleBussinessCards()}
+          >
+            <Arrow />
+          </div>
+        )}
+      </div>
+
+      {!isMorePlans && (
+        <div className={style.footer}>
+          <a href={getLink()} className={style.button}>
+            {colorized ? (
+              <span className={style.gradientText}>
+                {isEnterprise
+                  ? enterpriseButtonText
+                  : RichText.asText(buttonText.richText)}
+              </span>
+            ) : (
+              <span>
+                {isEnterprise
+                  ? enterpriseButtonText
+                  : RichText.asText(buttonText.richText)}
+              </span>
+            )}
+          </a>
         </div>
       )}
-      <div className={style.text}>
-        <RichText render={bottomClarification.richText} />
-      </div>
-      <div className={style.footer}>
-        <a href={getLink()} className={style.button}>
-          {colorized ? (
-            <span className={style.gradientText}>
-              {isEnterprise
-                ? enterpriseButtonText
-                : RichText.asText(buttonText.richText)}
-            </span>
-          ) : (
-            <span>
-              {isEnterprise
-                ? enterpriseButtonText
-                : RichText.asText(buttonText.richText)}
-            </span>
-          )}
-        </a>
-      </div>
     </div>
   );
 };
@@ -202,12 +217,14 @@ Card.propTypes = {
   disabled: PropTypes.bool.isRequired,
   currency: PropTypes.string.isRequired,
   isAnnual: PropTypes.bool.isRequired,
+  isMorePlans: PropTypes.bool.isRequired,
   annualcoefficient: PropTypes.number.isRequired,
   selectedPlans: PropTypes.arrayOf.isRequired,
   isMobile: PropTypes.bool.isRequired,
   enterpriseCondition: PropTypes.string.isRequired,
   enterpriseButtonText: PropTypes.string.isRequired,
   enterpriseButtonLink: PropTypes.string.isRequired,
+  toggleBussinessCards: PropTypes.any,
 };
 
 export default Card;
