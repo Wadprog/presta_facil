@@ -109,61 +109,64 @@ const Card = ({
         [style.isMorePlans]: isMorePlans,
       })}
     >
+      {isMorePlans && <div className={style.isMorePlansBg}></div>}
+
       <div className={style.title}>
         <RichText render={title.richText} />
         {!isMorePlans && <hr />}
       </div>
-
-      <div className={style.text}>
-        <RichText render={planBenefits.richText} />
-      </div>
-      {/* <div className={style.subtitle}>{isEnterprise ? '' : name}</div> */}
-      {isEnterprise || isMorePlans ? (
-        isEnterprise && (
-          <div className={style.enterprise}>{enterpriseCondition}</div>
-        )
-      ) : (
-        <div className={style.wrappperPrice}>
-          <div
-            className={classnames([
-              style.cost,
-              style[currency === 'Euros €' ? 'EUR' : 'USD'],
-            ])}
-          >
-            {isStarter ? <RichText render={title.richText} /> : getCost()}
+      <div className={style.innerWrapper}>
+        <div className={style.text}>
+          <RichText render={planBenefits.richText} />
+        </div>
+        {/* <div className={style.subtitle}>{isEnterprise ? '' : name}</div> */}
+        {isEnterprise || isMorePlans ? (
+          isEnterprise && (
+            <div className={style.enterprise}>{enterpriseCondition}</div>
+          )
+        ) : (
+          <div className={style.wrappperPrice}>
+            <div
+              className={classnames([
+                style.cost,
+                style[currency === 'Euros €' ? 'EUR' : 'USD'],
+              ])}
+            >
+              {isStarter ? <RichText render={title.richText} /> : getCost()}
+            </div>
+            <div className={style.condition}>
+              <RichText render={description.richText} />
+            </div>
           </div>
-          <div className={style.condition}>
+        )}
+        {isMorePlans && (
+          <div
+            className={`${style.planBenefits} ${style.isMorePlansDescription}`}
+          >
             <RichText render={description.richText} />
           </div>
-        </div>
-      )}
-      {isMorePlans && (
-        <div
-          className={`${style.planBenefits} ${style.isMorePlansDescription}`}
-        >
-          <RichText render={description.richText} />
-        </div>
-      )}
-
-      <div className={style.text}>
-        {currency === 'Euros €' &&
-        checkFeaturesOnCard &&
-        checkFeaturesOnCard.richText &&
-        checkFeaturesOnCard.richText.length
-          ? checkFeaturesOnCard.richText[0].text.split('$').join('€')
-          : !checkFeaturesOnCard.richText.length
-          ? ''
-          : checkFeaturesOnCard.richText[0].text}
+        )}
+        {!isMorePlans && (
+          <div className={style.bottomText}>
+            {currency === 'Euros €' &&
+            checkFeaturesOnCard &&
+            checkFeaturesOnCard.richText &&
+            checkFeaturesOnCard.richText.length
+              ? checkFeaturesOnCard.richText[0].text.split('$').join('€')
+              : !checkFeaturesOnCard.richText.length
+              ? ''
+              : checkFeaturesOnCard.richText[0].text}
+          </div>
+        )}
+        {isMorePlans && (
+          <div
+            className={style.isMorePlansButton}
+            onClick={() => toggleBussinessCards()}
+          >
+            <Arrow />
+          </div>
+        )}
       </div>
-
-      {isMorePlans && (
-        <div
-          className={style.isMorePlansButton}
-          onClick={() => toggleBussinessCards()}
-        >
-          <Arrow />
-        </div>
-      )}
 
       {!isMorePlans && (
         <div className={style.footer}>

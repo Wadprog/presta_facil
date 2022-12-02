@@ -32,6 +32,7 @@ const TariffPlans = ({
   setActive,
   sliderPlans,
   businessToggle,
+  setShowTitle,
 }) => {
   const currentLang = useContext(LangContext);
   const { location } = history;
@@ -140,6 +141,7 @@ const TariffPlans = ({
   const toggleBussinessCards = () => {
     setCardsSelected(!cardsSelected);
     setItemsCards(cardsSelected ? items.slice(0, 3) : items.slice(3, 6));
+    setShowTitle(true);
     navigate(
       `${location.pathname}#${cardsSelected ? 'business' : 'enterprise'}`
     );
@@ -317,6 +319,7 @@ TariffPlans.propTypes = {
   setActiveOnClick: PropTypes.func.isRequired,
   setActive: PropTypes.func.isRequired,
   sliderPlans: PropTypes.any,
+  setShowTitle: PropTypes.bool,
 };
 
 export default TariffPlans;
