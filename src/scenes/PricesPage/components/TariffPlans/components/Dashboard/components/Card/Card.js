@@ -18,7 +18,6 @@ const Card = ({
   oneprivacypriceeur,
   twoprivacypriceeur,
   threeprivacypriceeur,
-  condition,
   description,
   buttonText,
   buttonLink,
@@ -35,6 +34,7 @@ const Card = ({
   isStarter,
   isMorePlans,
   toggleBussinessCards,
+  checkFeaturesOnCard,
 }) => {
   const [colorized, setColorized] = useState(false);
   const getCost = () => {
@@ -118,7 +118,7 @@ const Card = ({
         <RichText render={planBenefits.richText} />
       </div>
       {/* <div className={style.subtitle}>{isEnterprise ? '' : name}</div> */}
-      {isEnterprise || isStarter || isMorePlans ? (
+      {isEnterprise || isMorePlans ? (
         isEnterprise && (
           <div className={style.enterprise}>{enterpriseCondition}</div>
         )
@@ -130,32 +130,32 @@ const Card = ({
               style[currency === 'Euros €' ? 'EUR' : 'USD'],
             ])}
           >
-            {getCost()}
+            {isStarter ? <RichText render={title.richText} /> : getCost()}
           </div>
           <div className={style.condition}>
-            <RichText render={condition.richText} />
+            <RichText render={description.richText} />
           </div>
         </div>
       )}
-      <div
-        className={`${style.planBenefits} ${
-          isMorePlans && style.isMorePlansDescription
-        }`}
-      >
-        <RichText render={description.richText} />
-      </div>
-      {!isStarter && (
-        <div className={style.text}>
-          {currency === 'Euros €' &&
-          planBenefits &&
-          planBenefits.richText &&
-          planBenefits.richText.length
-            ? planBenefits.richText[0].text.split('$').join('€')
-            : !planBenefits.richText.length
-            ? ''
-            : planBenefits.richText[0].text}
+      {isMorePlans && (
+        <div
+          className={`${style.planBenefits} ${style.isMorePlansDescription}`}
+        >
+          <RichText render={description.richText} />
         </div>
       )}
+
+      <div className={style.text}>
+        {currency === 'Euros €' &&
+        checkFeaturesOnCard &&
+        checkFeaturesOnCard.richText &&
+        checkFeaturesOnCard.richText.length
+          ? checkFeaturesOnCard.richText[0].text.split('$').join('€')
+          : !checkFeaturesOnCard.richText.length
+          ? ''
+          : checkFeaturesOnCard.richText[0].text}
+      </div>
+
       {isMorePlans && (
         <div
           className={style.isMorePlansButton}

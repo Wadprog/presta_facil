@@ -145,8 +145,6 @@ const TariffPlans = ({
     );
   };
 
-  // console.log(toggleBussinessCards());
-
   return (
     <Waypoint onEnter={hideBar} onLeave={showBar}>
       <div

@@ -25,7 +25,6 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
   }, [width]);
 
   useEffect(() => {
-    console.log(items);
     const enterpriseArray = items.map(
       // eslint-disable-next-line no-unused-vars
       ({ free_status, businessstatus, more_plans, ...item }) => item
@@ -144,7 +143,6 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
       <div className={style.wrapper}>
         <ul className={style.list}>
           {itemsBasedOnHash.map((item, index) => {
-            console.log(item);
             const freeStatus =
               !enterpriseHash &&
               parseCellValue(RichText.asText(item?.free_status?.richText));
@@ -234,7 +232,8 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
                             className={classnames(
                               style.cell,
                               style.celldesktop,
-                              growthStatus && style.active
+                              growthStatus && style.active,
+                              growthStatus === 'disabled' && style.disabled
                             )}
                           >
                             {typeof growthStatus !== 'boolean' &&
@@ -245,7 +244,8 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
                             className={classnames(
                               style.cell,
                               style.celldesktop,
-                              unlimitedStatus && style.active
+                              unlimitedStatus && style.active,
+                              unlimitedStatus === 'disabled' && style.disabled
                             )}
                           >
                             {typeof unlimitedStatus !== 'boolean' &&
@@ -256,7 +256,8 @@ const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
                             className={classnames(
                               style.cell,
                               style.celldesktop,
-                              enterpriseStatus && style.active
+                              enterpriseStatus && style.active,
+                              enterpriseStatus === 'disabled' && style.disabled
                             )}
                           >
                             {typeof enterpriseStatus !== 'boolean' &&
