@@ -5,7 +5,6 @@ import classnames from 'classnames';
 
 import { parseString } from '@helpers';
 import style from './Card.module.scss';
-import Arrow from '../../../../../../../../../src/components/ArticlePreview/image/arrow.inline.svg';
 
 const Card = ({
   isEnterprise,
@@ -127,10 +126,9 @@ const Card = ({
         ) : (
           <div className={style.wrappperPrice}>
             <div
-              className={classnames([
-                style.cost,
-                style[currency === 'Euros €' ? 'EUR' : 'USD'],
-              ])}
+              className={classnames(style.cost, {
+                [style[currency === 'Euros €' ? 'EUR' : 'USD']]: !isStarter,
+              })}
             >
               {isStarter ? <RichText render={title.richText} /> : getCost()}
             </div>
@@ -163,7 +161,7 @@ const Card = ({
             className={style.isMorePlansButton}
             onClick={() => toggleBussinessCards()}
           >
-            <Arrow />
+            <div className={style.arrow}></div>
           </div>
         )}
       </div>
