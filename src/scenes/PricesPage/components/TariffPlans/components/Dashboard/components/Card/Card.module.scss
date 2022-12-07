@@ -99,7 +99,7 @@
   height: 99px;
   display: flex;
   align-items: center;
-  margin-top: 1.5rem;
+  margin-top: 4rem;
 }
 
 .colorized {
@@ -251,6 +251,7 @@
   line-height: 1.5;
   text-align: center;
   position: absolute;
+  padding: 0 10px;
 
   p {
     font-size: 14px;
@@ -399,6 +400,39 @@
 }
 
 .isMorePlansButton {
+  position: relative;
   cursor: pointer;
-  transform: scale(1.3) translateY(10px);
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(89.52deg, #24B04B -46.17%, #0263BC 186.99%);
+    display: block;
+    border-radius: 50%;
+  }
+
+  &:hover {
+    & .arrow {
+      transform: translate(calc(-50% + 3px), -50%);
+      transition: all 0.3s ease-in-out;
+    }
+  }
+}
+
+.arrow {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  background-image: url('./image/arrow.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
 }
