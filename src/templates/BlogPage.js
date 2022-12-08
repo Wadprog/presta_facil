@@ -71,6 +71,12 @@ export const query = graphql`
             filtersbuttontext {
               text
             }
+            cta_button_text {
+              richText
+            }
+            cta_button_link {
+              url
+            }
           }
         }
       }
