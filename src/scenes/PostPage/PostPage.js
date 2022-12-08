@@ -7,6 +7,7 @@ import classnames from 'classnames';
 import Text from './components/Text/Text';
 import Table from './components/Table/Table';
 import TableOfContents from './components/TableOfContents/TableOfContents';
+import { RichText } from 'prismic-reactjs';
 
 import Img from './components/Img/Img';
 import Video from './components/Video/Video';
@@ -20,6 +21,7 @@ import { Link } from 'gatsby';
 import LangContext from '@contexts';
 import { langPath } from '@helpers';
 import { TwitterTweetEmbed } from 'react-twitter-embed';
+import Button, { VARIANT } from '@components/Button/Button.js';
 
 const useOnScreen = (ref) => {
   const [isIntersecting, setIntersecting] = useState(false);
@@ -41,7 +43,7 @@ const useOnScreen = (ref) => {
   return isIntersecting;
 };
 
-const PostPage = ({ current, tags, currentLanguage }) => {
+const PostPage = ({ current, tags, currentLanguage, cta }) => {
   const {
     body,
     date,
@@ -56,9 +58,8 @@ const PostPage = ({ current, tags, currentLanguage }) => {
   const [isPilarPage, setIsPilarPage] = React.useState(false);
   const [table, setTable] = React.useState({});
   const currentLang = useContext(LangContext);
-
+  const { cta_button_text, cta_button_link } = cta.data;
   React.useEffect(() => {
-    console.log('Inside post page');
     categories[0].is_pilar_page_ && setIsPilarPage(true);
   }, [categories]);
 
@@ -224,6 +225,15 @@ const PostPage = ({ current, tags, currentLanguage }) => {
                 return (
                   <Video {...section} key={`${section.slice_type}${index}`} />
                 );
+
+              case 'centralized_cta_from_blog_single':
+                return (
+                  <div className={style.button}>
+                    <Button variant={VARIANT.PRIMARY} to={cta_button_link.url}>
+                      {<RichText render={cta_button_text.richText} />}
+                    </Button>
+                  </div>
+                );
             }
           })}
           <BreadcrumbsSemanticMarkup
@@ -274,6 +284,7 @@ PostPage.propTypes = {
   current: PropTypes.object.isRequired,
   tags: PropTypes.array,
   currentLanguage: PropTypes.string,
+  cta: PropTypes.object,
 };
 
 export default PostPage;

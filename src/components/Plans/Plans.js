@@ -18,7 +18,6 @@ const Plans = ({ primary, items }) => {
   const { title } = primary;
 
   const handleClick = (e, type) => {
-    console.log(items);
     if (type === 'enterprise') {
       e.preventDefault();
       setModalIsOpen(!modalIsOpen);

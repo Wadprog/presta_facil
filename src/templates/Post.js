@@ -7,8 +7,10 @@ import Layout from '@components/Layout';
 
 const Page = ({ data }) => {
   const pageContext = data.allPrismicBlogpostpage.edges[0];
-  if (!pageContext) return null;
+  const ctaContent = data.allPrismicBlogpage.edges[0];
+  if (!pageContext || !ctaContent) return null;
   const body = pageContext.node;
+
   const {
     alternate_languages,
     data: pageData,
@@ -18,6 +20,9 @@ const Page = ({ data }) => {
     uid,
     tags,
   } = body;
+
+  const cta = ctaContent.node;
+
   const { title, description, canonical } = pageData;
   const activeDocMeta = { id, uid, lang, type, alternate_languages };
 
@@ -28,7 +33,7 @@ const Page = ({ data }) => {
       metadescription={description}
       canonical={canonical}
     >
-      <Post current={pageData} tags={tags} currentLanguage={lang} />
+      <Post current={pageData} tags={tags} cta={cta} currentLanguage={lang} />
     </Layout>
   );
 };
@@ -123,6 +128,10 @@ export const query = graphql`
                     richText
                   }
                 }
+              }
+              ... on PrismicBlogpostpageDataBodyCentralizedCtaFromBlogSingle {
+                id
+                slice_type
               }
               ... on PrismicBlogpostpageDataBodyImage {
                 id
@@ -229,6 +238,24 @@ export const query = graphql`
             }
           }
           tags
+        }
+      }
+    }
+    allPrismicBlogpage(filter: { lang: { eq: $lang } }) {
+      edges {
+        node {
+          uid
+          type
+          lang
+          id
+          data {
+            cta_button_text {
+              richText
+            }
+            cta_button_link {
+              url
+            }
+          }
         }
       }
     }

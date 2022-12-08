@@ -1,83 +1,101 @@
 {
-  "Main" : {
-    "title" : {
-      "type" : "StructuredText",
-      "config" : {
-        "multi" : "heading1,strong",
-        "label" : "title"
+  "Main": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "heading1,strong",
+        "label": "title"
       }
     },
-    "buttontext" : {
-      "type" : "StructuredText",
-      "config" : {
-        "multi" : "paragraph",
-        "label" : "More articles button text",
-        "placeholder" : "Add button text (e.g. More articles)"
+    "buttontext": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "More articles button text",
+        "placeholder": "Add button text (e.g. More articles)"
       }
     },
-    "subtitle" : {
-      "type" : "StructuredText",
-      "config" : {
-        "multi" : "paragraph",
-        "label" : "Articles section title",
-        "placeholder" : "Add articles section title (e.g. Recent news)"
+    "subtitle": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Articles section title",
+        "placeholder": "Add articles section title (e.g. Recent news)"
       }
     },
-    "placeholder" : {
-      "type" : "StructuredText",
-      "config" : {
-        "multi" : "paragraph",
-        "label" : "Search input placeholder",
-        "placeholder" : "Add search input placeholder (e.g. Search)"
+    "placeholder": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Search input placeholder",
+        "placeholder": "Add search input placeholder (e.g. Search)"
       }
     },
-    "filtersbuttontext" : {
-      "type" : "StructuredText",
-      "config" : {
-        "multi" : "paragraph",
-        "label" : "Filters button text",
-        "placeholder" : "Add filters button text (e.g. Filters)"
+    "filtersbuttontext": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Filters button text",
+        "placeholder": "Add filters button text (e.g. Filters)"
       }
     },
-    "body" : {
-      "type" : "Slices",
-      "fieldset" : "Slice zone",
-      "config" : {
-        "labels" : { },
-        "choices" : { }
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {},
+        "choices": {}
       }
     }
   },
-  "SEO" : {
-    "uid" : {
-      "type" : "UID",
-      "config" : {
-        "label" : "UID",
-        "placeholder" : "Add UID, for example: blog"
+  "SEO": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "UID",
+        "placeholder": "Add UID, for example: blog"
       }
     },
-    "metatitle" : {
-      "type" : "StructuredText",
-      "config" : {
-        "multi" : "paragraph",
-        "label" : "Meta title",
-        "placeholder" : "Add meta title, up to 60 symbols recommended"
+    "metatitle": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Meta title",
+        "placeholder": "Add meta title, up to 60 symbols recommended"
       }
     },
-    "metadescription" : {
-      "type" : "StructuredText",
-      "config" : {
-        "multi" : "paragraph",
-        "label" : "Meta description",
-        "placeholder" : "Add meta description, up to 160 symbols"
+    "metadescription": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Meta description",
+        "placeholder": "Add meta description, up to 160 symbols"
       }
     },
-    "canonical" : {
-      "type" : "StructuredText",
-      "config" : {
-        "multi" : "paragraph",
-        "label" : "Canonical URL",
-        "placeholder" : "Add canonical URL, for example: https://secureprivacy.ai/blog"
+    "canonical": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Canonical URL",
+        "placeholder": "Add canonical URL, for example: https://secureprivacy.ai/blog"
+      }
+    }
+  },
+  "Centralized CTA for Blogposts": {
+    "cta_button_text": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "cta button text",
+        "placeholder": "cta button text"
+      }
+    },
+    "cta_button_link": {
+      "type": "Link",
+      "config": {
+        "allowTargetBlank": true,
+        "label": "cta button link",
+        "placeholder": "cta button link"
       }
     }
   }
