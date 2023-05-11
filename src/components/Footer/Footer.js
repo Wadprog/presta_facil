@@ -5,14 +5,12 @@ import { RichText } from 'prismic-reactjs';
 import Button, { VARIANT } from '@components/Button/Button.js';
 import style from './Footer.module.scss';
 import Navigation from './components/Navigation';
-import Books from './components/Books';
 import LanguageSwitcher from '@components/LanguageSwitcher';
 import ModalBookCall from '@components/ModalBookCall/ModalBookCall';
 import Image from '@components/Image/Image';
 
 const Footer = ({ data, activeDocMeta }) => {
   const primary = data[0].primary;
-  const books = data[1];
   const socialIcons = data[0].items;
   const copyright = primary.copyright.text;
   const buttonVariant = VARIANT.PRIMARY;
@@ -63,7 +61,6 @@ const Footer = ({ data, activeDocMeta }) => {
                 {primary.buttontext.text}
               </Button>
             </div>
-            <Books data={books} />
           </div>
           <Navigation data={menuItemsData} activeDocMeta={activeDocMeta} />
           <div className={style.switcherWrapper}>
