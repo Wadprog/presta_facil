@@ -61,19 +61,23 @@ body {
   scroll-behavior: smooth;
 }
 
-.consent-text.videoask-iframe {
-    border-radius: 15px !important;
-    height: 430px !important;
-    background: radial-gradient(circle, rgb(255 255 255) 0%, rgb(228 225 225) 100%) !important;
-    border: solid 3px #fff !important;
-    font-family: Gramatika,sans-serif !important;
-}
+$color_1: #000;
+$font-family_1: Gramatika,sans-serif;
 
-.videoask-iframe button {
-    background: transparent !important;
-    border: 2px solid #0119492e !important;
-    border-radius: 20px 5px !important;
-    color: #000 !important;
-    padding: 15px 35px !important;
-    font-family: Gramatika,sans-serif !important;
+.consent-text.videoask-iframe {
+	border-radius: 15px !important;
+	height: 430px !important;
+	background: radial-gradient(circle, rgb(255 255 255) 0%, rgb(228 225 225) 100%) !important;
+	border: solid 3px #fff !important;
+	font-family: $font-family_1 !important;
+}
+.videoask-iframe {
+	button {
+		background: transparent !important;
+		border: 2px solid #0119492e !important;
+		border-radius: 20px 5px !important;
+		color: $color_1 !important;
+		padding: 15px 35px !important;
+		font-family: $font-family_1 !important;
+	}
 }
