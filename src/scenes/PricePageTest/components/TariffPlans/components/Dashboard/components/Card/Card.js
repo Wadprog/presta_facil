@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import classnames from 'classnames';
@@ -6,12 +6,10 @@ import classnames from 'classnames';
 import { parseString } from '@helpers';
 import style from './Card.module.scss';
 
-//const CHAT_LINK = '/contact-us';
-
 const Card = ({
   isEnterprise,
   title,
-  name,
+  // name,
   selectedlawsnumber,
   oneprivacypriceusd,
   twoprivacypriceusd,
@@ -20,7 +18,7 @@ const Card = ({
   twoprivacypriceeur,
   threeprivacypriceeur,
   condition,
-  description,
+  // description,
   buttonText,
   buttonLink,
   disabled,
@@ -28,12 +26,12 @@ const Card = ({
   isAnnual,
   annualcoefficient,
   selectedPlans,
-  isMobile,
-  enterpriseCondition,
-  enterpriseButtonText,
+  // enterpriseCondition,
+  // enterpriseButtonText,
   enterpriseButtonLink,
 }) => {
-  const [colorized, setColorized] = useState(false);
+  // console.log({ name, enterpriseCondition, enterpriseButtonText });
+
   const getCost = () => {
     let cost = 0;
     if (currency === 'USD') {
@@ -96,50 +94,35 @@ const Card = ({
 
   return (
     <div
-      onMouseEnter={() => setColorized(true)}
-      onMouseLeave={() => setColorized(false)}
       className={classnames(style.container, {
-        [style.colorized]: colorized,
-        [style.colorizedmobile]: isMobile && colorized,
-        [style.colorizeddesktop]: !isMobile && colorized,
         [style.disabled]: disabled,
       })}
     >
-      <div className={style.title}>
-        <RichText render={title.richText} />
-      </div>
-      <div className={style.subtitle}>{isEnterprise ? '' : name}</div>
-      {isEnterprise ? (
-        <div className={style.enterprise}>{enterpriseCondition}</div>
-      ) : (
-        <>
-          <div className={classnames([style.cost, style[currency]])}>
-            {getCost()}
-          </div>
-          <div className={style.condition}>
+      <div className={style.body}>
+        <div className={style.title}>
+          <RichText render={title.richText} />
+        </div>
+        <div className={style.divider}></div>
+
+        <div className={style.text}>
+          {/* <RichText render={description.richText} /> */}
+          Some text to describe the plan
+        </div>
+        <div className={style.priceContainer}>
+          <div className={style.cost}>${getCost()}</div>
+          <div className={style.cost}>
             <RichText render={condition.richText} />
           </div>
-        </>
-      )}
-      <div className={style.text}>
-        <RichText render={description.richText} />
-      </div>
-      <div className={style.footer}>
-        <a href={getLink()} className={style.button}>
-          {colorized ? (
-            <span className={style.gradientText}>
-              {isEnterprise
-                ? enterpriseButtonText
-                : RichText.asText(buttonText.richText)}
-            </span>
-          ) : (
-            <span>
-              {isEnterprise
-                ? enterpriseButtonText
-                : RichText.asText(buttonText.richText)}
-            </span>
-          )}
-        </a>
+        </div>
+        <div className={style.description}>
+          {/* <RichText render={description.richText} /> */}
+          500k content /month
+        </div>
+        <div className={style.footer}>
+          <a href={getLink()} className={style.button}>
+            <span>{RichText.asText(buttonText.richText)}</span>
+          </a>
+        </div>
       </div>
     </div>
   );
@@ -152,7 +135,7 @@ Card.defaultProps = {
 Card.propTypes = {
   isEnterprise: PropTypes.bool,
   title: PropTypes.arrayOf.isRequired,
-  name: PropTypes.string.isRequired,
+  // name: PropTypes.string.isRequired,
   selectedlawsnumber: PropTypes.number,
   oneprivacypriceusd: PropTypes.number,
   twoprivacypriceusd: PropTypes.number,
@@ -170,8 +153,8 @@ Card.propTypes = {
   annualcoefficient: PropTypes.number.isRequired,
   selectedPlans: PropTypes.arrayOf.isRequired,
   isMobile: PropTypes.bool.isRequired,
-  enterpriseCondition: PropTypes.string.isRequired,
-  enterpriseButtonText: PropTypes.string.isRequired,
+  // enterpriseCondition: PropTypes.string.isRequired,
+  // enterpriseButtonText: PropTypes.string.isRequired,
   enterpriseButtonLink: PropTypes.string.isRequired,
 };
 

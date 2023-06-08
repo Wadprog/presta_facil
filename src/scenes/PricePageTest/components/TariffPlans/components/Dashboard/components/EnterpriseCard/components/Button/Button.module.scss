@@ -1,0 +1,42 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 32px;
+  gap: 10px;
+
+  width: 232px;
+  height: 54px;
+
+  /* Linear */
+
+  background: linear-gradient(269.4deg, #fb5f47 38.27%, #f9be5a 113.07%);
+  border-radius: 20px 8px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.text {
+  width: 152px;
+  height: 25px;
+
+  font-family: 'Sofia Pro';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 25px;
+  /* identical to box height */
+
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  /* white */
+
+  color: #ffffff;
+}

@@ -4,13 +4,13 @@ import { RichText } from 'prismic-reactjs';
 import { Waypoint } from 'react-waypoint';
 import classnames from 'classnames';
 
-import { parseCellValue } from './utils';
+import { parseCellValue, parseAsbool } from './utils';
 import { useBreakpoints } from '@hooks';
 import style from './PlansFeatures.module.scss';
 
 const MOBILE_VIEW = 780;
 
-const PlansFeatures = ({ primary, items, showBar, hideBar, activepoint }) => {
+const PlansFeatures = ({ items, showBar, hideBar, activepoint }) => {
   const [isMobile, setIsMobile] = useState(false);
   const { width } = useBreakpoints();
 
@@ -62,9 +62,6 @@ const PlansFeatures = ({ primary, items, showBar, hideBar, activepoint }) => {
   return (
     <>
       <div className={style.wrapper}>
-        <div className={style.title}>
-          <RichText render={primary.title.richText} />
-        </div>
         <ul className={style.list}>
           {items.map((item, index) => {
             const basicStatus = parseCellValue(
@@ -83,40 +80,48 @@ const PlansFeatures = ({ primary, items, showBar, hideBar, activepoint }) => {
 
             return (
               <li key={index} className={style.item}>
-                <div
+                {/* <div
                   className={classnames(style.name, {
                     [style.namedesktop]: !isMobile,
                     [style.namemobile]: isMobile,
                   })}
                 >
                   <RichText render={item.featuretitle.richText} />
-                </div>
+                </div> */}
                 <div
                   className={classnames(style.statuses, style.statusesdesktop)}
                 >
                   {!isMobile ? (
-                    <>
+                    <div className={style.statusesRow}>
                       <div
-                        className={classnames(style.cell, style.celldesktop)}
+                        className={classnames(style.cell, style.celldesktop, {
+                          [style.selected]: !parseAsbool(
+                            RichText.asText(item.basicstatus.richText)
+                          ),
+                        })}
                       >
-                        {basicStatus}
+                        <RichText render={item.featuretitle.richText} />
+                        {/* {basicStatus} */}
                       </div>
                       <div
-                        className={classnames(style.cell, style.celldesktop)}
+                        className={classnames(style.cell, style.celldesktop, {
+                          [style.selected]: !parseAsbool(
+                            RichText.asText(item.plusstatus.richText)
+                          ),
+                        })}
                       >
-                        {plusStatus}
+                        <RichText render={item.featuretitle.richText} />
                       </div>
                       <div
-                        className={classnames(style.cell, style.celldesktop)}
+                        className={classnames(style.cell, style.celldesktop, {
+                          [style.selected]: !parseAsbool(
+                            RichText.asText(item.businessstatus.richText)
+                          ),
+                        })}
                       >
-                        {businessStatus}
+                        <RichText render={item.featuretitle.richText} />
                       </div>
-                      <div
-                        className={classnames(style.cell, style.celldesktop)}
-                      >
-                        {enterpriseStatus}
-                      </div>
-                    </>
+                    </div>
                   ) : (
                     detectActiveFeaturesList(
                       basicStatus,

@@ -12,10 +12,22 @@
 }
 
 .title {
+  font-family: 'Gramatika-Bold';
+  font-size: 14px;
+  line-height: 150%;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  /* identical to box height, or 21px */
   &.selected {
     background-image: $green-gradient;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
   }
 }
 

@@ -8,7 +8,9 @@ import Dashboard from './components/Dashboard';
 import Bar from './components/Bar';
 import StatusBar from './components/StatusBar';
 import PeriodSwitcher from './components/PeriodSwitcher';
-import PlanSwitcher from './components/PlanSwitcher';
+// import PlanSwitcher from './components/PlanSwitcher';
+
+// import CurrencyDropdown from './components/CurrencySwitcher';
 import { useBreakpoints } from '@hooks';
 import style from './TariffPlans.module.scss';
 import LangContext from '@contexts';
@@ -29,30 +31,28 @@ const TariffPlans = ({
 }) => {
   const currentLang = useContext(LangContext);
 
-  const laws = [
-    {
-      title: primary.firstlawtitle.text,
-      location: primary.firstlawlocation.text,
-    },
-    {
-      title: primary.secondlawtitle.text,
-      location: primary.secondlawlocation.text,
-    },
-    {
-      title: primary.thirdlawtitle.text,
-      location: primary.thirdlawlocation.text,
-    },
-  ];
+  // const laws = [
+  //   {
+  //     title: primary.firstlawtitle.text,
+  //     location: primary.firstlawlocation.text,
+  //   },
+  //   {
+  //     title: primary.secondlawtitle.text,
+  //     location: primary.secondlawlocation.text,
+  //   },
+  //   {
+  //     title: primary.thirdlawtitle.text,
+  //     location: primary.thirdlawlocation.text,
+  //   },
+  // ];
 
-  const { currencydropdownlabel } = primary;
+  // const { currencydropdownlabel } = primary;
 
   const [isAnnual, setIsAnnual] = useState(false);
-  const [selectedPlansIndexes, setSelectedPlansIndexes] = useState([0]);
-  const [selectedPlans, setSelectedPlans] = useState([
-    primary.firstlawtitle.text,
-  ]);
+  // const [selectedPlansIndexes, setSelectedPlansIndexes] = useState([0]);
+  const [selectedPlans] = useState([primary.firstlawtitle.text]);
   const scrollDirection = useScrollDirection();
-  const [currency, setCurrency] = useState(
+  const [currency] = useState(
     currentLang.toLowerCase().includes('fr') ||
       currentLang.toLowerCase().includes('de') ||
       currentLang.toLowerCase().includes('pt')
@@ -63,7 +63,7 @@ const TariffPlans = ({
   const [isMobile, setIsMobile] = useState(false);
   const { width } = useBreakpoints();
 
-  const selectCurrency = (value) => setCurrency(value);
+  // const selectCurrency = (value) => setCurrency(value);
 
   useEffect(() => {
     const mobile = width < MOBILE_VIEW;
@@ -71,21 +71,21 @@ const TariffPlans = ({
     setIsMobile(mobile);
   }, [width]);
 
-  const selectPlan = (value) => {
-    const isSelected = selectedPlansIndexes.includes(value);
-    let indexes;
-    if (isSelected) {
-      indexes =
-        selectedPlansIndexes.length === 1
-          ? [0]
-          : selectedPlansIndexes.filter((item) => item !== value);
-    } else {
-      indexes = [...selectedPlansIndexes, value].sort((a, b) => a - b);
-    }
-    setSelectedPlansIndexes(indexes);
-    const plans = indexes.map((index) => laws[index].title);
-    setSelectedPlans(plans);
-  };
+  // const selectPlan = (value) => {
+  //   const isSelected = selectedPlansIndexes.includes(value);
+  //   let indexes;
+  //   if (isSelected) {
+  //     indexes =
+  //       selectedPlansIndexes.length === 1
+  //         ? [0]
+  //         : selectedPlansIndexes.filter((item) => item !== value);
+  //   } else {
+  //     indexes = [...selectedPlansIndexes, value].sort((a, b) => a - b);
+  //   }
+  //   setSelectedPlansIndexes(indexes);
+  //   const plans = indexes.map((index) => laws[index].title);
+  //   setSelectedPlans(plans);
+  // };
 
   const togglePeriod = () => {
     setIsAnnual(!isAnnual);
@@ -127,16 +127,16 @@ const TariffPlans = ({
               [style.bodymobile]: isMobile,
             })}
           >
-            <div className={style.sidebar}>
-              <PlanSwitcher
+            {/* <div className={style.sidebar}>
+               <CurrencyDropdown
                 plans={laws}
                 selectedPlans={selectedPlansIndexes}
                 onSelect={selectPlan}
                 selectCurrency={selectCurrency}
                 currency={currency}
                 currencyDropdownLabel={currencydropdownlabel.text}
-              />
-            </div>
+              />{/* 
+            </div> */}
             <div
               className={style.main}
               onScroll={(event) => setActive(event.target.scrollLeft)}

@@ -20,7 +20,6 @@
   font-size: 16px;
   line-height: 1.8;
   letter-spacing: 0.03em;
-  
 
   h3 {
     font-weight: inherit;
@@ -66,10 +65,20 @@
 .statuses {
   display: flex;
   padding: 0 24px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .statusesdesktop {
-  width: 920px;
+  width: 100%;
+}
+.statusesRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 24px;
+  gap: 10;
 }
 
 .statusesmobile {
@@ -110,20 +119,34 @@
   height: 48px;
   margin-right: 16px;
 
+  align-self: stretch;
   font-weight: 700;
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
+  text-transform: capitalize;
+  gap: 10px;
 
+  flex-grow: 1;
+
+  color: #a9a9a9;
   &:last-child {
     margin-right: 0;
   }
 
   :global(.default-text) {
     color: $main-light;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 125%;
+    /* identical to box height, or 15px */
+    letter-spacing: 0.05em;
 
-    opacity: 0.5;
+    opacity: 0.4;
+  }
+  &.selected {
+    color: #011949 !important;
   }
 }
 

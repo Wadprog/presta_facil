@@ -6,7 +6,7 @@ import PlansFeatures from './components/PlansFeatures';
 import TariffPlans from './components/TariffPlans';
 import Partners from './components/Partners';
 import Questions from './components/Questions';
-import ContactUs from './components/ContactUs';
+// import ContactUs from './components/ContactUs';
 import FaqSemanticMarkup from '@components/FaqSemanticMarkup/FaqSemanticMarkup';
 import BreadcrumbsSemanticMarkup from '@components/BreadcrumbsMarkup/BreadcrumbsMarkup';
 import style from './PricesPage.module.scss';
@@ -50,7 +50,7 @@ const PricesPage = ({ content, canonical, metatitle }) => {
   const faqLists = questions.map((element) => element.items);
   const faqList = faqLists.flat();
 
-  const sections = content.map((item, index) => {
+  const secs = content.map((item, index) => {
     switch (item.slice_type) {
       case 'hero':
         return <Hero key={index} {...item} />;
@@ -83,12 +83,15 @@ const PricesPage = ({ content, canonical, metatitle }) => {
       case 'questions':
         return <Questions key={index} {...item} />;
       case 'contactus':
-        return <ContactUs key={index} {...item} />;
+        return null;
       default:
         throw new Error(`Unknown section type: ${item.slice_type}`);
     }
   });
-
+  const sections = [...secs];
+  {
+    style.wrapper;
+  }
   return (
     <div className={style.wrapper}>
       <div className={style.container}>{sections}</div>
