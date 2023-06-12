@@ -29,7 +29,7 @@
   margin-bottom: 24px;
 }
 .title {
-  font-family: 'Sofia Pro';
+  font-family: $font-sofia-pro;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -55,7 +55,7 @@
   border: 1px solid #d0daeb;
 }
 .text {
-  font-family: 'Sofia Pro';
+  font-family: $font-sofia-pro;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -136,7 +136,7 @@
 }
 
 .cost {
-  font-family: 'Sofia Pro';
+  font-family: $font-sofia-pro;
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -170,7 +170,7 @@
 }
 
 .description {
-  font-family: 'Sofia Pro';
+  font-family: $font-sofia-pro;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -191,7 +191,7 @@
 }
 
 .subTitle {
-  font-family: 'Sofia Pro';
+  font-family: $font-sofia-pro;
   font-style: normal;
   font-size: 24px;
   color: #ffffff;
@@ -238,7 +238,7 @@
 
   height: 25px;
 
-  font-family: 'Sofia Pro';
+  font-family: $font-sofia-pro;
   font-style: normal;
   font-weight: 800;
   font-size: 16px;

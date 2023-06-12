@@ -60,7 +60,7 @@
   // font-weight: 600;
   // line-height: 27.5px;
   text-transform: uppercase;
-  font-family: 'Sofia Pro';
+  font-family: $font-sofia-pro;
   font-style: normal;
   font-weight: 600;
   font-size: 22px;
@@ -79,7 +79,7 @@
   border: 1px solid #d0daeb;
 }
 .text {
-  font-family: 'Sofia Pro';
+  font-family: $font-sofia-pro;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -160,7 +160,7 @@
 }
 
 .cost {
-  font-family: 'Sofia Pro';
+  font-family: $font-sofia-pro;
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -194,7 +194,7 @@
 }
 
 .description {
-  font-family: 'Sofia Pro';
+  font-family: $font-sofia-pro;
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -266,7 +266,7 @@
 
   height: 25px;
 
-  font-family: 'Sofia Pro';
+  font-family: $font-sofia-pro;
   font-style: normal;
   font-weight: 800;
   font-size: 16px;
