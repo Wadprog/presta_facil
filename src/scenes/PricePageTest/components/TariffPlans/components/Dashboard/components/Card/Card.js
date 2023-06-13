@@ -109,7 +109,9 @@ const Card = ({
           Some text to describe the plan
         </div>
         <div className={style.priceContainer}>
-          <div className={style.cost}>${getCost()}</div>
+          <div className={classnames([style.cost, style[currency]])}>
+            {getCost()}
+          </div>
           <div className={style.cost}>
             <RichText render={condition.richText} />
           </div>

@@ -153,10 +153,6 @@
   background: rgba(234, 237, 242, 0.75);
   border: 1px solid rgba(208, 218, 235, 0.5);
   border-radius: 8px;
-  // flex: none;
-  // order: 0;
-  // align-self: stretch;
-  // flex-grow: 0;
 }
 
 .cost {
@@ -164,21 +160,20 @@
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
-  line-height: 135%;
   text-align: center;
   color: #011949;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:before {
-    transform: translateY(6px);
-
+    transform: translateY(0.5px);
     display: block;
     margin-right: 2px;
-
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 1.25;
-    letter-spacing: 0.03em;
-    opacity: 0.5;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
   }
   &.USD {
     &:before {

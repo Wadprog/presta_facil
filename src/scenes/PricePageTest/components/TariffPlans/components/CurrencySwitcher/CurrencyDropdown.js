@@ -20,7 +20,8 @@ const CurrencyDropdown = ({
     selectCurrency(currencies[index].value);
     setIsOpen(false);
   };
-
+  const { log } = console;
+  log(currencyDropdownLabel);
   return (
     <div className={style.container}>
       <p className={style.title}>{currencyDropdownLabel}</p>

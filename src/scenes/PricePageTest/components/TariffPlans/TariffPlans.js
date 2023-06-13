@@ -10,7 +10,7 @@ import StatusBar from './components/StatusBar';
 import PeriodSwitcher from './components/PeriodSwitcher';
 // import PlanSwitcher from './components/PlanSwitcher';
 
-// import CurrencyDropdown from './components/CurrencySwitcher';
+import CurrencyDropdown from './components/CurrencySwitcher';
 import { useBreakpoints } from '@hooks';
 import style from './TariffPlans.module.scss';
 import LangContext from '@contexts';
@@ -46,13 +46,13 @@ const TariffPlans = ({
   //   },
   // ];
 
-  // const { currencydropdownlabel } = primary;
+  const { currencydropdownlabel } = primary;
 
   const [isAnnual, setIsAnnual] = useState(false);
   // const [selectedPlansIndexes, setSelectedPlansIndexes] = useState([0]);
   const [selectedPlans] = useState([primary.firstlawtitle.text]);
   const scrollDirection = useScrollDirection();
-  const [currency] = useState(
+  const [currency, setCurrency] = useState(
     currentLang.toLowerCase().includes('fr') ||
       currentLang.toLowerCase().includes('de') ||
       currentLang.toLowerCase().includes('pt')
@@ -63,7 +63,7 @@ const TariffPlans = ({
   const [isMobile, setIsMobile] = useState(false);
   const { width } = useBreakpoints();
 
-  // const selectCurrency = (value) => setCurrency(value);
+  const selectCurrency = (value) => setCurrency(value);
 
   useEffect(() => {
     const mobile = width < MOBILE_VIEW;
@@ -120,6 +120,13 @@ const TariffPlans = ({
               togglePeriod={togglePeriod}
               primary={primary}
             />
+            <div className={style.priceContainer}>
+              <CurrencyDropdown
+                selectCurrency={selectCurrency}
+                currency={currency}
+                currencyDropdownLabel={currencydropdownlabel.text}
+              />
+            </div>
           </div>
           <div
             className={classnames({
