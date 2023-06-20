@@ -3,7 +3,7 @@ import style from './Menu.module.scss';
 import { array, bool, string, object } from 'prop-types';
 import classnames from 'classnames';
 import MenuItem from '../MenuItem/MenuItem';
-import { Link } from 'gatsby';
+// import { Link } from 'gatsby';
 import LangContext from '@contexts';
 import { langPath } from '@helpers';
 import { globalHistory as history } from '@reach/router';

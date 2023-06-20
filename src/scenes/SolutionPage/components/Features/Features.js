@@ -28,7 +28,7 @@ const Features = ({ primary, items }) => {
       },
       1150: {
         allowTouchMove: false,
-        spaceBetween: 0,
+        spaceBetween: 20,
       },
     },
   };
