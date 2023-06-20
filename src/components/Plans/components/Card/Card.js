@@ -59,7 +59,7 @@ const Card = ({
         <div className={style.button}>
           {buttonprice.richText.length > 0 && (
             <div className={style.priceWrapper}>
-              <span>from</span>
+              {/* <span>from</span> */}
               <p className={style.price}>
                 {RichText.asText(buttonprice.richText)}
               </p>

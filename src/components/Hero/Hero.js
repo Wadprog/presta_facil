@@ -43,6 +43,8 @@ const Hero = ({ primary, items }) => {
       },
     },
   };
+
+  console.log({ videoLink });
   return (
     <div className={styles.hero}>
       <div className={styles.container}>
@@ -77,16 +79,19 @@ const Hero = ({ primary, items }) => {
         </div>
         <div className={styles.imageWrapper}>
           <Image className={styles.image} image={previewImage} />
-          <div className={styles.playButtonWrapper}>
-            <div className={styles.playButton}>
-              <IconButton variant={VARIANT_ICON.PLAY} click={handleOpenModal}>
-                <PLayIcon />
-              </IconButton>
+          {videoLink && (
+            <div className={styles.playButtonWrapper}>
+              <div className={styles.playButton}>
+                <IconButton variant={VARIANT_ICON.PLAY} click={handleOpenModal}>
+                  <PLayIcon />
+                </IconButton>
+              </div>
+
+              <div className={styles.playButtonText}>
+                <p>{videoButtonText.text}</p>
+              </div>
             </div>
-            <div className={styles.playButtonText}>
-              <p>{videoButtonText.text}</p>
-            </div>
-          </div>
+          )}
         </div>
       </div>
       <div className={styles.partners}>
@@ -100,13 +105,15 @@ const Hero = ({ primary, items }) => {
           })}
         </Swiper>
       </div>
-      <Modal
-        open={modalIsOpen}
-        closeModal={handleCloseModal}
-        videoLink={videoLink}
-        modalCtaButtonText={modalCtaButtonText.text}
-        modalCtaButtonLink={modalCtaButtonLink.text}
-      />
+      {videoLink && (
+        <Modal
+          open={modalIsOpen}
+          closeModal={handleCloseModal}
+          videoLink={videoLink}
+          modalCtaButtonText={modalCtaButtonText.text}
+          modalCtaButtonLink={modalCtaButtonLink.text}
+        />
+      )}
     </div>
   );
 };
