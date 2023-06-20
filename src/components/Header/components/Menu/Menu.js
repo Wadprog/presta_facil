@@ -49,13 +49,6 @@ const Menu = ({ data, open, menuSingleData }) => {
         );
       })}
       <div className={classItem}>
-        <Link
-          className={style.link}
-          activeClassName={style.linkActive}
-          to={`${langPath(currentLang)}/blog`}
-        >
-          Blog
-        </Link>
         {menuSingleData.items.map((val, i) => {
           return (
             <a
