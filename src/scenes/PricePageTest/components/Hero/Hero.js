@@ -16,6 +16,10 @@ const Hero = ({ primary }) => {
         <div className={style.subtitle}>
           <RichText render={subtitle.richText} />
         </div>
+
+        <div className={style.text}>
+          <RichText render={subtitle.richText} />
+        </div>
       </div>
     </div>
   );

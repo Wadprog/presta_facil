@@ -1,0 +1,69 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Gramatika-Bold';
+  line-height: 138%; // 19px
+  color: #011949;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.list {
+  position: absolute;
+  top: 45px;
+  background: #e5e7ec;
+  border: 1px solid rgba(1, 25, 73, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  width: 82px;
+}
+
+.item {
+  height: 40px;
+  padding: 13px 16px;
+  font-size: 14px;
+  line-height: 100%;
+  background: #e5e7ec;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.activeitem {
+  font-weight: 700;
+}
+
+.selected {
+  width: 112px;
+  height: 48px;
+  padding: 8px 12px;
+  gap: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  background: rgba(234, 237, 242, 0.7);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 100%;
+  border: 1px solid #d0daeb;
+  border-radius: 8px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.opened {
+  transform: rotate(180deg);
+}
